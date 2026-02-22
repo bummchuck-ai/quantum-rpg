@@ -1,0 +1,325 @@
+// ============================================================
+// QUANTUM RPG — Character Type Definitions
+// ============================================================
+// Complete character data model based on Charaktererschaffung V14.pdf
+// and The Complete Species Guide v6.pdf
+// ============================================================
+
+// --- Core Characteristics (Eigenschaften) ---
+export interface Characteristics {
+    brawn: number;        // Stärke
+  agility: number;      // Gewandtheit
+  intellect: number;    // Intelligenz
+  cunning: number;      // List
+  willpower: number;    // Willenskraft
+  presence: number;     // Ausstrahlung
+}
+
+export type CharacteristicKey = keyof Characteristics;
+
+// --- Skills (Fertigkeiten) ---
+export interface SkillRanks {
+    // General Skills (Allgemeine Fertigkeiten)
+  astrogation: number;          // Astronavigation
+  athletics: number;            // Athletik
+  charm: number;                // Charme
+  coercion: number;             // Einschüchterung
+  computers: number;            // Computer
+  cool: number;                 // Coolness
+  coordination: number;         // Körperbeherrschung
+  deception: number;            // Täuschung
+  discipline: number;           // Disziplin
+  leadership: number;           // Führungsqualität
+  mechanics: number;            // Mechanik
+  medicine: number;             // Medizin
+  negotiation: number;          // Verhandlung
+  perception: number;           // Wahrnehmung
+  pilotingPlanetary: number;    // Planetares Steuern
+  pilotingSpace: number;        // Steuern (Raum)
+  resilience: number;           // Widerstandskraft
+  skulduggery: number;          // Fingerfertigkeit
+  stealth: number;              // Heimlichkeit
+  streetwise: number;           // Szenekenntnis
+  survival: number;             // Überleben
+  vigilance: number;            // Aufmerksamkeit
+  // Combat Skills (Kampffertigkeiten)
+  brawl: number;                // Nahkampf (unbewaffnet)
+  gunnery: number;              // Artillerie
+  melee: number;                // Nahkampf (bewaffnet)
+  rangedLight: number;          // Leichte Fernkampfwaffen
+  rangedHeavy: number;          // Schwere Fernkampfwaffen
+  // Knowledge Skills (Wissensfertigkeiten)
+  coreWorlds: number;           // Kernwelten
+  education: number;            // Bildung
+  lore: number;                 // Sagenkunde
+  outerRim: number;             // Äußerer Rand
+  underworld: number;           // Unterwelt
+  xenology: number;             // Xenologie
+  // Force Skills (Machtfertigkeiten) - optional
+  lightsaber?: number;          // Lichtschwert
+}
+
+export type SkillKey = keyof SkillRanks;
+
+// Mapping skills to their governing characteristic
+export const SKILL_CHARACTERISTICS: Record<SkillKey, CharacteristicKey> = {
+    astrogation: 'intellect',
+    athletics: 'brawn',
+    charm: 'presence',
+    coercion: 'willpower',
+    computers: 'intellect',
+    cool: 'presence',
+    coordination: 'agility',
+    deception: 'cunning',
+    discipline: 'willpower',
+    leadership: 'presence',
+    mechanics: 'intellect',
+    medicine: 'intellect',
+    negotiation: 'presence',
+    perception: 'cunning',
+    pilotingPlanetary: 'agility',
+    pilotingSpace: 'agility',
+    resilience: 'brawn',
+    skulduggery: 'cunning',
+    stealth: 'agility',
+    streetwise: 'cunning',
+    survival: 'cunning',
+    vigilance: 'willpower',
+    brawl: 'brawn',
+    gunnery: 'agility',
+    melee: 'brawn',
+    rangedLight: 'agility',
+    rangedHeavy: 'agility',
+    coreWorlds: 'intellect',
+    education: 'intellect',
+    lore: 'intellect',
+    outerRim: 'intellect',
+    underworld: 'intellect',
+    xenology: 'intellect',
+    lightsaber: 'brawn',
+};
+
+// --- Obligation / Duty / Morality ---
+export type ObligationType =
+    | 'addiction' | 'adrenalineJunkie' | 'casanova' | 'infamous'
+  | 'obsession' | 'betrayal' | 'priceOfName' | 'dishonor'
+  | 'oath' | 'zeal' | 'openScore' | 'disgraced'
+  | 'family' | 'favor' | 'frontierJustice' | 'exile'
+  | 'servitude' | 'contract' | 'bounty' | 'criminalPast'
+  | 'crew' | 'openBusiness' | 'pacifist' | 'duty'
+  | 'dutyBound' | 'collateralDamage' | 'riskTaker'
+  | 'badReputation' | 'debts' | 'sponsor';
+
+export interface Obligation {
+    type: ObligationType;
+    name: string;
+    value: number;
+    description: string;
+}
+
+export interface Duty {
+    type: string;
+    name: string;
+    value: number;
+    description: string;
+}
+
+export interface Morality {
+    value: number;          // 0-100, starts at 50
+  emotional_strengths: string[];
+    emotional_weaknesses: string[];
+}
+
+// --- Motivation ---
+export interface Motivation {
+    desire: string;
+    fear: string;
+    strength: string;
+    flaw: string;
+}
+
+// --- Talent ---
+export interface Talent {
+    id: string;
+    name: string;
+    tier: number;           // 1-5
+  activation: 'passive' | 'active_action' | 'active_maneuver' | 'active_incidental';
+    ranked: boolean;        // Can be purchased multiple times?
+  currentRank: number;
+    description: string;
+    xpCost: number;
+}
+
+// --- Weapon ---
+export interface Weapon {
+    id: string;
+    name: string;
+    skill: SkillKey;
+    damage: number;
+    critical: number;
+    range: 'engaged' | 'short' | 'medium' | 'long' | 'extreme';
+    encumbrance: number;
+    hardpoints: number;
+    cost: number;
+    rarity: number;
+    special: string[];
+    addsBrawn?: boolean;    // For melee weapons: damage = Brawn + damage
+}
+
+// --- Armor ---
+export interface Armor {
+    id: string;
+    name: string;
+    defense: number;
+    soak: number;
+    encumbrance: number;
+    hardpoints: number;
+    cost: number;
+    rarity: number;
+    special: string[];
+}
+
+// --- Equipment Item ---
+export interface EquipmentItem {
+    id: string;
+    name: string;
+    encumbrance: number;
+    cost: number;
+    rarity: number;
+    description: string;
+}
+
+// --- Species ---
+export interface Species {
+    id: string;
+    name: string;
+    description: string;
+    characteristics: Characteristics;
+    woundThresholdBonus: number;    // Added to Brawn for wound threshold
+  strainThresholdBonus: number;   // Added to Willpower for strain threshold
+  startingXP: number;
+    specialAbilities: string[];
+    freeSkillRanks: Record<string, number>;  // skill: ranks
+  imageUrl?: string;
+}
+
+// --- Career & Specialization ---
+export interface Career {
+    id: string;
+    name: string;
+    description: string;
+    careerSkills: SkillKey[];       // 8 career skills
+  specializations: Specialization[];
+}
+
+export interface Specialization {
+    id: string;
+    name: string;
+    description: string;
+    careerSkills: SkillKey[];       // 4 additional career skills
+  talentTree: TalentTreeNode[][];  // 5 rows x 4 columns
+}
+
+export interface TalentTreeNode {
+    talentId: string;
+    xpCost: number;
+    purchased: boolean;
+    connections: {
+      up?: boolean;
+      down?: boolean;
+      left?: boolean;
+      right?: boolean;
+    };
+}
+
+// --- Derived Stats ---
+export interface DerivedStats {
+    woundThreshold: number;     // Stärke + Spezies-Bonus
+  strainThreshold: number;    // Willenskraft + Spezies-Bonus
+  soakValue: number;          // Stärke + Rüstung
+  defenseRanged: number;      // Fernkampfverteidigung
+  defenseMelee: number;       // Nahkampfverteidigung
+  encumbranceThreshold: number; // 5 + Stärke
+  currentWounds: number;
+    currentStrain: number;
+}
+
+// --- The Complete Character ---
+export interface Character {
+    id: string;
+    name: string;
+    playerName: string;
+    concept: string;            // Charakterkonzept
+  background: string;         // Hintergrundgeschichte
+
+  // Core
+  species: Species;
+    career: Career;
+    specialization: Specialization;
+    characteristics: Characteristics;
+    skills: SkillRanks;
+    talents: Talent[];
+
+  // Narrative
+  obligation?: Obligation;
+    duty?: Duty;
+    morality?: Morality;
+    motivation: Motivation;
+
+  // Equipment
+  weapons: Weapon[];
+    armor?: Armor;
+    equipment: EquipmentItem[];
+    credits: number;
+
+  // Derived
+  derivedStats: DerivedStats;
+
+  // Experience
+  totalXP: number;
+    availableXP: number;
+
+  // Force (optional)
+  forceRating?: number;
+    forcePowers?: string[];
+
+  // Meta
+  createdAt: string;
+    updatedAt: string;
+}
+
+// --- Game State ---
+export interface GameState {
+    character: Character;
+    currentScene: string;
+    currentPlanet: string;
+    questLog: QuestEntry[];
+    npcRelationships: NPCRelationship[];
+    inventory: EquipmentItem[];
+    sessionHistory: SessionEvent[];
+    destinyPool: {
+      lightSide: number;
+      darkSide: number;
+    };
+}
+
+export interface QuestEntry {
+    id: string;
+    title: string;
+    description: string;
+    status: 'active' | 'completed' | 'failed';
+    objectives: string[];
+}
+
+export interface NPCRelationship {
+    npcName: string;
+    disposition: number;        // -100 to 100
+  notes: string;
+}
+
+export interface SessionEvent {
+    timestamp: string;
+    type: 'narrative' | 'combat' | 'roll' | 'dialogue' | 'levelup';
+    summary: string;
+    details?: string;
+}
