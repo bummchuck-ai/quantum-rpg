@@ -1,2 +1,83 @@
-# quantum-rpg
-A Star Wars-inspired AI Game Master RPG — powered by Claude API. Character creation, FFG dice mechanics, and cinematic storytelling.
+# QUANTUM RPG
+
+> A Star Wars-inspired AI Game Master RPG — powered by Claude API.
+> > Character creation, FFG dice mechanics, and cinematic storytelling.
+> >
+> > ## Vision
+> >
+> > Quantum RPG is a solo RPG app where an AI (Claude) acts as the Game Master. Create your character with the full depth of pen & paper rules, then explore the galaxy through cinematic, narrative-driven gameplay.
+> >
+> > ## Architecture
+> >
+> > ```
+> > Frontend (Next.js 14 + Tailwind CSS)
+> >   |-- Character Creator (10-step wizard)
+> >   |-- Play Session (chat-based GM interface)
+> >   |-- Dice Roller (visual FFG dice)
+> >   |-- Character Sheet (stats, inventory, talents)
+> >   |
+> > Backend (Next.js API Routes)
+> >   |-- Game Engine (dice.ts, character.ts, combat.ts)
+> >   |-- GM Brain (Claude API with dynamic system prompts)
+> >   |-- Save System (JSON persistence)
+> >   |
+> > Data Layer (JSON)
+> >   |-- species.json (from Complete Species Guide - 358 pages)
+> >   |-- careers.json (all careers + specializations)
+> >   |-- talents.json (from SW Talentbaeume V26 - 179 pages)
+> >   |-- weapons.json (from Waffen und Ruestungen V4 - 33 pages)
+> >   |-- skills.json (from Fertigkeiten - 12 pages)
+> >   |-- force_powers.json (from SW Machtkraefte V4 - 23 pages)
+> > ```
+> >
+> > ## Current Status
+> >
+> > ### Done
+> > - [x] Repository created
+> > - [ ] - [x] Dice Engine (`src/lib/engine/dice.ts`) — Full FFG narrative dice system
+> > - [ ] - [x] Type Definitions (`src/types/character.ts`) — Complete character data model
+> > - [ ] - [x] GM System Prompt (`src/lib/gm/system-prompt.ts`) — AI Game Master brain
+> >
+> > - [ ] ### Next Steps
+> > - [ ] - [ ] Species JSON data (extract from PDFs)
+> > - [ ] - [ ] Careers & Specializations JSON
+> > - [ ] - [ ] Talents JSON
+> > - [ ] - [ ] Weapons & Armor JSON
+> > - [ ] - [ ] Skills JSON
+> > - [ ] - [ ] Character Engine (derived stats, XP calculation)
+> > - [ ] - [ ] Character Creator UI (10-step wizard)
+> > - [ ] - [ ] Play Session UI (chat interface)
+> > - [ ] - [ ] Claude API integration
+> > - [ ] - [ ] Save/Load system
+> > - [ ] - [ ] Dice Roller UI component
+> >
+> > - [ ] ## Tech Stack
+> >
+> > - [ ] - **Framework:** Next.js 14 (App Router)
+> > - [ ] - **Styling:** Tailwind CSS
+> > - [ ] - **State:** Zustand
+> > - [ ] - **Language:** TypeScript
+> > - [ ] - **AI:** Claude API (Anthropic)
+> > - [ ] - **Deployment:** Vercel
+> >
+> > - [ ] ## Game Rules
+> >
+> > - [ ] Based on the FFG Star Wars RPG system (Edge of the Empire / Age of Rebellion / Force and Destiny) with custom adaptations for the Quantum/Astrum Versum setting.
+> >
+> > - [ ] ## Source Material (Google Drive)
+> >
+> > - [ ] The complete ruleset lives in PDF form:
+> > - [ ] - Charaktererschaffung V14 (34 pages)
+> > - [ ] - The Complete Species Guide v6 (358 pages)
+> > - [ ] - SW Talentbaeume V26 (179 pages)
+> > - [ ] - Waffen und Ruestungen V4 (33 pages)
+> > - [ ] - Fertigkeiten 1-2-1 (12 pages)
+> > - [ ] - SW Machtkraefte V4 (23 pages)
+> > - [ ] - Kampf Treffer Verletzungen V1
+> > - [ ] - Regeln V1 (18 pages)
+> > - [ ] - Hausregeln
+> > - [ ] - Multiple career PDFs (Deserteur, Loyalist, Kultist, etc.)
+> >
+> > - [ ] ## License
+> >
+> > - [ ] Private project.
