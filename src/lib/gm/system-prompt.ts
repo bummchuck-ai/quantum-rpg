@@ -1,11 +1,11 @@
-src/lib/gm/system-prompt.ts// ============================================================
+// ============================================================
 // QUANTUM RPG — Game Master System Prompt Builder
 // ============================================================
 // Builds the system prompt for Claude API based on current game state.
 // This is THE HEART of the game — Claude as the AI Game Master.
 // ============================================================
 
-import type { Character, GameState, SessionEvent } from '@/types/character';
+import type { Character, GameState, SessionEvent } from '../../types/character';
 
 // --- The Core GM Persona ---
 const GM_PERSONA = `Du bist der Game Master eines immersiven Star Wars Pen & Paper Rollenspiels.
@@ -64,68 +64,68 @@ Der Charakter hat narrative Verpflichtungen. Webe diese ORGANISCH in die Geschic
 
 // --- Build context from game state ---
 function buildCharacterContext(character: Character): string {
-  return \`# SPIELERCHARAKTER
-Name: \${character.name}
-Spezies: \${character.species.name}
-Karriere: \${character.career.name} / \${character.specialization.name}
-Konzept: \${character.concept}
-Hintergrund: \${character.background}
+  return `# SPIELERCHARAKTER
+Name: ${character.name}
+Spezies: ${character.species.name}
+Karriere: ${character.career.name} / ${character.specialization.name}
+Konzept: ${character.concept}
+Hintergrund: ${character.background}
 
 ## Eigenschaften
-Stärke: \${character.characteristics.brawn} | Gewandtheit: \${character.characteristics.agility}
-Intelligenz: \${character.characteristics.intellect} | List: \${character.characteristics.cunning}
-Willenskraft: \${character.characteristics.willpower} | Ausstrahlung: \${character.characteristics.presence}
+Stärke: ${character.characteristics.brawn} | Gewandtheit: ${character.characteristics.agility}
+Intelligenz: ${character.characteristics.intellect} | List: ${character.characteristics.cunning}
+Willenskraft: ${character.characteristics.willpower} | Ausstrahlung: ${character.characteristics.presence}
 
 ## Zustand
-Wunden: \${character.derivedStats.currentWounds}/\${character.derivedStats.woundThreshold}
-Erschöpfung: \${character.derivedStats.currentStrain}/\${character.derivedStats.strainThreshold}
-Credits: \${character.credits}
+Wunden: ${character.derivedStats.currentWounds}/${character.derivedStats.woundThreshold}
+Erschöpfung: ${character.derivedStats.currentStrain}/${character.derivedStats.strainThreshold}
+Credits: ${character.credits}
 
 ## Motivation
-Wunsch: \${character.motivation.desire}
-Furcht: \${character.motivation.fear}
-Stärke: \${character.motivation.strength}
-Schwäche: \${character.motivation.flaw}
-\${character.obligation ? \`
+Wunsch: ${character.motivation.desire}
+Furcht: ${character.motivation.fear}
+Stärke: ${character.motivation.strength}
+Schwäche: ${character.motivation.flaw}
+${character.obligation ? `
 ## Verpflichtung
-\${character.obligation.name} (Wert: \${character.obligation.value})
-\${character.obligation.description}\` : ''}
-\${character.morality ? \`
+${character.obligation.name} (Wert: ${character.obligation.value})
+${character.obligation.description}` : ''}
+${character.morality ? `
 ## Moral
-Wert: \${character.morality.value}/100
-Emotionale Stärken: \${character.morality.emotional_strengths.join(', ')}
-Emotionale Schwächen: \${character.morality.emotional_weaknesses.join(', ')}\` : ''}
-\`;
+Wert: ${character.morality.value}/100
+Emotionale Stärken: ${character.morality.emotional_strengths.join(', ')}
+Emotionale Schwächen: ${character.morality.emotional_weaknesses.join(', ')}` : ''}
+`;
 }
 
 function buildSceneContext(gameState: GameState): string {
   const recentHistory = gameState.sessionHistory
     .slice(-10)
-    .map((e: SessionEvent) => \`[\${e.type}] \${e.summary}\`)
-    .join('\\n');
+    .map((e: SessionEvent) => `[${e.type}] ${e.summary}`)
+    .join('\n');
 
-  return \`# AKTUELLE SZENE
-Planet: \${gameState.currentPlanet}
-Szene: \${gameState.currentScene}
+  return `# AKTUELLE SZENE
+Planet: ${gameState.currentPlanet}
+Szene: ${gameState.currentScene}
 
 ## Schicksalspunkte
-Helle Seite: \${gameState.destinyPool.lightSide}
-Dunkle Seite: \${gameState.destinyPool.darkSide}
+Helle Seite: ${gameState.destinyPool.lightSide}
+Dunkle Seite: ${gameState.destinyPool.darkSide}
 
 ## Letzte Ereignisse
-\${recentHistory || 'Spielbeginn — keine bisherigen Ereignisse.'}
+${recentHistory || 'Spielbeginn — keine bisherigen Ereignisse.'}
 
 ## Aktive Quests
-\${gameState.questLog
+${gameState.questLog
   .filter(q => q.status === 'active')
-  .map(q => \`- \${q.title}: \${q.description}\`)
-  .join('\\n') || 'Keine aktiven Quests.'}
+  .map(q => `- ${q.title}: ${q.description}`)
+  .join('\n') || 'Keine aktiven Quests.'}
 
 ## NPC-Beziehungen
-\${gameState.npcRelationships
-  .map(n => \`- \${n.npcName}: Stimmung \${n.disposition > 0 ? 'positiv' : n.disposition < 0 ? 'negativ' : 'neutral'} (\${n.disposition})\`)
-  .join('\\n') || 'Noch keine bekannten NPCs.'}
-\`;
+${gameState.npcRelationships
+  .map(n => `- ${n.npcName}: Stimmung ${n.disposition > 0 ? 'positiv' : n.disposition < 0 ? 'negativ' : 'neutral'} (${n.disposition})`)
+  .join('\n') || 'Noch keine bekannten NPCs.'}
+`;
 }
 
 // --- Main function: Build the complete system prompt ---
@@ -134,7 +134,7 @@ export function buildSystemPrompt(gameState: GameState): string {
     GM_PERSONA,
     buildCharacterContext(gameState.character),
     buildSceneContext(gameState),
-  ].join('\\n\\n---\\n\\n');
+  ].join('\n\n---\n\n');
 }
 
 // --- Build a user message with optional dice result ---
@@ -150,25 +150,25 @@ export function buildUserMessage(
     difficulty: string;
   }
 ): string {
-  let message = \`Der Spieler sagt/tut: "\${playerAction}"\`;
+  let message = `Der Spieler sagt/tut: "${playerAction}"`;
 
   if (diceResult) {
-    message += \`\\n\\nWürfelergebnis für \${diceResult.skillUsed} (\${diceResult.difficulty}):\\n\`;
+    message += `\n\nWürfelergebnis für ${diceResult.skillUsed} (${diceResult.difficulty}):\n`;
     message += diceResult.isSuccess
-      ? \`ERFOLG mit \${diceResult.netSuccess} Netto-Erfolgen\`
-      : \`FEHLSCHLAG mit \${Math.abs(diceResult.netSuccess)} Netto-Fehlschlägen\`;
+      ? `ERFOLG mit ${diceResult.netSuccess} Netto-Erfolgen`
+      : `FEHLSCHLAG mit ${Math.abs(diceResult.netSuccess)} Netto-Fehlschlägen`;
 
     if (diceResult.netAdvantage > 0) {
-      message += \` und \${diceResult.netAdvantage} Vorteilen\`;
+      message += ` und ${diceResult.netAdvantage} Vorteilen`;
     } else if (diceResult.netAdvantage < 0) {
-      message += \` und \${Math.abs(diceResult.netAdvantage)} Bedrohungen\`;
+      message += ` und ${Math.abs(diceResult.netAdvantage)} Bedrohungen`;
     }
 
     if (diceResult.triumph > 0) {
-      message += \` — TRIUMPH!\`;
+      message += ` — TRIUMPH!`;
     }
     if (diceResult.despair > 0) {
-      message += \` — VERZWEIFLUNG!\`;
+      message += ` — VERZWEIFLUNG!`;
     }
   }
 
@@ -176,7 +176,7 @@ export function buildUserMessage(
 }
 
 // --- Response format instruction ---
-export const RESPONSE_FORMAT = \`
+export const RESPONSE_FORMAT = `
 Antworte IMMER im folgenden JSON-Format:
 {
   "narrative": "Deine atmosphärische Erzählung hier...",
@@ -206,4 +206,4 @@ Antworte IMMER im folgenden JSON-Format:
   },
   "mood": "tense|calm|dangerous|mysterious|exciting|sad|triumphant"
 }
-\`;
+`;

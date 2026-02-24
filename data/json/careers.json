@@ -1,0 +1,1483 @@
+[
+  {
+    "name": "Ass",
+    "careerSkills": [
+      "Astronavigation",
+      "Coolness",
+      "Mechanik",
+      "Pilot (Planetar)",
+      "Pilot (Weltraum)",
+      "Wahrnehmung",
+      "Artillerie",
+      ""
+    ],
+    "forceRating": 0,
+    "specializations": [
+      {
+        "name": "Bestienreiter",
+        "skills": [
+          "Athletik",
+          "Überleben",
+          "Wahrnehmung",
+          "Xenologie"
+        ]
+      },
+      {
+        "name": "Fahrer",
+        "skills": [
+          "Coolness",
+          "Mechanik",
+          "Pilot (Planetar)",
+          "Artillerie"
+        ]
+      },
+      {
+        "name": "Geschützmeister",
+        "skills": [
+          "Disziplin",
+          "Widerstandskraft",
+          "Artillerie",
+          "schwere Fernkampfwaffen"
+        ]
+      },
+      {
+        "name": "Pilot",
+        "skills": [
+          "Astronavigation",
+          "Pilot (Planetar)",
+          "Pilot (Weltraum)",
+          "Artillerie"
+        ]
+      },
+      {
+        "name": "Rigger",
+        "skills": [
+          "Mechanik",
+          "Widerstandskraft",
+          "Artillerie",
+          "Unterwelt"
+        ]
+      },
+      {
+        "name": "Teufelskerl",
+        "skills": [
+          "Coolness",
+          "Körperbeherrschung",
+          "Pilot (Planetar)",
+          "Pilot (Weltraum)"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Diplomat",
+    "careerSkills": [
+      "Charme",
+      "Führungsqualität",
+      "Täuschung",
+      "Verhandlung",
+      "Allgemeinbildung",
+      "Äußerer  Rand",
+      ""
+    ],
+    "forceRating": 0,
+    "specializations": [
+      {
+        "name": "Advokat",
+        "skills": [
+          "Einschüchterung",
+          "Täuschung",
+          "Verhandeln",
+          "Wachsamkeit"
+        ]
+      },
+      {
+        "name": "Analyst",
+        "skills": [
+          "Computertechnik",
+          "Wahrnehmung",
+          "Allgemeinbildung",
+          "Kriegsführung"
+        ]
+      },
+      {
+        "name": "Aufwiegler",
+        "skills": [
+          "Einschüchterung",
+          "Straßenwissen",
+          "Täuschung",
+          "Unterwelt"
+        ]
+      },
+      {
+        "name": "Botschafter",
+        "skills": [
+          "Charme",
+          "Disziplin",
+          "Verhandlung",
+          "Kernwelten"
+        ]
+      },
+      {
+        "name": "Propagandist",
+        "skills": [
+          "Charme",
+          "Täuschung",
+          "Wahrnehmung",
+          "Kriegsführung"
+        ]
+      },
+      {
+        "name": "Quartiermeister",
+        "skills": [
+          "Computertechnik",
+          "Infiltration",
+          "Verhandlung",
+          "Wachsamkeit"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Entdecker",
+    "careerSkills": [
+      "Astronavigation",
+      "Coolness",
+      "Pilot  (Weltraum)",
+      "Überleben",
+      "Wahrnehmung",
+      "Altes  Wissen",
+      ""
+    ],
+    "forceRating": 0,
+    "specializations": [
+      {
+        "name": "Archäologe",
+        "skills": [
+          "Athletik",
+          "Disziplin",
+          "Allgemeinbildung",
+          "Altes Wissen"
+        ]
+      },
+      {
+        "name": "Fahrer",
+        "skills": [
+          "Coolness",
+          "Mechanik",
+          "Pilot (Planetar)",
+          "Artillerie"
+        ]
+      },
+      {
+        "name": "Grenzwanderer",
+        "skills": [
+          "Astronavigation",
+          "Körperbeherrschung",
+          "Straßenwissen",
+          "Verhandeln"
+        ]
+      },
+      {
+        "name": "Händler",
+        "skills": [
+          "Täuschung",
+          "Verhandeln",
+          "Kernwelten",
+          "Unterwelt"
+        ]
+      },
+      {
+        "name": "Kundschafter",
+        "skills": [
+          "Athletik",
+          "Medizin",
+          "Pilot (Planetar)",
+          "Überleben"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Gesandter",
+    "careerSkills": [
+      "Coolness",
+      "Disziplin",
+      "Führungsqualitäten",
+      "Verhandeln",
+      "Allgemeinbildung",
+      "Altes"
+    ],
+    "forceRating": 1,
+    "specializations": [
+      {
+        "name": "Niman-Adept",
+        "skills": [
+          "Disziplin",
+          "Führungsqualitäten",
+          "Verhandeln",
+          "Lichtschwerter"
+        ]
+      },
+      {
+        "name": "Asket",
+        "skills": [
+          "Athletik",
+          "Disziplin",
+          "Widerstandskraft",
+          "Wachsamkeit"
+        ]
+      },
+      {
+        "name": "Heiler",
+        "skills": [
+          "Disziplin",
+          "Medizin",
+          "Allgemeinbildung",
+          "Xenologie"
+        ]
+      },
+      {
+        "name": "Lehrer",
+        "skills": [
+          "Führungsqualitäten",
+          "Wahrnehmung",
+          "Allgemeinbildung",
+          "Altes Wissen"
+        ]
+      },
+      {
+        "name": "Schiedsmann",
+        "skills": [
+          "Verhandeln",
+          "Wahrnehmung",
+          "Xenologie",
+          "Lichtschwerter"
+        ]
+      },
+      {
+        "name": "Weiser",
+        "skills": [
+          "Astronavigation",
+          "Charme",
+          "Coolness",
+          "Altes Wissen"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Hüter",
+    "careerSkills": [
+      "Machtwert    1",
+      "Coolness",
+      "Disziplin",
+      "Wachsamkeit",
+      "Widerstandskraft",
+      "Handgemenge",
+      ""
+    ],
+    "forceRating": 0,
+    "specializations": [
+      {
+        "name": "Aufseher",
+        "skills": [
+          "Handgemenge",
+          "Einschüchterung",
+          "Disziplin",
+          "Unterwelt"
+        ]
+      },
+      {
+        "name": "Beschützer",
+        "skills": [
+          "Athletik",
+          "Medizin",
+          "Widerstandskraft",
+          "leichte Fernkampfwaffen"
+        ]
+      },
+      {
+        "name": "Friedenswahrer",
+        "skills": [
+          "Disziplin",
+          "Führungsqualitäten",
+          "Pilot (Planetar)",
+          "Wahrnehmung"
+        ]
+      },
+      {
+        "name": "Kriegsführer",
+        "skills": [
+          "leichte Fernkampfwaffen",
+          "Führungsqualität",
+          "Wahrnehmung",
+          "Überleben"
+        ]
+      },
+      {
+        "name": "Rüstmeister",
+        "skills": [
+          "Lichtschwerter",
+          "Mechanik",
+          "Widerstandskraft",
+          "Äußerer Rand"
+        ]
+      },
+      {
+        "name": "Soresu-Verteidiger",
+        "skills": [
+          "Disziplin",
+          "Wachsamkeit",
+          "Lichtschwerter",
+          "Altes Wissen"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Ingenieur",
+    "careerSkills": [
+      "Athletik",
+      "Computertechnik",
+      "Mechanik",
+      "Pilot   (Weltraum)",
+      "Wachsamkeit",
+      "Wahrnehmung",
+      ""
+    ],
+    "forceRating": 0,
+    "specializations": [
+      {
+        "name": "Droidenspezialist",
+        "skills": [
+          "Computertechnik",
+          "Coolness",
+          "Mechanik",
+          "Nahkampfwaffen"
+        ]
+      },
+      {
+        "name": "Mechaniker",
+        "skills": [
+          "Infiltration",
+          "Mechanik",
+          "Pilot (Weltraum)",
+          "Handgemenge"
+        ]
+      },
+      {
+        "name": "Saboteur",
+        "skills": [
+          "Heimlichkeit",
+          "Infiltration",
+          "Körperbeherrschung",
+          "Mechanik"
+        ]
+      },
+      {
+        "name": "Sappeur",
+        "skills": [
+          "Athletik",
+          "Mechanik",
+          "Überleben",
+          "Kriegsführung"
+        ]
+      },
+      {
+        "name": "Schiffsbauer",
+        "skills": [
+          "Mechanik",
+          "Pilot (Weltraum)",
+          "Allgemeinbildung",
+          "Artillerie"
+        ]
+      },
+      {
+        "name": "Wissenschaftler",
+        "skills": [
+          "Computertechnik",
+          "Medizin",
+          "Allgemeinbildung",
+          "Altes Wissen"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Jedi",
+    "careerSkills": [
+      "Athletik",
+      "Coolness",
+      "Disziplin",
+      "Pilot (Weltraum)",
+      "Altes Wissen",
+      "Lichtschwerter"
+    ],
+    "forceRating": 1,
+    "specializations": [
+      {
+        "name": "General",
+        "skills": [
+          "Pilot (Planetar)",
+          "Wachsamkeit",
+          "Führungsqualität",
+          "Kriegsführung (erfordert Machtwert 2)"
+        ]
+      },
+      {
+        "name": "Meister",
+        "skills": [
+          "Wahrnehmung",
+          "Charme",
+          "Kernwelten",
+          "Allgemeinbildung (erfordert Machtwert 3)"
+        ]
+      },
+      {
+        "name": "Padawan",
+        "skills": [
+          "Körperbeherrschung",
+          "Mechanik",
+          "Wachsamkeit",
+          "Allgemeinbildung"
+        ]
+      },
+      {
+        "name": "Ritter",
+        "skills": [
+          "Coolness",
+          "Führungsqualität",
+          "Verhandeln",
+          "Lichtschwerter (erfordert Machtwert 2)"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Klonkrieger",
+    "careerSkills": [
+      "Athletik",
+      "Coolness",
+      "Disziplin",
+      "Medizin",
+      "Wachsamkeit",
+      "Handgemenge",
+      "leichte"
+    ],
+    "forceRating": 0,
+    "specializations": [
+      {
+        "name": "ARC-Truppler",
+        "skills": [
+          "Körperbeherrschung",
+          "Mechanik",
+          "Pilot (Planetar)",
+          "Heimlichkeit"
+        ]
+      },
+      {
+        "name": "Klon-Kommandant",
+        "skills": [
+          "Wahrnehmung",
+          "Führungsqualität",
+          "Kernwelten",
+          "Kriegsführung"
+        ]
+      },
+      {
+        "name": "Klon-Offizier",
+        "skills": [
+          "Coolness",
+          "Führungsqualität",
+          "Äußerer Rand",
+          "Kriegsführung"
+        ]
+      },
+      {
+        "name": "Klon-Pilot",
+        "skills": [
+          "Mechanik",
+          "Pilot (Planetar)",
+          "Pilot (Weltraum)",
+          "Artillerie"
+        ]
+      },
+      {
+        "name": "Klon-Truppler",
+        "skills": [
+          "Wahrnehmung",
+          "Widerstandskraft",
+          "Artillerie",
+          "schwere Fernkampfwaffen"
+        ]
+      },
+      {
+        "name": "Klon-Veteran",
+        "skills": [
+          "Widerstandskraft",
+          "Infiltration",
+          "Überleben",
+          "Nahkampfwaffen"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Kolonist",
+    "careerSkills": [
+      "Charme",
+      "Führungsqualität",
+      "Straßenwissen",
+      "Täuschung",
+      "Verhandeln",
+      "Altes   Wissen",
+      ""
+    ],
+    "forceRating": 0,
+    "specializations": [
+      {
+        "name": "Darsteller",
+        "skills": [
+          "Charme",
+          "Körperbeherrschung",
+          "Täuschung",
+          "Nahkampfwaffen"
+        ]
+      },
+      {
+        "name": "Doktor",
+        "skills": [
+          "Coolness",
+          "Medizin",
+          "Widerstandskraft",
+          "Allgemeinbildung"
+        ]
+      },
+      {
+        "name": "Gelehrter",
+        "skills": [
+          "Wahrnehmung",
+          "Äußerer Rand",
+          "Unterwelt",
+          "Xenologie"
+        ]
+      },
+      {
+        "name": "Geschäftsmann",
+        "skills": [
+          "Disziplin",
+          "Verhandeln",
+          "Allgemeinbildung",
+          "Unterwelt"
+        ]
+      },
+      {
+        "name": "Marshall",
+        "skills": [
+          "Einschüchterung",
+          "Wachsamkeit",
+          "leichte Fernkampfwaffen Unterwelt"
+        ]
+      },
+      {
+        "name": "Politiker",
+        "skills": [
+          "Charme",
+          "Einschüchterung",
+          "Täuschung",
+          "Kernwelten"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Kommandant",
+    "careerSkills": [
+      "Coolness",
+      "Disziplin",
+      "Einschüchterung",
+      "Führungsqualität",
+      "Wachsamkeit",
+      "Wahrnehmung",
+      ""
+    ],
+    "forceRating": 0,
+    "specializations": [
+      {
+        "name": "Ausbilder",
+        "skills": [
+          "Disziplin",
+          "Medizin",
+          "schwere Fernkampfwaffen",
+          "Allgemeinbildung"
+        ]
+      },
+      {
+        "name": "Gruppenführer",
+        "skills": [
+          "Mechanik",
+          "Pilot (Planetar)",
+          "Pilot (Weltraum)",
+          "Artillerie"
+        ]
+      },
+      {
+        "name": "Kommodore",
+        "skills": [
+          "Astronavigation",
+          "Computertechnik",
+          "Äußerer Rand",
+          "Allgemeinbildung"
+        ]
+      },
+      {
+        "name": "Repräsentant",
+        "skills": [
+          "Coolness",
+          "Führungsqualität",
+          "Verhandeln",
+          "Kernwelten"
+        ]
+      },
+      {
+        "name": "Stratege",
+        "skills": [
+          "Computertechnik",
+          "Coolness",
+          "Wachsamkeit",
+          "Kriegsführung"
+        ]
+      },
+      {
+        "name": "Taktiker",
+        "skills": [
+          "Disziplin",
+          "Führungsqualität",
+          "Handgemenge",
+          "schwere Fernkampfwaffen"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Kopfgeldjäger",
+    "careerSkills": [
+      "Athletik",
+      "Pilot    (Planetar)",
+      "Pilot    (Weltraum)",
+      "Straßenwissen",
+      "Wachsamkeit",
+      ""
+    ],
+    "forceRating": 0,
+    "specializations": [
+      {
+        "name": "Assassine",
+        "skills": [
+          "Heimlichkeit",
+          "Infiltration",
+          "Nahkampfwaffen",
+          "schwere Fernkampfwaffen"
+        ]
+      },
+      {
+        "name": "Kampfsportler",
+        "skills": [
+          "Athletik",
+          "Handgemenge",
+          "Disziplin",
+          "Körperbeherrschung"
+        ]
+      },
+      {
+        "name": "Operator",
+        "skills": [
+          "Astronavigation",
+          "Pilot (Planetar)",
+          "Pilot (Weltraum)",
+          "Artillerie"
+        ]
+      },
+      {
+        "name": "Powertech",
+        "skills": [
+          "Mechanik",
+          "Einschüchterung",
+          "Handgemenge",
+          "leichte Fernkampfwaffen"
+        ]
+      },
+      {
+        "name": "Überlebenskünstler",
+        "skills": [
+          "Überleben",
+          "Wahrnehmung",
+          "Widerstandskraft",
+          "Xenologie"
+        ]
+      },
+      {
+        "name": "Zielfahnder",
+        "skills": [
+          "Coolness",
+          "Infiltration",
+          "Verhandeln",
+          "Unterwelt"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Krieger",
+    "careerSkills": [
+      "Athletik",
+      "Coolness",
+      "Überleben",
+      "Wahrnehmung",
+      "Handgemenge",
+      "Nahkampfwaffen"
+    ],
+    "forceRating": 1,
+    "specializations": [
+      {
+        "name": "Herausforderer",
+        "skills": [
+          "Einschüchterung",
+          "Straßenwissen",
+          "leichte Fernkampfwaffen",
+          "Unterwelt"
+        ]
+      },
+      {
+        "name": "Juyo Berserker",
+        "skills": [
+          "Einschüchterung",
+          "Disziplin",
+          "Lichtwerter",
+          "Nahkampfwaffen"
+        ]
+      },
+      {
+        "name": "Koloss",
+        "skills": [
+          "Disziplin",
+          "Widerstandskraft",
+          "Handgemenge",
+          "Nahkampfwaffen"
+        ]
+      },
+      {
+        "name": "Sternenjägerass",
+        "skills": [
+          "Astronavigation",
+          "Mechanik",
+          "Pilot (Weltraum)",
+          "Artillerie"
+        ]
+      },
+      {
+        "name": "Shii-Cho-Ritter",
+        "skills": [
+          "Athletik",
+          "Körperbeherrschung",
+          "Lichtschwerter",
+          "Nahkampfwaffen"
+        ]
+      },
+      {
+        "name": "Stahlhand-Adept",
+        "skills": [
+          "Körperbeherrschung",
+          "Disziplin",
+          "Wachsamkeit",
+          "Handgemenge"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Mystiker",
+    "careerSkills": [
+      "Machtwert   1",
+      "Charme",
+      "Einschüchterung",
+      "Wachsamkeit",
+      "Wahrnehmung",
+      "Altes   Wissen",
+      ""
+    ],
+    "forceRating": 0,
+    "specializations": [
+      {
+        "name": "Alchemist",
+        "skills": [
+          "Medizin",
+          "Widerstandskraft",
+          "Allgemeinbildung",
+          "Xenologie"
+        ]
+      },
+      {
+        "name": "Magus",
+        "skills": [
+          "Einschüchtern",
+          "Disziplin",
+          "Medizin",
+          "Altes Wissen"
+        ]
+      },
+      {
+        "name": "Makashi-Duellant",
+        "skills": [
+          "Charme",
+          "Coolness",
+          "Körperbeherrschung",
+          "Lichtschwerter"
+        ]
+      },
+      {
+        "name": "Prophet",
+        "skills": [
+          "Charme",
+          "Einschüchtern",
+          "Führungsqualität",
+          "Täuschung"
+        ]
+      },
+      {
+        "name": "Ratgeber",
+        "skills": [
+          "Charme",
+          "Straßenwissen",
+          "Täuschung",
+          "Verhandeln"
+        ]
+      },
+      {
+        "name": "Seher",
+        "skills": [
+          "Disziplin",
+          "Überleben",
+          "Wachsamkeit",
+          "Altes Wissen"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Schmuggler",
+    "careerSkills": [
+      "Infiltration",
+      "Körperbeherrschung",
+      "Pilot    (Weltraum)",
+      "Straßenwissen",
+      "Täuschung",
+      ""
+    ],
+    "forceRating": 0,
+    "specializations": [
+      {
+        "name": "Dieb",
+        "skills": [
+          "Computertechnik",
+          "Heimlichkeit",
+          "Infiltration",
+          "Wachsamkeit"
+        ]
+      },
+      {
+        "name": "Pilot",
+        "skills": [
+          "Astronavigation",
+          "Pilot (Planetar)",
+          "Pilot (Weltraum)",
+          "Artillerie"
+        ]
+      },
+      {
+        "name": "Pistolenheld",
+        "skills": [
+          "Coolness",
+          "Einschüchterung",
+          "leichte Fernkampfwaffen",
+          "Äußerer Rand"
+        ]
+      },
+      {
+        "name": "Schmeichler",
+        "skills": [
+          "Charme",
+          "Coolness",
+          "Führungsqualität",
+          "Verhandeln"
+        ]
+      },
+      {
+        "name": "Schurke",
+        "skills": [
+          "Charme",
+          "Coolness",
+          "Täuschung",
+          "leichte Fernkampfwaffen"
+        ]
+      },
+      {
+        "name": "Spieler",
+        "skills": [
+          "Computertechnik",
+          "Coolness",
+          "Infiltration",
+          "Täuschung"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Söldner",
+    "careerSkills": [
+      "Athletik",
+      "Disziplin",
+      "Pilot    (Planetar)",
+      "Wachsamkeit",
+      "Widerstandskraft",
+      "Handgemenge",
+      ""
+    ],
+    "forceRating": 0,
+    "specializations": [
+      {
+        "name": "Leibwächter",
+        "skills": [
+          "Pilot (Planetar)",
+          "Wahrnehmung",
+          "Artillerie",
+          "schwere Fernkampfwaffen"
+        ]
+      },
+      {
+        "name": "Marodeur",
+        "skills": [
+          "Einschüchterung",
+          "Überleben",
+          "Widerstandskraft",
+          "Nahkampfwaffen"
+        ]
+      },
+      {
+        "name": "Schwergewicht",
+        "skills": [
+          "Artillerie",
+          "schwere Fernkampfwaffen",
+          "Wahrnehmung",
+          "Widerstandskraft"
+        ]
+      },
+      {
+        "name": "Soldat",
+        "skills": [
+          "Disziplin",
+          "Führungsqualität",
+          "Artillerie",
+          "schwere Fernkampfwaffen"
+        ]
+      },
+      {
+        "name": "Sprengexperte",
+        "skills": [
+          "Computertechnik",
+          "Coolness",
+          "Infiltration",
+          "Mechanik"
+        ]
+      },
+      {
+        "name": "Vollstrecker",
+        "skills": [
+          "Handgemenge",
+          "Einschüchterung",
+          "Straßenwissen",
+          "Unterwelt"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Soldat",
+    "careerSkills": [
+      "Athletik",
+      "Medizin",
+      "Überleben",
+      "Handgemenge",
+      "leichte     Fernkampfwaffen",
+      "schwere"
+    ],
+    "forceRating": 0,
+    "specializations": [
+      {
+        "name": "Kommando",
+        "skills": [
+          "Handgemenge",
+          "Nahkampfwaffen",
+          "Überleben",
+          "Widerstandskraft"
+        ]
+      },
+      {
+        "name": "Kriegsingenieur",
+        "skills": [
+          "Heimlichkeit",
+          "Überleben",
+          "Wahrnehmung",
+          "Äußerer Rand"
+        ]
+      },
+      {
+        "name": "Mediziner",
+        "skills": [
+          "Medizin",
+          "Wachsamkeit",
+          "Widerstandskraft",
+          "Xenologie"
+        ]
+      },
+      {
+        "name": "Schwergewicht",
+        "skills": [
+          "Artillerie",
+          "schwere Fernkampfwaffen",
+          "Wahrnehmung",
+          "Widerstandskraft"
+        ]
+      },
+      {
+        "name": "Scharfschütze",
+        "skills": [
+          "Coolness",
+          "Wahrnehmung",
+          "leichte Fernkampfwaffen",
+          "schwere Fernkampfwaffen"
+        ]
+      },
+      {
+        "name": "Vorreiter",
+        "skills": [
+          "Athletik",
+          "Coolness",
+          "Wachsamkeit",
+          "Widerstandskraft"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Spion",
+    "careerSkills": [
+      "Computertechnik",
+      "Coolness",
+      "Heimlichkeit",
+      "Infiltration",
+      "Körperbeherrschung",
+      "Täuschung",
+      ""
+    ],
+    "forceRating": 0,
+    "specializations": [
+      {
+        "name": "Hacker",
+        "skills": [
+          "Computertechnik",
+          "Heimlichkeit",
+          "Allgemeinbildung",
+          "Unterwelt"
+        ]
+      },
+      {
+        "name": "Infiltrator",
+        "skills": [
+          "Infiltration",
+          "Straßenwissen",
+          "Täuschung",
+          "Nahkampfwaffen"
+        ]
+      },
+      {
+        "name": "Kundschafter",
+        "skills": [
+          "Athletik Medizin",
+          "",
+          "Pilot (Planetar)",
+          "Überleben"
+        ]
+      },
+      {
+        "name": "Kurier",
+        "skills": [
+          "Athletik",
+          "Täuschung",
+          "Straßenwissen",
+          "Wachsamkeit"
+        ]
+      },
+      {
+        "name": "Schläfer",
+        "skills": [
+          "Charme",
+          "Coolness",
+          "Disziplin",
+          "Allgemeinbildung"
+        ]
+      },
+      {
+        "name": "Verhörspezialist",
+        "skills": [
+          "Charme",
+          "Einschüchterung",
+          "Medizin",
+          "Wahrnehmung"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Sucher",
+    "careerSkills": [
+      "Machtwert   1",
+      "Pilot   (Planetar)",
+      "Pilot   (Weltraum)",
+      "Überleben",
+      "Wachsamkeit",
+      "schwere"
+    ],
+    "forceRating": 0,
+    "specializations": [
+      {
+        "name": "Ataru-Kämpfer",
+        "skills": [
+          "Athletik",
+          "Körperbeherrschung",
+          "Wahrnehmung",
+          "Lichtschwerter"
+        ]
+      },
+      {
+        "name": "Einsiedler",
+        "skills": [
+          "Disziplin",
+          "Heimlichkeit",
+          "Überleben",
+          "Xenologie"
+        ]
+      },
+      {
+        "name": "Jäger",
+        "skills": [
+          "Heimlichkeit",
+          "Körperbeherrschung",
+          "Wachsamkeit",
+          "schwere Fernkampfwaffen"
+        ]
+      },
+      {
+        "name": "Navigator",
+        "skills": [
+          "Astronavigation",
+          "Wahrnehmung",
+          "Überleben",
+          "Äußerer Rand"
+        ]
+      },
+      {
+        "name": "Wanderer",
+        "skills": [
+          "Medizin",
+          "Überleben",
+          "Widerstandskraft",
+          "leichte Fernkampfwaffen"
+        ]
+      },
+      {
+        "name": "Scharfrichter",
+        "skills": [
+          "Disziplin",
+          "Wahrnehmung",
+          "Nahkampfwaffen",
+          "Schwere Fernkampfwaffen"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Techniker",
+    "careerSkills": [
+      "Astronavigation",
+      "Computertechnik",
+      "Disziplin",
+      "Körperbeherrschung",
+      "Mechanik",
+      "Pilot"
+    ],
+    "forceRating": 0,
+    "specializations": [
+      {
+        "name": "Cybertech",
+        "skills": [
+          "Athletik",
+          "Mechanik",
+          "Medizin",
+          "Wachsamkeit (optional: Kybernetik)"
+        ]
+      },
+      {
+        "name": "Droidentechniker",
+        "skills": [
+          "Computertechnik",
+          "Coolness",
+          "Mechanik",
+          "Führungsqualität"
+        ]
+      },
+      {
+        "name": "Illegaler Techie",
+        "skills": [
+          "Mechanik",
+          "Straßenwissen",
+          "Allgemeinbildung",
+          "Unterwelt"
+        ]
+      },
+      {
+        "name": "Hacker",
+        "skills": [
+          "Computertechnik",
+          "Heimlichkeit",
+          "Allgemeinbildung",
+          "Unterwelt"
+        ]
+      },
+      {
+        "name": "Modder",
+        "skills": [
+          "Mechanik",
+          "Pilot (Welltraum)",
+          "Straßenwissen",
+          "Artillerie"
+        ]
+      },
+      {
+        "name": "Mechaniker",
+        "skills": [
+          "Infiltration",
+          "Mechanik",
+          "Pilot (Weltraum)",
+          "Handgemenge"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Wächter",
+    "careerSkills": [
+      "Machtwert   1",
+      "Computertechnik",
+      "Heimlichkeit",
+      "Infiltration",
+      "Täuschung",
+      "Wahrnehmung",
+      ""
+    ],
+    "forceRating": 0,
+    "specializations": [
+      {
+        "name": "Ermittler",
+        "skills": [
+          "Straßenwissen",
+          "Wahrnehmung",
+          "Allgemeinbildung",
+          "Unterwelt"
+        ]
+      },
+      {
+        "name": "Handwerker",
+        "skills": [
+          "Astronavigation",
+          "Computertechnik",
+          "Mechanik",
+          "Allgemeinbildung"
+        ]
+      },
+      {
+        "name": "Rennfahrer",
+        "skills": [
+          "Coolness",
+          "Körperbeherrschung",
+          "Pilot (Planetar)",
+          "Pilot (Weltraum)"
+        ]
+      },
+      {
+        "name": "Schatten",
+        "skills": [
+          "Heimlichkeit",
+          "Infiltration",
+          "Straßenwissen",
+          "Unterwelt"
+        ]
+      },
+      {
+        "name": "Shien-Experte",
+        "skills": [
+          "Athletik",
+          "Infiltration",
+          "Widerstandskraft",
+          "Lichtschwerter"
+        ]
+      },
+      {
+        "name": "Wache",
+        "skills": [
+          "Körperbeherrschung",
+          "Heimlichkeit",
+          "Wachsamkeit",
+          "Lichtschwerter"
+        ]
+      },
+      {
+        "name": "Anhänger der Macht",
+        "skills": [
+          "Nahkampfwaffen",
+          "Disziplin",
+          "Altes Wissen",
+          "Wachsamkeit"
+        ]
+      },
+      {
+        "name": "Erwachender Machtsensitiver",
+        "skills": [
+          "Machtwert 1"
+        ]
+      },
+      {
+        "name": "Kadett der imperialen Armee",
+        "skills": [
+          "Führungsqualitäten",
+          "Pilot (Weltraum)",
+          "Kriegsführung",
+          "Leichte"
+        ]
+      },
+      {
+        "name": "Klonsoldat im Ruhestand",
+        "skills": [
+          "Disziplin",
+          "Widerstandskraft",
+          "Wachsamkeit",
+          "Kriegsführung",
+          "schwere"
+        ]
+      },
+      {
+        "name": "Kommandant der Separatisten",
+        "skills": [
+          "Wachsamkeit",
+          "Einschüchtern",
+          "Führungsqualität",
+          "Kriegsführung"
+        ]
+      },
+      {
+        "name": "Krieger der Death Watch",
+        "skills": [
+          "Mechanik",
+          "Pilot (Planetar)",
+          "Einschüchtern",
+          "leichte Fernkampfwaffen"
+        ]
+      },
+      {
+        "name": "Machtsensitiver im Exil",
+        "skills": [
+          "Machtwert 1"
+        ]
+      },
+      {
+        "name": "Marineoffizier der Republik",
+        "skills": [
+          "Astronavigation",
+          "Disziplin",
+          "Führungsqualitäten",
+          "Kriegsführung"
+        ]
+      },
+      {
+        "name": "Pirat",
+        "skills": [
+          "Einschüchterung",
+          "Täuschung",
+          "Infiltration",
+          "Unterweltwissen"
+        ]
+      },
+      {
+        "name": "Plünderer",
+        "skills": [
+          "Mechanik",
+          "Wahrnehmung",
+          "Straßenwissen",
+          "Überleben"
+        ]
+      },
+      {
+        "name": "Rekrut",
+        "skills": [
+          "Athletik",
+          "Disziplin",
+          "Überleben",
+          "Wachsamkeit"
+        ]
+      },
+      {
+        "name": "Repräsentant der Republik",
+        "skills": [
+          "Coolness",
+          "Charme",
+          "Verhandeln",
+          "1 Wissensfertigkeit nach Wahl"
+        ]
+      },
+      {
+        "name": "Schiffskapitän",
+        "skills": [
+          "Charme",
+          "Führungsqualitäten",
+          "Pilot (Weltraum)",
+          "Verhandeln"
+        ]
+      },
+      {
+        "name": "Schwester der Nacht",
+        "skills": [
+          "Disziplin",
+          "Heimlichkeit",
+          "Überleben",
+          "Altes Wissen"
+        ]
+      },
+      {
+        "name": "Senator",
+        "skills": [
+          "Charme",
+          "Täuschung",
+          "Verhandeln",
+          "Allgemeinbildung"
+        ]
+      },
+      {
+        "name": "Überlebender Padawan",
+        "skills": [
+          "Machtwert 1"
+        ]
+      }
+    ]
+  }
+]

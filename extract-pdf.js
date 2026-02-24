@@ -1,0 +1,1 @@
+const fs = require('fs'); const pdf = require('pdf-parse'); console.log(typeof pdf, pdf); const dataBuffer = fs.readFileSync('data/raw/Charaktererschaffung_V14.pdf'); try { pdf(dataBuffer).then(function(data) { console.log('Pages:', data.numpages); fs.writeFileSync('data/extracted/Charaktererschaffung.txt', data.text); }); } catch (e) { console.error(e); }

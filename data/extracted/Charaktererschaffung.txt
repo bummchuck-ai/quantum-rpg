@@ -1,0 +1,2354 @@
+
+
+Charaktererschaffung 
+1. Charakterkonzept und Hintergrund 
+Der  Spieler  überlegt  sich  ein  Konzept,  welches  sein  Held  verkörpern  soll,  sowie  kurz  skizziert  den 
+Hintergrund des Charakters. 
+ 
+2. Anfangsverpflichtung, Pflicht und/oder Moral bestimmen 
+Ein Wurf auf der Tabelle „Verpflichtungen“ (für die Glücksritter und jene, die nichts mit den Kernwelten zu 
+tun haben möchten oder  sich eher  dem Verbrechen  verschrieben  haben) oder „Pflicht“ (für Mitglieder der 
+Rebellenallianz  o,ä,,  Seite  4) bestimmt  die  Art  der  Verpflichtung/Pflicht (nach  Maßgabe  des  Spielleiters 
+kann diese auch ausgesucht werden), der Anfangswert darin beträgt 10.  
+Eine Erhöhung (im Falle von Verpflichtung) oder Senkung (bei Pflicht) dieses Wertes gewährt dem Helden 
+zusätzliche Vorteile (dabei kann die Veränderung +/-5 bis zu zweimal gewählt werden): 
+Zusätzlicher Bonus Standard 
++5 Verpflichtung/ 
+-5 Pflicht 
++10 Verpflichtung/ 
+-10 Pflicht 
+Erfahrungspunkte EP laut Spezies  +5 EP +10 EP 
+Ausrüstungsbonus 500 Credits +1000 Credits +2500 Credits 
+ 
+Machtsensitive Helden  würfeln  auf der Tabelle Moral (oder  wählen  ein Moralpaar davon  aus).  Der 
+Anfangswert darin beträgt 50.  Die können zudem auch noch eine Verpflichtung und/oder Pflicht haben.  
+Ein Held mit Moral hat zur Charaktererschaffung folgende Möglichkeiten: 
+- Moral 29 oder 71, EP gemäß der Spezies, Standardstartgeld 
+- Moral 50, EP gemäß der Spezies, Startgeld +2500 Credits 
+- Moral 50, 5 zusätzliche EP, Startgeld +1000 Credits 
+- Moral 50, 10 zusätzliche EP, Standardstartgeld 
+Der Bonus an zusätzlichen EP und Credits kann aufgrund von Verpflichtung, Pflicht und/oder Moral zur 
+Erschaffung niemals mehr als +10 und/ oder +2500 Cr betragen.  
+ 
+Die Verpflichtung/Pflicht wie auch die Moral Machtsensitiver stellt neben seiner Motivation einen wichtigen 
+Teil im Hintergrund des Helden dar. Sie wird immer wieder im Spiel auftauchen.  
+  
+ 
+W% Verpflichtung 
+1-3 
+Abhängigkeit: Der Held ist von einer  Substanz, Handlung oder  bestimmten Objekten abhängig. 
+Er  wird  viel  Zeit  und  Energie  darauf  verwenden,  diese  Sucht  zu  befriedigen.  Auch  wird  es  ihm 
+schwer fallen, in Anwesenheit seiner Begierde sich zu konzentrieren – der Spielleiter kann ihm  
+bis in solchen Fällen als Abzug geben. 
+4-6 
+Adrenalinrausch: Der Held ist süchtig nach dem Gefühl, dass er bei einem Kampf erlebt. Er wird 
+nicht  vor  einem  Kampf  zurückweichen  und  sucht  oftmals  sogar  Konflikte,  bzw.  fordert  diese 
+heraus. Erlebt er längere Zeit diesen Rausch nicht, so kann der Spielleiter ihm einen auf alle 
+Würfe geben, bis er wieder an einer handfesten Auseinandersetzung teilgenommen hat.    
+7-8 
+Aufreißer: Der  Held  hat  eine  Vielzahl  an  ehemaligen  Liebhabern,  die  sehr  enttäuscht  oder 
+verärgert  von  ihm  sind,  und  diese  treffen  immer  zum  ungünstigsten  Zeitpunkt  bei  ihm  ein. 
+Besonders  dramatisch  wird  es,  wenn  es  zwei  oder  mehr  zur  gleichen  Zeit  sind.  Unangenehm 
+wird’s auch, wenn andere herausfinden, dass der Held gar nicht mehr von ihnen wollte.  
+9-11 
+Berüchtigt: Der Held hat einen sehr schlechten Ruf, wodurch es ihm nicht leicht fällt, unerkannt 
+durch bestimmte Gebiete zu reisen. Zukünftige Auftraggeber könnten voreingenommener sein 
+bezüglich des Helden. Ist er selbst an diesem Ruf schuld, so kann er diese Verpflichtung 
+abbauen, in dem er längere Zeit das betroffene Gebiet meidet und die Bewohner ihn und seinen 
+Ruf vergessen. Ist jemand anderes am Ruf des Helden Schuld, wird er diesen auffinden und 
+aufhalten müssen.  
+12-14 
+Besessenheit: Der Held hat eine ungesunde Besessenheit entwickelt, welche ständig mit seinem 
+sonstigen  Leben  in  Konflikt  gerät – egal,  ob  es  eine  für  eine  Persönlichkeit,  eine  Region, 
+politische  Bewegung  kulturelle  Ikone,  Technologie,  Computer,  Droiden  oder  ähnliches  ist.  Er 
+muss  dieser  Obsession  nachgehen,  sehr  zum  Leidwesen  seiner  Finanzen,  Gesundheit  oder 
+sonstigem. Mit anderen, die seine Obsession teilen, kommt er gut zurecht, von anderen wird der 
+Held  belächelt,  gefürchtet  oder  man  fühlt  Mitleid  mit  ihm – und  seine Crewmitglieder  müssen 
+oftmals   unter   der   Obsession   leiden.   Erreicht   er   ein   wichtiges   Ziel   in   Bezug   auf   seine 
+Besessenheit, so kann er diese Verpflichtung etwas senken.    
+15-17 
+Betrug: Entweder  ist  der  Charakter  das  Ziel  eines  großen  und  persönlichen  Betrugs  oder  er  ist 
+der,  welcher  andere betrogen  hat. Was er  betrogen hat, kann  ausgewählt  werden: ein Komplize 
+bei  einem  Schmuggelauftrag,  ein Versprechen,  das  Vertrauen,  oder  etwas,  was  zu  Hochverrat 
+oder  Meuterei  geführt  hat.  Das  Ziel  dieser  Verpflichtung  könnte  Genugtuung,  Antworten,  eine 
+Befreiung oder  Rache  verlangen.  Selbst  in  seinem  Alltag  wird  dieser  Betrug  den  Helden 
+verfolgen. 
+ 
+
+W% Verpflichtung (Fortsetzung) 
+18-19 
+Der  Preis  des Namens: Der  Held  hat  einmal  den  Namen  eines  anderen  angenommen  oder 
+Zugehörigkeit   zu   einer   Organisation   vorgegeben,   um   einen   Vorteil   daraus   zu   ziehen 
+(beispielsweise  höheres  Kopfgeld  oder  Zugriff  zu  besonderen  Privilegien).  Die  Gegenseite  hat 
+dies   herausgefunden und   möchte   nun   dem   Helden   irgendwie   schaden:   Jagd   auf   ihn, 
+Veröffentlichung   des   Betrugs   oder   Vergeltung   durch   Credits   oder   Wiederherstellung   der 
+Reputation des Betrogenen. 
+20-22 
+Ehrlosigkeit: Der Held entspringt einer militärischen Welt, Organisation oder Spezies, die einen 
+unehrenhaften Umgang mit Waffen oder Gewalt nicht gutheißt (wie beispielsweise dies bei einem 
+Söldner der Fall ist). Zur Korrektur könnten diese ihm entweder Assassinen schicken oder aber 
+dem Entsenden von Repräsentanten, um den Helden von seinem Fehlverhalten zu überzeugen. 
+23-24 
+Eid: Der Held hat einen Eid geschworen, der sein Denken und Handeln lenkt, seine Moralvorstel-
+lungen prägen. Dies könnte ein Glaubenseid oder Kodex (wie der der Jedi) sein, ein Ehrenkodex  
+oder ein Schwur, um etwas für eine Organisation oder Gruppe zu opfern. Dieser Eid muss ernst 
+genommen  werden  und das Leben  des Helden erschweren. Es  ist  ein persönliches und  ernstes 
+Unterfangen, dem niemals ohne persönliche Konsequenzen ein Entkommen möglich ist. Helden, 
+die ihrem   Eid   nicht   gerecht   werden,   befinden   sich   in   einem   schweren   moralischen   und 
+persönlichen Konflikt wieder.  
+25-26 
+Eifer: Der  Held  hat  sich  einer  Religion,  Spiritualität  oder  einem  Glauben  verschrieben.  Als 
+Verpflichtung  geht  dies  so  weit,  dass  er  nur  schwer  oder  gar  nicht  Handlungen  ausführen  kann, 
+welche seinem Glauben widersprechen.   
+27-29 
+Eine  offene  Rechnung: Jemand  in  der  Vergangenheit  hat  (wirklich  oder  nur  eingebildet)  den 
+Helden  betrogen,  getäuscht  oder  im  Stich  gelassen,  und  nun  versucht  dieser,  sich  dafür  zu 
+rächen und die Rechnung zu begleichen.  
+30-32 
+Entehrt: Der  Held  hat  etwas  Entehrendes  gemacht,  vielleicht  ein  soziales,  illegales  Tabu 
+gebrochen.  Deswegen  hat  er  auch  das  Weite  gesucht.  Im  äußeren  Rand  kann  er  nun  seine 
+Schande,  unbeobachtet  von  anderen  seiner  Kultur  ausleben  (dies  könnte  etwas  Fürchterliches 
+sein oder aber das Verbot, etwas zu trinken, oder ähnliches) 
+33-35 
+Familie: Der Held hat starke Beziehungen zu seiner Familie oder einzelnen Familienangehörigen, 
+was  manchmal    Zeit  und  Anstrengung  in  Anspruch  nimmt.  Dies  könnte  die  Versorgung  und 
+Unterstützung   von   Verwandten,  die   Verwaltung   eines   Erbes   oder   Familiengeschäfts,   oder 
+Vermittlung  zwischen  rivalisierenden  Familienmitgliedern  beinhalten.  Auch  könnte  es  besonders 
+unangenehm  für  den  Helden  sein,  wenn  ein  Feind  von  dieser  engen   Beziehung   erfährt, 
+Familienmitglieder  gefangen  nimmt  und  ein  Lösegeld  für  diese  verlangt.  Womöglich  musste  er 
+seine Familie auch zurücklassen und hofft immer auf eine Nachricht, um zu erfahren, ob es ihnen 
+gut geht. 
+Vielleicht aber auch fordert die Familie von ihm, dass er seine Fähigkeiten (Reparaturen, Schutz, 
+usw.)  für  sie  einsetzt,  was  auch  viel Zeit  in  Anspruch  nimmt.  Ein  Techniker  könnte  diese 
+Verpflichtung  auflösen,  indem  er  eine  permanente  Lösung  findet,  so  dass  er  die  Wartung  einer 
+bestimmten Maschine nicht mehr durchführen muss.  
+36-38 
+Gefallen: Der  Held  schuldet  jemanden  einen  großen  Gefallen.  Vielleicht  hat  der  Zoll  bei  einem 
+Geschäft  weggesehen  oder  jemand  hat  ihm  aus  großen  Schwierigkeiten  geholfen.  Auch  könnte 
+dies  auf  einen  Mäzen,  Sponsor  oder  Mentor  hindeuten.  Möglich  wäre  auch,  dass  andere  ihm 
+beim  Errichten  von  etwas  (seinem  Haus,  einer  Firma  oder  einer  Schule)  geholfen  haben  ohne 
+monetäre  Gegenleistung.  Irgendwann  wird  man  diesen  Gefallen  einfordern,  meist  nicht  auf 
+einmal,  sondern  in  kleinen  Schritten.  Auch  könnte  es  sein,  dass  diese  eingeforderten  Gefallen 
+moralisch nicht unbedingt in die Sichtweise des Helden passen. 
+Vielleicht schuldet er auch mehreren, miteinander verfeindeten Parteien Gefallen und muss diese 
+abarbeiten, ohne dass er die andere Seite verärgert. 
+39-41 
+Gerechtigkeit  im Grenzland: Das Leben auf neu  zu kolonisierenden  Planeten ist rau, grausam 
+und  ungerecht.  Verbrecher  kommen  oftmals  unbeschadet  davon,  da  der  örtliche  Gesetzeshüter 
+eh  schon  überlastet  oder  zu  schwach  ist.  Wahrscheinlich  wurden  Personen,  die  dem  Helden 
+etwas  bedeutet haben,  Opfer  solcher  Verbrechen,  die  er  nun  vergelten  möchte.  Dabei  würde  er 
+womöglich  auch  die  Grenzen  anderer  überschreiten  oder  andere  betrügen,  um  seine  Rache  zu 
+erhalten.  
+42-43 
+Im  Exil: Der  Held  wurde  wegen  einer  Tat  ins  Exil  (z.B.  sich  offen  gegen  das  Imperium 
+aussprechen)  geschickt  und  darf  sich  bei  Planeten  des  Kerns  und  jenen,  die  vom  Imperium 
+kontrolliert  werden,  nicht  mehr  blicken  lassen,  möchte  sich  aber  von  seinem  Ruf  verzweifelt 
+reinwaschen.  Auch  wenn  dies  möglich  wäre,  kann  der  kleinste  Fehltritt  monatelange  Arbeit 
+zunichtemachen.  Zudem  gibt  es  noch  die  Bürokratie  und  plötzliche  Ereignisse,  die  eintreten 
+könnten.  
+44-45 
+Knechtschaft: Der Held ist Eigentum von jemand anderem, auch wenn er dies womöglich 
+geheim hält. Entweder muss er den Großteil seiner Einnahmen an diesen abgeben oder ihm 
+gänzlich aus dem Weg gehen. Seine Freiheit könnte er irgendwann einmal erhalten, indem er 
+sich freikauft oder aber seinen Herren tötet oder anderweitig entfernt.  
+ 
+
+W% Verpflichtung (Fortsetzung) 
+46-48 
+Kontrakt: Ein Techniker hat einen – formellen oder informellen - Vertrag (Wartungsvertrag, 
+Modifikationen, usw.) zu jemandem oder einer Organisation, und wenn er diesen erfüllt, könnte 
+seine Verpflichtung sinken – schiebt er Aufträge hingegen auf, so wird vermutlich die 
+Verpflichtung steigen.   
+49-51 
+Kopfgeld: Ein  Preis  wurde  auf  den  Helden  ausgesetzt.  Dies  könnte  eine  legale  Organisation, 
+Verbrecherkartell  oder  eine  Privatperson  gemacht  haben.  Je  größer  der  Wert  der  Verpflichtung, 
+umso  größer  die  Handlung,  die  zu  diesem  Kopfgeld  geführt  hat,  sowie  die  Summe  des  Geldes. 
+Wurde  das  Kopfgeld  von  einer  Privatperson  ausgesetzt  (was  im  Imperium  nicht  legal  ist),  so 
+könnte  es  die  ruchlosesten  Kopfgeldjäger  anlocken,  welche – wenn  sie  ihn  einmal  gefunden 
+haben,  was  durchaus  länger  dauern  kann – vor  kaum  einer  Gewalttat zurückschrecken,  um  die 
+Belohnung einkassieren zu können.  
+Alternativ könnte  er  auch  einmal  versucht  haben,  ein  Kopfgeld  einzutreiben,  allerdings  war  ihm 
+das Ziel entkommen und dieses sinnt nun auf Rache oder aber unterdrückt Unschuldige, was den 
+Helden sehr plagt. 
+52-53 
+Kriminelle  Vergangenheit/Kriminell: Der  Charakter  hat  eine  kriminelle  Vergangenheit  oder 
+wurde (vielleicht auch unberechtigt) eines Verbrechens beschuldigt. Die Verpflichtung kann durch 
+Zahlung    der    laufenden    Gerichtskosten,    Versuche,    die    Beweise    zu    vernichten,    oder 
+Anstrengungen,  seine  Unschuld  zu  beweisen,  gesenkt  werden.  Womöglich  ist  er  auch  noch 
+immer  kriminell  aktiv  und  Mitglied  einer  kriminellen  Organisation.  Auch  könnte  sein,  dass  er  in 
+einem bestimmten Sektor oder ähnlichem Ort gesucht wird und dieses Gebiet meiden sollte.   
+54-55 
+Mannschaft: Der Held fühlt sich seiner Mannschaft gegenüber verpflichtet und möchte dafür 
+sorgen, dass es ihnen gesundheitlich gut geht und sie sicher und einsatzbereit sind. Zudem 
+versucht er immer zwischen den einzelnen Mitgliedern der Mannschaft zu vermitteln.   
+56-58 
+Offenes Geschäft: Der Held arbeitet an einem Langzeitziel, wie einem komplexen 
+Computerprogramm oder dem Umbau eines großen Frachters. Auch wenn lange Pausen 
+durchaus gestattet sind (auch wenn diese ihn psychisch belasten), kann er diese Verpflichtung 
+erst auflösen, wenn er sein Werk vollendet hat.   
+59-61 
+Pazifist: Jegliche  Form  von  Gewalt  wird  vom  Helden  abgelehnt – vielleicht  aus  Überzeugung, 
+womöglich aber auch wegen Feigheit vor den Konsequenzen. Wird diese Verpflichtung ausgelöst 
+und   der   Held   nimmt   aktiv   an   einer   gewaltsamen   Auseinandersetzung   teil   (ohne   auf 
+Betäubungswaffen oder ähnliches auszuweichen), kann der Spielleiter entscheiden, dass er einen 
+ auf alle Fertigkeitswürfe bis zum Ende der Spielsitzung erhält. 
+62-64 
+Pflicht: Der Held hat ein starkes Pflichtgefühl, welchem er nachgehen muss, wie ein Militärdienst, 
+einen Vertrag befolgen oder einem Diebeskodex. Im Gegensatz zur Eid-Verpflichtung hat er eine 
+rechtliche oder rituelle Bindung zu einer Organisation – erfüllt er diese Pflichten nicht, so hat dies 
+sehr empfindliche und schwierige Auswirkungen auf sein Leben. 
+65-67 
+Pflichtgebunden: In der Vergangenheit hat jemand das Leben des Helden gerettet oder ihn vor 
+einem nicht erfüllten Kontrakt bewahrt,  von dem er  nie dachte, dass er  dies macht. Irgend  wann 
+wird dieser Retter gleiches vom Helden erwarten.   
+68-70 
+Rechenschaft   aufgrund   von   Kollateralschaden: In   seiner   Vergangenheit   hat   der   Held 
+irgendetwas  von  großem  Wert  von  jemandem  zerstört.  Dieser  jemand  erinnert  den  Helden  nun 
+ständig daran, dass er dafür noch eine entsprechende Entschädigung möchte. 
+71-73 
+Risikofreudig: Der Held muss die riskantesten Aufträge annehmen und höchsten Einsätze 
+machen. Er ist Opfer seines eigenen Stolzes und sein Ego bringt ihn oft in Schwierigkeiten. Er 
+muss sich selbst und anderen ständig seinen Mut beweisen, auch wenn er oder seine Crew 
+darunter leiden könnten.  
+74-76 
+Schlechter Ruf: Der Held ist (zu Recht oder zu Unrecht) berüchtigt dafür, nicht vertrauenswürdig 
+oder umgänglich zu sein. Dies könnte ihm Schwierigkeiten dabei bereiten, Aufträge an Land zu 
+ziehen.  Durch das zuverlässige Erfüllen seiner Aufträge könnte er diesen Ruf verlieren (und die 
+Verpflichtung abbauen), doch bis dahin wird er nicht sehr wählerisch bei seinen Arbeiten sein 
+können und auch schlechte Aufträge annehmen müssen. 
+77-79 
+Schulden: Der  Held  schuldet  jemanden  eine  Menge – entweder  Geld,  Objekte  oder  etwas 
+anderes.  Vielleicht  hat  er  gegenüber  einem  Hutten  hohe  Spielschulden,  schuldet  der  Czerka-
+Coorporation  noch  Geld  für  sein  Raumschiff,  schuldet  einer  hohen  Familie  etwas  für  eine 
+Funktion als Patron, musste für die Eröffnung seines Geschäfts einen Kredit aufnehmen oder eine 
+andere ernstzunehmende finanzielle Verpflichtung. Um das Ganze noch weiter zu verschlimmern, 
+könnte  es  noch  nicht  einmal  ausreichen  die  geschuldete  Summe  zu  bezahlen,  damit  der 
+Schuldner  vom  Helden  ablässt – immerhin  könnten  seine  Dienste  einfach  zu  wertvoll  sein,  als 
+dass  er  ihn  so  einfach  gehen  lassen  könnte.  Auch  könnte  er  seine  Schulden  (seinen  Wert  in 
+dieser Verpflichtung) abzahlen, indem er Dienste für seinen Schuldner leistet. 
+80-82 
+Sponsor: Eine  legitime  Fraktion  (ein  Handelskonsortium,  ein  Adelshaus,  eine  Universität  oder 
+auch ein  Verbrecherkartell beispielsweise)  unterstützt den Helden und hat eine große Anzahl an 
+Ressourcen in sein Vorhaben investiert.  
+ 
+
+W% Verpflichtung (Fortsetzung) 
+83-85 
+Unter  Vertrag: Der  Held  ist  einen  noch  andauernden  (formellen  oder  informellen)  Vertrag  mit 
+jemandem (vielleicht einer Firma, Organisation oder Regierung) eingegangen, die eine Beziehung 
+zu  seiner  unmittelbaren  Umwelt  hat  (z.B.  seiner  Kolonie).  Womöglich  hat  dieser  jemand  ihm 
+geholfen, auf die Beine zu kommen oder überhaupt weg von seiner Heimat zu gelangen. Die zu 
+erledigende  Tätigkeit  hängen  von  den  Fähigkeiten  des  Helden  wie  auch  dem  Arbeitgeber 
+zusammen (vielleicht Buchhaltung, körperliche Arbeit, Beschaffung von seltenen Mineralien oder 
+Gefahrengut,  oder  ähnlichem). Kommt er  dieser  Verpflichtung nicht  nach, könnte  dies finanzielle 
+Einbußen, Haftstrafen, Deportation oder ein Kopfgeld mit sich bringen.   
+Ein Techniker könnte einen solchen Vertrag ebenfalls besitzen, und wenn er diesen erfüllt, könnte 
+seine   Verpflichtung   sinken – schiebt   er   Aufträge   hingegen   auf,   so   wird   vermutlich   die 
+Verpflichtung steigen.   
+86-88 
+Verantwortlichkeit: Der  Held  fühlt  eine  starke  Verbundenheit  und  Verantwortung  gegenüber 
+einer  Person,  Ort  oder  Sache.  Dies  könnte  die  starke  Verbindung  zu  einem  Mentor,  ein  großes 
+Verlangen,   Weisen   zu   pflegen   sein   oder   sich   der   Bedürfnisse   einer   unterrepräsentierten 
+Minderheit anzunehmen. Vielleicht aber auch wirkt er beim Aufbau einer Kolonie mit und möchte 
+mit  allen  Mitteln  erreichen,  dass  diese  gedeiht,  so  dass  er  sie  ungern  alleine  lässt,  könnte  doch 
+seine  Abwesenheit  für  nur  einen  Monat  schon  den  Tod  für  Hunderte  bedeuten.  Erreicht  er  ein 
+großes  Ziel  in  Bezug  auf  seinen  Verantwortungsbereich,  so  kann  er  diese  Verpflichtung  etwas 
+senken.  
+89-91 
+Verantwortung: Einmal  hat  der  Held  jemandem  einer  ähnlichen  Profession  wie  der  seinigen 
+geholfen  und  ist  eine  persönliche  Beziehung  mit  diesem  eingegangen.  Dieser  hat  aber  die 
+Tendenz, immer wieder in Schwierigkeiten zu geraten, aus denen der Held ihm helfen muss – so 
+zumindest nimmt dieser es an.   
+92-95 
+Versagt bei Reparatur/Installation: Ein Fehlschlag bei einer Reparatur oder Installation hat den 
+Ruf des Helden geschädigt und das bearbeitete Gerät oder den Droiden irreparabel zurück 
+gelassen. Er muss einen Weg finden, das Gerät oder den Droiden wieder funktionsfähig zu 
+machen und anschließen seinen guten Ruf wieder herzustellen.  
+95-97 
+Zeugenschutzprogramm: Der  Held  wird  von  einer  galaxisweiten Verbrecherorganisation  als 
+Kronzeuge  gejagt.  Deswegen  hat  er  von  einer  Regierung  oder  Organisation  eine  neue  Identität 
+und  Heimat  erhalten,  um  auf  den  Tag  zu  warten,  an  dem  er  seine  Aussage  machen  kann.  Bis 
+dahin aber werden die Verbrecher nach ihm suchen. 
+98-00 
+Zweimal auf dieser Tabelle würfeln; der Verpflichtungswert wird zwischen den beiden 
+Verpflichtungen aufgeteilt. 
+  
+  
+  
+
+W% Pflicht 
+1-5 
+Aneignung  von  Ressourcen: Für  die  Rebellenallianz  wird  es  nie  genug  von  allem  geben.  Der 
+Held   sucht   immer   nach   neuen   Rohstoffen,   Waffen,   Rüstungen,   Fahrzeugen,   Kleidung, 
+Versorgungsgütern,  Nahrung  oder  anderer  Ausrüstung.  Um  dieses  Ziel  zu  erreichen,  wird  er 
+betteln, handeln, stehlen oder sich diese Güter ausleihen.  
+6-10 
+Demoralisierung  des  Feindes: Der  Held  versucht,  dass  der  Feind  jede  Niederlage  auch  auf 
+psychischer Ebene erleidet. Beispielsweise, indem er den Ruf einer Einheit stärkt, so dass dieser 
+ihr  vorauseilt  und  den  Gegner  schon  vor  einem  Aufeinandertreffen  demoralisiert.  Nach  einer 
+Niederlage muss der Held dafür sorgen, dass der Feind meint, er wurde sehr überlegen besiegt – 
+aber auch darauf achten, dass dieser nicht zu äußerst brutalen Mitteln greift.  
+11-15 
+Freier   Himmel: Jeder   gewisse   Bodensieg   kann   durch   einen   Luftschlag   vereitelt werden. 
+Deswegen hat der Held immer einen Plan, um gegen einen Luftangriff gewappnet zu sein.  
+16-20 
+Gegenspionage: Für  das  Überleben  der  Rebellenallianz  ist  es  essentiell,  dass  er  vor  dem 
+Imperium verborgen bleibt. Deswegen hat es sich der Held zur Aufgabe gemacht, so viele Feinde 
+und  Bedrohungen  wie  möglich  zu  eliminieren  und  so  eine  Entdeckung  zu  verhindern.  Zudem 
+könnte er dem Imperium falsche Informationen zukommen lassen.  
+21-25 
+Innere  Sicherheit: Die  größte  Bedrohung  der Allianz könnte  den  eigenen  Reihen  entspringen. 
+Genau deshalb hält der Held seine Augen nach Anzeichen des Betrugs und Verräter offen. 
+26-30 
+Kameradschaft: Jede  Kampfeinheit  ist  irgendwie  auch  eine  Familie.  Der  Held  versucht  die 
+Truppen  zusammen  zu  führen,  so  dass  sie  sich  wie  Geschwister  vertrauen,  respektieren  und 
+achten. Dadurch wird die Moral gestärkt. Jedoch kann so etwas auch dazu führen, dass man sich 
+stark von anderen abgrenzt, große Selbstüberschätzung zeigt, Initiationsriten durchführt o. ä..   
+31-35 
+Kampfsiege: Der  Held  möchte  der  Rebellenallianz  beweisen,  dass  deren  Truppen  denen  des 
+Gegners  im  Gefecht  überlegen  sind.  Dabei  schreckt er  auch  nicht  vor  Überfällen  auf  deren 
+Stellungen, exzellenten Taktiken oder Erlangen der bestmöglichen Feuerkraft zurück.  
+36-40 
+Luftraumüberlegenheit: Ein  freier  Himmel  kann  entscheidend  sein  für  einen  Sieg.  Deshalb 
+versucht  der  Held  dies  immer  zu  erreichen – egal,  ob  mithilfe  von  Luftgleitern,  Flak-Geschützen 
+oder fliegenden Reitkreaturen.  
+41-45 
+Moral: Dem  Helden  ist  bewusst,  dass  die  Allianz  oftmals  einem  erschreckend  überlegenem 
+Gegner gegenüber steht. Deshalb ist es umso wichtiger, dass die Moral der Truppen hoch ist. Der 
+Held  versucht  wann  immer,  dies  zu  bewerkstelligen – z.B.  durch  inspirierende  Worte  oder  das 
+Hissen der Allianz-Flagge auf dem Schlachtfeld.   
+46-50 
+Personal: Der   Held   ist   davon   überzeugt,   dass   das   Personal   der   Rebellenallianz   dessen 
+wichtigste  Ressource  ist  und  versucht  diese  um  alles  in  der  Welt  zu  behüten.  Niemand  sollte 
+zurückgelassen werden und selbst eine scheinbar erfolgreiche Mission könnte sich als Fehlschlag 
+erweisen, wenn jemand von der Rebellenallianz dabei umkam.  
+51-55 
+Plakativer  Jäger: Der  Held  sucht  nach  den  berühmtesten  und  fähigsten  Gegnern  auf  dem 
+Schlachtfeld und möchte diese außer Gefecht setzen – dies soll Mitstreitern und Gegnern zeigen, 
+wie  verwundbar  der  Feind  ist.  Um  dies  zu  erreichen,  verlässt  der  Held  mitunter  auch  seine 
+primäre Position.  
+56-60 
+Politische Unterstützung: Jeder Kampf ist unnötig, wenn der politische Wille fehlt, das Imperium 
+ebenfalls  zu  stürzen.  Dies  versteht  der  Held  und  versucht  deshalb,  möglichst  viele  Systeme, 
+Fraktionen oder Unterstützer für seine Seite zu gewinnen.  
+61-65 
+Rekrutierung: Die Rebellenallianz benötigt mehr tüchtige Leute, die für sie arbeiten, egal, ob es 
+Soldaten,  Techniker,  Mediziner,  Piloten  oder  andere  sind.  Der  Held  ist  sich  im  Klaren  darüber, 
+dass solch eine Rekrutierung auch Risiken birgt, nimmt dieses Wagnis aber dennoch auf sich und 
+sucht nach fähigen und vertrauenswürdigen Talenten. 
+66-70 
+Sabotage: Kann  sich  die  Allianz  etwas  nicht  aneignen,  so  soll dies  auch  dem  Gegner  verwehrt 
+sein. Der Held versucht imp. Versorgungslinien, Lagerdepots oder Ressourcen zu sabotieren. 
+71-75 
+Spionage: Ein Sieg kann davon abhängig sein, wie viel man über den Gegner bereits im Vorfeld 
+wusste. Der Held weiß dies und bemüht sich, soviel Wissen wie möglich über das Imperium und 
+dessen Verbündete wie möglich zu sammeln. Dies könnte sowohl sich auch auf die Ressourcen, 
+technologische Forschungen oder ökonomische Entwicklungen beziehen.  
+76-80 
+Technologische  Überlegenheit: Nur  durch  die  besten  Fahrzeuge  und  Raumschiffe  hat  die 
+Allianz  die  Möglichkeit,  diesen  Krieg  zu  gewinnen.  Der  Held  versucht  immer,  neue  Baupläne, 
+Desings und Ingenieure in die Reihen der Allianz zu bringen.  
+81-85 
+Unterstützung: Nur  durch  Zusammenarbeit ist  ein  Sieg  in  diesem  Bürgerkrieg  möglich.  Dieser 
+Held  versucht,  seine  anderen  Rebellen  so  gut  wie  möglich  zu  unterstützen,  damit  ihnen  dieser 
+Sieg gelingt.  Auch  wenn er möglicherweise  nicht  die  gleiche  Anerkennung erhält wie diejenigen, 
+die er unterstützt, so kann er seine Pflicht womöglich häufiger zur Geltung bringen. 
+85-90 
+Verhindern   von   Verlusten: Dem   Helden   geht   die   Sicherheit   seiner   Truppen   auf   dem 
+Schlachtfeld  über  alles.  Er  würde  sie  niemals  in  hoffnungslose  Kämpfe  schicken,  die  keine 
+Auswirkung haben. Wenn  er  sie  denn  in  den  Tod  schicken muss,  dann  so,  dass  ihre  Taten  von 
+nachhaltiger Bedeutung sind. Jedoch muss er darauf achten, dass seine Truppen und er  keinen 
+Ruf wegen ihrer angeblichen Feigheit erhalten, was deren Moral und Disziplin schwächen würde. 
+91-100 
+Zweimal auf dieser Tabelle würfeln; der Verpflichtungswert wird zwischen den beiden aufgeteilt. 
+
+ 
+Moral 
+W% Emotionale Stärke Emotionale Schwäche 
+01-05 
+Tapferkeit: Der Mut des Helden ist 
+bemerkenswert.  Egal  was,  er  nimmt  oftmals 
+besondere  Risiken  in  Kauf,  um  anderen  zu 
+helfen. 
+Zorn: Heißblütigkeit  kann  leicht  zu  erhitzten 
+Gemütern führen. Der Held ist reizbar, und was 
+er nicht lösen kann, bringt ihn oft in Rage.  
+Missachtung: Der  Held  könnte  Missachtung 
+mit   Mut   verwechseln.   Missachtung   führt   zu 
+Zwist  und  Konflikten  unter  anderen,  während 
+sie  für  den  Helden  ein  falsches  Gefühl  der 
+persönlichen Befriedigung generiert.  
+06-10 
+Liebe: Der  Held  hat  ein  Herz  für  alle.  Auch 
+wenn er manche besonders mag, so empfindet 
+er  positive  Gefühle  für  die  meisten Wesen,  die 
+er trifft. Dadurch könnte er charmant, freundlich 
+und außerordentlich tolerant sein.  
+Eifersucht: Nicht   selbstlos   gegebene   Liebe 
+kann  schnell  zu  Eifersucht  führen.  Wird  seine 
+Liebe  nicht  geschätzt,  neigt  er  zu  Eifersucht, 
+ebenso  gönnt  der  Held  die  Errungenschaften 
+und Besitztümer anderer diesen nicht.  
+11-15 
+Vorsicht: Der  Held  geht  sehr  vorsichtig  an 
+Dinge   heran.   Dadurch   könnte   er   sich   und 
+anderen schon oftmals das Leben gerettet oder 
+zumindest  vor  einer  unangenehmen  Situation 
+bewahrt haben. 
+Furcht: Es  ist  ein  schmaler  Grat  zwischen 
+Vorsicht  und  Angst.  Manchmal  verfängt  der 
+Held   sich   in   der   Besorgnis   um   potentielle 
+Probleme,  so  dass  er  handlungsunfähig  wird. 
+Zu anderer Zeit verursacht seine Vorsicht, dass 
+er vor Gefahren flieht.  
+Unentschlossenheit: Das    Verlangen    des 
+Helden,   immer   auf   alles   gefasst   zu   sein 
+bedeutet   auch,   dass   seine   Vorbereitungen 
+nicht   immer   sehr   ordentlich   sind.   Bei   einer 
+Konfrontation  mit  etwas  Unbekanntem  könnte 
+er  starr  aufgrund  von  Unsicherheit  und  sich 
+uneins sein, wie er damit umgehen soll. 
+16-20 
+Enthusiasmus: Der  Held  ist  immerzu  bereit, 
+etwas   Neues   auszuprobieren   und   geht   an 
+vieles  mit  Spannung  heran.  Er  überdenkt  nicht 
+lange  Situationen,  könnte  er  doch  durch  zu 
+langes Überlegen etwas Wichtiges verpassen.  
+Leichtsinnigkeit: Natürlich kann ein 
+vorheriges   Überlegen   auch   den   Helden   vor 
+Schaden  schützen,  was  er irgendwann auch 
+merken     wird.     Durch     allzu     leichtfertiges 
+Verhalten   wird   er   in   gefährliche   Situationen 
+geraten  oder  der  Gnade  anderer  ausgeliefert 
+sein.  
+Rastlosigkeit: In seinem Enthusiasmus hat der 
+Held  wenig  Zeit,  einzelne  Dinge  wirklich  zu 
+schätzen oder  zu meistern. Bei Neuem wendet 
+er  sich  schnell  von  dem  Alten  und  Bekanntem 
+ab und hinterlässt einiges unerledigt.  
+21-25 
+Mitgefühl: Der   Held   sorgt   sich   um   das 
+Wohlergehen  anderer  und  will  jenen  helfen. 
+Sein  Mitgefühl  könnte  zur  Selbstaufopferung 
+führen, damit er andere unterstützen kann. 
+Hass: Mitgefühl  kann  leicht  zu  Hass werden. 
+Wird sein Mitgefühl nicht geschätzt oder kommt 
+er   sich nicht   beachtet   vor,   kann   der   Held 
+schnell Hass gegenüber anderen entwickeln.  
+26-30 
+Gnade: Sogar  Feinden  gegenüber  zeigt  der 
+Held  Gnade  und  behandelt  sie  recht  gerecht 
+und ehrenhaft. Er verschont jene ohne Waffen, 
+hilft einem wehrlosen Feind und missbraucht in 
+der Regel nicht seine Machtposition.  Auch gibt 
+es anderen immer eine zweite Chance, schlägt 
+nie   als   erstes   zu   und   lässt   Gegnern   die 
+Möglichkeit, zu fliehen.  
+Schwäche: Manchmal ist Gnade nicht hilfreich 
+und    es    muss    gehandelt    werden. Durch 
+fehlende   Gnade   zur   rechten   Zeit   könnten 
+vielleicht  größere  Übel  verhindert  werden,  wie 
+der Held erfahren wird.   
+Naivität: Gerissene   Gegner   könnten   seine 
+Gnade    und    Großzügigkeit    ausnutzen    und 
+versuchen,  mit  mehr  bei  ihm  durchzukommen 
+als bei anderen.  Auch könnte seine Gnade  zur 
+falschen   Zeit   im   Nachhinein   viele   darunter 
+leiden lassen.  
+Ermüdung: Irgendwann  fühlt  sich  der   Held 
+ausgebrannt.    Jeder    braucht    eine    zweite 
+Chance,  aber  der  Strom  an  Wesen,  welche 
+eine  zweite  Chance  benötigen,  hört  nicht  auf, 
+so dass irgendwann alles relativ wird. 
+31-35 
+Neugierde: Der  Held  möchte  immer  Neues 
+erfahren,   sein   Wissen   erweitern   und   sein 
+Verständnis ergänzen.  
+Besessenheit: Neugier  ohne  Vernunft  kann 
+sich   in   Besessenheit   verwandeln.   Der   Held 
+kann  besessen  sein,  Wissen  zu  erlangen  oder 
+ein   Ziel   zu   erreichen – und   bis   ihm dies 
+gelungen ist, wird er alles andere ignorieren.  
+ 
+
+W% Emotionale Stärke (Fortsetzung) Emotionale Schwäche 
+36-40 
+Stolz: Stolz  kann  den  Helden  dazu  treiben, 
+unglaubliche  Taten  zu  vollbringen.  Er  sehnt 
+sich danach, der Beste zu sein und erfreut sich 
+an seinen Fähigkeiten.  
+Arroganz: Stolz kann leicht zu Überheblichkeit 
+werden. Dabei verachtet er  andere und ergötzt 
+sich  an  deren  Fehlschlägen  und  Schwächen. 
+Der   Held   möchte   nicht   nur   Erfolg   haben, 
+sondern auch andere stürzen sehen.   
+Missachtung: Der   Held   missachtet   andere, 
+niemand ist sich seiner Gesellschaft würdig und 
+eigentlich stehen sie ihm nur bei der Erreichung 
+seiner Ziele im Weg.  
+41-45 
+Unabhängigkeit: Der Held verlässt sich nur 
+auf sich selbst und stellt sicher, dass er ggf. 
+jede Situation auch alleine bewältigen kann. Er 
+möchte anderen nicht zur Last fallen. 
+Gefühlskälte: Der   Held   isoliert   sich sozial 
+immer   mehr   und verliert   sein Interesse   an 
+anderen.  Wenn  sie  sich  selbst  nicht  helfen 
+können, warum sollte er dann eingreifen?  
+Arroganz: Ein   Leben   lang   unabhängig   von 
+anderen     zu     sein     hat     eine     egoistische 
+Lebenshaltung  im  Helden  gefördert.  Niemand 
+ist  so  fähig  wie  der  Held  selbst – und  diese 
+Einstellung könnte zu einer Katastrophe führen.  
+ 
+ 
+46-50 
+Ehrgeiz: Es  gibt  eine  Vision  im  Leben  des 
+Helden,  welche  ihn  antreibt. Ein  zielstrebiger 
+Held  setzt  sich  ein  hehres  Ziel  und  möchte 
+dieses  dann  auch  erreichen.  Je  schwerer  das 
+Ziel,   umso   williger   ist   der   Held,   dieses   zu 
+erfüllen.  
+Gier: Ungebremste  Zielstrebigkeit kann  sich 
+schnell  in  Gier  und  Geiz  wandeln.  Dann  zählt 
+für  den  Helden  nur  noch  dieses  Ziel  und  alles 
+andere ist vergessen.  
+Ungeduld: Die  zahlreichen  Dinge,  welche  der 
+Held in seinem Leben erledigen möchte, lassen 
+sich  nicht  so  leicht  unter  einem  Hut  bringen. 
+Deshalb   muss   er   manchmal   Kompromisse 
+machen.    Sein    Zwang,    sofort    etwas    zu 
+bewältigen  könnte  sich  auch  verheerend  auf 
+sein Langzeit-Ziel auswirken.  
+Kaltherzigkeit: Der   Drang   zum   Erreichen 
+seiner  Ziele  kann  dazu  führen,  dass  der  Held 
+kein  Mitgefühl  mehr  empfindet.  Es  sind  nur 
+noch   seine   eigenen   Ziele   von   Belang,   die 
+Bedürfnisse  anderer  spielen  keine  Rolle  mehr 
+für ihn.  
+51-54 
+Gerechtigkeitssinn: Der   Held   strebt   nach 
+ausgewogenen  und  gerechten  Handlungen  für 
+sich  und  bei  Interaktionen  mit  anderen.  Er  ist 
+davon  überzeugt,  dass  Gerechtigkeit  letztlich 
+ein  besseres  Ergebnis  bringt,  als  wenn  man 
+nach    Sympathie    oder    anderen    Gefühlen 
+handeln würde.  
+Grausamkeit: Die  Grausamen  nutzen oft den 
+Vorwand  der  Gerechtigkeit  zur  Rechtfertigung 
+ihrer    Taten.    Sieht    der    Held    nur    noch 
+Gerechtigkeit,   nicht   aber   die   Gefühle   und 
+Bedürfnisse  anderer,  so  könnten  diese  leiden 
+müssen.   Letztlich   könnte   er   sogar   im   Leid 
+anderer  schwelgen,  selbst  wenn  er  dies  noch 
+immer für sich als Gerechtigkeit rechtfertigt.  
+Gnadenlosigkeit: Das Streben nach 
+Gerechtigkeit   drängt   den   Helden   weg   von 
+Konzepten  wie  Gnade  oder  Nachlässigkeit.  Er 
+beschäftigt  sich  nur  noch  mit  den  Gesetzen 
+oder  seinem  persönlichen  Kodex,  unabhängig 
+von anderen Umständen.  
+ 
+ 
+ 
+ 
+ 
+ 
+
+W% Emotionale Stärke (Fortsetzung) Emotionale Schwäche 
+55-58 
+Disziplin: Dem   Helden   fällt   eine   rigorose 
+körperliche  wie auch mentale  Disziplin einfach. 
+Jede    seiner    Handlungen    ist    präzise    und 
+entschieden.  Andere  haben  es  schwer,  ihn  zu 
+leichtsinnigen oder dummen Taten zu 
+bewegen.  
+Es  könnte  auch  sein,  dass  er  einem  strikten 
+Kodex folgt, der sein Handeln bestimmt. 
+Sturheit: Äußerst disziplinierte Helden könnten 
+nur   noch   ihr   Ziel   sehen   und   sonst   nichts 
+anderes  mehr.  Selbst  wenn  andere  bessere 
+Optionen hätten, könnte der Held dies als nicht 
+der Rede wert abtun und seinen präzisen Weg 
+verfolgen,  selbst  wenn  dieser  ihn  Blind  macht 
+für Offensichtliches.  
+Intoleranz: Manchmal kann sich der Held nicht 
+an  neue  Situationen  gewöhnen,  welche  von 
+seinem     Verhaltenskodex     nicht     abgedeckt 
+werden.  Auch  ist  es  möglich,  dass  er  seine 
+eigenen   Bedürfnisse   nicht   befriedigen   und 
+selbst Dinge, die er als gerecht empfindet, nicht 
+tolerieren    kann,    da    diese    seinem    Kodex 
+widersprechen.  
+Engstirnigkeit: Ewige    Disziplin    kann    zu 
+Intoleranz   und   Geringschätzung   gegenüber 
+äußeren Einflüssen führen.  
+59-62 
+Beständigkeit: Der  Held  ist  zuverlässig  und 
+pünktlich.  Er  hat  seine  täglichen  Rituale  und 
+erledigt die Dinge immer auf die gleiche Art und 
+Weise.  Merkwürdige  Umstände  und  Unglück 
+mindern nicht seine Hingabe.  
+Starrköpfigkeit: Der  Held  weigert  sich,  eine 
+Veränderung  in  sein  Leben  zu  lassen,  selbst 
+wenn  dies  notwendig  sein  sollte.  Je  mehr man 
+ihn   bedrängt,   umso   beharrlicher   bleibt   er 
+seinen  alten  Weisen  treu,  selbst  wenn  jeder 
+andere     schon     sich     zu     neuen     Wegen 
+aufgemacht hat.   
+63-66 
+Hingabe: Der Held geht Dinge nicht halbherzig 
+an.  Er  steckt  all  seine  Energie  in  Dinge,  die  er 
+angehen möchte und übernimmt dafür auch die 
+volle Verantwortung.  
+Obsession: Manchmal  konzentriert  sich  der 
+Held  zu  sehr  auf  etwas,  dass  er  alles  andere 
+drum  herum  nicht  mehr  wahrnimmt  und  den 
+Blick  für  das  eigentlich  Wesentliche  verliert. 
+Dinge,   die   er   nicht   mit   all   seiner   Hingabe 
+angeht, nimmt er überhaupt nicht in Angriff.  
+67-70 
+Durchsetzungsvermögen: Der   Held   ist   in 
+allen  Dingen  sehr  bestimmt  und  hartnäckig. 
+Egal  wie  etwas  auch  scheint,  der  Held  zeigt 
+sich  immer  überzeugt,  wirkt  niemals  schwach 
+und unsicher.  
+Sturheit: Die   stählerne   Überzeugung   des 
+Helden könnte auch eine exzessive 
+Starrköpfigkeit  maskieren.  So  könnte  er  jeden 
+Zweifel anderer einfach abtun, da es nicht sein 
+kann,  dass  sein  Weg  der  falsche  ist – sogar 
+wenn Beweise dafür sprechen.   
+71-74 
+Genügsamkeit: Der   Held   hat   es   sich   zur 
+Aufgabe   gemacht,   ein   einfaches   Leben   zu 
+führen – nicht nur hinsichtlich von 
+Besitztümern,  sondern  auch  in  Beziehungen. 
+Dies  verhilft ihm, das  wichtige Große nicht aus 
+den Augen zu verlieren.  
+Verachtung: Der   Held   besteht   auf   einen 
+Standard,  welchen  keiner  erfüllen  kann.  Dies 
+beinhaltet  auch  die  eigene  Verachtung,  wofür 
+er sich auch selbst bestraft.    
+75-78 
+Wunder: In einer Stadt ist jeder Tag ein neues 
+Abenteuer.   Dies   führt   dazu,   dass   der   Held 
+immer  bei  der  Sache  bleibt  und  ständig  dazu 
+lernt.  So  bleibt  der  Held  immer  wachsam  und 
+offen für Neues.  
+Entfremdung: Von   zu   vielen   Wesen   und 
+Problemen  scheint  der  Held  überfordert  und 
+zieht  sich  zurück.  Auch  so  geht  das  Leben  in 
+der Stadt  weiter und  die Zeit  wird alle Wunden 
+heilen und das Problem von selbst beseitigen.    
+79-82 
+Rechtschaffenheit: Der    Held    unterdrückt 
+seine  Aggressionen  nicht,  sondern  sublimiert 
+sie  in Arbeitseifer.  Er  versucht  sich  immer  an 
+seine  Grenzen  zu  bringen  und  versucht  so 
+andere  zu  verteidigen,  die  dies  nicht  selbst 
+machen können.  
+Boshaftigkeit: Der  Held  versucht  mit  Absicht 
+andere, die unter ihm stehen, zu ärgern oder zu 
+verletzen.  Dabei  ist  er  gerne  sehr  kleinlich,  da 
+die   anderen   eh   nichts   Besseres   als   seine 
+Verachtung verdienen.   
+83-86 
+Bescheidenheit: Der  Held  lehnt  Dankbarkeit 
+und   Anerkennung   ab,   denn   alles,   was   er 
+bewältigt,  kann  auch  jeder  andere  schaffen. 
+Diese   Haltung   verhilft   ihm   zu   Disziplin   und 
+einer  Fokussierung  auf  seine  bevorstehenden 
+Aufgaben,  wodurch  er  besser  anderen  helfen 
+und Leid vermindern kann.  
+Eifersucht: Der Held verkennt seine 
+Selbstbezogenheit    und    denkt,    dass    dies 
+Bescheidenheit  wäre.  Dadurch  wertet  er  das 
+Verhalten  anderer  ab  und  erwartet  von  diesen, 
+dass  sie  seinem  Ego  schmeicheln.  Es  ist  auch 
+sehr    wahrscheinlich,    dass    er    irgendwann 
+Anerkennung für seine angebliche 
+Bescheidenheit verlangt.     
+ 
+ 
+
+W% Emotionale Stärke (Fortsetzung) Emotionale Schwäche 
+87-90 
+Vertrauen: Der  Held  glaubt  an  das  Gute  und 
+die Ehrlichkeit seiner Mitmenschen, und dieses 
+Vertrauen ist notwendig, um eine 
+funktionierende  Gemeinschaft  zu  errichten  und 
+emotionale Unterstützung gewähren zu 
+können.  
+Vorsicht: Der Held wurde zu oft enttäuscht und 
+er   geht   mit   einer   besonderen   Vorsicht   auf 
+andere  zu – warum  sollte  er  anderen  auch 
+einen  Vertrauensvorschuss  geben,  wenn  sie 
+diesen sich noch gar nicht verdient haben?    
+91-94 
+Flexibilität: Der Held ist moralisch oder ethisch 
+sehr   flexibel   und   bewertet   Situationen   und 
+andere  anhand  der  aktuellen  Umstände  und 
+was  derzeit  das  Beste  für  die  Gemeinschaft 
+wäre,    anstelle    dass    er    einem    strengen 
+Moralkodex anhängt.  
+Dogmatismus: Wenn   der   Held   sich unter 
+Druck gesetzt oder ausgebrannt fühlt, fällt er zu 
+strengen   Vorschriften   zurück   und   bewertet 
+nicht  anhand  des  Kontextes. Es  braucht  große 
+Anstrengung,  alle  Ansichtsweisen  abzuwägen, 
+und  manchmal  fehlt  diese  Kraft  oder  auch  die 
+Zeit dafür.     
+95-00 
+Zweimal  auf  dieser  Tabelle  würfeln;  der Held  verfügt  über  mehrere  emotionale  Stärken  und 
+Schwächen. 
+    
+
+3. Spezies wählen 
+Der Spieler wählt aus den Folgenden eine Spezies für seinen Helden aus: 
+ 
+Aleena (95 Anfangs-Erfahrungspunkte)  
+Stärke: 1, Gewandtheit: 3, Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 8 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Körperbeherrschung (nicht höher als 2 während der Erschaffung). 
+Aleena beginnen mit 1 Rang im Talent Unverwüstlich (-10 bei krit. Wunden gegen sie). 
+Klein: Aleena haben eine Silhouette von 0. 
+ 
+Anx (85 Anfangs-Erfahrungspunkte)  
+Stärke: 3, Gewandtheit: 1, Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 13 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+Anx beginnen mit 1 Rang in den Talenten Todesstoß und Entwaffnendes Lächeln. 
+Verdeckt ein Anx seinen Schädelkamm nicht, wird die Schwierigkeit seiner Täuschungsproben 
+einmal aufgewertet. 
+ 
+Aqualishaner (90 Anfangs-Erfahrungspunkte)  
+Stärke: 3, Gewandtheit: 2, Intelligenz: 1, List: 2, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 11 + Stärke Erschöpfungslimit: 8 + Willenskraft 
+1 Rang in Handgemenge (nicht höher als 2 während der Erschaffung). 
+Amphibisch: Aqualishaner können unter Wasser ohne Einschränkungen atmen. 
+Zudem muss eine Subspezies gewählt werden: 
+Aquala: 
+ 1 Rang in Widerstandskraft (nicht höher als 2 während der Erschaffung). 
+ Wenn Aquala Abzüge aufgrund von kalter oder feuchter Umgebung erhalten,  
+können sie einen bei diesen Proben ignorieren. 
+ 
+Ualaq: 
+ 1 Rang in Wahrnehmung oder Überleben (nicht höher als 2 während der Erschaffung). 
+ Wenn Ualag Abzüge aufgrund von dunkler Umgebung erhalten,  
+so können sie 1 von diesen Proben ignorieren; in zu heller Umgebung erleiden sie 
+einen  bei Proben hinzu. 
+ 
+Quara: 
+ 1 Rang in Athletik oder Einschüchtern (nicht höher als 2 während der Erschaffung). 
+ Wenn Ualag Abzüge aufgrund von widriger Umgebung erhalten,  
+so können sie 1 von diesen Proben ignorieren. 
+ 
+Arcona (100 Anfangs-Erfahrungspunkte)  
+Stärke: 1, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 3, Charisma: 2 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Wachsamkeit (nicht höher als 2 während der Erschaffung). 
+Wenn ein Arcona Abzüge aufgrund von trockener oder heißer Umgebung erhält,  
+so kann er einen von diesen Proben ignorieren. 
+Charmant: Arcona erhalten bei allen Proben auf Charme und Verhandeln einen  hinzu. 
+Salzabhängigkeit: erhält ein Arcona zwei bis drei Gramm reinen Salzes, so ist er bis zum Ende der 
+nächsten  Begegnung  desorientiert.  Zudem muss  ihm eine  Disziplinsprobe gelingen  oder  er  erhält 
+die Verpflichtung „Sucht 2“, falls er diese noch nicht bereits besitzt (und bis er  diese verloren hat, 
+goldreflektierende Augen).  
+ 
+Arkanier (100 Anfangs-Erfahrungspunkte)  
+Stärke: 2, Gewandtheit: 2, Intelligenz: 3, List: 2, Willenskraft: 3, Charisma: 1 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Medizin (nicht höher als 2 während der Erschaffung). 
+Nachtsicht: Arkanier können bis zu aufgrund von Dunkelheit negieren. 
+ 
+Balosar (100 Anfangs-Erfahrungspunkte)  
+Stärke: 2, Gewandtheit: 2, Intelligenz: 2, List: 3, Willenskraft: 1, Charisma: 2 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Straßenwissen (nicht höher als 2 während der Erschaffung). 
+Fühler: Balosar erhalten bei Wachsamkeitsproben automatisch  hinzu. 
+   
+
+Bardottaner (105 Anfangs-Erfahrungspunkte)  
+Stärke: 2, Gewandtheit: 2, Intelligenz: 2, List: 1, Willenskraft: 3, Charisma: 2 
+Wundenlimit: 9 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Allgemeinbildung (nicht höher als 2 während der Erschaffung). 
+ 
+Besalisk (85 Anfangs-Erfahrungspunkte)  
+Stärke: 3, Gewandtheit: 1, Intelligenz: 2, List: 1, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 12 + Stärke Erschöpfungslimit: 8 + Willenskraft 
+1 Rang in Widerstandskraft (nicht höher als 2 während der Erschaffung). 
+Zusätzliche Gliedmaße: Besalisken erhalten ein zusätzliches, kostenloses Manöver in jedem ihrer 
+Züge, können aber weiterhin nicht mehr als 2 Manöver pro Zug durchführen.  
+ 
+Bith  (100 Anfangs-Erfahrungspunkte) 
+Stärke:1, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 3 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Wahrnehmung (höchstens Rang 2 während der Erschaffung). 
+Gutes Gehör: Ein Bith erhält auf Gehör basierende Wahrnehmungsproben einen . Laute 
+Geräusche verursachen bei ihm doppelte Erschöpfung. Ein Gehörschutz negiert sowohl Bonus wie 
+auch Nachteil des Gehörs. 
+ 
+Bothaner (100 Anfangs-Erfahrungspunkte)  
+Stärke: 1, Gewandtheit: 2, Intelligenz: 2, List: 3, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 11 + Willenskraft 
+1 Rang in Straßenwissen (nicht höher als 2 während der Erschaffung). 
+Bothaner beginnen mit 1 Rang im Talent Überzeugendes Verhalten. 
+ 
+Caamasi (100 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 2, Intelligenz: 2, List: 1, Willenskraft: 3, Charisma: 2 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 11 + Willenskraft 
+1 Rang in Charme oder Disziplin (höchstens Rang 2 während der Erschaffung). 
+Memnii: Einmal pro Spielsitzung kann ein Caamasi eine neue Memnis erschaffen, welche über sich 
+über eine gesamte Szene oder Begegnung hinfort streckt. Diese Memnis kann er sich jederzeit 
+perfekt ins Gedächtnis rufen und mit einem anderen Caamasi oder machtsensitivem Lebewesen 
+teilen. Dies könnte ihm bei passenden Proben auch einen  gewähren. 
+ 
+Cereaner (90 Anfangs-Erfahrungspunkte)  
+Stärke: 2, Gewandtheit: 1, Intelligenz: 3, List: 2, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 13 + Willenskraft 
+1 Rang in Wachsamkeit (nicht höher als 2 während der Erschaffung). 
+Binäre Verarbeitung: Cereaner behandeln alle Wissensfertigkeiten, als wären sie 
+Berufsfertigkeiten. 
+ 
+ Chadra-Fan (90 Anfangs-Erfahrungspunkte)  
+Stärke: 1, Gewandtheit: 3, Intelligenz: 3, List: 2, Willenskraft: 1, Charisma: 2 
+Wundenlimit: 9 + Stärke Erschöpfungslimit: 11 + Willenskraft 
+1 Rang in Mechanik (nicht höher als 2 während der Erschaffung). 
+Gute Sinne: Chadra-Fan können bis zu  von Wahrnehmungsproben abziehen. 
+Klein: Chadra-Fan haben eine Silhouette von 0. 
+ 
+Chagrianer (90 Anfangs-Erfahrungspunkte)  
+Stärke: 2, Gewandtheit: 1, Intelligenz: 2, List: 2, Willenskraft: 3, Charisma: 2 
+Wundenlimit: 11 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Widerstandskraft (nicht höher als 2 während der Erschaffung). 
+Chagrianer beginnen mit 1 Rang im Talent Expertenwissen. 
+Amphibisch: Chagrianer können unter Wasser ohne Einschränkungen atmen  
+und erleiden niemals Abzüge aufgrund der Bewegung im Wasser. 
+ 
+Chevin (80 Anfangs-Erfahrungspunkte)  
+Stärke: 3, Gewandtheit: 1, Intelligenz: 2, List: 3, Willenskraft: 2, Charisma: 1 
+Wundenlimit: 11 + Stärke Erschöpfungslimit: 11 + Willenskraft 
+1 Rang in Verhandeln (nicht höher als 2 während der Erschaffung). 
+Chevin beginnen mit 1 Rang im Talent Belastbarkeit. 
+Chevin erhalten einen  auf alle geruchsbasierenden Wahrnehmungsproben. 
+ 
+ 
+  
+
+Chiss (100 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 2, Intelligenz: 3, List: 2, Willenskraft: 2, Charisma: 1 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Coolness (nicht höher als 2 während der Erschaffung). 
+Infravision: Chiss können einen aufgrund von Dunkelheit negieren. 
+ 
+Clawdit (95 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 2, Intelligenz: 2, List: 3, Willenskraft: 2, Charisma: 1 
+Wundenlimit: 9 + Stärke Erschöpfungslimit: 9 + Willenskraft 
+1 Rang in Widerstandskraft (nicht höher als 2 während der Erschaffung). 
+Wechselbalg: Ein Clawdit kann 3 Erschöpfung einsetzen und eine  Widerstandskraftprobe 
+ablegen. Bei Erfolg kann er das Aussehen einer Person mit Silhouette 1 annehmen, welche er in 
+der Vergangenheit beobachtet hat. Andere können eine Probe auf Wahrnehmung gegen die 
+Täuschung des Clawditen ablegen, damit sie Unstimmigkeiten am Aussehen, Verhalten oder 
+Mimik und Gestik des Nachahmenden erkennen. Für unstimmige Kleidung oder ähnliches könnten 
+ vergeben werden, hat der Clawdit den Nachgeahmten über längere Zeit studieren können, 
+könnte die Probe einen oder mehrere  erhalten.  
+ 
+Cosianer (95 Anfangs-Erfahrungspunkte) 
+Stärke: 1, Gewandtheit: 2, Intelligenz: 3, List: 2, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 11 + Willenskraft 
+1 Rang in Altes Wissen (nicht höher als 2 während der Erschaffung). 
+Starker Rücken: Alle Cosianer besitzen ein Belastungslimit gleich 10 + Stärke. 
+ 
+ Dathomirianer (100 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 11 + Willenskraft 
+1 Rang in Einschüchtern und 1 Rang in Überleben (nicht höher als 2 während der Erschaffung). 
+Dathomirianer beginnen mit 1 Rang im Talent Naturbursche. 
+ 
+Devorianer (95 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 2, Intelligenz: 2, List: 3, Willenskraft: 2, Charisma: 1 
+Wundenlimit: 11 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Überleben oder Täuschung (nicht höher als 2 während der Erschaffung). 
+Resistenter Metabolismus: Devorianer erhalten einen  auf alle Widerstandskraftproben. 
+ 
+Dowutin (85 Anfangs-Erfahrungspunkte) 
+Stärke: 3, Gewandtheit: 1, Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 15 + Stärke Erschöpfungslimit: 8 + Willenskraft 
+1 Rang in Widerstandskraft (nicht höher als 2 während der Erschaffung). 
+Groß: Dowutin beginnen mit Silhouette 1 oder 2, ausgewählt während der Charaktererschaffung. 
+Unbeweglich: Dowutin, die den Zustand Bewegungsunfähig erreichen, umgestoßen werden oder 
+auf anderem Wege gegen ihren Willen bewegt werden, können 3 Erschöpfung erleiden, um dies zu 
+verhindern. Dowutin mit Silhouette 2 müssen nur 1 Erschöpfung erleiden. 
+ 
+Dresselianer (110 Anfangs-Erfahrungspunkte)  
+Stärke: 2, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 3, Charisma: 1 
+Wundenlimit: 11 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Überleben (nicht höher als 2 während der Erschaffung). 
+Primitiv: Dresselianer werten die Schwierigkeit jeder Probe auf, die mit  
+fortgeschrittener Technologie zusammen hängt, die sich nicht auf ihrem  
+Heimatplaneten findet. Mit der Zeit kann sich ein Dresselianer nach  
+Entscheidung des Spielleiters an einzelne Technologien gewöhnen. Durch  
+Zahlung von 10 EP kann ein Dresselianer diesen Nachteil ablegen.   
+ 
+Drabataner  (100 Anfangs-Erfahrungspunkte) 
+Stärke:2, Gewandtheit: 2, Intelligenz: 2, List: 1, Willenskraft: 2, Charisma: 3 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Charme oder Führungsqualitäten (höchstens Rang 2 während der Erschaffung). 
+Großer Lärm: Bei einer Probe auf Führungsqualitäten oder Charme kann ein Drabataner  
+einsetzen, um ein zusätzliches Ziel in Reichweite zu beeinflussen oder aber um Ziele zu 
+beeinflussen, die 1 Kategorie weiter entfernt sind als eigentlich gestattet. 
+ 
+   
+
+Drall (90 Anfangs-Erfahrungspunkte) 
+Stärke: 1, Gewandtheit: 1, Intelligenz: 4, List: 2, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 8 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Allgemeinbildung (nicht höher als 2 während der Erschaffung). 
+Wenn ein Drall andere unterstützt, so erhält der Geholfene noch zusätzlich einen  hinzu. 
+Droide (175 Anfangs-Erfahrungspunkte) 
+ Stärke: 1, Gewandtheit: 1, Intelligenz: 1, List: 1, Willenskraft: 1, Charisma: 1 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+Droiden erhalten 1 Rang im Talent Belastbarkeit (pro Rang +1 auf Absorption). 
+Droiden müssen nicht schlafen, essen oder atmen, werden nicht von Giften und Gasen beeinflusst. 
+Droiden haben eine Grenze von 6 bei kybernetischen Implantaten (unabhängig von ihrer Stärke). 
+Droiden  können  niemals machtsensitiv  sein  und  nicht  durch  gedankenkontrollierende  Machtkräfte 
+beeinflusst werden. 
+Droiden  können  sich  durch Ausruhen  regenerieren  (ihr  System  versucht  Selbstreparaturen), 
+ansonsten können sie mit dem Einsatz  von Mechanik repariert  werden (mit gleichen  Ergebnissen 
+wie  Medizin  bei  organischen  Wesen),  ein  Notfallreparatur-Kit  wirkt  bei  Droiden  wie  ein  Stimpack 
+bei organischen Wesen. 
+Droiden  erhalten  in  zwei  zusätzlichen  Fertigkeiten  ihres  Berufs  und  einer  zusätzlichen  Fertigkeit 
+ihrer Spezialisierung 1 Rang.  
+ 
+Dug (90 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 3, Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 1 
+Wundenlimit: 9 + Stärke Erschöpfungslimit: 8 + Willenskraft 
+1 Rang in Handgemenge (nicht höher als 2 während der Erschaffung). 
+Dug beginnen mit 1 Rang im Talent Defensive Steuermanöver (pro Rang +1 auf  
+Verteidigung bei von ihnen gesteuerten Fahrzeugen/Raumschiffen). 
+ 
+Duros (100 Anfangs-Erfahrungspunkte) 
+Stärke: 1, Gewandtheit: 2, Intelligenz: 3, List: 2, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 11 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Pilot (Weltraum) (nicht höher als 2 während der Erschaffung). 
+Intuitive Navigation: Duros erhalten zu allen Astronavigationsproben einen  hinzu. 
+ 
+Elom (100 Anfangs-Erfahrungspunkte) 
+Stärke: 3, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 1 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 9 + Willenskraft 
+1 Rang in Widerstandskraft (nicht höher als 2 während der Erschaffung). 
+Grabklauen: Vor einem Bewegungsmanöver kann ein Elom auch ein Manöver  
+zum Graben einsetzen, um sich auch durch lockeren Erdboden oder ähnlichem  
+während der Bewegung graben zu können. Nach Entscheidung des Spielleiters  
+könnten auch andere diese engen und niedrigen Tunnel nutzen.  
+ 
+Elomin (105 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 2, Intelligenz: 3, List: 2, Willenskraft: 1, Charisma: 2 
+Wundenlimit: 9 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Charme oder Allgemeinbildung (nicht höher als 2 während  
+der Erschaffung). 
+ 
+Ewok (120 Anfangs-Erfahrungspunkte) 
+Stärke: 1, Gewandtheit: 2, Intelligenz: 2, List: 3, Willenskraft: 1, Charisma: 2 
+Wundenlimit: 9 + Stärke Erschöpfungslimit: 11 + Willenskraft 
+Klein: Ewoks haben eine Silhouette von 0. 
+Gute Sinne: Ewoks erhalten einen  auf Wahrnehmungs- und Wachsamkeitsproben hinzu. 
+Primitiv: Ewoks werten die Schwierigkeit jeder Probe auf, die mit  
+fortgeschrittener Technologie zusammen hängt, die sich nicht auf ihrem  
+Heimatplaneten findet. Mit der Zeit kann sich ein Ewok nach  
+Entscheidung des Spielleiters an einzelne Technologien gewöhnen. Durch  
+Zahlung von 10 EP kann ein Ewok diesen Nachteil entfernen.   
+ 
+   
+
+Faleen (90 Anfangs-Erfahrungspunkte) 
+Stärke: 1, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 3 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 12 + Willenskraft 
+1 Rang in Charme (nicht höher als 2 während der Erschaffung). 
+Pheromone: Vor einer Probe auf Charme, Täuschung oder Verhandeln gegen ein 
+vernunftbegabtes Wesen in bis zu kurzer Reichweite kann ein Faleen einmal als Nebenhandlung 2 
+Erschöpfung erleiden, um diese einmal aufzuwerten. Wirkt nicht gegen Ziele mit Atemmasken oder 
+ohne Geruchsorgane.  
+ 
+Gand (100 Anfangs-Erfahrungspunkte für Gand ohne Lunge, 110 für Gand mit Lunge) 
+Stärke:2, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 3, Charisma: 1 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Disziplin (nicht höher als 2 während der Erschaffung). 
+Der Spieler entscheidet, ob er einen Gand mit oder ohne Lunge spielen möchte.  
+Gand ohne Lunge sind immun gegen Ersticken (aber nicht gegen die Auswir- 
+kungen von Vakuum). Sie nehmen die für sich wichtigen Stoffe über Nahrung auf. 
+Gand mit Lungen vertragen nur die mit Ammoniak angereicherte Luft ihrer Heimatwelt. Sie starten 
+mit einem Ammoniak-Atemgerät, Umgebung mit Sauerstoff wirkt für sie ohne Atemgerät wie 
+gefährliche Umwelt mit einer Stufe von 8.  
+ 
+Gank (110 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 1 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Einschüchtern oder Wachsamkeit (nicht höher als 2  
+während der Erschaffung). 
+Kybernetisch: Der Körper eines Gank kann mit einer Anzahl  
+an kybernetischen Implantaten gleich seiner Stärke +3 bestückt werden. 
+Anfangskybernetik: Ein Gank kann bis zu zwei kybernetische Implantate  
+im Wert von insgesamt 5000 Credits zu Spielbeginn besitzen. Diese  
+Summe kann durch zusätzliche Verpflichtung erhöht werden. 
+ 
+Geonosianer (140 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 2, Intelligenz: 2, List: 1, Willenskraft: 1, Charisma: 1 
+Wundenlimit: 9 + Stärke Erschöpfungslimit: 9 + Willenskraft 
+1 Rang in einer Fertigkeit nach Wahl (höchstens 2 zur Erschaffung). 
+Wenn ein Geonosianer andere unterstützt, so erhält der Geholfene noch zusätzlich einen  hinzu 
+und der Geonosianer regeneriert 1 Erschöpfung. 
+Geonosianer können fliegen. 
+ 
+Gigoraner (100 Anfangs-Erfahrungspunkte) 
+Stärke:3, Gewandtheit: 2, Intelligenz: 1, List: 2, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 12 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Handgemenge (höchstens Rang 2 während der Erschaffung). 
+Kälteanpassung: Wenn ein Gigoraner Abzüge aufgrund von kalter Umgebung  
+oder Schnee erhält, so kann er einen von diesen Proben ignorieren. 
+Schwache technologische Entwicklung: Gigoraner werten bei fortschrittlicher  
+Technologie die Schwierigkeit von Mechanikproben einmal auf.  
+ 
+Gossamer (100 Anfangs-Erfahrungspunkte) 
+Stärke:1, Gewandtheit: 2, Intelligenz: 2, List: 3, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 9 + Stärke Erschöpfungslimit: 11 + Willenskraft 
+1 Rang in Überleben (höchstens Rang 2 während der Erschaffung). 
+Gossamer beginnen mit 1 Rang im Talent Fährtenleser. 
+Gossamer gelten als Silhouette 0 
+ 
+Gotal (100 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 2, Intelligenz: 2, List: 3, Willenskraft: 2, Charisma: 1 
+Wundenlimit: 9 + Stärke Erschöpfungslimit: 8 + Willenskraft 
+1 Rang in Wahrnehmung (nicht höher als 2 während der Erschaffung). 
+Energiegespür: Einmal pro Begegnung kann ein Gotal als Manöver die Präsenz und den 
+Gefühlszustand aller Lebewesen innerhalb kurzer Reichweite wahrnehmen.  
+ 
+  
+
+Gran (100 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 2, Intelligenz: 2, List: 1, Willenskraft: 2, Charisma: 3 
+Wundenlimit: 9 + Stärke Erschöpfungslimit: 9 + Willenskraft 
+1 Rang in Charme oder Verhandeln (höchstens Rang 2 während der Erschaffung). 
+Verbesserte Sicht: Bei Fernkampf- oder Wahrnehmungsproben kann ein  
+Gran bis zu  aufgrund von Umwelteinflüssen oder Verhüllung (nicht aber  
+Verteidigung) entfernen. 
+ 
+Gungan (100 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 2, Intelligenz: 1, List: 2, Willenskraft: 2, Charisma: 3 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Athletik (höchstens Rang 2 während der Erschaffung). 
+Amphibisch: Gungans können unter Wasser ohne Einschränkungen atmen  
+und erleiden niemals Abzüge aufgrund der Bewegung im Wasser. 
+ 
+Harch (75 Anfangs-Erfahrungspunkte)  
+Stärke: 2, Gewandtheit: 2, Intelligenz: 2, List: 3, Willenskraft: 2, Charisma: 1 
+Wundenlimit: 11 + Stärke Erschöpfungslimit: 11 + Willenskraft 
+1 Rang in Wahrnehmung (nicht höher als 2 während der Erschaffung). 
+Zusätzliche Gliedmaße: Harch erhalten ein zusätzliches, kostenloses Manöver in jedem ihrer Züge, 
+können aber weiterhin nicht mehr als 2 Manöver pro Zug durchführen.  
+Giftige Fänge: Wenn ein Harch eine Handgemengeprobe macht, um Schaden anzurichten, so 
+erhält dieser Angriff die Eigenschaft Betäubung 3. 
+ 
+ Hutte (70 Anfangs-Erfahrungspunkte) 
+Stärke: 3, Gewandtheit: 1, Intelligenz: 2, List: 2, Willenskraft: 3, Charisma: 2 
+Wundenlimit: 13 + Stärke Erschöpfungslimit: 11 + Willenskraft 
+1 Rang in Einschüchtern oder Disziplin (nicht höher als 2 während der Erschaffung). 
+Behäbig: Ein Hutte kann höchstens 1 Manöver pro Runde für Bewegung einsetzen. 
+Ein Hutte beginnt mit je einem Rang in den Talenten Nicht auf den Kopf gefallen und Belastbarkeit. 
+ 
+Iakaru (100 Anfangs-Erfahrungspunkte) 
+Stärke:2, Gewandtheit: 3, Intelligenz: 2, List: 2, Willenskraft: 1, Charisma: 2 
+Wundenlimit: 9 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Pilot (Weltraum, höchstens Rang 2 während der Erschaffung). 
+Brachiation: Ein Iakaru erhält keine Abzüge aufgrund von Gelände im Dschungel oder ähnlichen 
+Landschaften. Sie erhalten  bei Proben auf Körperbeherrschung und Athletik in Bezug auf 
+Schwingen, Klettern und Balancieren. 
+ 
+Iktotchi (90 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 3, Charisma: 1 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 12 + Willenskraft 
+1 Rang in Wachsamkeit (nicht höher als 2 während der Erschaffung). 
+Vorahnung: Ein Iktotchi kann einen bei einer Initiativeprobe einsetzen, damit er  
+oder einer seiner Verbündeten ein freies Manöver vor der ersten Kampfrunde durch- 
+führen kann. Zudem kann ihnen der Spielleiter kurze, flüchtige Blicke in die Zukunft gewähren. 
+ 
+Ishi Tib (100 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 2, Intelligenz: 3, List: 2, Willenskraft: 1, Charisma: 2 
+Wundenlimit: 12 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Disziplin (nicht höher als 2 während der Erschaffung). 
+Amphibisch: Ishi Tib können unter Wasser ohne Einschränkungen atmen  
+und erleiden niemals Abzüge aufgrund der Bewegung im Wasser. 
+Wasserabhängigkeit: Hat ein Ishi Tib nicht innerhalb von 24 Stunden in Salzwasser gebadet, so 
+senkt sich sein Wundenlimit um 2 Punkte. Dieser Zustand verschwindet erst wieder nach einem 
+Salzwasserbad. 
+ 
+Ithorianer (90 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 1, Intelligenz: 2, List: 2, Willenskraft: 3, Charisma: 2 
+Wundenlimit: 9 + Stärke Erschöpfungslimit: 12 + Willenskraft 
+1 Rang in Überleben (nicht höher als 2 während der Erschaffung). 
+Ithorianischer Schallschrei: Ithorianer erhalten folgende natürliche Waffe hinzu: Schallschrei 
+(Widerstandskraft): Schaden 6; Kritisch 4; Explosion 3, Erschütterung 1, Langsames Feuern, 
+Betäubungsschaden; jeder Einsatz dieser Waffe beschert dem Helden 3 Erschöpfung. 
+ 
+  
+
+Jawa (120 Anfangs-Erfahrungspunkte) 
+Stärke: 1, Gewandtheit: 2, Intelligenz: 2, List: 3, Willenskraft: 2, Charisma: 1 
+Wundenlimit: 8 + Stärke Erschöpfungslimit: 8 + Willenskraft 
+1 Rang in Verhandeln oder Infiltration (nicht höher als 2 während der Erschaffung). 
+Clevere Händler: Jawas könnten bei Proben auf Verhandeln ihre List anstelle ihres  
+Charismas nutzen. 
+ 
+Kaminoaner  (100 Anfangs-Erfahrungspunkte) 
+Stärke:1, Gewandtheit: 2, Intelligenz: 3, List: 2, Willenskraft: 3, Charisma: 2 
+Wundenlimit: 9 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Medizin (höchstens Rang 2 während der Erschaffung). 
+Ausdruckslos: Ein Kaminoaner erhält einen  bei Charmproben. Andere erhalten gegen einen 
+Kaminoaner einen  auf soziale Proben. 
+ 
+Kalleraner (90 Anfangs-Erfahrungspunkte) 
+Stärke: 3, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 1 
+Wundenlimit: 8 + Stärke Erschöpfungslimit: 12 + Willenskraft 
+1 Rang in Straßenwissen (nicht höher als 2 während der Erschaffung). 
+Sensible Fühler: Kalleraner erhalten das Talent Geschärfte Sinne bei der Erschaffung. 
+ 
+ Karkarodon (90 Anfangs-Erfahrungspunkte) 
+Stärke: 3, Gewandtheit: 2, Intelligenz: 1, List: 2, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 12 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Athletik (nicht höher als 2 während der Erschaffung). 
+Amphibisch: Karkarodon können unter Wasser ohne Einschränkungen atmen  
+und erleiden niemals Abzüge aufgrund der Bewegung im Wasser. 
+Kiefer: Führt ein Karkarodon eine Handgemengeprobe aus, um Schaden anzurichten, so richtet 
+dieser Angriff +1 Schaden an und hat eine kritische Trefferschwelle von 3. 
+ 
+Kel Dor (100 Anfangs-Erfahrungspunkte)  
+Stärke: 1, Gewandtheit: 3, Intelligenz: 2, List: 2, Willenskraft: 3, Charisma: 2 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Wissen: Allgemeinbildung (höchstens Rang 2 zur Erschaffung). 
+Nachtsicht: Kel Dor können bis zu aufgrund von Dunkelheit negieren. 
+Atmosphärische Voraussetzung: Kel Dor müssen eine spezielle Maske außerhalb ihrer 
+Heimatamosphäre tragen, um sehen und atmen zu können. Sie beginnen das Spiel mit einer 
+solchen Antitox-Maske. Sauerstoff wird für sie als gefährliche Atmosphäre der Stufe 8 behandelt. 
+Dafür können sie bis zu 5 Minuten im Vakuum überleben, bevor sie die negativen Auswirkungen 
+erleiden.  
+  
+Klatooinianer (100 Anfangs-Erfahrungspunkte)  
+Stärke: 2, Gewandtheit: 3, Intelligenz: 2, List: 2, Willenskraft: 1, Charisma: 2 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in 1 Nicht-Berufs-Fertigkeiten (höchstens Rang 2 zur Erschaffung). 
+1 Rang in Handgemenge, leichte Fernkampfwaffen oder schwere Fernkampfwaffen  
+(höchstens Rang 2 zur Erschaffung) 
+ 
+Klon (100 Anfangs-Erfahrungspunkte)  
+Stärke: 2, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 11 + Stärke Erschöpfungslimit: 11 + Willenskraft 
+1 Rang in Kriegsführung und Widerstandskraft (höchstens Rang 2 zur Erschaffung). 
+1 Rang im Talent Körperliches Training. 
+ 
+Kubaz (100 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 3, Charisma: 1 
+Wundenlimit: 9 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Heimlichkeit oder Überleben (höchstens Rang 2 während der Erschaffung). 
+Verbesserte Sicht: Ein Kubaz kann bis zu  von Proben bei Fernkampf oder Wahrnehmung 
+abziehen, die aufgrund von Tarnung oder passenden Umweltfaktoren auftreten (nicht aber wegen 
+Verteidigung). 
+ 
+ 
+  
+
+Kyuzo (90 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 3; Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 1 
+Wundenlimit: 11 + Stärke Erschöpfungslimit: 11 + Willenskraft 
+1 Rang in Körperbeherrschung (höchstens Rang 2 während der Erschaffung). 
+Dichte Muskulatur: Kyuzo können als Manöver einmal pro Runde 3 Erschöpfung  
+erleiden, um horizontal oder vertikal zu einem Ort innerhalb mittlerer Reichweite  
+zu springen.  
+ 
+Lannik (100 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 1, Intelligenz: 3, List: 2, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 8 + Stärke Erschöpfungslimit: 12 + Willenskraft 
+1 Rang in Straßenwissen (höchstens Rang 2 während der Erschaffung). 
+Unbezwingbar: Ein Lannik kann bis zu  von Proben entfernen, die durch kritische Wunden, 
+dem Zustand Desorientiert oder Angst hinzugefügt wurden. 
+ 
+ Lasat (90 Anfangs-Erfahrungspunkte) 
+Stärke: 3, Gewandtheit: 3, Intelligenz: 2, List: 1, Willenskraft: 2, Charisma: 1 
+Wundenlimit: 12 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Altes Wissen oder Handgemenge (höchstens Rang 2 zur Erschaffung). 
+Kletterfüße: Ein Lasat kann sich auf vertikalen Oberflächen bewegen, als wären diese Horizontal. 
+ 
+Mellitos (100 Anfangs-Erfahrungspunkte) 
+Stärke: 3, Gewandtheit: 1, Intelligenz: 2, List: 2, Willenskraft: 1, Charisma: 2 
+Wundenlimit: 9 + Stärke Erschöpfungslimit: 11 + Willenskraft 
+1 Rang in Wahrnehmung (höchstens Rang 2 während der Erschaffung). 
+Sehen ohne Sicht: Melittos brauchen zum Wahrnehmen ihrer Umwelt kein Licht und sie erhalten 
+auch keine Abzüge auf Wahrnehmungs- oder Kampfproben aufgrund von Dunkelheit oder anderer, 
+passender Umweltfaktoren. 
+Abhängig von Toxinen: Melittos vertragen nur die mit Giften angereicherte Luft ihrer Heimatwelt. 
+Sie starten mit einem Atemgerät, angereichert mit den entsprechenden Toxinen; Umgebung mit 
+Sauerstoff wirkt für sie ohne Atemgerät wie gefährliche Umwelt mit einer Stufe von 6.  
+ 
+Mensch (110 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in 2 verschiedenen, Nicht-Berufs-Fertigkeiten (höchstens Rang 2 zur Erschaffung). 
+ 
+Mensch - Corellia (110 Anfangs-Erfahrungspunkte) 
+Stärke:2, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Pilot (Planetar) oder Pilot (Weltraum) 
+(höchstens Rang 3 zur Erschaffung). 
+ 
+Mensch - Mandalore (105 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 11 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in 1 Kampffertigkeit oder jeweils 1 Rang in zwei  
+Wissensfertigkeiten (höchstens Rang 2 während der Erschaffung). 
+ 
+Mikkianer (100 Anfangs-Erfahrungspunkte) 
+Stärke: 1, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 3, Charisma: 2 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 11 + Willenskraft 
+1 Rang in Disziplin (höchstens Rang 2 während der Erschaffung). 
+Mikkianer erhalten einen  auf alle Wahrnehmungsproben.  
+ 
+Mirilaner (100 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 3, Intelligenz: 2, List: 1, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 11 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Disziplin (höchstens Rang 2 während der Erschaffung). 
+1 Rang in Coolness (nicht höher als 2 während der Erschaffung). 
+ 
+  
+
+Mon Calamari (100 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 2, Intelligenz: 3, List: 1, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Allgemeinbildung (höchstens Rang 2 während der Erschaffung). 
+Amphibisch: Mon Calamari können unter Wasser ohne Einschränkungen atmen  
+und erleiden niemals Abzüge aufgrund der Bewegung im Wasser. 
+ 
+Mustafarianer (100 Anfangs-Erfahrungspunkte) 
+Stärke:2, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 1 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+Wenn ein Mustafarianer Abzüge aufgrund von trockener oder heißer Umgebung  
+erhält, so kann er bis zu bei diesen Proben ignorieren. 
+Nordmustafarianer beginnen mit 1 Rang im Talent Auge für Details (kann Erschöpfung bis zum 
+Rang einsetzen, um bei Computertechnik- und Mechanikproben  in  umzuwandeln). 
+Südmustafarianer beginnen mit 1 Rang im Talent Belastbarkeit (+1 auf Absorption je Rang). 
+ 
+Muun (90 Anfangs-Erfahrungspunkte) 
+Stärke:2, Gewandtheit: 2, Intelligenz: 3, List: 3, Willenskraft: 1, Charisma: 1 
+Wundenlimit: 9 + Stärke Erschöpfungslimit: 9 + Willenskraft 
+1 Rang in Allgemeinbildung und Kernwelten (höchstens Rang 2 während  
+der Erschaffung). 
+Ein Muun erhält 1000 Credits, die er erst nach der Charaktererschaffung  
+nutzen kann. 
+ 
+Nautolaner (100 Anfangs-Erfahrungspunkte) 
+Stärke: 3, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 1, Charisma: 2 
+Wundenlimit: 11 + Stärke Erschöpfungslimit: 9 + Willenskraft 
+1 Rang in Athletik (höchstens Rang 2 während der Erschaffung). 
+Amphibisch: Nautolaner können unter Wasser ohne Einschränkungen atmen  
+und erleiden niemals Abzüge aufgrund der Bewegung im Wasser. 
+ 
+Neimodianer (90 Anfangs-Erfahrungspunkte) 
+Stärke: 1, Gewandtheit: 2, Intelligenz: 3, List: 3, Willenskraft: 1, Charisma: 2 
+Wundenlimit: 9 + Stärke Erschöpfungslimit: 11 + Willenskraft 
+1 Rang in Verhandeln oder Täuschung (höchstens Rang 2 bei der Erschaffung). 
+ 
+Nikto (100 Anfangs-Erfahrungspunkte) 
+Stärke: 3, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 1 
+Wundenlimit: 11 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+Zudem muss eine Subspezies gewählt werden: 
+Rote Nikto: 
+ 1 Rang in Widerstandskraft (nicht höher als 2 während der Erschaffung). 
+ Wenn rote Nikto Abzüge aufgrund von trockener oder heißer Umgebung  
+erhalten, so können sie 1 von diesen Proben ignorieren. 
+ 
+Grüne Nikto: 
+ 1 Rang in Körperbeherrschung (nicht höher als 2 während der Erschaffung). 
+Grüne Nikto erhalten einen  auf Athletikproben beim Erklettern von Bäumen oder 
+ähnlichen Oberflächen  
+Grüne Nikto verfügen über Klauen (Handgemenge, Stärke +1 Wunden, Kritisch 3). 
+ 
+Berg-Nikto: 
+ 1 Rang in Überleben (nicht höher als 2 während der Erschaffung). 
+ Berg-Nikto beginnen mit dem Talent Naturbursche. 
+ 
+Blasse Nikto: 
+ 1 Rang in Athletik (nicht höher als 2 während der Erschaffung). 
+Halbamphibisch: Blasse Nikto können für Stärke x2 Runden die Luft anhalten und erleiden 
+niemals Bewegungsabzüge wegen der Bewegung im Wasser. 
+ 
+Süd-Nikto: 
+ 1 Rang in Wahrnehmung (nicht höher als 2 während der Erschaffung). 
+Süd-Nikto erhalten einen  auf Wahrnehmungs- und Wachsamkeitsproben, um 
+Geräusche zu hören.  
+ 
+  
+
+Pantoraner (110 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 1, Charisma: 3 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 11 + Willenskraft 
+1 Rang in Coolness oder Verhandeln (höchstens Rang 2 während der Erschaffung). 
+Kälteanpassung: Wenn ein Pantoraner Abzüge aufgrund von kalter Umgebung erhält,  
+so kann er einen von diesen Proben ignorieren. 
+ 
+Pau ́aner (95 Anfangs-Erfahrungspunkte) 
+Stärke: 1, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 3, Charisma: 2 
+Wundenlimit: 12 + Stärke Erschöpfungslimit: 8 + Willenskraft 
+1 Rang in Einschüchtern oder Verhandeln (höchstens Rang 2 während der Erschaffung). 
+Sensibles Gehör: Pau ́aner erhalten einen  zu allen Proben auf Wachsamkeit und 
+Wahrnehmung, solang sie Schutzkapseln für ihre Ohren tragen. Ohne diese erhalten sie den 
+Bonus nicht, sondern bekommen  auf Wachsamkeits- und Wahrnehmungsproben.  
+ 
+Phydolon (100 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 3, Charisma: 1 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Disziplin oder Coolness (höchstens Rang 2 während der Erschaffung). 
+Symbiotische Widerstandskraft: Erholt sich ein Phydolon natürlich von Wunden, so regeneriert er 
+jede Nacht 1 zusätzliche Wunde. Er kann Erholungswürfe von kritischen Wunden bereits nach 1 
+Nacht versuchen (anstelle von 1 Woche). 
+Symbiotische Isolation: Hält sich kein anderer Phyodolon in seiner Nähe auf, so regeneriert er am 
+Ende einer Begegnung immer 1 Erschöpfung weniger (mindestens aber 1 Erschöpfung).  
+ 
+Polis Massaner (90 Anfangs-Erfahrungspunkte für Polis Massaner mit Stimmbändern, ansonsten 100 EP) 
+Stärke:1, Gewandtheit: 2, Intelligenz: 3, List: 2, Willenskraft: 3, Charisma: 1 
+Wundenlimit: 8 + Stärke Erschöpfungslimit: 11 + Willenskraft 
+1 Rang in Medizin (höchstens Rang 2 während der Erschaffung). 
+Keine Stimmbänder: Die Mehrheit der Polis Massaner verfügt nicht über Stimmbänder. 
+Telepathie: Auf kurze Entfernung kann ein Polis Massaner mit anderen Wesen durch eine Form 
+der Telepathie kommunizieren – dabei können alle Lebewesen innerhalb dieser Reichweite die 
+„Worte“ des Massaners hören. Nur mit Wesen, die er berührt, kann er im Stillen und privat sich 
+verständigen.  
+ 
+Quarren (95 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 2, Intelligenz: 1, List: 2, Willenskraft: 3, Charisma: 2 
+Wundenlimit: 11 + Stärke Erschöpfungslimit: 8 + Willenskraft 
+1 Rang in Verhandeln (nicht höher als 2 während der Erschaffung). 
+Amphibisch: Quarren können unter Wasser ohne Einschränkungen atmen  
+und erleiden niemals Abzüge aufgrund der Bewegung im Wasser. 
+Tintenstoß: Einmal pro Begegnung kann ein Quarren 2 Erschöpfung erleiden, um einem Gegner 
+innerhalb kurzer Reichweite einen  (unter Wasser: ) auf eine Kampfprobe zu geben. 
+  
+Quermianer (85 Anfangs-Erfahrungspunkte) 
+Stärke:1, Gewandtheit: 2; Intelligenz: 3, List: 2, Willenskraft: 2, Charisma: 1 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Wahrnehmung (nicht höher als 2 während der Erschaffung). 
+Zusätzliche Gliedmaße: Quermianer erhalten ein zusätzliches, kostenloses Manöver in jedem ihrer 
+Züge, können aber weiterhin nicht mehr als 2 Manöver pro Zug durchführen.  
+ 
+Rodianer (100 Anfangs-Erfahrungspunkte) 
+Stärke:2, Gewandtheit: 3, Intelligenz: 2, List: 2, Willenskraft: 1, Charisma: 2 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Überleben (höchstens Rang 2 während der Erschaffung). 
+Rodianer beginnen mit 1 Rang im Talent Fährtenleser. 
+ 
+Sakiyaner (80 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 2, Intelligenz: 3, List: 2, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 8 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Wahrnehmung oder Wachsamkeit (höchstens Rang 2 während der  
+Erschaffung). 
+Sakiyaner beginnen mit 1 Rang im Talent Fährtenleser. 
+ 
+  
+
+Sathari (100 Anfangs-Erfahrungspunkte) 
+Stärke: 1, Gewandtheit: 3, Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 8 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Körperbeherrschung (höchstens Rang 2 während der Erschaffung). 
+Gleiter: Ein Sathari kann sicher aus jeder Höhe fallen und kleine Gruben  
+oder Entfernungen überbrücken, während er gleitet. Während er bei  
+Bewusstsein ist, erleidet er keinen Fallschaden.  
+ 
+Selonianer (80 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 3, Intelligenz: 2, List: 1, Willenskraft: 3, Charisma: 1 
+Wundenlimit: 11 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Körperbeherrschung (nicht höher als 2 während der Erschaffung). 
+Infravision: Selonianer können alle aufgrund von Dunkelheit negieren. 
+Schwanzschlag (Handgemenge, basierend auf Gewandtheit: Schaden Kraft +1, Kritisch 5, 
+Reichweite Nahkampf, Desorientierung 2, Niederwerfen – benötigt  zum aktivieren).  
+ 
+Shistavanen (80 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 3, Intelligenz: 3, List: 2, Willenskraft: 1, Charisma: 1 
+Wundenlimit: 12 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Handgemenge oder Überleben (höchstens Rang 2 bei Erschaffung). 
+Instinkte: Wenn ein Shistavanen auf Initiative würfelt, kann er seinen Rang in  
+Überleben anstelle von dem in Disziplin oder Coolness nutzen. 
+ 
+Skakoaner  (80 Anfangs-Erfahrungspunkte) 
+Stärke:2, Gewandtheit: 2, Intelligenz: 3, List: 1, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 8 + Willenskraft 
+1 Rang in Allgemeinbildung (höchstens Rang 2 während der Erschaffung). 
+Methanatmer: Ein Skakoaner erhält zu Spielbeginn einen Druckanzug (Absorption 2, Last 3, 3 AP, 
+kann nur auf Skako erworben werden und kostet soviel wie eine Laminatrüstung, kann nicht von 
+anderen Spezies getragen werden) und ein Methan-Atemgerät. Standardluft und Druck gelten für 
+einen Skakoaner als giftige Atmosphäre der Stufe 6. 
+ 
+Sullustaner (100 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 3, Intelligenz: 2, List: 1, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Astronavigation (höchstens Rang 2 während der Erschaffung). 
+Sullustaner beginnen mit einem Rang im Talent Pilotenass. 
+ 
+Thisspiasianer (100 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 3, Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 1 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 8 + Willenskraft 
+1 Rang in Disziplin (höchstens Rang 2 während der Erschaffung). 
+Ruhe und Mediation: Ein Thisspiasianer muss nur 2 Stunden ruhen, um alle Erschöpfung zu 
+regenerieren (er kann aber nicht mehrmals täglich ruhen). Einmal je Spielsitzung kann er für 10 
+Minuten meditieren, um das Doppelte seines Rangs in Disziplin an Erschöpfung zu regenerieren. 
+ 
+Tholotianer (95 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Xenologie (höchstens Rang 2 während der Erschaffung). 
+Kulturelle Anpassungsfähigkeit: Führt ein Tholotianer eine soziale Probe mit einem Nicht-
+Tholotianer durch, so erhält er hierbei einen automatischen .  
+Natürliche Wurzeln: Bei einer Probe, um Erschöpfung zu regenerieren, die in wilder oder 
+natürlicher Umgebung gemacht wird, heilt der Tholotianer 1 zusätzliche Erschöpfung.   
+ 
+Tognath  (95 Anfangs-Erfahrungspunkte) 
+Stärke:2, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 3, Charisma: 1 
+Wundenlimit: 9 + Stärke Erschöpfungslimit: 9 + Willenskraft 
+Kybernetik: Durch Implantate und spezielle Linsen erhält ein Tognath je 1 Rang in 
+Körperbeherrschung und Wahrnehmung (höchstens Rang 2 während der Erschaffung).Dies gilt als 
+1 kybernetisches Implantat. 
+Primitive Nerven: Andere erhalten bei Einschüchterungsproben gegenüber einem Tognath. 
+Atmosphärische Voraussetzung: Kel Dor müssen eine spezielle Maske außerhalb ihrer 
+Heimatamosphäre tragen, um sehen und atmen zu können. Sie beginnen das Spiel mit einer 
+solchen Antitox-Maske. Sauerstoff wird für sie als gefährliche Atmosphäre der Stufe 5 behandelt. 
+Dafür können sie bis zu 5 Minuten im Vakuum überleben, bevor sie die negativen Auswirkungen 
+erleiden.  
+ 
+  
+
+Togruta (100 Anfangs-Erfahrungspunkte) 
+Stärke: 1, Gewandtheit: 2, Intelligenz: 2, List: 3, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Wahrnehmung (höchstens Rang 2 während der Erschaffung). 
+Rudelinstinkte: Wenn ein Togruta das Manöver Andere unterstützen durchführt, erhält  
+jener einen  zusätzlich. 
+ 
+Toydarianer (90 Anfangs-Erfahrungspunkte) 
+Stärke:1, Gewandtheit: 1, Intelligenz: 2, List: 2, Willenskraft: 3, Charisma: 3 
+Wundenlimit: 9 + Stärke Erschöpfungslimit: 12 + Willenskraft 
+Flugfähig: Können zusätzliche Manöver-Kosten aufgrund von Hindernissen in  
+der Umwelt ignorieren. 
+Klein: Toydarianer haben eine Silhouette von 0. 
+ 
+Tuskenräuber (105 Anfangs-Erfahrungspunkte) 
+Stärke:3, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 1 
+Wundenlimit: 11 + Stärke Erschöpfungslimit: 11 + Willenskraft 
+1 Rang in Überleben (höchstens Rang 2 während der Erschaffung). 
+Bantha-Reiter: Sandleute erhalten einen automatischen  auf Überlebens- und Athletikproben, um 
+ein Bantha zu führen. 
+Sandleute reduzieren die Schwierigkeit bei allen Proben auf Überleben oder Widerstandskraft 
+einmal, um extreme Hitze oder Auskommen ohne Wasser aushalten zu können.  
+ 
+Twi ́lek (100 Anfangs-Erfahrungspunkte) 
+Stärke:1, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 3 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 11 + Willenskraft 
+1 Rang in Charme oder Täuschung (höchstens Rang 2 während der Erschaffung). 
+Wenn ein Twi ́lek Abzüge aufgrund von trockener oder heißer Umgebung erhält,  
+so kann er von diesen Proben ignorieren. 
+ 
+Trandoshaner (90 Anfangs-Erfahrungspunkte) 
+Stärke:3, Gewandtheit: 1, Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 12 + Stärke Erschöpfungslimit: 9 + Willenskraft 
+1 Rang in Wahrnehmung (höchstens Rang 2 während der Erschaffung). 
+Will der Trandoshaner mit Handgemenge einem Gegner schaden, so richten diese Angriffe mit 
+seinen Klauen Stärke +1 Schaden an mit einem kritischen Wert von 3. 
+Regeneriert ein Trandoshaner aufgrund von Ruhe o. Aufenthalt in Bacta-Tank mind. 1 Wunde, so 
+regeneriert er 1 zusätzliche. Dies geschieht nicht bei sonstiger mediz. Hilfe (Stimpacks oder Erste-
+Hilfe). Trandoshaner können verlorene Gliedmaßen regenerieren (Dauer mindestens 1 Monat). 
+ 
+Umbaraner (100 Anfangs-Erfahrungspunkte) 
+Stärke:2, Gewandtheit: 2; Intelligenz: 2, List: 2, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Täuschung (höchstens Rang 2 während der Erschaffung).. 
+Bei Proben auf Charme, Täuschung und Verhandeln, erhält ein Umbaraner  hinzu. 
+Nachtsicht: Umbaraner können bis zu aufgrund von Dunkelheit negieren.  
+Sie erhalten einen  auf Fertigkeitsproben, wenn sie sich in strahlendem,  
+natürlichen Licht aufhalten.  
+ 
+Verpine (80 Anfangs-Erfahrungspunkte) 
+Stärke:2, Gewandtheit: 3, Intelligenz: 3, List: 1, Willenskraft: 2, Charisma: 1 
+Wundenlimit: 9 + Stärke Erschöpfungslimit: 12 + Willenskraft 
+1 Rang in Mechanik (höchstens Rang 2 während der Erschaffung). 
+Mikrovision: Ein Verpine kann sogar mikroskopisch kleine Details wahrnehmen.  
+Untersucht er ein Objekt genau, erhält er einen  auf seine Wahrneh- 
+mungsprobe. 
+Radiowellenkommunikation: Ein Verpine kann Radiowellen wahrnehmen und aussenden, wodurch 
+er sich im Stillen mit anderen Verpinen und speziell eingestellten Kommunikatoren im Radius von 
+100km unterhalten kann. 
+ 
+Vurk (100 Anfangs-Erfahrungspunkte) 
+Stärke: 2, Gewandtheit: 2, Intelligenz: 2, List: 1, Willenskraft: 2, Charisma: 3 
+Wundenlimit: 11 + Stärke Erschöpfungslimit: 11 + Willenskraft 
+1 Rang in Verhandeln (nicht höher als 2 während der Erschaffung). 
+Amphibisch: Quarren können unter Wasser ohne Einschränkungen atmen  
+und erleiden niemals Abzüge aufgrund der Bewegung im Wasser. 
+Kaltblüter: Ein Vurk erhält einen zusätzlichen  auf alle Proben in kaltem Klima. 
+  
+  
+
+Weequay (90 Anfangs-Erfahrungspunkte) 
+Stärke:3, Gewandtheit: 2; Intelligenz: 1, List: 3, Willenskraft: 2, Charisma: 1 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 9 + Willenskraft 
+1 Rang in Athletik oder Widerstandskraft (höchstens Rang 2 während der Erschaffung).. 
+Kommunikationspheromone: Weequay können sich mit anderen ihrer Spezies auf  
+kurze Distanz mittels Pheromonen verständigen. Dies kann von anderen nicht entdeckt werden. 
+ 
+Wookie (90 Anfangs-Erfahrungspunkte) 
+Stärke:3, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 1, Charisma: 2 
+Wundenlimit: 14 + Stärke Erschöpfungslimit: 8 + Willenskraft 
+1 Rang in Handgemenge (höchstens Rang 2 während der Erschaffung). 
+Wookie-Zorn: Hat ein Wookie Schaden erlitten, so verursachen seine Angriffe in Handgemenge 
+und Nahkampfwaffen +1 Schaden. Hat er eine kritische Wunde, so verursachen sie +2 Schaden. 
+ 
+Wiphid (80 Anfangs-Erfahrungspunkte) 
+Stärke:3, Gewandtheit: 2, Intelligenz: 2, List: 1, Willenskraft: 2, Charisma: 2 
+Wundenlimit: 12 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Überleben (höchstens Rang 2 während der Erschaffung). 
+Überlebenskünstler: Wiphid erhalten einen automatischen  auf Überlebenspro- 
+ben und können mehrere Wochen ohne Nahrung auskommen. 
+Stoßzähne: Die Stoßzähne eines Wiphid haben als Handgemengewaffe folgende Werte:  
+Schaden +2; Kritisch 4, Tödlich 1. 
+ 
+Zabrak  (100 Anfangs-Erfahrungspunkte) 
+Stärke:2, Gewandtheit: 2, Intelligenz: 2, List: 2, Willenskraft: 3, Charisma: 1 
+Wundenlimit: 10 + Stärke Erschöpfungslimit: 10 + Willenskraft 
+1 Rang in Überleben (höchstens Rang 2 während der Erschaffung). 
+Furchterregende Gesichtszüge: Ein Zabrak erhält  auf Einschüchterungsproben. 
+ 
+Xexto (85 Anfangs-Erfahrungspunkte) 
+Stärke:1, Gewandtheit: 3; Intelligenz: 2, List: 2, Willenskraft: 1, Charisma: 2 
+Wundenlimit: 9 + Stärke Erschöpfungslimit: 9 + Willenskraft 
+1 Rang im Talent Selbstbewusstsein. 
+Zusätzliche Gliedmaße: Xexto erhalten ein zusätzliches, kostenloses Manöver in jedem ihrer Züge, 
+können aber weiterhin nicht mehr als 2 Manöver pro Zug durchführen.  
+ 
+ 
+ 
+ 
+ 
+             
+
+4. Beruf des Charakters festlegen 
+Der  Spieler  wählt  einen der  vorhandenen Berufe für  seinen Helden. In  vier  der  beim  Beruf angegebenen 
+acht Fertigkeiten erhält er 1 Rang. Bei den  unterstrichenen Berufen,  welche  Machtwert  1  neben sechs 
+Berufsfertigkeiten  gewähren,  erhält  der  Held  nur  in  drei  der  sechs  angegebenen  Fertigkeiten  1  Rang. Es 
+gibt folgende Berufe und dazugehörige Spezialisierungen: 
+ 
+Ass: Astronavigation, Coolness, Mechanik, Pilot (Planetar), Pilot (Weltraum), Wahrnehmung, Artillerie, 
+leichte Fernkampfwaffen 
+- Bestienreiter: Athletik, Überleben, Wahrnehmung, Xenologie  
+- Fahrer: Coolness, Mechanik, Pilot (Planetar), Artillerie  
+- Geschützmeister: Disziplin, Widerstandskraft, Artillerie, schwere Fernkampfwaffen  
+- Pilot: Astronavigation, Pilot (Planetar), Pilot (Weltraum), Artillerie 
+- Rigger: Mechanik, Widerstandskraft, Artillerie, Unterwelt  
+- Teufelskerl: Coolness, Körperbeherrschung, Pilot (Planetar), Pilot (Weltraum)  
+ 
+Diplomat: Charme,  Führungsqualität,  Täuschung,  Verhandlung,  Allgemeinbildung,  Äußerer  Rand, 
+Kernwelten, Xenologie 
+- Advokat: Einschüchterung, Täuschung, Verhandeln, Wachsamkeit 
+- Analyst: Computertechnik, Wahrnehmung, Allgemeinbildung, Kriegsführung 
+- Aufwiegler: Einschüchterung, Straßenwissen, Täuschung, Unterwelt 
+- Botschafter: Charme, Disziplin, Verhandlung, Kernwelten 
+- Propagandist: Charme, Täuschung, Wahrnehmung, Kriegsführung 
+- Quartiermeister: Computertechnik, Infiltration, Verhandlung, Wachsamkeit 
+ 
+Entdecker: Astronavigation,  Coolness,  Pilot  (Weltraum), Überleben, Wahrnehmung, Altes  Wissen, 
+Äußerer Rand, Xenologie 
+- Archäologe: Athletik, Disziplin, Allgemeinbildung, Altes Wissen 
+- Fahrer: Coolness, Mechanik, Pilot (Planetar), Artillerie  
+- Grenzwanderer: Astronavigation, Körperbeherrschung, Straßenwissen, Verhandeln 
+- Großwildjäger: Heimlichkeit, Überleben, schwere Fernkampfwaffen, Xenologie  
+- Händler: Täuschung, Verhandeln, Kernwelten, Unterwelt 
+- Kundschafter: Athletik, Medizin, Pilot (Planetar), Überleben 
+ 
+Gesandter: Machtwert 1, Coolness, Disziplin, Führungsqualitäten, Verhandeln, Allgemeinbildung, Altes 
+Wissen 
+- Niman-Adept: Disziplin, Führungsqualitäten, Verhandeln, Lichtschwerter 
+- Asket: Athletik, Disziplin, Widerstandskraft, Wachsamkeit 
+- Heiler: Disziplin, Medizin, Allgemeinbildung, Xenologie 
+- Lehrer: Führungsqualitäten, Wahrnehmung, Allgemeinbildung, Altes Wissen 
+- Schiedsmann: Verhandeln, Wahrnehmung, Xenologie, Lichtschwerter 
+- Weiser: Astronavigation, Charme, Coolness, Altes Wissen 
+ 
+Hüter: Machtwert    1,    Coolness,    Disziplin,    Wachsamkeit,    Widerstandskraft,    Handgemenge, 
+Nahkampfwaffen 
+- Aufseher: Handgemenge, Einschüchterung, Disziplin, Unterwelt 
+- Beschützer: Athletik, Medizin, Widerstandskraft, leichte Fernkampfwaffen 
+- Friedenswahrer: Disziplin, Führungsqualitäten, Pilot (Planetar), Wahrnehmung 
+- Kriegsführer: leichte Fernkampfwaffen, Führungsqualität, Wahrnehmung, Überleben 
+- Rüstmeister: Lichtschwerter, Mechanik, Widerstandskraft, Äußerer Rand 
+- Soresu-Verteidiger: Disziplin, Wachsamkeit, Lichtschwerter, Altes Wissen 
+ 
+Ingenieur: Athletik,   Computertechnik,   Mechanik,   Pilot   (Weltraum),  Wachsamkeit, Wahrnehmung, 
+leichte Fernkampfwaffen, Allgemeinbildung 
+- Droidenspezialist: Computertechnik, Coolness, Mechanik, Nahkampfwaffen  
+- Mechaniker: Infiltration, Mechanik, Pilot (Weltraum), Handgemenge 
+- Saboteur: Heimlichkeit, Infiltration, Körperbeherrschung, Mechanik  
+- Sappeur: Athletik, Mechanik, Überleben, Kriegsführung  
+- Schiffsbauer: Mechanik, Pilot (Weltraum), Allgemeinbildung, Artillerie 
+- Wissenschaftler: Computertechnik, Medizin, Allgemeinbildung, Altes Wissen  
+ 
+Jedi: Machtwert 1, Athletik, Coolness, Disziplin, Pilot (Weltraum), Altes Wissen, Lichtschwerter 
+- General: Pilot (Planetar), Wachsamkeit, Führungsqualität, Kriegsführung (erfordert Machtwert 2) 
+- Meister: Wahrnehmung, Charme, Kernwelten, Allgemeinbildung (erfordert Machtwert 3) 
+- Padawan: Körperbeherrschung, Mechanik, Wachsamkeit, Allgemeinbildung  
+- Ritter: Coolness, Führungsqualität, Verhandeln, Lichtschwerter (erfordert Machtwert 2) 
+  
+  
+
+Klonkrieger: Athletik,    Coolness,    Disziplin,    Medizin,    Wachsamkeit,    Handgemenge,    leichte 
+Fernkampfwaffen, schwere Fernkampfwaffen 
+- ARC-Truppler: Körperbeherrschung, Mechanik, Pilot (Planetar), Heimlichkeit 
+- Klon-Kommandant: Wahrnehmung, Führungsqualität, Kernwelten, Kriegsführung 
+- Klon-Offizier: Coolness, Führungsqualität, Äußerer Rand, Kriegsführung 
+- Klon-Pilot: Mechanik, Pilot (Planetar), Pilot (Weltraum), Artillerie 
+- Klon-Truppler: Wahrnehmung, Widerstandskraft, Artillerie, schwere Fernkampfwaffen 
+- Klon-Veteran: Widerstandskraft, Infiltration, Überleben, Nahkampfwaffen 
+ 
+Kolonist: Charme,   Führungsqualität,    Straßenwissen,    Täuschung,    Verhandeln,    Altes   Wissen, 
+Allgemeinbildung, Kernwelten  
+ - Darsteller: Charme, Körperbeherrschung, Täuschung, Nahkampfwaffen 
+- Doktor: Coolness, Medizin, Widerstandskraft, Allgemeinbildung 
+- Gelehrter: Wahrnehmung, Äußerer Rand, Unterwelt, Xenologie 
+- Geschäftsmann: Disziplin, Verhandeln, Allgemeinbildung, Unterwelt 
+- Marshall: Einschüchterung, Wachsamkeit, leichte Fernkampfwaffen Unterwelt 
+- Politiker: Charme, Einschüchterung, Täuschung, Kernwelten 
+ 
+Kommandant: Coolness,  Disziplin,  Einschüchterung,  Führungsqualität, Wachsamkeit, Wahrnehmung, 
+leichte Fernkampfwaffen, Kriegsführung 
+- Ausbilder: Disziplin, Medizin, schwere Fernkampfwaffen, Allgemeinbildung 
+- Gruppenführer: Mechanik, Pilot (Planetar), Pilot (Weltraum), Artillerie  
+- Kommodore: Astronavigation, Computertechnik, Äußerer Rand, Allgemeinbildung 
+- Repräsentant: Coolness, Führungsqualität, Verhandeln, Kernwelten 
+- Stratege: Computertechnik, Coolness, Wachsamkeit, Kriegsführung 
+- Taktiker: Disziplin, Führungsqualität, Handgemenge, schwere Fernkampfwaffen 
+ 
+Kopfgeldjäger: Athletik,    Pilot    (Planetar), Pilot    (Weltraum),    Straßenwissen,    Wachsamkeit, 
+Wahrnehmung, Handgemenge, schwere Fernkampfwaffen 
+- Assassine: Heimlichkeit, Infiltration, Nahkampfwaffen, schwere Fernkampfwaffen 
+- Kampfsportler: Athletik, Handgemenge, Disziplin, Körperbeherrschung 
+- Operator: Astronavigation, Pilot (Planetar), Pilot (Weltraum), Artillerie 
+- Powertech: Mechanik, Einschüchterung, Handgemenge, leichte Fernkampfwaffen  
+- Überlebenskünstler: Überleben, Wahrnehmung, Widerstandskraft, Xenologie 
+- Zielfahnder: Coolness, Infiltration, Verhandeln, Unterwelt  
+ 
+Krieger: Machtwert 1, Athletik, Coolness, Überleben, Wahrnehmung, Handgemenge, Nahkampfwaffen 
+- Herausforderer: Einschüchterung, Straßenwissen, leichte Fernkampfwaffen, Unterwelt 
+- Juyo Berserker: Einschüchterung, Disziplin, Lichtwerter, Nahkampfwaffen 
+- Koloss: Disziplin, Widerstandskraft, Handgemenge, Nahkampfwaffen 
+- Sternenjägerass: Astronavigation, Mechanik, Pilot (Weltraum), Artillerie 
+- Shii-Cho-Ritter: Athletik, Körperbeherrschung, Lichtschwerter, Nahkampfwaffen 
+- Stahlhand-Adept: Körperbeherrschung, Disziplin, Wachsamkeit, Handgemenge 
+  
+Mystiker: Machtwert   1,   Charme,   Einschüchterung,  Wachsamkeit,  Wahrnehmung,   Altes   Wissen, 
+Äußerer Rand 
+- Alchemist: Medizin, Widerstandskraft, Allgemeinbildung, Xenologie 
+- Magus: Einschüchtern, Disziplin, Medizin, Altes Wissen 
+- Makashi-Duellant: Charme, Coolness, Körperbeherrschung, Lichtschwerter 
+- Prophet: Charme, Einschüchtern, Führungsqualität, Täuschung 
+- Ratgeber: Charme, Straßenwissen, Täuschung, Verhandeln 
+- Seher: Disziplin, Überleben, Wachsamkeit, Altes Wissen 
+ 
+Schmuggler: Infiltration, Körperbeherrschung,    Pilot    (Weltraum),    Straßenwissen, Täuschung, 
+Wachsamkeit, Wahrnehmung, Unterwelt 
+- Dieb: Computertechnik, Heimlichkeit, Infiltration, Wachsamkeit 
+- Pilot: Astronavigation, Pilot (Planetar), Pilot (Weltraum), Artillerie 
+- Pistolenheld: Coolness, Einschüchterung, leichte Fernkampfwaffen, Äußerer Rand 
+- Schmeichler: Charme, Coolness, Führungsqualität, Verhandeln 
+- Schurke: Charme, Coolness, Täuschung, leichte Fernkampfwaffen 
+- Spieler: Computertechnik, Coolness, Infiltration, Täuschung 
+ 
+Söldner: Athletik,    Disziplin,    Pilot    (Planetar),    Wachsamkeit,   Widerstandskraft,    Handgemenge, 
+Nahkampfwaffen, leichte Fernkampfwaffen 
+- Leibwächter: Pilot (Planetar), Wahrnehmung, Artillerie, schwere Fernkampfwaffen 
+- Marodeur: Einschüchterung, Überleben, Widerstandskraft, Nahkampfwaffen  
+- Schwergewicht: Artillerie, schwere Fernkampfwaffen, Wahrnehmung, Widerstandskraft  
+- Soldat: Disziplin, Führungsqualität, Artillerie, schwere Fernkampfwaffen 
+- Sprengexperte: Computertechnik, Coolness, Infiltration, Mechanik 
+- Vollstrecker: Handgemenge, Einschüchterung, Straßenwissen, Unterwelt 
+
+ 
+Soldat: Athletik,     Medizin,     Überleben,     Handgemenge,     leichte     Fernkampfwaffen,     schwere 
+Fernkampfwaffen, Nahkampfwaffen, Kriegsführung 
+- Kommando: Handgemenge, Nahkampfwaffen, Überleben, Widerstandskraft  
+- Kriegsingenieur: Heimlichkeit, Überleben, Wahrnehmung, Äußerer Rand  
+- Mediziner: Medizin, Wachsamkeit, Widerstandskraft, Xenologie 
+- Schwergewicht: Artillerie, schwere Fernkampfwaffen, Wahrnehmung, Widerstandskraft  
+- Scharfschütze: Coolness, Wahrnehmung, leichte Fernkampfwaffen, schwere Fernkampfwaffen  
+- Vorreiter: Athletik, Coolness, Wachsamkeit, Widerstandskraft  
+ 
+Spion: Computertechnik,   Coolness,   Heimlichkeit,   Infiltration,   Körperbeherrschung,   Täuschung, 
+Wahrnehmung, Kriegsführung 
+- Hacker: Computertechnik, Heimlichkeit, Allgemeinbildung, Unterwelt 
+- Infiltrator: Infiltration, Straßenwissen, Täuschung, Nahkampfwaffen  
+- Kundschafter: Athletik Medizin,, Pilot (Planetar), Überleben 
+- Kurier: Athletik, Täuschung, Straßenwissen, Wachsamkeit 
+- Schläfer: Charme, Coolness, Disziplin, Allgemeinbildung 
+- Verhörspezialist: Charme, Einschüchterung, Medizin, Wahrnehmung 
+ 
+Sucher: Machtwert   1,   Pilot   (Planetar),   Pilot   (Weltraum),   Überleben,   Wachsamkeit, schwere 
+Fernkampfwaffen, Altes Wissen 
+- Ataru-Kämpfer: Athletik, Körperbeherrschung, Wahrnehmung, Lichtschwerter 
+- Einsiedler: Disziplin, Heimlichkeit, Überleben, Xenologie 
+- Jäger: Heimlichkeit, Körperbeherrschung, Wachsamkeit, schwere Fernkampfwaffen 
+- Navigator: Astronavigation, Wahrnehmung, Überleben, Äußerer Rand 
+- Wanderer: Medizin, Überleben, Widerstandskraft, leichte Fernkampfwaffen 
+- Scharfrichter: Disziplin, Wahrnehmung, Nahkampfwaffen, Schwere Fernkampfwaffen 
+ 
+Techniker: Astronavigation, Computertechnik,    Disziplin,    Körperbeherrschung,    Mechanik,    Pilot 
+(Planetar), Wahrnehmung, Äußerer Rand 
+- Cybertech: Athletik, Mechanik, Medizin, Wachsamkeit (optional: Kybernetik) 
+- Droidentechniker: Computertechnik, Coolness, Mechanik, Führungsqualität 
+- Illegaler Techie: Mechanik, Straßenwissen, Allgemeinbildung, Unterwelt 
+- Hacker: Computertechnik, Heimlichkeit, Allgemeinbildung, Unterwelt 
+- Modder: Mechanik, Pilot (Welltraum), Straßenwissen, Artillerie 
+- Mechaniker: Infiltration, Mechanik, Pilot (Weltraum), Handgemenge 
+ 
+Wächter: Machtwert   1,   Computertechnik,   Heimlichkeit,   Infiltration,   Täuschung,   Wahrnehmung, 
+Kernwelten 
+- Ermittler: Straßenwissen, Wahrnehmung, Allgemeinbildung, Unterwelt 
+- Handwerker: Astronavigation, Computertechnik, Mechanik, Allgemeinbildung 
+- Rennfahrer: Coolness, Körperbeherrschung, Pilot (Planetar), Pilot (Weltraum) 
+- Schatten: Heimlichkeit, Infiltration, Straßenwissen, Unterwelt 
+- Shien-Experte: Athletik, Infiltration, Widerstandskraft, Lichtschwerter 
+- Wache: Körperbeherrschung, Heimlichkeit, Wachsamkeit, Lichtschwerter 
+ 
+Allgemeine Spezialisierungen:  
+- Anhänger der Macht: Nahkampfwaffen, Disziplin, Altes Wissen, Wachsamkeit 
+- Erwachender Machtsensitiver: Machtwert 1 
+- Kadett der imperialen Armee: Führungsqualitäten, Pilot (Weltraum), Kriegsführung, Leichte 
+Fernkampfwaffen 
+- Klonsoldat im Ruhestand: Disziplin, Widerstandskraft, Wachsamkeit, Kriegsführung, schwere 
+Fernkampfwaffen, leichte Fernkampfwaffen 
+- Kommandant der Separatisten: Wachsamkeit, Einschüchtern, Führungsqualität, Kriegsführung 
+- Krieger der Death Watch: Mechanik, Pilot (Planetar), Einschüchtern, leichte Fernkampfwaffen 
+- Machtsensitiver Ausgestoßener: Machtwert 1 
+- Machtsensitiver im Exil: Machtwert 1 
+- Marineoffizier der Republik: Astronavigation, Disziplin, Führungsqualitäten, Kriegsführung 
+- Pirat: Einschüchterung, Täuschung, Infiltration, Unterweltwissen 
+- Plünderer: Mechanik, Wahrnehmung, Straßenwissen, Überleben 
+- Rekrut: Athletik, Disziplin, Überleben, Wachsamkeit 
+- Repräsentant der Republik: Coolness, Charme, Verhandeln, 1 Wissensfertigkeit nach Wahl 
+- Schiffskapitän: Charme, Führungsqualitäten, Pilot (Weltraum), Verhandeln 
+- Schwester der Nacht: Disziplin, Heimlichkeit, Überleben, Altes Wissen 
+- Senator: Charme, Täuschung, Verhandeln, Allgemeinbildung 
+- Überlebender Padawan: Machtwert 1 
+ 
+  
+
+ 
+5. Spezialisierung wählen 
+Der Spieler wählt  eine  Spezialisierung  innerhalb des  Berufs des Helden (siehe  Punkt  4). In 2 der bei  der 
+Spezialisierung  angegebenen Fertigkeiten erhält er 1 Rang. Hierdurch  könnte  er  bei  Überschneidungen 
+der Fertigkeiten von Spezialisierung und Beruf auf Rang 2 in einzelnen Gebieten kommen.  
+ 
+6. Erfahrungspunkte einsetzen 
+Nun   geht   es   darum,   seinen   Charakter   weiter   zu   individualisieren.   Hierzu   stehen   dem   Spieler 
+Erfahrungspunkte     in     verschiedener     Höhe     zu     (bestimmt     durch     Spezies     und     zusätzliche 
+Verpflichtungspunkte). Es  ist  aber  auch  möglich,  dass  ein  Spieler  nicht  sämtliche  Erfahrungspunkte 
+während der Erschaffung ausgibt, sondern sich noch welche für den späteren Einsatz aufbewahrt.  
+Zu Bedenken ist auch, dass im Laufe des Spiels nach der Charaktererschaffung die sechs Eigenschaften 
+nur noch mittels hochstufiger Talente permanent gesteigert werden können.  
+ 
+Änderung Kosten Anmerkungen 
+Zusätzliche Spezialisierung (innerhalb des Berufs) 
+oder allgemeine Spezialisierung 
+Anzahl der 
+aktuellen 
+Spezialisierungen 
+x10 + 10 
+ 
+Zusätzliche Spezialisierung (außerhalb des Berufs) 
+Anzahl der 
+aktuellen 
+Spezialisierungen 
+x10 + 20 
+ 
+1 Rang in einer Eigenschaft Neuer Rang x10 Höchstens Rang 5 
+1 Rang in einer Berufs- o. Spezialisierungs-
+Fertigkeit 
+Neuer Rang x5 Höchstens Rang 2 
+1 Rang in einer Fertigkeit außerhalb des eigenen 
+Berufs oder Spezialisierung 
+Neuer Rang x5 
++5 
+Höchstens Rang 2 
+1 Talent einer gewählten Spezialisierung 5 - 25 Kosten siehe jeweilige Tabelle 
+1 Machttalent oder eine Abzweigung dort (nur für 
+Helden mit mindestens Machtwert 1) 
+5 - 25 
+Kosten siehe jeweiliger 
+Machttalentbaum 
+ 
+ 
+ 
+7. Ausrüstung  
+Dem Helden stehen  500  Credits  (vielleicht  auch  mehr aufgrund  von  Abweichungen  bei  Verpflichtung, 
+Pflicht und Moralität gegenüber dem Anfangswert) für den Kauf von Ausrüstung zur Verfügung.  
+Danach erhält er 1W100 Credits an „Taschengeld“, welche er im Spiel erst einsetzen kann. 
+ 
+8. Abgeleitete Werte bestimmen 
+Wunden- und  Erschöpfungslimit werden  nun  gemäß  der  Spezies  des  Helden  sowie  dessen  bezüglicher 
+Attribute bestimmt,   ebenso   sein   Verteidigungs- (bestimmt    durch   die   Rüstung,   Talente sowie 
+Verteidigungshaltung im Kampf) und Absorptionswert (Stärke + Absorption der Rüstung). 
+ 
+9. Anfangsmotivation bestimmen 
+Es  gibt verschiedene grundlegende  Motivationen,  welche  sich  weiter  unterteilen. Auch  hier  kann  der 
+Spielleiter  entscheiden,  dass  die  Spieler  sich  diese  selbst  aussuchen  dürfen.  Die  roten  Zahlen  sind  für 
+einzelne  Berufe optional  bestimmt. Die erste Tabelle  eignet  sich  eher  für  Angehörige  einer  militärischen 
+Organisation. Deren Motivationen sind: 
+Glaube: Der  Held  wird  von  Glaubensgrundsätzen  geleitet,  die  er  mit  seiner  derzeitigen  Zugehörigkeit  in 
+Verbindung bringt (beispielsweise die der Rebellenallianz) oder aber eine Opposition zum Imperium birgt. 
+Dabei muss er seinen Glauben nicht zwangsweise an andere weitergeben, wird diesen aber immer wieder 
+in Wort und Tat erwähnen.  
+Verbindung: Eine bestimmte Verbindung ist es, die dem Helden Antrieb gibt oder aber ihn dazu ermutigt 
+die Rebellenallianz oder einer andere Gruppierung zu unterstützen.   
+Queste: Die  derzeitige  Zugehörigkeit  des  Helden  versucht  dieser  auszunutzen,  um  ihn  in  seiner  Queste 
+voranzubringen. Dabei könnte er aber noch andere Ziele verfolgen, die er als ebenso wichtig ansieht.  
+Überzeugung: Eine  Überzeugung  ist  etwas,  was  der  Held  für  sich  formuliert  hat,  woran  er  glaubt  und 
+wofür  er  einsteht.  Dabei  kann  er  seine  Überzeugung  direkt  zum  Ausdruck  bringen  oder  aber  auch  eher 
+verdeckt darauf hin arbeiten. 
+Beziehung: Diese Motivation begründet sich aus der Beziehung des Charakters zu jemanden, etwas oder 
+einem  Ort – dies  kann  positiv  (Liebe,  Sorge,  Erhalt  des  Ortes)  wie  auch  negativ  (Zerstörungswut,  Hass, 
+Rivalität) sein. Möglicherweise sind die Gefühle dafür auch nur einseitig. Sie könnte aus einer persönlichen 
+Überzeugung heraus oder einem von außen gelenkten Motivator entsprungen sein. 
+Konflikte: Der  Held  wird  von  Konflikten  angetrieben.  Diese  könnten  entweder  seinem  innersten  Wesen 
+entspringen oder aber durch besondere Ereignisse ausgelöst worden sein. Manche dieser Konflikte könnte 
+der Held auslösen wollen, während er andere eher beenden möchte.   
+
+ 
+ 
+W10 Basismotivation W% Spezielle Motivation 
+1-3 
+1-2 
+Glaube 
+01-10 Die Republik 
+  11-20 Die Ehre 
+  21-30 Den freien Handel 
+  31-40 Die Gerechtigkeit 
+  41-50 Die Rechte der Spezies 
+  51-60 Den Frieden 
+  61-70 Eine Religion/Philosophie 
+  71-80 Die Freiheit 
+  81-90 Die Ordnung 
+  91-00 Die Macht 
+    
+4-6 
+3-4 
+Verbindungen 
+01-10 Politisch 
+  11-20 Familie 
+  21-30 Militär 
+  31-40 Spionage 
+  41-50 Freunde 
+  51-60 Die Unterwelt 
+  61-70 Ökonomie 
+  71-80 Rivale 
+  81-90 Retter 
+  91-00 Liebesinteresse 
+    
+ 
+ 
+ 
+7-9 
+5-6 
+Queste 
+01-10 Vergebung 
+  11-20 Ruhm 
+  21-30 Rache 
+  31-40 Einfluss 
+  41-50 Rettung 
+  51-60 Die Jedi Ritter 
+  61-70 Freiheit 
+  71-80 Verlorene Schätze 
+  81-90 Aufgaben 
+  91-00 Die Sith 
+    
+7-9 
+Überzeugung 
+(Diplomat) 
+01-10 Macht korrumpiert 
+  11-20 Streben nach Perfektion 
+  21-30 Der Körper braucht einen Kopf 
+  31-40 Ordnung ins Chaos 
+  41-50 Niemals alleine 
+  51-60 Den Gefallen zurückgeben 
+  61-70 Sei Einzigartig 
+  71-80 Die Leute zählen auf mich 
+  81-90 Das Gleichgewicht muss wiederhergestellt werden 
+  91-00 Lebendige Erinnerung 
+    
+7-9 
+Beweggrund 
+(Kommandant) 
+01-10 Schuld 
+  11-20 Die Mission 
+  21-30 Koste es, was es wolle 
+  31-40 Befehlsgewalt über andere 
+  41-50 Seine Untergebenen 
+  51-60 Wiedergutmachung 
+  61-70 Das Spiel des Krieges 
+  71-80 Das eigene Ego 
+  81-90 Ruhestand 
+  91-00 Sein Glaube 
+
+    
+7-9 
+Beziehung 
+(Soldat) 
+01-10 Ort 
+  11-20 Lokale Zivilisten 
+  21-30 Freund aus Kindertagen 
+  31-40 Kameraden 
+  41-50 Geschwister  
+  51-60 Mentor 
+  61-70 Liebhaber 
+  71-80 Familie / Clan 
+  81-90 Objekt oder Technologie 
+  91-00 Rivale 
+    
+7-9 
+Konflikt 
+(Ass) 
+01-10 Chaos 
+  11-20 Gewaltsame Eroberung 
+  21-30 Beistand für die eigene Truppe 
+  31-40 Blutgeld / Professionalität 
+  41-50 Ehre im Kampf 
+  51-60 Der Beste im Kampf sein 
+  61-70 Rache 
+  71-80 Versuch, sich von etwas freikaufen zu können /  
+Sehnsucht nach Ruhestand 
+  81-90 Reines Adrenalin 
+  91-00 Lebensschuld 
+    
+10 Je ein Wurf auf zwei beliebige Kategorien  
+  
+  
+
+Die  nachfolgende  Tabelle  ist  eher  für  jene  Helden  geeignet,  die  ein  unabhängigeres  Leben  jenseits  der 
+großen Politik und Konflikte wünschen. Die einzelnen Motivationen sind: 
+Ambition:  Der Held wird von einem bestimmten Ziel angetrieben und strebt ein Ideal für sich selbst an – 
+dies kommt oft von ihm selbst, könnte abstrakt sein und möglicherweise auch egoistisch. Der Spieler sollte 
+das ultimative Ziel des Helden benennen. 
+Ideologie: Der Held wird von einer Motivation angetrieben, die in der Regel einer Gruppierung oder einem 
+Konzept entspringt. Diese Motivation ist ihm so wichtig, dass er dafür sogar große Risiken in Kauf nehmen 
+würde. Diese Motivation muss nicht für die Allgemeinheit zum Wohl oder für den Helden altruistisch sein. 
+Eine Erfüllung des Ziels könnte bei vielen möglicherweise auch Leid auslösen. 
+Beziehung: Diese Motivation begründet sich aus der Beziehung des Charakters zu jemanden, etwas oder 
+einem  Ort – dies  kann  positiv (Liebe,  Sorge,  Erhalt  des  Ortes)  wie  auch  negativ  (Zerstörungswut,  Hass, 
+Rivalität) sein. Möglicherweise sind die Gefühle dafür auch nur einseitig. Sie könnte aus einer persönlichen 
+Überzeugung heraus oder einem von außen gelenkten Motivator entsprungen sein. 
+Entdeckung: Der  Held  strebt  nach  etwas,  was  bislang  nicht  von  anderen  entdeckt  oder  aber  schon  von 
+vielen  vergessen  wurde.  Dabei  geht  es  meist  um  das  Entdecken  an  sich,  nicht  so  sehr  darum,  welche 
+Sache dies war – weshalb er sich immer wieder auf eine erneute Suche machen wird.  
+Konflikte: Der  Held  wird  von  Konflikten  angetrieben.  Diese  könnten  entweder  seinem  innersten  Wesen 
+entspringen oder aber durch besondere Ereignisse ausgelöst worden sein. Manche dieser Konflikte könnte 
+der Held auslösen wollen, während er andere eher beenden möchte.   
+Erschaffung: In  seinem  Herzen  ist  jeder  Kolonist  ein  Künstler  und  Freigeist – sei  es,  dass  er  Kunst 
+aufführt oder aber frei und kreativ denken muss, um ein Problem lösen oder seinen Gewinn maximieren zu 
+können.   
+Belohnung: Die Triebfeder des Schmugglers ist das, was am Ende rumkommt – dies könnte  Materielles 
+wie Credits sein oder aber auch etwas Ideelles (wie die Anerkennung seiner Crew). 
+ 
+W10 Basismotivation W% Spezielle Motivation 
+1-3 
+1-2 
+Ambition 
+01-10 Freundschaft 
+  11-20 Liebe 
+  21-30 Freiheit 
+  31-40 Gier 
+  41-50 Ruhm 
+  51-60 Status 
+  61-70 Kompetenz 
+  71-80 Wanderlust / Neugier 
+  81-90 Macht 
+  91-00 Religion / Spiritualität 
+    
+4-6 
+3-4 
+Ideologie 
+01-10 Religion / Spiritualität 
+  11-20 Wohltätigkeit 
+  21-30 Rechte der Nichtmenschen 
+  31-40 Lokalpolitik 
+  41-50 Sturz des Imperiums 
+  51-60 Kriminalität 
+  61-70 Freiheit 
+  71-80 Rechte der Droiden 
+  81-90 Kapitalismus 
+  91-00 Unterstützung des Imperiums 
+    
+7-9 
+5-6 
+Beziehung  
+01-10 Heimatort 
+  11-20 Haustier 
+  21-30 Freund aus Kindertagen 
+  31-40 Kameraden 
+  41-50 Geschwister  
+  51-60 Mentor 
+  61-70 Eltern 
+  71-80 Großfamilie / Clan 
+  81-90 Droiden-Gefährte 
+  91-00 Ehemaliger Feind 
+ 
+ 
+ 
+ 
+
+7-9 
+Entdeckung 
+(Entdecker) 
+01-10 Sich selbst, eigener Identität und Fähigkeiten 
+  11-20 (untergegangenen oder noch bestehenden) Zivilisationen 
+  21-30 Neuen Planeten 
+  31-40 Schätzen 
+  41-50 Geheimnissen 
+  51-60 Verlorenem oder verborgenem Wissen 
+  61-70  Ressourcen und Rohstoffen 
+  71-80 Technologie 
+  81-90 Verirrten und Gestrandeten 
+  91-00 Ein neuer Kick 
+ 
+7-9 
+Konflikt 
+(Söldner) 
+01-10 Chaos 
+  11-20 Gewaltsame Eroberung 
+  21-30 Beistand für die eigene Truppe 
+  31-40 Blutgeld / Professionalität 
+  41-50 Ehre im Kampf 
+  51-60 Der Beste im Kampf sein 
+  61-70 Rache 
+  71-80 Versuch, sich von etwas freikaufen zu können /  
+Sehnsucht nach Ruhestand 
+  81-90 Reines Adrenalin 
+  91-00 Lebensschuld 
+ 
+7-9 
+Erschaffung 
+(Kolonist) 
+01-12 Gesellschaft 
+  13-24 Heimstätte 
+  25-36 Vermächtnis 
+  37-48 Familie 
+  49-60 Kunst 
+  61-72 Heilmittel 
+  73-84 Das Verständnis untereinander 
+  85-00 Geschäft 
+ 
+7-9 
+Belohnung 
+(Schmuggler) 
+01-10 Credits 
+  11-20 Macht 
+  31-40 Sieg 
+  41-50 Erfolg entgegen aller Erwartungen 
+  51-60 Ruhm 
+  61-70 Anerkennung (unter seinesgleichen) 
+  71-80 Moral 
+  81-90 Nervenkitzel 
+  91-100 Unabhängigkeit 
+ 
+7-9 
+Innovation 
+(Techniker) 
+01-10 Herstellung 
+  11-20 Erfindung 
+  31-40 Modifikation 
+  41-50 Persönliche Verbesserung 
+  51-60 Nichts verschwenden, alles wiederverwerten 
+  61-70 Fasziniert von Technologie 
+  71-80 Technische Geschäftsinteressen 
+  81-90 Technologischer Historiker 
+  91-100 Technischer Rivale 
+ 
+ 
+10 
+10 
+Je ein Wurf auf zwei beliebige Kategorien 
+  
+  
+
+Die nun folgende Tabelle  ist  für machtsensitive Helden gedacht,  kann  aber  auch    von  anderen  gewählt 
+werden. Die einzelnen Motivationen sind: 
+Ambition:  Der Held wird von einem bestimmten Ziel angetrieben und strebt ein Ideal für sich selbst an – 
+dies kommt oft von ihm selbst, könnte abstrakt sein und möglicherweise auch egoistisch. Der Spieler sollte 
+das ultimative Ziel des Helden benennen. 
+Agenda: Jemand mit einer Agenda ist weniger getrieben von seinem Ziel, wenngleich er auch immer stetig 
+darauf  hinarbeitet.  Meist  hängt  er  dieser ein Leben  lang  an.  Falls  sich  deren  Anliegen  einmal  erfüllen 
+könnte, versuchen sie dieses zu erweitern oder darauf zu achten, dass er diesem weiterhin folgen kann.  
+Glaube: Der  Held  wird  von  Glaubensgrundsätzen  geleitet,  die  er  mit  seiner  derzeitigen  Zugehörigkeit  in 
+Verbindung bringt (beispielsweise die der Rebellenallianz) oder aber eine Opposition zum Imperium birgt. 
+Dabei muss er seinen Glauben nicht zwangsweise an andere weitergeben, wird diesen aber immer wieder 
+in Wort und Tat erwähnen.  
+Eid: Ein  Eid,  welchen  der  Held  geschworen  hat,  treibt  ihn  an  und  bestimmt  sein  Handeln  oder  Zögern. 
+Dabei könnte es sein, dass andere gar nicht wissen, dass sie von jenem Eid des Helden mitbetroffen sind. 
+Streben: Die Motivation von Suchenden dominiert oft deren Verlangen und Ziele.  
+Ungerechtigkeit: Das  Miterleben  von  bestimmten  Ungerechtigkeiten  in  der  Galaxis  ist  eine  große 
+Motivation für den Helden. Dabei kann sich die Ungerechtigkeit nur auf eine bestimmte, lokale Gruppierung 
+beziehen oder aber auch ganze Sternensysteme oder Sektoren umfassen.  
+ 
+ 
+W10 Basismotivation W% Spezielle Motivation 
+1-3 
+Ambition 
+01-10 Rache 
+  11-20 Reichtum 
+  21-30 Macht 
+  31-40 Ein Jedi werden 
+  41-50 Überleben 
+  51-60 Ruhm 
+  61-70 Die Sith zerstören 
+  71-80 Erleuchtung 
+  81-90 Fachkompetenz 
+  91-00 Entdeckung 
+    
+4-6 
+Agenda 
+01-10 Freiheit 
+  11-20 Die Jedi wiederherstellen 
+  21-30 Galaktischer Friede 
+  31-40 Gerechtigkeit 
+  41-50 Die Rebellion beenden 
+  51-60 Gleichberechtigung 
+  61-70 Den Hilflosen helfen 
+  71-80 Freihandel 
+  81-90 Das Imperium umstürzen 
+  91-00 Wissen 
+    
+7-9 
+Glaube  
+01-10 Natürliche Welt 
+  11-20 Das Gute in den Wesen 
+  21-30 Freunde und Familie 
+  31-40 Die kosmische Macht 
+  41-50 Wissenschaft und Vernunft 
+  51-60 Der Jedi Kodex 
+  61-70 Die Herrschaft des Imperiums 
+  71-80 Die Rebellion 
+  81-90 Religiöser Kodex 
+  91-00 Nichts 
+    
+7-9 
+Eid (Hüter)  
+01-10 Liebe 
+  11-20 Heimat 
+  21-30 Die Dahingeschiedenen 
+  31-40 Spezies 
+  41-50 Schutzbefohlene 
+  51-60 Die Republik 
+  61-70 Das Gleichgewicht der Macht 
+  71-80 Künstlerisches Erbe 
+  81-90 Das Leben selbst 
+  91-00 Gerechtigkeit 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+   
+
+7-9 
+Streben nach 
+(Suchender)  
+01-10 Gerechtigkeit 
+  11-20 Reichtum 
+  21-30 Wissen 
+  31-40 Vergänglichkeit im Handeln 
+  41-50 Glücklich sein 
+  51-60 Entdeckung 
+  61-70 Der Macht 
+  71-80 Unabhängigkeit 
+  81-90 Effizienz 
+  91-00 Rache 
+    
+7-9 
+Ungerechtigkeit 
+(Wächter)  
+01-10 Entmündigung 
+  11-20 Vertreibung 
+  21-30 Hunger 
+  31-40 Krankheit 
+  41-50 Gefangenschaft 
+  51-60 Unterdrückung 
+  61-70 Armut 
+  71-80 Vorurteile 
+  81-90 Sklaverei 
+  91-00 Gewalt 
+    
+10 Je ein Wurf auf zwei beliebige Kategorien 
+ 
+Anschließend folgt eine Tabelle mit Motivation bezogen auf Planeten oder Monde.  
+ 
+Planet/Mond Motivation  
+Aleen 
+Fasziniert  von  den  Kindalo: Der Held  ist  von  den  Legenden  rund  um  die  Untergrund-
+Kultur der Kindalo fasziniert und möchte so viel wie mögliche darüber wissen. Dies könnte 
+zu Problemen führen, wenn er durch seine Neugier heilige Stätten stört. 
+Aleen 
+Anhänger  der  Orphne: Der  Held  ist  der  mystischen  Orphne  begegnet  und erlebte 
+dadurch  eine  lebensverändernde Erfahrung.  Er  wird  jedem  willigen  davon  erzählen  und 
+sich  auf  die  Suche  nach  weiteren  mystischen  Erfahrungen  machen,  die  sein  Leben 
+verändern werden.  
+Auratera 
+Isolationist: Der Held möchte, dass der Rest der Galaxis keine Notiz von Auratera nimmt 
+und wird alles in seiner Macht stehende tun, damit der Planet weiter ein Geheimnis bleibt.  
+Auratera 
+Studium    der    Vergangenheit: Die    Ansammlung    verschiedener    archäologischer 
+Bauwerke bei der Vergenz auf Auratera fasziniert den Helden und er möchte so viel wie 
+möglich darüber in Erfahrung bringen.   
+Bardotta 
+Bewahrer: Der Held glaubt, dass die Geschichte Bardottas besonders  wichtig und auch 
+sehr  gefährdet  ist.  Er  möchte  über  alles  historische  Orte  und  Objekte  beschützen  und 
+verhindern, dass solche Dinge vom Planeten geschmuggelt werden. 
+Bardotta 
+Bettler: Der  Held  hat  einen  Armuts-Eid  geschworen  und  reist  nun  durch  die  Galaxis,  in 
+der  Hoffnung,  eine  starke  Verbindung  zur  Macht  aufzubauen,  jetzt,  wo  er  nicht  mehr 
+durch  unwichtige  Dinge  wie  Geld  behindert  wird.  Dabei  ist  er  zwar  auch  auf  die  Gnade 
+anderer angewiesen, doch wird er alles an Gefallen vielfach zurückzahlen.  
+Bardotta 
+Sympathisant  der  Frangawl: Der Held  glaubt  an  die  alten  Wege und  die  Frangawl-
+Traditionen.  Auch   wenn  er  kein  Kultist  ist,  würde  er  ein  erneutes  Aufkeimen  der 
+Bewegung unterstützen.    
+Devaron 
+Matriarch: Der  Held  ist  ein  starker  Unterstützer  der  matriarchalen  Gesellschaft  der 
+Devaronianer  und  glaubt,  dass  Männer  sich  Frauen  bei  wichtigen  Angelegenheiten 
+unterordnen   sollten.   Er   wird   nur   widerwillig   Befehle   von   männlichen   Anführern 
+akzeptieren.   
+Iktotch 
+Visionen  der  Zukunft: Der Held  ist  überzeugt  davon,  dass  er  besondere  seherische 
+Fähigkeiten  besitzt  und  er  in  die  Zukunft  blicken  kann.  Dieses  Wissen  gibt  er  an  seine 
+Gefährten weiter und ist äußerst konsterniert, wenn man nicht in Hinblick darauf handelt.  
+Iktotch 
+Exil: Der  Held  hat  gemeinsam  mit  anderen  den  Mond  verlassen,  bevor  das  Imperium 
+eine  Blockade  um  Iktotch herum  errichtet  hat.  Er  sehnt  sich  danach,  zu  seiner  Heimat 
+zurückzukehren und auch, dass das Imperium keine Bedrohung mehr darstellt.   
+Iktotch 
+Überläufer: Der Held kommt von Iktotch und hat aktiv dem Imperium geholfen, den Mond 
+einzunehmen.  Auch  wenn  er  diese  Taten  nun  bereut,  wird  er  für  immer  ein  Außenseiter 
+und Verräter für die Iktotchi sein.  
+Lothal 
+Der  Armut  entsprungen: Der  Held  hat  sein  bisheriges  Leben  in  Armut  auf  Lothal 
+verbracht und möchte diesem Dasein entfliehen.  
+
+Planet/Mond Motivation (Fortsetzung)  
+Lothal 
+Widerstandskämpfer: Der Held möchte sich einer Widerstandsgruppierung anschließen, 
+um  das  Imperium  ein  für  alle Mal  von  Lothal  zu  vertreiben. Er  könnte  weiterhin örtliche 
+Sabotageakt  verüben  oder  aber  in  die  Galaxis  reisen,  um  im  großen  Stil  das  Imperium 
+bekämpfen zu können. 
+Lothal 
+Kriegsprofiteur: Der    Held    hat    großen    Gewinn    aus    der    Besetzung    Lothals 
+herausgeschlagen, indem er mit dem Imperium Geschäfte gemacht hat. Da die Geschäfte 
+weiterhin gut laufen, möchte er nichts an dieser Situation verändert sehen. 
+Naboo 
+Gesandter: Der Held   möchte   die   Differenzen   zwischen   Gungans   und   Menschen 
+beseitigen. Dies  könnte  er  durch  Diplomatie  versuchen  oder  aber  indem  er  Ereignisse 
+hervorruft, welche zur Einigkeit der beiden Völker führen. 
+Naboo 
+Poet: Der  Held  möchte  die  Schönheit  und  Einzigartigkeit  der  Galaxis  erleben  und  dann 
+nach Hause zurückkehren und dies in eigenen Werken ausdrücken. Um dies zu erleben, 
+wird er vielleicht auch manchmal etwas unvorsichtig vorgehen.   
+Naboo 
+Gungan-Rechte: Der Held  glaubt,  dass  die  Gungans  eine  unterdrückte  Minderheit  auf 
+Naboo   sind. Er   arbeitet   daran,   dass   sie   den   Menschen gegenüber   mindestens 
+gleichgestellt,  vielleicht auch höhergestellt sind. Ob er seine Meinung offen kundtut oder 
+dies lieber im Stillen macht, ist ihm überlassen. 
+Ossus 
+Archäologe: Der  Held  ist  sich  der  antiken  Geschichte  von  Ossus  bewusst  und  möchte 
+mehr von dessen Geheimnissen enthüllen.  
+Ossus 
+Plünderer: Die  Vergangenheit  bedeutet  dem  Helden  nichts,  abgesehen  davon,  dass  er 
+sich damit ein paar Credits verdienen kann.  
+Weik 
+Machtverehrer: Der   Held   sieht   jeden   Machtnutzer   als   mächtigen,   beinahe   schon 
+verehrungswürdigen Zauberer mit großen Kräften an. Nutzt er selbst auch die Macht, so 
+sieht  er  jede  Anwendung  derselben  als  Zauberei  an  und  könnte  anderen  versuchen, 
+seine Rituale und Zauber beizubringen, damit sie ihre Magie bändigen können.  
+Weik 
+Kastenmitglied: Der Held  kennt  seinen  Platz  in  der  örtlichen  Hierarchie  und  hat  nur 
+wenig  Toleranz  für  Wesen,  die  dies  nicht  machen.  Er  ist  schnell  dabei,  andere  darauf 
+hinzuweisen, wenn sie sich nicht so benehmen, wie es von ihrem Stand erwartet wird.  
+Weik 
+Faszinierter  Wanderer: Der  Held  ist  sehr  eingeengt  und  behütet  aufgewachsen.  Jetzt 
+betrachtet  er  die  Galaxis  als  magischen,  beinahe  schon  furchterregenden  Ort.  Blaster 
+sind  verwirrend,  Droiden sind  verkleidete  Dämonen  und  Sternenreisen  grenzen  an 
+dunkler  Zauberei.  Aber all  dies macht den Helden nur neugieriger und er  lechzt  danach, 
+mehr über diese seltsame und wundersame Galaxis zu erfahren. 
+ 
+ 
+9. Beschreibung und Persönlichkeit 
+Der  Spieler  kann nun  die  Beschreibung  seines  Helden  auf  dem  Bogen  ausfüllen  (Größe,  Gewicht, 
+Körperbau,  Haar- und  Augenfarbe,  Schuppen-,  Haut- oder  Fellfarbe,  Narben,  Tätowierungen  und  andere 
+Merkmale) und sich eine Persönlichkeit für ihn überlegen. 
+Der  Spieler  muss  sich  überlegen,  wie  sein  Held  aussieht.  Was  trägt  er,  wie  hat  er  seine  Haare  oder 
+Tentakel,  hat  er  besondere  Körpermerkmale,  die  ihn  von  anderen  seiner  Spezies  unterscheiden.  Hat  er 
+einen  markanten  Ausrüstungsgegenstand,  eine  besondere  Art,  Dinge  anzupacken  oder zu  sprechen. 
+Erkennt er Autoritäten an – und wenn nicht, warum nicht und wie gibt er sich ihnen. Was macht er in seiner 
+Freizeit, hat er  besondere  Steckenpferde oder  eine Schwäche für  Glücksspiel  oder ein sonstiges Laster? 
+Dann  sollte  sich  er  sich  noch    Gedanken  darüber  machen,  wie  der  Held  zu  seinem  Beruf  (und  der 
+Spezialisierung) kam, was dieser ihm bedeutet und wie er darin für seinen Lebensunterhalt bislang gesorgt 
+hat. Wie hat er die anderen Helden getroffen, kennt er sie womöglich noch aus vergangenen Zeiten? Was 
+verbindet ihn mit den anderen, warum hat er sich ihnen angeschlossen? 
+  
+
+ 
+ 
+10. Anfangsvorteil auswählen 
+Die  Gruppe  kann  sich  nun  ein  Schiff  aussuchen,  welches  sie  durch  die  Galaxis begleiten  wird.  Je  nach 
+Fahrzeug wird die Gruppe eine andere Rolle einnehmen. Dieses sollte höchstens 120 000 Credits kosten. 
+Einige mögliche Schiffe sind: 
+Ghtroc 720 Leichter Frachter: primär ein Frachter, der gut zu modifizieren ist. 
+HWK-290 Leichter Frachter: Ein eher kleiner, dafür aber wendiger und gut zu modifizierender Frachter 
+Wayfarer Mittlerer Frachter: ein großräumiger Frachter, der sich aber  nur begrenzt ohne Modifikationen 
+im Kampf einsetzen lässt. 
+YG-4210  /  YT-1000  / YT-1300 /  YT-2000  /  YT-2400  /  YV-560  / XS Leichter  Frachter: sehr  vielseitig 
+einsetzbare Schiffe mit vielen Modifikationsmöglichkeiten und eine Bedrohung für einzelne Raumjäger. 
+Firespray System Patrouillenfahrzeug: gute Bewaffnung und Panzerung, nicht gut zu modifizieren. 
+Loronar E-9  Entdecker-Klasse  Langstreckenfahrzeug: Dezente  Bewaffnung,  gute  Sensoren  und  eine 
+Ausstattung, die das Schiff für kleine Frachtaufträge oder Entdeckungsreisen sehr geeignet macht. 
+Alternativ  dazu  könnte  die  Gruppe  auch  über  eine Heimatstätte oder  ein Geschäft auf  einer  Kolonie, 
+einem großen Sternenschiff oder einem anderen Planeten verfügen.  
+ 
+Angehörige  einer  Militärorganisation haben  drei  Möglichkeiten (können  aber  nach  Zustimmung  des 
+Spielleiters auch über eines der oben genannten Schiffe verfügen): 
+Befehlsgewalt  über  eine  Raumfähre  der  Lambda-Klasse: Inklusiver  gefälschter  Lizenzen  ermöglicht 
+solch ein Schiff, dass die Gruppe sich relativ leicht in der gesamten Galaxis bewegen kann. 
+Schwadron  Y-Flügler: Diese  schweren  Angriffsjäger  bieten  die  Flexibilität  mehrerer  Schiffe  und  starker 
+Angriffskraft. Die Gruppe erhält eine Anzahl an Y-Flüglern gleich der der Hälfte der Mitglieder.  
+Operationsbasis: Die Gruppe ist Teil einer geheimen Operationsbasis. Dies begrenzt zwar deren Mobilität 
+(wobei  sie  noch  immer  mithilfe  von  angeheuerten  Schmugglern sich für  Aufträge  durch  die  Galaxis 
+bewegen können), allerdings erhalten sie zusätzliche Ausrüstung im Gesamtwert von 2 500 Credits. 
+ 
+Eine Gruppe Machtsensitiver könnte sich auch – anstelle eines Raumschiffs (für bis zu 60 000 Credits) – 
+für einen Mentor (der  meist  im  Hintergrund  agiert und selten  nur  mit  der  Gruppe  reist;  die  Gruppe muss 
+dafür  aber nach  der Charaktererschaffung  für  den  Erwerb  der Basiskräfte  von  Machtfähigkeiten 5  EP 
+weniger zahlen) oder ein Holocron zu Beginn entscheiden. Wählt eine Gruppe ein Holocron, so gewährt 
+ihnen dies, zwei Fertigkeiten als Berufsfertigkeiten steigern zu dürfen (allerdings erst nach Ausgabe der EP 
+während der Erschaffung). Dies kann der Spielleiter auswählen oder gemäß folgender Tabelle auswürfeln:  
+1: Äußerer Rand und Pilot (Weltraum) 
+2: Computertechnik und Wahrnehmung 
+3: Handgemenge und Straßenwissen 
+4: Mechanik und leichte Fernkampfwaffen 
+5: Astronavigation und Artillerie 
+6: Disziplin und Medizin 
+7: Altes Wissen und Lichtschwert 
+8: Coolness und Körperbeherrschung 
+9: Infiltration und Wachsamkeit 
+10: Xenologie und Überleben 
+Zudem könnten sie noch Vorteile wie beim Ausrüstungsgegenstand Holocron erhalten.  
+ 
+ 
+ 
+ 
