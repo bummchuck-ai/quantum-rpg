@@ -7,9 +7,27 @@ const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY || '');
 
 export async function POST(req: Request) {
   try {
-    const { gameState, userMessage } = await req.json();
+    const body = await req.json();
 
-    // Validierung des gameState, um "Cannot read properties of undefined (reading 'name')" zu verhindern
+    // 1. Check if it's a raw message request (e.g. from Story Generator)
+    if (body.messages) {
+      const systemMsg = body.messages.find((m: any) => m.role === 'system');
+      const userMsg = body.messages.find((m: any) => m.role === 'user');
+
+      const model = genAI.getGenerativeModel({ 
+          model: 'gemini-3-flash-preview',
+          systemInstruction: systemMsg?.content || '',
+          generationConfig: { responseMimeType: "application/json" }
+      });
+
+      const result = await model.generateContent(userMsg?.content || '');
+      const response = await result.response;
+      return NextResponse.json(JSON.parse(response.text()));
+    }
+
+    const { gameState, userMessage } = body;
+
+    // 2. Regular Game State request
     if (!gameState || !gameState.character) {
         throw new Error("Invalid GameState provided to GM.");
     }
@@ -17,9 +35,9 @@ export async function POST(req: Request) {
     // 1. System Prompt bauen
     const systemInstruction = buildSystemPrompt(gameState) + "\n\n" + RESPONSE_FORMAT;
 
-    // 2. Modell wählen (gemini-2.0-flash ist extrem schnell und stabil)
+    // 2. Modell wählen (gemini-3-flash-preview ist extrem schnell und stabil)
     const model = genAI.getGenerativeModel({ 
-        model: 'gemini-2.0-flash',
+        model: 'gemini-3-flash-preview',
         systemInstruction: systemInstruction,
         generationConfig: {
             responseMimeType: "application/json",

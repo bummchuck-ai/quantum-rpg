@@ -12,13 +12,23 @@ const ArmorySelector: React.FC = () => {
   const { credits, buyGear, ownedGear } = useCharacterStore();
   
   const [category, setCategory] = useState<'weapons' | 'armor'>('weapons');
+  const [subCategory, setSubCategory] = useState<string | null>(null);
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleConfirm = () => {
     router.push('/create/summary');
   };
 
   const isPurchased = (name: string) => ownedGear.some(g => g.name === name);
+
+  const subCategories = Object.keys(gearData[category]);
+  const currentSubCategory = subCategory || subCategories[0];
+
+  const items = (gearData[category] as any)[currentSubCategory] || [];
+  const filteredItems = items.filter((item: any) => 
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <main className="min-h-dvh w-full bg-black text-zinc-300 font-mono flex flex-col p-6">
@@ -40,24 +50,46 @@ const ArmorySelector: React.FC = () => {
       <ProgressTracker currentStep={5} />
 
       {/* CATEGORY TABS */}
-      <div className="grid grid-cols-2 gap-2 mb-8 sticky top-[65px] bg-black z-20 pb-4">
+      <div className="grid grid-cols-2 gap-2 mb-4 sticky top-[65px] bg-black z-20 pb-2">
           <button 
-            onClick={() => { setCategory('weapons'); setSelectedItem(null); }}
-            className={`py-4 text-[10px] border-2 font-black uppercase tracking-widest transition-all rounded-xl ${category === 'weapons' ? 'border-amber-500 bg-amber-500/20 text-white shadow-[0_0_15px_rgba(245,158,11,0.3)]' : 'border-zinc-900 bg-zinc-950 text-zinc-600'}`}
+            onClick={() => { setCategory('weapons'); setSubCategory(null); setSelectedItem(null); }}
+            className={`py-3 text-[9px] border-2 font-black uppercase tracking-widest transition-all rounded-xl ${category === 'weapons' ? 'border-amber-500 bg-amber-500/20 text-white shadow-[0_0_15px_rgba(245,158,11,0.3)]' : 'border-zinc-900 bg-zinc-950 text-zinc-600'}`}
           >
             Weapons
           </button>
           <button 
-            onClick={() => { setCategory('armor'); setSelectedItem(null); }}
-            className={`py-4 text-[10px] border-2 font-black uppercase tracking-widest transition-all rounded-xl ${category === 'armor' ? 'border-amber-500 bg-amber-500/20 text-white shadow-[0_0_15px_rgba(245,158,11,0.3)]' : 'border-zinc-900 bg-zinc-950 text-zinc-600'}`}
+            onClick={() => { setCategory('armor'); setSubCategory(null); setSelectedItem(null); }}
+            className={`py-3 text-[9px] border-2 font-black uppercase tracking-widest transition-all rounded-xl ${category === 'armor' ? 'border-amber-500 bg-amber-500/20 text-white shadow-[0_0_15px_rgba(245,158,11,0.3)]' : 'border-zinc-900 bg-zinc-950 text-zinc-600'}`}
           >
             Armor
           </button>
       </div>
 
+      {/* SUB-CATEGORY TABS */}
+      <div className="flex gap-2 mb-6 sticky top-[125px] bg-black z-20 pb-4 overflow-x-auto no-scrollbar">
+          {subCategories.map(sub => (
+              <button 
+                key={sub}
+                onClick={() => { setSubCategory(sub); setSelectedItem(null); }}
+                className={`px-4 py-2 text-[8px] border font-black uppercase whitespace-nowrap transition-all rounded-lg ${currentSubCategory === sub ? 'border-white bg-white/10 text-white' : 'border-zinc-900 bg-zinc-950 text-zinc-700'}`}
+              >
+                {sub}
+              </button>
+          ))}
+      </div>
+
+      <div className="mb-6 sticky top-[175px] bg-black z-20 pb-4">
+        <input 
+          className="w-full bg-zinc-950 border border-zinc-800 p-4 rounded-xl text-xs outline-none focus:border-amber-500 text-white placeholder:text-zinc-800 shadow-2xl"
+          placeholder="SEARCH_MANIFEST..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
+
       {/* GEAR TILES GRID */}
       <div className="space-y-6 pb-32">
-        {gearData[category].map((item: any) => {
+        {filteredItems.map((item: any) => {
           const isSelected = selectedItem === item.name;
           const purchased = isPurchased(item.name);
 

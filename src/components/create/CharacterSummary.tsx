@@ -41,7 +41,7 @@ const CharacterSummary: React.FC = () => {
           messages: [
             { 
               role: 'system', 
-              content: 'Du bist ein Star Wars Game Master. Schreibe eine kurze, epische Hintergrundgeschichte (max 150 Wörter) für diesen Charakter basierend auf seiner Spezies, Karriere und seinem Hintergrund. Nutze einen düsteren, atmosphärischen Ton.' 
+              content: 'Du bist ein Star Wars Game Master. Schreibe eine kurze, epische Hintergrundgeschichte (max 150 Wörter) für diesen Charakter basierend auf seiner Spezies, Karriere und seinem Hintergrund. Nutze einen düsteren, atmosphärischen Ton. Antworte in reinem JSON-Format: {"response": "deine geschichte"}' 
             },
             { 
               role: 'user', 

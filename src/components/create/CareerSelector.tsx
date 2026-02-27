@@ -25,12 +25,18 @@ const CareerSelector: React.FC = () => {
   
   const [selectedCareer, setSelectedCareer] = useState<string | null>(null);
   const [selectedSpec, setSelectedSpec] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleConfirm = (c: Career, s: Specialization) => {
     setCareer(c);
     setSpecialization(s);
     router.push('/create/background');
   };
+
+  const filteredCareers = (careersData as Career[]).filter(c => 
+    c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    c.specializations.some(s => s.name.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
 
   return (
     <main className="min-h-dvh w-full bg-black text-zinc-300 font-mono flex flex-col p-6">
@@ -50,8 +56,17 @@ const CareerSelector: React.FC = () => {
 
       <ProgressTracker currentStep={2} />
 
+      <div className="mb-6 sticky top-[65px] bg-black z-20 pb-4">
+        <input 
+          className="w-full bg-zinc-950 border border-zinc-800 p-4 rounded-xl text-xs outline-none focus:border-amber-500 text-white placeholder:text-zinc-800 shadow-2xl"
+          placeholder="FILTER_MATRIX..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
+
       <div className="space-y-6 pb-32">
-        {(careersData as Career[]).map((c) => {
+        {filteredCareers.map((c) => {
           const isSelected = selectedCareer === c.name;
           return (
             <div 
