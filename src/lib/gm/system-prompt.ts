@@ -79,6 +79,8 @@ Willenskraft: ${character.characteristics?.willpower} | Ausstrahlung: ${characte
 
 ## Zustand
 Credits: ${character.credits}
+Wunden: ${character.wounds} (Schwelle: ${character.species?.woundThresholdBase + character.characteristics?.brawn})
+Stress: ${character.strain} (Schwelle: ${character.species?.strainThresholdBase + character.characteristics?.willpower})
 `;
 }
 

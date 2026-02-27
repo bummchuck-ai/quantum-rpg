@@ -13,13 +13,21 @@ const ChatInterface: React.FC = () => {
   const router = useRouter();
   const { 
     name, species, career, characteristics, credits, ownedGear, 
-    specializations, backgroundOption, backgroundType, backgroundValue 
+    specializations, backgroundOption, backgroundType, backgroundValue,
+    wounds, strain, updateStatus
   } = useCharacterStore();
   
   const [messages, setMessages] = useState<Message[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const [inputValue, setInputValue] = useState('');
+  const [showCharSheet, setShowCharSheet] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
+
+  const woundThreshold = species ? species.woundThresholdBase + characteristics.brawn : 0;
+  const strainThreshold = species ? species.strainThresholdBase + characteristics.willpower : 0;
+  const armor = ownedGear.filter(g => g.soak !== undefined);
+  const soak = characteristics.brawn + armor.reduce((acc, curr) => acc + (curr.soak || 0), 0);
+  const defense = armor.reduce((acc, curr) => Math.max(acc, curr.defense || 0), 0);
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -57,6 +65,16 @@ const ChatInterface: React.FC = () => {
       });
       
       const data = await response.json();
+      
+      // Update store with state changes if GM sent any
+      if (data.stateChanges) {
+        updateStatus(
+          data.stateChanges.wounds || 0,
+          data.stateChanges.strain || 0,
+          data.stateChanges.credits || 0
+        );
+      }
+
       setMessages([{ role: 'gm', content: data }]);
     } catch (error) {
       console.error("Intro failed:", error);
@@ -93,6 +111,16 @@ const ChatInterface: React.FC = () => {
         })
       });
       const data = await response.json();
+
+      // Update store with state changes
+      if (data.stateChanges) {
+        updateStatus(
+          data.stateChanges.wounds || 0,
+          data.stateChanges.strain || 0,
+          data.stateChanges.credits || 0
+        );
+      }
+
       setMessages(prev => [...prev, { role: 'gm', content: data }]);
     } catch (error) {
         console.error("Chat failed:", error);
@@ -101,27 +129,77 @@ const ChatInterface: React.FC = () => {
   };
 
   return (
-    <main className="h-screen w-screen bg-black text-zinc-300 font-mono flex flex-col overflow-hidden">
+    <main className="h-screen w-screen bg-black text-zinc-300 font-mono flex flex-col overflow-hidden relative">
       
+      {/* CHARACTER SHEET MODAL */}
+      {showCharSheet && (
+        <div className="absolute inset-0 z-50 bg-black animate-in fade-in zoom-in duration-300 flex flex-col">
+          <header className="p-6 border-b border-zinc-800 flex justify-between items-center bg-zinc-950">
+            <h2 className="text-xl font-black text-white italic tracking-tighter uppercase">Character_Bogen</h2>
+            <button onClick={() => setShowCharSheet(false)} className="w-10 h-10 border border-zinc-800 flex items-center justify-center text-xl">✕</button>
+          </header>
+          
+          <div className="flex-1 overflow-y-auto p-6 space-y-8">
+            <section>
+              <div className="text-[8px] text-zinc-600 font-black uppercase mb-4 tracking-[0.2em]">Attribute</div>
+              <div className="grid grid-cols-3 gap-3">
+                  {Object.entries(characteristics).map(([key, val]) => (
+                      <div key={key} className="flex flex-col items-center bg-zinc-900/40 border border-zinc-800 p-3 rounded-xl">
+                          <span className="text-2xl font-black text-white leading-none mb-1">{val}</span>
+                          <span className="text-[7px] text-zinc-600 uppercase font-black">{key.substring(0,3)}</span>
+                      </div>
+                  ))}
+              </div>
+            </section>
+
+            <section className="grid grid-cols-2 gap-3">
+              <div className="bg-zinc-900/40 border border-zinc-800 p-4 rounded-xl">
+                <div className="text-[7px] text-zinc-600 font-black uppercase mb-1 tracking-widest">Soak_Value</div>
+                <div className="text-xl font-black text-white">{soak}</div>
+              </div>
+              <div className="bg-zinc-900/40 border border-zinc-800 p-4 rounded-xl">
+                <div className="text-[7px] text-zinc-600 font-black uppercase mb-1 tracking-widest">Defense</div>
+                <div className="text-xl font-black text-white">{defense}</div>
+              </div>
+            </section>
+
+            <section>
+              <div className="text-[8px] text-zinc-600 font-black uppercase mb-4 tracking-[0.2em]">Equipment</div>
+              <div className="space-y-2">
+                {ownedGear.length > 0 ? ownedGear.map((g, i) => (
+                  <div key={i} className="p-3 border border-zinc-800 bg-zinc-950 rounded-lg flex justify-between items-center">
+                    <span className="text-[10px] font-black text-white uppercase italic">{g.name}</span>
+                    <span className="text-[8px] text-amber-500 font-black italic">{g.damage ? `DMG_${g.damage}` : g.soak ? `SOAK_${g.soak}` : 'ITEM'}</span>
+                  </div>
+                )) : <div className="text-[10px] text-zinc-800 italic uppercase">Keine Ausrüstung...</div>}
+              </div>
+            </section>
+          </div>
+        </div>
+      )}
+
       {/* HUD Header */}
       <header className="bg-zinc-950/80 border-b border-zinc-800 p-4 flex justify-between items-center backdrop-blur-md z-20 shadow-2xl">
         <div className="flex items-center gap-4">
-            <div className="w-10 h-10 border border-amber-500/50 rounded bg-amber-500/5 flex items-center justify-center">
+            <button 
+              onClick={() => setShowCharSheet(true)}
+              className="w-10 h-10 border border-amber-500/50 rounded bg-amber-500/5 flex items-center justify-center active:scale-90 transition-all"
+            >
                 <span className="text-amber-500 font-black italic text-xl">{name?.charAt(0) || 'Q'}</span>
-            </div>
+            </button>
             <div>
                 <h1 className="text-sm font-black text-white italic tracking-tighter">{name || 'PILOT_UNKNOWN'}</h1>
-                <div className="text-[7px] text-zinc-500 tracking-[0.2em] uppercase">{career?.name} // {species?.name}</div>
+                <div className="text-[7px] text-zinc-500 tracking-[0.2em] uppercase">{credits} Credits</div>
             </div>
         </div>
-        <div className="flex gap-6">
+        <div className="flex gap-4">
             <div className="text-right">
-                <div className="text-[7px] text-red-500/50 font-black uppercase tracking-widest mb-1">Health</div>
-                <div className="text-xs font-black text-red-500 italic">STABLE</div>
+                <div className="text-[7px] text-red-500/50 font-black uppercase tracking-widest mb-1">Wounds</div>
+                <div className="text-xs font-black text-red-500 italic">{wounds}/{woundThreshold}</div>
             </div>
             <div className="text-right">
-                <div className="text-[7px] text-blue-500/50 font-black uppercase tracking-widest mb-1">Stress</div>
-                <div className="text-xs font-black text-blue-400 italic">NOMINAL</div>
+                <div className="text-[7px] text-blue-500/50 font-black uppercase tracking-widest mb-1">Strain</div>
+                <div className="text-xs font-black text-blue-400 italic">{strain}/{strainThreshold}</div>
             </div>
         </div>
       </header>
