@@ -11,8 +11,12 @@ const config: Config = {
       fontFamily: {
         mono: ['var(--font-geist-mono)', 'monospace'],
       },
+      animation: {
+        'spin-slow': 'spin 8s linear infinite',
+        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
 export default config;

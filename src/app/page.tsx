@@ -2,10 +2,23 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import IntroModal from '@/components/create/IntroModal';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
+  const [showIntro, setShowIntro] = useState(false);
+  const router = useRouter();
+
+  const handleStart = () => {
+    setShowIntro(true);
+  };
+
   return (
     <main className="h-screen w-screen flex flex-col justify-between p-8 font-mono overflow-hidden select-none bg-black">
+      
+      {showIntro && (
+        <IntroModal onClose={() => router.push('/create')} />
+      )}
       
       {/* Header Status Bar */}
       <div className="flex justify-between items-start text-[9px] text-zinc-600 tracking-widest">
@@ -35,7 +48,7 @@ export default function Home() {
 
       {/* Tactical Menu */}
       <div className="w-full max-w-sm mx-auto space-y-3">
-        <Link href="/create">
+        <div onClick={handleStart} className="w-full">
           <div className="group relative border border-amber-500/30 bg-amber-500/[0.02] p-6 cursor-pointer transition-all duration-300 hover:bg-amber-500/[0.05] hover:border-amber-500 rounded-xl shadow-2xl">
             {/* Corner Accents */}
             <div className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-amber-500"></div>
@@ -48,7 +61,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </Link>
+        </div>
 
         <div className="border border-zinc-900 bg-zinc-900/10 p-5 opacity-40 cursor-not-allowed rounded-xl text-center">
           <h2 className="text-xl font-black text-zinc-600 uppercase italic tracking-tighter">FORTSETZEN</h2>
