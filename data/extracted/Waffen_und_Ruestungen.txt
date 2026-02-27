@@ -1,0 +1,2823 @@
+
+
+Waffen und Ausrüstung
+ 
+Nachfolgend finden sich eine Vielzahl an Waffen und weiteren Ausrüstungsgegenständen, sowie Dienstleistungen, 
+denen   ein    Held   in   der    Galaxis    begegnen   kann. Folgende   Werte    sind    bei   Waffen    und   anderen 
+Ausrüstungsgegenständen angegeben: 
+Bezeichung: Entweder der genaue Name oder eine grobe Bezeichnung für Objekte dieser Art 
+Fertigkeit (Fertigk.): Die Fertigkeit, mit welcher diese Waffe bedient wird 
+Basisschaden (Sch): Der Grundschaden dieser Waffe, jeder bei der Angriffsprobe erzielte J erhöht diesen um 1. 
+Steht ein + vor dem Wert, so addiert sich der Wert in Stärke zum Basisschaden.  
+Kritische Trefferschwelle (Krit): Hier steht die Anzahl an nötigen 8, um einen kritischen Treffer auszulösen.  
+Reichweite  (RW): Die   Reichweite,   bis   zu   welcher   diese   Waffe   eingesetzt   werden   kann.   Diese   sind: 
+Nahkampfreichweite (N, nur Personenebene), Kürzeste Reichweite (KÜ, nur Weltraumebene), Kurz (K), Mittellang 
+(M), Weit (W) und extreme Reichweite (E). 
+Belastungswert (Last): Je größer und sperriger ein Objekt, umso höher dieser Wert. Mehr dazu siehe unten. 
+Aufrüstungspunkte  (AP): Der  dort  angegebene  Wert  steht  dafür,  wie  gut  die  Waffe  oder  Rüstung  modifiziert 
+werden kann. Modifikationen nehmen immer eine bestimmte Anzahl an Aufrüstungspunkten vom Objekt ein. 
+Kosten: Der  Marktpreis  des Objekts.  Je  nach  Umgebung  und  anderen  Umständen  kann  dieser Wert auch 
+variieren. Ein „R“ nach dem Preis bedeutet, dass dieses Objekt nur sehr eingeschränkt erhältlich ist und so dies die 
+Kosten sind, welche dem Schwarzmarktpreis am nächsten kommen. Mehr dazu unter Seltenheit und Handel. 
+Seltenheit (Selt): Je höher dieser, umso seltener und schwerer erhältlich das Objekt. Siehe Seltenheit & Handel.  
+Waffenfähigkeiten: Hier sind die Fähigkeiten zu finden, über welche die Waffe oder der Ausrüstungsgegenstand 
+verfügt. Mehr dazu unter Ausrüstungsfähigkeiten. 
+Rüstungen verfügen noch über zwei weitere Werte: 
+Verteidigung (Vert): Gibt die Anzahl an9 an, die ein Gegner erhält, wenn er den Helden angreift – im Normalfall 
+unabhängig  davon,  ob  dies  im  Nah- oder  Fernkampf  geschieht. Verfügt  der  Held  über  mehrere  Quellen,  welche 
+ihm Verteidigung geben (z.B. Rüstungen, Waffen), so zählt immer nur die mit dem höchsten Wert. 
+Absorption: Stellt dar, wie gut die Rüstung den Körper des Helden schützt. Dieser Wert ergibt gemeinsam mit der 
+Stärke   des Helden   seinen   Absorptionswert.   Absorptionsstufen   verschiedener   Quellen   addieren   sich – 
+beispielsweise  schwere  Kleidung  und  subdermale  Platten.  Der  Spielleiter  entscheidet  letztlich  darüber,  welche 
+Absorptionsquellen gemeinsam verwendet werden können und welche nicht. 
+ 
+Belastungswert und Belastungslimit 
+Jedes Objekt hat ein bestimmtes Gewicht und Sperrigkeit. Im Spiel stellt sich dies durch den Belastungswert dar, 
+einen Wert zwischen 0 und 5 für die meisten tragbaren Objekte. Falls es spielrelevant werden sollte, so haben 10 
+lose getragene,  kleine  Objekte  einen  Belastungswert von  1. Werden  diese  Gegenstände  mit  System  aufbewahrt 
+(z.B. Bolzen eines Bogenspanners in einer Bolzentasche),  so haben 20 dieser Objekte einen Belastungswert von 
+1. Lebewesen und Droiden haben üblicherweise einen Belastungswert von deren Stärke +5. Dies kann je nach Art 
+des Wesens weiter modifiziert werden (beispielsweise würde ein Hutte bedeutend mehr wiegen als so errechnet).  
+ 
+Ein Held hat ein Belastungslimit von (Stärke +5) Belastungswert-Punkten. Angelegte Rüstungen haben einen um 3 
+reduzierten  Belastungswert (fallen  also  meist  kaum  oder  gar  nicht  ins  Gewicht).  Wird  das Belastungslimit 
+überschritten, so erhält der Held für jeden Punkt darüber einen 9 auf alle Gewandtheits- und Stärkeproben. Trägt 
+der Held dann auch noch gleich viel oder mehr überzähligen Belastungswert als sein Stärkewert beträgt, so erhält 
+er zudem kein freies Manöver mehr pro Runde, sondern muss jedes Manöver mit jeweils 2 Erschöpfungspunkten 
+bezahlen (oder anderweitig erwerben).  
+ 
+Möchte   jemand   weitaus   schwerere,   einzelne Objekte   heben oder   stemmen   (z.B.   Felsbrocken,   gefallene 
+Kameraden),  so  geht  dies  folgendermaßen:  Er  muss  eine Probe auf  Athletik  machen,  die  Schwierigkeit  ist  der 
+unten  folgenden  Tabelle  zu  entnehmen.  Erhält  die  Person  Hilfe von  anderen,  so  wird  deren Wert  in  Stärke zum 
+Belastungslimit des Helden addiert.  
+ 
+Gesamtbelastung Schwierigkeit 
+Gleich oder geringer als Belastungslimit - 
+1 höher als Belastungslimit 
+ 
+2 höher als Belastungslimit 
+3 höher als Belastungslimit 
+ 
+4 höher als Belastungslimit 
+ 
+ 
+
+Ausrüstung verbergen 
+Sollen  Objekte  verborgen  am  Körper  getragen  oder  anderweitig  versteckt  werden,  so  wird  dazu  die  Last  des 
+Objekts herangezogen. Objekte mit einem Belastungswert von 0 oder 1  (bei sehr großen Spezies möglicherweise 
+auch   welche   mit Belastungswert 2)   lassen   sich   leicht   am   Körper   verbergen   und   erfordern   nur   eine 
+Wahrnehmungsprobe von Seiten des Suchenden, wenn aktiv danach geforscht wird. Der Verbergende würfelt mit 
+seiner Heimlichkeit dagegen. Für jeden Belastungspunkt nach dem ersten erhält der Suchende einen  auf seine 
+Probe.  Will man mehrere Objekte verbergen, so zählt nur jeweils der mit der höchsten Belastung als Bezugswert 
+für die Wahrnehmungsprobe.  
+Dieses System kann auch für Dinge angewandt werden, die in anderen Objekten verborgen werden sollen. Dabei 
+legt der SL fest, welche Gegenstände bis zu welcher Belastung leicht im oder am Gegenstand verborgen werden 
+könnten und gewährt dem Suchenden einen  für jeden Belastungspunkt darüber auf die Wahrnehmungsprobe. 
+ 
+Seltenheit und Handel 
+Einige Objekte sind schwieriger zu finden als andere, abhängig davon,  wo man sich in der Galaxis befindet. Dies 
+wird durch den Wert Seltenheit (Selt) beschrieben. Dieser geht von 0 – 10, wobei Gegenstände mit 0 quasi überall 
+zu  finden  sind. Für  die  Geschichte  wichtige  Objekte  sollten  dabei  keinem  System  unterliegen,  ob  diese  zu 
+erwerben sind oder nicht. Für andere Objekte kann folgendes System verwendet werden: Es wird auf Verhandlung 
+gewürfelt,    mit    einer    Schwierigkeit    gemäß    des    (modifizierten)    Seltenheitswerts.    Bestimmte    Umstände 
+(Persönlichkeit  des  Händlers,  Unruhen  oder  Kriege)  könnten  die  Probe oder  die  Modifikation  weiter  verändern. 
+Steigt  dadurch  die  Seltenheit  über  10,  so  wird  die  Schwierigkeit  für  jeden  Punkt  jenseits  der  10  um  1  Stufe 
+aufgewertet.  Nach  Entscheidung  des  Spielleiters  kann  auch  auf  andere  Wissensfertigkeiten  gewürfelt  werden 
+anstelle auf Verhandlung.   
+Ist  das  gesuchte  Objekt  nicht  legal  auf  einem  Planeten  oder  einer  Station  erhältlich,  so  muss  der  Schwarzmarkt 
+aufgesucht  werden.  Illegale  Objekte  sind  jene  mit  einem  „R“  beim  Preis  oder  Gegenstände  nach  Maßgabe  des 
+Spielleiters  (oftmals  könnten das auch Waffen  sein,  die  in  einer  Stadt  gänzlich  verboten  sind).  Hierfür  wird  auf 
+Straßenwissen gewürfelt, die Schwierigkeit kann aber hierbei je nach Macht der örtlichen Sicherheit erhöht werden. 
+Ebenso könnte der Preis von Schwarzmarktwaren höher sein als normal.  
+Wahrhaft  exotische  oder  unglaublich  seltene,  illegale  Gegenstände  könnten  auch  einen  höheren  Preis  erzielen 
+(sowohl beim Ein- wie Verkauf), die genauen Einzelheiten sollten aber gemäß der Geschichte festgelegt werden.  
+ 
+Seltenheit Schw. Beschreibung  Selt.-Mod Standort 
+0 
+- 
+Leuchtstab  -2 Primäre Kernwelt (Coruscant, Corellia) 
+1 Datapad  -1 Andere Kernwelt 
+2 
+ 
+Medipack  -1 Welt an primärer Handelsroute 
+3 Nachtsichtbrille  +0 Kolonie- oder Innerer Rand-Welt 
+4 
+ 
+Blasterpistole  +0 Zivilisierte Welt 
+5 Blastergewehr  +1 Welt des Mittleren Rands 
+6 
+ 
+Kybernetisches Glied  +1 Vor kurzem besiedelte oder Welt im Abseits 
+7 Bogenspanner  +2 Welt des Äußeren Rands 
+8 
+ 
+Thermaldetonator  +2 Grenzwelt 
+9 Persönl.Tarnfeld  +3 Welt des Wilden Raums 
+10 
+ 
+Lesai  +4 Unzivilisierte Welt 
+ 
+Möchte  der  Held  einen  Gegenstand  verkaufen,   so  geschieht  dies  im Normalfall  mit der gleichen Probe 
+(Verhandlung/Straßenwissen)  und  gleicher  Schwierigkeit – modifiziert  durch  Umstände.  Bei J erhält  der  Held  ¼ 
+des ursprünglichen Preises, bei JJ ist es die Hälfte und bei JJJ bekommt er ¾ davon.  
+ 
+Möchte  jemand  eine  größere  Menge  an  Gegenständen  an  einem  Ort  kaufen,  um  damit  an  einem  anderen  Ort 
+Handel  zu  treiben,  so  gilt  ein  etwas  anderes  System.  Das  Ein- wie  auch  das  Verkaufen  erfolgt  nach  dem  zuvor 
+genannten  System.  Jedoch  wird  der  Verkaufspreis diesmal  anders  berechnet,  nämlich  ergibt  er  sich  aus  der 
+Differenz der Seltenheit am Verkaufsort zu der vom Einkaufsort (siehe nachfolgende Tabelle). Der Preis einzelner 
+Objekte ändert sich hierdurch jedoch nicht.   
+Steigerung der 
+Seltenheit 
+Preismodifikator 
++0- +1 X1 
++2 X2 
++3 X3 
++4 und mehr X4 
+
+Ausrüstungsfähigkeiten 
+Einige  Ausrüstungsteile  (besonders  Waffen  und  Rüstungen)  besitzen  besondere Fähigkeiten.  Diese  unterteilen 
+sich in aktive und passive Fähigkeiten. Aktive benötigen in der Regel eine bestimmte Anzahl an 8 zum Aktivieren 
+(wenn  nicht  anders  angegeben,
+ 
+88) Passive  Fähigkeiten  sind  immer  aktiv.  Manche  haben  auch  einen Wert, 
+dieser bestimmt in der Regel spieltechnische Auswirkungen.
+ 
+- Ablenkung X (passiv): Pro Rang erhöht sich die Fernangriffsverteidigung des Helden um 1. 
+- Begrenzte  Munition  X  (passiv): Die  Waffe  kann  nur  eine  Anzahl  an  Malen  gleich  dem  Rang  dieser 
+Fähigkeit abgefeuert werden, ehe sie mit einem Manöver nachgeladen werden muss. Hinzu kommt, dass 
+die Munition separat erworben werden muss (Granaten, Raketen, etc.). 
+- Betäubend X (aktiv): Wird dieser Fähigkeit aktiviert, so richtet sie beim Ziel Erschöpfungsschaden gleich 
+dem Rang an. 
+- Betäubungsschaden X (passiv): Die Waffe richtet Erschöpfung anstelle von Wunden an, die jedoch auch 
+vom Absorptionswert reduziert wird. 
+- Betäubungsoption (passiv): Als Nebenhandlung kann zu dieser Schadensoption umgeschaltet  werden. 
+Die Waffe hat dann eine Reichweite von Kurz und richtet Erschöpfung anstelle von Wunden an, die jedoch 
+auch vom Absorptionswert reduziert wird. 
+- Cortosis-Legierung (passiv): Waffen  mit  dieser  Fähigkeit  sind  immun  gegen  die  Zerstören-Fähigkeit. 
+Rüstungen damit machen den Absorptionswert nicht anfällig gegenüber den Fähigkeiten Panzerbrechend 
+und Durchbohrend. 
+- Defensiv X (passiv): Pro Rang erhöht sich die Nahkampfverteidigung des Helden um 1. 
+- Desorientierend X (aktiv): Der Betroffene ist für eine Anzahl an Runden gleich dem Rang in der Fähigkeit 
+ benommen und erhält in diesem Zustand auf jede Probe einen 9 zusätzlich. 
+- Durchbohrend  X  (passiv): Je  Rang  ignoriert  diese  Waffe  einen  Absorptionspunkt.  Dadurch  kann  der 
+vollständige Absorptionswert ignoriert werden, jedoch nicht mehr. 
+- Erschütterung X  (aktiv): Der  Betroffene  taumelt  für  eine  Anzahl  an  Runden  gleich  dem  Rang  der 
+Fähigkeit und  kann  in  diesem  Zustand  keine  Aktionen  mehr  durchführen  (oder Manöver  in  Aktionen 
+umwandeln). 
+- Explosion X (aktiv): Bei   Aktivierung   der   Fähigkeit   und   erfolgreichem   Angriff   erhält   jeder   in 
+Nahkampfreichweite zum Ziel Schaden in Höhe des Basisschadens + Anzahl an J .Auf relativ engem und 
+geschlossenem  Raum  könnte  der  Spielleiter  entscheiden,  dass  jeder  darin  den  Schaden  erhält. Wird  die 
+Fähigkeit  bei  erfolgreichem  Angriff  nicht  aktiviert,  so  erhält  nur  das  primäre Ziel  den  Schaden.  Ist  der 
+Angriff   nicht   erfolgreich,   so   kann   mit 888 die   Fähigkeit   aktiviert   werden   und   jeder   in 
+Nahkampfreichweite  um  das  geplante  Ziel  herum  (wie  auch  das  Ziel  selbst)  erhält  Schaden  in  Höhe  des 
+Rangs in Explosion. 
+- Feuerresistenz X (passiv): Würde  der  Träger  Schaden  durch  Feuer  hinnehmen,  so  wird  dieser  um  den 
+Rang dieser Fähigkeit gesenkt. 
+- Gekoppelt X (aktiv): Bei  erfolgreichem  Angriff  können  pro  Rang  in  Gekoppelt 88 eingesetzt  werden, 
+um  eine  gleiche  Anzahl  an  zusätzlichen  Treffern  zu  erzielen  (die  jeweils  Basisschaden  +  Anzahl  an J  
+anrichten). Diese können sich nur gegen das gleiche Ziel richten. 
+- Geringe Feuerrate X (passiv): Nach einem Angriff mit  dieser Waffe muss der Charakter eine Anzahl  an 
+Runden gleich dem Rang in dieser Fähigkeit warten, ehe er diese wieder einsetzen kann. 
+- Hochwertig (passiv): Eine  hochwertige  Waffe  gewährt  einen 8 auf  alle  Angriffsproben damit,  zudem 
+steigt   der   Basisschaden   um   1. Bei   einer   hochwertigen   Rüstung   sinkt   die   Last um   1   und   der 
+Absorptionswert steigt um den gleichen Wert. 
+- Immung gegen Zertrümmern (passiv): Diese Objekte können nicht von der Waffenfähigkeit Zertrümmern 
+beeinflusst werden. 
+- Ionenschaden (passiv): Waffen mit dieser Fähigkeit richten keinen körperlichen Schaden an, sondern bei 
+Fahrzeugen   und Raumschiffen   Systembelastung   und   bei   Droiden   sowie   kybernetisch   veränderten 
+Humanoiden Erschöpfungsschaden an. 
+- Lenkflugkörper X (aktiv): Wenn der Angriff mit einer gelenkten Waffe fehlschlägt, sich die Fähigkeit aber 
+(wenn nicht  anders  verzeichnet)  mitR888 aktiviert,  so  kann  der  Schütze  am  Ende  der  Runde  eine 
+erneute Angriffsprobe machen. Die Schwierigkeit richtet sich hierbei gemäß den Fahrzeugkampfregeln mit 
+der Silhouette 0 der gelenkten Waffe zum Ziel hin, die  entsprechen Rang in Lenkflugkörper. Bei Erfolg 
+wird das Ziel getroffen und erhält normalen Schaden. Schlägt auch dieser Angriff fehlt, könnte mit 888 
+die Angriffsprobe in der kommenden Runde am Ende erneut wiederholt werden. 
+
+- Minderwertig (passiv): Eine minderwertige Waffe gewährt einen K auf alle Angriffsproben damit, zudem 
+sinkt  der  Basisschaden  um  1.  Die  Last  einer  minderwertigen  Rüstung  wird  um  1  erhöht  und  die 
+Verteidigung  um  1  gesenkt.  Verfügt  es  über  keine  Verteidigung,  so  sinkt  der  Absorptionswert  um  1,  er 
+kann aber nicht weniger als 0 betragen. 
+- Niederwerfen (aktiv): Bei erfolgreicher Aktivierung (88 + 8 für jede Silhouette des Ziels von mehr 
+als 1) fällt das Ziel zu Boden. 
+- Panzerbrechend X (passiv): Pro Rang ignoriert die Waffe 1 Punkt Panzerung oder 10 Punkte Absorption. 
+- Präzise X (passiv): Pro Rang darin erhält der Held einen  auf Angriffsproben damit. 
+- Sperrigkeit X (passiv): Der  Träger  dieser  Ausrüstung  benötigt  einen Stärke-Wert  gleich  oder  höher  des 
+Rangs  in  Sperrigkeit,  ansonsten  erhält  er  bei  allen Proben,  während  er  diese  Ausrüstung  einsetzt,  eine 
+zusätzliche pro Differenz zu dessen Stärke. 
+- Tödlich X (passiv): Wird mit dieser Waffe ein kritischer Treffer oder eine kritische Wunde erzielt, wird die 
+10-fache Summe des Rangs in Tödlich zum Wurf auf die Tabelle zum Ermitteln der Auswirkungen addiert. 
+- Traktorstrahl X (passiv): Bei einem Treffer mit dieser Waffe kann sich das Ziel nicht mehr bewegen, bis 
+der Pilot eine Pilotprobe mit einer Schwierigkeit gleich dem Wert dieser Fähigkeit geschafft hat.  
+- Unpräzise X (passiv): Der Angreifer mit dieser Waffe erhält 9 gleich dem Rang zu Angriffsproben hinzu. 
+- Unhandlich X (passiv): Der Träger dieser Ausrüstung benötigt einen Wert in Geschicklichkeit gleich oder 
+höher  des Rangs  in  Sperrigkeit,  ansonsten  erhält  er  bei  allen Proben,  während  er  diese  Ausrüstung 
+einsetzt, eine zusätzliche pro Differenz zu dessen Geschicklichkeit. 
+- Verbrennung X (aktiv): Bei  Aktivierung  der Fähigkeit  und  erfolgreichem  Angriff,  brennt  das  Ziel für  eine 
+Anzahl an Runden gleich dem Rang in Verbrennen. Der Grundschaden der Waffe wird jeweils zu Beginn 
+der  Runde des  Ziels angerichtet.  Mit  einer erfolgreichen  Körperbeherrschungsprobe (
+ 
+bei  hartem 
+Boden, 
+ 
+bei weichem Boden,  automatisch erfolgreich bei einem Sprung ins Wasser) kann das Feuer 
+vorzeitig gelöscht werden, sofern es sich nicht um chemisches Material handelt. 
+- Verstrickend X (aktiv): Der  Betroffene  ist  für  eine  Anzahl  an  Runden  gleich  dem  Rang in  Verstrickend 
+bewegungsunfähig   und   kann in   dieser   Zeit keine    Manöver   durchführen,    egal,    woher   diese 
+stammen. Es kann sich vorzeitig durch eine 
+ 
+Athletikprobe als Aktion von diesem Zustand befreien. 
+- Vollautomatik (aktiv): Der Held muss  sich vor dem Angriff entscheiden, ob er diese Fähigkeit  einsetzen 
+will. Falls ja,  erhält  die  Schwierigkeit  der  Angriffsprobe einen ,  für  je 88 kann  er  einen  zusätzlichen 
+Treffer mit  der Waffe  verursachen  (dieser  richtet  Basisschaden  +  Anzahl  anRJ an).  Damit  kann  er  das 
+gleiche Ziel oder mehrere verschiedene treffen.  Möchte er mehrere Ziele treffen,  so muss er dies vor der 
+Probe ansagen,  die  Ziele müssen  sich  alle in  Reichweite  der Waffe  befinden  und  das  primäre Ziel muss 
+immer das  mit  der  höchsten  Angriffsschwierigkeit  sein.  Vollautomatische  Waffen  können gemäß  der 
+Kosten auch pro Treffer einen kritischen Treffer generieren. 
+- Vorbereitung X (passiv): Nach einem Angriff muss der Charakter eine Anzahl an Vorbereitungsmanövern 
+gleich dem Rang darin machen, ehe er die Waffe wieder benutzen kann. 
+- Zertrümmern (aktiv): Zertrümmern benötigt einen 8 zum Aktivieren (mehrmals je Angriff möglich). Damit 
+können offen getragene Objekte beschädigt und zerstört werden. Jede Aktivierung führt bei einem Objekt 
+zur Erhöhung der Beschädigungsschwelle: (Unbeschädigt - leicht beschädigt - mittel beschädigt - schwer 
+beschädigt - zerstört), so dass mit 8888 ein Objekt durch einen Angriff zerstört werden könnte. 
+ 
+instandhaltung von Ausrüstung 
+Früher  oder  später  nutzt  sich  jedes  Ausrüstungsstück  ab,  wird  beschädigt  oder  geht  kaputt.  Dies  könnte  durch 
+schlechte Wartung,  erzielen von P oder die willentliche Beschädigung durch Waffengewalt geschehen. Einfache 
+Gegenstände  (in  der  Regel  solche,  die  ohne  Energiezelle  funktionieren)  kann  man  mit  einer  Mechanikprobe 
+reparieren,  für  hochwertigere  Objekte  kann  auch  auf  eine Computertechnikprobe ausgewichen  werden.  Waffen 
+kann   man auch   mit   einer   Probe auf   die   betreffende   Waffenfertigkeit   reparieren.   Die   Schwierigkeit   der 
+Reparaturprobe  sowie die  Kosten  und  die  Abzüge  bei  Umgang  mit  einem beschädigten  Objekt  sind  der 
+nachfolgenden Tabelle zu entnehmen. Für jeden erzielten 8 bei der Reparaturprobe sinken die Kosten um 10%. 
+ 
+Beschädigungsgrad Schw. Abzug bei Einsatz Zeitaufwand Kosten (relativ zum Objektpreis) 
+Leichte Beschädigung 
+ 
++9 
+1-2 Std. 25% 
+Mittelschw. Beschädigung 
+ 
++ 
+2-4 Std. 50% 
+Schwere Beschädigung 
+ 
+Nicht nutzbar 4-6 Std. 100% 
+Kein passendes Werkzeug  
++ 
+- - - 
+Schnellere Reparatur 
++ 
+- -50% - 
+
+Energiebasierende Fernkampfwaffen
+ 
+Energiewaffen Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+Energiezwille LFW 3 - K 1 0 40 4 
+Betäubungsschaden, 
+Desorientierung 1 (benötigt 
+nur 8Rzum Aktivieren) 
+Hold-Out 
+Blasterpistole Cerka 
+LFW 4 4 M 1 1 
+350 
+R 
+5 Betäubungsoption 
+Hold-Out 
+Blasterpistole 
+LFW 5 4 K 1 1 200 4 Betäubungsoption 
+Miniblasterpistole 
+Spukami 
+LFW 5 3 K 1 1 200 2 
+Betäubungsoption; Schüsse 
+auf K+ Entfernung erhalten 
+Unpräzise 1; andere erhalten 
+9 beim Suchen der Waffe 
+Blasterpistole12 
+Verteidiger 
+LFW 5 5 K 1 0 25 4 
+Minderwertig, begrenzte 
+Munition 2, nicht nachladbar, 
+andere erhalten bei Proben 
+auf Computertechnik und 
+Wahrnehmung 99, um die 
+Waffe zu finden  
+Sportblaster 
+Verteidiger 
+LFW 5 3 M 1 1 650 6 
+Betäubungsoption, 
+Genauigkeit 1 
+Schnellfeuer Holdout-
+Blasterpistole  
+Model Q4 
+LFW 5 3 K 1 0 250 4 
+Betäubungsoption; andere 
+erhalten bei Wahrnehmungs-
+proben 9, um Waffe zu 
+finden; wird die Munition 
+wegen P leer, so kann sie 
+unter keinen Umständen 
+nachgeladen werden  
+Mon Cal 
+Kampfschlagstock 
+LFW 5 4 M 1 1 250 6 Betäubungsoption 
+Militärische Holdout-
+Blasterpistole 
+LFW 6 3 K 1 0 500 5 
+Betäubungsoption; andere 
+erhalten 9 beim Suchen der 
+Waffe; kann KKK 
+einsetzen, um die Munition 
+leer sein zu lassen 
+Holdout-Blasterpistole 
+Variabel 
+LFW 1-7 4 K 1 0 400 7 
+Begrenzte Munition 12; 
+Waffe kann Schaden von 1 
+bis 7 einrichten, welcher 
+auch gleiche Anzahl 
+Munition beansprucht; 
+andere erhalten bei 
+Wahrnehmung 9, um die 
+Waffe zu finden 
+Leichte Blasterpistole LFW 5 4 M 1 2 300 4 Betäubungsoption 
+Blasterpistole 
+Blastech DL-19-C 
+LFW 5 4 M 1 4 450 4 
+Betäubungsoption, bei 
+Anwendung des Talents 
+Personalisierte Ausrüstung 
+auf die Waffe können 2 
+Optionen gewählt werden 
+Leichte Blasterpistole 
+Czerka A95 
+Stachelstrahl 
+LFW 5 3 M 1 0 400 5 
+Betäubungsoption, Tödlich 
+1, andere erhalten bei 
+Wahrnehmung 99, um die 
+Waffe zu finden 
+Leichte Blasterpistole 
+HL-27 
+LFW 5 3 M 1 2 450 4 Betäubungsoption, Präzise 1 
+Blasterpistole XL-2 
+„Feuerblitz“ 
+LFW 5 3 M 1 3 450 5 
+Betäubungsoption, 
+Desorientierend 1 
+Blasterpistole X-30 
+Lancer 
+LFW 5 4 W 3 3 1000 5 Präzise 1, Durchbohrend 2 
+CDEF-Pistole LFW 5 4 M 1 1 150 4 
+Betäubungsoption, 
+Minderwertig 
+Blasterpistole Merr-
+Sonn IR-5 
+LFW 5 3 M 2 2 
+750 
+R 
+6 Vollautomatik, Unpräzise 1 
+ 
+
+Energiewaffen Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+Blasterpistole SE-14C LFW 5 4 K 1 2 650 6 
+Vollautomatik, 
+Betäubungsoption 
+Blasterpistole Boonta LFW 6 3 K 1 1 1000 8 
+Betäubungsoption; andere 
+erhalten 9 beim Suchen der 
+Waffe; Träger kann 9 bei 
+Täuschungsprobe entfernen, 
+wenn er die Waffe als 
+ungefährlich und 
+Schmuckstück erklären will 
+Leichte Blasterpistole 
+Quecksilber L7 
+LFW 6 3 M 1 1 425 4 
+Betäubungsoption; andere 
+erhalten bei Wahrnehmung 
+99, um die Waffe zu 
+finden, wenn sie auf einem 
+Raumschiff versteckt ist 
+Blasterpistole LFW 6 3 M 1 3 400 4 Betäubungsoption 
+Blasterpistole ELG-3A LFW 6 4 K 1 0 400 5 
+Betäubungsoption; andere 
+erhalten bei Wahrnehmung 
+99, um die Waffe zu finden 
+Blasterpistole Merr-
+Sonn Model 44 
+LFW 6 3 M 1 4 500 4 Betäubungsoption 
+Blasterpistole  
+Merr-Sonn Model 80 
+LFW 6 2 M 2 3 550 5 
+Betäubungsoption; Zeit, zum 
+Ziehen oder einstecken der 
+Waffe kann nicht mit 
+Talenten reduziert werden 
+Blasterpistole  
+Merr-Sonn Model 53 
+„Schnellabzug“ 
+LFW 6 3 M 1 4 450 4 
+Betäubungsoption; 
+Schwierigkeit, um die Waffe 
+zu reparieren oder zu 
+modifizieren, wird um 1 
+gesenkt 
+Blasterpistole  
+Merr-Sonn Model 80 
+LFW 6 2 M 2 3 550 5 
+Betäubungsoption; Zeit, zum 
+Ziehen oder einstecken der 
+Waffe kann nicht mit 
+Talenten reduziert werden 
+Betäubungsblaster LFW 6 - K 1 3 200 3 Betäubungsschaden 
+Blasterpistole Site-145 
+Replikat 
+LFW 6 3 M 1 0 
+1750 
+R 
+8 
+Betäubungsoption, verfügt 
+über Waffenzubehör 
+machteingestimmter 
+Resonator 
+Blasterpistole 
+Blastech Relby-K23 
+LFW 6 3 M 2 3 
+700 
+R 
+6 
+Betäubungsoption, 
+Durchbohrend 2 
+Leichte 
+Repetierblasterpistole 
+Blastech SE-14 
+LFW 6 3 M 2 3 
+1000 
+R 
+6 
+Betäubungsoption, 
+Vollautomatik, kann KKK 
+einsetzen, um die Munition 
+leer sein zu lassen 
+ 
+  
+
+Energiewaffen Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+Schw. Blasterpistole LFW 7 3 M 2 3 700 6 Betäubungsoption  
+Schwere 
+Blasterpistole 
+Sicherheit S-5 
+LFW 7 3 M 3 1 1250 6 
+Betäubungsoption, mit Probe 
+auf  leichte 
+Fernkampfwaffen kann der 
+eingebaute Wurfhaken an 
+ein Objekt in mittlerer 
+Reichweite befestigt werden, 
+als Aktion wird dann das 
+leichtere Objekt zum 
+schwereren gezogen, 
+möchte er eine andere 
+Person mitziehen, wird eine 
+ Athletikprobe 
+benötigt, damit der Schütze 
+nicht seine Pistole oder die 
+andere Person verliert  
+Blasterpistole  
+H-7 „Equalizer“ 
+LFW 7 2 M 2 3 1200 8 
+Betäubungsoption, 
+Hochwertig 
+Schwere 
+Blasterpistole HH-50 
+LFW 7 3 K 3 2 1300 7 
+Betäubungsoption, 
+Gekoppelt 1, Tödlich 1, kann 
+KKK einsetzen, um Waffe 
+überhitzen zu lassen (erhält 
+1 Beschädigungsgrad), kann 
+KK einsetzen, damit 
+Munition der Waffe leer ist 
+schwere Blasterpistole 
+CR-2 
+LFW 7 4 M 2 2 600 5 Betäubungsoption 
+Geonosianische 
+schwere Blasterpistole 
+LFW 7 2 M 2 3 1100 8 Betäubungsoption 
+Blasterpistole  
+Raider Arms Model-1 
+Nova Viper  
+LFW 8 3 M 2 2 4500 9 
+Betäubungsoption, 
+Durchbohrend 2, Präzise 2, 
+Schwierigkeit von Proben 
+auf Mechanik zum 
+Reparieren/Modifizieren der 
+Waffe wird um 2 erhöht  
+schwere Blasterpistole 
+Blastech DL-7H 
+LFW 8 3 M 2 2 
+850 
+R 
+5 
+Kann KK einsetzen, um 
+Munition leer sein zu lassen 
+schwere Blasterpistole 
+Cerka C-10 
+Dragoneye Reaper 
+LFW 8 3 M 3 3 1000 7 Betäubungsoption 
+Schwere 
+Blasterpistole Renegat 
+LFW 8 3 M 2 3 950 4 
+Betäubungsoption, 
+Unpräzise 1 
+Schwere 
+Blasterpistole BR-219 
+LFW 8 3 K 2 2 
+625 
+R 
+7 
+Betäubungsoption, Tödlich 
+2, kann KK einsetzen, 
+damit Waffe 1 
+Beschädigungsgrad erhält, 
+kann P einsetzen, damit 
+Waffe zerstört ist und 
+Basisschaden beim 
+Schützen anrichtet 
+Duell-Blasterpistole LFW 9 2 K 2 2 750 5 
+Präzise 1, begrenzte 
+Munition 1, Durchbohrend 1 
+Droidendisruptor LFW 6 3 K 2 1 800 7 
+Tödlich 3 (nur bei Droiden); 
+Organische Wesen erleiden 
+nur 2 Erschöpfung bei 
+Treffer mit dieser Waffe 
+Ionenblaster LFW 10 5 K 3 3 250 3 
+Ionenschaden, 
+Desorientierend 5 
+Felebreck 
+Droidendeaktivator 
+LFW 12 3 K 1 0 1050 5 
+Ionenschaden, Erschütternd 
+1, Begrenzte Munition 3  
+Pulswellenblaster ATA LFW 5 3 K 2 2 
+750 
+R 
+6 Tödlich 3 
+Schwerer 
+Betäubungsblaster 
+Palandrix KO-2 
+LFW 8 - K 2 3 650 5 Betäubungsschaden 
+
+Energiewaffen Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+Bandbreitenkanone 
+Arakyd ACP 
+SFW 6 3 K 3 3 890 6 
+Explosion 5, 
+Betäubungsoption 
+Blastergewehr GLX 
+Feuerlanze 
+SFW 7 3 W 3 1 1600 6 
+Vollautomatik,  
+Desorientierend 2, 
+Betäubungsoption 
+Repetiergewehr ACP SFW 7 3 M 3 1 1000 6 
+Vollautomatik,  
+Betäubungsoption 
+Modulargewehr  
+DDC-MR6 
+SFW 7 3 M 3 6 1000 6 
+Betäubungsoption, mit  
+Mechanikprobe und einer 
+Aktion kann Zubehör 
+angebracht/ entfernt werden  
+Weitschuss-
+blastergewehr 
+SFW 8 3 E 3 4 800 4 Betäubungsoption 
+Sportblastergewehr 
+SKZ 
+SFW 8 4 W 3 4 600 4 Betäubungsoption 
+Weequay Blasterlanze SFW 8 3 E 5 2 850 6 Präzise 1, Sperrigkeit 2 
+Mon Cal Speerblaster SFW 8 3 W 5 3 1350 5 Betäubungsoption 
+(Lanze) NKW +2 3 N - - - - Durchbohrend 1 
+Bola Karabiner SFW 8 3 M 3 3 1600 6 Präzise 1, Verstrickend 1 
+Jagdblastergewehr 
+BlasTech M-300 
+SFW 8 3 E 4 1 1600 6 
+Präzise 1, Sperrigkeit 2, 
+Durchbohrend 2, 
+Betäubungsschaden, - bei 
+weiter u. extremer RW 
+Reiterblaster DR-45 
+Dragooner 
+SFW 8 3 M 1 3 
+1900 
+R 
+6 
+Präzise 1, Betäubungsopt., 
+kann als Manöver mit LFW 
+einhändig geführt werden 
+Energiebogen der 
+Nachtschwestern 
+SFW 8 2 M 4 2 
+2800 
+R 
+8 
+Unhandlich 3, Tödlich 2, 
+Durchbohrend 4  
+Blasterkarabiner E5 SFW 9 3 M 3 4 550 3 
+Betäubungsoption, Präzise 
+1, kann KKK einsetzen, 
+um Waffe überhitzen zu 
+lassen (erhält 1 
+Beschädigungsgrad) 
+Blasterkarabiner DH-
+17 
+SFW 8 3 M 2 3 900 6 
+Betäubungsoption, 
+Vollautomatik, Unpräzise 1 
+Blastergewehr SSG 
+Typ III Paladin 
+(Gewehr der 
+Senatsgarde) 
+SFW 8 3 W 4 2 3250 8 
+Betäubungsoption, 
+Vollautomatik, Durchbohrend 
+1, Hochwertig (Schaden 
+bereits erhöht),  
+integrierter 
+Betäubungskolben 
+NKW +2 6 N - - - - 
+Betäubungsschaden, 
+Hochwertig (Schaden bereits 
+erhöht), Desorientierend 2  
+Zerlegbares 
+Blastergewehr CR-8 
+SFW 9 3 E 4 1 
+3250 
+R 
+7 
+Präzise 1, Vorbereiten 2, 
+Durchbohrend 2, Langsames 
+Feuerrate 1; kann innerhalb 
+weniger Augenblicke zerlegt 
+werden, andere erhalten 
+99 auf Wahrnehmungs-
+proben, um die Waffe zu 
+finden 
+Blasterkarabiner SFW 9 3 M 3 4 850 5 Betäubungsoption 
+Blasterkarabiner 
+Sorosuub Ok-98 
+SFW 9 3 M 4 3 1100 5 
+Betäubungsoption, kann 
+erstes „Keine Munition“-P-
+Ergebnis ignorieren, kann 
+mit Mechanikprobe 
+modifiziert werden (s.u.) 
+Blasterkarabiner 
+Sorosuub Ok-98 
+(modifiziert) 
+SFW 11 3 M 4 3 1100 5 
+Betäubungsoption, P kann 
+eingesetzt werden, damit 
+Waffe explodiert (Träger 
+nimmt Waffengrundschaden) 
+Blastergewehr SFW 9 3 W 4 4 900 5 
+Betäubungsoption, kann auf 
+Reichweite N u. K einhändig 
+mit LFW benutzt werden 
+ 
+
+Energiewaffen Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+Pulsarkanone SFW 9 3 E 5 1 
+2750 
+R 
+6 
+Sperrigkeit 3, Durchbohrend 
+2, Geringe Feuerrate 1; als 
+Manöver kann gesamte 
+Munition geladen werden, 
+der nächste Schuss hat 
+dann zusätzlich die 
+Eigenschaften Tödlich 3, 
+Panzerbrechend 1, danach 
+ist die Munition leer  
+Schw. Blastergewehr SFW 10 3 W 4 4 1500 6 Vollautomatik, Sperrigkeit 3 
+Schweres 
+Blastergewehr  
+A280 C 
+SFW 9 4 W 5 2 1800 7 
+Betäubungsoption, Präzise 
+1, Sperrigkeit 3; 
+Schwierigkeit von 
+Mechanikproben zur 
+Reparatur werden um 1 
+gesenkt 
+Zielblastergewehr  
+LD-1 
+SFW 9 4 E 6 3 1275 7 
+Präzise 2, Sperrigkeit 3; 
+Durchbohrend 3, Geringe 
+Feuerrate 1 
+Schw. Blastergewehr 
+Blastech DLS-12 
+SFW 10 3 M 4 3 1350 7 Vollautomatik, Sperrigkeit 2 
+Schw. Blastergewehr 
+Blastech DH-X 
+SFW 10 3 W 7 4 1900 6 Sperrigkeit 3, Durchbohr. 2 
+Scharfschüt-
+zengewehr E-11s 
+SFW 10 3 E 6 3 
+3500 
+R 
+7 
+Präzise 1, Sperrigkeit 3, 
+Durchb. 2, ger. Feuerrate 1 
+Jagdblastergewehr 
+Herloss HBt-4 
+SFW 10 3 M 5 2 900 6 
+Sperrigkeit 3, 
+Betäubungsoption 
+Leichter  
+Repetierblaster 
+SFW 11 3 W 7 4 
+2250 
+R 
+7 
+Vollautomatik, Sperrigk. 4, 
+Durchbohrend 1 
+Rotationsblaster-
+kanone Z-6 
+SFW 12 4 W 6 3 
+3000 
+R 
+7 
+Nur Vollautomatik, Sperrigk. 
+3, Vorbereitung 1; kann KK 
+einsetzen, damit Träger 2 
+Erschöpfung und Waffe 1 
+Beschädigungsgrad erleidet 
+Betäubungs-
+blasterkarabiner 
+SFW 9 3 W 3 4 425 4 Betäubungsschaden 
+Betäubungsgewehr 
+LBR-9 
+SFW 10 - W 6 4 2800 4 
+Desorientierend 2, 
+Betäubungsschaden 
+Pulsargewehr 
+Corondexx VES-700 
+SFW 8 3 M 4 3 950 6 
+Explosion 6, 
+Betäubungsoption 
+Disruptorpistole LFW 10 2 K 2 2 
+3000 
+R 
+6 
+Tödlich 4, bei krit. Wunden 
+mindestens Ergebnis „96“; 
+kein Zubehör, welches RW 
+oder Anzahl an Schüssen 
+erhöht 
+Disruptorgewehr SFW 10 2 W 5 4 
+5000 
+R 
+6 
+Sperrigkeit 2, Tödlich 5, bei 
+krit. Wunden mindestens 
+Ergebnis „96“; kein Zubehör, 
+welches RW oder Anzahl an 
+Schüssen erhöht 
+Ionendisruptor T-7 SFW 12 2 W 6 2 
+8000 
+R 
+9 
+Sperrigkeit 3, Tödlich 6, bei 
+krit. Wunden oder krtischen 
+Treffern mindestens 
+Ergebnis „96“; Explosion 6, 
+Panzerbrechend 2, 
+langsame Feuerrate 1; kein 
+Zubehör, welches RW oder 
+Anzahl an Schüssen erhöht  
+Geonosianischer 
+Blasterkarabiner 
+SFW 9 2 M 3 4 1300 7 Betäubungsoption 
+Geonosianisches 
+Blastergewehr 
+SFW 9 2 W 4 4 1500 7 Betäubungsoption 
+ 
+ 
+
+Energiewaffen Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+Schallgewehr SWE/2 SFW 8 6 W 4 3 1200 6 
+Erschütterung 1, Betäub-
+ungssch., langs. Feuern 1, 
+kann nicht v. Lichtschwertern 
+reflektiert werden 
+Bogenspanner SFW 10 3 M 5 2 1250 7 
+Sperrigkeit 3, Niederwerfen; 
+benötigt Manöver zum 
+Nachladen 
+Repulsorgewehr  
+Sak Tek D-29 
+ART 8 4 M 3 3 1350 7 
+Betäubungsschaden, 
+Desorientierend 3, 
+Niederwerfen 
+Repetierblaster 
+Sorosuub VX 
+Sidewinder 
+ART 12 3 W 8 4 
+3350 
+R 
+7 
+Vollautomatik, Sperrigk. 5, 
+Durchbohrend 1, Tödlich 1; 
+montiertes Zweibein 
+Dualblasterkanone  
+J-10 
+ART 13 2 W 8 3 
+6750 
+R 
+7 
+Sperrigkeit 5, Gekoppelt 1, 
+Unpräzise 1; kann KK 
+einsetzen, damit Träger 2 
+Erschöpfung und Waffe 1 
+Beschädigungsgrad erleidet 
+Schwerer 
+Repetierblaster 
+ART 15 3 W 9 4 
+6000 
+R 
+8 
+Vollautomatik, Sperrigk. 5, 
+Durchbohrend 2, Tödlich 1 
+Kolbengetriebene 
+Vierlingslaserkanone 
+ART 10 2 W 8 4 
+9500 
+R 
+8 
+Nur Vollautomatik, Sperrigk. 
+4, Panzerbrechend 1, 
+Unpräzise 1, Vorbereitung 2; 
+kann KKKK einsetzen für 
+kritische Wunde beim Träger 
+mit -50 auf den Wurf 
+(mindestens Ergebnis 01) 
+Automatikturm  
+Atgar 
+Weltraumverteidigung 
+1.8 FD 
+ART 17 2 E 25 0 
+12000 
+R 
+6 
+Vollautomatik, Langsame 
+Feuerrate 1, Begrenzte 
+Munition 8; wenn an 
+ausreichender Energiequelle 
+angeschlossen (was 
+mehrere Minuten und  
+Mechanikprobe erfordert) 
+verliert die Waffe „Begrenzte 
+Munition 8“ 
+Schwerer 
+Repetierblaster 
+Sorosuub HOB 
+ART 15 3 E 10 4 
+6500 
+R 
+8 
+Vollautomatik, Sperrigk. 6, 
+Durchb. 2, Tödl. 1, Dreibein, 
+Mechanikproben erhalten  
+für Reparatur der Waffe 
+ 
+ 
+
+Schusswaffen
+ 
+Schusswaffen Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+Langbogen SFW 5 5 W 5 1 120 4 
+Sperrigkeit 3, Begrenzte 
+Munition 1, Durchbohrend 3 
+(1 Pfeil kostet 1 Cr) 
+Kyuzo-Bogen SFW 9 4 W 6 1 2400 8 
+Sperrigkeit 3, Niederwerfen, 
+Durchbohrend 5  
+Corellianischer 
+Kompositbogen 
+ - - M 3 1 200 5 
+Sperrigkeit 3, Begrenzte 
+Munition 1, Fähigkeiten des 
+Pfeils 
+  Standardpfeil SFW 5 5 M 0 0 1 5 
+Durchbohrend 1, 
+Niederwerfen 
+Explosivpfeil LFW 6 3 M 0 0 50 6 Explosion 4 
+Betäubungspfeil LFW 6 - M 0 0 60 6 Betäubungsschaden 
+Kompositbogen FS 19  - - M 4 2 500 7 
+Sperrigkeit 3, Begrenzte 
+Munition 1, Fähigkeiten d. 
+Pfeils 
+  Standardpfeil SFW 5 4 M 0 0 1 5 Durchbohrend 1, Tödlich 2 
+Explosivpfeil SFW 6 3 M 0 0 50 5 Explosion 4 
+Betäubungspfeil SFW 6 - M 0 0 60 6 Betäubungsschaden 
+Brandpfeil SFW 6 5 M 0 0 60 5 Verbrennen 2 
+Netzpfeil SFW 2 - M 0 0 30 5 Verstrickend 2 
+ 
+ 
+
+Geschosswerfer
+ 
+Geschosswerfer Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+Handflächenpistole 
+Schleicher-2VX 
+LFW 1 5 K 0 0 300 5 
+Begrenzte Munition 3, Pfeile 
+können mit Gift versehen 
+werden, erfolgreich 
+getroffenes Ziel erleidet 
+Auswirkungen desselbigen; 
+andere erhalten 99, um die 
+Waffe am Körper zu finden 
+KWS Typ 1 
+Säbelpfeilwerfer 
+LFW 1 - W 3 2 1600 9 
+Begrenzte Munition 1, Pfeile 
+können mit Gift versehen 
+werden, erfolgreich 
+getroffenes Ziel erleidet 
+Auswirkungen desselbigen 
+NX-14 Nadelwerfer LFW 5 - K 1 1 
+650 
+R 
+7 
+Durchbohrend 3, andere 
+erhalten 9, um die Waffe zu 
+finden; alle 9 aufgrund 
+eines persönlichen 
+Deflektorschilds des Ziels 
+werden ignoriert 
+Pistole KD-30 
+Dissuader 
+LFW 4 5 K 2 0 350 6 
+Durchbohrend 2, Tödlich 1; 
+erfolgreich getroffenes Ziel 
+erleidet ab Beginn der 
+nächsten Runde für 2 
+Runden 1 Wunde (ohne 
+Absorption) 
+Geschosswerfer-
+Pistole 
+LFW 4 5 K 1 0 100 3  
+Geschoss-
+werferpistole SH-9 
+LFW 4 5 K 1 0 250 4 
+Begrenzte Munition 1, 
+Durchbohrend 2, andere 
+erhalten 9, um die Waffe 
+am Körper zu finden; andere 
+erhalten 9, um versteckten 
+Schützen dieser Waffe zu 
+finden 
+Autopistole ASP-9 LFW 4 5 K 1 0 150 4 Vollautomatik 
+Pistole Fiver LFW 5 4 K 2 1 200 4 Präzise 1, begr. Munition 1 
+Luftgewehr Czerka 
+Modell 77 
+SFW 6 - W 3 3 1100 6 
+Durchbohrend 4, 
+Betäubungsschaden 
+Sturmkarabiner SFW 6 5 K 4 1 250 4 
+Unpräzise 1, Vollautomatik, 
+kann KK einsetzen, um die 
+Munition leer sein zu lassen 
+Geschosswerfer-
+Gewehr 
+SFW 7 5 M 5 1 250 3 Sperrigkeit 2 
+Jagdgewehr Typ V SFW 7 5 W 5 2 1750 7 Präzise 1, Sperrigkeit 2 
+Berserker Gewehr SFW 7 4 M 4 0 600 
+R 
+5 Verbrennen 1, Sperrigkeit 3, 
+Desorientierend 1 
+Schweres imperiales 
+Repetiergewehr 
+SFW 8 4 M 3 2 
+1500 
+R 
+7 
+Vollautomatik, Sperrigkeit 4; 
+als Manöver kann gesamte 
+Munition geladen werden, 
+der nächste Schuss hat 
+dann zusätzlich die 
+Eigenschaften Explosion 7, 
+Erschütternd 1, verliert aber 
+Vollautomatik, danach ist die 
+Munition leer 
+Vodran Jagdgewehr SFW 7 4 W 4 2 800 7 Sperrigkeit 2 
+Scharfschützengewehr
+ 
+Czerka Modell 38 
+SFW 8 3 E 5 4 3000 6 Präzise 2, Durchbohrend 3 
+Jagdgewehr
+  
+Czerka Modell 57 
+SFW 7 5 W 5 4 500 6 Präzise 1, Sperrigkeit 2 
+Aufruhr-Unterdrük-
+kungsgewehr R-88 
+SFW 8 - M 4 2 2000 5 
+Explos. 5, Desorientierend 3, 
+Betäubungsschaden 
+ 
+
+Geschosswerfer Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+Flechette-Pistole 
+FWG-5 
+LFW 6 3 K 1 2 
+825 
+R 
+7 
+Fluglenkkörper 3, Begrenzte 
+Munition 3 
+Duoflechette-Gewehr 
+Salus DF-DI 
+SFW 9 3 K 3 3 
+1000 
+R 
+5 
+Explosion 4, Begrenzte 
+Munition 5, Gekoppelt 1, 
+Tödlich 2 
+Schrotgewehr Adostic 
+Arms Kaliber 8 
+SFW 7 6 K 3 2 550 4 Explosion 3, Niederwerfen 
+Stokhli Spraystab SFW 0 - W 4 0 2500 8 
+Präzision 2, Verstrickend 4, 
+Geringe Feuerrate 1, 
+Betäubend 8 
+Schrotflinte Czerka K-
+23 Hammer 
+SFW 8 4 K 5 4 1500 5 Explosion 6, Niederwerfen 
+Aranea-Netzgewehr SFW 3 - M 4 2 775 5 
+Verstrickend 5, Begrenzte 
+Munition 1 
+Gewirrkanone SFW 1 4 K 2 1 500 5 Verstrickend 3 
+Selonianischer 
+Splitterwerfer 
+SFW 5 3 M 4 2 1500 7 
+Vollautomatik,  
+Durchbohrend 1 
+Statik-Pistole SSB-1 LFW 2 4 K 2 1 850 7 
+Desorientierend 1, 
+Betäubend 8 
+Verpinen 
+Splitterpistole 
+LFW 8 3 M 1 2 
+15000 
+8 
+Durchbohrend 2, 
+Niederwerfen, bei KK 
+erhält Waffe 1 
+Beschädigungsgrad 
+Verpinen 
+Splittergewehr 
+SFW 12 3 E 3 3 
+30000 
+8 
+Niederwerfen,  
+Durchb. 4, bei KK erhält 
+Waffe 1 Beschädigungsgrad 
+Verpinen schweres 
+Splittergewehr 
+ART 15 2 E 4 4 
+45000 
+8 
+Niederwerfen, Präzise 2  
+Durchbohrend 6, bei KK 
+erhält Waffe 1 
+Beschädigungsgrad 
+ 
+Munition für Projektilwaffen
+ 
+Projektil-Munition Preis Last Selt Anmerkungen 
+Smarttranq 500 0 4 
+Für   Modell   77; bei Fehlschlag einer  
+Widerstandskraftprobe erleidet  das  Ziel  5  Erschöpfung +2 
+pro K bei  Probe; bei P kann  der  Schütze diesen  dafür 
+einsetzen,  dass  das  Ziel die  kommende  Runde  nochmals 
+die Widerstandskraftprobe machen muss 
+Czerka Detonatormunition 450 0 7 
+Für Modell 38 und 57; Fähigkeiten werden durch folgende 
+ersetzt: Präzise 2, Explosion 4, Niederwerfen 
+Munition mit Cortosis-
+Überzug 
+500 1 4 
+Nutzer   kann 8888 einsetzen,   um   bei   mit   Licht-
+schwertern  bewaffneten  Gegnern  die  Waffe  sich  deakti-
+vieren  zu  lassen  und  diese  kann  erst  nach  dem  letzten 
+Initiative-Platz der nächsten Runde aktiviert werden 
+Falls beim Einsatz von besonderer Munition diese leer wird (z.B. wegen P), so muss sie neu erworben oder aber 
+mit ggf. vorhandener Ersatzmunition ersetzt werden. 
+ 
+ 
+
+Wurfwaffen
+ 
+Wurfwaffen Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+Ascianischer 
+Wurfdolch 
+LFW +1 2 K 1 0 65 7 
+Begrenzte Munition 1, 
+Durchbohrend 2, erhält keine 
+zusätzliche Schwierigkeit in 
+Nahkampfreichweite 
+Aurateranischer 
+Boomerang 
+LFW 4 5 M 1 0 65 6 
+Begrenzte Munition 1, 
+Gelenkt 1, kann bei 
+fehlgeschlagenem Angriff mit 
+8 wieder gefangen werden 
+Bola LFW 2 - K 1 2 20 2 
+Verstrickend 3, Begrenzte 
+Munition 1, Niederwerfen 
+Gunganischer Atlatl 
+(mit Plasma-Ball) 
+LFW 5 3 M 2 0 100 7 
+Begrenzte Munition 1 
+(Plasma-Bälle sind separat 
+zu erwerben), Genauigkeit 1, 
+Verbrennend 1 Ionenschad. 
+Gunganischer 
+Energiestab 
+LFW +2 4 K 3 2 450 5 
+Betäubung 3,  
+Betäubungsoption; kann 
+nicht mit anderer Waffe, aber 
+mit Schild genutzt werden; 
+Begrenzte Munition 1 
+Kyuzo Kriegsschild LFW +1 4 K 3 0 750 8 
+Ablenkung 2, Defensiv 1, 
+Sperrigkeit 3, 
+Desorientierend 1, 
+Begrenzte Munition 1; mit 
+888 kann der Schild 
+nach dem Angriff zum 
+Werfenden zurückkehren 
+Netz LFW 2 - K 3 2 20 2 
+Verstrickend 3, Begrenzte 
+Munition 1, Niederwerfen 
+Styanax-Lanze 
+Harpune 
+SFW 8 3 K 8 2 200 8 
+Sperrigkeit 4, Begrenzte 
+Munition 1, Durchbohrend 3, 
+Tödlich 1 
+Voss Kriegsspeer  LFW +2 4 K 4 2 215 8 
+Defensiv 2; kann nicht mit 
+anderer Waffe, aber mit 
+Schild genutzt werden; 
+Begrenzte Munition 1 
+ 
+ 
+
+Artillerie- und Sprengwaffen
+ 
+Artilleriewaffen Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+Flammenwerfer SFW 8 2 K 6 2 1000 6 Verbrennung 3, Explosion 8  
+Czerka CZ-28 
+Flammenschlag 
+ART 9 2 K 8 3 
+2000 
+R 
+8 
+Verbrennung 4, Explosion 9, 
+Sperrigkeit 3, Tödlich 2  
+Raketenwerfer ART R R R 7 4 
+7500 
+R 
+8 
+Sperrigkeit 3, Begrenzte 
+Munition 6, Vorbereitung 1, 
+sowie Werte der Rakete 
+Flechettewerfer ART 8 3 M 6 4 
+2500 
+R 
+6 
+Sperrigkeit 3, beide Arten 
+Munition können gemischt 
+werden 
+Anti-Infanterie-
+Munition 
+ART 8 3 M 6 4 
+2500 
+R 
+6 
+Explosion 8, Sperrigkeit 3, 
+Begrenzte Munition 4, 
+Vorbereitung 1, Tödlich 1, 
+Durchbohrend 6 
+Anti-Fahrzeug-
+Munition 
+ART 10 2 M 6 4 
+2500 
+R 
+6 
+Panzerbrechend 2, 
+Sperrigkeit 3, Begrenzte 
+Munition 4, Vorbereitung 1, 
+Tödlich 3  
+Malaxan Z50 
+Granatenwerfer 
+ART G G M 5 3 
+1250 
+R 
+4 
+Sperrigkeit 3, Begrenzte 
+Munition 6, benutzt Werte 
+der jeweiligen Granate für 
+Schaden, Krit und 
+Fähigkeiten, wird mit G-
+Werfer-Granaten geladen, 
+diese kosten im 6er Pack 
+50% weniger 
+Anti-Fahrzeug-Mine ART 25 2 N 4 0 
+1400 
+R 
+6 
+Explosion 2, 
+Panzerbrechend 4, 
+Begrenzte Munition 1 
+Anti-Personen-Mine ART 12 3 N 3 0 
+850 
+R 
+6 
+Begrenzte Munition 1, 
+Tödlich 4, Explosion 4 
+Unterlauf-
+flammenwerfer 
+SFW 10 2 K - - 
+3000 
+R 
+5 
+Waffenmodifikation; 
+Explosion 2, Verbrennung 5 
+Granatenwerfer 
+CSPL-12 
+LFW G G M 2 2 
+1200 
+R 
+6 
+Begrenzte Munition 3; 
+benutzt Werte der jeweiligen 
+Granate für Schaden, Krit 
+und Fähigkeiten; kann P 
+einsetzen, damit die Granate 
+im Lauf detoniert und einen 
+Treffer damit beim Schützen 
+und jeden in Nahkampfreich-
+weite anrichtet und die Waffe 
+um 2 Grade beschädigt 
+Unterlauf-
+granatenwerfer 
+SFW G G M - - 
+2000 
+R 
+5 
+Waffenmodifikation; Benutzt 
+Werte der jeweiligen 
+Granate für Schaden, Krit 
+und Fähigkeiten 
+Unterlaufschrotflinte 
+(Modifikation) 
+SFW 6 2 K - - 
+750 
+R 
+5 
+Waffenmodifikation; 
+Explosion 5, Niederwerfen, 
+Begrenzte Munition 1, 
+Sperrigkeit +1 
+Tenloss Säurewerfer SFW 6 2 K 4 1 1250 7 
+Explosion 6, Verbrennung 3 
+(kann bei getroffenen Zielen 
+je einmal aktiviert werden), 
+Tödlich 1; bei 88Rkann 
+Verbündeter getroffen 
+werden; chemisch, kann 
+nicht durch Wasser oder auf 
+den Boden rollen gelöscht 
+werden 
+Feuerbombe LFW 7 3 K 1 0 100 5 
+Explosion 7, Verbrennung 2, 
+Unpräzise 1 
+Mikrogranatenwerfer ART 10 3 M 5 2 2000 5 Explosion 8, Sperrigkeit 3 
+
+Artilleriewaffen Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+LJ-50 Sprenggewehr SFW 10 2 M 6 2 
+2000 
+R 
+7 
+Explosion 4, Erschütternd 2, 
+Sperrigkeit 3, Niederwerfern, 
+begrenzte Munition 4 
+Mon Cal Defenses 
+Minitorpedowerfer 
+SFW - - - 4 2 2000 6 
+Sperrigkeit 2, wenn nicht im 
+Wasser benutzt wird die 
+Schwierigkeit zweimal 
+aufgewertet, Eigenschaften 
+je nach Torpedo 
+Antipersonen SFW 8 2 W 1 0 100 5 
+Explosion 6, Begrenzte 
+Munition 1 
+Panzerbrechend SFW 12 3 M 1 0 150 6 
+Explosion 2, Begrenzte 
+Munition 1, Durchbohrend 4 
+Tinte SFW 0 - W 1 0 50 5 
+Begrenzte Munition 1, 
+Explosion 0, Desorientier. 4 
+(hält in ruhigem Gewässer 
+bis zu 4 Runden) 
+Ionen SFW 10 2 W 1 0 150 6 
+Begrenzte Munition 1, 
+Explosion 8, Ionenschaden 
+Netz SFW 0 - M 1 0 100 5 
+Begrenzte Munition 1, 
+Explosion 0, Verstrickend 6 
+Betäubung SFW 8 2 W 1 0 300 5 
+Begrenzte Munition 1, 
+Explosion 4, Erschütternd 1, 
+Betäubungsschaden 
+ 
+
+Granaten 
+Granaten Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+Betäubungsgranate LFW 8 - K 1 0 75 4 
+Desorientierend 3, Begr. 
+Munition 1, Explosion 8, 
+Betäubungsschaden 
+Betäubungsgas-
+granate 
+LFW 12 - K 1 0 120 5 
+Begr. Munition 1, Explosion 
+10, Betäubungsschaden, 
+Ziele mit Atemmasken o. ä. 
+werden nicht beeinflusst 
+Geformte Thermal-
+Granate 
+LFW 20 2 K 1 0 
+3500 
+R 
+8 
+Panzerbrechend 2, 
+Begrenzte Munition 1, 
+Tödlich 5 
+Giftgasgranate LFW - - K 1 0 50 5 
+Explosion 2, Begrenzte 
+Munition 1, kann mit 1 Dosis 
+Gift versehen werden; Gift 
+verzieht sich in normaler 
+Umgebung nach 2 Runden, 
+an engen Orten nach 5 
+Runden, bei windiger 
+Umgebung am Ende der 
+Runde 
+Infernogranate LFW 8 3 K 1 0 
+75  
+R 
+5 
+Explosion 5, Verbrennung 2, 
+Begrenzte Munition 1 
+Ionisierungsgranate LFW 10 5 K 1 0 65 4 
+Explosion 7, Desorientierend 
+5, Betäubungsschaden (nur 
+Droiden), Begrenzte 
+Munition 1 
+Klebegranate LFW - - K 1 0 100 6 Explosion -, Verstrickend 5 
+ 
+Verstrickend-Fähigkeit  aktiviert  sich  automatisch;  jedes  getroffene  Ziel  muss  einen 
+Körperbeherrschungsprobe machen,  bei  Fehlschlag  erstickt  das  Ziel;  Klebegranaten 
+können  nach  Einsatz  eingesammelt  und  mit  Hypoinjektor  wieder  befüllt  werden;  dies 
+erfordert einen  leichte Fernkampfwaffenprobe, falls dabei K erzielt werden, so wird er 
+von der Masse begossen; Kauf enthält Hypoinjektor und 5 Nachfüllkartuschen 
+Panzerbrechende 
+Granate 
+LFW 16 3 K 1 0 100 6 
+Begrenzte Munition 1, 
+Explosion 3, Durchbohrend 1 
+Plasma-Ball LFW 5 3 K 2 0 20 7 
+Begrenzte Munition 1, 
+Verbrennend 1 Ionenschad. 
+Plasmagranate LFW 12 3 K 1 0 125 6 
+Begrenzte Munition 1, 
+Explosion 10,  
+Schwere 
+Splittergranate 
+LFW 9 4 K 1 0 
+75  
+R 
+5 
+Begrenzte Munition 1, 
+Explosion 7, Sperrigkeit 2 
+Splittergranate LFW 8 4 K 1 0 50 5 
+Explosion 6, Begrenzte 
+Munition 1 
+Spore/B 
+Betäubungsgranate 
+LFW 6 3 K 1 0 400 5 
+Explosion 6, Begrenzte 
+Munition 1, Erschütterung 1, 
+Betäubungsschaden; wird 
+ein Held das erste Mal 
+hiervon erfolgreich getroffen, 
+muss er einen  würfeln, 
+ergibt dieser P, so erleidet 
+er 6 Erschöpfung und 
+beginnt zu ersticken ( 
+Medizinprobe beendet dies) 
+Sprenggranate LFW 10 5 K 1 0 
+100 
+R 
+5 
+Explosion 8, Desorientierend 
+5 (betrifft bei Aktivierung alle 
+im Explosionsbereich, selbst, 
+wenn kein Schaden erlitten 
+wird), Begrenzte Munition 1, 
+Erschütterung 2 
+Thermaldetonator LFW 20 2 K 1 0 
+2000 
+R 
+8 
+Explosion 15, Tödlich 4, 
+Panzerbrechend 1, 
+Begrenzte Munition 1 
+ 
+
+Raketen
+ 
+Tragbare Raketen Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+Anti-Fahrzeug-Rakete ART 20 2 E - - 
+250 
+R 
+8 
+Explosion 10, Lenkflugkörper 
+3, Panzerbrechend 1 
+Brandrakete ART 10 3 E - - 
+145 
+R 
+7 
+Lenkflugkörper 2, 
+Verbrennung 3, Explosion 10 
+Plasmarakete ART 16 3 M - - 
+160 
+R 
+8 
+Explosion 14, Sperrigkeit 3, 
+Durchbohrend 2,  
+Unpräzise 1 
+Sprengrakete ART 14 4 E - - 200 8 
+Explosion 10, Erschütterung 
+3 (betrifft bei Aktivierung alle 
+in naher RW zum Ziel, 
+selbst, wenn kein Schaden 
+erlitten wird), 
+Desorientierung 5 (betrifft bei 
+Aktivierung alle in kurzer RW 
+zum Ziel, selbst, wenn kein 
+Schaden erlitten wird), 
+Lenkflugkörper 2  
+Splitterrakete ART 12 4 E - - 75 7 
+Lenkflugkörper 3, Explosion 
+12 
+ 
+Sprengstoffe 
+Sprengstoffe  gelten  nicht  als  Waffen,  sondern  müssen  mittels  einer Mechanikprobe platziert  werden,  die 
+Schwierigkeit  steigt  pro  zusätzlicher  Ladung  um  1. J steigern  den  Basisschaden  um  je  1.  Bei  bestimmten 
+Platzierungen könnte sich der Sprengradius verändern (zum Beispiel in einem kleinen Raum oder engem Gang). 
+Bei  einem  Fehlschlag  wurde  die  Ladung  falsch  platziert,  so  dass  gar  nicht  hochgeht  oder  aber  sie  geht  hoch, 
+richtet aber keinen nennenswerten Schaden an. 
+ 
+Sprengstoffe Fertigk. Sch 
+Zusätzl. Schaden pro 
+Extra-Ladung 
+Last Preis Selt Sprengradius 
+Baradium MEC 3 +1 2 750 R 5 W 
+ Richtet Schaden in Raumschiffebene an, der Sprengradius wird aber nach Personenebene 
+berechnet; alles in Nahkampfreichweite zur detonierten Ladung erhält +50 zu nachfolgenden 
+Würfen auf kritische Treffer oder kritische Verletzungen; erhält der Held beim Platzieren der 
+Ladung ein P, so detoniert sie augenblicklich und richtet Schaden gemäß Basisschaden + 
+Erfolge an 
+Detonit MEC 15 +10 2 50 2 K 
+ Kann mittels Kommunikator oder Zeitzünder gezündet werden (Zeitintervall 1 Sekunde bis 1 
+Stunde) 
+Plasma MEC 9 +6 2 200 R 5 M 
+ Verbrennung 1, +1 pro zusätzlicher Ladung 
+Protonengranate MEC 10 +20, +30, +40, +50 1 60 4 K 
+ Werden mehr als 5 Granaten aneinander geheftet, so erhöht jede zusätzliche Ladung den 
+Sprengradius um 1 Kategorie  
+  
+
+Nahkampfwaffen 
+Klingenwaffen Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+Kampfmesser NKW +1 3 N 1 0 25 1  
+Überlebensmesser NKW +1 3 N 2 0 100 3 
+Tödlich 1, gewährt  auf 
+Überlebensproben 
+Molekularstilett  
+MSW-9 
+NKW +0 2 N 1 1 500 5 
+Gewährt 9, um es mit 
+Wahrnehmung zu finden, 
+Durchbohrend 5, Tödlich 1, 
+werden beim Angriff KK 
+oder P generiert, wird die 
+Waffe um 1 Stufe beschädigt 
+Nanodolch MSW-12 NKW +1 2 N 1 0 700 6 
+Durchbohrend 5, Tödlich 1, 
+werden beim Angriff KKK 
+oder P generiert, wird die 
+Waffe um 1 Stufe beschädigt 
+Faustdolch NKW +1 3 N 1 0 75 4 
+Gewährt 99, um es mit 
+Wahrnehmung zu finden, 
+Durchbohrend 1 
+Klingenbrecher NKW +0 4 N 1 1 250 5 
+Defensiv 1, Zertrümmern, 
+Durchbohrend 1 
+Paradedolch NKW +1 3 N 1 0 150 5 Defensiv 1 
+Weik Zweihänder (2H) NKW +4 3 N 4 2 315 8 Sperrigkeit 4, Defensiv 1 
+Corellianischer 
+Entersäbel 
+NKW +0 2 N 2 1 300 3 
+Defensiv 1, Tödlich 1 
+Ryyk Klinge NKW +2 2 N 3 3 400 8 
+Defensiv 1, Hochwertig 
+(Schaden bereits erhöht), 
+Sperrigkeit 3 
+Zeremonienklinge NKW +2 3 N 2 3 650 7 
+Defensiv 1; gewährt , um 
+andere davon zu 
+überzeugen, die Waffe 
+behalten zu dürfen 
+Stabschwert NKW +2 3 N 2 1 475 6 
+Defensiv 1; andere erhalten 
+9 auf Probe, um dies als 
+gefährliche Waffe zu 
+erkennen 
+Cortosis-Schwert NKW +2 3 N 3 2 1350 7 
+Cortosis-Legierung, Defensiv 
+1 
+Thermoaxt (2H) NKW +2 3 N 4 3 
+850 
+R 
+5 
+Verbrennung 2, Tödlich 1, 
+Zertrümmern  
+Langaxt (2H) NKW +3 3 N 5 1 610 4 
+Durchbohrend 2, Unhandlich 
+2, Defensiv 1  
+Riesige Axt (2H) NKW +5 5 N 6 1 350 6 Sperrigkeit 5  
+ 
+Peitschen und Netze Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+Elektronetz NKW 6 6 N 2 0 350 6 
+Verstrickend 5, 
+Niederschlagen, Begrenzte 
+Munition 1, 
+Betäubungsschaden 
+Peitsche NKW +1 5 K 3 1 600 4 
+Verstrickend 2, 
+Betäubungsschaden 
+Neuronenpeitsche NKW +1 4 K 1 1 750 6 
+Verstrickend 1, 
+Desorientierend 4, 
+Betäubungsschaden 
+Rodianische 
+Cryopeitsche 
+NKW +2 3 K 1 1 1550 7 
+Verstrickend 1, Tödlich 1, 
+Unhandlich 3 
+ 
+  
+
+Stangenwaffen Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+Schlagstock NKW +2 5 N 2 0 15 1 Desorientierung 2 
+Klapp-Schlagstock NKW +1 4 N 1 1 50 4 Desorientierung 2 
+Betäubungsknüppel NKW +2 6 N 2 2 200 4 
+Desorientierung 2, 
+Betäubungsschaden 
+Sorosuub CS-12 
+Betäubungsmeister 
+NKW 6 3 N 1 0 575 3 
+Desorientierung 2, 
+Betäubungsschaden; 
+Gewährt 9, um es mit 
+Wahrnehmung zu finden 
+Sicherheitsstab (2H) NKW +2 2 N 3 2 450 4 
+Durchbohrend 2, Defensiv 1, 
+Desorientierung 2  
+Schockschlagstock NKW +2 4 N 2 2 300 4 
+Desorientierung 3, 
+Betäubungsoption  
+Thunderbolt 
+Schockknüppel 
+NKW 5 3 N 2 2 875 5 
+Erschütterung 1, 
+Betäubungsschaden, ist laut 
+bei Anwendung 
+Schockstab (2H) NKW +4 4 N 3 2 400 5 
+Desorientierung 4, 
+Niederwerfen 
+Sorosuub 
+„Überzeuger“ 
+Viehschockstab 
+NKW +2 4 N 4 2 1000 4 
+Erschütterung 1, Geringe 
+Feuerrate 1, 
+Betäubungsoption  
+Elektromagnetischer 
+Pulsardisruptor-Stift 
+NKW 5 4 N 1 0 180 5 
+Desorientierend 1, 
+Ionenschaden, gewährt 
+, um Computer oder 
+Elektronik zu sabotieren; 
+gewährt 9, damit andere die 
+Waffe finden 
+Tuskbeast-Pike (2H) NKW +4 3 N 3 1 1050 8 Niederwerfen, Defensiv 1 
+Selonianische Glefe NKW +3 3 N 5 3 1200 7 Defensiv 1, Durchbohrend 3 
+Voss Kriegsspeer  NKW +2 4 N 4 2 215 8 
+Defensiv 2; kann nicht mit 
+anderer Waffe, aber mit 
+Schild genutzt werden; 
+Wurfwaffe 
+Sathari Diiro-Speer NKW +1 3 N 2 0 250 2 
+Defensiv 1, Spitze kann mit 
+bis zu 3 Dosen Gift versehen 
+werden, erfolgreich getroff. 
+Ziel erleidet Auswirkungen 
+desselbigen; erhält die Waffe 
+mind. 1 Beschädi-
+gungsgrad, so bekommt sie 
+1 zusätzlichen hinzu, 
+Seltenheit auf Abooine, 
+ansonsten 10 
+Gaffistab (2H) NKW +2 3 N 3 0 100 2 Defensiv 1, Desorientier. 3 
+Energielanze (2H) NKW +3 2 N 3 3 500 4 
+Durchbohrend 2, 
+Betäubungsoption 
+Mon Cal Korallenpike NKW +3 2 N 3 3 1000 6 Defensiv 1, Durchbohrend 2 
+Mon Cal Energielanze NKW +3 2 N 4 2 1500 6 
+Sperrigkeit 3, Durchbohrend 
+2; wenn im Berittenen Kampf 
+genutzt fällt Sperrigkeit weg 
+und es kann die Stärke des 
+Reittiers anstelle der 
+eigenen genutzt werden für 
+den Schaden 
+Bardottanische 
+Energielanze  
+NKW +2 3 N 3 2 300 5 
+Defensiv 2, 
+Betäubungsoption; kann 
+nicht mit anderer Waffe, aber 
+mit Schild genutzt werden 
+Gunganischer 
+Energiestab  
+NKW +2 4 N 3 2 450 5 Betäubung 3,  
+Betäubungsoption; kann 
+nicht mit anderer Waffe, aber 
+mit Schild genutzt werden; 
+Wurfwaffe 
+Elektrostab (2H) NKW +4 3 N 4 3 4500 6 Cortosis-Legierung, 
+Unhandlich 3, Sperrigkeit 3, 
+Gekoppelt 1, Betäubungsopt 
+
+Stangenwaffen Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+Cortosis-Stab (2H) NKW +3 5 N 4 2 2500 7 
+Cortosis-Legierung; Nutzer 
+kann 48 einsetzen, um bei 
+mit Lichtschwertern bewaffn. 
+Gegnern die Waffe sich 
+deaktivieren zu lassen; wird 
+der Nutzer von jmd. mit 
+Lichtschwert angegriffen, 
+kann er 4K nutzen, um die 
+Waffe nach dem Angriff sich 
+deaktivieren zu lassen; sie 
+kann nach dem letzten 
+Initiative-Platz der nächsten 
+Runde aktiviert werden 
+Morgukai Cortosis-
+Stab (2H) 
+NKW 8 1 N 3 0 
+9000 
+R 
+10 
+Cortosis-Legierung, 
+Panzerbrechend 1,  
+Defensiv 1 
+Drallischer Blitzstab NKW +2 - N 2 2 375 4 
+Desorientierend 3, 
+Betäubungsschaden 
+Amtsstab NKW +2 4 N 3 2 350 6 
+Defensiv 1, Desorientierend 
+2; gewährt , um andere 
+davon zu überzeugen, die 
+Waffe behalten zu dürfen 
+Schwerer Stab NKW +1 4 N 2 0 25 1  
+ 
+Schilde Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+Kl. Unruhen-Schild NKW +0 5 N 3 1 75 4 Defensiv 2,  Ablenkung 1  
+ACTIVV Unruhen-
+Schild 
+NKW +0 6 N 5 1 300 4 
+Sperrigkeit 3, Defensiv 2,  
+Desorientierung 1, 
+Ablenkung 2  
+ACTIVV Unruhen-
+Schild (für schwere 
+Fernkampfwaffen) 
+NKW +0 6 N 5 0 400 4 
+Sperrigkeit 3, Defensiv 2,  
+Desorientierung 1, 
+Ablenkung 2, gewährt 9 auf 
+Kampfproben mit beiden 
+Waffen  
+Cortosis-Schild NKW +0 6 N 4 0 900 7 
+Cortosis-Legierung, 
+Sperrigkeit 3, Defensiv 2, 
+Ablenkung 2 
+Energiebuckler NKW +0 5 N 2 1 1000 7 
+Ablenkung 1, Defensiv 1,  
+Erschütternd 1 
+Gungan Energieschild NKW -1 5 N 4 0 1000 7 
+Ablenkung 2, Defensiv 2,  
+Defensiv fällt auf 0 wenn 
+Held desorientiert oder 
+erschüttert ist 
+Kyuzo Kriegsschild NKW +1 4 N 3 0 750 8 
+Ablenkung 2, Defensiv 1, 
+Sperrigkeit 3, Wurfwaffe, 
+Desorientierend 1 
+Sith-Schild NKW +1 3 N 3 2 
+10000 
+R 
+10 
+Cortosis-Legierung, Defensiv 
+2, Ablenkung 2, Tödlich 1; 
+wenn Träger getroffen wird, 
+kann er 1  als Neben-
+handlung außerhalb seiner 
+Runde anlegen (dies kann er 
+bei mehreren Angriffen bis 
+zu seinem Machtrang 
+machen), als Handlung kann 
+er alle  freigeben, 
+wodurch er Konflikt gleich 
+der  erhält, wirft diese 
+Zahl an  und kann jeweils 
+ einsetzen, damit jeder 
+innerhalb RW: K 1 
+Erschöpfung und 1 Wunde 
+(ohne Absorption) erleidet 
+
+vibrowaffen
+ 
+Vibrowaffen Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+Tarnvibromesser NKW +1 2 N 1 1 350 6 
+Tödlich 1, Durchbohrend 1; 
+gewährt 99, um es mit 
+Wahrnehmung zu finden   
+Vibromesser NKW +1 2 N 1 2 250 3 Tödlich 1, Durchbohrend 2 
+Shistavanen 
+Mehrzweck-
+Vibromesser 
+NKW +1 2 N 2 0 600 7 
+Tödlich 1, Durchbohrend 2, 
+Gilt als Werkzeugkiste mit 
+einem 9Rauf solche 
+Proben, gewährt einen  
+auf Überlebensproben 
+Akrab Vibrodolch NKW +1 2 N 1 1 550 5 Tödlich 1, Durchbohrend 3 
+Parade-Vibromesser NKW +1 2 N 1 2 400 6 
+Defensiv 1,Tödlich 1, 
+Durchbohrend 2 
+Vibrorapier NKW +2 2 N 2 2 1200 7 Defensiv 1, Durchbohrend 5 
+Vibroschwert NKW +2 2 N 3 3 750 5 
+Defensiv 1, Tödlich 1, 
+Durchbohrend 2 
+Czerhänder 
+(Vibrozweihänder, 2H) 
+NKW +3 2 N 4 3 900 5 
+Defensiv 1, Tödlich 2, 
+Durchbohrend 2 
+Vibroaxt (2H) NKW +3 2 N 4 3 750 5 
+Durchbohrend 2, 
+Zertrümmern, Tödlich 3 
+Vibrospeer (2H) NKW +3 3 N 4 2 950 6 Tödlich 2, Durchbohrend 2 
+Vibrospeer M 14 (2H) NKW +2 2 N 4 2 490 6 
+Defensiv 1, Tödlich 2, 
+Durchbohrend 2; bei einem 
+Angriff können KKR
+eingesetzt werden, um laute 
+Geräusche zu verursachen, 
+was 99 auf die nächste 
+Überlebensprobe in dieser 
+Umgebung gewährt 
+Vibromachete NKW +2 2 N 2 1 550 4 
+Zertrümmern, Tödlich 1, 
+Durchbohrend 1 
+Arg ́garok 
+(Vibrogroßaxt, 2H) 
+NKW +5 3 N 5 3 1000 7 
+Durchbohrend 2, 
+Minderwertig, Sperrigkeit 5, 
+Zertrümmern,  
+Vibroglefe (2H) NKW +2 2 N 3 3 975 6 Defensiv 2, Durchbohrend 3 
+Vibrosäge (2H) NKW +4 2 N 6 3 1500 5 
+Sperrigkeit 5, Zertrümmern, 
+Tödlich 2, Durchbohrend 2,  
+P führt zu Selbstverletzung 
+ 
+ 
+
+Handgemengewaffen 
+Handgemengewaffen Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+Handgemengeangriff HG +0 5 N - - - - 
+Desorientierend 1, Erschöp-
+fungsschaden, Niederwerfen 
+Schlagring HG +1 4 N 1 0 25 0 Desorientierend 3 
+Vibroschlagring HG +1 2 N 1 1 350 4 
+Durchbohrend 1, Tödlich 1, 
+kein Erschöpfungsschaden, 
+gewährt 9, um es in einem 
+Versteck zu finden 
+Explosionsschlagring HG +4 4 N 2 1 
+500 
+R 
+6 
+Unpräzise 1, kein Erschöp-
+fungsschaden, jeder erfolgr. 
+Treffer richtet 1 Erschöpfung 
+beim Träger an 
+Elektroschockhand-
+schuhe 
+HG +0 5 N 0 1 300 2 Betäubend 3 
+Nadelhandschuhe HG +0 5 N 1 0 
+750 
+R 
+8 
+999, um sie als Waffe zu 
+erkennen, kann mit Gift 
+versehen werden 
+Rückhand Schock-
+handschuhe 
+HG +1 3 N 0 2 2000 4 
+Erschütterung 1, 
+Betäubungsschaden, 
+geringe Feuerrate 1 
+Schildpanzer-
+handschuhe 
+HG +1 5 N 1 0 1500 8 
+Ablenkung 2, 
+Betäubungsschaden, gilt als 
+Lichtschwert-Waffe 
+bezüglich Talent 
+Reflektieren; P kann 
+aussagen, dass Energie 
+erschöpft ist bis Ende der 
+Begegnung oder eine neue 
+Energiezelle eingelegt wurde 
+Vamklinge (einziehb. 
+Armklinge) 
+HG +1 3 N 2 0 500 4 
+Defensiv 1, kein Erschöpf-
+ungsschaden, Aktivierung ist 
+eine Nebenhandlung 
+Vamklinge, paarweise 
+(einziehb. Armklingen) 
+HG +1 3 N 4 0 1000 4 
+Defensiv 1, Zertrümmern, 
+Präzise 1, kein Erschöpf-
+ungsschaden, es muss kein 
+Angriff mit zwei Waffen 
+durchgeführt werden; 
+Aktivierung ist eine 
+Nebenhandlung 
+Cortosis-Handschuhe HG +1 4 N 3 2 1000 7 Cortosis-Legierung 
+Schockstiefel HG +0 5 N 2 0 1250 5 
+Desorientierend 3, 
+Betäubend 3; 9, um sie als 
+Waffe zu erkennen 
+Koromondain SVT-
+300 
+Betäubungsumhang 
+HG 7 3 N 2 0 1500 4 
+Betäubungsschaden, 
+begrenzte Munition 3; wird 
+Träger mit Nahkampfwaffen 
+oder Handgemenge 
+getroffen, erleidet Angreifer 
+7 Schaden, dies nimmt 1 der 
+3 Munitionen, sind diese 
+verbraucht, muss die 
+Batterie 3 Minuten aufladen 
+ 
+ 
+ 
+
+Lichtschwertwaffen  
+Hier  aufgeführt  sind  beispielhafte  Lichtschwerter sowie  Waffen,  welche  mittels  der  Fertigkeit  Lichtschwerter  zu 
+führen  sind. Die Lichtschwerter verwenden  von  den  Werten  her jeweils  einen  Ilum-Kristall, welcher  zwei  der 
+Aufrüstungspunkte einnimmt (die zweite Zahl bei Aufrüstpunkte sind die noch übrigen Punkte). 
+Lichtschwerter Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+Lichtschwert (mit Ilum-
+Kristall) 
+LS 6 2 N 1 5/3 
+9300 
+R 
+10 
+Panzerbrechend 1, 
+Zertrümmern, Immun gegen 
+Zertrümmern 
+Lichtschwert mit 
+Parierstange (mit 
+Ilum-Kristall) 
+LS 6 2 N 1 4/2 
+9600 
+R 
+10 
+Panzerbrechend 1, Defensiv 
+1, Zertrümmern, Immun 
+gegen Zertrümmern; bei 
+Nahkampfangriff von Gegner 
+gegen diese Waffe können 
+KKKReingesetzt werden, 
+damit der Kontrahent 
+entwaffnet ist  
+Doppellichtschwert 
+(mit Ilum-Kristall, 2H) 
+LS 6 2 N 2 4/2 
+10200 
+R 
+10 
+Panzerbrechend 1, 
+Unhandlich 3, Zertrümmern, 
+Gekoppelt 1; Immun gegen 
+Zertrümmern, Modifikationen 
+(inkl. Kristalle) kosten das 
+Doppelte  
+Lichtpike (mit Ilum-
+Kristall) 
+LS 6 2 N 3 3/1 
+9600 
+R 
+10 
+Panzerbrechend 1, 
+Zertrümmern, Defensiv 1, 
+Sperrigkeit 3, Immun gegen 
+Zertrümmern 
+Lichtpike der 
+Tempelwache (mit 
+Ilum-Kristall, 2H) 
+LS 6 2 N 3 3/1 
+9600 
+R 
+10 
+Panzerbrechend 1, 
+Zertrümmern, Defensiv 1, 
+Undhandlich 3, Betäubung 4, 
+Gekoppelt 1, Immun gegen 
+Zertrümmern 
+Shoto-Lichtschwert 
+(mit Ilum-Kristall) 
+LS 5 2 N 1 3/1 
+9300 
+R 
+10 
+Präzise 1, Panzerbrechend 
+1, Zertrümmern, Immun 
+gegen Zertrümmern 
+Wachenshoto-
+Lichtschwert (mit Ilum-
+Kristall) 
+LS 5 2 N 1 3/1 
+9300 
+R 
+10 
+Defensiv 1, Ablenkung 2, 
+Unhandlich 4, Zertrümmern, 
+Panzerbrechend 1, Immun 
+gegen Zertrümmern 
+Lichtschwert 
+(mit Trainingskristall) 
+LS 6 - N 1 2/0 400  6 
+Betäubungsschaden, Immun 
+gegen Zertrümmern 
+Lichtpeitsche LS 4 4 K 1 1 
+11 400 
+R  
+10 
+Verstrickend 1, Unhandlich 
+4, Durchbohrend 5, kann 
+nicht mit Kristall modifiziert 
+werden, kein Einsatz von 
+Parade und Reflektieren 
+damit möglich; kann bei 
+Angriff 88Reinsetzen, 
+damit Gegner Talent Parade 
+nicht nutzen kann 
+Philaxianisches 
+Phasenmesser 
+LS +1 3 N 1 1 1500 8 
+Durchbohrend 4, Tödlich 1; 
+kann nicht mit Kristall 
+modifiziert werden, gewährt 
+9, damit andere die Waffe 
+finden; bei Einsatz mit Talent 
+Lichtschwertwurf können 
+auch 88Rfür Rückkehr der 
+Waffe genutzt werden 
+Antikes Schwert LS +2 3 N 3 1 350 8 Defensiv 1 
+Trainingsstab/-schwert LS +1 5 N 2 0 35 3 
+Genauigkeit 1, 
+Desorientierend 1, 
+Betäubungsschaden; andere 
+erhalten 99 auf Probe, um 
+dies als Waffe zu erkennen 
+
+Lichtschwertgriffe  
+Lichtschwertgriffe Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+Lichtschwert-Griff LS 0 - N 1 5 
+300 R 
+5 Immun gegen Zertrümmern 
+Lichtschwert-Griff mit 
+Parierstange 
+LS 0 - N 1 4 
+900 R 
+7 
+Immun gegen Zertrümmern, 
+Defensiv 1; bei 
+Nahkampfangriff von Gegner 
+gegen diese Waffe können 
+KKKReingesetzt werden, 
+damit der Kontrahent 
+entwaffnet ist 
+Doppellichtschwert-
+Griff (2H) 
+LS 0 - N 2 4 600 10 
+Unhandlich 3, Gekoppelt 1; 
+Modifikationen (inklusive 
+Kristalle) kosten das 
+Doppelte, Immun gegen 
+Zertrümmern  
+Lichtpiken-Griff  LS 0 - N 3 3 600 7 
+Defensiv 1, Sperrigkeit 3, 
+Immun gegen Zertrümmern 
+Lichtpiken-Griff der 
+Tempelwache (2H) 
+LS 0 - N 3 3 600 7 
+Defensiv 1, Unhandlich 3, 
+Betäubung 4, Gekoppelt 1, 
+Immun gegen Zertrümmern 
+Shoto-Griff LS 0 - N 1 3 300 6 
+Präzise 1, Schaden von 
+Lichtschwertkristallen wird 
+im Shoto um 1 reduziert, 
+Immun gegen Zertrümmern 
+Wachenshoto-Griff LS 0 - N 1 3 700 7 
+Defensiv 1, Ablenkung 2, 
+Unhandlich 4, Schaden von 
+Lichtschwertkristallen wird 
+im Shoto um 1 reduziert, 
+Immun gegen Zertrümmern 
+ 
+
+Werkzeuge und improvisierte Waffen
+ 
+improvisierte Waffen Fertigk. Sch Krit RW Last AP Preis 
+Selt 
+Waffeneigenschaften 
+Klappspaten  NKW +2 4 N 1 0 20 1 
+Kann nicht aufgrund von P 
+und K zerstört werden 
+Fusionsschneid-
+brenner 
+NKW 5 3 N 2 0 175 2 
+Panzerbr. 1, Zertrümmern, 
+Tödlich 3, Verbrennung 3 
+Schweißgerät NKW 3 - N 1 0 100 2 Betäubungsschaden 
+Schwerer 
+Hydrospanner 
+NKW +3 4 N 4 0 150 2 
+Unpräzise 1, erhält K auf 
+jede Probe 
+Strahlenbohrer J-7B NKW 9 2 N 6 0 3000 5 
+Unpräzise 2, Zertrümmern, 
+Sperrigkeit 4, Panzerbr. 1 
+Pulsbohrer (2H) NKW 5 4 N 5 2 1100 4 
+Panzerbrechend 1, 
+Sperrigkeit 3, Unpräzise 2 
+Kette NKW +3 5 N 1 0 - 0 Unpräzise 1, Niederwerfen 
+Thermoschneidegerät NKW 4 4 N 2 0 125 3 Unpräzise 2, Verbrennen 1 
+Ionenantriebkanone SFW 5 4 K 8 0 300 2 
+Vorbereitung 1, Ionensch., 
+Sperrigkeit 5, Erschütternd 1  
+Multiklebstoffkanone LFW 2 - K 2 1 250 1 
+Desorientier. 1, Niederwerf., 
+Verstrickend 4; gewährt 8R
+bei Reparatur v. Droiden, 
+Fahrzeugen/Raumschiffen;  
+KK bedeuten, dass 
+Kartusche leer ist und als 
+Aktion nachgefüllt werden 
+muss (Kartusche kostet 20 
+Cr mit Seltenheit 2) 
+Repulsorkanone SFW 3 5 K 5 0 200 3 
+Niederwerfen, bei P wird 
+der Schütze selbst zu Boden 
+geworfen und ist für 2 
+Runden desorientiert 
+Nietpistole LFW 4 3 N 4 1 900 1 
+Verstrickend 1, Unpräzise 2, 
+Begr. Munition 1; senkt 
+Schwierigkeit v. Reparatur-
+Proben krit. Treffer bei Fahr-
+zeugen/Raumschiffen um 1 
+Handschleifmaschine 
+(2H) 
+NKW +2 4 N 5 4 500 3 
+Sperrigkeit 3, Vorbereitung 
+1, Tödlich 4; gewährt 8Rbei 
+Handwerksproben, bei 
+welchen große Metallstücke 
+geformt werden müssen 
+Schweißgerät NKW 3 2 N 4 0 1750 5 
+Panzerbr. 1, Unpräzise 2; 
+gewährt J beim Reparieren 
+v. Fahrzeugen/Droiden/ 
+Raumschiffen; bei P erhält 
+Nutzer eine kritische Wunde 
+Kl. improv. Waffe NKW +1 5 N 1 0 - -  
+Mittl. improv. Waffe NKW +2 5 N 3 0 - - Sperrigkeit 2 
+Gr. improv. Waffe (2H) NKW +3 5 N 4 0 - - Sperrigkeit 4 
+ 
+ 
+
+Kleidung 
+ 
+Rüstung Vert Absorp Preis Last AP Selt Anmerkung 
+Gesellschafts-Uniform 0 0 100 1 0 5 Wird zu offiziellen Anlässen getragen 
+Fährtenleserweste 0 0 100 0 1 2 Erhöht Lastschwelle um 2 
+Banale Kleidung 0 0 25 0 0 0 
+Andere müssen die Schwierigkeit 
+einmal aufwerten, um den Träger zu 
+identifizieren  
+Frachtkleidung 0 0 30 1 0 0 
+Kann bis zu drei Gegenstände mit 
+einer Last von höchstens 1 mit sich 
+führen, ohne dass diese Objekte zu 
+seinem Belastungslimit hinzu zählen 
+Robe des Diplomaten 0 0 400 2 0 6 
+Gewährt einen auf soziale Proben, 
+um diplomatische Autorität anzuzeigen, 
+an eingeschränkte Daten zu gelangen 
+oder das Protokoll aufgrund des 
+besonderen Status zu umgehen 
+Adelsornat 0 0 750 1 3 7 
+Der Träger darf die Schwierigkeit 
+sozialer Proben einmal abwerten, 
+wenn er mit Adligen oder dessen 
+Dienern interagiert 
+Lektorenanzug 0 1 525 2 1 6 
+Träger erhält  bei sozialen Proben mit 
+großen Gruppen und kann auch auf 
+großer Distanz noch klar gehört werden 
+aufgrund von eingebauten 
+Lautsprechern 
+Prachtrobe 0 1 500 2 0 5 
+Zieht der Träger die Aufmerksamkeit 
+anderer auf sich, erhalten Verbündete 
+einen  auf Wahrnehmungs-, 
+Infiltrations- und Heimlichkeitsproben 
+Hologramm-Kostüm 1 0 750 2 0 8 
+Aufnahme eines vorhandenen Outfits 
+erfordert  Computertechnikprobe, 
+Nachahmung eines nicht vorhandenen 
+Kostüms erfordert  Computer-
+technikprobe; Änderung des Kostüms 
+braucht etwa 10 Minuten 
+Tarnumhang 0 1 550 R 4 1 8 
+Proben, um den Träger mittels 
+Sensoren oder anderer Elektronik 
+aufzuspüren, werden zweimal 
+aufgewertet, ebenso wenn ein Droide 
+mit einer geringeren Intelligenz als der 
+Computertechnikrang des Trägers, nach 
+ihm sucht 
+Verhüllende Robe 0 1 150 1 0 2 
+Andere erhalten 9, um den Träger zu 
+bemerken oder zu erkennen 
+Schmugglermantel 1 1 1650 3 0 7 
+Um darin verborgene Objekte zu finden, 
+muss der Suchende gegen die 
+Infiltration des Trägers würfeln; kann 
+Objekte bis zu einer Gesamtlast von 2 
+verbergen 
+Künstlerkostüm 0 0 50 0 0 4 
+Der Träger erhält  auf Darbietungs-
+proben und wenn er die Aufmerksam-
+keit anderer auf sich ziehen möchte 
+ 
+ 
+
+leicht gepanzerte Kleidung
+ 
+Rüstung Vert Absorp Preis Last AP Selt Anmerkung 
+Blastweste 0 1 200 3 1 3 
+Erhält +2 Absorption gegen Schaden 
+durch Geschosswerfer und andere 
+feste Objekte 
+Boxencrewoverall 0 1 150 1 1 2 
+Reduziert Schaden durch Verbrennung-
+Eigenschaft um 1; erhöht Lastschwelle 
+um 1 
+Fellrüstung 0 1 300 3 0 2 
+Gewährt einen 8Rbei Einschüchter-
+ungsproben, einen K bei Charme-
+proben, kann bei sehr zivilisierten 
+Gesellschaften zur Ächtung führen 
+Flak-Weste 0 1 300 3 1 2 
+Erhält +1 Absorption gegen Schaden 
+durch Explosion-Eigenschaft 
+G-Anzug 0 1 2000 2 1 3 
+Kann Erschöpfungskosten eines 
+zweiten „Nur für Piloten“-Manövers in 
+einer Kampfrunde um 1 reduzieren 
+Gepanzerte Kleidung 1 1 1000 3 1 6 
+ Wahrnehmungsprobe notwendig, 
+um die Rüstung als solche zu erkennen 
+gepanzertes Jacket 
+Kamperdine 
+(maßgeschneidert) 
+0 2 6200 1 0 7 
+Kann dem spezifischen Träger bei 
+Proben auf Charme, Täuschung und 
+Verhandeln einen 8 gewähren 
+Karflo leichter 
+Ganzkörperanzug 
+0 1 1200 0 0 6 
+Anzug enthält Atemmaske und 
+Filtersystem für bis zu 6 Stunden und 
+Energie für bis zu 1 Stunde; verfügt 
+über 6 austauschbare Filter und 
+Batterien in den Taschen; Träger 
+entfernt bis zu 99, die von widrigen 
+Umweltbedingungen herrühren  
+Nomadenmantel 0 1 100 1 0 4 
+Reduziert Schwierigkeit von 
+Widerstandskraftproben wegen Kälte 
+um 1, entfernt 9  von Proben aufgrund 
+von extremer Kälte 
+Polis Massasan 
+Bodysuit 
+0 1 300 1 1 6 
+Anzug beinhaltet eine in alle Richtungen 
+strahlende Taschenlampe sowie einen 
+Ausrüstungsgürtel 
+Rennanzug 0 1 550 1 1 3 
+Kann die Auswirkungen kritischer 
+Wunden auf Intelligenz- und Listproben 
+ignorieren; kann nicht desorientiert 
+werden 
+Sakiyanischer 
+Schattenanzug 
+0 1 2500 1 1 8 
+Gewährt  bei Heimlichkeitsproben 
+Schwere Kleidung 0 1 50 1 0 0  
+Signaljacke 0 1 1500 3 0 8 
+Einmal je Begegnung kann die 
+Blendfunktion als Manöver aktiviert 
+werden; jeder außer Träger muss 
+ Wachsamkeitsprobe ablegen 
+oder ist für 1 Runde + 1 zusätzliche für 
+je KKK erschüttert 
+Truppen-Uniform 0 1 100 1 0 0  
+Windweste 0 2 300 1 0 3 
+Absorption 1 gegen Schaden von 
+Nicht-Energiewaffen 
+Zweite Haut Rüstung 1 1 2000 2 0 7 
+Gewährt 99 auf Wahrnehmungs-
+proben, um zu erkennen, dass Träger 
+diese Rüstung trägt 
+ 
+ 
+
+Leichte Rüstungen
+ 
+Rüstung Vert Absorp Preis Last AP Selt Anmerkung 
+Halbweste 
+Koromondain 
+1 1 500 3 0 5 
+Erleidet der Träger eine kritische 
+Wunde, so erhält die Rüstung einen 
+Beschädigungsgrad 
+Chitinrüstung 0 2 600 4 1 6 
+Gewährt einen 8Rbei 
+Einschüchterungsproben, einen K bei 
+Charmeproben, kann bei sehr 
+zivilisierten Gesellschaften zur Ächtung 
+führen 
+Creshaldyne 
+Überlebensrüstung 
+0 1 350 3 2 6 Erhöht Lastschwelle um 1 
+Tarnrüstung 0 1 250 R 2 0 6 
+Gewährt  auf Heimlichkeitsproben  
+Verpinen-Faserpanzer 0 1 3000 3 2 5 
+Als Manöver kann die Rüstung aktiviert 
+oder deaktiviert werden; Aktiv erhält der 
+Träger +2 Verteidigung; in diesem 
+Zustand kann ein Gegner aber 88 
+einsetzen, damit sich die Batterie 
+entleert und erst wieder nach Ende der 
+Begegnung aktiviert werden kann 
+Modularer 
+Körperpanzer Typ III 
+„Berethron“ 
+1 1 
+1250 
+R 
+3 3 6 Rüstung kann voll versiegelt werden 
+Bergsteigerrüstung 1 1 1800 3 2 6 
+Gewährt 99 auf Athletikproben beim 
+Klettern und Abseilen 
+Gepanzerter 
+Pilotenanzug A/KT 
+Kommandeur  
+1 1 1500 3 1 6 
+Vermindert Verlust von Erschöpfung und 
+Wunden des Trägers wegen krit. Treffer 
+an Fahrzeugen/Raumschiffen um 1; 
+Feuerresistenz 1 
+Creshadyne Aufruhr-
+Rüstung 
+1 1 
+1850 
+R 
+3 1 6 
+Verfügt über Atemmaske (kann Gase 
+und Gifte aus Atemluft filtern), wird der 
+Träger desorientiert oder 
+handlungsunfähig, reduziert sich die 
+Dauer um 1 (Minimaldauer 1 Runde) 
+Faserrüstung 0 2 500 2 0 1  
+Kampfpilotenoverall 
+TX-3 
+1 0 
+3000 
+R 
+4 2 6 
+Ermöglicht Überleben in Vakuum bis 
+zu 24 Stunden 
+Tarnanzug Zephyr 1 1 
+5500 
+R 
+2 1 8  
+Ganzkörperanzug mit Handschuhen und 
+Maske, Träger erhält 1 Aufwertung bei 
+Heimlichkeitsproben 
+Mimetischer Anzug 1 1 800 R 2 2 8  
+Hautenger Anzug, Träger erhält 2 
+Aufwertungen bei Heimlichkeitsproben; 
+beiRKKK sind die Batterien leer und 
+müssen ausgetauscht werden 
+  
+
+umwelt- und schutzanzüge
+ 
+        
+Rüstung Vert Absorp Preis Last AP Selt Anmerkung 
+Schutzanzug 0 1 500 2 1 1 
+Träger kann einen 9 aufgrund der 
+Umgebung ignorieren, muss nach 
+Umgebung spezifiziert werden (Wüste, 
+Arktis, Dschungel, etc.) 
+Verstärkter 
+Umweltschutzanzug 
+0 1 850 2 2 4 
+Träger kann einen 9 aufgrund der 
+Umgebung ignorieren, muss nach 
+Umgebung spezifiziert werden (Wüste, 
+Arktis, Dschungel, etc.); reduziert den 
+Wurf einer kritischen Verletzung wegen 
+Fallschaden um 20, verfügt über 
+Filtergerät (gewährt  bei 
+Widerstandskraftproben, um giftiger 
+Atmosphäre oder toxischer Luft zu 
+widerstehen) 
+Sorosuub P-14 
+Gefahrenstoff-
+Industrieanzug 
+0 2 1000 7 2 4 
+Rüstung kann voll versiegelt werden; 
+Anzug zählt wie eine Atemmaske; 
+Träger erhält zu Widerstandskraftproben 
+gegen Hitze, Kälte, Strahlung und 
+andere gefährliche Umwelteinflüsse; er 
+erleidet niemals unter den Zuständen 
+Verbrennend und Desorientiert; setzt 
+der Träger Erschöpfung ein, um das 
+Manöver Bewegung zu erhalten, erleidet 
+er 1 zusätzliche Erschöpfung   
+Weltraumschutzanzug 0 2 3000 2 1 3 
+Vermindert Verlust von Erschöpfung und 
+Wunden des Trägers wegen krit. Treffer 
+an Fahrzeugen/Raumschiffen um 1; 
+Feuerresistenz 1 
+Umweltanzug 0 2 750 2 1 2 
+Rüstung kann voll versiegelt werden; 
+Schützt bis zu 8 Stunden gegen 
+Umwelteinflüsse; Träger erhält 9 auf 
+alle Wahrnehmungs- und 
+Gewandtheitsproben 
+Mechaniker-
+Werkzeuganzug 
+0 2 1175 5 1 3 
+Der Träger wird behandelt, als habe er 
+einen Werkzeugkasten bei sich 
+ 
+
+Militärische und schwere Rüstungen
+ 
+Rüstung Vert Absorp Preis Last AP Selt Anmerkung 
+Unruhenrüstung 0 2 950 3 2 1  
+Leichte Tarnrüstung 
+der Rebellenallianz  
+0 2 
+2200 
+R 
+3 2 7 
+Der Träger erhält einen  bei 
+Heimlichkeitsproben 
+Imperiale Sturm-
+kommandorüstung  
+0 2 
+5000 
+R 
+4 4 9 
+Rüstung verfügt über Kommunikator, 
+Makrofernglas und Scannerbrille; 
+Träger kann einen 9 aufgrund von 
+Dunkelheit, Rauch oder ähnlichem 
+ignorieren; andere erhalten 9, um den 
+Träger mittels Wahrnehmungsproben 
+zu bemerken 
+Plattenrüstung 0 2 2500 4 3 5 Rüstung kann voll versiegelt werden 
+Merr-Sonn N-57 
+Rüstung 
+0 2 3000 5 5 6 
+Als Manöver kann der Träger ein mit 
+einer Energiezelle angetriebenes Gerät 
+aufladen (der Anzug gilt als Ersatz-
+Energiezelle)  
+Protector 1 
+Gefechtsrüstung 
+1 2 
+5500 
+R 
+4 3 7 Rüstung kann voll versiegelt werden 
+„Stahlhaut“ Anti-
+Erschütterungs-
+Rüstung 
+0 3 
+6500 
+R 
+8 1 7 
+Alle Proben auf Gewandtheit und 
+Stärke erhalten 9, erleidet Träger 
+Benommenheit oder Taumeln wegen 
+einer Waffeneigenschaft, so wird die 
+Dauer um 1 reduziert. 
+Ladungsanzug 0 2 2000 3 0 6 
+Wird Träger im Nahkampf getroffen und 
+erzielt Gegner einen P, so muss dieser 
+8 Erschöpfungsschaden hinnehmen, bei 
+KKRerleidet Gegner Desorientierend 
+1, Träger gilt, als trage er 
+Schockhandschuhe 
+Cresh „Glück“ 
+Rüstung 
+0 2 1000 4 1 5 
+Der eingebaute Infrarotscanner gewährt 
+einen 8Rbei Wachsamkeitsproben 
+Schwere 
+Gefechtsrüstung 
+1 2 
+5000 
+R 
+6 4 7 Rüstung kann voll versiegelt werden 
+Schwere 
+Gefechtsrüstung der 
+Rebellenallianz 
+1 2 
+6000 
+R 
+5 5 8 
+Rüstung verfügt über Atemgerät und 
+Sauerstoffmaske 
+ 
+Kleidung und Rüstungen der Jedi
+ 
+Rüstung Vert Absorp Preis Last AP Selt Anmerkung 
+Jedi Trainingsanzug 0 2 400 R 4/6 0 9 
+Mit Gewichten Last 6, ohne Last 4; das 
+Entfernen erfordert  Mechanikprobe 
+Verhüllende Robe 0 1 150 1 0 2 
+Andere erhalten 9, um den Träger zu 
+bemerken oder zu erkennen 
+Jedi Kampfrüstung 1 2 
+7500 
+R 
+5 5 9 
+Wurde Rüstung nicht angepasst, erhält 
+Träger 99 auf alle Kampfproben; das 
+Anpassen erfordert  Mechanik-
+probe und 1 Stunde Arbeit; Rüstung 
+kann voll versiegelt werden 
+Kampfrobe 1 2 
+4500 
+R 
+5 2 8 
+Auffällige Robe mit Rüstteilen, wie von 
+Jedi oder der Inquisitorius getragen  
+Jedi Tempel-
+wachenrüstung 
+2 1 
+12000 
+R 
+4 3 10 
+Helm der Rüstung enthält folgendes 
+Zubehör: Integrierter Scanner und 
+Breitband-Kommunikator 
+ 
+
+Energiebetriebene Rüstungen
+ 
+Rüstung Vert Absorp Preis Last AP Selt Anmerkung 
+Energiebetriebene 
+Rüstung 
+1 3 
+9000 
+R 
+3 3 9 
+Benötigt zum Anziehen 10 Runden (5 
+Runden mit Hilfe); Batteriepack halt für 
+12 Stunden Betrieb (ohne Energie Last 
+12, 0 Verteidigung, keine Erhöhung der 
+Stärke), Vakuumversiegelte 
+Lebenserhaltung für 1 Std. gegen 
+Weltraum und toxische Umgebung, 
+Kommunikator, verliert 99 bei Proben 
+auf Wahrnehmung, Wachsamkeit und 
+Kampffertigkeiten wegen Dunkelheit, 
+Rauch und ähnlichem;  Träger erhält 
++1 auf Stärke für Stärkeproben und 
+Nahkampfwaffenschaden 
+Energiebetriebene 
+Kapazitivrüstung 
+1 1 
+3000 
+R 
+4 2 8 
+Als Manöver kann der Träger die Platten 
+sich verhärten lassen und die Rüstung 
+erhält +1 auf Verteidigung und 
+Absorption, er verliert aber sein freies 
+Manöver in diesem Zustand 
+Imperiale 
+Gefahrentruppler-
+Rüstung 
+0 3 
+18000 
+R 
+4 3 8 
+Erlaubt den Aufenthalt in toxischen, 
+strahlungsverseuchten Umgebungen 
+oder im Vakuum für bis zu 24 Stunden; 
+enthält einen Langstreckenkommuni-
+kator, entfernt 99Rvon 
+Wahrnehmungs-/Wachsamkeits-
+/Kampfproben aufgrund von 
+Dunkelheit/Nebel/Lichtverhältnissen 
+Kav-Dan 
+energiebetriebene 
+Rüstung 
+2 2 
+13500 
+R 
+4/12 6 7 
+Enthält folgendes Zubehör: 
+Vakuumversiegelung für 4 Stunden, 
+einen  um Strahlung zu widerstehen, 
+Breitband-Kommunikator, Basis-Sicht-
+Paket im Helm (entfernt 9Rvon 
+Wahrnehmungs-/Wachsamkeitspro-
+ben); im energiebetriebenen Zustand 
+erhöht sich die Stärke (nicht aber 
+Absorption und Wundlimit) um 1; 
+verliert es die Energie, beträgt die Last 
+12 und der Bonus auf Verteidigung und 
+Stärke geht verloren; das Anlegen der 
+Rüstung nimmt 10 Minuten in Anspruch 
+(die Hälfte mit Unterstützung) 
+Huttische 
+Plattenrüstung 
+2 2 
+25000 
+R 
+6 4 9 
+Nur für Hutten; Träger kann bis zu 5m 
+über dem Boden schweben, ignoriert 
+das Aufbringen zusätzlicher Manöver 
+aufgrund schwierigen Terrains, kann 
+Eigenschaften Plump und Behäbig 
+ignorieren  
+Leviathan 
+energiebetriebene 
+Rüstung 
+2 2 15000 8 1 8 
+Wurde die Rüstung nicht für den Träger 
+gebaut, wird die Schwierigkeit von 
+dessen Proben auf Geschicklichkeit 
+und Stärke einmal aufgewertet; eine 
+Leviathan-Rüstung gilt als vollständig 
+versiegelt und beinhaltet ein 
+Atemgerät; folgendes Zubehör ist 
+eingebaut und kann nicht entnommen 
+werden: Kälteschutz, verstärkte 
+Sensortechnik, Servosystem, Mon Cal 
+Defenses Minitorpedowerfer, Salus DF-
+DI Duoflechette-Gewehr  
+Tragbarer 
+Schildgenerator 
+2 0 10000 3 0 8 Hat Energie für etwa 10 Minuten 
+Anwendung, Aufladen dauert 3 Std und 
+benötigt elektrischen Anschluss 
+ 
+
+Energiebetriebene Rüstungen
+ 
+Rüstung Vert Absorp Preis Last AP Selt Anmerkung 
+Energiebetriebene 
+Rüstung 
+1 3 
+9000 
+R 
+3 3 9 
+Benötigt zum Anziehen 10 Runden (5 
+Runden mit Hilfe); Batteriepack halt für 
+12 Stunden Betrieb (ohne Energie Last 
+12, 0 Verteidigung, keine Erhöhung der 
+Stärke), Vakuumversiegelte 
+Lebenserhaltung für 1 Std. gegen 
+Weltraum und toxische Umgebung, 
+Kommunikator, verliert 99 bei Proben 
+auf Wahrnehmung, Wachsamkeit und 
+Kampffertigkeiten wegen Dunkelheit, 
+Rauch und ähnlichem;  Träger erhält 
++1 auf Stärke für Stärkeproben und 
+Nahkampfwaffenschaden 
+Energiebetriebene 
+Kapazitivrüstung 
+1 1 
+3000 
+R 
+4 2 8 
+Als Manöver kann der Träger die Platten 
+sich verhärten lassen und die Rüstung 
+erhält +1 auf Verteidigung und 
+Absorption, er verliert aber sein freies 
+Manöver in diesem Zustand 
+Imperiale 
+Gefahrentruppler-
+Rüstung 
+0 3 
+18000 
+R 
+4 3 8 
+Erlaubt den Aufenthalt in toxischen, 
+strahlungsverseuchten Umgebungen 
+oder im Vakuum für bis zu 24 Stunden; 
+enthält einen Langstreckenkommuni-
+kator, entfernt 99Rvon 
+Wahrnehmungs-/Wachsamkeits-
+/Kampfproben aufgrund von 
+Dunkelheit/Nebel/Lichtverhältnissen 
+Kav-Dan 
+energiebetriebene 
+Rüstung 
+2 2 
+13500 
+R 
+4/12 6 7 
+Enthält folgendes Zubehör: 
+Vakuumversiegelung für 4 Stunden, 
+einen  um Strahlung zu widerstehen, 
+Breitband-Kommunikator, Basis-Sicht-
+Paket im Helm (entfernt 9Rvon 
+Wahrnehmungs-/Wachsamkeitspro-
+ben); im energiebetriebenen Zustand 
+erhöht sich die Stärke (nicht aber 
+Absorption und Wundlimit) um 1; 
+verliert es die Energie, beträgt die Last 
+12 und der Bonus auf Verteidigung und 
+Stärke geht verloren; das Anlegen der 
+Rüstung nimmt 10 Minuten in Anspruch 
+(die Hälfte mit Unterstützung) 
+Huttische 
+Plattenrüstung 
+2 2 
+25000 
+R 
+6 4 9 
+Nur für Hutten; Träger kann bis zu 5m 
+über dem Boden schweben, ignoriert 
+das Aufbringen zusätzlicher Manöver 
+aufgrund schwierigen Terrains, kann 
+Eigenschaften Plump und Behäbig 
+ignorieren  
+Leviathan 
+energiebetriebene 
+Rüstung 
+2 2 15000 8 1 8 
+Wurde die Rüstung nicht für den Träger 
+gebaut, wird die Schwierigkeit von 
+dessen Proben auf Geschicklichkeit 
+und Stärke einmal aufgewertet; eine 
+Leviathan-Rüstung gilt als vollständig 
+versiegelt und beinhaltet ein 
+Atemgerät; folgendes Zubehör ist 
+eingebaut und kann nicht entnommen 
+werden: Kälteschutz, verstärkte 
+Sensortechnik, Servosystem, Mon Cal 
+Defenses Minitorpedowerfer, Salus DF-
+DI Duoflechette-Gewehr  
+Tragbarer 
+Schildgenerator 
+2 0 10000 3 0 8 Hat Energie für etwa 10 Minuten 
+Anwendung, Aufladen dauert 3 Std und 
+benötigt elektrischen Anschluss 
+ 

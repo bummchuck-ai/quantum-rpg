@@ -5,7 +5,7 @@
 // This is THE HEART of the game — Claude as the AI Game Master.
 // ============================================================
 
-import type { Character, GameState, SessionEvent } from '../../types/character';
+import type { Character, GameState, SessionEvent } from '@/types/character';
 
 // --- The Core GM Persona ---
 const GM_PERSONA = `Du bist der Game Master eines immersiven Star Wars Pen & Paper Rollenspiels.
@@ -63,73 +63,45 @@ Der Charakter hat narrative Verpflichtungen. Webe diese ORGANISCH in die Geschic
 `;
 
 // --- Build context from game state ---
-function buildCharacterContext(character: Character): string {
+function buildCharacterContext(character: any): string {
+  const mainSpec = character.specializations?.[0]?.name || 'Unknown';
+  
   return `# SPIELERCHARAKTER
 Name: ${character.name}
-Spezies: ${character.species.name}
-Karriere: ${character.career.name} / ${character.specialization.name}
-Konzept: ${character.concept}
-Hintergrund: ${character.background}
+Spezies: ${character.species?.name}
+Karriere: ${character.career?.name} / ${mainSpec}
+Hintergrund: ${character.backgroundOption}
 
 ## Eigenschaften
-Stärke: ${character.characteristics.brawn} | Gewandtheit: ${character.characteristics.agility}
-Intelligenz: ${character.characteristics.intellect} | List: ${character.characteristics.cunning}
-Willenskraft: ${character.characteristics.willpower} | Ausstrahlung: ${character.characteristics.presence}
+Stärke: ${character.characteristics?.brawn} | Gewandtheit: ${character.characteristics?.agility}
+Intelligenz: ${character.characteristics?.intellect} | List: ${character.characteristics?.cunning}
+Willenskraft: ${character.characteristics?.willpower} | Ausstrahlung: ${character.characteristics?.presence}
 
 ## Zustand
-Wunden: ${character.derivedStats.currentWounds}/${character.derivedStats.woundThreshold}
-Erschöpfung: ${character.derivedStats.currentStrain}/${character.derivedStats.strainThreshold}
 Credits: ${character.credits}
-
-## Motivation
-Wunsch: ${character.motivation.desire}
-Furcht: ${character.motivation.fear}
-Stärke: ${character.motivation.strength}
-Schwäche: ${character.motivation.flaw}
-${character.obligation ? `
-## Verpflichtung
-${character.obligation.name} (Wert: ${character.obligation.value})
-${character.obligation.description}` : ''}
-${character.morality ? `
-## Moral
-Wert: ${character.morality.value}/100
-Emotionale Stärken: ${character.morality.emotional_strengths.join(', ')}
-Emotionale Schwächen: ${character.morality.emotional_weaknesses.join(', ')}` : ''}
 `;
 }
 
-function buildSceneContext(gameState: GameState): string {
+function buildSceneContext(gameState: any): string {
   const recentHistory = gameState.sessionHistory
-    .slice(-10)
-    .map((e: SessionEvent) => `[${e.type}] ${e.summary}`)
-    .join('\n');
+    ?.slice(-10)
+    .join('\n') || 'Spielbeginn — keine bisherigen Ereignisse.';
 
   return `# AKTUELLE SZENE
 Planet: ${gameState.currentPlanet}
 Szene: ${gameState.currentScene}
 
 ## Schicksalspunkte
-Helle Seite: ${gameState.destinyPool.lightSide}
-Dunkle Seite: ${gameState.destinyPool.darkSide}
+Helle Seite: ${gameState.destinyPool?.lightSide}
+Dunkle Seite: ${gameState.destinyPool?.darkSide}
 
 ## Letzte Ereignisse
-${recentHistory || 'Spielbeginn — keine bisherigen Ereignisse.'}
-
-## Aktive Quests
-${gameState.questLog
-  .filter(q => q.status === 'active')
-  .map(q => `- ${q.title}: ${q.description}`)
-  .join('\n') || 'Keine aktiven Quests.'}
-
-## NPC-Beziehungen
-${gameState.npcRelationships
-  .map(n => `- ${n.npcName}: Stimmung ${n.disposition > 0 ? 'positiv' : n.disposition < 0 ? 'negativ' : 'neutral'} (${n.disposition})`)
-  .join('\n') || 'Noch keine bekannten NPCs.'}
+${recentHistory}
 `;
 }
 
 // --- Main function: Build the complete system prompt ---
-export function buildSystemPrompt(gameState: GameState): string {
+export function buildSystemPrompt(gameState: any): string {
   return [
     GM_PERSONA,
     buildCharacterContext(gameState.character),
@@ -140,15 +112,7 @@ export function buildSystemPrompt(gameState: GameState): string {
 // --- Build a user message with optional dice result ---
 export function buildUserMessage(
   playerAction: string,
-  diceResult?: {
-    isSuccess: boolean;
-    netSuccess: number;
-    netAdvantage: number;
-    triumph: number;
-    despair: number;
-    skillUsed: string;
-    difficulty: string;
-  }
+  diceResult?: any
 ): string {
   let message = `Der Spieler sagt/tut: "${playerAction}"`;
 

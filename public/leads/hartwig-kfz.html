@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hartwig-KFZ | Ihre Profi-Werkstatt in Gifhorn</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        profiBlue: '#1e40af', // blue-800
+                        silber: '#94a3b8', // slate-400
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50">
+
+    <header class="bg-white border-b-4 border-profiBlue">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-profiBlue text-white p-2 rounded">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                </div>
+                <span class="text-2xl font-black italic tracking-tighter text-profiBlue">HARTWIG-KFZ</span>
+            </div>
+            <nav class="hidden lg:flex space-x-8 font-bold text-sm uppercase">
+                <a href="#services" class="hover:text-profiBlue transition">Leistungen</a>
+                <a href="#ueber-uns" class="hover:text-profiBlue transition">Über Uns</a>
+                <a href="#kontakt" class="hover:text-profiBlue transition">Kontakt</a>
+            </nav>
+            <div class="hidden sm:block text-right">
+                <p class="text-xs text-gray-500 uppercase font-bold">Notruf & Termin</p>
+                <p class="text-profiBlue font-black">05371 / 123 45</p>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-gradient-to-r from-profiBlue to-blue-900 text-white py-20">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">Ehrlich. Direkt. <br><span class="text-blue-300">Meisterhaft.</span></h1>
+                <p class="text-xl mb-8 text-blue-100">Ihre KFZ-Werkstatt in Gifhorn. Wir bringen Sie sicher zurück auf die Straße – mit Vertrauen und Fachkompetenz.</p>
+                <div class="flex gap-4">
+                    <a href="#kontakt" class="bg-white text-profiBlue font-bold py-4 px-8 rounded shadow-xl hover:bg-gray-100 transition">Termin vereinbaren</a>
+                    <a href="#services" class="bg-profiBlue border-2 border-white/20 text-white font-bold py-4 px-8 rounded hover:bg-white/10 transition">Leistungen</a>
+                </div>
+            </div>
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Werkstatt" class="rounded-2xl shadow-2xl border-4 border-white/10">
+                <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg flex items-center gap-4">
+                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="font-bold text-gray-900">TÜV / AU täglich</p>
+                        <p class="text-sm text-gray-500">Direkt bei uns im Haus</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-black mb-16 text-center">Rundum-Service für Ihr Fahrzeug</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-10 border-b-4 border-gray-100 hover:border-profiBlue transition duration-300 shadow-sm">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <span class="text-profiBlue">01</span> Inspektion & Wartung
+                    </h3>
+                    <p class="text-gray-600">Nach Herstellervorgaben für alle Marken. Damit Ihre Garantie erhalten bleibt.</p>
+                </div>
+                <div class="bg-white p-10 border-b-4 border-gray-100 hover:border-profiBlue transition duration-300 shadow-sm">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <span class="text-profiBlue">02</span> Bremsen & Fahrwerk
+                    </h3>
+                    <p class="text-gray-600">Sicherheit ohne Kompromisse. Wir prüfen und reparieren mit Originalteilen.</p>
+                </div>
+                <div class="bg-white p-10 border-b-4 border-gray-100 hover:border-profiBlue transition duration-300 shadow-sm">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <span class="text-profiBlue">03</span> Diagnose & Elektronik
+                    </h3>
+                    <p class="text-gray-600">Modernste Fehlerauslese für komplexe Fahrzeugsysteme.</p>
+                </div>
+                <div class="bg-white p-10 border-b-4 border-gray-100 hover:border-profiBlue transition duration-300 shadow-sm">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <span class="text-profiBlue">04</span> Klima-Service
+                    </h3>
+                    <p class="text-gray-600">Wartung und Desinfektion für ein gesundes Klima in Ihrem Auto.</p>
+                </div>
+                <div class="bg-white p-10 border-b-4 border-gray-100 hover:border-profiBlue transition duration-300 shadow-sm">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <span class="text-profiBlue">05</span> Reifen-Service
+                    </h3>
+                    <p class="text-gray-600">Wechsel, Wuchten und Einlagerung Ihrer Sommer- und Winterräder.</p>
+                </div>
+                <div class="bg-white p-10 border-b-4 border-gray-100 hover:border-profiBlue transition duration-300 shadow-sm">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <span class="text-profiBlue">06</span> Unfallinstandsetzung
+                    </h3>
+                    <p class="text-gray-600">Wir kümmern uns um den Schaden – fachgerecht und unkompliziert.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ueber-uns" class="py-24 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="bg-white rounded-3xl overflow-hidden shadow-xl flex flex-col md:flex-row">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Werkstatt Profi" class="w-full h-full object-cover">
+                </div>
+                <div class="md:w-1/2 p-12 flex flex-col justify-center">
+                    <h2 class="text-3xl font-black mb-6">Vertrauen ist unser Antrieb</h2>
+                    <p class="text-gray-600 mb-6 italic text-lg leading-relaxed">"Bei Hartwig-KFZ in Gifhorn schraubt der Chef noch selbst. Wir legen Wert auf Transparenz und erklären Ihnen genau, was an Ihrem Fahrzeug gemacht wird – und warum."</p>
+                    <p class="text-gray-500 font-bold">— Michael Hartwig, KFZ-Meister</p>
+                    <div class="mt-8 flex gap-8">
+                        <div>
+                            <p class="text-profiBlue font-black text-2xl">25+</p>
+                            <p class="text-xs uppercase text-gray-400">Jahre Erfahrung</p>
+                        </div>
+                        <div>
+                            <p class="text-profiBlue font-black text-2xl">4.9/5</p>
+                            <p class="text-xs uppercase text-gray-400">Kundenzufriedenheit</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontakt" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-3xl font-black mb-8">Kontakt & Anfahrt</h2>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="text-profiBlue">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </div>
+                            <p>Handwerkerstraße 5<br>38518 Gifhorn</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="text-profiBlue">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <p>MO-DO: 08:00 - 17:00<br>FR: 08:00 - 15:00</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="text-profiBlue">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                </svg>
+                            </div>
+                            <p class="font-bold text-xl text-profiBlue">05371 / 123 45</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                    <h3 class="text-xl font-bold mb-6">Online Termin-Anfrage</h3>
+                    <form class="space-y-4">
+                        <input type="text" placeholder="Ihr Name" class="w-full p-4 rounded-lg border-gray-200 border outline-none focus:ring-2 focus:ring-profiBlue">
+                        <input type="text" placeholder="Fahrzeug / Kennzeichen" class="w-full p-4 rounded-lg border-gray-200 border outline-none focus:ring-2 focus:ring-profiBlue">
+                        <textarea placeholder="Was können wir für Sie tun?" class="w-full p-4 rounded-lg border-gray-200 border outline-none focus:ring-2 focus:ring-profiBlue" rows="4"></textarea>
+                        <button class="w-full bg-profiBlue text-white font-bold py-4 rounded-lg hover:bg-blue-900 transition shadow-lg">Anfrage absenden</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-profiBlue text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2026 Hartwig-KFZ Gifhorn. Alle Rechte vorbehalten.</p>
+            <div class="mt-4 space-x-6 text-blue-200 text-sm">
+                <a href="#" class="hover:text-white">Impressum</a>
+                <a href="#" class="hover:text-white">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

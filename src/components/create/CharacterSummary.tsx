@@ -2,163 +2,281 @@
 
 import React, { useState } from 'react';
 import { useCharacterStore } from '../../store/characterStore';
+import { useRouter } from 'next/navigation';
+import HolocronGuide from './HolocronGuide';
+import ProgressTracker from './ProgressTracker';
 
 const CharacterSummary: React.FC = () => {
+  const router = useRouter();
   const { 
     species, 
     career, 
-    specialization, 
+    specializations, 
     characteristics,
     availableXP,
     name,
-    setName
+    setName,
+    credits,
+    backgroundOption,
+    backgroundValue,
+    backgroundType,
+    ownedGear,
+    ownedTalents
   } = useCharacterStore();
 
   const [isEditingName, setIsEditingName] = useState(false);
+  const [activeTab, setActiveTab] = useState<'skills' | 'talents' | 'gear' | 'story'>('skills');
+  const [backstory, setBackstory] = useState<string>('');
+  const [generating, setGenerating] = useState(false);
 
-  // Berechne abgeleitete Werte (einfache Logik für den Anfang)
+  const generateBackstory = async () => {
+    setGenerating(true);
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: [
+            { 
+              role: 'system', 
+              content: 'Du bist ein Star Wars Game Master. Schreibe eine kurze, epische Hintergrundgeschichte (max 150 Wörter) für diesen Charakter basierend auf seiner Spezies, Karriere und seinem Hintergrund. Nutze einen düsteren, atmosphärischen Ton.' 
+            },
+            { 
+              role: 'user', 
+              content: `Charakter: ${name}, Spezies: ${species?.name}, Karriere: ${career?.name}, Spezialisierung: ${mainSpec?.name}, Hintergrund: ${backgroundOption} (${backgroundType})` 
+            }
+          ]
+        })
+      });
+      const data = await response.json();
+      setBackstory(data.response || data.content || 'Die Archive sind korrumpiert. Keine Geschichte verfügbar.');
+    } catch (error) {
+      setBackstory('Verbindung zum Holocron unterbrochen.');
+    }
+    setGenerating(false);
+  };
+
   const woundThreshold = species ? species.woundThresholdBase + characteristics.brawn : 0;
   const strainThreshold = species ? species.strainThresholdBase + characteristics.willpower : 0;
-  const soak = characteristics.brawn; // Rüstung fehlt noch
-  const defense = 0; // Rüstung fehlt noch
+  
+  const armor = ownedGear.filter(g => g.soak !== undefined);
+  const soak = characteristics.brawn + armor.reduce((acc, curr) => acc + curr.soak, 0);
+  const defense = armor.reduce((acc, curr) => Math.max(acc, curr.defense), 0);
 
-  // Sammle alle Skills (Karriere + Spezialisierung)
-  // Achtung: Das ist nur eine Anzeige, noch keine echten Ränge
   const allSkills = new Set([
     ...(career?.careerSkills || []),
-    ...(specialization?.skills || [])
+    ...(mainSpec?.skills || [])
   ]);
 
   if (!species || !career) {
     return (
-      <div className="flex items-center justify-center h-screen bg-slate-950 text-slate-500">
-        <p>Daten fehlen. Bitte beginne von vorne.</p>
+      <div className="flex flex-col items-center justify-center h-screen bg-black text-amber-500 font-mono p-12 text-center uppercase tracking-widest">
+        <div className="text-4xl mb-4 animate-pulse">⚠️</div>
+        <h1 className="text-lg font-black">Data_Loss_Detected</h1>
+        <p className="text-[10px] text-zinc-600 mt-2">No character data in active buffer.</p>
+        <button onClick={() => router.push('/')} className="mt-8 border border-amber-500 px-8 py-3 text-[10px] font-black uppercase shadow-[0_0_20px_rgba(245,158,11,0.2)]">Reboot_System</button>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-200 font-sans p-8 overflow-y-auto">
-      <div className="max-w-5xl mx-auto grid grid-cols-12 gap-8">
+    <main className="min-h-dvh w-full bg-black text-zinc-300 font-mono flex flex-col p-6">
+      
+      {/* HUD Header */}
+      <header className="flex justify-between items-center border-b border-zinc-800 pb-4 mb-6 sticky top-0 bg-black z-30">
+        <div className="flex gap-4 items-center">
+            <div className="w-8 h-8 border border-amber-500 flex items-center justify-center text-amber-500 font-black italic">!</div>
+            <div>
+                <h1 className="text-xl font-black text-white italic tracking-tighter uppercase">CHARACTER_MANIFEST</h1>
+            </div>
+        </div>
+        <div className="text-right">
+            <div className="text-[10px] text-amber-500 font-bold tracking-widest">FINAL_DEPLOYMENT</div>
+        </div>
+      </header>
+
+      <ProgressTracker currentStep={6} />
+
+      <div className="flex-1 space-y-6 pb-32">
         
-        {/* Header / Identity Card */}
-        <div className="col-span-12 bg-slate-900 border border-slate-800 rounded-xl p-6 flex justify-between items-center shadow-2xl">
-          <div>
-            <div className="text-xs uppercase tracking-widest text-slate-500 mb-1">Identität</div>
+        <section className="bg-zinc-900/20 border border-zinc-800 p-6 rounded-2xl relative overflow-hidden shadow-2xl">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/[0.02] rotate-45 translate-x-12 -translate-y-12 border-b border-zinc-800"></div>
+            <div className="text-[8px] text-zinc-600 font-black uppercase tracking-widest mb-3">Target_Identification</div>
+            
             {isEditingName ? (
               <input 
                 autoFocus
-                className="bg-transparent text-4xl font-black text-white border-b border-amber-500 outline-none w-full"
+                className="bg-zinc-950 border-b-2 border-amber-500 text-3xl font-black text-white outline-none w-full mb-2 uppercase italic tracking-tighter"
                 value={name}
-                placeholder="NAMEN EINGEBEN..."
                 onChange={(e) => setName(e.target.value)}
                 onBlur={() => setIsEditingName(false)}
               />
             ) : (
-              <h1 
-                className="text-4xl font-black text-white cursor-pointer hover:text-amber-400 transition-colors"
+              <h2 
+                className="text-4xl font-black text-white italic tracking-tighter uppercase mb-2"
                 onClick={() => setIsEditingName(true)}
               >
-                {name || "NAMENLOSER HELD"} <span className="text-xs align-top opacity-30">✎</span>
-              </h1>
+                {name || "UNNAMED_ENTITY"} <span className="text-[10px] text-amber-500 opacity-40 not-italic">EDIT_</span>
+              </h2>
             )}
-            <div className="flex gap-4 mt-2 text-amber-500 font-mono text-sm">
-              <span className="uppercase">{species.name}</span>
-              <span>/</span>
-              <span className="uppercase">{career.name}</span>
-              <span>/</span>
-              <span className="uppercase text-white font-bold">{specialization?.name}</span>
+            
+            <div className="flex flex-wrap items-center gap-x-3 text-[11px] font-black text-amber-500 italic">
+                <span className="uppercase">{species.name}</span>
+                <span className="text-zinc-800 not-italic"> // </span>
+                <span className="uppercase text-zinc-400">{career.name}</span>
+                <span className="text-zinc-800 not-italic"> // </span>
+                <span className="uppercase text-zinc-500">{mainSpec?.name}</span>
             </div>
-          </div>
-          
-          <div className="text-right">
-             <div className="text-xs uppercase tracking-widest text-slate-500 mb-1">Verfügbare Erfahrung</div>
-             <div className="text-4xl font-mono font-bold text-emerald-400">{availableXP} XP</div>
-          </div>
-        </div>
+        </section>
 
-        {/* Left Column: Stats & Vitals */}
-        <div className="col-span-4 space-y-6">
-          
-          {/* Characteristics Hexagon/Grid */}
-          <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
-            <h3 className="text-xs uppercase tracking-widest text-slate-500 mb-6 text-center">Attribute</h3>
-            <div className="grid grid-cols-2 gap-4">
-              {Object.entries(characteristics).map(([key, val]) => (
-                <div key={key} className="flex flex-col items-center p-3 bg-slate-950/50 rounded-lg border border-slate-800/50">
-                  <span className="text-3xl font-bold text-white">{val}</span>
-                  <span className="text-[10px] uppercase text-slate-400 mt-1">{key}</span>
+        <div className="grid grid-cols-1 gap-4">
+            <section className="bg-zinc-900/10 border border-zinc-800 p-6 rounded-2xl shadow-inner">
+                <div className="text-[8px] text-zinc-600 font-black uppercase mb-4 tracking-[0.2em]">Attribute_Matrix</div>
+                <div className="grid grid-cols-3 gap-3">
+                    {Object.entries(characteristics).map(([key, val]) => (
+                        <div key={key} className="flex flex-col items-center bg-black/40 border border-zinc-900 p-3 rounded-xl shadow-md">
+                            <span className="text-2xl font-black text-white leading-none mb-1">{val}</span>
+                            <span className="text-[7px] text-zinc-600 uppercase font-black">{key.substring(0,3)}</span>
+                        </div>
+                    ))}
                 </div>
-              ))}
-            </div>
-          </div>
+            </section>
 
-          {/* Vitals */}
-          <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-4">
-            <div>
-              <div className="flex justify-between text-xs uppercase mb-1">
-                <span className="text-red-400">Wunden</span>
-                <span className="text-slate-500">{woundThreshold} Max</span>
-              </div>
-              <div className="h-3 bg-slate-800 rounded-full overflow-hidden">
-                <div className="h-full bg-red-500/80 w-0" />
-              </div>
-            </div>
-            <div>
-              <div className="flex justify-between text-xs uppercase mb-1">
-                <span className="text-blue-400">Erschöpfung</span>
-                <span className="text-slate-500">{strainThreshold} Max</span>
-              </div>
-              <div className="h-3 bg-slate-800 rounded-full overflow-hidden">
-                <div className="h-full bg-blue-500/80 w-0" />
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4 pt-4 border-t border-slate-800 mt-4">
-               <div className="text-center">
-                 <div className="text-2xl font-bold text-slate-300">{soak}</div>
-                 <div className="text-[10px] uppercase text-slate-500">Absorbierung</div>
-               </div>
-               <div className="text-center">
-                 <div className="text-2xl font-bold text-slate-300">{defense}</div>
-                 <div className="text-[10px] uppercase text-slate-500">Verteidigung</div>
-               </div>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Right Column: Skills & Talents */}
-        <div className="col-span-8 bg-slate-900 border border-slate-800 rounded-xl p-6">
-          <div className="flex gap-8 border-b border-slate-800 pb-4 mb-6">
-            <button className="text-amber-400 font-bold border-b-2 border-amber-400 pb-4 -mb-4.5">FERTIGKEITEN</button>
-            <button className="text-slate-500 hover:text-slate-300 pb-4 -mb-4.5">TALENTE</button>
-            <button className="text-slate-500 hover:text-slate-300 pb-4 -mb-4.5">AUSRÜSTUNG</button>
-          </div>
-
-          <div className="grid grid-cols-2 gap-x-8 gap-y-2">
-            {Array.from(allSkills).sort().map(skill => (
-              <div key={skill} className="flex justify-between items-center py-2 border-b border-slate-800/50 group hover:bg-slate-800/30 px-2 rounded">
-                <span className="text-slate-300 group-hover:text-white transition-colors">{skill}</span>
-                <div className="flex gap-1">
-                  {/* Dice Pool Preview (Dummy) */}
-                  <div className="w-3 h-3 bg-green-500 rounded-sm transform rotate-45"></div>
-                  <div className="w-3 h-3 bg-green-500 rounded-sm transform rotate-45"></div>
-                  <div className="w-3 h-3 bg-yellow-500 border border-yellow-300 rounded-sm"></div>
+            <section className="grid grid-cols-3 gap-3">
+                <div className="bg-red-500/[0.03] border border-red-900/30 p-4 rounded-xl flex flex-col items-center shadow-lg">
+                    <div className="text-[7px] text-red-500 font-black uppercase mb-1">Wounds</div>
+                    <div className="text-2xl font-black text-red-500 leading-none">{woundThreshold}</div>
                 </div>
-              </div>
-            ))}
-          </div>
+                <div className="bg-blue-500/[0.03] border border-blue-900/30 p-4 rounded-xl flex flex-col items-center shadow-lg">
+                    <div className="text-[7px] text-blue-500 font-black uppercase mb-1">Strain</div>
+                    <div className="text-2xl font-black text-blue-400 leading-none">{strainThreshold}</div>
+                </div>
+                <div className="bg-zinc-900/30 border border-zinc-800 p-4 rounded-xl flex flex-col items-center shadow-lg">
+                    <div className="text-[7px] text-zinc-500 font-black uppercase mb-1">Soak_Def</div>
+                    <div className="text-xl font-black text-zinc-300 leading-none">{soak} / {defense}</div>
+                </div>
+            </section>
         </div>
 
-        {/* Footer Action */}
-        <div className="col-span-12 flex justify-end">
-           <button className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 px-12 rounded-lg uppercase tracking-widest shadow-lg shadow-emerald-900/20 transform transition-all hover:scale-105 active:scale-95">
-             Spiel Starten
-           </button>
+        <section className="flex gap-4">
+            <div className="flex-1 border border-zinc-800 p-5 bg-zinc-900/10 rounded-2xl text-center shadow-xl">
+                <div className="text-[8px] text-zinc-600 font-black uppercase mb-1 tracking-widest">XP_UNITS</div>
+                <div className="text-2xl font-black text-emerald-400 italic">{availableXP}</div>
+            </div>
+            <div className="flex-1 border border-zinc-800 p-5 bg-zinc-900/10 rounded-2xl text-center shadow-xl">
+                <div className="text-[8px] text-zinc-600 font-black uppercase mb-1 tracking-widest">CREDITS</div>
+                <div className="text-2xl font-black text-amber-500 italic">{credits}</div>
+            </div>
+        </section>
+
+        <section className="border border-amber-500/20 bg-amber-500/[0.01] p-5 rounded-2xl shadow-inner">
+             <div className="text-[9px] text-amber-500 font-black uppercase tracking-widest mb-2 flex justify-between">
+                <span>{backgroundType?.toUpperCase() || 'DESTINY'}</span>
+                <span className="opacity-50 font-mono">ID_{backgroundValue}</span>
+             </div>
+             <p className="text-lg font-black text-white italic uppercase tracking-tighter">{backgroundOption || 'UNSET'}</p>
+        </section>
+
+        <div className="space-y-4">
+            <div className="flex border border-zinc-900 bg-zinc-950 p-1 rounded-xl shadow-lg">
+                {['skills', 'talents', 'gear', 'story'].map(tab => (
+                    <button 
+                        key={tab}
+                        onClick={() => setActiveTab(tab as any)} 
+                        className={`flex-1 py-3 text-[9px] font-black uppercase tracking-widest transition-all rounded-lg ${activeTab === tab ? 'bg-zinc-800 text-white shadow-md' : 'text-zinc-700'}`}
+                    >
+                        {tab}
+                    </button>
+                ))}
+            </div>
+
+            <section className="bg-zinc-900/10 border border-zinc-800 p-6 rounded-2xl min-h-[200px] shadow-inner">
+                {activeTab === 'skills' && (
+                    <div className="grid grid-cols-1 gap-2 animate-in fade-in duration-300">
+                        {Array.from(allSkills).sort().map(skill => (
+                            <div key={skill} className="flex justify-between items-center py-2.5 border-b border-zinc-900 last:border-0">
+                                <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-tight">{skill}</span>
+                                <div className="w-2 h-2 bg-emerald-500 rounded-full shadow-[0_0_8px_rgba(16,185,129,0.4)]"></div>
+                            </div>
+                        ))}
+                    </div>
+                )}
+                {activeTab === 'talents' && (
+                    <div className="grid grid-cols-1 gap-3 animate-in fade-in duration-300">
+                        {ownedTalents.length > 0 ? ownedTalents.map(t => (
+                            <div key={t} className="p-3 border border-zinc-900 bg-zinc-950/50 rounded-lg flex justify-between items-center">
+                                <span className="text-[10px] font-black text-amber-500 uppercase italic tracking-tighter">{t}</span>
+                                <span className="text-[8px] text-zinc-800 font-bold tracking-widest">ENABLED</span>
+                            </div>
+                        )) : <div className="text-[10px] text-zinc-800 text-center py-12 uppercase font-black tracking-widest">No_Skills_Extracted</div>}
+                </div>
+                )}
+                {activeTab === 'gear' && (
+                    <div className="grid grid-cols-1 gap-3 animate-in fade-in duration-300">
+                        {ownedGear.length > 0 ? ownedGear.map(g => (
+                            <div key={g.name} className="p-4 border border-zinc-900 bg-zinc-950/50 rounded-xl flex justify-between items-center group shadow-md">
+                                <div>
+                                    <div className="text-[11px] font-black text-white uppercase italic tracking-tighter">{g.name}</div>
+                                    <div className="text-[8px] text-zinc-700 font-black uppercase mt-1">Status: EQUIPPED</div>
+                                </div>
+                                <div className="text-[9px] text-amber-500 font-black italic">{g.damage ? `DMG_${g.damage}` : `ABS_${g.soak}`}</div>
+                            </div>
+                        )) : <div className="text-[10px] text-zinc-800 text-center py-12 uppercase font-black tracking-widest">No_Gear_Assigned</div>}
+                </div>
+                )}
+                {activeTab === 'story' && (
+                    <div className="animate-in fade-in duration-500 space-y-6">
+                        {!backstory && !generating ? (
+                            <div className="flex flex-col items-center justify-center py-12 space-y-4">
+                                <div className="text-3xl grayscale opacity-20">📖</div>
+                                <button 
+                                    onClick={generateBackstory}
+                                    className="border border-amber-500/50 text-amber-500 px-6 py-2 text-[10px] font-black uppercase tracking-widest hover:bg-amber-500/10 transition-all"
+                                >
+                                    Generate_Backstory_
+                                </button>
+                            </div>
+                        ) : generating ? (
+                            <div className="flex flex-col items-center justify-center py-12 space-y-4">
+                                <div className="w-8 h-8 border-2 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
+                                <div className="text-[8px] text-amber-500 font-black uppercase tracking-[0.5em] animate-pulse">Consulting_Archives...</div>
+                            </div>
+                        ) : (
+                            <div className="space-y-4">
+                                <p className="text-xs leading-relaxed text-zinc-400 font-sans italic selection:bg-amber-500/30 first-letter:text-2xl first-letter:font-black first-letter:text-amber-500 first-letter:mr-1">
+                                    {backstory}
+                                </p>
+                                <button 
+                                    onClick={generateBackstory}
+                                    className="text-[8px] text-zinc-700 font-black uppercase tracking-widest hover:text-amber-500 transition-all"
+                                >
+                                    [ Re-Generate_Manifest ]
+                                </button>
+                            </div>
+                        )}
+                    </div>
+                )}
+            </section>
         </div>
 
       </div>
-    </div>
+
+      <HolocronGuide 
+        title="FINALE_ÜBERSICHT" 
+        description="Glückwunsch! Dein Charakter ist bereit. Hier siehst du alle Werte, Talente und Ausrüstung auf einen Blick. Vergiss nicht, deinem Helden einen Namen zu geben (Klick auf UNNAMED_ENTITY)."
+        advice="Überprüfe noch einmal deine Wounds und Strain. Das sind deine Lebenspunkte und deine geistige Ausdauer. Wenn du bereit bist, klicke auf 'Deploy to Sector', um dein Abenteuer mit dem Game Master zu starten!"
+      />
+
+      <div className="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/80 to-transparent z-40">
+          <button 
+            onClick={() => router.push('/play')}
+            className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-5 rounded-xl uppercase italic tracking-widest text-sm shadow-[0_20px_40px_rgba(16,185,129,0.3)] transition-all active:scale-95 border-b-4 border-emerald-800"
+          >
+            Deploy_to_Sector_→
+          </button>
+      </div>
+
+    </main>
   );
 };
 

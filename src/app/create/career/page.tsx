@@ -1,4 +1,4 @@
-import CareerSelector from '../../../components/create/CareerSelector';
+import CareerSelector from '@/components/create/CareerSelector';
 
 export default function CareerPage() {
   return (

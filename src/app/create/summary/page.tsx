@@ -1,4 +1,4 @@
-import CharacterSummary from '../../../components/create/CharacterSummary';
+import CharacterSummary from '@/components/create/CharacterSummary';
 
 export default function SummaryPage() {
   return (

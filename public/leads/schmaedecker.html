@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schmädecker + Partner GbR | Gartenbau Braunschweig</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#10b981', // emerald-500
+                        secondary: '#facc15', // yellow-400
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-gray-900 bg-gray-50">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-primary">Schmädecker <span class="text-secondary">+</span> Partner</div>
+            <nav class="hidden md:flex space-x-8 font-medium">
+                <a href="#home" class="hover:text-primary transition">Home</a>
+                <a href="#leistungen" class="hover:text-primary transition">Leistungen</a>
+                <a href="#galerie" class="hover:text-primary transition">Galerie</a>
+                <a href="#ueber-uns" class="hover:text-primary transition">Über uns</a>
+                <a href="#kontakt" class="hover:text-primary transition">Kontakt</a>
+            </nav>
+            <button class="md:hidden text-gray-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative bg-emerald-900 text-white py-24 md:py-32 overflow-hidden">
+        <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6">GRÜN ist immer eine Idee bunter!</h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto text-emerald-100">Ihr Partner für kreativen Garten- und Landschaftsbau in Braunschweig und Region.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#kontakt" class="bg-secondary text-emerald-900 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-300 transition transform hover:-translate-y-1">Beratung anfordern</a>
+                <a href="#leistungen" class="bg-white/10 backdrop-blur text-white border-2 border-white/20 font-bold py-3 px-8 rounded-full hover:bg-white/20 transition">Unsere Leistungen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leistungen -->
+    <section id="leistungen" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16 underline decoration-secondary decoration-4 underline-offset-8">Unsere Leistungen</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="p-8 border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 bg-white">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Gartenplanung</h3>
+                    <p class="text-gray-600">Wir verwandeln Ihre Träume in greifbare Pläne. Von der ersten Skizze bis zum fertigen Konzept.</p>
+                </div>
+                <div class="p-8 border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 bg-white">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Landschaftsbau</h3>
+                    <p class="text-gray-600">Professionelle Umsetzung Ihrer Außenanlagen mit Stein, Holz und Wasser für ein harmonisches Gesamtbild.</p>
+                </div>
+                <div class="p-8 border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 bg-white">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Gartenpflege</h3>
+                    <p class="text-gray-600">Fachgerechte Pflege für das ganze Jahr, damit Ihr Garten immer eine Idee bunter bleibt.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galerie -->
+    <section id="galerie" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-16">Inspiration für Ihren Garten</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="aspect-square bg-emerald-200 rounded-xl overflow-hidden shadow-inner">
+                    <img src="https://images.unsplash.com/photo-1558905619-17254263bc89?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Garten 1" class="w-full h-full object-cover">
+                </div>
+                <div class="aspect-square bg-emerald-200 rounded-xl overflow-hidden shadow-inner">
+                    <img src="https://images.unsplash.com/photo-1592150621344-c7a43422e49e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Garten 2" class="w-full h-full object-cover">
+                </div>
+                <div class="aspect-square bg-emerald-200 rounded-xl overflow-hidden shadow-inner">
+                    <img src="https://images.unsplash.com/photo-1416870213410-6b977212b96d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Garten 3" class="w-full h-full object-cover">
+                </div>
+                <div class="aspect-square bg-emerald-200 rounded-xl overflow-hidden shadow-inner">
+                    <img src="https://images.unsplash.com/photo-1598902108854-10e335adac99?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Garten 4" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Über uns -->
+    <section id="ueber-uns" class="py-20 bg-white">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1599059021034-22df68875b28?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Team" class="rounded-3xl shadow-2xl">
+            </div>
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-bold mb-6">Über Schmädecker + Partner</h2>
+                <p class="text-gray-600 mb-6 leading-relaxed">Seit vielen Jahren sind wir Ihr zuverlässiger Partner in Braunschweig, wenn es um die Gestaltung und Pflege von Grünanlagen geht. Unser Team aus leidenschaftlichen Gärtnern und Landschaftsbauern setzt Ihre Wünsche mit höchster Präzision um.</p>
+                <div class="flex items-center gap-4 text-emerald-600 font-bold italic">
+                    <span class="w-12 h-1 bg-secondary"></span>
+                    <span>Qualität & Leidenschaft seit 20 Jahren</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section id="kontakt" class="py-20 bg-emerald-600 text-white">
+        <div class="container mx-auto px-6">
+            <div class="bg-white rounded-3xl shadow-2xl flex flex-col md:flex-row overflow-hidden">
+                <div class="md:w-1/2 p-12 text-gray-900">
+                    <h2 class="text-3xl font-bold mb-8">Kontaktieren Sie uns</h2>
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Name</label>
+                            <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">E-Mail</label>
+                            <input type="email" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Nachricht</label>
+                            <textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary outline-none"></textarea>
+                        </div>
+                        <button class="w-full bg-primary text-white font-bold py-3 rounded-xl hover:bg-emerald-700 transition">Nachricht senden</button>
+                    </form>
+                </div>
+                <div class="md:w-1/2 bg-emerald-900 p-12 flex flex-col justify-center">
+                    <div class="space-y-8">
+                        <div>
+                            <h4 class="text-secondary font-bold uppercase tracking-widest text-sm mb-2">Anschrift</h4>
+                            <p class="text-emerald-50">Schmädecker + Partner GbR<br>Beispielstraße 123<br>38100 Braunschweig</p>
+                        </div>
+                        <div>
+                            <h4 class="text-secondary font-bold uppercase tracking-widest text-sm mb-2">Direktkontakt</h4>
+                            <p class="text-emerald-50">Telefon: 0531 / 123 456 0<br>E-Mail: info@schmaedecker-partner.de</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2026 Schmädecker + Partner GbR. Alle Rechte vorbehalten.</p>
+            <div class="mt-4 space-x-4">
+                <a href="#" class="hover:text-white">Impressum</a>
+                <a href="#" class="hover:text-white">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

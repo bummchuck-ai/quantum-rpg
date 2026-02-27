@@ -2,8 +2,10 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import careersData from '../../../data/json/careers.json';
-import { useCharacterStore } from '../../store/characterStore';
+import careersData from '@/../data/json/careers.json';
+import { useCharacterStore } from '@/store/characterStore';
+import HolocronGuide from './HolocronGuide';
+import ProgressTracker from './ProgressTracker';
 
 interface Specialization {
   name: string;
@@ -21,133 +23,126 @@ const CareerSelector: React.FC = () => {
   const router = useRouter();
   const { setCareer, setSpecialization } = useCharacterStore();
   
-  const [selectedCareer, setSelectedCareer] = useState<Career | null>(null);
-  const [selectedSpec, setSelectedSpec] = useState<Specialization | null>(null);
+  const [selectedCareer, setSelectedCareer] = useState<string | null>(null);
+  const [selectedSpec, setSelectedSpec] = useState<string | null>(null);
 
-  const handleConfirm = () => {
-    if (selectedCareer && selectedSpec) {
-      setCareer(selectedCareer);
-      setSpecialization(selectedSpec);
-      // Weiter zum Background
-      router.push('/create/background');
-    }
+  const handleConfirm = (c: Career, s: Specialization) => {
+    setCareer(c);
+    setSpecialization(s);
+    router.push('/create/background');
   };
 
   return (
-    <div className="flex h-screen bg-slate-950 text-slate-200 font-sans">
-      {/* Column 1: Careers List */}
-      <div className="w-1/4 border-r border-slate-800 flex flex-col bg-slate-900">
-        <div className="p-4 border-b border-slate-800">
-          <h2 className="text-xl font-bold text-amber-400">KARRIERE</h2>
+    <main className="min-h-dvh w-full bg-black text-zinc-300 font-mono flex flex-col p-6">
+      
+      {/* HUD Header */}
+      <header className="flex justify-between items-center border-b border-zinc-800 pb-4 mb-6 sticky top-0 bg-black z-30">
+        <div className="flex gap-4 items-center">
+            <div className="w-8 h-8 border border-amber-500 flex items-center justify-center text-amber-500 font-black italic">2</div>
+            <div>
+                <h1 className="text-xl font-black text-white italic tracking-tighter uppercase">CAREER_MATRIX</h1>
+            </div>
         </div>
-        <div className="overflow-y-auto flex-1 p-2 space-y-1">
-          {(careersData as Career[]).map((c) => (
-            <button
+        <div className="text-right pl-4">
+            <div className="text-[10px] text-amber-500 font-bold tracking-widest uppercase">Select_Path</div>
+        </div>
+      </header>
+
+      <ProgressTracker currentStep={2} />
+
+      <div className="space-y-6 pb-32">
+        {(careersData as Career[]).map((c) => {
+          const isSelected = selectedCareer === c.name;
+          return (
+            <div 
               key={c.name}
-              onClick={() => {
-                setSelectedCareer(c);
-                setSelectedSpec(null); // Reset Spec on Career change
-              }}
-              className={`w-full text-left px-4 py-3 rounded transition-colors ${
-                selectedCareer?.name === c.name 
-                  ? 'bg-amber-900/30 text-amber-300 border border-amber-800/50' 
-                  : 'hover:bg-slate-800 text-slate-400 hover:text-slate-200'
+              onClick={() => setSelectedCareer(isSelected ? null : c.name)}
+              className={`border transition-all duration-300 rounded-2xl overflow-hidden ${
+                isSelected 
+                  ? 'border-white bg-white/[0.05] shadow-[0_0_40px_rgba(255,255,255,0.1)] scale-[1.02]' 
+                  : 'border-zinc-800 bg-zinc-900/20 active:bg-zinc-800'
               }`}
             >
-              <div className="font-bold">{c.name}</div>
-              {c.forceRating > 0 && <span className="text-xs text-blue-400">Machtsensitiv</span>}
-            </button>
-          ))}
-        </div>
-      </div>
+              <div className="p-6 relative">
+                  {c.forceRating > 0 && (
+                      <div className="absolute top-0 right-0 bg-blue-600 text-white text-[7px] font-black px-3 py-1 uppercase tracking-widest rounded-bl-lg animate-pulse">
+                          FORCE_SENSITIVE
+                      </div>
+                  )}
+                  <div className="flex justify-between items-end mb-4">
+                      <h2 className="text-2xl font-black text-white italic tracking-tighter uppercase leading-none">{c.name}</h2>
+                  </div>
 
-      {/* Column 2: Career Details & Specs */}
-      <div className="w-1/3 border-r border-slate-800 flex flex-col bg-slate-925">
-        {selectedCareer ? (
-          <>
-            <div className="p-6 border-b border-slate-800">
-              <h1 className="text-3xl font-black text-white mb-2">{selectedCareer.name.toUpperCase()}</h1>
-              <div className="text-sm text-slate-400 mb-4">
-                Karriere-Fertigkeiten:
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {selectedCareer.careerSkills.filter(s => s).map(skill => (
-                    <span key={skill} className="px-2 py-1 bg-slate-800 rounded text-xs text-amber-500/80 border border-slate-700">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+                  <div className="flex flex-wrap gap-1.5 mb-2">
+                      {c.careerSkills.filter(s => s).slice(0, 4).map(skill => (
+                          <span key={skill} className="text-[8px] bg-zinc-950 border border-zinc-800 text-zinc-500 px-2 py-0.5 rounded uppercase font-black">{skill}</span>
+                      ))}
+                      {c.careerSkills.length > 4 && <span className="text-[8px] text-zinc-700 font-black italic">+{c.careerSkills.length - 4}_MORE</span>}
+                  </div>
               </div>
-            </div>
-            
-            <div className="p-4 bg-slate-900 border-b border-slate-800">
-              <h3 className="text-sm font-bold text-amber-400 uppercase tracking-widest">Spezialisierung wählen</h3>
-            </div>
 
-            <div className="overflow-y-auto flex-1 p-2 space-y-1">
-              {selectedCareer.specializations.map((spec) => (
-                <button
-                  key={spec.name}
-                  onClick={() => setSelectedSpec(spec)}
-                  className={`w-full text-left px-4 py-3 rounded transition-colors border ${
-                    selectedSpec?.name === spec.name 
-                      ? 'bg-amber-600 text-black border-amber-500 font-bold shadow-[0_0_15px_rgba(245,158,11,0.3)]' 
-                      : 'bg-slate-800/50 border-slate-700 text-slate-300 hover:border-slate-500'
-                  }`}
-                >
-                  <div>{spec.name}</div>
-                </button>
-              ))}
+              {isSelected && (
+                  <div className="bg-black/40 p-6 pt-0 animate-in slide-in-from-top-4 duration-500 space-y-6">
+                      <div className="text-[10px] text-amber-500 font-black uppercase tracking-[0.3em] mb-4 border-t border-zinc-900 pt-6 flex items-center gap-2">
+                          <div className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-ping"></div>
+                          Select_Specialization_Path
+                      </div>
+                      
+                      <div className="grid grid-cols-1 gap-4">
+                          {c.specializations.map((spec) => {
+                            const isSpecSelected = selectedSpec === spec.name;
+                            return (
+                                <div 
+                                    key={spec.name}
+                                    onClick={(e) => { e.stopPropagation(); setSelectedSpec(isSpecSelected ? null : spec.name); }}
+                                    className={`p-5 border rounded-2xl transition-all ${
+                                        isSpecSelected 
+                                        ? 'border-white bg-white/10 ring-1 ring-white shadow-inner' 
+                                        : 'border-zinc-800 bg-zinc-950 active:border-zinc-600'
+                                    }`}
+                                >
+                                    <div className="flex justify-between items-center">
+                                        <span className="text-md font-black text-white italic uppercase tracking-tight">{spec.name}</span>
+                                        <div className="flex gap-1.5">
+                                            {[1,2,3,4].map(i => <div key={i} className={`w-1 h-1 rounded-full ${isSpecSelected ? 'bg-amber-500 shadow-[0_0_5px_rgba(245,158,11,1)]' : 'bg-zinc-800'}`}></div>)}
+                                        </div>
+                                    </div>
+                                    
+                                    {isSpecSelected && (
+                                        <div className="animate-in fade-in duration-300 space-y-6 pt-5">
+                                            <div className="grid grid-cols-2 gap-2">
+                                                {spec.skills.map(s => (
+                                                    <div key={s} className="text-[9px] text-zinc-400 bg-black/60 border border-zinc-800/40 p-2.5 rounded flex items-center gap-2">
+                                                        <span className="w-1 h-1 bg-emerald-500 rounded-full"></span>
+                                                        {s.toUpperCase()}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                            <button 
+                                                onClick={(e) => { e.stopPropagation(); handleConfirm(c, spec); }}
+                                                className="w-full bg-amber-600 hover:bg-amber-500 text-black font-black py-4 rounded-xl uppercase italic tracking-widest text-xs shadow-2xl active:scale-95 transition-all"
+                                            >
+                                                Authorize_Specialization_→
+                                            </button>
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                          })}
+                      </div>
+                  </div>
+              )}
             </div>
-          </>
-        ) : (
-          <div className="h-full flex items-center justify-center text-slate-600 p-8 text-center">
-            <p>Wähle links eine Karriere aus.</p>
-          </div>
-        )}
+          );
+        })}
       </div>
 
-      {/* Column 3: Summary & Confirm */}
-      <div className="flex-1 p-8 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-slate-950 flex flex-col justify-between">
-        {selectedSpec ? (
-          <div className="animate-in fade-in slide-in-from-right-4 duration-300">
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-6 border-b border-slate-800 pb-2">
-                {selectedSpec.name}
-              </h2>
-              
-              <div className="space-y-6">
-                <div>
-                  <h4 className="text-xs uppercase tracking-widest text-slate-500 mb-2">Bonus-Fertigkeiten</h4>
-                  <ul className="space-y-2">
-                    {selectedSpec.skills.map(skill => (
-                      <li key={skill} className="flex items-center gap-2 text-emerald-400">
-                        <span className="text-xs">Checking...</span> {skill}
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="text-xs text-slate-500 mt-4 italic">
-                    Du erhältst je 1 kostenlosen Rang in diesen Fertigkeiten (oder in den Karriere-Fertigkeiten).
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-12">
-              <button 
-                onClick={handleConfirm}
-                className="w-full bg-amber-600 hover:bg-amber-500 text-black font-bold py-4 px-8 rounded uppercase tracking-wide transition-all hover:scale-[1.02] shadow-lg shadow-amber-900/20"
-              >
-                Karriere Bestätigen
-              </button>
-            </div>
-          </div>
-        ) : (
-          <div className="h-full flex items-center justify-center text-slate-700 opacity-50">
-            <div className="text-9xl">⚖️</div>
-          </div>
-        )}
-      </div>
-    </div>
+      <HolocronGuide 
+        title="KARRIERE_PFAD" 
+        description="Deine Karriere und Spezialisierung definieren deine 'Career Skills'. Das sind Fähigkeiten, die du kostengünstiger steigern kannst. Jede Karriere bietet unterschiedliche Schwerpunkte – von Kampf über Technik bis hin zur Diplomatie."
+        advice="Wähle eine Spezialisierung, die deine Spezies-Werte ergänzt. Ein 'Smuggler' braucht Agility und Cunning, während ein 'Guardian' eher auf Brawn und Willpower setzt. Keine Sorge, du bist nicht auf diese Skills festgelegt, sie sind nur dein Startpunkt!"
+      />
+    </main>
   );
 };
 

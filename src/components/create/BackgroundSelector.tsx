@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useCharacterStore } from '../../store/characterStore';
+import { useCharacterStore } from '@/store/characterStore';
+import HolocronGuide from './HolocronGuide';
+import ProgressTracker from './ProgressTracker';
 
-// Einfache Listen für den Würfel-Simulator (später aus PDF/JSON)
 const OBLIGATION_LIST = [
   "Schulden (Debt)", "Kopfgeld (Bounty)", "Erpressung (Blackmail)", "Familie", 
   "Sucht (Addiction)", "Verrat (Betrayal)", "Verbrechen (Criminal)", "Favor"
@@ -26,163 +27,138 @@ const BackgroundSelector: React.FC = () => {
   const [rolling, setRolling] = useState(false);
   const [rollResult, setRollResult] = useState<string | null>(null);
 
-  // Auto-Detect based on Career
   useEffect(() => {
     if (career) {
-      if (career.forceRating > 0) {
-        setSuggestedType('Morality');
-      } else if (['Soldat', 'Kommandant', 'Klonkrieger', 'Ass'].includes(career.name)) {
-        setSuggestedType('Duty');
-      } else {
-        setSuggestedType('Obligation'); // Default for Smugglers etc.
-      }
+      if (career.forceRating > 0) setSuggestedType('Morality');
+      else if (['Soldat', 'Kommandant', 'Klonkrieger', 'Ass'].includes(career.name)) setSuggestedType('Duty');
+      else setSuggestedType('Obligation');
     }
   }, [career]);
 
   const handleRoll = () => {
     setRolling(true);
     setTimeout(() => {
-      let list = OBLIGATION_LIST;
-      if (suggestedType === 'Duty') list = DUTY_LIST;
-      if (suggestedType === 'Morality') list = MORALITY_LIST;
-
+      let list = suggestedType === 'Duty' ? DUTY_LIST : suggestedType === 'Morality' ? MORALITY_LIST : OBLIGATION_LIST;
       const result = list[Math.floor(Math.random() * list.length)];
       setRollResult(result);
-      
-      // Default Startwerte setzen
-      let startValue = 10; // Obligation/Duty Standard
-      if (suggestedType === 'Morality') startValue = 50;
-
-      setBackground(suggestedType, result, startValue);
+      setBackground(suggestedType, result, suggestedType === 'Morality' ? 50 : 10);
       setRolling(false);
-    }, 1000); // Drama-Pause
+    }, 1200);
   };
 
   const handleConfirm = () => {
-    router.push('/create/summary');
+    router.push('/create/talents');
   };
 
   return (
-    <div className="flex h-screen bg-slate-950 text-slate-200 font-sans">
+    <main className="min-h-dvh w-full bg-black text-zinc-300 font-mono flex flex-col p-6">
       
-      {/* Left: Introduction */}
-      <div className="w-1/3 bg-slate-900 border-r border-slate-800 p-8 flex flex-col justify-center">
-        <h1 className="text-4xl font-black text-white mb-4">DEIN SCHICKSAL</h1>
-        <p className="text-slate-400 mb-8 leading-relaxed">
-          Jeder Held trägt eine Last. Ein Soldat hat seine Pflicht, ein Jedi ringt mit der Moral, und ein Schmuggler hat... nun ja, Schulden.
-        </p>
-        
-        <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-700">
-          <div className="text-xs uppercase tracking-widest text-amber-500 mb-2">Vorgeschlagen für {career?.name}</div>
-          <div className="text-3xl font-bold text-white mb-2">
-            {suggestedType === 'Obligation' && 'VERPFLICHTUNG'}
-            {suggestedType === 'Duty' && 'PFLICHT'}
-            {suggestedType === 'Morality' && 'MORAL'}
-          </div>
-          <p className="text-sm text-slate-400">
-            {suggestedType === 'Obligation' && 'Du schuldest jemandem etwas. Geld, einen Gefallen oder dein Leben.'}
-            {suggestedType === 'Duty' && 'Du dienst einer höheren Sache. Dein Ansehen bestimmt deinen Rang.'}
-            {suggestedType === 'Morality' && 'Der Konflikt zwischen Heller und Dunkler Seite tobt in dir.'}
-          </p>
-        </div>
-
-        {/* Override Option */}
-        <div className="mt-8 flex gap-2 justify-center text-xs text-slate-500">
-          <button onClick={() => setSuggestedType('Obligation')} className={`px-3 py-1 rounded hover:text-white ${suggestedType === 'Obligation' ? 'text-amber-500 font-bold' : ''}`}>Verpflichtung</button>
-          <button onClick={() => setSuggestedType('Duty')} className={`px-3 py-1 rounded hover:text-white ${suggestedType === 'Duty' ? 'text-amber-500 font-bold' : ''}`}>Pflicht</button>
-          <button onClick={() => setSuggestedType('Morality')} className={`px-3 py-1 rounded hover:text-white ${suggestedType === 'Morality' ? 'text-amber-500 font-bold' : ''}`}>Moral</button>
-        </div>
-      </div>
-
-      {/* Right: The Roll & The Deal */}
-      <div className="flex-1 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-slate-950 p-12 flex flex-col items-center justify-center">
-        
-        {!rollResult ? (
-          <div className="text-center">
-            <div className="text-9xl mb-8 animate-pulse grayscale opacity-20">🎲</div>
-            <button 
-              onClick={handleRoll}
-              disabled={rolling}
-              className="bg-amber-600 hover:bg-amber-500 text-black font-bold text-xl py-6 px-12 rounded-full uppercase tracking-widest shadow-[0_0_30px_rgba(245,158,11,0.4)] hover:shadow-[0_0_50px_rgba(245,158,11,0.6)] transition-all transform hover:scale-105"
-            >
-              {rolling ? 'Würfelt...' : 'Schicksal bestimmen'}
-            </button>
-          </div>
-        ) : (
-          <div className="w-full max-w-2xl animate-in fade-in zoom-in duration-500">
-            {/* Result Card */}
-            <div className="text-center mb-12">
-              <div className="text-sm uppercase text-slate-500 mb-2 tracking-widest">Das Urteil</div>
-              <div className="text-5xl font-black text-white border-b-2 border-amber-500 inline-block pb-2 mb-4">
-                {rollResult}
-              </div>
-              <div className="text-amber-500 font-mono">Startwert: {suggestedType === 'Morality' ? '50' : '10'}</div>
+      {/* HUD Header */}
+      <header className="flex justify-between items-center border-b border-zinc-800 pb-4 mb-6 sticky top-0 bg-black z-30">
+        <div className="flex gap-4 items-center">
+            <div className="w-8 h-8 border border-amber-500 flex items-center justify-center text-amber-500 font-black italic">3</div>
+            <div>
+                <h1 className="text-xl font-black text-white italic tracking-tighter">DESTINY_SCAN</h1>
             </div>
+        </div>
+        <div className="text-right">
+            <div className="text-[10px] text-amber-500 font-bold tracking-widest">STEP 03/04</div>
+        </div>
+      </header>
 
-            {/* The Deal */}
-            {suggestedType !== 'Morality' && (
-              <div className="bg-slate-900/80 border border-slate-700 rounded-xl p-8 backdrop-blur-sm">
-                <h3 className="text-center text-xl font-bold text-white mb-6">DER DEAL MIT DEM TEUFEL</h3>
-                <div className="grid grid-cols-3 gap-4">
-                  {/* Option 1: Safe */}
-                  <button 
-                    onClick={() => applyBackgroundBonus('none')}
-                    className={`p-4 rounded-lg border transition-all ${backgroundBonus === 'none' ? 'bg-slate-700 border-white ring-2 ring-white' : 'bg-slate-800 border-slate-700 hover:bg-slate-700'}`}
-                  >
-                    <div className="font-bold text-slate-300">Standard</div>
-                    <div className="text-xs text-slate-500 mt-2">Kein Bonus</div>
-                    <div className="text-xs text-emerald-400 mt-1">Sicher</div>
-                  </button>
+      <ProgressTracker currentStep={3} />
 
-                  {/* Option 2: XP */}
-                  <button 
-                    onClick={() => applyBackgroundBonus('xp5')}
-                    className={`p-4 rounded-lg border transition-all ${backgroundBonus === 'xp5' ? 'bg-indigo-900/50 border-indigo-400 ring-2 ring-indigo-400' : 'bg-slate-800 border-slate-700 hover:bg-indigo-900/30'}`}
-                  >
-                    <div className="font-bold text-indigo-300">+5 XP</div>
-                    <div className="text-xs text-red-400 mt-2">+5 {suggestedType === 'Duty' ? 'Pflicht' : 'Verpflichtung'}</div>
-                  </button>
+      <div className="flex-1 flex flex-col gap-6">
+        
+        <div className="border border-zinc-800 bg-zinc-900/10 p-4 rounded-xl">
+           <p className="text-[10px] leading-relaxed text-zinc-500 uppercase tracking-wider">
+             Jeder Held trägt eine Last. Ein Soldat hat seine Pflicht, ein Jedi die Moral, und ein Schmuggler... Schulden.
+           </p>
+        </div>
 
-                  <button 
-                    onClick={() => applyBackgroundBonus('xp10')}
-                    className={`p-4 rounded-lg border transition-all ${backgroundBonus === 'xp10' ? 'bg-purple-900/50 border-purple-400 ring-2 ring-purple-400' : 'bg-slate-800 border-slate-700 hover:bg-purple-900/30'}`}
-                  >
-                    <div className="font-bold text-purple-300">+10 XP</div>
-                    <div className="text-xs text-red-400 mt-2">+10 {suggestedType === 'Duty' ? 'Pflicht' : 'Verpflichtung'}</div>
-                  </button>
+        <div className="grid grid-cols-3 gap-2">
+          {['Obligation', 'Duty', 'Morality'].map((type) => (
+            <button 
+              key={type} 
+              onClick={() => { setSuggestedType(type as any); setRollResult(null); }}
+              className={`py-3 text-[9px] border transition-all font-black uppercase tracking-widest ${
+                suggestedType === type ? 'border-amber-500 bg-amber-500/10 text-amber-500' : 'border-zinc-800 text-zinc-600'
+              }`}
+            >
+              {type}
+            </button>
+          ))}
+        </div>
 
-                  {/* Option 3: Money */}
-                  <button 
-                    onClick={() => applyBackgroundBonus('cr1000')}
-                    className={`p-4 rounded-lg border transition-all ${backgroundBonus === 'cr1000' ? 'bg-emerald-900/50 border-emerald-400 ring-2 ring-emerald-400' : 'bg-slate-800 border-slate-700 hover:bg-emerald-900/30'}`}
-                  >
-                    <div className="font-bold text-emerald-300">+1.000 Credits</div>
-                    <div className="text-xs text-red-400 mt-2">+5 {suggestedType === 'Duty' ? 'Pflicht' : 'Verpflichtung'}</div>
-                  </button>
-
-                  <button 
-                    onClick={() => applyBackgroundBonus('cr2500')}
-                    className={`p-4 rounded-lg border transition-all ${backgroundBonus === 'cr2500' ? 'bg-green-900/50 border-green-400 ring-2 ring-green-400' : 'bg-slate-800 border-slate-700 hover:bg-green-900/30'}`}
-                  >
-                    <div className="font-bold text-green-300">+2.500 Credits</div>
-                    <div className="text-xs text-red-400 mt-2">+10 {suggestedType === 'Duty' ? 'Pflicht' : 'Verpflichtung'}</div>
-                  </button>
-                </div>
-              </div>
-            )}
-
-            <div className="mt-8 flex justify-center">
+        {!rollResult ? (
+          <div className="flex-1 flex flex-col items-center justify-center space-y-8 border border-zinc-900 border-dashed rounded-2xl p-8">
+            <div className={`text-7xl transition-all duration-1000 ${rolling ? 'animate-spin scale-110 opacity-100' : 'opacity-10'}`}>🎲</div>
+            <div className="text-center">
               <button 
-                onClick={handleConfirm}
-                className="bg-white text-black font-bold py-3 px-8 rounded hover:bg-slate-200 transition-colors"
+                onClick={handleRoll}
+                disabled={rolling}
+                className="bg-amber-600 hover:bg-amber-500 text-black font-black py-5 px-12 rounded-xl uppercase tracking-[0.2em] italic text-sm shadow-[0_0_30px_rgba(245,158,11,0.3)] transition-all active:scale-95"
               >
-                Akzeptieren & Weiter
+                {rolling ? 'SCANNING...' : 'INITIALIZE_ROLL'}
               </button>
             </div>
           </div>
+        ) : (
+          <div className="flex-1 flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            
+            <div className="border border-amber-500/40 bg-amber-500/[0.03] p-8 text-center relative rounded-xl overflow-hidden shadow-2xl">
+               <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>
+               <div className="text-[10px] text-amber-500 uppercase font-black mb-3 opacity-60 tracking-widest">[ DECREE_RESULT ]</div>
+               <div className="text-4xl font-black text-white italic tracking-tighter uppercase mb-2">{rollResult}</div>
+               <div className="text-[10px] text-zinc-500 font-bold border-t border-zinc-900 mt-4 pt-4">INITIAL_MAGNITUDE: {suggestedType === 'Morality' ? '50' : '10'}</div>
+            </div>
+
+            {suggestedType !== 'Morality' && (
+              <div className="bg-zinc-900/20 border border-zinc-800 p-6 rounded-xl relative">
+                <div className="absolute -top-2 left-4 bg-black px-2 text-[8px] text-zinc-500 font-black uppercase tracking-widest">Optional_Pact</div>
+                <div className="grid grid-cols-1 gap-3">
+                  {[ 
+                    { id: 'none', label: 'STANDARD_LOAD', sub: 'No bonus assigned', color: 'zinc' },
+                    { id: 'xp10', label: 'UPGRADE: +10 XP', sub: 'Increase Load (+10)', color: 'amber' },
+                    { id: 'cr2500', label: 'CREDIT_BOOST: +2.5k', sub: 'Increase Load (+10)', color: 'emerald' }
+                  ].map(opt => (
+                    <button 
+                      key={opt.id} 
+                      onClick={() => applyBackgroundBonus(opt.id as any)}
+                      className={`p-4 border text-left transition-all rounded-lg ${
+                        backgroundBonus === opt.id 
+                          ? 'border-white bg-white/10 ring-1 ring-white' 
+                          : 'border-zinc-800 bg-zinc-900/40 active:border-zinc-600'
+                      }`}
+                    >
+                      <div className="text-xs font-black text-white italic tracking-tight">{opt.label}</div>
+                      <div className="text-[8px] text-zinc-500 mt-1 uppercase">{opt.sub}</div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         )}
       </div>
-    </div>
+
+      <HolocronGuide 
+        title="SCHICKSAL_SCAN" 
+        description="Dein Hintergrund bestimmt, was dich antreibt. 'Obligation' sind Schulden oder Verpflichtungen, 'Duty' ist dein Dienst an einer Sache (z.B. Rebellion) und 'Morality' ist dein innerer Kompass als Machtnutzer."
+        advice="Du kannst dein Schicksal erhöhen (Load), um dafür zusätzliche Start-XP (+10) oder Credits (+2.500) zu erhalten. Das ist ein super Boost für den Anfang, macht dein Leben aber später gefährlicher, wenn die Würfel gegen dich fallen!"
+      />
+
+      {rollResult && (
+        <div className="fixed bottom-6 left-6 right-6 z-50">
+            <button 
+              onClick={handleConfirm}
+              className="w-full bg-white text-black font-black py-5 rounded-xl uppercase italic tracking-widest text-xs shadow-[0_20px_40px_rgba(0,0,0,0.5)] transition-all active:scale-95"
+            >
+              Confirm_Destiny_→
+            </button>
+        </div>
+      )}
+    </main>
   );
 };
 

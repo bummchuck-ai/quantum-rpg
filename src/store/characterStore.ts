@@ -1,8 +1,5 @@
 import { create } from 'zustand';
 
-// Typen importieren (oder hier definieren, wenn noch nicht in types/character.ts)
-// Wir nutzen vorerst einfache Interfaces, um flexibel zu bleiben
-
 interface Characteristics {
   brawn: number;
   agility: number;
@@ -24,7 +21,7 @@ interface Species {
 interface Career {
   name: string;
   careerSkills: string[];
-  forceRating: number; // Neu: Force Rating (0 oder 1)
+  forceRating: number;
   specializations: Specialization[];
 }
 
@@ -38,19 +35,21 @@ interface CharacterState {
   name: string;
   species: Species | null;
   career: Career | null;
-  specializations: Specialization[]; // Liste statt Einzelwert
+  specializations: Specialization[];
   
   // Background / Destiny
   backgroundType: 'Obligation' | 'Duty' | 'Morality' | null;
-  backgroundOption: string; // z.B. "Schulden", "Verrat"
-  backgroundValue: number; // Startwert (z.B. 10, 50)
+  backgroundOption: string;
+  backgroundValue: number;
   backgroundBonus: 'none' | 'xp5' | 'xp10' | 'cr1000' | 'cr2500';
 
-  // Stats (derived or modified)
+  // Stats
   characteristics: Characteristics;
   availableXP: number;
   spentXP: number;
-  credits: number; // Neu: Credits
+  credits: number;
+  ownedTalents: string[];
+  ownedGear: any[]; // Neu: Ausrüstung
 
   // Actions
   setName: (name: string) => void;
@@ -61,6 +60,8 @@ interface CharacterState {
   setBackground: (type: 'Obligation' | 'Duty' | 'Morality', option: string, value: number) => void;
   applyBackgroundBonus: (bonus: 'none' | 'xp5' | 'xp10' | 'cr1000' | 'cr2500') => void;
   buyCharacteristic: (char: keyof Characteristics) => void;
+  buyTalent: (talentName: string, cost: number) => void;
+  buyGear: (item: any) => void; // Neu: Ausrüstung kaufen
 }
 
 export const useCharacterStore = create<CharacterState>((set) => ({
@@ -79,7 +80,9 @@ export const useCharacterStore = create<CharacterState>((set) => ({
   },
   availableXP: 0,
   spentXP: 0,
-  credits: 500, // Standard Startgeld
+  credits: 500,
+  ownedTalents: [],
+  ownedGear: [],
 
   setName: (name) => set({ name }),
   
@@ -90,7 +93,7 @@ export const useCharacterStore = create<CharacterState>((set) => ({
   }),
 
   setCareer: (career) => set({ career }),
-  setSpecialization: (specialization) => set({ specializations: [specialization] }), // Reset auf eine
+  setSpecialization: (specialization) => set({ specializations: [specialization] }),
   addSpecialization: (specialization) => set((state) => ({ specializations: [...state.specializations, specialization] })),
 
   setBackground: (type, option, value) => set({ 
@@ -100,61 +103,50 @@ export const useCharacterStore = create<CharacterState>((set) => ({
   }),
 
   applyBackgroundBonus: (bonus) => set((state) => {
-    // Reset Values first to avoid stacking errors
-    let newXP = state.availableXP;
+    let baseXP = state.species ? state.species.startingXP : 0;
     let newCredits = 500;
-    let newBackgroundValue = state.backgroundValue; // Basis-Wert
+    let newBackgroundValue = state.backgroundValue;
 
-    // Remove old bonus effects if needed (vereinfacht: wir berechnen hier immer vom Basis-Status + Bonus)
-    // Da wir availableXP aber schon durch Spezies gesetzt haben, ist das "Resetten" tricky.
-    // Besser: Wir merken uns den Basis-XP Wert der Spezies.
-    // Für diesen Prototyp addieren wir einfach Delta.
-    
-    // Einfache Logik: Reset auf Spezies-XP + Credits
-    if (state.species) {
-        newXP = state.species.startingXP - state.spentXP;
-    }
-    
-    // Add Bonus
     switch (bonus) {
-        case 'xp5':
-            newXP += 5;
-            newBackgroundValue += 5; // Mehr Verpflichtung
-            break;
-        case 'xp10':
-            newXP += 10;
-            newBackgroundValue += 10;
-            break;
-        case 'cr1000':
-            newCredits += 1000;
-            newBackgroundValue += 5;
-            break;
-        case 'cr2500':
-            newCredits += 2500;
-            newBackgroundValue += 10;
-            break;
+        case 'xp5': baseXP += 5; newBackgroundValue += 5; break;
+        case 'xp10': baseXP += 10; newBackgroundValue += 10; break;
+        case 'cr1000': newCredits += 1000; newBackgroundValue += 5; break;
+        case 'cr2500': newCredits += 2500; newBackgroundValue += 10; break;
     }
 
     return {
         backgroundBonus: bonus,
-        availableXP: newXP,
+        availableXP: baseXP - state.spentXP,
         credits: newCredits,
-        backgroundValue: newBackgroundValue // Angepasster Wert
+        backgroundValue: newBackgroundValue
+    };
+  }),
+
+  buyTalent: (talentName, cost) => set((state) => {
+    if (state.availableXP < cost) return state;
+    if (state.ownedTalents.includes(talentName)) return state;
+    return {
+      availableXP: state.availableXP - cost,
+      spentXP: state.spentXP + cost,
+      ownedTalents: [...state.ownedTalents, talentName]
+    };
+  }),
+
+  buyGear: (item) => set((state) => {
+    if (state.credits < item.price) return state;
+    return {
+      credits: state.credits - item.price,
+      ownedGear: [...state.ownedGear, item]
     };
   }),
 
   buyCharacteristic: (char) => set((state) => {
     const currentValue = state.characteristics[char];
-    if (currentValue >= 6) return state; // Cap bei 6
-
+    if (currentValue >= 6) return state;
     const cost = (currentValue + 1) * 10;
-    if (state.availableXP < cost) return state; // Nicht genug XP
-
+    if (state.availableXP < cost) return state;
     return {
-      characteristics: {
-        ...state.characteristics,
-        [char]: currentValue + 1
-      },
+      characteristics: { ...state.characteristics, [char]: currentValue + 1 },
       availableXP: state.availableXP - cost,
       spentXP: state.spentXP + cost
     };

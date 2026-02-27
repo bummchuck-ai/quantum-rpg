@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Altstadt Friseur | Exklusives Handwerk Braunschweig</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        brandBlue: '#0f172a', // slate-900 (Dunkelblau)
+                        brandGold: '#c5a059', // Gold
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient {
+            background: linear-gradient(45deg, #c5a059, #fde68a, #c5a059);
+        }
+    </style>
+</head>
+<body class="font-sans text-brandBlue bg-white">
+
+    <header class="border-b border-brandGold/20 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="font-serif text-3xl md:text-5xl tracking-[0.2em] uppercase mb-2">Altstadt Friseur</h1>
+            <p class="text-brandGold uppercase tracking-[0.3em] text-xs font-semibold">Tradition & Exzellenz in der Braunschweiger Innenstadt</p>
+        </div>
+    </header>
+
+    <nav class="sticky top-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="container mx-auto px-6 py-4 flex justify-center space-x-12 text-sm uppercase tracking-widest font-medium">
+            <a href="#salon" class="hover:text-brandGold transition">Salon</a>
+            <a href="#leistungen" class="hover:text-brandGold transition">Services</a>
+            <a href="#ueber-uns" class="hover:text-brandGold transition">Philosophie</a>
+            <a href="#kontakt" class="hover:text-brandGold transition">Termin</a>
+        </div>
+    </nav>
+
+    <section id="salon" class="relative py-24 bg-brandBlue text-white overflow-hidden">
+        <div class="absolute inset-0 opacity-30 bg-[url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center max-w-4xl">
+            <span class="text-brandGold uppercase tracking-widest mb-6 block font-semibold">Premium Haarerlebnis</span>
+            <h2 class="font-serif text-4xl md:text-6xl italic mb-10 leading-tight">Meisterhaftes Handwerk für anspruchsvolle Persönlichkeiten</h2>
+            <div class="w-24 h-px bg-brandGold mx-auto mb-10"></div>
+            <p class="text-gray-300 text-lg md:text-xl font-light mb-12">Willkommen im Herzen der Braunschweiger Altstadt. Entfliehen Sie dem Alltag und genießen Sie exklusiven Service in stilvollem Ambiente.</p>
+            <a href="#kontakt" class="inline-block border border-brandGold text-brandGold hover:bg-brandGold hover:text-brandBlue transition px-12 py-4 uppercase tracking-[0.2em] text-sm">Online Buchen</a>
+        </div>
+    </section>
+
+    <section id="leistungen" class="py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="font-serif text-4xl mb-4">Exklusive Services</h2>
+                <p class="text-brandGold uppercase tracking-widest text-xs">Auszug aus unserem Angebot</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-12 max-w-5xl mx-auto">
+                <div class="flex justify-between border-b border-gray-100 pb-4 items-end">
+                    <div>
+                        <h4 class="font-serif text-xl">Haarschnitt & Styling</h4>
+                        <p class="text-sm text-gray-400 font-light italic">Inkl. Beratung, Haarwäsche & Kopfmassage</p>
+                    </div>
+                    <span class="font-serif text-brandGold">ab 75€</span>
+                </div>
+                <div class="flex justify-between border-b border-gray-100 pb-4 items-end">
+                    <div>
+                        <h4 class="font-serif text-xl">Coloration & Balayage</h4>
+                        <p class="text-sm text-gray-400 font-light italic">Spezialisten für natürliche Farbverläufe</p>
+                    </div>
+                    <span class="font-serif text-brandGold">ab 120€</span>
+                </div>
+                <div class="flex justify-between border-b border-gray-100 pb-4 items-end">
+                    <div>
+                        <h4 class="font-serif text-xl">Herren-Service</h4>
+                        <p class="text-sm text-gray-400 font-light italic">Präzisionshaarschnitt & Bartpflege</p>
+                    </div>
+                    <span class="font-serif text-brandGold">ab 45€</span>
+                </div>
+                <div class="flex justify-between border-b border-gray-100 pb-4 items-end">
+                    <div>
+                        <h4 class="font-serif text-xl">Braut- & Eventstyling</h4>
+                        <p class="text-sm text-gray-400 font-light italic">Individuelles Gesamtkonzept für Ihren Tag</p>
+                    </div>
+                    <span class="font-serif text-brandGold">auf Anfrage</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gray-50 py-24">
+        <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+            <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Salon" class="w-full aspect-[3/4] object-cover">
+            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Farbe" class="w-full aspect-[3/4] object-cover">
+            <img src="https://images.unsplash.com/photo-1582095133179-bf108a3d16ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Produkte" class="w-full aspect-[3/4] object-cover">
+            <img src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Handwerk" class="w-full aspect-[3/4] object-cover">
+        </div>
+    </section>
+
+    <section id="ueber-uns" class="py-24">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Meisterin" class="grayscale">
+            </div>
+            <div>
+                <h2 class="font-serif text-4xl mb-8">Premium-Lage & Echtes Handwerk</h2>
+                <p class="text-gray-600 mb-6 leading-relaxed">Im Altstadt Friseur verbinden wir die zeitlose Eleganz der Braunschweiger Innenstadt mit modernstem Friseurhandwerk. Für uns ist jeder Haarschnitt ein Kunstwerk, das Ihre Persönlichkeit unterstreicht.</p>
+                <p class="text-gray-600 mb-8 leading-relaxed">Wir verwenden ausschließlich hochwertige Produkte von Partnern, die unsere Vision von Qualität und Nachhaltigkeit teilen.</p>
+                <div class="italic font-serif text-xl text-brandGold">"Ihre Haare sind die Krone, die Sie nie abnehmen."</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontakt" class="py-24 bg-brandBlue text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="font-serif text-4xl mb-12">Vereinbaren Sie Ihren Termin</h2>
+                <div class="space-y-6 mb-16">
+                    <p class="text-xl">Altstadt Friseur</p>
+                    <p class="text-gray-400">Am Altstadtmarkt 12<br>38100 Braunschweig</p>
+                    <p class="text-2xl font-serif text-brandGold">0531 / 987 654 3</p>
+                    <p class="text-sm tracking-widest text-gray-500">DI-FR 09:00 - 18:30 | SA 09:00 - 14:00</p>
+                </div>
+                <a href="mailto:info@altstadt-friseur.de" class="inline-block bg-brandGold text-brandBlue px-12 py-5 font-bold uppercase tracking-widest text-sm hover:bg-brandGold/80 transition">Anfrage per E-Mail</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-white text-center border-t border-gray-100">
+        <p class="text-xs uppercase tracking-[0.4em] text-gray-400">&copy; 2026 Altstadt Friseur Braunschweig</p>
+    </footer>
+
+</body>
+</html>

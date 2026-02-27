@@ -2,8 +2,10 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import speciesData from '../../../data/json/species_raw.json';
-import { useCharacterStore } from '../../store/characterStore';
+import speciesData from '@/../data/json/species_raw.json';
+import { useCharacterStore } from '@/store/characterStore';
+import HolocronGuide from './HolocronGuide';
+import ProgressTracker from './ProgressTracker';
 
 interface Species {
   name: string;
@@ -24,16 +26,12 @@ interface Species {
 const SpeciesSelector: React.FC = () => {
   const router = useRouter();
   const setSpecies = useCharacterStore((state) => state.setSpecies);
-  
-  const [selectedSpecies, setSelectedSpecies] = useState<Species | null>(null);
+  const [selectedSpecies, setSelectedSpecies] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
 
-  const handleConfirm = () => {
-    if (selectedSpecies) {
-      setSpecies(selectedSpecies);
-      // Weiter zur nächsten Seite (Karriere)
-      router.push('/create/career');
-    }
+  const handleConfirm = (s: Species) => {
+    setSpecies(s);
+    router.push('/create/career');
   };
 
   const filteredSpecies = (speciesData as Species[]).filter(s => 
@@ -41,94 +39,105 @@ const SpeciesSelector: React.FC = () => {
   );
 
   return (
-    <div className="flex h-screen bg-slate-950 text-slate-200 font-sans">
-      {/* Sidebar: List */}
-      <div className="w-1/3 border-r border-slate-800 flex flex-col">
-        <div className="p-4 border-b border-slate-800 bg-slate-900">
-          <h2 className="text-xl font-bold text-amber-400 mb-2">SPEZIES WÄHLEN</h2>
-          <input 
-            type="text" 
-            placeholder="Suchen..." 
-            className="w-full bg-slate-800 border border-slate-700 rounded p-2 text-sm focus:border-amber-500 outline-none"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+    <main className="min-h-dvh w-full bg-black text-zinc-300 font-mono flex flex-col p-6">
+      
+      <header className="flex justify-between items-center border-b border-zinc-800 pb-4 mb-6 sticky top-0 bg-black z-30">
+        <div className="flex gap-4 items-center">
+            <div className="w-8 h-8 border border-amber-500 flex items-center justify-center text-amber-500 font-black italic">1</div>
+            <div>
+                <h1 className="text-xl font-black text-white italic tracking-tighter uppercase">DATA_BASE: SPEZIES</h1>
+            </div>
         </div>
-        <div className="overflow-y-auto flex-1 p-2 space-y-1">
-          {filteredSpecies.map((s) => (
-            <button
+        <div className="text-right pl-2">
+            <div className="text-[10px] text-amber-500 font-bold tracking-widest uppercase">Select_Origin</div>
+        </div>
+      </header>
+
+      <ProgressTracker currentStep={1} />
+
+      <div className="mb-6 sticky top-[65px] bg-black z-20 pb-4">
+        <input 
+          className="w-full bg-zinc-950 border border-zinc-800 p-4 rounded-xl text-xs outline-none focus:border-amber-500 text-white placeholder:text-zinc-800 shadow-2xl"
+          placeholder="FILTER_BY_NAME..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
+
+      <div className="flex-1 space-y-6 pb-32">
+        {filteredSpecies.map((s) => {
+          const isSelected = selectedSpecies === s.name;
+          return (
+            <div 
               key={s.name}
-              onClick={() => setSelectedSpecies(s)}
-              className={`w-full text-left px-4 py-3 rounded transition-colors ${
-                selectedSpecies?.name === s.name 
-                  ? 'bg-amber-900/30 text-amber-300 border border-amber-800/50' 
-                  : 'hover:bg-slate-800 text-slate-400 hover:text-slate-200'
+              onClick={() => setSelectedSpecies(isSelected ? null : s.name)}
+              className={`border transition-all duration-300 rounded-2xl overflow-hidden ${
+                isSelected 
+                  ? 'border-white bg-white/[0.05] shadow-[0_0_40px_rgba(255,255,255,0.1)] scale-[1.02]' 
+                  : 'border-zinc-800 bg-zinc-900/20 active:bg-zinc-800'
               }`}
             >
-              <div className="font-bold">{s.name}</div>
-              <div className="text-xs opacity-60">{s.startingXP} XP</div>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Main Content: Details */}
-      <div className="flex-1 p-8 overflow-y-auto bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-slate-950">
-        {selectedSpecies ? (
-          <div className="max-w-3xl mx-auto space-y-8 animate-in fade-in duration-300">
-            <header className="border-b border-slate-800 pb-6">
-              <h1 className="text-4xl font-black tracking-tight text-white mb-2">{selectedSpecies.name.toUpperCase()}</h1>
-              <div className="flex gap-4 text-sm font-mono text-amber-500/80">
-                <span>START-XP: {selectedSpecies.startingXP}</span>
-                <span>•</span>
-                <span>WUNDEN: {selectedSpecies.woundThresholdBase} + BRAWN</span>
-                <span>•</span>
-                <span>ERSCHÖPFUNG: {selectedSpecies.strainThresholdBase} + WILL</span>
+              <div className="h-20 bg-zinc-950 relative flex items-center justify-center border-b border-zinc-900 overflow-hidden">
+                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-500 to-transparent"></div>
+                  <span className="text-4xl grayscale opacity-5 font-black italic">{s.name.charAt(0)}</span>
               </div>
-            </header>
 
-            {/* Characteristics Grid */}
-            <div className="grid grid-cols-6 gap-4">
-              {Object.entries(selectedSpecies.characteristics).map(([stat, value]) => (
-                <div key={stat} className="bg-slate-900/50 border border-slate-800 p-4 rounded-lg text-center">
-                  <div className="text-3xl font-bold text-white mb-1">{value}</div>
-                  <div className="text-xs uppercase tracking-wider text-slate-500">{stat}</div>
-                </div>
-              ))}
-            </div>
+              <div className="p-5 space-y-4">
+                  <div className="flex justify-between items-start">
+                      <h2 className="text-xl font-black text-white italic tracking-tighter uppercase leading-tight">{s.name}</h2>
+                      <div className="text-right">
+                          <div className="text-[7px] text-zinc-700 font-black uppercase">Start_XP</div>
+                          <div className="text-lg font-black text-amber-500 italic leading-none">{s.startingXP}</div>
+                      </div>
+                  </div>
 
-            {/* Abilities */}
-            <div className="bg-slate-900/30 border border-slate-800 rounded-lg p-6">
-              <h3 className="text-lg font-bold text-amber-400 mb-4 uppercase tracking-widest text-xs">Spezies-Fähigkeiten</h3>
-              <ul className="space-y-3">
-                {selectedSpecies.abilities.map((ability, idx) => (
-                  <li key={idx} className="flex gap-3 text-slate-300 leading-relaxed">
-                    <span className="text-amber-500 mt-1">›</span>
-                    {ability}
-                  </li>
-                ))}
-              </ul>
-            </div>
+                  <div className="grid grid-cols-3 gap-2">
+                      {Object.entries(s.characteristics).map(([stat, val]) => (
+                          <div key={stat} className="bg-black/40 border border-zinc-900 p-2 rounded-lg flex flex-col items-center">
+                              <span className="text-sm font-black text-white">{val}</span>
+                              <span className="text-[6px] text-zinc-600 uppercase font-black tracking-tighter">{stat}</span>
+                          </div>
+                      ))}
+                  </div>
 
-            <div className="flex justify-end pt-8">
-              <button 
-                onClick={handleConfirm}
-                className="bg-amber-600 hover:bg-amber-500 text-black font-bold py-3 px-8 rounded uppercase tracking-wide transition-transform active:scale-95"
-              >
-                {selectedSpecies.name} Bestätigen
-              </button>
+                  {isSelected && (
+                      <div className="animate-in slide-in-from-top-4 duration-500 space-y-6 pt-6 border-t border-zinc-900 mt-2">
+                          <div className="grid grid-cols-2 gap-3 text-[9px] text-zinc-500 font-black uppercase tracking-widest text-center">
+                              <div className="bg-zinc-950 p-3 border border-zinc-900 rounded-lg">Wounds: {s.woundThresholdBase}+BR</div>
+                              <div className="bg-zinc-950 p-3 border border-zinc-900 rounded-lg">Strain: {s.strainThresholdBase}+WL</div>
+                          </div>
+                          <div className="space-y-3">
+                              <div className="text-[10px] text-amber-500 font-black uppercase tracking-[0.3em] flex items-center gap-2">
+                                  <div className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></div>
+                                  Traits_Analysis
+                              </div>
+                              <ul className="space-y-4">
+                                  {s.abilities.map((a, i) => (
+                                      <li key={i} className="text-xs text-zinc-400 leading-relaxed pl-4 border-l-2 border-amber-500/20 font-sans italic">{a}</li>
+                                  ))}
+                              </ul>
+                          </div>
+                          
+                          <button 
+                              onClick={(e) => { e.stopPropagation(); handleConfirm(s); }}
+                              className="w-full bg-amber-600 hover:bg-amber-500 text-black font-black py-5 rounded-2xl uppercase italic tracking-widest text-xs shadow-2xl active:scale-95 transition-all mt-4"
+                          >
+                              Authorize_Identity_→
+                          </button>
+                      </div>
+                  )}
+              </div>
             </div>
-          </div>
-        ) : (
-          <div className="h-full flex items-center justify-center text-slate-600">
-            <div className="text-center">
-              <div className="text-6xl mb-4 opacity-20">🧬</div>
-              <p>Wähle eine Spezies aus der Datenbank</p>
-            </div>
-          </div>
-        )}
+          );
+        })}
       </div>
-    </div>
+
+      <HolocronGuide 
+        title="SPEZIES_WAHL" 
+        description="Deine Spezies bestimmt deine biologischen Grundlagen. Brawn (BR) ist Stärke, Agility (AG) ist Geschick, Intellect (IN) ist Wissen, Cunning (CU) ist List, Willpower (WL) ist Wille und Presence (PR) ist Ausstrahlung."
+        advice="Wähle eine Spezies, die zu deiner Spielidee passt. Ein Droide ist super für Technik, ein Wookiee fürs Grobe. Die Start-XP kannst du später nutzen, um deine Werte noch weiter zu steigern!"
+      />
+    </main>
   );
 };
 

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Westphal-Bau | Bau-Spezialisten Braunschweig</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#374151', // gray-700 (Anthrazit)
+                        accent: '#b91c1c', // red-700 (Rostrot)
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-gray-900 bg-gray-100">
+
+    <header class="bg-primary text-white sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-black uppercase tracking-tighter">Westphal<span class="text-accent">.</span>Bau</div>
+            <nav class="hidden md:flex space-x-6 text-sm font-bold uppercase tracking-widest">
+                <a href="#home" class="hover:text-accent transition">Start</a>
+                <a href="#leistungen" class="hover:text-accent transition">Leistungen</a>
+                <a href="#referenzen" class="hover:text-accent transition">Projekte</a>
+                <a href="#ueber-uns" class="hover:text-accent transition">Über Uns</a>
+                <a href="#kontakt" class="hover:text-accent transition">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="relative min-h-[80vh] flex items-center bg-gray-900 text-white">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1541915063942-d35228ae549b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-40"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-2xl border-l-8 border-accent pl-8">
+                <h1 class="text-5xl md:text-7xl font-black mb-6 uppercase leading-none">Massiv.<br>Präzise.<br><span class="text-accent">Westphal.</span></h1>
+                <p class="text-xl mb-8 text-gray-300">Ihre Experten für Bau- und Gartenbauprojekte in Braunschweig. Wir bauen Fundamente für die Zukunft.</p>
+                <a href="#kontakt" class="inline-block bg-accent hover:bg-red-800 text-white font-bold py-4 px-10 transition">Projekt anfragen</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="leistungen" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+                <h2 class="text-4xl font-black uppercase">Unsere <span class="text-accent">Kompetenz</span></h2>
+                <p class="text-gray-500 max-w-md">Vom ersten Spatenstich bis zur fertigen Außenanlage – wir sind Ihre Bau-Spezialisten.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="group bg-gray-50 p-8 hover:bg-primary hover:text-white transition duration-500">
+                    <div class="text-accent text-4xl font-bold mb-4">01</div>
+                    <h3 class="text-xl font-bold mb-4 uppercase">Hochbau</h3>
+                    <p class="text-gray-600 group-hover:text-gray-300">Stabile Konstruktionen und präzises Maurerhandwerk für Ihr Bauprojekt.</p>
+                </div>
+                <div class="group bg-gray-50 p-8 hover:bg-primary hover:text-white transition duration-500">
+                    <div class="text-accent text-4xl font-bold mb-4">02</div>
+                    <h3 class="text-xl font-bold mb-4 uppercase">Tiefbau</h3>
+                    <p class="text-gray-600 group-hover:text-gray-300">Erdarbeiten, Fundamente und Kanalbau mit schwerem Gerät und Fachwissen.</p>
+                </div>
+                <div class="group bg-gray-50 p-8 hover:bg-primary hover:text-white transition duration-500">
+                    <div class="text-accent text-4xl font-bold mb-4">03</div>
+                    <h3 class="text-xl font-bold mb-4 uppercase">Gartenbau</h3>
+                    <p class="text-gray-600 group-hover:text-gray-300">Gartenneuanlagen, Pflasterarbeiten und hochwertige Außenraumgestaltung.</p>
+                </div>
+                <div class="group bg-gray-50 p-8 hover:bg-primary hover:text-white transition duration-500">
+                    <div class="text-accent text-4xl font-bold mb-4">04</div>
+                    <h3 class="text-xl font-bold mb-4 uppercase">Sanierung</h3>
+                    <p class="text-gray-600 group-hover:text-gray-300">Werterhalt und Modernisierung bestehender Bausubstanz mit Herzblut.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="referenzen" class="py-24 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-black uppercase mb-16 text-center">Referenz<span class="text-accent">projekte</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="relative overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1503387762-592dea58ef23?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Projekt 1" class="w-full h-80 object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center p-8">
+                        <div class="text-white text-center">
+                            <h4 class="font-bold text-xl uppercase mb-2">Wohnhaus BS</h4>
+                            <p class="text-sm">Rohbau und Außenanlagen</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Projekt 2" class="w-full h-80 object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center p-8">
+                        <div class="text-white text-center">
+                            <h4 class="font-bold text-xl uppercase mb-2">Gewerbebau</h4>
+                            <p class="text-sm">Fundament und Pflasterung</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Projekt 3" class="w-full h-80 object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center p-8">
+                        <div class="text-white text-center">
+                            <h4 class="font-bold text-xl uppercase mb-2">Privatgarten</h4>
+                            <p class="text-sm">Komplette Neugestaltung</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ueber-uns" class="py-24 bg-white">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-4xl font-black uppercase mb-8">Über Westphal<span class="text-accent">-</span>Bau</h2>
+                <p class="text-gray-600 mb-6 text-lg">Hinter Westphal-Bau steht ein eingespieltes Team aus erfahrenen Baufachleuten. Wir vereinen traditionelles Handwerk mit modernster Technik, um für unsere Kunden in Braunschweig und Umgebung beste Ergebnisse zu erzielen.</p>
+                <div class="grid grid-cols-2 gap-6 mt-12">
+                    <div class="border-t-4 border-accent pt-4">
+                        <span class="text-3xl font-black block">150+</span>
+                        <span class="text-sm uppercase font-bold text-gray-500">Projekte</span>
+                    </div>
+                    <div class="border-t-4 border-accent pt-4">
+                        <span class="text-3xl font-black block">25</span>
+                        <span class="text-sm uppercase font-bold text-gray-500">Experten</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-200 h-[500px] relative">
+                 <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Baustelle" class="w-full h-full object-cover">
+                 <div class="absolute -bottom-8 -left-8 bg-accent p-10 text-white hidden lg:block">
+                    <p class="font-black text-2xl uppercase">Seit 1998</p>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontakt" class="py-24 bg-primary text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-black uppercase mb-4">Starten Sie Ihr <span class="text-accent">Projekt</span></h2>
+                    <p class="text-gray-400">Kontaktieren Sie uns für ein unverbindliches Angebot.</p>
+                </div>
+                <form class="grid md:grid-cols-2 gap-6">
+                    <input type="text" placeholder="Name" class="bg-gray-800 border-none p-4 focus:ring-2 focus:ring-accent outline-none">
+                    <input type="email" placeholder="E-Mail" class="bg-gray-800 border-none p-4 focus:ring-2 focus:ring-accent outline-none">
+                    <textarea placeholder="Ihr Vorhaben" class="bg-gray-800 border-none p-4 focus:ring-2 focus:ring-accent outline-none md:col-span-2" rows="5"></textarea>
+                    <button class="bg-accent hover:bg-red-800 text-white font-black uppercase py-4 px-10 transition md:col-span-2">Anfrage Senden</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-gray-500 py-10 border-t border-gray-900 text-sm">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+            <p>&copy; 2026 Westphal-Bau GmbH & Co. KG. Braunschweig.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition">Impressum</a>
+                <a href="#" class="hover:text-white transition">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

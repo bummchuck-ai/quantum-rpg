@@ -1,4 +1,4 @@
-import SpeciesSelector from '../../components/create/SpeciesSelector';
+import SpeciesSelector from '@/components/create/SpeciesSelector';
 
 export default function CreatePage() {
   return (
