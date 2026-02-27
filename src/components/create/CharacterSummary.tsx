@@ -29,6 +29,8 @@ const CharacterSummary: React.FC = () => {
   const [backstory, setBackstory] = useState<string>('');
   const [generating, setGenerating] = useState(false);
 
+  const mainSpec = specializations[0];
+
   const generateBackstory = async () => {
     setGenerating(true);
     try {
