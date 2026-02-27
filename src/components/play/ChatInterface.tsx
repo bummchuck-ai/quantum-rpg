@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useCharacterStore } from '@/store/characterStore';
 import { useRouter } from 'next/navigation';
+import HolocronGuide from '../create/HolocronGuide';
 
 interface Message {
   role: 'gm' | 'player';
@@ -211,10 +212,21 @@ const ChatInterface: React.FC = () => {
             <div className={`max-w-[90%] ${msg.role === 'player' ? 'bg-zinc-900 border border-zinc-800 p-4 rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl shadow-xl' : 'space-y-4'}`}>
               {msg.role === 'gm' ? (
                 <div className="space-y-6">
+                  {/* Error Message */}
+                  {msg.content.error && (
+                    <div className="bg-red-500/10 border border-red-500/50 p-4 rounded-xl">
+                      <div className="text-[8px] text-red-500 font-black uppercase tracking-widest mb-1">System_Error</div>
+                      <p className="text-xs text-red-200 font-mono">{msg.content.error}</p>
+                      {msg.content.details && <p className="text-[8px] text-red-500/50 mt-2 font-mono">{msg.content.details}</p>}
+                    </div>
+                  )}
+
                   {/* Narrative Text */}
-                  <p className="text-[13px] leading-relaxed text-zinc-300 font-sans italic selection:bg-amber-500/30">
-                    {msg.content.narrative}
-                  </p>
+                  {msg.content.narrative && (
+                    <p className="text-[13px] leading-relaxed text-zinc-300 font-sans italic selection:bg-amber-500/30">
+                      {msg.content.narrative}
+                    </p>
+                  )}
                   
                   {/* NPC Dialogues */}
                   {msg.content.npcDialogue?.length > 0 && (
@@ -279,6 +291,12 @@ const ChatInterface: React.FC = () => {
             </button>
         </div>
       </div>
+
+      <HolocronGuide 
+        title="GEFECHTS_MODUS" 
+        description="Du befindest dich im aktiven Spiel. Nutze die Eingabe unten, um frei zu beschreiben, was du tust. Der Game Master (KI) reagiert auf alles und sagt dir, wenn du würfeln musst."
+        advice="Oben links kommst du zu deinem Charakterbogen. Deine Wunden und Stresswerte werden live aktualisiert. Wenn der Game Master schweigt, schau in die Fehlermeldung im Chat!"
+      />
 
     </main>
   );
