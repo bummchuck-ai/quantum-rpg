@@ -4,11 +4,28 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useCharacterStore } from '@/store/characterStore';
 import { useRouter } from 'next/navigation';
 import HolocronGuide from '../create/HolocronGuide';
+import DiceRollerModal from './DiceRollerModal';
+import { DicePool, formatRollResult, RollResult } from '@/lib/engine/dice';
 
 interface Message {
   role: 'gm' | 'player';
   content: any;
 }
+
+interface RollRequest {
+  skill: string;
+  difficulty: string; // easy, average, hard, etc.
+  reason: string;
+}
+
+const DIFFICULTY_MAP: Record<string, number> = {
+  simple: 0,
+  easy: 1,
+  average: 2,
+  hard: 3,
+  daunting: 4,
+  formidable: 5
+};
 
 const ChatInterface: React.FC = () => {
   const router = useRouter();
@@ -22,6 +39,11 @@ const ChatInterface: React.FC = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [showCharSheet, setShowCharSheet] = useState(false);
+  
+  // Dice Roller State
+  const [showDiceRoller, setShowDiceRoller] = useState(false);
+  const [activeRollRequest, setActiveRollRequest] = useState<RollRequest | null>(null);
+  
   const chatEndRef = useRef<HTMLDivElement>(null);
 
   const woundThreshold = species ? species.woundThresholdBase + characteristics.brawn : 0;
@@ -66,21 +88,23 @@ const ChatInterface: React.FC = () => {
       });
       
       const data = await response.json();
-      
-      // Update store with state changes if GM sent any
-      if (data.stateChanges) {
-        updateStatus(
-          data.stateChanges.wounds || 0,
-          data.stateChanges.strain || 0,
-          data.stateChanges.credits || 0
-        );
-      }
-
-      setMessages([{ role: 'gm', content: data }]);
+      handleGMResponse(data);
     } catch (error) {
       console.error("Intro failed:", error);
     }
     setIsTyping(false);
+  };
+
+  const handleGMResponse = (data: any) => {
+    // Update store with state changes if GM sent any
+    if (data.stateChanges) {
+      updateStatus(
+        data.stateChanges.wounds || 0,
+        data.stateChanges.strain || 0,
+        data.stateChanges.credits || 0
+      );
+    }
+    setMessages(prev => [...prev, { role: 'gm', content: data }]);
   };
 
   const handleSendMessage = async (text: string) => {
@@ -112,26 +136,61 @@ const ChatInterface: React.FC = () => {
         })
       });
       const data = await response.json();
-
-      // Update store with state changes
-      if (data.stateChanges) {
-        updateStatus(
-          data.stateChanges.wounds || 0,
-          data.stateChanges.strain || 0,
-          data.stateChanges.credits || 0
-        );
-      }
-
-      setMessages(prev => [...prev, { role: 'gm', content: data }]);
+      handleGMResponse(data);
     } catch (error) {
         console.error("Chat failed:", error);
     }
     setIsTyping(false);
   };
 
+  const initiateRoll = (skill: string, difficulty: string, reason: string) => {
+    setActiveRollRequest({ skill, difficulty, reason });
+    setShowDiceRoller(true);
+  };
+
+  const handleRollComplete = (result: RollResult) => {
+    setShowDiceRoller(false);
+    const resultText = formatRollResult(result);
+    
+    // 1. Show visual result in chat (Client side only message for now)
+    // We could add a special message type for rolls, but for now we format it into the text
+    
+    // 2. Send result to GM
+    const rollMessage = `[SYSTEM] Würfelwurf für ${activeRollRequest?.skill}: ${resultText}. (Erfolge: ${result.netSuccess}, Vorteile: ${result.netAdvantage}, Triumph: ${result.triumph}, Despair: ${result.despair})`;
+    handleSendMessage(rollMessage);
+    setActiveRollRequest(null);
+  };
+
+  const getInitialPool = (): DicePool => {
+    // Basic logic: Default to 2 Ability (Green) and Difficulty based on request
+    // TODO: Connect this to real character attributes/skills map
+    const difficultyLevel = DIFFICULTY_MAP[activeRollRequest?.difficulty.toLowerCase() || 'average'] || 2;
+    
+    return {
+      ability: 2, // Placeholder
+      proficiency: 0,
+      difficulty: difficultyLevel,
+      challenge: 0,
+      boost: 0,
+      setback: 0,
+      force: 0
+    };
+  };
+
   return (
     <main className="h-screen w-screen bg-black text-zinc-300 font-mono flex flex-col overflow-hidden relative">
       
+      {/* DICE ROLLER MODAL */}
+      {showDiceRoller && activeRollRequest && (
+        <DiceRollerModal 
+          initialPool={getInitialPool()}
+          skillName={activeRollRequest.skill}
+          difficulty={activeRollRequest.difficulty}
+          onRollComplete={handleRollComplete}
+          onClose={() => setShowDiceRoller(false)}
+        />
+      )}
+
       {/* CHARACTER SHEET MODAL */}
       {showCharSheet && (
         <div className="absolute inset-0 z-50 bg-black animate-in fade-in zoom-in duration-300 flex flex-col">
@@ -237,6 +296,23 @@ const ChatInterface: React.FC = () => {
                                 <p className="text-xs text-zinc-400 mt-1 italic font-sans leading-relaxed">"{d.text}"</p>
                             </div>
                         ))}
+                    </div>
+                  )}
+
+                  {/* ROLL REQUEST (New!) */}
+                  {msg.content.requiresRoll && msg.content.rollInfo && (
+                    <div className="bg-amber-500/5 border border-amber-500/30 p-4 rounded-xl flex items-center justify-between">
+                        <div>
+                            <div className="text-[8px] text-amber-500 font-black uppercase tracking-widest mb-1">Incoming_Challenge</div>
+                            <div className="text-xs font-black text-white uppercase italic">{msg.content.rollInfo.skill} <span className="text-zinc-500">//</span> {msg.content.rollInfo.difficulty}</div>
+                            <div className="text-[9px] text-zinc-400 mt-1 italic">{msg.content.rollInfo.reason}</div>
+                        </div>
+                        <button 
+                            onClick={() => initiateRoll(msg.content.rollInfo.skill, msg.content.rollInfo.difficulty, msg.content.rollInfo.reason)}
+                            className="bg-amber-600 hover:bg-amber-500 text-black font-black px-4 py-3 rounded-lg text-xs uppercase tracking-widest shadow-lg animate-pulse"
+                        >
+                            🎲 Würfeln
+                        </button>
                     </div>
                   )}
 
