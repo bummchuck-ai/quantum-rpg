@@ -244,7 +244,7 @@ export const useCharacterStore = create<GameState>()(
           const state = JSON.parse(json);
           set({ ...state });
         } catch (e) {
-          console.error(\"Savegame corrupted\", e);
+          console.error("Savegame corrupted", e);
         }
       }
     }),
