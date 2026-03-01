@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { useCharacterStore } from '@/store/characterStore';
+import { useCharacterStore, Player } from '@/store/characterStore';
 import { useRouter } from 'next/navigation';
 import HolocronGuide from '../create/HolocronGuide';
 import DiceRollerModal from './DiceRollerModal';
@@ -30,15 +30,21 @@ const DIFFICULTY_MAP: Record<string, number> = {
 const ChatInterface: React.FC = () => {
   const router = useRouter();
   const { 
+    players, activePlayerIndex, updateStatus, exportState, importState, setActivePlayer
+  } = useCharacterStore();
+  
+  const activePlayer = players[activePlayerIndex];
+  const { 
     name, species, career, characteristics, credits, ownedGear, 
     specializations, backgroundOption, backgroundType, backgroundValue,
-    wounds, strain, updateStatus
-  } = useCharacterStore();
+    wounds, strain
+  } = activePlayer;
   
   const [messages, setMessages] = useState<Message[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [showCharSheet, setShowCharSheet] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
   
   // Dice Roller State
   const [showDiceRoller, setShowDiceRoller] = useState(false);
@@ -57,7 +63,7 @@ const ChatInterface: React.FC = () => {
   }, [messages]);
 
   useEffect(() => {
-    if (!species || !career) {
+    if (!activePlayer.species || !activePlayer.career) {
        router.push('/');
        return;
     }
@@ -72,10 +78,8 @@ const ChatInterface: React.FC = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           gameState: {
-            character: { 
-              name, species, career, characteristics, credits, ownedGear,
-              specializations, backgroundOption, backgroundType, backgroundValue 
-            },
+            character: { ...activePlayer },
+            party: players, // Send full party to GM
             currentPlanet: 'Tatooine (Orbit)',
             currentScene: 'Der Anfang',
             sessionHistory: [],
@@ -83,7 +87,7 @@ const ChatInterface: React.FC = () => {
             questLog: [],
             npcRelationships: []
           },
-          userMessage: "Beginne das Abenteuer! Beschreibe die erste Szene basierend auf meinem Charakter."
+          userMessage: "Beginne das Abenteuer! Beschreibe die erste Szene basierend auf unserem Team."
         })
       });
       
@@ -96,7 +100,6 @@ const ChatInterface: React.FC = () => {
   };
 
   const handleGMResponse = (data: any) => {
-    // Update store with state changes if GM sent any
     if (data.stateChanges) {
       updateStatus(
         data.stateChanges.wounds || 0,
@@ -105,6 +108,30 @@ const ChatInterface: React.FC = () => {
       );
     }
     setMessages(prev => [...prev, { role: 'gm', content: data }]);
+  };
+
+  const handleExport = () => {
+    const data = exportState();
+    const blob = new Blob([data], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `quantum-save-${new Date().toISOString().slice(0,10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handleImport = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const content = event.target?.result as string;
+      importState(content);
+      setShowSettings(false);
+      window.location.reload(); 
+    };
+    reader.readAsText(file);
   };
 
   const handleSendMessage = async (text: string) => {
@@ -121,10 +148,8 @@ const ChatInterface: React.FC = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           gameState: { 
-            character: { 
-              name, species, career, characteristics, credits, ownedGear,
-              specializations, backgroundOption, backgroundType, backgroundValue 
-            },
+            character: { ...activePlayer },
+            party: players,
             currentPlanet: 'Tatooine (Orbit)',
             currentScene: 'Fortlaufendes Abenteuer',
             sessionHistory: messages.map(m => m.content.narrative || ""),
@@ -151,23 +176,15 @@ const ChatInterface: React.FC = () => {
   const handleRollComplete = (result: RollResult) => {
     setShowDiceRoller(false);
     const resultText = formatRollResult(result);
-    
-    // 1. Show visual result in chat (Client side only message for now)
-    // We could add a special message type for rolls, but for now we format it into the text
-    
-    // 2. Send result to GM
-    const rollMessage = `[SYSTEM] Würfelwurf für ${activeRollRequest?.skill}: ${resultText}. (Erfolge: ${result.netSuccess}, Vorteile: ${result.netAdvantage}, Triumph: ${result.triumph}, Despair: ${result.despair})`;
+    const rollMessage = `[SYSTEM] Würfelwurf für ${activePlayer.name} (${activeRollRequest?.skill}): ${resultText}. (Erfolge: ${result.netSuccess}, Vorteile: ${result.netAdvantage}, Triumph: ${result.triumph}, Despair: ${result.despair})`;
     handleSendMessage(rollMessage);
     setActiveRollRequest(null);
   };
 
   const getInitialPool = (): DicePool => {
-    // Basic logic: Default to 2 Ability (Green) and Difficulty based on request
-    // TODO: Connect this to real character attributes/skills map
     const difficultyLevel = DIFFICULTY_MAP[activeRollRequest?.difficulty.toLowerCase() || 'average'] || 2;
-    
     return {
-      ability: 2, // Placeholder
+      ability: 2, 
       proficiency: 0,
       difficulty: difficultyLevel,
       challenge: 0,
@@ -180,6 +197,27 @@ const ChatInterface: React.FC = () => {
   return (
     <main className="h-screen w-screen bg-black text-zinc-300 font-mono flex flex-col overflow-hidden relative">
       
+      {/* SYSTEM SETTINGS MODAL */}
+      {showSettings && (
+        <div className="absolute inset-0 z-[100] bg-black/95 animate-in fade-in duration-300 flex flex-col items-center justify-center p-6">
+          <div className="w-full max-w-sm bg-zinc-900 border border-zinc-800 rounded-3xl p-8 space-y-8 shadow-2xl">
+            <div className="text-center">
+              <div className="text-[10px] text-amber-500 font-black uppercase tracking-[0.3em] mb-2">System_Core</div>
+              <h2 className="text-3xl font-black text-white italic tracking-tighter uppercase">Einstellungen</h2>
+            </div>
+            <div className="space-y-3">
+              <button onClick={handleExport} className="w-full bg-zinc-800 hover:bg-zinc-700 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3">💾 Spielstand speichern</button>
+              <label className="w-full bg-zinc-800 hover:bg-zinc-700 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 cursor-pointer text-center">
+                <span>📁</span> Spielstand laden
+                <input type="file" accept=".json" onChange={handleImport} className="hidden" />
+              </label>
+              <button onClick={() => { if(confirm("Abenteuer wirklich abbrechen?")) router.push('/'); }} className="w-full border border-red-900/50 text-red-500 font-bold py-4 rounded-xl flex items-center justify-center gap-3">🚫 Beenden</button>
+            </div>
+            <button onClick={() => setShowSettings(false)} className="w-full bg-white text-black font-black py-4 rounded-xl uppercase tracking-widest text-xs">Schließen</button>
+          </div>
+        </div>
+      )}
+
       {/* DICE ROLLER MODAL */}
       {showDiceRoller && activeRollRequest && (
         <DiceRollerModal 
@@ -193,12 +231,11 @@ const ChatInterface: React.FC = () => {
 
       {/* CHARACTER SHEET MODAL */}
       {showCharSheet && (
-        <div className="absolute inset-0 z-50 bg-black animate-in fade-in zoom-in duration-300 flex flex-col">
+        <div className="absolute inset-0 z-[100] bg-black animate-in fade-in zoom-in duration-300 flex flex-col">
           <header className="p-6 border-b border-zinc-800 flex justify-between items-center bg-zinc-950">
-            <h2 className="text-xl font-black text-white italic tracking-tighter uppercase">Character_Bogen</h2>
+            <h2 className="text-xl font-black text-white italic tracking-tighter uppercase">{name}_Bogen</h2>
             <button onClick={() => setShowCharSheet(false)} className="w-10 h-10 border border-zinc-800 flex items-center justify-center text-xl">✕</button>
           </header>
-          
           <div className="flex-1 overflow-y-auto p-6 space-y-8">
             <section>
               <div className="text-[8px] text-zinc-600 font-black uppercase mb-4 tracking-[0.2em]">Attribute</div>
@@ -211,7 +248,6 @@ const ChatInterface: React.FC = () => {
                   ))}
               </div>
             </section>
-
             <section className="grid grid-cols-2 gap-3">
               <div className="bg-zinc-900/40 border border-zinc-800 p-4 rounded-xl">
                 <div className="text-[7px] text-zinc-600 font-black uppercase mb-1 tracking-widest">Soak_Value</div>
@@ -222,7 +258,6 @@ const ChatInterface: React.FC = () => {
                 <div className="text-xl font-black text-white">{defense}</div>
               </div>
             </section>
-
             <section>
               <div className="text-[8px] text-zinc-600 font-black uppercase mb-4 tracking-[0.2em]">Equipment</div>
               <div className="space-y-2">
@@ -239,141 +274,122 @@ const ChatInterface: React.FC = () => {
       )}
 
       {/* HUD Header */}
-      <header className="bg-zinc-950/80 border-b border-zinc-800 p-4 flex justify-between items-center backdrop-blur-md z-20 shadow-2xl">
-        <div className="flex items-center gap-4">
-            <button 
-              onClick={() => setShowCharSheet(true)}
-              className="w-10 h-10 border border-amber-500/50 rounded bg-amber-500/5 flex items-center justify-center active:scale-90 transition-all"
-            >
-                <span className="text-amber-500 font-black italic text-xl">{name?.charAt(0) || 'Q'}</span>
-            </button>
-            <div>
-                <h1 className="text-sm font-black text-white italic tracking-tighter">{name || 'PILOT_UNKNOWN'}</h1>
-                <div className="text-[7px] text-zinc-500 tracking-[0.2em] uppercase">{credits} Credits</div>
-            </div>
+      <header className=\"bg-zinc-950/80 border-b border-zinc-800 p-4 flex flex-col gap-4 backdrop-blur-md z-20 shadow-2xl\">
+        <div className=\"flex justify-between items-center\">
+          <div className=\"flex items-center gap-4\">
+              <button onClick={() => setShowCharSheet(true)} className=\"w-10 h-10 border border-amber-500/50 rounded bg-amber-500/5 flex items-center justify-center active:scale-90\">
+                  <span className=\"text-amber-500 font-black italic text-xl\">{name?.charAt(0) || 'Q'}</span>
+              </button>
+              <div>
+                  <h1 className=\"text-sm font-black text-white italic tracking-tighter truncate max-w-[120px]\">{name || 'PILOT_UNKNOWN'}</h1>
+                  <div className=\"text-[7px] text-zinc-500 tracking-[0.2em] uppercase\">{credits} Credits</div>
+              </div>
+          </div>
+          <div className=\"flex gap-4 items-center\">
+              <div className=\"text-right\">
+                  <div className=\"text-[7px] text-red-500/50 font-black uppercase tracking-widest mb-1\">Wounds</div>
+                  <div className=\"text-xs font-black text-red-500 italic\">{wounds}/{woundThreshold}</div>
+              </div>
+              <div className=\"text-right\">
+                  <div className=\"text-[7px] text-blue-500/50 font-black uppercase tracking-widest mb-1\">Strain</div>
+                  <div className=\"text-xs font-black text-blue-400 italic\">{strain}/{strainThreshold}</div>
+              </div>
+              <button onClick={() => setShowSettings(true)} className=\"w-10 h-10 border border-zinc-800 rounded bg-zinc-900 flex items-center justify-center active:scale-90 ml-2\">⚙️</button>
+          </div>
         </div>
-        <div className="flex gap-4">
-            <div className="text-right">
-                <div className="text-[7px] text-red-500/50 font-black uppercase tracking-widest mb-1">Wounds</div>
-                <div className="text-xs font-black text-red-500 italic">{wounds}/{woundThreshold}</div>
-            </div>
-            <div className="text-right">
-                <div className="text-[7px] text-blue-500/50 font-black uppercase tracking-widest mb-1">Strain</div>
-                <div className="text-xs font-black text-blue-400 italic">{strain}/{strainThreshold}</div>
-            </div>
-        </div>
+
+        {/* PLAYER SELECTOR HUD (HOTSEAT) */}
+        {players.length > 1 && (
+          <div className=\"flex gap-2 overflow-x-auto no-scrollbar pb-1\">
+            {players.map((p, idx) => (
+              <div 
+                key={p.id}
+                onClick={() => setActivePlayer(idx)}
+                className={`flex-1 min-w-[100px] p-2 border rounded-lg flex items-center gap-2 cursor-pointer transition-all ${
+                  activePlayerIndex === idx ? 'border-amber-500 bg-amber-500/10' : 'border-zinc-900 bg-black/40 opacity-40'
+                }`}
+              >
+                <div className=\"w-6 h-6 rounded bg-zinc-800 flex items-center justify-center text-[10px] font-black\">{p.name?.charAt(0) || idx+1}</div>
+                <div className=\"flex-1 min-w-0\">
+                  <div className=\"text-[8px] font-black uppercase truncate text-white\">{p.name || 'PILOT'}</div>
+                  <div className=\"h-0.5 w-full bg-zinc-800 mt-0.5 rounded-full overflow-hidden\">
+                    <div className=\"h-full bg-red-500\" style={{ width: `${Math.max(0, 100 - (p.wounds / (p.species?.woundThresholdBase || 10 + p.characteristics.brawn)) * 100)}%` }}></div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </header>
 
       {/* CHAT INTERFACE */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-8 custom-scrollbar pb-32">
+      <div className=\"flex-1 overflow-y-auto p-6 space-y-8 custom-scrollbar pb-32\">
         {messages.map((msg, i) => (
           <div key={i} className={`flex ${msg.role === 'player' ? 'justify-end' : 'justify-start'} animate-in fade-in slide-in-from-bottom-2 duration-500`}>
             <div className={`max-w-[90%] ${msg.role === 'player' ? 'bg-zinc-900 border border-zinc-800 p-4 rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl shadow-xl' : 'space-y-4'}`}>
               {msg.role === 'gm' ? (
-                <div className="space-y-6">
-                  {/* Error Message */}
+                <div className=\"space-y-6\">
                   {msg.content.error && (
-                    <div className="bg-red-500/10 border border-red-500/50 p-4 rounded-xl">
-                      <div className="text-[8px] text-red-500 font-black uppercase tracking-widest mb-1">System_Error</div>
-                      <p className="text-xs text-red-200 font-mono">{msg.content.error}</p>
-                      {msg.content.details && <p className="text-[8px] text-red-500/50 mt-2 font-mono">{msg.content.details}</p>}
-                    </div>
+                    <div className=\"bg-red-500/10 border border-red-500/50 p-4 rounded-xl text-xs font-mono text-red-200\">{msg.content.error}</div>
                   )}
-
-                  {/* Narrative Text */}
                   {msg.content.narrative && (
-                    <p className="text-base md:text-lg leading-relaxed text-zinc-300 font-sans italic selection:bg-amber-500/30">
-                      {msg.content.narrative}
-                    </p>
+                    <p className=\"text-base md:text-lg leading-relaxed text-zinc-300 font-sans italic\">{msg.content.narrative}</p>
                   )}
-                  
-                  {/* NPC Dialogues */}
                   {msg.content.npcDialogue?.length > 0 && (
-                    <div className="space-y-3 border-l-2 border-amber-500/30 pl-4 bg-amber-500/[0.02] py-2">
+                    <div className=\"space-y-3 border-l-2 border-amber-500/30 pl-4 bg-amber-500/[0.02] py-2\">
                         {msg.content.npcDialogue.map((d: any, idx: number) => (
                             <div key={idx}>
-                                <span className="text-[8px] font-black text-amber-500 uppercase tracking-[0.2em]">{d.name}</span>
-                                <p className="text-xs text-zinc-400 mt-1 italic font-sans leading-relaxed">"{d.text}"</p>
+                                <span className=\"text-[8px] font-black text-amber-500 uppercase tracking-[0.2em]\">{d.name}</span>
+                                <p className=\"text-xs text-zinc-400 mt-1 italic font-sans leading-relaxed\">\"{d.text}\"</p>
                             </div>
                         ))}
                     </div>
                   )}
-
-                  {/* ROLL REQUEST (New!) */}
                   {msg.content.requiresRoll && msg.content.rollInfo && (
-                    <div className="bg-amber-500/5 border border-amber-500/30 p-4 rounded-xl flex items-center justify-between">
-                        <div>
-                            <div className="text-[8px] text-amber-500 font-black uppercase tracking-widest mb-1">Incoming_Challenge</div>
-                            <div className="text-xs font-black text-white uppercase italic">{msg.content.rollInfo.skill} <span className="text-zinc-500">//</span> {msg.content.rollInfo.difficulty}</div>
-                            <div className="text-[9px] text-zinc-400 mt-1 italic">{msg.content.rollInfo.reason}</div>
+                    <div className=\"bg-amber-500/5 border border-amber-500/30 p-4 rounded-xl flex items-center justify-between\">
+                        <div className=\"flex-1\">
+                            <div className=\"text-[8px] text-amber-500 font-black uppercase tracking-widest mb-1\">Incoming_Challenge</div>
+                            <div className=\"text-xs font-black text-white uppercase italic\">{msg.content.rollInfo.skill} <span className=\"text-zinc-500\">//</span> {msg.content.rollInfo.difficulty}</div>
                         </div>
-                        <button 
-                            onClick={() => initiateRoll(msg.content.rollInfo.skill, msg.content.rollInfo.difficulty, msg.content.rollInfo.reason)}
-                            className="bg-amber-600 hover:bg-amber-500 text-black font-black px-4 py-3 rounded-lg text-xs uppercase tracking-widest shadow-lg animate-pulse"
-                        >
-                            🎲 Würfeln
-                        </button>
+                        <button onClick={() => initiateRoll(msg.content.rollInfo.skill, msg.content.rollInfo.difficulty, msg.content.rollInfo.reason)} className=\"bg-amber-600 hover:bg-amber-500 text-black font-black px-4 py-3 rounded-lg text-xs uppercase tracking-widest animate-pulse\">🎲 Würfeln</button>
                     </div>
                   )}
-
-                  {/* GM Suggestions (Buttons) */}
-                  <div className="grid grid-cols-1 gap-2 pt-4">
+                  <div className=\"grid grid-cols-1 gap-2 pt-4\">
                     {msg.content.options?.map((opt: any) => (
-                        <button 
-                            key={opt.id}
-                            onClick={() => handleSendMessage(opt.text)}
-                            className="bg-zinc-900/50 border border-zinc-800 hover:border-amber-500/50 p-4 rounded-xl text-left transition-all group active:scale-95 shadow-md"
-                        >
-                            <div className="flex items-center gap-3">
-                                <span className="text-[10px] text-amber-500 font-black opacity-40 group-hover:opacity-100 border border-amber-500/20 w-6 h-6 flex items-center justify-center rounded uppercase italic">{opt.id}</span>
-                                <span className="text-[10px] text-zinc-400 group-hover:text-white uppercase font-black tracking-tight">{opt.text}</span>
+                        <button key={opt.id} onClick={() => handleSendMessage(opt.text)} className=\"bg-zinc-900/50 border border-zinc-800 hover:border-amber-500/50 p-4 rounded-xl text-left transition-all active:scale-95\">
+                            <div className=\"flex items-center gap-3\">
+                                <span className=\"text-[10px] text-amber-500 font-black opacity-40 border border-amber-500/20 w-6 h-6 flex items-center justify-center rounded uppercase italic\">{opt.id}</span>
+                                <span className=\"text-[10px] text-zinc-400 font-black uppercase\">{opt.text}</span>
                             </div>
                         </button>
                     ))}
                   </div>
                 </div>
               ) : (
-                <p className="text-xs text-white font-black italic uppercase tracking-tight leading-relaxed">{msg.content.narrative}</p>
+                <p className=\"text-xs text-white font-black italic uppercase tracking-tight\">{msg.content.narrative}</p>
               )}
             </div>
           </div>
         ))}
         {isTyping && (
-            <div className="flex justify-start animate-pulse">
-                <div className="bg-zinc-900/20 text-[8px] text-amber-500 font-black uppercase tracking-[0.5em] p-2 border border-amber-500/10 rounded">GM_Thinking...</div>
+            <div className=\"flex justify-start animate-pulse\">
+                <div className=\"bg-zinc-900/20 text-[8px] text-amber-500 font-black uppercase tracking-[0.5em] p-2 border border-amber-500/10 rounded\">GM_Thinking...</div>
             </div>
         )}
         <div ref={chatEndRef} />
       </div>
 
       {/* INPUT AREA */}
-      <div className="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black to-transparent z-30">
-        <div className="max-w-2xl mx-auto flex gap-3">
-            <div className="flex-1 relative">
-                <input 
-                    className="w-full bg-zinc-950 border border-zinc-800 p-5 rounded-2xl text-xs outline-none focus:border-amber-500 text-white placeholder:text-zinc-800 shadow-2xl font-mono"
-                    placeholder="EINGABE_KOMMANDO..."
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && handleSendMessage(inputValue)}
-                />
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[7px] text-zinc-800 font-black tracking-widest hidden md:block">DIRECT_FEED</div>
+      <div className=\"fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black to-transparent z-30\">
+        <div className=\"max-w-2xl mx-auto flex gap-3\">
+            <div className=\"flex-1 relative\">
+                <input className=\"w-full bg-zinc-950 border border-zinc-800 p-5 rounded-2xl text-xs outline-none focus:border-amber-500 text-white placeholder:text-zinc-800 shadow-2xl font-mono\" placeholder=\"EINGABE_KOMMANDO...\" value={inputValue} onChange={(e) => setInputValue(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && handleSendMessage(inputValue)} />
             </div>
-            <button 
-                onClick={() => handleSendMessage(inputValue)}
-                className="bg-amber-600 hover:bg-amber-500 text-black px-8 rounded-2xl transition-all shadow-[0_0_30px_rgba(245,158,11,0.2)] active:scale-90 font-black"
-            >
-                📡
-            </button>
+            <button onClick={() => handleSendMessage(inputValue)} className=\"bg-amber-600 hover:bg-amber-500 text-black px-8 rounded-2xl transition-all active:scale-90 font-black\">📡</button>
         </div>
       </div>
 
-      <HolocronGuide 
-        title="GEFECHTS_MODUS" 
-        description="Du befindest dich im aktiven Spiel. Nutze die Eingabe unten, um frei zu beschreiben, was du tust. Der Game Master (KI) reagiert auf alles und sagt dir, wenn du würfeln musst."
-        advice="Oben links kommst du zu deinem Charakterbogen. Deine Wunden und Stresswerte werden live aktualisiert. Wenn der Game Master schweigt, schau in die Fehlermeldung im Chat!"
-      />
-
+      <HolocronGuide title=\"GEFECHTS_MODUS\" description=\"Aktives Spiel. Nutze die Eingabe unten für Aktionen. GM reagiert und fordert Würfe an. Oben links: Charakterbogen. Oben rechts: Team-Wechsel (Hotseat).\" advice=\"Speichere dein Spiel regelmäßig über das Zahnrad-Symbol!\" />
     </main>
   );
 };

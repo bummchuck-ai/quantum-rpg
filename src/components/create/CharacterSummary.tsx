@@ -9,20 +9,24 @@ import ProgressTracker from './ProgressTracker';
 const CharacterSummary: React.FC = () => {
   const router = useRouter();
   const { 
+    players, activePlayerIndex, setName, addPlayer, setActivePlayer
+  } = useCharacterStore();
+
+  const activePlayer = players[activePlayerIndex];
+  const { 
     species, 
     career, 
     specializations, 
     characteristics,
     availableXP,
     name,
-    setName,
     credits,
     backgroundOption,
     backgroundValue,
     backgroundType,
     ownedGear,
     ownedTalents
-  } = useCharacterStore();
+  } = activePlayer;
 
   const [isEditingName, setIsEditingName] = useState(false);
   const [activeTab, setActiveTab] = useState<'skills' | 'talents' | 'gear' | 'story'>('skills');
@@ -70,6 +74,18 @@ const CharacterSummary: React.FC = () => {
     ...(mainSpec?.skills || [])
   ]);
 
+  const handleAddMember = () => {
+    if (players.length >= 4) return;
+    addPlayer();
+    setActivePlayer(players.length); // Next player
+    router.push('/create');
+  };
+
+  const handleRemoveMember = (idx: number) => {
+    if (players.length <= 1) return;
+    removePlayer(idx);
+  };
+
   if (!species || !career) {
     return (
       <div className="flex flex-col items-center justify-center h-screen bg-black text-amber-500 font-mono p-12 text-center uppercase tracking-widest">
@@ -99,9 +115,41 @@ const CharacterSummary: React.FC = () => {
 
       <ProgressTracker currentStep={6} />
 
-      <div className="flex-1 space-y-6 pb-32">
+      <div className=\"flex-1 space-y-6 pb-32\">
         
-        <section className="bg-zinc-900/20 border border-zinc-800 p-6 rounded-2xl relative overflow-hidden shadow-2xl">
+        {/* PARTY MANAGEMENT */}
+        <section className=\"bg-zinc-950 border border-zinc-800 p-4 rounded-2xl\">
+          <div className=\"text-[8px] text-zinc-600 font-black uppercase tracking-widest mb-3 flex justify-between\">
+            <span>Party_Configuration</span>
+            <span>{players.length} / 4</span>
+          </div>
+          <div className=\"flex flex-wrap gap-2\">
+            {players.map((p, idx) => (
+              <div 
+                key={p.id}
+                onClick={() => setActivePlayer(idx)}
+                className={`flex-1 min-w-[80px] p-3 border rounded-xl text-center cursor-pointer transition-all ${
+                  activePlayerIndex === idx 
+                    ? 'border-amber-500 bg-amber-500/10' 
+                    : 'border-zinc-800 bg-zinc-900/50 text-zinc-600'
+                }`}
+              >
+                <div className=\"text-[10px] font-black uppercase truncate\">{p.name || `P${idx+1}`}</div>
+                <div className=\"text-[7px] font-bold opacity-50\">{p.species?.name || '---'}</div>
+              </div>
+            ))}
+            {players.length < 4 && (
+              <button 
+                onClick={handleAddMember}
+                className=\"w-12 h-12 border border-zinc-800 border-dashed rounded-xl flex items-center justify-center text-zinc-600 hover:border-amber-500 hover:text-amber-500 transition-all\"
+              >
+                +
+              </button>
+            )}
+          </div>
+        </section>
+
+        <section className=\"bg-zinc-900/20 border border-zinc-800 p-6 rounded-2xl relative overflow-hidden shadow-2xl\">
             <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/[0.02] rotate-45 translate-x-12 -translate-y-12 border-b border-zinc-800"></div>
             <div className="text-[8px] text-zinc-600 font-black uppercase tracking-widest mb-3">Target_Identification</div>
             

@@ -25,7 +25,10 @@ interface TalentTree {
 
 const TalentSelector: React.FC = () => {
   const router = useRouter();
-  const { specializations, availableXP, spentXP, buyTalent, ownedTalents } = useCharacterStore();
+  const { players, activePlayerIndex, buyTalent } = useCharacterStore();
+  const activePlayer = players[activePlayerIndex];
+  const { specializations, availableXP, ownedTalents } = activePlayer;
+  
   const [currentTree, setCurrentTree] = useState<TalentTree | null>(null);
   const [selectedTalent, setSelectedTalent] = useState<string | null>(null);
 

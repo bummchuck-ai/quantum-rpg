@@ -9,7 +9,9 @@ import ProgressTracker from './ProgressTracker';
 
 const ArmorySelector: React.FC = () => {
   const router = useRouter();
-  const { credits, buyGear, ownedGear } = useCharacterStore();
+  const { players, activePlayerIndex, buyGear } = useCharacterStore();
+  const activePlayer = players[activePlayerIndex];
+  const { credits, ownedGear } = activePlayer;
   
   const [category, setCategory] = useState<'weapons' | 'armor'>('weapons');
   const [subCategory, setSubCategory] = useState<string | null>(null);

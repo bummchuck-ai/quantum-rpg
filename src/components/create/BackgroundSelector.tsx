@@ -21,7 +21,9 @@ const MORALITY_LIST = [
 
 const BackgroundSelector: React.FC = () => {
   const router = useRouter();
-  const { career, setBackground, applyBackgroundBonus, backgroundBonus, backgroundType, backgroundOption } = useCharacterStore();
+  const { players, activePlayerIndex, setBackground, applyBackgroundBonus } = useCharacterStore();
+  const activePlayer = players[activePlayerIndex];
+  const { career, backgroundBonus, backgroundType, backgroundOption } = activePlayer;
   
   const [suggestedType, setSuggestedType] = useState<'Obligation' | 'Duty' | 'Morality'>('Obligation');
   const [rolling, setRolling] = useState(false);

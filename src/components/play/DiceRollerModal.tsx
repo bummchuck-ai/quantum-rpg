@@ -89,46 +89,24 @@ const DiceRollerModal: React.FC<DiceRollerModalProps> = ({
 
         {/* Dice Pool Editor */}
         {!result && (
-          <div className="p-6 overflow-y-auto space-y-6">
-            <div className="grid grid-cols-2 gap-4">
+          <div className=\"p-6 overflow-y-auto space-y-6\">
+            <div className=\"grid grid-cols-2 gap-4\">
               {/* Positive Dice */}
-              <div className="space-y-3 bg-zinc-900/30 p-4 rounded-xl border border-zinc-800/50">
-                <div className="text-[8px] text-zinc-500 font-black uppercase tracking-widest text-center mb-2">Player Pool</div>
-                {(['proficiency', 'ability', 'boost'] as DiceType[]).map(type => (
-                  <div key={type} className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <div className={`w-4 h-4 ${DICE_CONFIG[type].color} ${DICE_CONFIG[type].shape}`}></div>
-                      <span className="text-[10px] font-bold text-zinc-300 uppercase">{DICE_CONFIG[type].label}</span>
-                    </div>
-                    <div className="flex items-center gap-3 bg-black rounded-lg border border-zinc-800 px-2 py-1">
-                      <button onClick={() => modifyPool(type, -1)} className="text-zinc-500 hover:text-white">-</button>
-                      <span className="text-sm font-black w-4 text-center">{pool[type] || 0}</span>
-                      <button onClick={() => modifyPool(type, 1)} className="text-zinc-500 hover:text-white">+</button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Negative Dice */}
-              <div className="space-y-3 bg-zinc-900/30 p-4 rounded-xl border border-zinc-800/50">
-                <div className="text-[8px] text-zinc-500 font-black uppercase tracking-widest text-center mb-2">Difficulty</div>
-                {(['challenge', 'difficulty', 'setback'] as DiceType[]).map(type => (
-                  <div key={type} className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <div className={`w-4 h-4 ${DICE_CONFIG[type].color} ${DICE_CONFIG[type].shape}`}></div>
-                      <span className="text-[10px] font-bold text-zinc-300 uppercase">{DICE_CONFIG[type].label}</span>
-                    </div>
-                    <div className="flex items-center gap-3 bg-black rounded-lg border border-zinc-800 px-2 py-1">
-                      <button onClick={() => modifyPool(type, -1)} className="text-zinc-500 hover:text-white">-</button>
-                      <span className="text-sm font-black w-4 text-center">{pool[type] || 0}</span>
-                      <button onClick={() => modifyPool(type, 1)} className="text-zinc-500 hover:text-white">+</button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
+              <div className=\"space-y-3 bg-zinc-900/30 p-4 rounded-xl border border-zinc-800/50\">
+                <div className=\"text-[8px] text-zinc-500 font-black uppercase tracking-widest text-center mb-2\">Player Pool</div>
+                {(['proficiency', 'ability', 'boost'] as DiceType[]).map(type => {
+                  const isLocked = type !== 'boost';
+                  return (
+                    <div key={type} className=\"flex items-center justify-between\">
+                      <div className=\"flex items-center gap-2\">
+                        <div className={`w-4 h-4 ${DICE_CONFIG[type].color} ${DICE_CONFIG[type].shape}`}></div>
+                        <span className={`text-[10px] font-bold uppercase ${isLocked ? 'text-zinc-600' : 'text-zinc-300'}`}>{DICE_CONFIG[type].label}</span>
+                      </div>
+                      <div className={`flex items-center gap-3 rounded-lg border px-2 py-1 ${isLocked ? 'bg-zinc-950 border-zinc-900 opacity-40' : 'bg-black border-zinc-800'}`}>
+                        {!isLocked ? (
+                          <>
+                            <button onClick={() => modifyPool(type, -1)} className=\"text-zinc-500 hover:text-white\">-</button>\n                            <span className=\"text-sm font-black w-4 text-center\">{pool[type] || 0}</span>\n                            <button onClick={() => modifyPool(type, 1)} className=\"text-zinc-500 hover:text-white\">+</button>\n                          </>\n                        ) : (\n                          <span className=\"text-sm font-black w-4 text-center text-zinc-500\">{pool[type] || 0}</span>\n                        )}\n                      </div>\n                    </div>\n                  );\n                })}\n              </div>\n\n              {/* Negative Dice */}\n              <div className=\"space-y-3 bg-zinc-900/30 p-4 rounded-xl border border-zinc-800/50\">\n                <div className=\"text-[8px] text-zinc-500 font-black uppercase tracking-widest text-center mb-2\">Difficulty</div>\n                {(['challenge', 'difficulty', 'setback'] as DiceType[]).map(type => {\n                  const isLocked = type !== 'setback';\n                  return (\n                    <div key={type} className=\"flex items-center justify-between\">\n                      <div className=\"flex items-center gap-2\">\n                        <div className={`w-4 h-4 ${DICE_CONFIG[type].color} ${DICE_CONFIG[type].shape}`}></div>\n                        <span className={`text-[10px] font-bold uppercase ${isLocked ? 'text-zinc-600' : 'text-zinc-300'}`}>{DICE_CONFIG[type].label}</span>\n                      </div>\n                      <div className={`flex items-center gap-3 rounded-lg border px-2 py-1 ${isLocked ? 'bg-zinc-950 border-zinc-900 opacity-40' : 'bg-black border-zinc-800'}`}>\n                        {!isLocked ? (\n                          <>
+                            <button onClick={() => modifyPool(type, -1)} className=\"text-zinc-500 hover:text-white\">-</button>\n                            <span className=\"text-sm font-black w-4 text-center\">{pool[type] || 0}</span>\n                            <button onClick={() => modifyPool(type, 1)} className=\"text-zinc-500 hover:text-white\">+</button>\n                          </>\n                        ) : (\n                          <span className=\"text-sm font-black w-4 text-center text-zinc-500\">{pool[type] || 0}</span>\n                        )}\n                      </div>\n                    </div>\n                  );\n                })}\n              </div>\n            </div>\n          </div>\n        )}
 
         {/* Rolling Animation / Result */}
         {result && (
