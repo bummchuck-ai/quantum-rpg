@@ -68,6 +68,7 @@ interface CharacterState {
   buyTalent: (talentName: string, cost: number) => void;
   buyGear: (item: any) => void;
   updateStatus: (wounds: number, strain: number, credits: number) => void;
+  reset: () => void;
 }
 
 export const useCharacterStore = create<CharacterState>()(
@@ -170,6 +171,24 @@ export const useCharacterStore = create<CharacterState>()(
         strain: state.strain + strain,
         credits: state.credits + credits
       })),
+      reset: () => set({
+        name: '',
+        species: null,
+        career: null,
+        specializations: [],
+        ownedTalents: [],
+        ownedGear: [],
+        characteristics: { brawn: 2, agility: 2, intellect: 2, cunning: 2, willpower: 2, presence: 2 },
+        availableXP: 0,
+        spentXP: 0,
+        credits: 500,
+        backgroundType: null,
+        backgroundOption: '',
+        backgroundValue: 0,
+        backgroundBonus: 'none',
+        wounds: 0,
+        strain: 0
+      }),
     }),
     {
       name: 'quantum-rpg-storage',

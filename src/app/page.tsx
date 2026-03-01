@@ -3,19 +3,33 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import IntroModal from '@/components/create/IntroModal';
+import StarWarsCrawl from '@/components/create/StarWarsCrawl';
 import { useRouter } from 'next/navigation';
+import { useCharacterStore } from '@/store/characterStore';
 
 export default function Home() {
   const [showIntro, setShowIntro] = useState(false);
+  const [showCrawl, setShowCrawl] = useState(false);
   const router = useRouter();
+  const resetStore = useCharacterStore((state) => state.reset);
 
   const handleStart = () => {
+    resetStore(); // CLEAN SLATE
+    setShowCrawl(true);
+  };
+
+  const handleCrawlComplete = () => {
+    setShowCrawl(false);
     setShowIntro(true);
   };
 
   return (
     <main className="h-screen w-screen flex flex-col justify-between p-8 font-mono overflow-hidden select-none bg-black">
       
+      {showCrawl && (
+        <StarWarsCrawl onComplete={handleCrawlComplete} />
+      )}
+
       {showIntro && (
         <IntroModal onClose={() => router.push('/create')} />
       )}

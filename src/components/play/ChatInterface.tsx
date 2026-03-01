@@ -282,7 +282,7 @@ const ChatInterface: React.FC = () => {
 
                   {/* Narrative Text */}
                   {msg.content.narrative && (
-                    <p className="text-[13px] leading-relaxed text-zinc-300 font-sans italic selection:bg-amber-500/30">
+                    <p className="text-base md:text-lg leading-relaxed text-zinc-300 font-sans italic selection:bg-amber-500/30">
                       {msg.content.narrative}
                     </p>
                   )}
