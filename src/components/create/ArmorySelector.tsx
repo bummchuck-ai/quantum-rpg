@@ -9,7 +9,7 @@ import ProgressTracker from './ProgressTracker';
 
 const ArmorySelector: React.FC = () => {
   const router = useRouter();
-  const { players, activePlayerIndex, buyGear } = useCharacterStore();
+  const { players, activePlayerIndex, buyGear, sellGear } = useCharacterStore();
   const activePlayer = players[activePlayerIndex];
   const { credits, ownedGear } = activePlayer;
   
@@ -90,7 +90,7 @@ const ArmorySelector: React.FC = () => {
       </div>
 
       {/* GEAR TILES GRID */}
-      <div className="space-y-6 pb-32">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-32">
         {filteredItems.map((item: any) => {
           const isSelected = selectedItem === item.name;
           const purchased = isPurchased(item.name);
@@ -99,56 +99,49 @@ const ArmorySelector: React.FC = () => {
             <div 
                 key={`${category}-${item.name}`} // FORCE REMOUNT ON CATEGORY CHANGE
                 onClick={() => setSelectedItem(isSelected ? null : item.name)}
-                className={`border-2 transition-all duration-300 rounded-2xl overflow-hidden ${
+                className={`border transition-all duration-300 rounded-xl overflow-hidden cursor-pointer h-fit ${
                 isSelected 
-                    ? 'border-white bg-white/[0.08] shadow-[0_0_50px_rgba(255,255,255,0.15)] scale-[1.02]' 
+                    ? 'border-white bg-white/[0.08] shadow-[0_0_20px_rgba(255,255,255,0.15)]' 
                     : purchased
                     ? 'border-emerald-500/50 bg-emerald-500/[0.05]'
-                    : 'border-zinc-800 bg-zinc-900/40 active:border-zinc-600'
+                    : 'border-zinc-800 bg-zinc-900/40 hover:bg-zinc-900/60'
                 }`}
             >
-                {/* Visual Header */}
-                <div className="h-20 bg-zinc-950 relative flex items-center justify-center border-b border-zinc-900 overflow-hidden group">
-                    <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-500 to-transparent"></div>
-                    <div className="text-4xl opacity-5 grayscale font-black italic">{category === 'weapons' ? 'WPN' : 'ARM'}</div>
-                </div>
-
-                <div className="p-6">
-                    <div className="flex justify-between items-start mb-4">
-                        <div className="flex-1">
-                            <div className="flex items-center gap-2 mb-2">
-                                <h2 className={`text-2xl font-black italic uppercase tracking-tighter leading-none ${purchased ? 'text-emerald-400' : 'text-white'}`}>{item.name}</h2>
-                                {purchased && <span className="text-[8px] bg-emerald-500 text-black px-2 py-1 rounded-md font-black uppercase">IN_STOCK</span>}
+                <div className="p-4">
+                    <div className="flex justify-between items-start mb-2">
+                        <div className="flex-1 pr-2">
+                            <div className="flex items-center gap-2 mb-1">
+                                <h2 className={`text-base font-black italic uppercase tracking-tighter leading-none ${purchased ? 'text-emerald-400' : 'text-white'}`}>{item.name}</h2>
+                                {purchased && <span className="text-[7px] bg-emerald-500 text-black px-1.5 py-0.5 rounded font-black uppercase">OWNED</span>}
                             </div>
-                            <div className="text-[11px] text-zinc-500 font-black uppercase tracking-[0.2em]">
-                                {category === 'weapons' ? `Damage: ${item.damage} / Crit: ${item.critical}` : `Def: ${item.defense} / Soak: ${item.soak}`}
+                            <div className="text-[9px] text-zinc-400 font-bold uppercase tracking-wider">
+                                {category === 'weapons' ? `DMG: ${item.damage} / CRIT: ${item.critical}` : `DEF: ${item.defense} / SOAK: ${item.soak}`}
                             </div>
                         </div>
-                        <div className="text-2xl font-black text-amber-500 italic leading-none">{item.price}C</div>
+                        <div className="text-sm font-black text-amber-500 italic leading-none whitespace-nowrap">{item.price}</div>
                     </div>
 
                     {/* EXPANDED PANEL */}
                     {isSelected && (
-                        <div className="mt-6 pt-6 border-t border-zinc-800 animate-in fade-in slide-in-from-top-2 duration-300 space-y-6">
-                            <div className="grid grid-cols-3 gap-3">
-                                <div className="p-4 border border-zinc-800 rounded-xl bg-black/60 text-center">
-                                    <div className="text-[8px] text-zinc-600 uppercase font-black tracking-widest mb-1">Encumb</div>
-                                    <div className="text-sm font-black text-white">{item.encumbrance}</div>
+                        <div className="mt-4 pt-4 border-t border-zinc-800 animate-in fade-in slide-in-from-top-2 duration-300 space-y-4">
+                            <div className="grid grid-cols-3 gap-2">
+                                <div className="p-2 border border-zinc-800 rounded-lg bg-black/60 text-center">
+                                    <div className="text-[7px] text-zinc-500 uppercase font-black tracking-widest mb-0.5">Enc</div>
+                                    <div className="text-xs font-black text-white">{item.encumbrance}</div>
                                 </div>
-                                <div className="p-4 border border-zinc-800 rounded-xl bg-black/60 text-center">
-                                    <div className="text-[8px] text-zinc-600 uppercase font-black tracking-widest mb-1">HardPts</div>
-                                    <div className="text-sm font-black text-white">{item.hardPoints}</div>
+                                <div className="p-2 border border-zinc-800 rounded-lg bg-black/60 text-center">
+                                    <div className="text-[7px] text-zinc-500 uppercase font-black tracking-widest mb-0.5">HP</div>
+                                    <div className="text-xs font-black text-white">{item.hardPoints}</div>
                                 </div>
-                                <div className="p-4 border border-zinc-800 rounded-xl bg-black/60 text-center">
-                                    <div className="text-[8px] text-zinc-600 uppercase font-black tracking-widest mb-1">Rarity</div>
-                                    <div className="text-sm font-black text-white">{item.rarity}</div>
+                                <div className="p-2 border border-zinc-800 rounded-lg bg-black/60 text-center">
+                                    <div className="text-[7px] text-zinc-500 uppercase font-black tracking-widest mb-0.5">Rty</div>
+                                    <div className="text-xs font-black text-white">{item.rarity}</div>
                                 </div>
                             </div>
 
-                            <div className="bg-zinc-950 border border-zinc-800 p-5 rounded-2xl shadow-inner">
-                                <div className="text-[8px] text-amber-500/50 font-black uppercase mb-2 tracking-widest">Tactical_Specs</div>
-                                <p className="text-[13px] text-zinc-300 leading-relaxed italic font-sans selection:bg-amber-500/30">
-                                    {category === 'weapons' ? item.special : item.note || 'No further data found in manifest.'}
+                            <div className="bg-zinc-950 border border-zinc-800 p-3 rounded-xl shadow-inner">
+                                <p className="text-sm text-zinc-300 leading-snug font-sans">
+                                    {category === 'weapons' ? item.special : item.note || 'No further data found.'}
                                 </p>
                             </div>
 
@@ -156,18 +149,21 @@ const ArmorySelector: React.FC = () => {
                                 <button 
                                     onClick={(e) => { e.stopPropagation(); buyGear(item); }}
                                     disabled={credits < item.price}
-                                    className={`w-full py-5 rounded-2xl uppercase font-black italic tracking-widest text-xs transition-all shadow-2xl ${
+                                    className={`w-full py-3 rounded-xl uppercase font-black italic tracking-widest text-[10px] transition-all shadow-lg ${
                                         credits >= item.price 
-                                        ? 'bg-amber-500 text-black shadow-amber-900/40 active:scale-95 hover:bg-amber-400' 
+                                        ? 'bg-amber-500 text-black active:scale-95 hover:bg-amber-400' 
                                         : 'bg-zinc-900 text-zinc-700 cursor-not-allowed border border-zinc-800'
                                     }`}
                                 >
-                                    {credits >= item.price ? 'Authorize_Procurement_+' : 'Funds_Insufficient'}
+                                    {credits >= item.price ? 'BUY ITEM' : 'INSUFFICIENT FUNDS'}
                                 </button>
                             ) : (
-                                <div className="w-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-center py-5 text-[10px] font-black uppercase tracking-widest italic rounded-2xl animate-pulse">
-                                    System_Fully_Equipped
-                                </div>
+                                <button 
+                                    onClick={(e) => { e.stopPropagation(); sellGear(item); }}
+                                    className="w-full bg-red-900/30 hover:bg-red-900/50 border border-red-900/50 text-red-400 text-center py-3 text-[10px] font-black uppercase tracking-widest italic rounded-xl active:scale-95 transition-all"
+                                >
+                                    SELL / UNDO (+{item.price})
+                                </button>
                             )}
                         </div>
                     )}

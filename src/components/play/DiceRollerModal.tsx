@@ -87,7 +87,7 @@ const DiceRollerModal: React.FC<DiceRollerModalProps> = ({
               <div className="space-y-3 bg-zinc-900/30 p-4 rounded-xl border border-zinc-800/50">
                 <div className="text-[8px] text-zinc-500 font-black uppercase tracking-widest text-center mb-2">Player Pool</div>
                 {(['proficiency', 'ability', 'boost'] as DiceType[]).map(type => {
-                  const isLocked = type !== 'boost';
+                  const isLocked = true; // GM Controlled
                   return (
                     <div key={type} className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
@@ -110,9 +110,9 @@ const DiceRollerModal: React.FC<DiceRollerModalProps> = ({
                 })}
               </div>
               <div className="space-y-3 bg-zinc-900/30 p-4 rounded-xl border border-zinc-800/50">
-                <div className="text-[8px] text-zinc-500 font-black uppercase tracking-widest text-center mb-2">Difficulty</div>
+                <div className="text-[8px] text-zinc-500 font-black uppercase tracking-widest text-center mb-2">Difficulty (GM Controlled)</div>
                 {(['challenge', 'difficulty', 'setback'] as DiceType[]).map(type => {
-                  const isLocked = type !== 'setback';
+                  const isLocked = true; // GM Controlled
                   return (
                     <div key={type} className="flex items-center justify-between">
                       <div className="flex items-center gap-2">

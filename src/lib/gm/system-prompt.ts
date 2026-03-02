@@ -158,7 +158,9 @@ Antworte IMMER im folgenden JSON-Format:
   "rollInfo": {
     "skill": "Name der Fertigkeit falls Wurf nötig",
     "difficulty": "easy|average|hard|daunting|formidable",
-    "reason": "Warum dieser Wurf nötig ist"
+    "reason": "Warum dieser Wurf nötig ist",
+    "boost": 0,
+    "setback": 0
   },
   "stateChanges": {
     "wounds": 0,

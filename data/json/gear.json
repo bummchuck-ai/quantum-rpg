@@ -652,7 +652,32 @@
         "special": ""
       }
     ],
-    "Schwere Waffen": [],
+    "Schwere Waffen": [
+      {
+        "name": "Z-6 Rotationsblaster",
+        "skill": "SFW",
+        "damage": "15",
+        "critical": "2",
+        "range": "L",
+        "encumbrance": 9,
+        "hardPoints": "4",
+        "price": 4500,
+        "rarity": "8",
+        "special": "Vollautomatik, Sperrigkeit 4"
+      },
+      {
+        "name": "Raketenwerfer",
+        "skill": "SFW",
+        "damage": "20",
+        "critical": "2",
+        "range": "L",
+        "encumbrance": 7,
+        "hardPoints": "2",
+        "price": 2500,
+        "rarity": "7",
+        "special": "Explosion 10, Sperrigkeit 3"
+      }
+    ],
     "Nahkampf": [
       {
         "name": "Kampfmesser",

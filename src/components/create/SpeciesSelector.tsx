@@ -64,38 +64,36 @@ const SpeciesSelector: React.FC = () => {
         />
       </div>
 
-      <div className="flex-1 space-y-6 pb-32">
+      <div className="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-32">
         {filteredSpecies.map((s) => {
           const isSelected = selectedSpecies === s.name;
           return (
             <div 
               key={s.name}
               onClick={() => setSelectedSpecies(isSelected ? null : s.name)}
-              className={`border transition-all duration-300 rounded-2xl overflow-hidden ${
+              className={`border transition-all duration-300 rounded-xl overflow-hidden cursor-pointer h-fit ${
                 isSelected 
-                  ? 'border-white bg-white/[0.05] shadow-[0_0_40px_rgba(255,255,255,0.1)] scale-[1.02]' 
-                  : 'border-zinc-800 bg-zinc-900/20 active:bg-zinc-800'
+                  ? 'border-white bg-white/[0.05] shadow-[0_0_20px_rgba(255,255,255,0.1)]' 
+                  : 'border-zinc-800 bg-zinc-900/20 hover:bg-zinc-900/40'
               }`}
             >
-              <div className="h-20 bg-zinc-950 relative flex items-center justify-center border-b border-zinc-900 overflow-hidden">
+              <div className="h-16 bg-zinc-950 relative flex items-center justify-between px-4 border-b border-zinc-900 overflow-hidden">
                   <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-500 to-transparent"></div>
-                  <span className="text-4xl grayscale opacity-5 font-black italic">{s.name.charAt(0)}</span>
+                  <span className="text-2xl grayscale opacity-10 font-black italic">{s.name.charAt(0)}</span>
+                  <h2 className="text-base font-black text-white italic tracking-tighter uppercase leading-tight z-10">{s.name}</h2>
               </div>
 
-              <div className="p-5 space-y-4">
-                  <div className="flex justify-between items-start">
-                      <h2 className="text-xl font-black text-white italic tracking-tighter uppercase leading-tight">{s.name}</h2>
-                      <div className="text-right">
-                          <div className="text-[7px] text-zinc-700 font-black uppercase">Start_XP</div>
-                          <div className="text-lg font-black text-amber-500 italic leading-none">{s.startingXP}</div>
-                      </div>
+              <div className="p-4 space-y-3">
+                  <div className="flex justify-between items-center text-[10px] uppercase font-bold text-zinc-500">
+                      <span>Start XP</span>
+                      <span className="text-amber-500 text-sm">{s.startingXP}</span>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-2">
+                  <div className="grid grid-cols-6 gap-1">
                       {Object.entries(s.characteristics).map(([stat, val]) => (
-                          <div key={stat} className="bg-black/40 border border-zinc-900 p-2 rounded-lg flex flex-col items-center">
-                              <span className="text-sm font-black text-white">{val}</span>
-                              <span className="text-[6px] text-zinc-600 uppercase font-black tracking-tighter">{stat}</span>
+                          <div key={stat} className="bg-black/40 border border-zinc-900 py-1 rounded flex flex-col items-center">
+                              <span className="text-xs font-bold text-white">{val}</span>
+                              <span className="text-[5px] text-zinc-600 uppercase font-black tracking-tighter">{stat.substring(0, 3)}</span>
                           </div>
                       ))}
                   </div>

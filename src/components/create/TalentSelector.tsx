@@ -82,73 +82,78 @@ const TalentSelector: React.FC = () => {
           <div className="text-lg font-black text-white italic uppercase tracking-tight">{currentTree.specialization}</div>
       </div>
 
-      <div className="space-y-6 pb-32">
-        {currentTree.talents.map((t) => {
-            const isOwned = ownedTalents.includes(t.name);
-            const isSelected = selectedTalent === t.name;
-            const cost = t.row * 5;
+      <div className="space-y-4 pb-32 overflow-x-auto">
+        {/* Render as a Grid based on Rows */}
+        {Array.from({ length: Math.max(...currentTree.talents.map(t => t.row)) }, (_, i) => i + 1).map(rowIndex => (
+            <div key={rowIndex} className="grid grid-cols-4 gap-4 min-w-[800px] md:min-w-0">
+                {[1, 2, 3, 4].map(colIndex => {
+                    const talent = currentTree.talents.find(t => t.row === rowIndex && t.col === colIndex);
+                    if (!talent) return <div key={colIndex} className="invisible"></div>;
 
-            return (
-              <div 
-                key={`${t.row}-${t.col}-${t.name}`}
-                onClick={() => setSelectedTalent(isSelected ? null : t.name)}
-                className={`border transition-all duration-300 rounded-2xl overflow-hidden ${
-                  isSelected 
-                    ? 'border-white bg-white/[0.05] shadow-[0_0_40px_rgba(255,255,255,0.1)] scale-[1.02]' 
-                    : isOwned
-                      ? 'border-emerald-500/50 bg-emerald-500/[0.02]'
-                      : 'border-zinc-800 bg-zinc-900/20 hover:border-zinc-700'
-                }`}
-              >
-                <div className="p-5">
-                    <div className="flex justify-between items-start mb-3">
-                        <div className="flex-1">
-                            <div className="flex items-center gap-2 mb-1">
-                                <h2 className={`text-xl font-black italic uppercase tracking-tighter ${isOwned ? 'text-emerald-400' : 'text-white'}`}>
-                                    {t.name}
-                                </h2>
-                                {isOwned && <span className="text-[7px] bg-emerald-500 text-black px-1.5 py-0.5 rounded-sm font-black">ACTIVE</span>}
-                            </div>
-                            <div className="text-[9px] text-zinc-600 font-bold uppercase tracking-[0.2em]">
-                                Tier_0{t.row} // Row_{t.row}
-                            </div>
-                        </div>
-                        <div className="text-right">
-                            <div className="text-lg font-black text-amber-500 italic">{cost}XP</div>
-                        </div>
-                    </div>
+                    const isOwned = ownedTalents.includes(talent.name);
+                    const isSelected = selectedTalent === talent.name;
+                    const cost = talent.row * 5;
+                    const hasTopConnection = talent.connections?.includes('top');
 
-                    {isSelected && (
-                        <div className="mt-4 pt-4 border-t border-zinc-800 animate-in fade-in slide-in-from-top-2 duration-300">
-                            <div className="bg-black/40 p-4 rounded-xl space-y-4 shadow-inner">
-                                <p className="text-xs leading-relaxed text-zinc-400 font-sans italic selection:bg-amber-500/30">
-                                    {t.description || "Taktische Daten werden dekomprimiert... [Keine Beschreibung gefunden]"}
+                    return (
+                        <div key={`${rowIndex}-${colIndex}`} className="relative flex flex-col items-center">
+                            {/* Connection Line */}
+                            {hasTopConnection && (
+                                <div className="absolute -top-4 h-4 w-0.5 bg-zinc-700 z-0"></div>
+                            )}
+                            
+                            <div 
+                                onClick={() => setSelectedTalent(isSelected ? null : talent.name)}
+                                className={`relative z-10 w-full h-full min-h-[120px] p-3 border rounded-xl flex flex-col justify-between cursor-pointer transition-all duration-200 ${
+                                    isSelected 
+                                    ? 'border-white bg-zinc-800 shadow-[0_0_15px_rgba(255,255,255,0.1)] scale-105' 
+                                    : isOwned
+                                    ? 'border-emerald-500/50 bg-emerald-900/10'
+                                    : 'border-zinc-800 bg-zinc-900/40 hover:bg-zinc-800'
+                                }`}
+                            >
+                                <div className="flex justify-between items-start mb-2">
+                                    <h3 className={`text-[10px] font-black uppercase leading-tight ${isOwned ? 'text-emerald-400' : 'text-zinc-200'}`}>
+                                        {talent.name}
+                                    </h3>
+                                    {isOwned && <div className="w-2 h-2 bg-emerald-500 rounded-full shadow-[0_0_5px_rgba(16,185,129,0.8)]"></div>}
+                                </div>
+
+                                <p className="text-[9px] text-zinc-500 leading-snug line-clamp-3">
+                                    {talent.description || "Passiv"}
                                 </p>
 
-                                {!isOwned ? (
-                                    <button 
-                                        onClick={(e) => { e.stopPropagation(); handleBuy(t); }}
-                                        disabled={availableXP < cost}
-                                        className={`w-full py-4 rounded-xl uppercase font-black italic tracking-widest text-xs transition-all ${
-                                            availableXP >= cost 
-                                            ? 'bg-amber-600 text-black shadow-lg shadow-amber-900/30 active:scale-95' 
-                                            : 'bg-zinc-900 text-zinc-700 cursor-not-allowed border border-zinc-800'
-                                        }`}
-                                    >
-                                        {availableXP >= cost ? 'Authorize_Training_+' : 'XP_Insufficient_Units'}
-                                    </button>
-                                ) : (
-                                    <div className="w-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-center py-4 text-[10px] font-black uppercase tracking-widest italic rounded-xl">
-                                        Skill_Fully_Integrated
+                                <div className="mt-2 pt-2 border-t border-zinc-800/50 flex justify-between items-center">
+                                    <span className="text-[9px] text-zinc-600 font-black uppercase tracking-wider">{cost} XP</span>
+                                    {talent.isRanked ? (
+                                        <span className="text-[7px] bg-zinc-800 text-zinc-400 px-1 py-0.5 rounded uppercase">Ranked</span>
+                                    ) : (
+                                        <span className="text-[7px] text-zinc-700 uppercase">Passive</span>
+                                    )}
+                                </div>
+
+                                {/* Buy Button Overlay */}
+                                {isSelected && !isOwned && (
+                                    <div className="absolute inset-0 bg-black/90 flex items-center justify-center rounded-xl animate-in fade-in duration-200">
+                                        <button 
+                                            onClick={(e) => { e.stopPropagation(); handleBuy(talent); }}
+                                            disabled={availableXP < cost}
+                                            className={`px-4 py-2 rounded-lg font-black uppercase text-[10px] tracking-widest ${
+                                                availableXP >= cost 
+                                                ? 'bg-amber-500 text-black hover:bg-amber-400' 
+                                                : 'bg-zinc-800 text-zinc-600 cursor-not-allowed'
+                                            }`}
+                                        >
+                                            Buy ({cost})
+                                        </button>
                                     </div>
                                 )}
                             </div>
                         </div>
-                    )}
-                </div>
-              </div>
-            );
-        })}
+                    );
+                })}
+            </div>
+        ))}
       </div>
 
       <HolocronGuide 

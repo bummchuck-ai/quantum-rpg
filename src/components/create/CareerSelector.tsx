@@ -65,34 +65,34 @@ const CareerSelector: React.FC = () => {
         />
       </div>
 
-      <div className="space-y-6 pb-32">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-32">
         {filteredCareers.map((c) => {
           const isSelected = selectedCareer === c.name;
           return (
             <div 
               key={c.name}
               onClick={() => setSelectedCareer(isSelected ? null : c.name)}
-              className={`border transition-all duration-300 rounded-2xl overflow-hidden ${
+              className={`border transition-all duration-300 rounded-xl overflow-hidden cursor-pointer h-fit ${
                 isSelected 
-                  ? 'border-white bg-white/[0.05] shadow-[0_0_40px_rgba(255,255,255,0.1)] scale-[1.02]' 
-                  : 'border-zinc-800 bg-zinc-900/20 active:bg-zinc-800'
+                  ? 'border-white bg-white/[0.05] shadow-[0_0_20px_rgba(255,255,255,0.1)]' 
+                  : 'border-zinc-800 bg-zinc-900/20 hover:bg-zinc-900/40'
               }`}
             >
-              <div className="p-6 relative">
+              <div className="p-4 relative">
                   {c.forceRating > 0 && (
-                      <div className="absolute top-0 right-0 bg-blue-600 text-white text-[7px] font-black px-3 py-1 uppercase tracking-widest rounded-bl-lg animate-pulse">
-                          FORCE_SENSITIVE
+                      <div className="absolute top-0 right-0 bg-blue-600 text-white text-[6px] font-black px-2 py-0.5 uppercase tracking-widest rounded-bl-lg">
+                          FORCE
                       </div>
                   )}
-                  <div className="flex justify-between items-end mb-4">
-                      <h2 className="text-2xl font-black text-white italic tracking-tighter uppercase leading-none">{c.name}</h2>
+                  <div className="flex justify-between items-center mb-3">
+                      <h2 className="text-lg font-black text-white italic tracking-tighter uppercase leading-none">{c.name}</h2>
                   </div>
 
-                  <div className="flex flex-wrap gap-1.5 mb-2">
+                  <div className="flex flex-wrap gap-1 mb-1">
                       {c.careerSkills.filter(s => s).slice(0, 4).map(skill => (
-                          <span key={skill} className="text-[8px] bg-zinc-950 border border-zinc-800 text-zinc-500 px-2 py-0.5 rounded uppercase font-black">{skill}</span>
+                          <span key={skill} className="text-[9px] bg-zinc-950 border border-zinc-800 text-zinc-400 px-1.5 py-0.5 rounded uppercase font-bold">{skill}</span>
                       ))}
-                      {c.careerSkills.length > 4 && <span className="text-[8px] text-zinc-700 font-black italic">+{c.careerSkills.length - 4}_MORE</span>}
+                      {c.careerSkills.length > 4 && <span className="text-[9px] text-zinc-600 font-bold italic">+{c.careerSkills.length - 4}</span>}
                   </div>
               </div>
 

@@ -72,6 +72,7 @@ interface GameState {
   buyCharacteristic: (char: keyof Characteristics) => void;
   buyTalent: (talentName: string, cost: number) => void;
   buyGear: (item: any) => void;
+  sellGear: (item: any) => void;
   updateStatus: (wounds: number, strain: number, credits: number) => void;
   
   // Global Actions
@@ -216,6 +217,23 @@ export const useCharacterStore = create<GameState>()(
             ...player,
             credits: player.credits - item.price,
             ownedGear: [...player.ownedGear, item]
+        };
+        return { players: newPlayers };
+      }),
+
+      sellGear: (item) => set((state) => {
+        const player = state.players[state.activePlayerIndex];
+        const gearIndex = player.ownedGear.findIndex(g => g.name === item.name);
+        if (gearIndex === -1) return state;
+
+        const newGear = [...player.ownedGear];
+        newGear.splice(gearIndex, 1);
+        
+        const newPlayers = [...state.players];
+        newPlayers[state.activePlayerIndex] = {
+            ...player,
+            credits: player.credits + item.price, // Full refund for undo, or modify for resale value
+            ownedGear: newGear
         };
         return { players: newPlayers };
       }),
