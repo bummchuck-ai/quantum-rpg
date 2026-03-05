@@ -95,7 +95,7 @@
           "Computertechnik",
           "Wahrnehmung",
           "Allgemeinbildung",
-          "Kriegsführung"
+          "Kriegskunst"
         ]
       },
       {
@@ -122,7 +122,7 @@
           "Charme",
           "Täuschung",
           "Wahrnehmung",
-          "Kriegsführung"
+          "Kriegskunst"
         ]
       },
       {
@@ -200,10 +200,10 @@
     "careerSkills": [
       "Coolness",
       "Disziplin",
-      "Führungsqualitäten",
+      "Führungsqualität",
       "Verhandeln",
       "Allgemeinbildung",
-      "Altes"
+      "Altes Wissen"
     ],
     "forceRating": 1,
     "specializations": [
@@ -211,7 +211,7 @@
         "name": "Niman-Adept",
         "skills": [
           "Disziplin",
-          "Führungsqualitäten",
+          "Führungsqualität",
           "Verhandeln",
           "Lichtschwerter"
         ]
@@ -237,7 +237,7 @@
       {
         "name": "Lehrer",
         "skills": [
-          "Führungsqualitäten",
+          "Führungsqualität",
           "Wahrnehmung",
           "Allgemeinbildung",
           "Altes Wissen"
@@ -296,7 +296,7 @@
         "name": "Friedenswahrer",
         "skills": [
           "Disziplin",
-          "Führungsqualitäten",
+          "Führungsqualität",
           "Pilot (Planetar)",
           "Wahrnehmung"
         ]
@@ -375,7 +375,7 @@
           "Athletik",
           "Mechanik",
           "Überleben",
-          "Kriegsführung"
+          "Kriegskunst"
         ]
       },
       {
@@ -454,7 +454,7 @@
       "Medizin",
       "Wachsamkeit",
       "Handgemenge",
-      "leichte"
+      "leichte Fernkampfwaffen"
     ],
     "forceRating": 0,
     "specializations": [
@@ -473,7 +473,7 @@
           "Wahrnehmung",
           "Führungsqualität",
           "Kernwelten",
-          "Kriegsführung"
+          "Kriegskunst"
         ]
       },
       {
@@ -482,7 +482,7 @@
           "Coolness",
           "Führungsqualität",
           "Äußerer Rand",
-          "Kriegsführung"
+          "Kriegskunst"
         ]
       },
       {
@@ -567,7 +567,8 @@
         "skills": [
           "Einschüchterung",
           "Wachsamkeit",
-          "leichte Fernkampfwaffen Unterwelt"
+          "leichte Fernkampfwaffen",
+          "Unterwelt"
         ]
       },
       {
@@ -635,7 +636,7 @@
           "Computertechnik",
           "Coolness",
           "Wachsamkeit",
-          "Kriegsführung"
+          "Kriegskunst"
         ]
       },
       {
@@ -742,7 +743,7 @@
         "skills": [
           "Einschüchterung",
           "Disziplin",
-          "Lichtwerter",
+          "Lichtschwerter",
           "Nahkampfwaffen"
         ]
       },
@@ -807,7 +808,7 @@
       {
         "name": "Magus",
         "skills": [
-          "Einschüchtern",
+          "Einschüchterung",
           "Disziplin",
           "Medizin",
           "Altes Wissen"
@@ -826,7 +827,7 @@
         "name": "Prophet",
         "skills": [
           "Charme",
-          "Einschüchtern",
+          "Einschüchterung",
           "Führungsqualität",
           "Täuschung"
         ]
@@ -994,7 +995,7 @@
       "Überleben",
       "Handgemenge",
       "leichte Fernkampfwaffen",
-      "schwere"
+      "schwere Fernkampfwaffen"
     ],
     "forceRating": 0,
     "specializations": [
@@ -1087,7 +1088,8 @@
       {
         "name": "Kundschafter",
         "skills": [
-          "Athletik Medizin",
+          "Athletik",
+          "Medizin",
           "Pilot (Planetar)",
           "Überleben"
         ]
@@ -1128,7 +1130,7 @@
       "Pilot (Weltraum)",
       "Überleben",
       "Wachsamkeit",
-      "schwere"
+      "schwere Fernkampfwaffen"
     ],
     "forceRating": 1,
     "specializations": [
@@ -1196,7 +1198,7 @@
       "Disziplin",
       "Körperbeherrschung",
       "Mechanik",
-      "Pilot"
+      "Pilot (Weltraum)"
     ],
     "forceRating": 0,
     "specializations": [
@@ -1206,7 +1208,7 @@
           "Athletik",
           "Mechanik",
           "Medizin",
-          "Wachsamkeit (optional: Kybernetik)"
+          "Wachsamkeit"
         ]
       },
       {
@@ -1240,7 +1242,7 @@
         "name": "Modder",
         "skills": [
           "Mechanik",
-          "Pilot (Welltraum)",
+          "Pilot (Weltraum)",
           "Straßenwissen",
           "Artillerie"
         ]
@@ -1337,10 +1339,10 @@
       {
         "name": "Kadett der imperialen Armee",
         "skills": [
-          "Führungsqualitäten",
+          "Führungsqualität",
           "Pilot (Weltraum)",
-          "Kriegsführung",
-          "Leichte"
+          "Kriegskunst",
+          "leichte Fernkampfwaffen"
         ]
       },
       {
@@ -1349,17 +1351,17 @@
           "Disziplin",
           "Widerstandskraft",
           "Wachsamkeit",
-          "Kriegsführung",
-          "schwere"
+          "Kriegskunst",
+          "schwere Fernkampfwaffen"
         ]
       },
       {
         "name": "Kommandant der Separatisten",
         "skills": [
           "Wachsamkeit",
-          "Einschüchtern",
+          "Einschüchterung",
           "Führungsqualität",
-          "Kriegsführung"
+          "Kriegskunst"
         ]
       },
       {
@@ -1367,7 +1369,7 @@
         "skills": [
           "Mechanik",
           "Pilot (Planetar)",
-          "Einschüchtern",
+          "Einschüchterung",
           "leichte Fernkampfwaffen"
         ]
       },
@@ -1380,8 +1382,8 @@
         "skills": [
           "Astronavigation",
           "Disziplin",
-          "Führungsqualitäten",
-          "Kriegsführung"
+          "Führungsqualität",
+          "Kriegskunst"
         ]
       },
       {
@@ -1390,7 +1392,7 @@
           "Einschüchterung",
           "Täuschung",
           "Infiltration",
-          "Unterweltwissen"
+          "Unterwelt"
         ]
       },
       {
@@ -1417,14 +1419,14 @@
           "Coolness",
           "Charme",
           "Verhandeln",
-          "1 Wissensfertigkeit nach Wahl"
+          "Allgemeinbildung"
         ]
       },
       {
         "name": "Schiffskapitän",
         "skills": [
           "Charme",
-          "Führungsqualitäten",
+          "Führungsqualität",
           "Pilot (Weltraum)",
           "Verhandeln"
         ]

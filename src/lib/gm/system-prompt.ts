@@ -55,6 +55,18 @@ Der Charakter hat narrative Verpflichtungen. Webe diese ORGANISCH in die Geschic
 - Sie schaffen Dilemmas und interessante Entscheidungen
 - Sie verbinden sich mit der Hauptquest
 
+# FAHRZEUGE & RAUMSCHIFFE
+Wenn Fahrzeuge oder Raumschiffe im Spiel eingesetzt werden:
+- **Pilot (Planetar)** wird für planetare Fahrzeuge genutzt (Landspeeder, Walker, Speederbikes)
+- **Pilot (Weltraum)** wird für Raumschiffe genutzt (Sternenjäger, Frachter, Fähren)
+- **Artillerie** wird für Fahrzeug- und Schiffswaffen genutzt
+- **Mechanik** wird für Reparaturen an Fahrzeugen genutzt
+- **Astronavigation** wird für Hyperraumsprünge genutzt
+- Fahrzeugkampf nutzt die **Silhouette** zur Bestimmung der Schwierigkeit
+- Verfolgungsjagden: Konkurrierendes Wurfsystem mit Pilot-Fertigkeit
+- Hüllentrauma und Systembelastung tracken den Zustand des Fahrzeugs
+- Kritische Treffer auf Fahrzeuge haben eigene Tabelle
+
 # REGELN
 - Du bestimmst NICHT die Aktionen des Spielercharakters
 - Du sagst dem Spieler, wann ein Wurf nötig ist und auf welche Fertigkeit
@@ -75,12 +87,25 @@ Hintergrund: ${character.backgroundOption}
 ## Eigenschaften
 Stärke: ${character.characteristics?.brawn} | Gewandtheit: ${character.characteristics?.agility}
 Intelligenz: ${character.characteristics?.intellect} | List: ${character.characteristics?.cunning}
-Willenskraft: ${character.characteristics?.willpower} | Ausstrahlung: ${character.characteristics?.presence}
+Willenskraft: ${character.characteristics?.willpower} | Charisma: ${character.characteristics?.presence}
 
 ## Zustand
 Credits: ${character.credits}
 Wunden: ${character.wounds} (Schwelle: ${character.species?.woundThresholdBase + character.characteristics?.brawn})
 Stress: ${character.strain} (Schwelle: ${character.species?.strainThresholdBase + character.characteristics?.willpower})
+`;
+}
+
+function buildVehicleContext(gameState: any): string {
+  const vehicles = gameState.vehicles || gameState.character?.vehicles;
+  if (!vehicles || vehicles.length === 0) return '';
+
+  const vehicleList = vehicles.map((v: any) =>
+    `- ${v.name} (Silhouette: ${v.silhouette}, Geschwindigkeit: ${v.speed}, Panzerung: ${v.armor}, Hülle: ${v.currentHullTrauma || 0}/${v.hullTraumaThreshold}, Belastung: ${v.currentSystemStrain || 0}/${v.systemStrainThreshold})`
+  ).join('\n');
+
+  return `## Fahrzeuge
+${vehicleList}
 `;
 }
 
@@ -104,11 +129,13 @@ ${recentHistory}
 
 // --- Main function: Build the complete system prompt ---
 export function buildSystemPrompt(gameState: any): string {
-  return [
+  const sections = [
     GM_PERSONA,
     buildCharacterContext(gameState.character),
+    buildVehicleContext(gameState),
     buildSceneContext(gameState),
-  ].join('\n\n---\n\n');
+  ].filter(s => s.length > 0);
+  return sections.join('\n\n---\n\n');
 }
 
 // --- Build a user message with optional dice result ---
