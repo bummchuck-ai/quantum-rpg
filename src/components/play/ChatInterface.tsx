@@ -335,6 +335,32 @@ const ChatInterface: React.FC = () => {
               </div>
             </section>
             <section>
+              <div className="text-[8px] text-zinc-600 font-black uppercase mb-4 tracking-[0.2em]">Fertigkeiten</div>
+              <div className="space-y-1">
+                {Object.entries(activePlayer.skillRanks || {}).filter(([_, r]) => (r as number) > 0).sort(([a], [b]) => a.localeCompare(b)).map(([skill, rank]) => {
+                  const resolved = resolveSkill(skill);
+                  const charVal = (characteristics as any)[resolved.char] || 2;
+                  const skillRank = rank as number;
+                  return (
+                    <div key={skill} className="flex justify-between items-center py-1.5 border-b border-zinc-900 last:border-0">
+                      <span className="text-[9px] font-bold text-zinc-400 uppercase tracking-tight">{SKILL_MAP[skill]? skill : skill}</span>
+                      <div className="flex items-center gap-2">
+                        <div className="flex gap-0.5">
+                          {[1,2,3,4,5].map(p => (
+                            <div key={p} className={`w-2.5 h-2.5 rounded-full ${p <= skillRank ? 'bg-emerald-500 shadow-[0_0_4px_rgba(16,185,129,0.4)]' : 'bg-zinc-800'}`} />
+                          ))}
+                        </div>
+                        <span className="text-[7px] text-zinc-700 font-black w-8 text-right">{charVal}+{skillRank}</span>
+                      </div>
+                    </div>
+                  );
+                })}
+                {(!activePlayer.skillRanks || Object.keys(activePlayer.skillRanks).length === 0) && (
+                  <div className="text-[10px] text-zinc-800 italic uppercase">Keine trainierten Skills...</div>
+                )}
+              </div>
+            </section>
+            <section>
               <div className="text-[8px] text-zinc-600 font-black uppercase mb-4 tracking-[0.2em]">Equipment</div>
               <div className="space-y-2">
                 {ownedGear.length > 0 ? ownedGear.map((g, i) => (
@@ -345,6 +371,37 @@ const ChatInterface: React.FC = () => {
                 )) : <div className="text-[10px] text-zinc-800 italic uppercase">Keine Ausrüstung...</div>}
               </div>
             </section>
+            {activePlayer.vehicles && activePlayer.vehicles.length > 0 && (
+              <section>
+                <div className="text-[8px] text-zinc-600 font-black uppercase mb-4 tracking-[0.2em]">Schiff / Fahrzeug</div>
+                {activePlayer.vehicles.map((v) => (
+                  <div key={v.id} className="border border-zinc-800 bg-zinc-950 rounded-xl p-4 space-y-3">
+                    <div>
+                      <div className="text-[11px] font-black text-white uppercase italic tracking-tighter">{v.name}</div>
+                      <div className="text-[7px] text-zinc-600 uppercase tracking-widest">{v.manufacturer}</div>
+                    </div>
+                    {v.silhouette > 0 && (
+                      <div className="grid grid-cols-4 gap-2">
+                        <div className="text-center"><div className="text-[6px] text-zinc-700 font-black uppercase">SIL</div><div className="text-xs font-black text-zinc-400">{v.silhouette}</div></div>
+                        <div className="text-center"><div className="text-[6px] text-zinc-700 font-black uppercase">SPD</div><div className="text-xs font-black text-zinc-400">{v.speed}</div></div>
+                        <div className="text-center"><div className="text-[6px] text-zinc-700 font-black uppercase">ARM</div><div className="text-xs font-black text-zinc-400">{v.armor}</div></div>
+                        <div className="text-center"><div className="text-[6px] text-zinc-700 font-black uppercase">HULL</div><div className="text-xs font-black text-zinc-400">{v.currentHullTrauma}/{v.hullTraumaThreshold}</div></div>
+                      </div>
+                    )}
+                    {v.weapons.length > 0 && (
+                      <div className="space-y-1">
+                        {v.weapons.map((w, i) => (
+                          <div key={i} className="flex justify-between items-center text-[8px]">
+                            <span className="text-amber-500 font-black uppercase italic">{w.name}</span>
+                            <span className="text-zinc-600">DMG {w.damage}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </section>
+            )}
           </div>
         </div>
       )}
