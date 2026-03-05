@@ -79,7 +79,7 @@ const TalentSelector: React.FC = () => {
       
       <header className="flex justify-between items-center border-b border-zinc-800 pb-4 mb-6 sticky top-0 bg-black z-30">
         <div className="flex gap-4 items-center">
-            <div className="w-8 h-8 border border-amber-500 flex items-center justify-center text-amber-500 font-black italic">5</div>
+            <div className="w-8 h-8 border border-amber-500 flex items-center justify-center text-amber-500 font-black italic">6</div>
             <div>
                 <h1 className="text-xl font-black text-white italic tracking-tighter uppercase">TRAINING_CENTER</h1>
             </div>
@@ -90,7 +90,7 @@ const TalentSelector: React.FC = () => {
         </div>
       </header>
 
-      <ProgressTracker currentStep={5} />
+      <ProgressTracker currentStep={6} />
 
       <div className="mb-8 border-l-2 border-amber-500 pl-4 py-1">
           <div className="text-[8px] text-zinc-600 font-black uppercase tracking-widest">Active_Tree</div>

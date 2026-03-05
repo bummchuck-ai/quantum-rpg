@@ -74,6 +74,29 @@ Wenn Fahrzeuge oder Raumschiffe im Spiel eingesetzt werden:
 - Kampf folgt der Runden-Struktur: Initiative, Manöver, Aktion
 `;
 
+const SKILL_NAMES_DE: Record<string, string> = {
+  astrogation: 'Astronavigation', athletics: 'Athletik', charm: 'Charme',
+  coercion: 'Einschüchterung', computers: 'Computer', cool: 'Coolness',
+  coordination: 'Körperbeherrschung', deception: 'Täuschung', discipline: 'Disziplin',
+  leadership: 'Führungsqualität', mechanics: 'Mechanik', medicine: 'Medizin',
+  negotiation: 'Verhandlung', perception: 'Wahrnehmung', pilotingPlanetary: 'Pilot (Planetar)',
+  pilotingSpace: 'Pilot (Weltraum)', resilience: 'Widerstandskraft', skulduggery: 'Fingerfertigkeit',
+  stealth: 'Heimlichkeit', streetwise: 'Szenekenntnis', survival: 'Überleben',
+  vigilance: 'Aufmerksamkeit', brawl: 'Nahkampf (Faust)', gunnery: 'Artillerie',
+  melee: 'Nahkampf (Waffe)', rangedLight: 'Fernkampf (Leicht)', rangedHeavy: 'Fernkampf (Schwer)',
+  coreWorlds: 'Kernwelten', education: 'Allgemeinbildung', lore: 'Altes Wissen',
+  outerRim: 'Äußerer Rand', underworld: 'Unterwelt', warfare: 'Kriegskunst', xenology: 'Xenologie',
+};
+
+function buildSkillContext(character: any): string {
+  const skillRanks = character.skillRanks || {};
+  const entries = Object.entries(skillRanks).filter(([_, rank]) => (rank as number) > 0);
+  if (entries.length === 0) return 'Keine trainierten Fertigkeiten.';
+  return entries
+    .map(([key, rank]) => `- ${SKILL_NAMES_DE[key] || key}: Rang ${rank}`)
+    .join('\n');
+}
+
 // --- Build context from game state ---
 function buildCharacterContext(character: any): string {
   const mainSpec = character.specializations?.[0]?.name || 'Unknown';
@@ -88,6 +111,9 @@ Hintergrund: ${character.backgroundOption}
 Stärke: ${character.characteristics?.brawn} | Gewandtheit: ${character.characteristics?.agility}
 Intelligenz: ${character.characteristics?.intellect} | List: ${character.characteristics?.cunning}
 Willenskraft: ${character.characteristics?.willpower} | Charisma: ${character.characteristics?.presence}
+
+## Fertigkeiten (Ränge > 0)
+${buildSkillContext(character)}
 
 ## Zustand
 Credits: ${character.credits}
