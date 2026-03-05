@@ -3,22 +3,9 @@
 import React, { useState } from 'react';
 import { useCharacterStore } from '../../store/characterStore';
 import { useRouter } from 'next/navigation';
+import { ALL_SKILLS, SKILL_NAMES_DE } from '@/lib/skills';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
-
-const SKILL_NAMES: Record<string, string> = {
-  astrogation: 'Astronavigation', athletics: 'Athletik', charm: 'Charme',
-  coercion: 'Einschüchterung', computers: 'Computer', cool: 'Coolness',
-  coordination: 'Körperbeherrschung', deception: 'Täuschung', discipline: 'Disziplin',
-  leadership: 'Führungsqualität', mechanics: 'Mechanik', medicine: 'Medizin',
-  negotiation: 'Verhandlung', perception: 'Wahrnehmung', pilotingPlanetary: 'Pilot (Planetar)',
-  pilotingSpace: 'Pilot (Weltraum)', resilience: 'Widerstandskraft', skulduggery: 'Fingerfertigkeit',
-  stealth: 'Heimlichkeit', streetwise: 'Szenekenntnis', survival: 'Überleben',
-  vigilance: 'Aufmerksamkeit', brawl: 'Nahkampf (Faust)', gunnery: 'Artillerie',
-  melee: 'Nahkampf (Waffe)', rangedLight: 'Fernkampf (Leicht)', rangedHeavy: 'Fernkampf (Schwer)',
-  coreWorlds: 'Kernwelten', education: 'Allgemeinbildung', lore: 'Altes Wissen',
-  outerRim: 'Äußerer Rand', underworld: 'Unterwelt', warfare: 'Kriegskunst', xenology: 'Xenologie',
-};
 
 const CharacterSummary: React.FC = () => {
   const router = useRouter();
@@ -73,14 +60,9 @@ const CharacterSummary: React.FC = () => {
   const soak = characteristics.brawn + armor.reduce((acc, curr) => acc + (curr.soak || 0), 0);
   const defense = armor.reduce((acc, curr) => Math.max(acc, curr.defense || 0), 0);
 
-  // Build full skill list: career skills + any with ranks
   const careerSkillKeys = new Set([
     ...(career?.careerSkills || []),
     ...(mainSpec?.skills || [])
-  ]);
-  const allSkillKeys = new Set([
-    ...careerSkillKeys,
-    ...Object.keys(skillRanks || {})
   ]);
 
   const groupShip = vehicles?.[0];
@@ -186,13 +168,13 @@ const CharacterSummary: React.FC = () => {
             <section className="bg-zinc-900/10 border border-zinc-800 p-6 rounded-2xl min-h-[200px] shadow-inner">
                 {activeTab === 'skills' && (
                   <div className="grid grid-cols-1 gap-2 animate-in fade-in duration-300">
-                    {Array.from(allSkillKeys).sort().map(skill => {
-                      const rank = (skillRanks || {})[skill] || 0;
-                      const isCareer = careerSkillKeys.has(skill);
+                    {ALL_SKILLS.map(skill => {
+                      const rank = (skillRanks || {})[skill.key] || 0;
+                      const isCareer = careerSkillKeys.has(skill.key);
                       return (
-                        <div key={skill} className="flex justify-between items-center py-2.5 border-b border-zinc-900 last:border-0">
+                        <div key={skill.key} className={`flex justify-between items-center py-2.5 border-b border-zinc-900 last:border-0 ${rank === 0 ? 'opacity-40' : ''}`}>
                           <div className="flex items-center gap-2">
-                            <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-tight">{SKILL_NAMES[skill] || skill}</span>
+                            <span className={`text-[10px] font-bold uppercase tracking-tight ${rank > 0 ? 'text-zinc-300' : 'text-zinc-500'}`}>{skill.nameDE}</span>
                             {isCareer && <span className="text-[6px] text-emerald-600 font-black uppercase">K</span>}
                           </div>
                           <div className="flex gap-1">

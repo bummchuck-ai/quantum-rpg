@@ -3,49 +3,11 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCharacterStore } from '@/store/characterStore';
+import { ALL_SKILLS } from '@/lib/skills';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
 
-// Skill definitions with German names and governing characteristic
-const SKILL_DATA: { key: string; nameDE: string; characteristic: string; category: 'general' | 'combat' | 'knowledge' }[] = [
-  // General Skills
-  { key: 'astrogation', nameDE: 'Astronavigation', characteristic: 'intellect', category: 'general' },
-  { key: 'athletics', nameDE: 'Athletik', characteristic: 'brawn', category: 'general' },
-  { key: 'charm', nameDE: 'Charme', characteristic: 'presence', category: 'general' },
-  { key: 'coercion', nameDE: 'Einschüchterung', characteristic: 'willpower', category: 'general' },
-  { key: 'computers', nameDE: 'Computer', characteristic: 'intellect', category: 'general' },
-  { key: 'cool', nameDE: 'Coolness', characteristic: 'presence', category: 'general' },
-  { key: 'coordination', nameDE: 'Körperbeherrschung', characteristic: 'agility', category: 'general' },
-  { key: 'deception', nameDE: 'Täuschung', characteristic: 'cunning', category: 'general' },
-  { key: 'discipline', nameDE: 'Disziplin', characteristic: 'willpower', category: 'general' },
-  { key: 'leadership', nameDE: 'Führungsqualität', characteristic: 'presence', category: 'general' },
-  { key: 'mechanics', nameDE: 'Mechanik', characteristic: 'intellect', category: 'general' },
-  { key: 'medicine', nameDE: 'Medizin', characteristic: 'intellect', category: 'general' },
-  { key: 'negotiation', nameDE: 'Verhandlung', characteristic: 'presence', category: 'general' },
-  { key: 'perception', nameDE: 'Wahrnehmung', characteristic: 'cunning', category: 'general' },
-  { key: 'pilotingPlanetary', nameDE: 'Pilot (Planetar)', characteristic: 'agility', category: 'general' },
-  { key: 'pilotingSpace', nameDE: 'Pilot (Weltraum)', characteristic: 'agility', category: 'general' },
-  { key: 'resilience', nameDE: 'Widerstandskraft', characteristic: 'brawn', category: 'general' },
-  { key: 'skulduggery', nameDE: 'Fingerfertigkeit', characteristic: 'cunning', category: 'general' },
-  { key: 'stealth', nameDE: 'Heimlichkeit', characteristic: 'agility', category: 'general' },
-  { key: 'streetwise', nameDE: 'Szenekenntnis', characteristic: 'cunning', category: 'general' },
-  { key: 'survival', nameDE: 'Überleben', characteristic: 'cunning', category: 'general' },
-  { key: 'vigilance', nameDE: 'Aufmerksamkeit', characteristic: 'willpower', category: 'general' },
-  // Combat Skills
-  { key: 'brawl', nameDE: 'Nahkampf (Faust)', characteristic: 'brawn', category: 'combat' },
-  { key: 'gunnery', nameDE: 'Artillerie', characteristic: 'agility', category: 'combat' },
-  { key: 'melee', nameDE: 'Nahkampf (Waffe)', characteristic: 'brawn', category: 'combat' },
-  { key: 'rangedLight', nameDE: 'Fernkampf (Leicht)', characteristic: 'agility', category: 'combat' },
-  { key: 'rangedHeavy', nameDE: 'Fernkampf (Schwer)', characteristic: 'agility', category: 'combat' },
-  // Knowledge Skills
-  { key: 'coreWorlds', nameDE: 'Kernwelten', characteristic: 'intellect', category: 'knowledge' },
-  { key: 'education', nameDE: 'Allgemeinbildung', characteristic: 'intellect', category: 'knowledge' },
-  { key: 'lore', nameDE: 'Altes Wissen', characteristic: 'intellect', category: 'knowledge' },
-  { key: 'outerRim', nameDE: 'Äußerer Rand', characteristic: 'intellect', category: 'knowledge' },
-  { key: 'underworld', nameDE: 'Unterwelt', characteristic: 'intellect', category: 'knowledge' },
-  { key: 'warfare', nameDE: 'Kriegskunst', characteristic: 'intellect', category: 'knowledge' },
-  { key: 'xenology', nameDE: 'Xenologie', characteristic: 'intellect', category: 'knowledge' },
-];
+const SKILL_DATA = ALL_SKILLS;
 
 const CHAR_LABELS: Record<string, string> = {
   brawn: 'STR', agility: 'GEW', intellect: 'INT',

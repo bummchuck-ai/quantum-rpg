@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { createFullSkillRanks } from '@/lib/skills';
 
 export interface Characteristics {
   brawn: number;
@@ -132,7 +133,7 @@ const createNewPlayer = (id: string): Player => ({
   backgroundValue: 0,
   backgroundBonus: 'none',
   characteristics: { brawn: 2, agility: 2, intellect: 2, cunning: 2, willpower: 2, presence: 2 },
-  skillRanks: {},
+  skillRanks: createFullSkillRanks(),
   availableXP: 0,
   spentXP: 0,
   credits: 500,
@@ -173,7 +174,7 @@ export const useCharacterStore = create<GameState>()(
         species,
         characteristics: { ...species.characteristics },
         availableXP: species.startingXP,
-        skillRanks: species.freeSkillRanks ? { ...species.freeSkillRanks } : {},
+        skillRanks: createFullSkillRanks(species.freeSkillRanks),
         wounds: 0,
         strain: 0
       }),
@@ -265,7 +266,6 @@ export const useCharacterStore = create<GameState>()(
         const refund = isCareerSkill ? 5 : 10;
 
         const newSkillRanks = { ...player.skillRanks, [skill]: currentRank - 1 };
-        if (newSkillRanks[skill] === 0) delete newSkillRanks[skill];
 
         const newPlayers = [...state.players];
         newPlayers[state.activePlayerIndex] = {

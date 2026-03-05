@@ -6,6 +6,7 @@
 // ============================================================
 
 import type { Character, GameState, SessionEvent } from '@/types/character';
+import { ALL_SKILLS, SKILL_NAMES_DE as SHARED_SKILL_NAMES } from '@/lib/skills';
 
 // --- The Core GM Persona ---
 const GM_PERSONA = `Du bist der Game Master eines immersiven Star Wars Pen & Paper Rollenspiels.
@@ -90,10 +91,11 @@ const SKILL_NAMES_DE: Record<string, string> = {
 
 function buildSkillContext(character: any): string {
   const skillRanks = character.skillRanks || {};
-  const entries = Object.entries(skillRanks).filter(([_, rank]) => (rank as number) > 0);
-  if (entries.length === 0) return 'Keine trainierten Fertigkeiten.';
-  return entries
-    .map(([key, rank]) => `- ${SKILL_NAMES_DE[key] || key}: Rang ${rank}`)
+  return ALL_SKILLS
+    .map(skill => {
+      const rank = skillRanks[skill.key] || 0;
+      return `- ${skill.nameDE}: Rang ${rank}`;
+    })
     .join('\n');
 }
 
@@ -112,7 +114,7 @@ Stärke: ${character.characteristics?.brawn} | Gewandtheit: ${character.characte
 Intelligenz: ${character.characteristics?.intellect} | List: ${character.characteristics?.cunning}
 Willenskraft: ${character.characteristics?.willpower} | Charisma: ${character.characteristics?.presence}
 
-## Fertigkeiten (Ränge > 0)
+## Fertigkeiten
 ${buildSkillContext(character)}
 
 ## Zustand

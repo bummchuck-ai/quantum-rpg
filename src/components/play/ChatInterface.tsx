@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import HolocronGuide from '../create/HolocronGuide';
 import DiceRollerModal from './DiceRollerModal';
 import { DicePool, formatRollResult, RollResult, buildSkillPool } from '@/lib/engine/dice';
+import { ALL_SKILLS, SKILL_NAMES_DE, SKILL_CHARACTERISTICS } from '@/lib/skills';
 
 // Map skill names (DE/EN, various forms) to store keys and characteristics
 const SKILL_MAP: Record<string, { key: string; char: string }> = {
@@ -337,13 +338,12 @@ const ChatInterface: React.FC = () => {
             <section>
               <div className="text-[8px] text-zinc-600 font-black uppercase mb-4 tracking-[0.2em]">Fertigkeiten</div>
               <div className="space-y-1">
-                {Object.entries(activePlayer.skillRanks || {}).filter(([_, r]) => (r as number) > 0).sort(([a], [b]) => a.localeCompare(b)).map(([skill, rank]) => {
-                  const resolved = resolveSkill(skill);
-                  const charVal = (characteristics as any)[resolved.char] || 2;
-                  const skillRank = rank as number;
+                {ALL_SKILLS.map(skill => {
+                  const skillRank = (activePlayer.skillRanks || {})[skill.key] || 0;
+                  const charVal = (characteristics as any)[skill.characteristic] || 2;
                   return (
-                    <div key={skill} className="flex justify-between items-center py-1.5 border-b border-zinc-900 last:border-0">
-                      <span className="text-[9px] font-bold text-zinc-400 uppercase tracking-tight">{SKILL_MAP[skill]? skill : skill}</span>
+                    <div key={skill.key} className={`flex justify-between items-center py-1.5 border-b border-zinc-900 last:border-0 ${skillRank === 0 ? 'opacity-40' : ''}`}>
+                      <span className={`text-[9px] font-bold uppercase tracking-tight ${skillRank > 0 ? 'text-zinc-300' : 'text-zinc-500'}`}>{skill.nameDE}</span>
                       <div className="flex items-center gap-2">
                         <div className="flex gap-0.5">
                           {[1,2,3,4,5].map(p => (
@@ -355,9 +355,6 @@ const ChatInterface: React.FC = () => {
                     </div>
                   );
                 })}
-                {(!activePlayer.skillRanks || Object.keys(activePlayer.skillRanks).length === 0) && (
-                  <div className="text-[10px] text-zinc-800 italic uppercase">Keine trainierten Skills...</div>
-                )}
               </div>
             </section>
             <section>
