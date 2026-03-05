@@ -1,64 +1,72 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import Anthropic from '@anthropic-ai/sdk';
 import { buildSystemPrompt, RESPONSE_FORMAT } from '../../../lib/gm/system-prompt';
 import { NextResponse } from 'next/server';
 
-// Initialisiere Gemini (API Key muss in .env.local stehen: GOOGLE_API_KEY)
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY || '');
+const anthropic = new Anthropic({
+  apiKey: process.env.ANTHROPIC_API_KEY || '',
+});
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    // 1. Check if it's a raw message request (e.g. from Story Generator)
+    // 1. Raw message request (e.g. from Story Generator)
     if (body.messages) {
       const systemMsg = body.messages.find((m: any) => m.role === 'system');
       const userMsg = body.messages.find((m: any) => m.role === 'user');
 
-      const model = genAI.getGenerativeModel({ 
-          model: 'gemini-3-flash-preview',
-          systemInstruction: systemMsg?.content || '',
-          generationConfig: { responseMimeType: "application/json" }
+      const response = await anthropic.messages.create({
+        model: 'claude-opus-4-5',
+        max_tokens: 1024,
+        system: systemMsg?.content || '',
+        messages: [{ role: 'user', content: userMsg?.content || '' }],
       });
 
-      const result = await model.generateContent(userMsg?.content || '');
-      const response = await result.response;
-      return NextResponse.json(JSON.parse(response.text()));
+      const text = response.content[0].type === 'text' ? response.content[0].text : '';
+      // Strip markdown code fences if present
+      const clean = text.replace(/^```json\n?/, '').replace(/\n?```$/, '').trim();
+      return NextResponse.json(JSON.parse(clean));
     }
 
-    const { gameState, userMessage } = body;
+    const { gameState, userMessage, history } = body;
 
     // 2. Regular Game State request
     if (!gameState || !gameState.character) {
-        throw new Error("Invalid GameState provided to GM.");
+      throw new Error('Invalid GameState provided to GM.');
     }
 
-    // 1. System Prompt bauen
-    const systemInstruction = buildSystemPrompt(gameState) + "\n\n" + RESPONSE_FORMAT;
+    // Build system prompt
+    const systemInstruction = buildSystemPrompt(gameState) + '\n\n' + RESPONSE_FORMAT;
 
-    // 2. Modell wählen (gemini-3-flash-preview ist extrem schnell und stabil)
-    const model = genAI.getGenerativeModel({ 
-        model: 'gemini-3-flash-preview',
-        systemInstruction: systemInstruction,
-        generationConfig: {
-            responseMimeType: "application/json",
-            temperature: 0.7
+    // Build conversation history for multi-turn
+    const messages: { role: 'user' | 'assistant'; content: string }[] = [];
+    if (history && Array.isArray(history)) {
+      for (const msg of history) {
+        if (msg.role === 'user' || msg.role === 'assistant') {
+          messages.push({ role: msg.role, content: msg.content });
         }
+      }
+    }
+    messages.push({ role: 'user', content: userMessage });
+
+    const response = await anthropic.messages.create({
+      model: 'claude-opus-4-5',
+      max_tokens: 2048,
+      system: systemInstruction,
+      messages,
     });
 
-    // 3. GM Antwort generieren
-    const result = await model.generateContent(userMessage);
-    const response = await result.response;
-    const text = response.text();
+    const text = response.content[0].type === 'text' ? response.content[0].text : '';
+    const clean = text.replace(/^```json\n?/, '').replace(/\n?```$/, '').trim();
 
-    // 4. Antwort zurückgeben
-    return NextResponse.json(JSON.parse(text));
+    return NextResponse.json(JSON.parse(clean));
 
   } catch (error: any) {
     console.error('GM Error:', error);
     return NextResponse.json(
-      { 
+      {
         error: 'DER GAME MASTER IST AKTUELL NICHT ERREICHBAR.',
-        details: error.message 
+        details: error.message,
       },
       { status: 500 }
     );
