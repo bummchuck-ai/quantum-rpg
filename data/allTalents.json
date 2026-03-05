@@ -1,0 +1,42 @@
+[
+  {
+    "id": "galaxy-knowledge",
+    "name": "Galaktisches Wissen",
+    "tier": 1,
+    "activation": "passive",
+    "ranked": false,
+    "currentRank": 0,
+    "description": "Du hast ein breites Wissen über die Galaxis und ihre Kulturen.",
+    "xpCost": 10
+  },
+  {
+    "id": "quick-draw",
+    "name": "Schnellziehen",
+    "tier": 1,
+    "activation": "active_incidental",
+    "ranked": false,
+    "currentRank": 0,
+    "description": "Du kannst eine Waffe als Inzident ziehen und sofort angreifen.",
+    "xpCost": 15
+  },
+  {
+    "id": "fringe-benefits",
+    "name": "Randvorteile",
+    "tier": 2,
+    "activation": "passive",
+    "ranked": true,
+    "currentRank": 0,
+    "description": "Du erhältst einen Bonus auf Verhandlungen im Outer Rim.",
+    "xpCost": 20
+  },
+  {
+    "id": "improved-fringe-benefits",
+    "name": "Verbesserte Randvorteile",
+    "tier": 3,
+    "activation": "passive",
+    "ranked": true,
+    "currentRank": 0,
+    "description": "Ein weiterer Bonus auf Verhandlungen im Outer Rim.",
+    "xpCost": 30
+  }
+]

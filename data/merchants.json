@@ -1,0 +1,33 @@
+[
+  {
+    "id": "starter-merchant",
+    "name": "Greedo's Gadgets",
+    "inventory": [
+      {
+        "id": "blaster-pistol",
+        "name": "Blaster-Pistole (Standard)",
+        "description": "Eine zuverlässige, aber einfache Blaster-Pistole.",
+        "type": "weapon",
+        "price": 250,
+        "sellPrice": 125,
+        "properties": [{ "name": "Schaden", "value": "Light" }]
+      },
+      {
+        "id": "utility-belt",
+        "name": "Standard-Gürtel",
+        "description": "Ein einfacher Gürtel für kleine Gegenstände.",
+        "type": "misc",
+        "price": 50,
+        "sellPrice": 25
+      },
+      {
+        "id": "medpack",
+        "name": "Medpack",
+        "description": "Stellt eine kleine Menge Wunden wieder her.",
+        "type": "consumable",
+        "price": 75,
+        "sellPrice": 30
+      }
+    ]
+  }
+]

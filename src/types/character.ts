@@ -244,6 +244,34 @@ export interface DerivedStats {
     currentStrain: number;
 }
 
+// --- Quest System ---
+export interface QuestReward {
+    type: 'xp' | 'credits' | 'item';
+    value: number; // For xp/credits
+    itemId?: string; // For item
+    itemQuantity?: number; // For item
+}
+
+export interface QuestObjective {
+    id: string;
+    description: string;
+    completed: boolean;
+    currentProgress?: number; // E.g., for "Defeat X enemies"
+    targetProgress?: number;  // E.g., for "Defeat X enemies"
+}
+
+export interface QuestEntry {
+    id: string;
+    title: string;
+    description: string;
+    status: 'active' | 'completed' | 'failed';
+    objectives: QuestObjective[];
+    rewards: QuestReward[];
+    giver?: string; // Optional: NPC name who gave the quest
+    location?: string; // Optional: Where the quest was given or needs to be completed
+}
+
+
 // --- The Complete Character ---
 export interface Character {
     id: string;
@@ -295,20 +323,12 @@ export interface GameState {
     currentPlanet: string;
     questLog: QuestEntry[];
     npcRelationships: NPCRelationship[];
-    inventory: EquipmentItem[];
+    inventory: EquipmentItem[]; // This is already here, no need for the one in Character
     sessionHistory: SessionEvent[];
     destinyPool: {
       lightSide: number;
       darkSide: number;
     };
-}
-
-export interface QuestEntry {
-    id: string;
-    title: string;
-    description: string;
-    status: 'active' | 'completed' | 'failed';
-    objectives: string[];
 }
 
 export interface NPCRelationship {
