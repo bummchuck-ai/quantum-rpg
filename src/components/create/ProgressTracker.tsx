@@ -10,9 +10,10 @@ const STEPS = [
   { id: 1, label: 'Origin', icon: '🧬' },
   { id: 2, label: 'Path', icon: '🛤️' },
   { id: 3, label: 'Destiny', icon: '🎲' },
-  { id: 4, label: 'Training', icon: '⚡' },
-  { id: 5, label: 'Loadout', icon: '⚔️' },
-  { id: 6, label: 'Final', icon: '✅' },
+  { id: 4, label: 'Attributes', icon: '💪' },
+  { id: 5, label: 'Training', icon: '⚡' },
+  { id: 6, label: 'Loadout', icon: '⚔️' },
+  { id: 7, label: 'Final', icon: '✅' },
 ];
 
 const ProgressTracker: React.FC<ProgressTrackerProps> = ({ currentStep }) => {

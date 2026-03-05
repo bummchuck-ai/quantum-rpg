@@ -30,7 +30,7 @@ const TalentSelector: React.FC = () => {
   const { specializations, availableXP, ownedTalents } = activePlayer;
   
   const [currentTree, setCurrentTree] = useState<TalentTree | null>(null);
-  const [selectedTalent, setSelectedTalent] = useState<string | null>(null);
+  const [selectedTalentKey, setSelectedTalentKey] = useState<string | null>(null);
 
   useEffect(() => {
     if (specializations.length > 0) {
@@ -47,8 +47,23 @@ const TalentSelector: React.FC = () => {
     router.push('/create/armory');
   };
 
+  const canPurchase = (t: Talent): boolean => {
+    if (t.row === 1) return true;
+    if (!currentTree) return false;
+    // Check if any talent in the row above that connects down to this talent is owned
+    const aboveRow = currentTree.talents.filter(above =>
+      above.row === t.row - 1 && above.col === t.col && above.connections?.includes('bottom')
+    );
+    // Also check if this talent has a 'top' connection and the talent above is owned
+    if (t.connections?.includes('top')) {
+      const directAbove = currentTree.talents.find(above => above.row === t.row - 1 && above.col === t.col);
+      if (directAbove && ownedTalents.includes(directAbove.name)) return true;
+    }
+    return aboveRow.some(above => ownedTalents.includes(above.name));
+  };
+
   const handleBuy = (t: Talent) => {
-    buyTalent(t.name, t.row * 5);
+    buyTalent(t.name, t.row * 5, t.isRanked);
   };
 
   if (!currentTree) {
@@ -64,7 +79,7 @@ const TalentSelector: React.FC = () => {
       
       <header className="flex justify-between items-center border-b border-zinc-800 pb-4 mb-6 sticky top-0 bg-black z-30">
         <div className="flex gap-4 items-center">
-            <div className="w-8 h-8 border border-amber-500 flex items-center justify-center text-amber-500 font-black italic">4</div>
+            <div className="w-8 h-8 border border-amber-500 flex items-center justify-center text-amber-500 font-black italic">5</div>
             <div>
                 <h1 className="text-xl font-black text-white italic tracking-tighter uppercase">TRAINING_CENTER</h1>
             </div>
@@ -75,7 +90,7 @@ const TalentSelector: React.FC = () => {
         </div>
       </header>
 
-      <ProgressTracker currentStep={4} />
+      <ProgressTracker currentStep={5} />
 
       <div className="mb-8 border-l-2 border-amber-500 pl-4 py-1">
           <div className="text-[8px] text-zinc-600 font-black uppercase tracking-widest">Active_Tree</div>
@@ -90,10 +105,12 @@ const TalentSelector: React.FC = () => {
                     const talent = currentTree.talents.find(t => t.row === rowIndex && t.col === colIndex);
                     if (!talent) return <div key={colIndex} className="invisible"></div>;
 
+                    const talentKey = `${rowIndex}-${colIndex}`;
                     const isOwned = ownedTalents.includes(talent.name);
-                    const isSelected = selectedTalent === talent.name;
+                    const isSelected = selectedTalentKey === talentKey;
                     const cost = talent.row * 5;
                     const hasTopConnection = talent.connections?.includes('top');
+                    const isUnlocked = canPurchase(talent);
 
                     return (
                         <div key={`${rowIndex}-${colIndex}`} className="relative flex flex-col items-center">
@@ -103,7 +120,7 @@ const TalentSelector: React.FC = () => {
                             )}
                             
                             <div 
-                                onClick={() => setSelectedTalent(isSelected ? null : talent.name)}
+                                onClick={() => setSelectedTalentKey(isSelected ? null : talentKey)}
                                 className={`relative z-10 w-full h-full min-h-[120px] p-3 border rounded-xl flex flex-col justify-between cursor-pointer transition-all duration-200 ${
                                     isSelected 
                                     ? 'border-white bg-zinc-800 shadow-[0_0_15px_rgba(255,255,255,0.1)] scale-105' 
@@ -135,17 +152,21 @@ const TalentSelector: React.FC = () => {
                                 {/* Buy Button Overlay */}
                                 {isSelected && !isOwned && (
                                     <div className="absolute inset-0 bg-black/90 flex items-center justify-center rounded-xl animate-in fade-in duration-200">
-                                        <button 
+                                        {isUnlocked ? (
+                                        <button
                                             onClick={(e) => { e.stopPropagation(); handleBuy(talent); }}
                                             disabled={availableXP < cost}
                                             className={`px-4 py-2 rounded-lg font-black uppercase text-[10px] tracking-widest ${
-                                                availableXP >= cost 
-                                                ? 'bg-amber-500 text-black hover:bg-amber-400' 
+                                                availableXP >= cost
+                                                ? 'bg-amber-500 text-black hover:bg-amber-400'
                                                 : 'bg-zinc-800 text-zinc-600 cursor-not-allowed'
                                             }`}
                                         >
                                             Buy ({cost})
                                         </button>
+                                        ) : (
+                                        <span className="text-[9px] text-red-400 font-black uppercase tracking-widest">LOCKED</span>
+                                        )}
                                     </div>
                                 )}
                             </div>

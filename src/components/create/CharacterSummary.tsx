@@ -100,7 +100,7 @@ const CharacterSummary: React.FC = () => {
         <div className="text-right text-[10px] text-amber-500 font-bold tracking-widest">FINAL_DEPLOYMENT</div>
       </header>
 
-      <ProgressTracker currentStep={6} />
+      <ProgressTracker currentStep={7} />
 
       <div className="flex-1 space-y-6 pb-32">
         <section className="bg-zinc-950 border border-zinc-800 p-4 rounded-2xl">

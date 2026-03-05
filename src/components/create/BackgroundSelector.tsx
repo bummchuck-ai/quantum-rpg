@@ -49,7 +49,7 @@ const BackgroundSelector: React.FC = () => {
   };
 
   const handleConfirm = () => {
-    router.push('/create/talents');
+    router.push('/create/attributes');
   };
 
   return (

@@ -8,8 +8,7 @@
       "Pilot (Planetar)",
       "Pilot (Weltraum)",
       "Wahrnehmung",
-      "Artillerie",
-      ""
+      "Artillerie"
     ],
     "forceRating": 0,
     "specializations": [
@@ -77,8 +76,7 @@
       "Täuschung",
       "Verhandlung",
       "Allgemeinbildung",
-      "Äußerer  Rand",
-      ""
+      "Äußerer Rand"
     ],
     "forceRating": 0,
     "specializations": [
@@ -143,11 +141,10 @@
     "careerSkills": [
       "Astronavigation",
       "Coolness",
-      "Pilot  (Weltraum)",
+      "Pilot (Weltraum)",
       "Überleben",
       "Wahrnehmung",
-      "Altes  Wissen",
-      ""
+      "Altes Wissen"
     ],
     "forceRating": 0,
     "specializations": [
@@ -269,15 +266,13 @@
   {
     "name": "Hüter",
     "careerSkills": [
-      "Machtwert    1",
       "Coolness",
       "Disziplin",
       "Wachsamkeit",
       "Widerstandskraft",
-      "Handgemenge",
-      ""
+      "Handgemenge"
     ],
-    "forceRating": 0,
+    "forceRating": 1,
     "specializations": [
       {
         "name": "Aufseher",
@@ -341,10 +336,9 @@
       "Athletik",
       "Computertechnik",
       "Mechanik",
-      "Pilot   (Weltraum)",
+      "Pilot (Weltraum)",
       "Wachsamkeit",
-      "Wahrnehmung",
-      ""
+      "Wahrnehmung"
     ],
     "forceRating": 0,
     "specializations": [
@@ -421,8 +415,7 @@
         "skills": [
           "Pilot (Planetar)",
           "Wachsamkeit",
-          "Führungsqualität",
-          "Kriegsführung (erfordert Machtwert 2)"
+          "Führungsqualität"
         ]
       },
       {
@@ -430,8 +423,7 @@
         "skills": [
           "Wahrnehmung",
           "Charme",
-          "Kernwelten",
-          "Allgemeinbildung (erfordert Machtwert 3)"
+          "Kernwelten"
         ]
       },
       {
@@ -448,8 +440,7 @@
         "skills": [
           "Coolness",
           "Führungsqualität",
-          "Verhandeln",
-          "Lichtschwerter (erfordert Machtwert 2)"
+          "Verhandeln"
         ]
       }
     ]
@@ -531,8 +522,7 @@
       "Straßenwissen",
       "Täuschung",
       "Verhandeln",
-      "Altes   Wissen",
-      ""
+      "Altes Wissen"
     ],
     "forceRating": 0,
     "specializations": [
@@ -599,8 +589,7 @@
       "Einschüchterung",
       "Führungsqualität",
       "Wachsamkeit",
-      "Wahrnehmung",
-      ""
+      "Wahrnehmung"
     ],
     "forceRating": 0,
     "specializations": [
@@ -664,11 +653,10 @@
     "name": "Kopfgeldjäger",
     "careerSkills": [
       "Athletik",
-      "Pilot    (Planetar)",
-      "Pilot    (Weltraum)",
+      "Pilot (Planetar)",
+      "Pilot (Weltraum)",
       "Straßenwissen",
-      "Wachsamkeit",
-      ""
+      "Wachsamkeit"
     ],
     "forceRating": 0,
     "specializations": [
@@ -799,15 +787,13 @@
   {
     "name": "Mystiker",
     "careerSkills": [
-      "Machtwert   1",
       "Charme",
       "Einschüchterung",
       "Wachsamkeit",
       "Wahrnehmung",
-      "Altes   Wissen",
-      ""
+      "Altes Wissen"
     ],
-    "forceRating": 0,
+    "forceRating": 1,
     "specializations": [
       {
         "name": "Alchemist",
@@ -870,10 +856,9 @@
     "careerSkills": [
       "Infiltration",
       "Körperbeherrschung",
-      "Pilot    (Weltraum)",
+      "Pilot (Weltraum)",
       "Straßenwissen",
-      "Täuschung",
-      ""
+      "Täuschung"
     ],
     "forceRating": 0,
     "specializations": [
@@ -938,11 +923,10 @@
     "careerSkills": [
       "Athletik",
       "Disziplin",
-      "Pilot    (Planetar)",
+      "Pilot (Planetar)",
       "Wachsamkeit",
       "Widerstandskraft",
-      "Handgemenge",
-      ""
+      "Handgemenge"
     ],
     "forceRating": 0,
     "specializations": [
@@ -1009,7 +993,7 @@
       "Medizin",
       "Überleben",
       "Handgemenge",
-      "leichte     Fernkampfwaffen",
+      "leichte Fernkampfwaffen",
       "schwere"
     ],
     "forceRating": 0,
@@ -1078,8 +1062,7 @@
       "Heimlichkeit",
       "Infiltration",
       "Körperbeherrschung",
-      "Täuschung",
-      ""
+      "Täuschung"
     ],
     "forceRating": 0,
     "specializations": [
@@ -1105,7 +1088,6 @@
         "name": "Kundschafter",
         "skills": [
           "Athletik Medizin",
-          "",
           "Pilot (Planetar)",
           "Überleben"
         ]
@@ -1142,14 +1124,13 @@
   {
     "name": "Sucher",
     "careerSkills": [
-      "Machtwert   1",
-      "Pilot   (Planetar)",
-      "Pilot   (Weltraum)",
+      "Pilot (Planetar)",
+      "Pilot (Weltraum)",
       "Überleben",
       "Wachsamkeit",
       "schwere"
     ],
-    "forceRating": 0,
+    "forceRating": 1,
     "specializations": [
       {
         "name": "Ataru-Kämpfer",
@@ -1278,15 +1259,13 @@
   {
     "name": "Wächter",
     "careerSkills": [
-      "Machtwert   1",
       "Computertechnik",
       "Heimlichkeit",
       "Infiltration",
       "Täuschung",
-      "Wahrnehmung",
-      ""
+      "Wahrnehmung"
     ],
-    "forceRating": 0,
+    "forceRating": 1,
     "specializations": [
       {
         "name": "Ermittler",
@@ -1353,9 +1332,7 @@
       },
       {
         "name": "Erwachender Machtsensitiver",
-        "skills": [
-          "Machtwert 1"
-        ]
+        "skills": []
       },
       {
         "name": "Kadett der imperialen Armee",
@@ -1396,9 +1373,7 @@
       },
       {
         "name": "Machtsensitiver im Exil",
-        "skills": [
-          "Machtwert 1"
-        ]
+        "skills": []
       },
       {
         "name": "Marineoffizier der Republik",
@@ -1474,9 +1449,7 @@
       },
       {
         "name": "Überlebender Padawan",
-        "skills": [
-          "Machtwert 1"
-        ]
+        "skills": []
       }
     ]
   }

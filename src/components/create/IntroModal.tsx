@@ -5,27 +5,27 @@ import React, { useState } from 'react';
 const INTRO_SLIDES = [
   {
     id: 1,
-    title: "INITIERE_PROTOKOLL: QUANTUM",
-    text: "Willkommen in einer Galaxis, die von künstlicher Intelligenz geformt wird. Quantum RPG ist nicht nur ein Spiel – es ist ein lebendiges Universum, in dem jeder deiner Schritte Konsequenzen hat.",
-    accent: "CORE_BOOT"
+    title: "DAS_QUANTUM_UNIVERSUM",
+    text: "181 ABY. Django Fett regiert als Mandalore. Darth Plagueis II. erobert Sektor um Sektor. Die Kaiserin ist tot, Bastion gefallen. Auf Tatooine, Dathomir und Dutzenden anderen Welten schreiben Renegaten, Jedi und Kopfgeldjäger Geschichte. Jetzt schreibst du deine.",
+    accent: "TIMELINE_SYNC"
   },
   {
     id: 2,
-    title: "DER_GAME_MASTER",
-    text: "Hinter dem Schleier agiert ein hochentwickelter KI-Game-Master. Er reagiert auf deine Aktionen, führt Dialoge und leitet dich durch epische Kampagnen. Sei bereit, deine Rolle zu spielen.",
-    accent: "AI_OVERRIDE"
+    title: "DEIN_GAME_MASTER",
+    text: "Eine KI lenkt das Schicksal. Sie kennt die Lore von 8 Jahren Kampagnen, hunderten Schlachten und legendären Helden. Sie reagiert auf jede deiner Entscheidungen. Kein Durchgang ist wie der andere.",
+    accent: "AI_CORTEX"
   },
   {
     id: 3,
-    title: "CHARAKTER_MANIFEST",
-    text: "In den nächsten Schritten erschaffst du deine Identität. Wähle deine Spezies, deine Karriere und dein Schicksal. Deine Werte bestimmen dein Überleben in den gefährlichen Sektoren des Outer Rim.",
-    accent: "IDENTITY_SCAN"
+    title: "ERSCHAFFE_DICH",
+    text: "92 Spezies. 20 Karrieren. Hunderte Talente. Wähle, wer du sein willst — vom Wookiee-Marodeur bis zum Twi'lek-Diplomaten. Deine Werte entscheiden über Leben und Tod im Outer Rim.",
+    accent: "IDENTITY_FORGE"
   },
   {
     id: 4,
-    title: "BEREIT_ZUR_MISSION?",
-    text: "Wenn du bereit bist, öffne das Holocron und starte die Erstellung. Möge die Macht mit dir sein – oder zumindest ein geladener Blaster.",
-    accent: "DEPLOYMENT_READY"
+    title: "BEREIT?",
+    text: "Die Crew wartet. Bis zu 4 Spieler erstellen ihre Charaktere und starten ins Abenteuer. Kämpfe für das Triumvirat, schließ dich den Sons of Corruption an — oder finde deinen eigenen Weg. Vode An.",
+    accent: "LAUNCH_SEQUENCE"
   }
 ];
 

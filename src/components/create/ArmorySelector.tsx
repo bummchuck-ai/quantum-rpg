@@ -13,7 +13,7 @@ const ArmorySelector: React.FC = () => {
   const activePlayer = players[activePlayerIndex];
   const { credits, ownedGear } = activePlayer;
   
-  const [category, setCategory] = useState<'weapons' | 'armor'>('weapons');
+  const [category, setCategory] = useState<'weapons' | 'armor' | 'equipment'>('weapons');
   const [subCategory, setSubCategory] = useState<string | null>(null);
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -38,7 +38,7 @@ const ArmorySelector: React.FC = () => {
       {/* HUD Header */}
       <header className="flex justify-between items-center border-b border-zinc-800 pb-4 mb-6 sticky top-0 bg-black z-30">
         <div className="flex gap-4 items-center">
-            <div className="w-8 h-8 border border-amber-500 flex items-center justify-center text-amber-500 font-black italic">5</div>
+            <div className="w-8 h-8 border border-amber-500 flex items-center justify-center text-amber-500 font-black italic">6</div>
             <div>
                 <h1 className="text-xl font-black text-white italic tracking-tighter uppercase leading-none">ARMORY_GRID</h1>
             </div>
@@ -49,21 +49,27 @@ const ArmorySelector: React.FC = () => {
         </div>
       </header>
 
-      <ProgressTracker currentStep={5} />
+      <ProgressTracker currentStep={6} />
 
       {/* CATEGORY TABS */}
-      <div className="grid grid-cols-2 gap-2 mb-4 sticky top-[65px] bg-black z-20 pb-2">
-          <button 
+      <div className="grid grid-cols-3 gap-2 mb-4 sticky top-[65px] bg-black z-20 pb-2">
+          <button
             onClick={() => { setCategory('weapons'); setSubCategory(null); setSelectedItem(null); }}
             className={`py-3 text-[9px] border-2 font-black uppercase tracking-widest transition-all rounded-xl ${category === 'weapons' ? 'border-amber-500 bg-amber-500/20 text-white shadow-[0_0_15px_rgba(245,158,11,0.3)]' : 'border-zinc-900 bg-zinc-950 text-zinc-600'}`}
           >
             Weapons
           </button>
-          <button 
+          <button
             onClick={() => { setCategory('armor'); setSubCategory(null); setSelectedItem(null); }}
             className={`py-3 text-[9px] border-2 font-black uppercase tracking-widest transition-all rounded-xl ${category === 'armor' ? 'border-amber-500 bg-amber-500/20 text-white shadow-[0_0_15px_rgba(245,158,11,0.3)]' : 'border-zinc-900 bg-zinc-950 text-zinc-600'}`}
           >
             Armor
+          </button>
+          <button
+            onClick={() => { setCategory('equipment'); setSubCategory(null); setSelectedItem(null); }}
+            className={`py-3 text-[9px] border-2 font-black uppercase tracking-widest transition-all rounded-xl ${category === 'equipment' ? 'border-amber-500 bg-amber-500/20 text-white shadow-[0_0_15px_rgba(245,158,11,0.3)]' : 'border-zinc-900 bg-zinc-950 text-zinc-600'}`}
+          >
+            Gear
           </button>
       </div>
 
@@ -115,7 +121,7 @@ const ArmorySelector: React.FC = () => {
                                 {purchased && <span className="text-[7px] bg-emerald-500 text-black px-1.5 py-0.5 rounded font-black uppercase">OWNED</span>}
                             </div>
                             <div className="text-[9px] text-zinc-400 font-bold uppercase tracking-wider">
-                                {category === 'weapons' ? `DMG: ${item.damage} / CRIT: ${item.critical}` : `DEF: ${item.defense} / SOAK: ${item.soak}`}
+                                {category === 'weapons' ? `DMG: ${item.damage} / CRIT: ${item.critical}` : category === 'armor' ? `DEF: ${item.defense} / SOAK: ${item.soak}` : `ENC: ${item.encumbrance}`}
                             </div>
                         </div>
                         <div className="text-sm font-black text-amber-500 italic leading-none whitespace-nowrap">{item.price}</div>
@@ -124,6 +130,7 @@ const ArmorySelector: React.FC = () => {
                     {/* EXPANDED PANEL */}
                     {isSelected && (
                         <div className="mt-4 pt-4 border-t border-zinc-800 animate-in fade-in slide-in-from-top-2 duration-300 space-y-4">
+                            {category !== 'equipment' && (
                             <div className="grid grid-cols-3 gap-2">
                                 <div className="p-2 border border-zinc-800 rounded-lg bg-black/60 text-center">
                                     <div className="text-[7px] text-zinc-500 uppercase font-black tracking-widest mb-0.5">Enc</div>
@@ -138,10 +145,11 @@ const ArmorySelector: React.FC = () => {
                                     <div className="text-xs font-black text-white">{item.rarity}</div>
                                 </div>
                             </div>
+                            )}
 
                             <div className="bg-zinc-950 border border-zinc-800 p-3 rounded-xl shadow-inner">
                                 <p className="text-sm text-zinc-300 leading-snug font-sans">
-                                    {category === 'weapons' ? item.special : item.note || 'No further data found.'}
+                                    {category === 'equipment' ? item.description : category === 'weapons' ? item.special : item.note || 'No further data found.'}
                                 </p>
                             </div>
 
@@ -175,8 +183,8 @@ const ArmorySelector: React.FC = () => {
 
       <HolocronGuide 
         title="AUSRÜSTUNG" 
-        description="Hier kaufst du Waffen und Rüstungen. 'Encumbrance' ist das Gewicht – trage nicht zu viel! 'Hard Points' sind Plätze für Upgrades. 'Rarity' sagt dir, wie schwer das Item später im Spiel zu finden ist."
-        advice="Spare nicht an der Rüstung! Ein guter Soak-Wert (Schadensabsorption) rettet dir in der ersten Runde den Hintern. Waffen mit hohem Crit-Wert sind gut, um Gegner schnell auszuschalten."
+        description="Hier kaufst du Waffen, Rüstungen und Ausrüstung. 'Encumbrance' ist das Gewicht – trage nicht zu viel! 'Hard Points' sind Plätze für Upgrades. Vergiss nicht die Basics unter 'Gear': Stimpacks, Comlink, Werkzeug."
+        advice="Spare nicht an der Rüstung! Ein guter Soak-Wert rettet dir den Hintern. Kaufe mindestens 2-3 Stimpacks und einen Comlink – ohne stirbst du schnell. Der Rest ist Geschmackssache."
       />
 
       {/* FOOTER ACTION */}

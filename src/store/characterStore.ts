@@ -70,7 +70,7 @@ interface GameState {
   setBackground: (type: 'Obligation' | 'Duty' | 'Morality', option: string, value: number) => void;
   applyBackgroundBonus: (bonus: string) => void;
   buyCharacteristic: (char: keyof Characteristics) => void;
-  buyTalent: (talentName: string, cost: number) => void;
+  buyTalent: (talentName: string, cost: number, isRanked?: boolean) => void;
   buyGear: (item: any) => void;
   sellGear: (item: any) => void;
   updateStatus: (wounds: number, strain: number, credits: number) => void;
@@ -156,14 +156,20 @@ export const useCharacterStore = create<GameState>()(
         const player = state.players[state.activePlayerIndex];
         let baseXP = player.species ? player.species.startingXP : 0;
         let newCredits = 500;
-        let newBackgroundValue = player.backgroundValue;
+        // Background value is the base obligation/duty value, reset to initial before applying
+        const baseValue = player.backgroundType === 'Morality' ? 50 : 10;
 
         switch (bonus) {
-            case 'xp5': baseXP += 5; newBackgroundValue += 5; break;
-            case 'xp10': baseXP += 10; newBackgroundValue += 10; break;
-            case 'cr1000': newCredits += 1000; newBackgroundValue += 5; break;
-            case 'cr2500': newCredits += 2500; newBackgroundValue += 10; break;
+            case 'xp5': baseXP += 5; break;
+            case 'xp10': baseXP += 10; break;
+            case 'cr1000': newCredits += 1000; break;
+            case 'cr2500': newCredits += 2500; break;
         }
+
+        // Determine value increase based on bonus
+        let valueIncrease = 0;
+        if (bonus === 'xp5' || bonus === 'cr1000') valueIncrease = 5;
+        if (bonus === 'xp10' || bonus === 'cr2500') valueIncrease = 10;
 
         const newPlayers = [...state.players];
         newPlayers[state.activePlayerIndex] = {
@@ -171,7 +177,7 @@ export const useCharacterStore = create<GameState>()(
             backgroundBonus: bonus as any,
             availableXP: baseXP - player.spentXP,
             credits: newCredits,
-            backgroundValue: newBackgroundValue
+            backgroundValue: baseValue + valueIncrease
         };
         return { players: newPlayers };
       }),
@@ -179,7 +185,7 @@ export const useCharacterStore = create<GameState>()(
       buyCharacteristic: (char) => set((state) => {
         const player = state.players[state.activePlayerIndex];
         const currentValue = player.characteristics[char];
-        if (currentValue >= 6) return state;
+        if (currentValue >= 5) return state;
         const cost = (currentValue + 1) * 10;
         if (player.availableXP < cost) return state;
         
@@ -193,11 +199,11 @@ export const useCharacterStore = create<GameState>()(
         return { players: newPlayers };
       }),
 
-      buyTalent: (talentName, cost) => set((state) => {
+      buyTalent: (talentName, cost, isRanked = false) => set((state) => {
         const player = state.players[state.activePlayerIndex];
         if (player.availableXP < cost) return state;
-        if (player.ownedTalents.includes(talentName)) return state;
-        
+        if (!isRanked && player.ownedTalents.includes(talentName)) return state;
+
         const newPlayers = [...state.players];
         newPlayers[state.activePlayerIndex] = {
             ...player,
