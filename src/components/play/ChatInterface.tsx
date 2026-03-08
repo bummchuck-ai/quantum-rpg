@@ -225,25 +225,35 @@ const ChatInterface: React.FC = () => {
   const handleSendMessage = async (text: string) => {
     if (!text.trim()) return;
     const newMessage: Message = { role: 'player', content: { narrative: text } };
-    setMessages(prev => [...prev, newMessage]);
+    const updatedMessages = [...messages, newMessage];
+    setMessages(updatedMessages);
     setInputValue('');
     setIsTyping(true);
     try {
+      // Build conversation history for multi-turn context
+      const history = updatedMessages.map(m => ({
+        role: m.role === 'gm' ? 'assistant' as const : 'user' as const,
+        content: m.role === 'gm'
+          ? JSON.stringify(m.content)
+          : (m.content.narrative || '')
+      }));
+
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          gameState: { 
+          gameState: {
             character: { ...activePlayer },
             party: players,
             currentPlanet: 'Tatooine (Orbit)',
             currentScene: 'Fortlaufendes Abenteuer',
-            sessionHistory: messages.map(m => m.content.narrative || ""),
+            sessionHistory: updatedMessages.slice(-10).map(m => m.content.narrative || ""),
             destinyPool: { lightSide: 3, darkSide: 1 },
             questLog: [],
             npcRelationships: []
           },
-          userMessage: text
+          userMessage: text,
+          history: history.slice(-20)
         })
       });
       const data = await response.json();
@@ -499,7 +509,7 @@ const ChatInterface: React.FC = () => {
       <div className="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black to-transparent z-30">
         <div className="max-w-2xl mx-auto flex gap-3">
             <div className="flex-1 relative">
-                <input className="w-full bg-zinc-950 border border-zinc-800 p-5 rounded-2xl text-xs outline-none focus:border-amber-500 text-white placeholder:text-zinc-800 shadow-2xl font-mono" placeholder="EINGABE_KOMMANDO..." value={inputValue} onChange={(e) => setInputValue(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && handleSendMessage(inputValue)} />
+                <input className="w-full bg-zinc-950 border border-zinc-800 p-5 rounded-2xl text-xs outline-none focus:border-amber-500 text-white placeholder:text-zinc-800 shadow-2xl font-mono" placeholder="EINGABE_KOMMANDO..." value={inputValue} onChange={(e) => setInputValue(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleSendMessage(inputValue)} />
             </div>
             <button onClick={() => handleSendMessage(inputValue)} className="bg-amber-600 hover:bg-amber-500 text-black px-8 rounded-2xl transition-all active:scale-90 font-black">📡</button>
         </div>

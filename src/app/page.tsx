@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import IntroModal from '@/components/create/IntroModal';
 import StarWarsCrawl from '@/components/create/StarWarsCrawl';
@@ -10,12 +10,30 @@ import { useCharacterStore } from '@/store/characterStore';
 export default function Home() {
   const [showIntro, setShowIntro] = useState(false);
   const [showCrawl, setShowCrawl] = useState(false);
+  const [hasSave, setHasSave] = useState(false);
   const router = useRouter();
   const resetStore = useCharacterStore((state) => state.reset);
+  const players = useCharacterStore((state) => state.players);
+
+  useEffect(() => {
+    const firstPlayer = players[0];
+    if (firstPlayer?.species && firstPlayer?.career) {
+      setHasSave(true);
+    }
+  }, [players]);
 
   const handleStart = () => {
     resetStore(); // CLEAN SLATE
     setShowCrawl(true);
+  };
+
+  const handleContinue = () => {
+    const firstPlayer = players[0];
+    if (firstPlayer?.name && firstPlayer?.species && firstPlayer?.career) {
+      router.push('/play');
+    } else {
+      router.push('/create');
+    }
   };
 
   const handleCrawlComplete = () => {
@@ -77,8 +95,16 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="border border-zinc-900 bg-zinc-900/10 p-5 opacity-40 cursor-not-allowed rounded-xl text-center">
-          <h2 className="text-xl font-black text-zinc-600 uppercase italic tracking-tighter">FORTSETZEN</h2>
+        <div
+          onClick={hasSave ? handleContinue : undefined}
+          className={`border p-5 rounded-xl text-center transition-all duration-300 ${
+            hasSave
+              ? 'border-zinc-700 bg-zinc-900/30 cursor-pointer hover:border-zinc-500 hover:bg-zinc-900/50'
+              : 'border-zinc-900 bg-zinc-900/10 opacity-40 cursor-not-allowed'
+          }`}
+        >
+          {hasSave && <div className="text-[8px] text-emerald-500 font-black uppercase tracking-widest mb-1">{players[0]?.name || 'Charakter'} — {players[0]?.species?.name}</div>}
+          <h2 className={`text-xl font-black uppercase italic tracking-tighter ${hasSave ? 'text-white' : 'text-zinc-600'}`}>FORTSETZEN</h2>
         </div>
 
         <div className="flex gap-3">

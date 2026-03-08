@@ -16,7 +16,10 @@
       "1 Rang in Körperbeherrschung (nicht höher als 2 während der Erschaffung).",
       "Aleena beginnen mit 1 Rang im Talent Unverwüstlich (-10 bei krit. Wunden gegen sie).",
       "Klein: Aleena haben eine Silhouette von 0."
-    ]
+    ],
+    "freeSkillRanks": {
+      "coordination": 1
+    }
   },
   {
     "name": "Anx",
@@ -67,7 +70,10 @@
       "1 Rang in Athletik oder Einschüchtern (nicht höher als 2 während der Erschaffung).",
       "Wenn Ualag Abzüge aufgrund von widriger Umgebung erhalten,",
       "so können sie 1 von diesen Proben ignorieren."
-    ]
+    ],
+    "freeSkillRanks": {
+      "resilience": 1
+    }
   },
   {
     "name": "Arcona",
@@ -109,7 +115,10 @@
     "abilities": [
       "1 Rang in Medizin (nicht höher als 2 während der Erschaffung).",
       "Nachtsicht: Arkanier können bis zu aufgrund von Dunkelheit negieren."
-    ]
+    ],
+    "freeSkillRanks": {
+      "medicine": 1
+    }
   },
   {
     "name": "Balosar",
@@ -144,7 +153,10 @@
     "strainThresholdBase": 10,
     "abilities": [
       "1 Rang in Allgemeinbildung (nicht höher als 2 während der Erschaffung)."
-    ]
+    ],
+    "freeSkillRanks": {
+      "education": 1
+    }
   },
   {
     "name": "Besalisk",
@@ -163,7 +175,10 @@
       "1 Rang in Widerstandskraft (nicht höher als 2 während der Erschaffung).",
       "Zusätzliche Gliedmaße: Besalisken erhalten ein zusätzliches, kostenloses Manöver in jedem ihrer",
       "Züge, können aber weiterhin nicht mehr als 2 Manöver pro Zug durchführen."
-    ]
+    ],
+    "freeSkillRanks": {
+      "resilience": 1
+    }
   },
   {
     "name": "Bith",
@@ -183,7 +198,10 @@
       "Gutes Gehör: Ein Bith erhält auf Gehör basierende Wahrnehmungsproben einen . Laute",
       "Geräusche verursachen bei ihm doppelte Erschöpfung. Ein Gehörschutz negiert sowohl Bonus wie",
       "auch Nachteil des Gehörs."
-    ]
+    ],
+    "freeSkillRanks": {
+      "perception": 1
+    }
   },
   {
     "name": "Bothaner",
@@ -260,7 +278,10 @@
       "1 Rang in Mechanik (nicht höher als 2 während der Erschaffung).",
       "Gute Sinne: Chadra-Fan können bis zu  von Wahrnehmungsproben abziehen.",
       "Klein: Chadra-Fan haben eine Silhouette von 0."
-    ]
+    ],
+    "freeSkillRanks": {
+      "mechanics": 1
+    }
   },
   {
     "name": "Chagrianer",
@@ -280,7 +301,10 @@
       "Chagrianer beginnen mit 1 Rang im Talent Expertenwissen.",
       "Amphibisch: Chagrianer können unter Wasser ohne Einschränkungen atmen",
       "und erleiden niemals Abzüge aufgrund der Bewegung im Wasser."
-    ]
+    ],
+    "freeSkillRanks": {
+      "resilience": 1
+    }
   },
   {
     "name": "Chevin",
@@ -317,7 +341,10 @@
     "abilities": [
       "1 Rang in Coolness (nicht höher als 2 während der Erschaffung).",
       "Infravision: Chiss können einen aufgrund von Dunkelheit negieren."
-    ]
+    ],
+    "freeSkillRanks": {
+      "cool": 1
+    }
   },
   {
     "name": "Clawdit",
@@ -341,7 +368,10 @@
       "Mimik und Gestik des Nachahmenden erkennen. Für unstimmige Kleidung oder ähnliches könnten",
       "vergeben werden, hat der Clawdit den Nachgeahmten über längere Zeit studieren können,",
       "könnte die Probe einen oder mehrere  erhalten."
-    ]
+    ],
+    "freeSkillRanks": {
+      "resilience": 1
+    }
   },
   {
     "name": "Cosianer",
@@ -359,7 +389,10 @@
     "abilities": [
       "1 Rang in Altes Wissen (nicht höher als 2 während der Erschaffung).",
       "Starker Rücken: Alle Cosianer besitzen ein Belastungslimit gleich 10 + Stärke."
-    ]
+    ],
+    "freeSkillRanks": {
+      "lore": 1
+    }
   },
   {
     "name": "Dathomirianer",
@@ -416,7 +449,10 @@
       "Unbeweglich: Dowutin, die den Zustand Bewegungsunfähig erreichen, umgestoßen werden oder",
       "auf anderem Wege gegen ihren Willen bewegt werden, können 3 Erschöpfung erleiden, um dies zu",
       "verhindern. Dowutin mit Silhouette 2 müssen nur 1 Erschöpfung erleiden."
-    ]
+    ],
+    "freeSkillRanks": {
+      "resilience": 1
+    }
   },
   {
     "name": "Dresselianer",
@@ -438,7 +474,10 @@
       "Heimatplaneten findet. Mit der Zeit kann sich ein Dresselianer nach",
       "Entscheidung des Spielleiters an einzelne Technologien gewöhnen. Durch",
       "Zahlung von 10 EP kann ein Dresselianer diesen Nachteil ablegen."
-    ]
+    ],
+    "freeSkillRanks": {
+      "survival": 1
+    }
   },
   {
     "name": "Drabataner",
@@ -476,7 +515,10 @@
     "abilities": [
       "1 Rang in Allgemeinbildung (nicht höher als 2 während der Erschaffung).",
       "Wenn ein Drall andere unterstützt, so erhält der Geholfene noch zusätzlich einen  hinzu."
-    ]
+    ],
+    "freeSkillRanks": {
+      "education": 1
+    }
   },
   {
     "name": "Droide",
@@ -561,7 +603,10 @@
       "zum Graben einsetzen, um sich auch durch lockeren Erdboden oder ähnlichem",
       "während der Bewegung graben zu können. Nach Entscheidung des Spielleiters",
       "könnten auch andere diese engen und niedrigen Tunnel nutzen."
-    ]
+    ],
+    "freeSkillRanks": {
+      "resilience": 1
+    }
   },
   {
     "name": "Elomin",
@@ -623,7 +668,10 @@
       "vernunftbegabtes Wesen in bis zu kurzer Reichweite kann ein Faleen einmal als Nebenhandlung 2",
       "Erschöpfung erleiden, um diese einmal aufzuwerten. Wirkt nicht gegen Ziele mit Atemmasken oder",
       "ohne Geruchsorgane."
-    ]
+    ],
+    "freeSkillRanks": {
+      "charm": 1
+    }
   },
   {
     "name": "Gand",
@@ -646,7 +694,10 @@
       "Gand mit Lungen vertragen nur die mit Ammoniak angereicherte Luft ihrer Heimatwelt. Sie starten",
       "mit einem Ammoniak-Atemgerät, Umgebung mit Sauerstoff wirkt für sie ohne Atemgerät wie",
       "gefährliche Umwelt mit einer Stufe von 8."
-    ]
+    ],
+    "freeSkillRanks": {
+      "discipline": 1
+    }
   },
   {
     "name": "Gank",
@@ -729,7 +780,10 @@
       "1 Rang in Überleben (höchstens Rang 2 während der Erschaffung).",
       "Gossamer beginnen mit 1 Rang im Talent Fährtenleser.",
       "Gossamer gelten als Silhouette 0"
-    ]
+    ],
+    "freeSkillRanks": {
+      "survival": 1
+    }
   },
   {
     "name": "Gotal",
@@ -748,7 +802,10 @@
       "1 Rang in Wahrnehmung (nicht höher als 2 während der Erschaffung).",
       "Energiegespür: Einmal pro Begegnung kann ein Gotal als Manöver die Präsenz und den",
       "Gefühlszustand aller Lebewesen innerhalb kurzer Reichweite wahrnehmen."
-    ]
+    ],
+    "freeSkillRanks": {
+      "perception": 1
+    }
   },
   {
     "name": "Gran",
@@ -787,7 +844,10 @@
       "1 Rang in Athletik (höchstens Rang 2 während der Erschaffung).",
       "Amphibisch: Gungans können unter Wasser ohne Einschränkungen atmen",
       "und erleiden niemals Abzüge aufgrund der Bewegung im Wasser."
-    ]
+    ],
+    "freeSkillRanks": {
+      "athletics": 1
+    }
   },
   {
     "name": "Harch",
@@ -808,7 +868,10 @@
       "können aber weiterhin nicht mehr als 2 Manöver pro Zug durchführen.",
       "Giftige Fänge: Wenn ein Harch eine Handgemengeprobe macht, um Schaden anzurichten, so",
       "erhält dieser Angriff die Eigenschaft Betäubung 3."
-    ]
+    ],
+    "freeSkillRanks": {
+      "perception": 1
+    }
   },
   {
     "name": "Hutte",
@@ -889,7 +952,10 @@
       "Wasserabhängigkeit: Hat ein Ishi Tib nicht innerhalb von 24 Stunden in Salzwasser gebadet, so",
       "senkt sich sein Wundenlimit um 2 Punkte. Dieser Zustand verschwindet erst wieder nach einem",
       "Salzwasserbad."
-    ]
+    ],
+    "freeSkillRanks": {
+      "discipline": 1
+    }
   },
   {
     "name": "Ithorianer",
@@ -909,7 +975,10 @@
       "Ithorianischer Schallschrei: Ithorianer erhalten folgende natürliche Waffe hinzu: Schallschrei",
       "(Widerstandskraft): Schaden 6; Kritisch 4; Explosion 3, Erschütterung 1, Langsames Feuern,",
       "Betäubungsschaden; jeder Einsatz dieser Waffe beschert dem Helden 3 Erschöpfung."
-    ]
+    ],
+    "freeSkillRanks": {
+      "survival": 1
+    }
   },
   {
     "name": "Jawa",
@@ -947,7 +1016,10 @@
       "1 Rang in Medizin (höchstens Rang 2 während der Erschaffung).",
       "Ausdruckslos: Ein Kaminoaner erhält einen  bei Charmproben. Andere erhalten gegen einen",
       "Kaminoaner einen  auf soziale Proben."
-    ]
+    ],
+    "freeSkillRanks": {
+      "medicine": 1
+    }
   },
   {
     "name": "Kalleraner",
@@ -986,7 +1058,10 @@
       "und erleiden niemals Abzüge aufgrund der Bewegung im Wasser.",
       "Kiefer: Führt ein Karkarodon eine Handgemengeprobe aus, um Schaden anzurichten, so richtet",
       "dieser Angriff +1 Schaden an und hat eine kritische Trefferschwelle von 3."
-    ]
+    ],
+    "freeSkillRanks": {
+      "athletics": 1
+    }
   },
   {
     "name": "Kel Dor",
@@ -1126,7 +1201,10 @@
       "Abhängig von Toxinen: Melittos vertragen nur die mit Giften angereicherte Luft ihrer Heimatwelt.",
       "Sie starten mit einem Atemgerät, angereichert mit den entsprechenden Toxinen; Umgebung mit",
       "Sauerstoff wirkt für sie ohne Atemgerät wie gefährliche Umwelt mit einer Stufe von 6."
-    ]
+    ],
+    "freeSkillRanks": {
+      "perception": 1
+    }
   },
   {
     "name": "Mensch",
@@ -1197,7 +1275,10 @@
     "abilities": [
       "1 Rang in Disziplin (höchstens Rang 2 während der Erschaffung).",
       "Mikkianer erhalten einen  auf alle Wahrnehmungsproben."
-    ]
+    ],
+    "freeSkillRanks": {
+      "discipline": 1
+    }
   },
   {
     "name": "Mirilaner",
@@ -1215,7 +1296,11 @@
     "abilities": [
       "1 Rang in Disziplin (höchstens Rang 2 während der Erschaffung).",
       "1 Rang in Coolness (nicht höher als 2 während der Erschaffung)."
-    ]
+    ],
+    "freeSkillRanks": {
+      "discipline": 1,
+      "cool": 1
+    }
   },
   {
     "name": "Mon Calamari",
@@ -1234,7 +1319,10 @@
       "1 Rang in Allgemeinbildung (höchstens Rang 2 während der Erschaffung).",
       "Amphibisch: Mon Calamari können unter Wasser ohne Einschränkungen atmen",
       "und erleiden niemals Abzüge aufgrund der Bewegung im Wasser."
-    ]
+    ],
+    "freeSkillRanks": {
+      "education": 1
+    }
   },
   {
     "name": "Mustafarianer",
@@ -1294,7 +1382,10 @@
       "1 Rang in Athletik (höchstens Rang 2 während der Erschaffung).",
       "Amphibisch: Nautolaner können unter Wasser ohne Einschränkungen atmen",
       "und erleiden niemals Abzüge aufgrund der Bewegung im Wasser."
-    ]
+    ],
+    "freeSkillRanks": {
+      "athletics": 1
+    }
   },
   {
     "name": "Neimodianer",
@@ -1348,7 +1439,14 @@
       "1 Rang in Wahrnehmung (nicht höher als 2 während der Erschaffung).",
       "Süd-Nikto erhalten einen  auf Wahrnehmungs- und Wachsamkeitsproben, um",
       "Geräusche zu hören."
-    ]
+    ],
+    "freeSkillRanks": {
+      "resilience": 1,
+      "coordination": 1,
+      "survival": 1,
+      "athletics": 1,
+      "perception": 1
+    }
   },
   {
     "name": "Pantoraner",
@@ -1431,7 +1529,10 @@
       "der Telepathie kommunizieren – dabei können alle Lebewesen innerhalb dieser Reichweite die",
       "„Worte“ des Massaners hören. Nur mit Wesen, die er berührt, kann er im Stillen und privat sich",
       "verständigen."
-    ]
+    ],
+    "freeSkillRanks": {
+      "medicine": 1
+    }
   },
   {
     "name": "Quarren",
@@ -1470,7 +1571,10 @@
     "abilities": [
       "1 Rang in Überleben (höchstens Rang 2 während der Erschaffung).",
       "Rodianer beginnen mit 1 Rang im Talent Fährtenleser."
-    ]
+    ],
+    "freeSkillRanks": {
+      "survival": 1
+    }
   },
   {
     "name": "Sakiyaner",
@@ -1509,7 +1613,10 @@
       "Gleiter: Ein Sathari kann sicher aus jeder Höhe fallen und kleine Gruben",
       "oder Entfernungen überbrücken, während er gleitet. Während er bei",
       "Bewusstsein ist, erleidet er keinen Fallschaden."
-    ]
+    ],
+    "freeSkillRanks": {
+      "coordination": 1
+    }
   },
   {
     "name": "Selonianer",
@@ -1529,7 +1636,10 @@
       "Infravision: Selonianer können alle aufgrund von Dunkelheit negieren.",
       "Schwanzschlag (Handgemenge, basierend auf Gewandtheit: Schaden Kraft +1, Kritisch 5,",
       "Reichweite Nahkampf, Desorientierung 2, Niederwerfen – benötigt  zum aktivieren)."
-    ]
+    ],
+    "freeSkillRanks": {
+      "coordination": 1
+    }
   },
   {
     "name": "Shistavanen",
@@ -1569,7 +1679,10 @@
       "kann nur auf Skako erworben werden und kostet soviel wie eine Laminatrüstung, kann nicht von",
       "anderen Spezies getragen werden) und ein Methan-Atemgerät. Standardluft und Druck gelten für",
       "einen Skakoaner als giftige Atmosphäre der Stufe 6."
-    ]
+    ],
+    "freeSkillRanks": {
+      "education": 1
+    }
   },
   {
     "name": "Sullustaner",
@@ -1587,7 +1700,10 @@
     "abilities": [
       "1 Rang in Astronavigation (höchstens Rang 2 während der Erschaffung).",
       "Sullustaner beginnen mit einem Rang im Talent Pilotenass."
-    ]
+    ],
+    "freeSkillRanks": {
+      "astrogation": 1
+    }
   },
   {
     "name": "Thisspiasianer",
@@ -1607,7 +1723,10 @@
       "Ruhe und Mediation: Ein Thisspiasianer muss nur 2 Stunden ruhen, um alle Erschöpfung zu",
       "regenerieren (er kann aber nicht mehrmals täglich ruhen). Einmal je Spielsitzung kann er für 10",
       "Minuten meditieren, um das Doppelte seines Rangs in Disziplin an Erschöpfung zu regenerieren."
-    ]
+    ],
+    "freeSkillRanks": {
+      "discipline": 1
+    }
   },
   {
     "name": "Tholotianer",
@@ -1628,7 +1747,10 @@
       "Tholotianer durch, so erhält er hierbei einen automatischen .",
       "Natürliche Wurzeln: Bei einer Probe, um Erschöpfung zu regenerieren, die in wilder oder",
       "natürlicher Umgebung gemacht wird, heilt der Tholotianer 1 zusätzliche Erschöpfung."
-    ]
+    ],
+    "freeSkillRanks": {
+      "xenology": 1
+    }
   },
   {
     "name": "Tognath",
@@ -1672,7 +1794,10 @@
       "1 Rang in Wahrnehmung (höchstens Rang 2 während der Erschaffung).",
       "Rudelinstinkte: Wenn ein Togruta das Manöver Andere unterstützen durchführt, erhält",
       "jener einen  zusätzlich."
-    ]
+    ],
+    "freeSkillRanks": {
+      "perception": 1
+    }
   },
   {
     "name": "Toydarianer",
@@ -1712,7 +1837,10 @@
       "ein Bantha zu führen.",
       "Sandleute reduzieren die Schwierigkeit bei allen Proben auf Überleben oder Widerstandskraft",
       "einmal, um extreme Hitze oder Auskommen ohne Wasser aushalten zu können."
-    ]
+    ],
+    "freeSkillRanks": {
+      "survival": 1
+    }
   },
   {
     "name": "Twi ́lek",
@@ -1753,7 +1881,10 @@
       "Regeneriert ein Trandoshaner aufgrund von Ruhe o. Aufenthalt in Bacta-Tank mind. 1 Wunde, so",
       "regeneriert er 1 zusätzliche. Dies geschieht nicht bei sonstiger mediz. Hilfe (Stimpacks oder Erste-",
       "Hilfe). Trandoshaner können verlorene Gliedmaßen regenerieren (Dauer mindestens 1 Monat)."
-    ]
+    ],
+    "freeSkillRanks": {
+      "perception": 1
+    }
   },
   {
     "name": "Verpine",
@@ -1776,7 +1907,10 @@
       "Radiowellenkommunikation: Ein Verpine kann Radiowellen wahrnehmen und aussenden, wodurch",
       "er sich im Stillen mit anderen Verpinen und speziell eingestellten Kommunikatoren im Radius von",
       "100km unterhalten kann."
-    ]
+    ],
+    "freeSkillRanks": {
+      "mechanics": 1
+    }
   },
   {
     "name": "Vurk",
@@ -1836,7 +1970,10 @@
       "ben und können mehrere Wochen ohne Nahrung auskommen.",
       "Stoßzähne: Die Stoßzähne eines Wiphid haben als Handgemengewaffe folgende Werte:",
       "Schaden +2; Kritisch 4, Tödlich 1."
-    ]
+    ],
+    "freeSkillRanks": {
+      "survival": 1
+    }
   },
   {
     "name": "Zabrak",
@@ -1854,6 +1991,9 @@
     "abilities": [
       "1 Rang in Überleben (höchstens Rang 2 während der Erschaffung).",
       "Furchterregende Gesichtszüge: Ein Zabrak erhält  auf Einschüchterungsproben."
-    ]
+    ],
+    "freeSkillRanks": {
+      "survival": 1
+    }
   }
 ]

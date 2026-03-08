@@ -16,7 +16,7 @@ export async function POST(req: Request) {
       const userMsg = body.messages.find((m: any) => m.role === 'user');
 
       const response = await anthropic.messages.create({
-        model: 'claude-opus-4-5',
+        model: 'claude-sonnet-4-5-20250514',
         max_tokens: 1024,
         system: systemMsg?.content || '',
         messages: [{ role: 'user', content: userMsg?.content || '' }],
@@ -50,7 +50,7 @@ export async function POST(req: Request) {
     messages.push({ role: 'user', content: userMessage });
 
     const response = await anthropic.messages.create({
-      model: 'claude-opus-4-5',
+      model: 'claude-sonnet-4-5-20250514',
       max_tokens: 2048,
       system: systemInstruction,
       messages,
