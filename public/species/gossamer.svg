@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512">
+  <defs>
+    <radialGradient id="bg-gossamer" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="hsl(97, 47%, 38%)" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="hsl(291, 21%, 5%)" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="glow-gossamer" cx="50%" cy="40%" r="30%">
+      <stop offset="0%" stop-color="hsl(111, 81%, 46%)" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="hsl(111, 81%, 46%)" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100" height="100" fill="hsl(291, 21%, 5%)"/>
+  <rect width="100" height="100" fill="url(#bg-gossamer)"/>
+  <circle cx="11" cy="65" r="0.5" fill="hsl(96, 76%, 68%)" opacity="0.15"/><circle cx="55" cy="82" r="0.5" fill="hsl(96, 76%, 68%)" opacity="0.15"/><circle cx="27" cy="41" r="0.5" fill="hsl(96, 76%, 68%)" opacity="0.15"/><circle cx="63" cy="20" r="0.5" fill="hsl(96, 76%, 68%)" opacity="0.15"/><circle cx="31" cy="60" r="0.5" fill="hsl(96, 76%, 68%)" opacity="0.15"/><circle cx="65" cy="80" r="0.5" fill="hsl(96, 76%, 68%)" opacity="0.15"/><circle cx="82" cy="40" r="0.5" fill="hsl(96, 76%, 68%)" opacity="0.15"/><circle cx="41" cy="20" r="0.5" fill="hsl(96, 76%, 68%)" opacity="0.15"/><circle cx="20" cy="10" r="0.5" fill="hsl(96, 76%, 68%)" opacity="0.15"/><circle cx="60" cy="5" r="0.5" fill="hsl(96, 76%, 68%)" opacity="0.15"/>
+
+  <!-- Ambient glow -->
+  <ellipse cx="50" cy="42" rx="35" ry="30" fill="url(#glow-gossamer)"/>
+
+  <!-- Head / Body silhouette -->
+  <ellipse cx="50" cy="37" rx="16" ry="19" fill="hsl(97, 47%, 38%)" opacity="0.9"/>
+  <ellipse cx="50" cy="37" rx="15" ry="18" fill="hsl(291, 21%, 5%)" opacity="0.3"/>
+
+  <!-- Shoulders -->
+  <ellipse cx="50" cy="64" rx="24" ry="12" fill="hsl(97, 47%, 38%)" opacity="0.7"/>
+
+  <!-- Decorations (horns, tails, markings) -->
+  <rect x="51" y="43" width="3" height="1" rx="0.5" fill="hsl(96, 76%, 68%)" opacity="0.6"/><rect x="43" y="46" width="4" height="1" rx="0.5" fill="hsl(96, 76%, 68%)" opacity="0.6"/><rect x="42" y="43" width="3" height="1" rx="0.5" fill="hsl(96, 76%, 68%)" opacity="0.6"/>
+
+  <!-- Eyes -->
+  <ellipse cx="43" cy="36" rx="6" ry="4.199999999999999" fill="#111"/>
+  <ellipse cx="57" cy="36" rx="6" ry="4.199999999999999" fill="#111"/>
+  
+  <ellipse cx="43" cy="36" rx="3" ry="2.4000000000000004" fill="hsl(96, 76%, 68%)" opacity="0.9"/>
+  <ellipse cx="57" cy="36" rx="3" ry="2.4000000000000004" fill="hsl(96, 76%, 68%)" opacity="0.9"/>
+  <circle cx="44" cy="35.5" r="0.8999999999999999" fill="white" opacity="0.8"/>
+  <circle cx="58" cy="35.5" r="0.8999999999999999" fill="white" opacity="0.8"/>
+  
+
+  <!-- Stat bars -->
+  <rect x="8" y="89" width="8" height="3" rx="1" fill="#ef4444" opacity="0.25"/><rect x="22.5" y="86" width="8" height="6" rx="1" fill="#22c55e" opacity="0.25"/><rect x="37" y="86" width="8" height="6" rx="1" fill="#3b82f6" opacity="0.25"/><rect x="51.5" y="83" width="8" height="9" rx="1" fill="#f59e0b" opacity="0.25"/><rect x="66" y="86" width="8" height="6" rx="1" fill="#a855f7" opacity="0.25"/><rect x="80.5" y="86" width="8" height="6" rx="1" fill="#ec4899" opacity="0.25"/>
+
+  <!-- Vignette -->
+  <rect width="100" height="100" fill="url(#bg-gossamer)" opacity="0.3"/>
+</svg>

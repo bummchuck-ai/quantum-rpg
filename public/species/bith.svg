@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512">
+  <defs>
+    <radialGradient id="bg-bith" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="hsl(61, 51%, 23%)" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="hsl(271, 21%, 11%)" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="glow-bith" cx="50%" cy="40%" r="30%">
+      <stop offset="0%" stop-color="hsl(91, 61%, 40%)" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="hsl(91, 61%, 40%)" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100" height="100" fill="hsl(271, 21%, 11%)"/>
+  <rect width="100" height="100" fill="url(#bg-bith)"/>
+  <circle cx="11" cy="12" r="0.5" fill="hsl(62, 82%, 53%)" opacity="0.15"/><circle cx="5" cy="56" r="0.5" fill="hsl(62, 82%, 53%)" opacity="0.15"/><circle cx="2" cy="78" r="0.5" fill="hsl(62, 82%, 53%)" opacity="0.15"/><circle cx="51" cy="89" r="0.5" fill="hsl(62, 82%, 53%)" opacity="0.15"/><circle cx="25" cy="44" r="0.5" fill="hsl(62, 82%, 53%)" opacity="0.15"/><circle cx="12" cy="22" r="0.5" fill="hsl(62, 82%, 53%)" opacity="0.15"/><circle cx="56" cy="11" r="0.5" fill="hsl(62, 82%, 53%)" opacity="0.15"/><circle cx="78" cy="5" r="0.5" fill="hsl(62, 82%, 53%)" opacity="0.15"/><circle cx="89" cy="52" r="0.5" fill="hsl(62, 82%, 53%)" opacity="0.15"/><circle cx="44" cy="26" r="0.5" fill="hsl(62, 82%, 53%)" opacity="0.15"/>
+
+  <!-- Ambient glow -->
+  <ellipse cx="50" cy="42" rx="35" ry="30" fill="url(#glow-bith)"/>
+
+  <!-- Head / Body silhouette -->
+  <ellipse cx="50" cy="37" rx="16" ry="19" fill="hsl(61, 51%, 23%)" opacity="0.9"/>
+  <ellipse cx="50" cy="37" rx="15" ry="18" fill="hsl(271, 21%, 11%)" opacity="0.3"/>
+
+  <!-- Shoulders -->
+  <ellipse cx="50" cy="64" rx="24" ry="12" fill="hsl(61, 51%, 23%)" opacity="0.7"/>
+
+  <!-- Decorations (horns, tails, markings) -->
+  
+
+  <!-- Eyes -->
+  <ellipse cx="44" cy="36" rx="6" ry="4.199999999999999" fill="#111"/>
+  <ellipse cx="56" cy="36" rx="6" ry="4.199999999999999" fill="#111"/>
+  
+  <ellipse cx="44" cy="36" rx="3" ry="2.4000000000000004" fill="hsl(62, 82%, 53%)" opacity="0.9"/>
+  <ellipse cx="56" cy="36" rx="3" ry="2.4000000000000004" fill="hsl(62, 82%, 53%)" opacity="0.9"/>
+  <circle cx="45" cy="35.5" r="0.8999999999999999" fill="white" opacity="0.8"/>
+  <circle cx="57" cy="35.5" r="0.8999999999999999" fill="white" opacity="0.8"/>
+  
+
+  <!-- Stat bars -->
+  <rect x="8" y="89" width="8" height="3" rx="1" fill="#ef4444" opacity="0.25"/><rect x="22.5" y="86" width="8" height="6" rx="1" fill="#22c55e" opacity="0.25"/><rect x="37" y="86" width="8" height="6" rx="1" fill="#3b82f6" opacity="0.25"/><rect x="51.5" y="86" width="8" height="6" rx="1" fill="#f59e0b" opacity="0.25"/><rect x="66" y="86" width="8" height="6" rx="1" fill="#a855f7" opacity="0.25"/><rect x="80.5" y="83" width="8" height="9" rx="1" fill="#ec4899" opacity="0.25"/>
+
+  <!-- Vignette -->
+  <rect width="100" height="100" fill="url(#bg-bith)" opacity="0.3"/>
+</svg>

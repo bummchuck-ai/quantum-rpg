@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512">
+  <defs>
+    <radialGradient id="bg-mensch-corellia" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="hsl(224, 54%, 29%)" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="hsl(236, 26%, 11%)" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="glow-mensch-corellia" cx="50%" cy="40%" r="30%">
+      <stop offset="0%" stop-color="hsl(56, 66%, 48%)" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="hsl(56, 66%, 48%)" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100" height="100" fill="hsl(236, 26%, 11%)"/>
+  <rect width="100" height="100" fill="url(#bg-mensch-corellia)"/>
+  <polygon points="76,43 79.5,45 79.5,49 76,51 72.5,49 72.5,45" fill="none" stroke="hsl(56, 66%, 48%)" stroke-width="0.3" opacity="0.1"/><polygon points="88,69 91.5,71 91.5,75 88,77 84.5,75 84.5,71" fill="none" stroke="hsl(56, 66%, 48%)" stroke-width="0.3" opacity="0.1"/><polygon points="94,82 97.5,84 97.5,88 94,90 90.5,88 90.5,84" fill="none" stroke="hsl(56, 66%, 48%)" stroke-width="0.3" opacity="0.1"/><polygon points="47,89 50.5,91 50.5,95 47,97 43.5,95 43.5,91" fill="none" stroke="hsl(56, 66%, 48%)" stroke-width="0.3" opacity="0.1"/><polygon points="73,92 76.5,94 76.5,98 73,100 69.5,98 69.5,94" fill="none" stroke="hsl(56, 66%, 48%)" stroke-width="0.3" opacity="0.1"/><polygon points="86,94 89.5,96 89.5,100 86,102 82.5,100 82.5,96" fill="none" stroke="hsl(56, 66%, 48%)" stroke-width="0.3" opacity="0.1"/>
+
+  <!-- Ambient glow -->
+  <ellipse cx="50" cy="42" rx="35" ry="30" fill="url(#glow-mensch-corellia)"/>
+
+  <!-- Head / Body silhouette -->
+  <ellipse cx="50" cy="37" rx="18" ry="19" fill="hsl(224, 54%, 29%)" opacity="0.9"/>
+  <ellipse cx="50" cy="37" rx="17" ry="18" fill="hsl(236, 26%, 11%)" opacity="0.3"/>
+
+  <!-- Shoulders -->
+  <ellipse cx="50" cy="64" rx="26" ry="12" fill="hsl(224, 54%, 29%)" opacity="0.7"/>
+
+  <!-- Decorations (horns, tails, markings) -->
+  
+
+  <!-- Eyes -->
+  <ellipse cx="44" cy="36" rx="6" ry="4.199999999999999" fill="#111"/>
+  <ellipse cx="56" cy="36" rx="6" ry="4.199999999999999" fill="#111"/>
+  
+  <ellipse cx="44" cy="36" rx="3" ry="2.4000000000000004" fill="hsl(225, 85%, 59%)" opacity="0.9"/>
+  <ellipse cx="56" cy="36" rx="3" ry="2.4000000000000004" fill="hsl(225, 85%, 59%)" opacity="0.9"/>
+  <circle cx="45" cy="35.5" r="0.8999999999999999" fill="white" opacity="0.8"/>
+  <circle cx="57" cy="35.5" r="0.8999999999999999" fill="white" opacity="0.8"/>
+  
+
+  <!-- Stat bars -->
+  <rect x="8" y="86" width="8" height="6" rx="1" fill="#ef4444" opacity="0.25"/><rect x="22.5" y="86" width="8" height="6" rx="1" fill="#22c55e" opacity="0.25"/><rect x="37" y="86" width="8" height="6" rx="1" fill="#3b82f6" opacity="0.25"/><rect x="51.5" y="86" width="8" height="6" rx="1" fill="#f59e0b" opacity="0.25"/><rect x="66" y="86" width="8" height="6" rx="1" fill="#a855f7" opacity="0.25"/><rect x="80.5" y="86" width="8" height="6" rx="1" fill="#ec4899" opacity="0.25"/>
+
+  <!-- Vignette -->
+  <rect width="100" height="100" fill="url(#bg-mensch-corellia)" opacity="0.3"/>
+</svg>

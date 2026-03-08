@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512">
+  <defs>
+    <radialGradient id="bg-zabrak" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="hsl(239, 69%, 37%)" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="hsl(43, 13%, 11%)" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="glow-zabrak" cx="50%" cy="40%" r="30%">
+      <stop offset="0%" stop-color="hsl(223, 73%, 38%)" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="hsl(223, 73%, 38%)" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100" height="100" fill="hsl(43, 13%, 11%)"/>
+  <rect width="100" height="100" fill="url(#bg-zabrak)"/>
+  <circle cx="83" cy="61" r="0.5" fill="hsl(240, 60%, 67%)" opacity="0.15"/><circle cx="91" cy="30" r="0.5" fill="hsl(240, 60%, 67%)" opacity="0.15"/><circle cx="95" cy="15" r="0.5" fill="hsl(240, 60%, 67%)" opacity="0.15"/><circle cx="47" cy="7" r="0.5" fill="hsl(240, 60%, 67%)" opacity="0.15"/><circle cx="23" cy="53" r="0.5" fill="hsl(240, 60%, 67%)" opacity="0.15"/><circle cx="61" cy="26" r="0.5" fill="hsl(240, 60%, 67%)" opacity="0.15"/><circle cx="30" cy="13" r="0.5" fill="hsl(240, 60%, 67%)" opacity="0.15"/><circle cx="15" cy="6" r="0.5" fill="hsl(240, 60%, 67%)" opacity="0.15"/><circle cx="7" cy="53" r="0.5" fill="hsl(240, 60%, 67%)" opacity="0.15"/><circle cx="53" cy="26" r="0.5" fill="hsl(240, 60%, 67%)" opacity="0.15"/>
+
+  <!-- Ambient glow -->
+  <ellipse cx="50" cy="42" rx="35" ry="30" fill="url(#glow-zabrak)"/>
+
+  <!-- Head / Body silhouette -->
+  <ellipse cx="50" cy="37" rx="18" ry="19" fill="hsl(239, 69%, 37%)" opacity="0.9"/>
+  <ellipse cx="50" cy="37" rx="17" ry="18" fill="hsl(43, 13%, 11%)" opacity="0.3"/>
+
+  <!-- Shoulders -->
+  <ellipse cx="50" cy="64" rx="26" ry="12" fill="hsl(239, 69%, 37%)" opacity="0.7"/>
+
+  <!-- Decorations (horns, tails, markings) -->
+  <polygon points="47,18 45,6 49,6" fill="hsl(223, 73%, 38%)" opacity="0.8"/><rect x="43" y="38" width="3" height="1" rx="0.5" fill="hsl(240, 60%, 67%)" opacity="0.6"/><rect x="47" y="44" width="4" height="1" rx="0.5" fill="hsl(240, 60%, 67%)" opacity="0.6"/><line x1="48" y1="55" x2="49" y2="61" stroke="hsl(223, 73%, 38%)" stroke-width="0.5" opacity="0.3"/><line x1="56" y1="55" x2="57" y2="59" stroke="hsl(223, 73%, 38%)" stroke-width="0.5" opacity="0.3"/><line x1="60" y1="55" x2="61" y2="60" stroke="hsl(223, 73%, 38%)" stroke-width="0.5" opacity="0.3"/><line x1="62" y1="55" x2="63" y2="61" stroke="hsl(223, 73%, 38%)" stroke-width="0.5" opacity="0.3"/><line x1="48" y1="36" x2="49" y2="42" stroke="hsl(223, 73%, 38%)" stroke-width="0.5" opacity="0.3"/><line x1="56" y1="27" x2="57" y2="31" stroke="hsl(223, 73%, 38%)" stroke-width="0.5" opacity="0.3"/><line x1="45" y1="41" x2="44" y2="46" stroke="hsl(223, 73%, 38%)" stroke-width="0.5" opacity="0.3"/><line x1="40" y1="29" x2="41" y2="33" stroke="hsl(223, 73%, 38%)" stroke-width="0.5" opacity="0.3"/><line x1="52" y1="42" x2="53" y2="47" stroke="hsl(223, 73%, 38%)" stroke-width="0.5" opacity="0.3"/><line x1="58" y1="49" x2="59" y2="53" stroke="hsl(223, 73%, 38%)" stroke-width="0.5" opacity="0.3"/><line x1="61" y1="52" x2="60" y2="57" stroke="hsl(223, 73%, 38%)" stroke-width="0.5" opacity="0.3"/><line x1="48" y1="35" x2="49" y2="39" stroke="hsl(223, 73%, 38%)" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- Eyes -->
+  <ellipse cx="44" cy="35" rx="6" ry="4.199999999999999" fill="#111"/>
+  <ellipse cx="56" cy="35" rx="6" ry="4.199999999999999" fill="#111"/>
+  
+  <ellipse cx="44" cy="35" rx="3" ry="2.4000000000000004" fill="hsl(240, 60%, 67%)" opacity="0.9"/>
+  <ellipse cx="56" cy="35" rx="3" ry="2.4000000000000004" fill="hsl(240, 60%, 67%)" opacity="0.9"/>
+  <circle cx="45" cy="34.5" r="0.8999999999999999" fill="white" opacity="0.8"/>
+  <circle cx="57" cy="34.5" r="0.8999999999999999" fill="white" opacity="0.8"/>
+  
+
+  <!-- Stat bars -->
+  <rect x="8" y="86" width="8" height="6" rx="1" fill="#ef4444" opacity="0.25"/><rect x="22.5" y="86" width="8" height="6" rx="1" fill="#22c55e" opacity="0.25"/><rect x="37" y="86" width="8" height="6" rx="1" fill="#3b82f6" opacity="0.25"/><rect x="51.5" y="86" width="8" height="6" rx="1" fill="#f59e0b" opacity="0.25"/><rect x="66" y="83" width="8" height="9" rx="1" fill="#a855f7" opacity="0.25"/><rect x="80.5" y="89" width="8" height="3" rx="1" fill="#ec4899" opacity="0.25"/>
+
+  <!-- Vignette -->
+  <rect width="100" height="100" fill="url(#bg-zabrak)" opacity="0.3"/>
+</svg>

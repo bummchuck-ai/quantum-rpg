@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512">
+  <defs>
+    <radialGradient id="bg-mensch-mandalore" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="hsl(172, 42%, 35%)" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="hsl(128, 18%, 11%)" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="glow-mensch-mandalore" cx="50%" cy="40%" r="30%">
+      <stop offset="0%" stop-color="hsl(308, 78%, 39%)" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="hsl(308, 78%, 39%)" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100" height="100" fill="hsl(128, 18%, 11%)"/>
+  <rect width="100" height="100" fill="url(#bg-mensch-mandalore)"/>
+  <polygon points="68,4 71.5,6 71.5,10 68,12 64.5,10 64.5,6" fill="none" stroke="hsl(308, 78%, 39%)" stroke-width="0.3" opacity="0.1"/><polygon points="34,0 37.5,2 37.5,6 34,8 30.5,6 30.5,2" fill="none" stroke="hsl(308, 78%, 39%)" stroke-width="0.3" opacity="0.1"/><polygon points="17,48 20.5,50 20.5,54 17,56 13.5,54 13.5,50" fill="none" stroke="hsl(308, 78%, 39%)" stroke-width="0.3" opacity="0.1"/><polygon points="8,72 11.5,74 11.5,78 8,80 4.5,78 4.5,74" fill="none" stroke="hsl(308, 78%, 39%)" stroke-width="0.3" opacity="0.1"/><polygon points="4,84 7.5,86 7.5,90 4,92 0.5,90 0.5,86" fill="none" stroke="hsl(308, 78%, 39%)" stroke-width="0.3" opacity="0.1"/><polygon points="52,90 55.5,92 55.5,96 52,98 48.5,96 48.5,92" fill="none" stroke="hsl(308, 78%, 39%)" stroke-width="0.3" opacity="0.1"/>
+
+  <!-- Ambient glow -->
+  <ellipse cx="50" cy="42" rx="35" ry="30" fill="url(#glow-mensch-mandalore)"/>
+
+  <!-- Head / Body silhouette -->
+  <ellipse cx="50" cy="37" rx="18" ry="19" fill="hsl(172, 42%, 35%)" opacity="0.9"/>
+  <ellipse cx="50" cy="37" rx="17" ry="18" fill="hsl(128, 18%, 11%)" opacity="0.3"/>
+
+  <!-- Shoulders -->
+  <ellipse cx="50" cy="64" rx="26" ry="12" fill="hsl(172, 42%, 35%)" opacity="0.7"/>
+
+  <!-- Decorations (horns, tails, markings) -->
+  
+
+  <!-- Eyes -->
+  <ellipse cx="44" cy="36" rx="6" ry="4.199999999999999" fill="#111"/>
+  <ellipse cx="56" cy="36" rx="6" ry="4.199999999999999" fill="#111"/>
+  
+  <ellipse cx="44" cy="36" rx="3" ry="2.4000000000000004" fill="hsl(173, 73%, 65%)" opacity="0.9"/>
+  <ellipse cx="56" cy="36" rx="3" ry="2.4000000000000004" fill="hsl(173, 73%, 65%)" opacity="0.9"/>
+  <circle cx="45" cy="35.5" r="0.8999999999999999" fill="white" opacity="0.8"/>
+  <circle cx="57" cy="35.5" r="0.8999999999999999" fill="white" opacity="0.8"/>
+  
+
+  <!-- Stat bars -->
+  <rect x="8" y="86" width="8" height="6" rx="1" fill="#ef4444" opacity="0.25"/><rect x="22.5" y="86" width="8" height="6" rx="1" fill="#22c55e" opacity="0.25"/><rect x="37" y="86" width="8" height="6" rx="1" fill="#3b82f6" opacity="0.25"/><rect x="51.5" y="86" width="8" height="6" rx="1" fill="#f59e0b" opacity="0.25"/><rect x="66" y="86" width="8" height="6" rx="1" fill="#a855f7" opacity="0.25"/><rect x="80.5" y="86" width="8" height="6" rx="1" fill="#ec4899" opacity="0.25"/>
+
+  <!-- Vignette -->
+  <rect width="100" height="100" fill="url(#bg-mensch-mandalore)" opacity="0.3"/>
+</svg>

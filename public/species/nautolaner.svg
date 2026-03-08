@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512">
+  <defs>
+    <radialGradient id="bg-nautolaner" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="hsl(159, 69%, 34%)" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="hsl(147, 17%, 8%)" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="glow-nautolaner" cx="50%" cy="40%" r="30%">
+      <stop offset="0%" stop-color="hsl(327, 57%, 40%)" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="hsl(327, 57%, 40%)" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100" height="100" fill="hsl(147, 17%, 8%)"/>
+  <rect width="100" height="100" fill="url(#bg-nautolaner)"/>
+  <circle cx="87" cy="2" r="0.5" fill="hsl(160, 60%, 65%)" opacity="0.15"/><circle cx="43" cy="51" r="0.5" fill="hsl(160, 60%, 65%)" opacity="0.15"/><circle cx="21" cy="25" r="0.5" fill="hsl(160, 60%, 65%)" opacity="0.15"/><circle cx="10" cy="12" r="0.5" fill="hsl(160, 60%, 65%)" opacity="0.15"/><circle cx="5" cy="6" r="0.5" fill="hsl(160, 60%, 65%)" opacity="0.15"/><circle cx="2" cy="53" r="0.5" fill="hsl(160, 60%, 65%)" opacity="0.15"/><circle cx="51" cy="76" r="0.5" fill="hsl(160, 60%, 65%)" opacity="0.15"/><circle cx="25" cy="88" r="0.5" fill="hsl(160, 60%, 65%)" opacity="0.15"/><circle cx="12" cy="44" r="0.5" fill="hsl(160, 60%, 65%)" opacity="0.15"/><circle cx="6" cy="22" r="0.5" fill="hsl(160, 60%, 65%)" opacity="0.15"/>
+
+  <!-- Ambient glow -->
+  <ellipse cx="50" cy="42" rx="35" ry="30" fill="url(#glow-nautolaner)"/>
+
+  <!-- Head / Body silhouette -->
+  <ellipse cx="50" cy="37" rx="20" ry="19" fill="hsl(159, 69%, 34%)" opacity="0.9"/>
+  <ellipse cx="50" cy="37" rx="19" ry="18" fill="hsl(147, 17%, 8%)" opacity="0.3"/>
+
+  <!-- Shoulders -->
+  <ellipse cx="50" cy="64" rx="28" ry="12" fill="hsl(159, 69%, 34%)" opacity="0.7"/>
+
+  <!-- Decorations (horns, tails, markings) -->
+  <path d="M45.80698416831927,44.599999999999994 Q44.808977848667546,59.99999999999999 39.81097152901582,65.39999999999999" fill="none" stroke="hsl(327, 57%, 40%)" stroke-width="3" stroke-linecap="round" opacity="0.7"/><path d="M54.19301583168073,44.599999999999994 Q59.191022151332454,59.99999999999999 60.18902847098418,65.39999999999999" fill="none" stroke="hsl(327, 57%, 40%)" stroke-width="3" stroke-linecap="round" opacity="0.7"/><polygon points="44,18 42,6 46,6" fill="hsl(327, 57%, 40%)" opacity="0.8"/><polygon points="50,18 48,6 52,6" fill="hsl(327, 57%, 40%)" opacity="0.8"/>
+
+  <!-- Eyes -->
+  <ellipse cx="44" cy="37" rx="6" ry="4.199999999999999" fill="#111"/>
+  <ellipse cx="56" cy="37" rx="6" ry="4.199999999999999" fill="#111"/>
+  
+  <ellipse cx="44" cy="37" rx="3" ry="2.4000000000000004" fill="hsl(160, 60%, 65%)" opacity="0.9"/>
+  <ellipse cx="56" cy="37" rx="3" ry="2.4000000000000004" fill="hsl(160, 60%, 65%)" opacity="0.9"/>
+  <circle cx="45" cy="36.5" r="0.8999999999999999" fill="white" opacity="0.8"/>
+  <circle cx="57" cy="36.5" r="0.8999999999999999" fill="white" opacity="0.8"/>
+  
+
+  <!-- Stat bars -->
+  <rect x="8" y="83" width="8" height="9" rx="1" fill="#ef4444" opacity="0.25"/><rect x="22.5" y="86" width="8" height="6" rx="1" fill="#22c55e" opacity="0.25"/><rect x="37" y="86" width="8" height="6" rx="1" fill="#3b82f6" opacity="0.25"/><rect x="51.5" y="86" width="8" height="6" rx="1" fill="#f59e0b" opacity="0.25"/><rect x="66" y="89" width="8" height="3" rx="1" fill="#a855f7" opacity="0.25"/><rect x="80.5" y="86" width="8" height="6" rx="1" fill="#ec4899" opacity="0.25"/>
+
+  <!-- Vignette -->
+  <rect width="100" height="100" fill="url(#bg-nautolaner)" opacity="0.3"/>
+</svg>

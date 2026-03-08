@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512">
+  <defs>
+    <radialGradient id="bg-chadra-fan" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="hsl(43, 33%, 37%)" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="hsl(63, 13%, 11%)" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="glow-chadra-fan" cx="50%" cy="40%" r="30%">
+      <stop offset="0%" stop-color="hsl(243, 53%, 35%)" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="hsl(243, 53%, 35%)" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100" height="100" fill="hsl(63, 13%, 11%)"/>
+  <rect width="100" height="100" fill="url(#bg-chadra-fan)"/>
+  <circle cx="3" cy="50" r="0.5" fill="hsl(44, 64%, 67%)" opacity="0.15"/><circle cx="1" cy="25" r="0.5" fill="hsl(44, 64%, 67%)" opacity="0.15"/><circle cx="0" cy="12" r="0.5" fill="hsl(44, 64%, 67%)" opacity="0.15"/><circle cx="0" cy="56" r="0.5" fill="hsl(44, 64%, 67%)" opacity="0.15"/><circle cx="0" cy="28" r="0.5" fill="hsl(44, 64%, 67%)" opacity="0.15"/><circle cx="50" cy="64" r="0.5" fill="hsl(44, 64%, 67%)" opacity="0.15"/><circle cx="25" cy="32" r="0.5" fill="hsl(44, 64%, 67%)" opacity="0.15"/><circle cx="12" cy="16" r="0.5" fill="hsl(44, 64%, 67%)" opacity="0.15"/><circle cx="56" cy="58" r="0.5" fill="hsl(44, 64%, 67%)" opacity="0.15"/><circle cx="28" cy="29" r="0.5" fill="hsl(44, 64%, 67%)" opacity="0.15"/>
+
+  <!-- Ambient glow -->
+  <ellipse cx="50" cy="42" rx="35" ry="30" fill="url(#glow-chadra-fan)"/>
+
+  <!-- Head / Body silhouette -->
+  <ellipse cx="50" cy="37.5" rx="16" ry="20.5" fill="hsl(43, 33%, 37%)" opacity="0.9"/>
+  <ellipse cx="50" cy="37.5" rx="15" ry="19.5" fill="hsl(63, 13%, 11%)" opacity="0.3"/>
+
+  <!-- Shoulders -->
+  <ellipse cx="50" cy="66" rx="24" ry="12" fill="hsl(43, 33%, 37%)" opacity="0.7"/>
+
+  <!-- Decorations (horns, tails, markings) -->
+  <path d="M45.02516155162664,45.7 Q38.578899688392944,61.1 36.13263782515925,66.5" fill="none" stroke="hsl(243, 53%, 35%)" stroke-width="3" stroke-linecap="round" opacity="0.7"/><path d="M50,45.7 Q48,61.1 50,66.5" fill="none" stroke="hsl(243, 53%, 35%)" stroke-width="3" stroke-linecap="round" opacity="0.7"/><path d="M54.97483844837336,45.7 Q57.421100311607056,61.1 63.86736217484075,66.5" fill="none" stroke="hsl(243, 53%, 35%)" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- Eyes -->
+  <ellipse cx="44" cy="37" rx="8" ry="5.6" fill="#111"/>
+  <ellipse cx="56" cy="37" rx="8" ry="5.6" fill="#111"/>
+  
+  <ellipse cx="44" cy="37" rx="4" ry="3.2" fill="hsl(44, 64%, 67%)" opacity="0.9"/>
+  <ellipse cx="56" cy="37" rx="4" ry="3.2" fill="hsl(44, 64%, 67%)" opacity="0.9"/>
+  <circle cx="45" cy="36.5" r="1.2" fill="white" opacity="0.8"/>
+  <circle cx="57" cy="36.5" r="1.2" fill="white" opacity="0.8"/>
+  
+
+  <!-- Stat bars -->
+  <rect x="8" y="89" width="8" height="3" rx="1" fill="#ef4444" opacity="0.25"/><rect x="22.5" y="83" width="8" height="9" rx="1" fill="#22c55e" opacity="0.25"/><rect x="37" y="83" width="8" height="9" rx="1" fill="#3b82f6" opacity="0.25"/><rect x="51.5" y="86" width="8" height="6" rx="1" fill="#f59e0b" opacity="0.25"/><rect x="66" y="89" width="8" height="3" rx="1" fill="#a855f7" opacity="0.25"/><rect x="80.5" y="86" width="8" height="6" rx="1" fill="#ec4899" opacity="0.25"/>
+
+  <!-- Vignette -->
+  <rect width="100" height="100" fill="url(#bg-chadra-fan)" opacity="0.3"/>
+</svg>

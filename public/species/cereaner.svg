@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512">
+  <defs>
+    <radialGradient id="bg-cereaner" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="hsl(329, 39%, 20%)" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="hsl(261, 11%, 6%)" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="glow-cereaner" cx="50%" cy="40%" r="30%">
+      <stop offset="0%" stop-color="hsl(81, 51%, 50%)" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="hsl(81, 51%, 50%)" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100" height="100" fill="hsl(261, 11%, 6%)"/>
+  <rect width="100" height="100" fill="url(#bg-cereaner)"/>
+  <circle cx="61" cy="80" r="8" fill="none" stroke="hsl(81, 51%, 50%)" stroke-width="0.2" opacity="0.08"/><circle cx="40" cy="70" r="13" fill="none" stroke="hsl(81, 51%, 50%)" stroke-width="0.2" opacity="0.08"/><circle cx="35" cy="17" r="18" fill="none" stroke="hsl(81, 51%, 50%)" stroke-width="0.2" opacity="0.08"/><circle cx="58" cy="29" r="23" fill="none" stroke="hsl(81, 51%, 50%)" stroke-width="0.2" opacity="0.08"/>
+
+  <!-- Ambient glow -->
+  <ellipse cx="50" cy="42" rx="35" ry="30" fill="url(#glow-cereaner)"/>
+
+  <!-- Head / Body silhouette -->
+  <ellipse cx="50" cy="37.5" rx="18" ry="20.5" fill="hsl(329, 39%, 20%)" opacity="0.9"/>
+  <ellipse cx="50" cy="37.5" rx="17" ry="19.5" fill="hsl(261, 11%, 6%)" opacity="0.3"/>
+
+  <!-- Shoulders -->
+  <ellipse cx="50" cy="66" rx="26" ry="12" fill="hsl(329, 39%, 20%)" opacity="0.7"/>
+
+  <!-- Decorations (horns, tails, markings) -->
+  
+
+  <!-- Eyes -->
+  <ellipse cx="44" cy="36" rx="8" ry="5.6" fill="#111"/>
+  <ellipse cx="56" cy="36" rx="8" ry="5.6" fill="#111"/>
+  
+  <ellipse cx="44" cy="36" rx="4" ry="3.2" fill="hsl(330, 70%, 50%)" opacity="0.9"/>
+  <ellipse cx="56" cy="36" rx="4" ry="3.2" fill="hsl(330, 70%, 50%)" opacity="0.9"/>
+  <circle cx="45" cy="35.5" r="1.2" fill="white" opacity="0.8"/>
+  <circle cx="57" cy="35.5" r="1.2" fill="white" opacity="0.8"/>
+  
+
+  <!-- Stat bars -->
+  <rect x="8" y="86" width="8" height="6" rx="1" fill="#ef4444" opacity="0.25"/><rect x="22.5" y="89" width="8" height="3" rx="1" fill="#22c55e" opacity="0.25"/><rect x="37" y="83" width="8" height="9" rx="1" fill="#3b82f6" opacity="0.25"/><rect x="51.5" y="86" width="8" height="6" rx="1" fill="#f59e0b" opacity="0.25"/><rect x="66" y="86" width="8" height="6" rx="1" fill="#a855f7" opacity="0.25"/><rect x="80.5" y="86" width="8" height="6" rx="1" fill="#ec4899" opacity="0.25"/>
+
+  <!-- Vignette -->
+  <rect width="100" height="100" fill="url(#bg-cereaner)" opacity="0.3"/>
+</svg>

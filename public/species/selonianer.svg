@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512">
+  <defs>
+    <radialGradient id="bg-selonianer" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="hsl(178, 48%, 21%)" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="hsl(54, 24%, 8%)" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="glow-selonianer" cx="50%" cy="40%" r="30%">
+      <stop offset="0%" stop-color="hsl(234, 84%, 39%)" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="hsl(234, 84%, 39%)" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100" height="100" fill="hsl(54, 24%, 8%)"/>
+  <rect width="100" height="100" fill="url(#bg-selonianer)"/>
+  <line x1="-10" y1="0" x2="10" y2="100" stroke="hsl(234, 84%, 39%)" stroke-width="0.2" opacity="0.06"/><line x1="5" y1="0" x2="25" y2="100" stroke="hsl(234, 84%, 39%)" stroke-width="0.2" opacity="0.06"/><line x1="20" y1="0" x2="40" y2="100" stroke="hsl(234, 84%, 39%)" stroke-width="0.2" opacity="0.06"/><line x1="35" y1="0" x2="55" y2="100" stroke="hsl(234, 84%, 39%)" stroke-width="0.2" opacity="0.06"/><line x1="50" y1="0" x2="70" y2="100" stroke="hsl(234, 84%, 39%)" stroke-width="0.2" opacity="0.06"/><line x1="65" y1="0" x2="85" y2="100" stroke="hsl(234, 84%, 39%)" stroke-width="0.2" opacity="0.06"/><line x1="80" y1="0" x2="100" y2="100" stroke="hsl(234, 84%, 39%)" stroke-width="0.2" opacity="0.06"/><line x1="95" y1="0" x2="115" y2="100" stroke="hsl(234, 84%, 39%)" stroke-width="0.2" opacity="0.06"/>
+
+  <!-- Ambient glow -->
+  <ellipse cx="50" cy="42" rx="35" ry="30" fill="url(#glow-selonianer)"/>
+
+  <!-- Head / Body silhouette -->
+  <ellipse cx="50" cy="37" rx="18" ry="19" fill="hsl(178, 48%, 21%)" opacity="0.9"/>
+  <ellipse cx="50" cy="37" rx="17" ry="18" fill="hsl(54, 24%, 8%)" opacity="0.3"/>
+
+  <!-- Shoulders -->
+  <ellipse cx="50" cy="64" rx="26" ry="12" fill="hsl(178, 48%, 21%)" opacity="0.7"/>
+
+  <!-- Decorations (horns, tails, markings) -->
+  <path d="M44.40330674557997,44.599999999999994 Q39.47007509733478,58.8 36.53684344908959,63" fill="none" stroke="hsl(234, 84%, 39%)" stroke-width="3" stroke-linecap="round" opacity="0.7"/><path d="M50,44.599999999999994 Q49,58.8 50,63" fill="none" stroke="hsl(234, 84%, 39%)" stroke-width="3" stroke-linecap="round" opacity="0.7"/><path d="M55.59669325442003,44.599999999999994 Q58.52992490266522,58.8 63.46315655091041,63" fill="none" stroke="hsl(234, 84%, 39%)" stroke-width="3" stroke-linecap="round" opacity="0.7"/><line x1="59" y1="28" x2="58" y2="31" stroke="hsl(234, 84%, 39%)" stroke-width="0.5" opacity="0.3"/><line x1="62" y1="23" x2="63" y2="26" stroke="hsl(234, 84%, 39%)" stroke-width="0.5" opacity="0.3"/><line x1="63" y1="20" x2="62" y2="25" stroke="hsl(234, 84%, 39%)" stroke-width="0.5" opacity="0.3"/><line x1="64" y1="38" x2="65" y2="44" stroke="hsl(234, 84%, 39%)" stroke-width="0.5" opacity="0.3"/><line x1="49" y1="28" x2="48" y2="32" stroke="hsl(234, 84%, 39%)" stroke-width="0.5" opacity="0.3"/><line x1="57" y1="23" x2="56" y2="26" stroke="hsl(234, 84%, 39%)" stroke-width="0.5" opacity="0.3"/><line x1="61" y1="39" x2="60" y2="42" stroke="hsl(234, 84%, 39%)" stroke-width="0.5" opacity="0.3"/><line x1="48" y1="28" x2="49" y2="33" stroke="hsl(234, 84%, 39%)" stroke-width="0.5" opacity="0.3"/><line x1="56" y1="42" x2="57" y2="46" stroke="hsl(234, 84%, 39%)" stroke-width="0.5" opacity="0.3"/><line x1="45" y1="30" x2="44" y2="33" stroke="hsl(234, 84%, 39%)" stroke-width="0.5" opacity="0.3"/><line x1="55" y1="43" x2="54" y2="48" stroke="hsl(234, 84%, 39%)" stroke-width="0.5" opacity="0.3"/><line x1="45" y1="30" x2="44" y2="34" stroke="hsl(234, 84%, 39%)" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- Eyes -->
+  <ellipse cx="45" cy="35" rx="6" ry="4.199999999999999" fill="#111"/>
+  <ellipse cx="55" cy="35" rx="6" ry="4.199999999999999" fill="#111"/>
+  
+  <ellipse cx="45" cy="35" rx="3" ry="2.4000000000000004" fill="hsl(177, 77%, 51%)" opacity="0.9"/>
+  <ellipse cx="55" cy="35" rx="3" ry="2.4000000000000004" fill="hsl(177, 77%, 51%)" opacity="0.9"/>
+  <circle cx="46" cy="34.5" r="0.8999999999999999" fill="white" opacity="0.8"/>
+  <circle cx="56" cy="34.5" r="0.8999999999999999" fill="white" opacity="0.8"/>
+  
+
+  <!-- Stat bars -->
+  <rect x="8" y="86" width="8" height="6" rx="1" fill="#ef4444" opacity="0.25"/><rect x="22.5" y="83" width="8" height="9" rx="1" fill="#22c55e" opacity="0.25"/><rect x="37" y="86" width="8" height="6" rx="1" fill="#3b82f6" opacity="0.25"/><rect x="51.5" y="89" width="8" height="3" rx="1" fill="#f59e0b" opacity="0.25"/><rect x="66" y="83" width="8" height="9" rx="1" fill="#a855f7" opacity="0.25"/><rect x="80.5" y="89" width="8" height="3" rx="1" fill="#ec4899" opacity="0.25"/>
+
+  <!-- Vignette -->
+  <rect width="100" height="100" fill="url(#bg-selonianer)" opacity="0.3"/>
+</svg>

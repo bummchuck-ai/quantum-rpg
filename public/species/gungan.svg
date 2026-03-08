@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512">
+  <defs>
+    <radialGradient id="bg-gungan" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="hsl(308, 58%, 24%)" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="hsl(8, 18%, 9%)" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="glow-gungan" cx="50%" cy="40%" r="30%">
+      <stop offset="0%" stop-color="hsl(188, 78%, 54%)" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="hsl(188, 78%, 54%)" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100" height="100" fill="hsl(8, 18%, 9%)"/>
+  <rect width="100" height="100" fill="url(#bg-gungan)"/>
+  <polygon points="88,94 91.5,96 91.5,100 88,102 84.5,100 84.5,96" fill="none" stroke="hsl(188, 78%, 54%)" stroke-width="0.3" opacity="0.1"/><polygon points="94,95 97.5,97 97.5,101 94,103 90.5,101 90.5,97" fill="none" stroke="hsl(188, 78%, 54%)" stroke-width="0.3" opacity="0.1"/><polygon points="97,45 100.5,47 100.5,51 97,53 93.5,51 93.5,47" fill="none" stroke="hsl(188, 78%, 54%)" stroke-width="0.3" opacity="0.1"/><polygon points="98,70 101.5,72 101.5,76 98,78 94.5,76 94.5,72" fill="none" stroke="hsl(188, 78%, 54%)" stroke-width="0.3" opacity="0.1"/><polygon points="99,83 102.5,85 102.5,89 99,91 95.5,89 95.5,85" fill="none" stroke="hsl(188, 78%, 54%)" stroke-width="0.3" opacity="0.1"/><polygon points="49,89 52.5,91 52.5,95 49,97 45.5,95 45.5,91" fill="none" stroke="hsl(188, 78%, 54%)" stroke-width="0.3" opacity="0.1"/>
+
+  <!-- Ambient glow -->
+  <ellipse cx="50" cy="42" rx="35" ry="30" fill="url(#glow-gungan)"/>
+
+  <!-- Head / Body silhouette -->
+  <ellipse cx="50" cy="36.5" rx="18" ry="17.5" fill="hsl(308, 58%, 24%)" opacity="0.9"/>
+  <ellipse cx="50" cy="36.5" rx="17" ry="16.5" fill="hsl(8, 18%, 9%)" opacity="0.3"/>
+
+  <!-- Shoulders -->
+  <ellipse cx="50" cy="62" rx="26" ry="12" fill="hsl(308, 58%, 24%)" opacity="0.7"/>
+
+  <!-- Decorations (horns, tails, markings) -->
+  
+
+  <!-- Eyes -->
+  <ellipse cx="44" cy="36" rx="5" ry="3.5" fill="#111"/>
+  <ellipse cx="56" cy="36" rx="5" ry="3.5" fill="#111"/>
+  
+  <ellipse cx="44" cy="36" rx="2.5" ry="2" fill="hsl(309, 89%, 54%)" opacity="0.9"/>
+  <ellipse cx="56" cy="36" rx="2.5" ry="2" fill="hsl(309, 89%, 54%)" opacity="0.9"/>
+  <circle cx="45" cy="35.5" r="0.75" fill="white" opacity="0.8"/>
+  <circle cx="57" cy="35.5" r="0.75" fill="white" opacity="0.8"/>
+  
+
+  <!-- Stat bars -->
+  <rect x="8" y="86" width="8" height="6" rx="1" fill="#ef4444" opacity="0.25"/><rect x="22.5" y="86" width="8" height="6" rx="1" fill="#22c55e" opacity="0.25"/><rect x="37" y="89" width="8" height="3" rx="1" fill="#3b82f6" opacity="0.25"/><rect x="51.5" y="86" width="8" height="6" rx="1" fill="#f59e0b" opacity="0.25"/><rect x="66" y="86" width="8" height="6" rx="1" fill="#a855f7" opacity="0.25"/><rect x="80.5" y="83" width="8" height="9" rx="1" fill="#ec4899" opacity="0.25"/>
+
+  <!-- Vignette -->
+  <rect width="100" height="100" fill="url(#bg-gungan)" opacity="0.3"/>
+</svg>

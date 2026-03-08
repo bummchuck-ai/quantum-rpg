@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512">
+  <defs>
+    <radialGradient id="bg-chagrianer" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="hsl(300, 50%, 23%)" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="hsl(328, 18%, 8%)" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="glow-chagrianer" cx="50%" cy="40%" r="30%">
+      <stop offset="0%" stop-color="hsl(148, 78%, 39%)" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="hsl(148, 78%, 39%)" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100" height="100" fill="hsl(328, 18%, 8%)"/>
+  <rect width="100" height="100" fill="url(#bg-chagrianer)"/>
+  <polygon points="88,44 91.5,46 91.5,50 88,52 84.5,50 84.5,46" fill="none" stroke="hsl(148, 78%, 39%)" stroke-width="0.3" opacity="0.1"/><polygon points="94,20 97.5,22 97.5,26 94,28 90.5,26 90.5,22" fill="none" stroke="hsl(148, 78%, 39%)" stroke-width="0.3" opacity="0.1"/><polygon points="97,8 100.5,10 100.5,14 97,16 93.5,14 93.5,10" fill="none" stroke="hsl(148, 78%, 39%)" stroke-width="0.3" opacity="0.1"/><polygon points="48,2 51.5,4 51.5,8 48,10 44.5,8 44.5,4" fill="none" stroke="hsl(148, 78%, 39%)" stroke-width="0.3" opacity="0.1"/><polygon points="24,49 27.5,51 27.5,55 24,57 20.5,55 20.5,51" fill="none" stroke="hsl(148, 78%, 39%)" stroke-width="0.3" opacity="0.1"/><polygon points="12,72 15.5,74 15.5,78 12,80 8.5,78 8.5,74" fill="none" stroke="hsl(148, 78%, 39%)" stroke-width="0.3" opacity="0.1"/>
+
+  <!-- Ambient glow -->
+  <ellipse cx="50" cy="42" rx="35" ry="30" fill="url(#glow-chagrianer)"/>
+
+  <!-- Head / Body silhouette -->
+  <ellipse cx="50" cy="37" rx="18" ry="19" fill="hsl(300, 50%, 23%)" opacity="0.9"/>
+  <ellipse cx="50" cy="37" rx="17" ry="18" fill="hsl(328, 18%, 8%)" opacity="0.3"/>
+
+  <!-- Shoulders -->
+  <ellipse cx="50" cy="64" rx="26" ry="12" fill="hsl(300, 50%, 23%)" opacity="0.7"/>
+
+  <!-- Decorations (horns, tails, markings) -->
+  <line x1="63" y1="45" x2="62" y2="48" stroke="hsl(148, 78%, 39%)" stroke-width="0.5" opacity="0.3"/><line x1="49" y1="50" x2="48" y2="53" stroke="hsl(148, 78%, 39%)" stroke-width="0.5" opacity="0.3"/><line x1="42" y1="34" x2="43" y2="39" stroke="hsl(148, 78%, 39%)" stroke-width="0.5" opacity="0.3"/><line x1="53" y1="26" x2="52" y2="30" stroke="hsl(148, 78%, 39%)" stroke-width="0.5" opacity="0.3"/><line x1="59" y1="22" x2="58" y2="25" stroke="hsl(148, 78%, 39%)" stroke-width="0.5" opacity="0.3"/><line x1="47" y1="39" x2="46" y2="42" stroke="hsl(148, 78%, 39%)" stroke-width="0.5" opacity="0.3"/><line x1="41" y1="28" x2="40" y2="33" stroke="hsl(148, 78%, 39%)" stroke-width="0.5" opacity="0.3"/><line x1="38" y1="42" x2="39" y2="48" stroke="hsl(148, 78%, 39%)" stroke-width="0.5" opacity="0.3"/><line x1="51" y1="30" x2="50" y2="34" stroke="hsl(148, 78%, 39%)" stroke-width="0.5" opacity="0.3"/><line x1="43" y1="43" x2="42" y2="46" stroke="hsl(148, 78%, 39%)" stroke-width="0.5" opacity="0.3"/><line x1="39" y1="49" x2="38" y2="54" stroke="hsl(148, 78%, 39%)" stroke-width="0.5" opacity="0.3"/><line x1="52" y1="52" x2="53" y2="56" stroke="hsl(148, 78%, 39%)" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- Eyes -->
+  <ellipse cx="44" cy="35" rx="6" ry="4.199999999999999" fill="#111"/>
+  <ellipse cx="56" cy="35" rx="6" ry="4.199999999999999" fill="#111"/>
+  
+  <ellipse cx="44" cy="35" rx="3" ry="2.4000000000000004" fill="hsl(301, 81%, 53%)" opacity="0.9"/>
+  <ellipse cx="56" cy="35" rx="3" ry="2.4000000000000004" fill="hsl(301, 81%, 53%)" opacity="0.9"/>
+  <circle cx="45" cy="34.5" r="0.8999999999999999" fill="white" opacity="0.8"/>
+  <circle cx="57" cy="34.5" r="0.8999999999999999" fill="white" opacity="0.8"/>
+  
+
+  <!-- Stat bars -->
+  <rect x="8" y="86" width="8" height="6" rx="1" fill="#ef4444" opacity="0.25"/><rect x="22.5" y="89" width="8" height="3" rx="1" fill="#22c55e" opacity="0.25"/><rect x="37" y="86" width="8" height="6" rx="1" fill="#3b82f6" opacity="0.25"/><rect x="51.5" y="86" width="8" height="6" rx="1" fill="#f59e0b" opacity="0.25"/><rect x="66" y="83" width="8" height="9" rx="1" fill="#a855f7" opacity="0.25"/><rect x="80.5" y="86" width="8" height="6" rx="1" fill="#ec4899" opacity="0.25"/>
+
+  <!-- Vignette -->
+  <rect width="100" height="100" fill="url(#bg-chagrianer)" opacity="0.3"/>
+</svg>
