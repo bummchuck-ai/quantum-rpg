@@ -155,12 +155,49 @@ ${recentHistory}
 `;
 }
 
+function buildForceContext(gameState: any): string {
+  const forceRating = gameState.forceRating || 0;
+  if (forceRating === 0) return '';
+  const powers = gameState.ownedPowers || [];
+  return `## Macht
+Macht-Rang: ${forceRating}
+Erlernte Machtkräfte: ${powers.length > 0 ? powers.join(', ') : 'Keine'}
+Der Charakter ist machtsensitiv. Wenn er die Macht einsetzt, würfle Machtwürfel.
+Dunkle-Seite-Punkte erzeugen Belastung (Conflict), Lichtseite-Punkte sind "frei".
+`;
+}
+
+function buildCombatContext(gameState: any): string {
+  if (!gameState.combatActive) return '';
+  return `## KAMPF AKTIV
+Runde: ${gameState.combatRound || 1}
+Der Kampf läuft! Beschreibe Kampfaktionen im Runden-System:
+- Jeder Charakter hat 1 Aktion + 1 Manöver pro Runde
+- Aktionen: Angriff, Fertigkeit einsetzen, Macht einsetzen
+- Manöver: Bewegen, Deckung suchen, Waffe ziehen, Zielen
+- Initiative bestimmt die Reihenfolge
+`;
+}
+
+function buildQuestContext(gameState: any): string {
+  const quests = gameState.questLog || [];
+  if (quests.length === 0) return '';
+  const active = quests.filter((q: any) => q.status === 'active');
+  if (active.length === 0) return '';
+  return `## Aktive Missionen
+${active.map((q: any) => `- ${q.title}: ${q.description}`).join('\n')}
+`;
+}
+
 // --- Main function: Build the complete system prompt ---
 export function buildSystemPrompt(gameState: any): string {
   const sections = [
     GM_PERSONA,
     buildCharacterContext(gameState.character),
     buildVehicleContext(gameState),
+    buildForceContext(gameState),
+    buildCombatContext(gameState),
+    buildQuestContext(gameState),
     buildSceneContext(gameState),
   ].filter(s => s.length > 0);
   return sections.join('\n\n---\n\n');
@@ -225,8 +262,17 @@ Antworte IMMER im folgenden JSON-Format:
     "questUpdate": null,
     "npcUpdate": null,
     "newItem": null,
-    "sceneChange": null
+    "sceneChange": null,
+    "combatStart": null
   },
   "mood": "tense|calm|dangerous|mysterious|exciting|sad|triumphant"
 }
+
+WICHTIG für stateChanges:
+- "newQuest": {"title": "...", "description": "...", "objectives": ["..."], "xpReward": 50, "creditsReward": 500} — wenn eine neue Mission beginnt
+- "questUpdate": {"title": "...", "status": "completed|failed"} — wenn sich eine Mission ändert
+- "npcUpdate": {"name": "...", "disposition": -100..100, "description": "...", "faction": "..."} — wenn ein NPC erscheint oder sich ändert
+- "sceneChange": {"planet": "...", "location": "...", "description": "..."} — bei Ortswechsel
+- "combatStart": {"enemies": [{"name": "...", "woundThreshold": 5, "soak": 2}]} — wenn ein Kampf beginnt
+- Setze immer passende stateChanges wenn narrativ sinnvoll!
 `;
