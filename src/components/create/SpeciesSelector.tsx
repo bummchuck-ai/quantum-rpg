@@ -90,7 +90,7 @@ const SpeciesSelector: React.FC = () => {
               <div className="h-40 bg-zinc-950 relative flex items-end border-b border-zinc-900 overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={`/species/${slugify(s.name)}.svg`}
+                    src={`/species/${slugify(s.name)}.jpg`}
                     alt={s.name}
                     className="absolute inset-0 w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition-opacity duration-500"
                     onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
