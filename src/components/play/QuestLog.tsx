@@ -1,86 +1,132 @@
 'use client';
 
 import React from 'react';
-import { useCharacterStore } from '@/store/characterStore';
-import { Quest, Objective, Reward } from '@/types/quest'; // Korrigierter Import
+import type { Quest, NPC } from '@/lib/engine/game-state';
 
-const QuestLog = () => {
-  const activePlayer = useCharacterStore((state) => state.players[state.activePlayerIndex]);
+interface QuestLogProps {
+  quests: Quest[];
+  npcs: NPC[];
+  onClose: () => void;
+}
 
-  if (!activePlayer) {
-    return <div className="p-4 text-gray-400">Kein aktiver Spieler ausgewählt.</div>;
-  }
+const QuestLog: React.FC<QuestLogProps> = ({ quests, npcs, onClose }) => {
+  const activeQuests = quests.filter(q => q.status === 'active');
+  const completedQuests = quests.filter(q => q.status === 'completed');
+  const failedQuests = quests.filter(q => q.status === 'failed');
 
-  const activeQuests = activePlayer.questLog.filter(quest => quest.status === 'active');
-  const completedQuests = activePlayer.questLog.filter(quest => quest.status === 'completed');
-  const failedQuests = activePlayer.questLog.filter(quest => quest.status === 'failed');
+  const DispositionBar = ({ value }: { value: number }) => {
+    const pct = ((value + 100) / 200) * 100;
+    return (
+      <div className="h-1 w-full bg-zinc-800 rounded-full overflow-hidden">
+        <div className={`h-full transition-all ${value >= 0 ? 'bg-emerald-500' : 'bg-red-500'}`}
+          style={{ width: `${pct}%`, marginLeft: value < 0 ? 0 : undefined }} />
+      </div>
+    );
+  };
 
   return (
-    <div className="p-4 bg-gray-800 text-white rounded-lg shadow-lg max-h-[80vh] overflow-y-auto">
-      <h2 className="text-2xl font-bold mb-4 text-yellow-400">Quest-Log</h2>
+    <div className="absolute inset-0 z-[100] bg-black animate-in fade-in duration-300 flex flex-col">
+      <header className="p-4 border-b border-zinc-800 flex justify-between items-center bg-zinc-950">
+        <h2 className="text-xl font-black text-white italic tracking-tighter uppercase">Missions_Log</h2>
+        <button onClick={onClose} className="w-10 h-10 border border-zinc-800 flex items-center justify-center text-xl">✕</button>
+      </header>
 
-      {activeQuests.length > 0 && (
-        <section className="mb-6">
-          <h3 className="text-xl font-semibold mb-3 text-blue-300">Aktive Quests ({activeQuests.length})</h3>
-          {activeQuests.map((quest: Quest) => (
-            <div key={quest.id} className="bg-gray-700 p-3 rounded-md mb-3 border border-blue-500">
-              <h4 className="font-bold text-lg text-blue-200">{quest.title}</h4>
-              <p className="text-sm text-gray-300 mb-2">{quest.description}</p>
-              {quest.objectives.length > 0 && (
-                <ul className="list-disc list-inside ml-4 text-gray-200">
-                  {quest.objectives.map((objective: Objective, index: number) => (
-                    <li key={objective.description + index} className={`text-sm ${objective.isCompleted ? 'line-through text-gray-400' : ''}`}>
-                      {objective.description}
-                      {objective.targetProgress !== undefined && objective.currentProgress !== undefined && (
-                        <span className="ml-2">({objective.currentProgress}/{objective.targetProgress})</span>
-                      )}
-                      {objective.isCompleted && <span className="ml-2 text-green-400">✅</span>}
-                    </li>
-                  ))}
-                </ul>
-              )}
-              {quest.rewards.length > 0 && (
-                <div className="mt-2 text-sm text-green-300">
-                  Belohnungen: {quest.rewards.map((r: Reward) => {
-                    if (r.type === 'exp') return `${r.value} EP`;
-                    if (r.type === 'credits') return `${r.value} Credits`;
-                    if (r.type === 'item') return `${r.value}`;
-                    return '';
-                  }).join(', ')}
-                </div>
-              )}
-            </div>
-          ))}
-        </section>
-      )}
-
-      {completedQuests.length > 0 && (
-        <section className="mb-6">
-          <h3 className="text-xl font-semibold mb-3 text-green-300">Abgeschlossene Quests ({completedQuests.length})</h3>
-          {completedQuests.map((quest: Quest) => (
-            <div key={quest.id} className="bg-gray-700 p-3 rounded-md mb-3 border border-green-500">
-              <h4 className="font-bold text-lg text-green-200">{quest.title} <span className="text-green-400 text-sm ml-2">✅</span></h4>
-              <p className="text-sm text-gray-400">{quest.description}</p>
-            </div>
-          ))}
-        </section>
-      )}
-
-      {failedQuests.length > 0 && (
+      <div className="flex-1 overflow-y-auto p-4 space-y-6">
+        {/* Active Quests */}
         <section>
-          <h3 className="text-xl font-semibold mb-3 text-red-300">Fehlgeschlagene Quests ({failedQuests.length})</h3>
-          {failedQuests.map((quest: Quest) => (
-            <div key={quest.id} className="bg-gray-700 p-3 rounded-md mb-3 border border-red-500">
-              <h4 className="font-bold text-lg text-red-200">{quest.title} <span className="text-red-400 text-sm ml-2">❌</span></h4>
-              <p className="text-sm text-gray-400">{quest.description}</p>
+          <div className="text-[8px] text-amber-500 font-black uppercase tracking-[0.2em] mb-3">Aktive Missionen ({activeQuests.length})</div>
+          {activeQuests.length === 0 ? (
+            <div className="text-[10px] text-zinc-700 italic">Keine aktiven Missionen...</div>
+          ) : (
+            <div className="space-y-2">
+              {activeQuests.map(q => (
+                <div key={q.id} className="bg-zinc-900 border border-amber-500/20 rounded-xl p-4">
+                  <h3 className="text-sm font-black text-white uppercase italic tracking-tight">{q.title}</h3>
+                  <p className="text-[9px] text-zinc-500 mt-1 mb-3">{q.description}</p>
+                  {q.objectives.length > 0 && (
+                    <div className="space-y-1">
+                      {q.objectives.map((obj, i) => (
+                        <div key={i} className="flex items-center gap-2 text-[9px]">
+                          <div className={`w-3 h-3 border rounded-sm flex items-center justify-center ${obj.completed ? 'bg-emerald-500 border-emerald-500' : 'border-zinc-700'}`}>
+                            {obj.completed && <span className="text-[6px] text-black font-black">✓</span>}
+                          </div>
+                          <span className={obj.completed ? 'text-zinc-600 line-through' : 'text-zinc-400'}>{obj.text}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {(q.xpReward || q.creditsReward) && (
+                    <div className="flex gap-3 mt-3 pt-2 border-t border-zinc-800">
+                      {q.xpReward && <span className="text-[8px] text-amber-500 font-black">+{q.xpReward} XP</span>}
+                      {q.creditsReward && <span className="text-[8px] text-emerald-500 font-black">+{q.creditsReward} Credits</span>}
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
-          ))}
+          )}
         </section>
-      )}
 
-      {activeQuests.length === 0 && completedQuests.length === 0 && failedQuests.length === 0 && (
-        <p className="text-gray-400">Keine Quests vorhanden.</p>
-      )}
+        {/* Completed Quests */}
+        {completedQuests.length > 0 && (
+          <section>
+            <div className="text-[8px] text-emerald-500 font-black uppercase tracking-[0.2em] mb-3">Abgeschlossen ({completedQuests.length})</div>
+            <div className="space-y-2">
+              {completedQuests.map(q => (
+                <div key={q.id} className="bg-zinc-950 border border-zinc-800 rounded-xl p-3 opacity-60">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-[10px] font-black text-zinc-400 uppercase italic">{q.title}</h3>
+                    <span className="text-[7px] text-emerald-500 font-black">ERLEDIGT</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Failed Quests */}
+        {failedQuests.length > 0 && (
+          <section>
+            <div className="text-[8px] text-red-500 font-black uppercase tracking-[0.2em] mb-3">Gescheitert ({failedQuests.length})</div>
+            <div className="space-y-2">
+              {failedQuests.map(q => (
+                <div key={q.id} className="bg-zinc-950 border border-red-500/20 rounded-xl p-3 opacity-40">
+                  <h3 className="text-[10px] font-black text-zinc-500 uppercase italic">{q.title}</h3>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* NPCs */}
+        <section>
+          <div className="text-[8px] text-cyan-500 font-black uppercase tracking-[0.2em] mb-3">Bekannte NPCs ({npcs.length})</div>
+          {npcs.length === 0 ? (
+            <div className="text-[10px] text-zinc-700 italic">Noch keine bekannten NPCs...</div>
+          ) : (
+            <div className="space-y-2">
+              {npcs.map(npc => (
+                <div key={npc.id} className={`bg-zinc-900 border border-zinc-800 rounded-xl p-3 ${!npc.isAlive ? 'opacity-30' : ''}`}>
+                  <div className="flex justify-between items-start mb-2">
+                    <div>
+                      <h3 className="text-[10px] font-black text-white uppercase italic">{npc.name}</h3>
+                      <p className="text-[8px] text-zinc-600">{npc.location}{npc.faction ? ` • ${npc.faction}` : ''}</p>
+                    </div>
+                    <div className="text-right">
+                      <div className={`text-[8px] font-black ${npc.disposition >= 50 ? 'text-emerald-500' : npc.disposition >= 0 ? 'text-zinc-400' : npc.disposition >= -50 ? 'text-orange-400' : 'text-red-500'}`}>
+                        {npc.disposition >= 50 ? 'VERBÜNDET' : npc.disposition >= 0 ? 'NEUTRAL' : npc.disposition >= -50 ? 'MISSTRAUISCH' : 'FEINDLICH'}
+                      </div>
+                      {!npc.isAlive && <div className="text-[7px] text-red-500 font-black">TOT</div>}
+                    </div>
+                  </div>
+                  <DispositionBar value={npc.disposition} />
+                  {npc.description && <p className="text-[8px] text-zinc-600 mt-2">{npc.description}</p>}
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
+      </div>
     </div>
   );
 };

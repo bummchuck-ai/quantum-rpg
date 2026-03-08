@@ -29,19 +29,29 @@ const TalentSelector: React.FC = () => {
   const activePlayer = players[activePlayerIndex];
   const { specializations, availableXP, ownedTalents } = activePlayer;
   
+  const allTrees = talentsData as TalentTree[];
   const [currentTree, setCurrentTree] = useState<TalentTree | null>(null);
   const [selectedTalentKey, setSelectedTalentKey] = useState<string | null>(null);
+  const [treeNotFound, setTreeNotFound] = useState(false);
 
   useEffect(() => {
     if (specializations.length > 0) {
-      const specName = specializations[0].name;
-      const tree = (talentsData as TalentTree[]).find(t => 
-        t.specialization.toLowerCase().includes(specName.toLowerCase()) ||
-        specName.toLowerCase().includes(t.specialization.toLowerCase())
-      );
-      if (tree) setCurrentTree(tree);
+      const specName = specializations[0].name.toLowerCase();
+      // Try exact match first, then substring match
+      const tree = allTrees.find(t => t.specialization.toLowerCase() === specName)
+        || allTrees.find(t =>
+          t.specialization.toLowerCase().includes(specName) ||
+          specName.includes(t.specialization.toLowerCase())
+        );
+      if (tree) {
+        setCurrentTree(tree);
+      } else {
+        setTreeNotFound(true);
+      }
+    } else {
+      setTreeNotFound(true);
     }
-  }, [specializations]);
+  }, [specializations, allTrees]);
 
   const handleConfirm = () => {
     router.push('/create/armory');
@@ -68,9 +78,56 @@ const TalentSelector: React.FC = () => {
 
   if (!currentTree) {
     return (
-      <div className="min-h-dvh bg-black flex items-center justify-center text-amber-500 font-mono p-12 text-center uppercase tracking-[0.5em] animate-pulse">
-        Initializing_Tree_Database...
-      </div>
+      <main className="min-h-dvh w-full bg-black text-zinc-300 font-mono flex flex-col p-6">
+        <header className="flex justify-between items-center border-b border-zinc-800 pb-4 mb-6 sticky top-0 bg-black z-30">
+          <div className="flex gap-3 items-center">
+            <button onClick={() => router.push('/create/skills')} className="w-8 h-8 border border-zinc-700 flex items-center justify-center text-zinc-500 font-black text-xs hover:border-amber-500 hover:text-amber-500 transition-all rounded">←</button>
+            <div className="w-8 h-8 border border-amber-500 flex items-center justify-center text-amber-500 font-black italic">6</div>
+            <div>
+              <h1 className="text-xl font-black text-white italic tracking-tighter uppercase">TRAINING_CENTER</h1>
+            </div>
+          </div>
+        </header>
+
+        <ProgressTracker currentStep={6} />
+
+        {treeNotFound ? (
+          <div className="flex-1 flex flex-col items-center justify-center gap-6 text-center px-4">
+            <div className="text-amber-500 text-sm font-black uppercase tracking-widest">Kein Talentbaum gefunden</div>
+            <p className="text-zinc-500 text-xs max-w-md">
+              Für die gewählte Spezialisierung{specializations.length > 0 ? ` "${specializations[0].name}"` : ''} wurde kein passender Talentbaum gefunden. Du kannst diesen Schritt überspringen und später Talente wählen.
+            </p>
+            <select
+              className="bg-zinc-900 border border-zinc-700 text-zinc-300 text-xs rounded-lg px-4 py-3 w-full max-w-sm focus:border-amber-500 outline-none"
+              onChange={(e) => {
+                const tree = allTrees.find(t => t.specialization === e.target.value);
+                if (tree) { setCurrentTree(tree); setTreeNotFound(false); }
+              }}
+              defaultValue=""
+            >
+              <option value="" disabled>Talentbaum manuell wählen...</option>
+              {allTrees.map(t => (
+                <option key={t.specialization} value={t.specialization}>
+                  {t.career} → {t.specialization}
+                </option>
+              ))}
+            </select>
+          </div>
+        ) : (
+          <div className="flex-1 flex items-center justify-center text-amber-500 text-center uppercase tracking-[0.5em] animate-pulse">
+            Initializing_Tree_Database...
+          </div>
+        )}
+
+        <div className="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/80 to-transparent z-40">
+          <button
+            onClick={() => router.push('/create/armory')}
+            className="w-full bg-white text-black font-black py-5 rounded-xl uppercase italic tracking-widest text-xs shadow-[0_20px_40px_rgba(0,0,0,0.8)] transition-all active:scale-95 border-b-4 border-zinc-400"
+          >
+            {treeNotFound ? 'Überspringen_→' : 'Confirm_Training_Data_→'}
+          </button>
+        </div>
+      </main>
     );
   }
 
@@ -78,7 +135,8 @@ const TalentSelector: React.FC = () => {
     <main className="min-h-dvh w-full bg-black text-zinc-300 font-mono flex flex-col p-6">
       
       <header className="flex justify-between items-center border-b border-zinc-800 pb-4 mb-6 sticky top-0 bg-black z-30">
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-3 items-center">
+            <button onClick={() => router.push('/create/skills')} className="w-8 h-8 border border-zinc-700 flex items-center justify-center text-zinc-500 font-black text-xs hover:border-amber-500 hover:text-amber-500 transition-all rounded">←</button>
             <div className="w-8 h-8 border border-amber-500 flex items-center justify-center text-amber-500 font-black italic">6</div>
             <div>
                 <h1 className="text-xl font-black text-white italic tracking-tighter uppercase">TRAINING_CENTER</h1>

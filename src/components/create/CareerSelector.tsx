@@ -43,7 +43,8 @@ const CareerSelector: React.FC = () => {
       
       {/* HUD Header */}
       <header className="flex justify-between items-center border-b border-zinc-800 pb-4 mb-6 sticky top-0 bg-black z-30">
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-3 items-center">
+            <button onClick={() => router.push('/create')} className="w-8 h-8 border border-zinc-700 flex items-center justify-center text-zinc-500 font-black text-xs hover:border-amber-500 hover:text-amber-500 transition-all rounded">←</button>
             <div className="w-8 h-8 border border-amber-500 flex items-center justify-center text-amber-500 font-black italic">2</div>
             <div>
                 <h1 className="text-xl font-black text-white italic tracking-tighter uppercase">CAREER_MATRIX</h1>

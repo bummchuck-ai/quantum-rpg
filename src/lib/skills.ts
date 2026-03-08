@@ -42,6 +42,7 @@ export const ALL_SKILLS: SkillDefinition[] = [
   { key: 'melee', nameDE: 'Nahkampf (Waffe)', characteristic: 'brawn', category: 'combat' },
   { key: 'rangedLight', nameDE: 'Fernkampf (Leicht)', characteristic: 'agility', category: 'combat' },
   { key: 'rangedHeavy', nameDE: 'Fernkampf (Schwer)', characteristic: 'agility', category: 'combat' },
+  { key: 'lightsaber', nameDE: 'Lichtschwert', characteristic: 'brawn', category: 'combat' },
   // Knowledge Skills
   { key: 'coreWorlds', nameDE: 'Kernwelten', characteristic: 'intellect', category: 'knowledge' },
   { key: 'education', nameDE: 'Allgemeinbildung', characteristic: 'intellect', category: 'knowledge' },
