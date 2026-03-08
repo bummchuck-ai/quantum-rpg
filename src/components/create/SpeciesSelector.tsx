@@ -23,6 +23,15 @@ interface Species {
   abilities: string[];
 }
 
+function slugify(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[áàäâ]/g, 'a').replace(/[éèëê]/g, 'e').replace(/[íìïî]/g, 'i')
+    .replace(/[óòöô]/g, 'o').replace(/[úùüû]/g, 'u')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
 const SpeciesSelector: React.FC = () => {
   const router = useRouter();
   const setSpecies = useCharacterStore((state) => state.setSpecies);
@@ -72,16 +81,22 @@ const SpeciesSelector: React.FC = () => {
             <div 
               key={s.name}
               onClick={() => setSelectedSpecies(isSelected ? null : s.name)}
-              className={`border transition-all duration-300 rounded-xl overflow-hidden cursor-pointer h-fit ${
+              className={`group border transition-all duration-300 rounded-xl overflow-hidden cursor-pointer h-fit ${
                 isSelected 
                   ? 'border-white bg-white/[0.05] shadow-[0_0_20px_rgba(255,255,255,0.1)]' 
                   : 'border-zinc-800 bg-zinc-900/20 hover:bg-zinc-900/40'
               }`}
             >
-              <div className="h-16 bg-zinc-950 relative flex items-center justify-between px-4 border-b border-zinc-900 overflow-hidden">
-                  <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-500 to-transparent"></div>
-                  <span className="text-2xl grayscale opacity-10 font-black italic">{s.name.charAt(0)}</span>
-                  <h2 className="text-base font-black text-white italic tracking-tighter uppercase leading-tight z-10">{s.name}</h2>
+              <div className="h-40 bg-zinc-950 relative flex items-end border-b border-zinc-900 overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`/species/${slugify(s.name)}.jpg`}
+                    alt={s.name}
+                    className="absolute inset-0 w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                  <h2 className="relative z-10 px-4 pb-3 text-base font-black text-white italic tracking-tighter uppercase leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">{s.name}</h2>
               </div>
 
               <div className="p-4 space-y-3">
