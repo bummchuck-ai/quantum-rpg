@@ -24,7 +24,7 @@ const CharacteristicSelector: React.FC = () => {
   const baseChars = species?.characteristics || { brawn: 2, agility: 2, intellect: 2, cunning: 2, willpower: 2, presence: 2 };
 
   const handleConfirm = () => {
-    router.push('/create/talents');
+    router.push('/create/skills');
   };
 
   return (

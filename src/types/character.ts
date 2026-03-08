@@ -12,7 +12,7 @@ export interface Characteristics {
   intellect: number;    // Intelligenz
   cunning: number;      // List
   willpower: number;    // Willenskraft
-  presence: number;     // Ausstrahlung
+  presence: number;     // Charisma
 }
 
 export type CharacteristicKey = keyof Characteristics;
@@ -37,7 +37,7 @@ export interface SkillRanks {
   pilotingPlanetary: number;    // Planetares Steuern
   pilotingSpace: number;        // Steuern (Raum)
   resilience: number;           // Widerstandskraft
-  skulduggery: number;          // Fingerfertigkeit
+  skulduggery: number;          // Infiltration
   stealth: number;              // Heimlichkeit
   streetwise: number;           // Szenekenntnis
   survival: number;             // Überleben
@@ -50,10 +50,11 @@ export interface SkillRanks {
   rangedHeavy: number;          // Schwere Fernkampfwaffen
   // Knowledge Skills (Wissensfertigkeiten)
   coreWorlds: number;           // Kernwelten
-  education: number;            // Bildung
-  lore: number;                 // Sagenkunde
+  education: number;            // Allgemeinbildung
+  lore: number;                 // Altes Wissen
   outerRim: number;             // Äußerer Rand
   underworld: number;           // Unterwelt
+  warfare: number;              // Kriegskunst
   xenology: number;             // Xenologie
   // Force Skills (Machtfertigkeiten) - optional
   lightsaber?: number;          // Lichtschwert
@@ -95,6 +96,7 @@ export const SKILL_CHARACTERISTICS: Record<SkillKey, CharacteristicKey> = {
     lore: 'intellect',
     outerRim: 'intellect',
     underworld: 'intellect',
+    warfare: 'intellect',
     xenology: 'intellect',
     lightsaber: 'brawn',
 };
@@ -187,6 +189,54 @@ export interface EquipmentItem {
     cost: number;
     rarity: number;
     description: string;
+}
+
+// --- Vehicle / Starship ---
+export type VehicleCategory =
+    | 'landspeeder' | 'speederBike' | 'walker' | 'wheeled'
+    | 'starfighter' | 'shuttle' | 'freighter' | 'capitalShip'
+    | 'skiff' | 'ridingBeast';
+
+export interface VehicleWeapon {
+    name: string;
+    firingArc: 'forward' | 'aft' | 'port' | 'starboard' | 'turret' | 'all';
+    damage: number;
+    critical: number;
+    range: 'close' | 'short' | 'medium' | 'long' | 'extreme';
+    special: string[];
+}
+
+export interface Vehicle {
+    id: string;
+    name: string;
+    category: VehicleCategory;
+    manufacturer: string;
+    model: string;
+    silhouette: number;         // 0-10, Größe des Fahrzeugs
+    speed: number;              // 1-6, Maximalgeschwindigkeit
+    handling: number;           // Manövrierfähigkeit (kann negativ sein)
+    armor: number;              // Panzerung
+    hullTraumaThreshold: number;  // Hüllentrauma-Schwelle
+    systemStrainThreshold: number; // Systembelastung-Schwelle
+    currentHullTrauma: number;
+    currentSystemStrain: number;
+    defenseForward: number;
+    defenseAft: number;
+    defensePort: number;
+    defenseStarboard: number;
+    sensorRange: 'close' | 'short' | 'medium' | 'long' | 'extreme';
+    crew: number;               // Mindestbesatzung
+    passengers: number;         // Passagierkapazität
+    encumbrance: number;        // Ladekapazität
+    consumables: string;        // z.B. "2 Wochen"
+    cost: number;
+    rarity: number;
+    hardpoints: number;         // Für Modifikationen
+    weapons: VehicleWeapon[];
+    specialFeatures: string[];
+    hyperdrive?: number;        // Primärer Hyperantrieb-Klasse (niedriger = schneller)
+    backupHyperdrive?: number;  // Backup Hyperantrieb-Klasse
+    navsComputer: boolean;      // Hat Navigationscomputer?
 }
 
 // --- Species ---
@@ -300,6 +350,9 @@ export interface Character {
     equipment: EquipmentItem[];
     credits: number;
 
+  // Vehicles
+  vehicles: Vehicle[];
+
   // Derived
   derivedStats: DerivedStats;
 
@@ -323,7 +376,8 @@ export interface GameState {
     currentPlanet: string;
     questLog: QuestEntry[];
     npcRelationships: NPCRelationship[];
-    inventory: EquipmentItem[]; // This is already here, no need for the one in Character
+    inventory: EquipmentItem[];
+    vehicles: Vehicle[];
     sessionHistory: SessionEvent[];
     destinyPool: {
       lightSide: number;

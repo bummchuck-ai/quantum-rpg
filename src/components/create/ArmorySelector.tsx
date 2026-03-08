@@ -19,7 +19,7 @@ const ArmorySelector: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleConfirm = () => {
-    router.push('/create/summary');
+    router.push('/create/ship');
   };
 
   const isPurchased = (name: string) => ownedGear.some(g => g.name === name);
@@ -38,7 +38,7 @@ const ArmorySelector: React.FC = () => {
       {/* HUD Header */}
       <header className="flex justify-between items-center border-b border-zinc-800 pb-4 mb-6 sticky top-0 bg-black z-30">
         <div className="flex gap-4 items-center">
-            <div className="w-8 h-8 border border-amber-500 flex items-center justify-center text-amber-500 font-black italic">6</div>
+            <div className="w-8 h-8 border border-amber-500 flex items-center justify-center text-amber-500 font-black italic">7</div>
             <div>
                 <h1 className="text-xl font-black text-white italic tracking-tighter uppercase leading-none">ARMORY_GRID</h1>
             </div>
@@ -49,7 +49,7 @@ const ArmorySelector: React.FC = () => {
         </div>
       </header>
 
-      <ProgressTracker currentStep={6} />
+      <ProgressTracker currentStep={7} />
 
       {/* CATEGORY TABS */}
       <div className="grid grid-cols-3 gap-2 mb-4 sticky top-[65px] bg-black z-20 pb-2">

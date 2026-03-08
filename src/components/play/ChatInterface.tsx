@@ -5,7 +5,95 @@ import { useCharacterStore, Player } from '@/store/characterStore';
 import { useRouter } from 'next/navigation';
 import HolocronGuide from '../create/HolocronGuide';
 import DiceRollerModal from './DiceRollerModal';
-import { DicePool, formatRollResult, RollResult } from '@/lib/engine/dice';
+import { DicePool, formatRollResult, RollResult, buildSkillPool } from '@/lib/engine/dice';
+import { ALL_SKILLS, SKILL_NAMES_DE, SKILL_CHARACTERISTICS } from '@/lib/skills';
+
+// Map skill names (DE/EN, various forms) to store keys and characteristics
+const SKILL_MAP: Record<string, { key: string; char: string }> = {
+  'astronavigation': { key: 'astrogation', char: 'intellect' },
+  'astrogation': { key: 'astrogation', char: 'intellect' },
+  'athletik': { key: 'athletics', char: 'brawn' },
+  'athletics': { key: 'athletics', char: 'brawn' },
+  'charme': { key: 'charm', char: 'presence' },
+  'charm': { key: 'charm', char: 'presence' },
+  'einschüchterung': { key: 'coercion', char: 'willpower' },
+  'coercion': { key: 'coercion', char: 'willpower' },
+  'computer': { key: 'computers', char: 'intellect' },
+  'computers': { key: 'computers', char: 'intellect' },
+  'coolness': { key: 'cool', char: 'presence' },
+  'cool': { key: 'cool', char: 'presence' },
+  'körperbeherrschung': { key: 'coordination', char: 'agility' },
+  'coordination': { key: 'coordination', char: 'agility' },
+  'täuschung': { key: 'deception', char: 'cunning' },
+  'deception': { key: 'deception', char: 'cunning' },
+  'disziplin': { key: 'discipline', char: 'willpower' },
+  'discipline': { key: 'discipline', char: 'willpower' },
+  'führungsqualität': { key: 'leadership', char: 'presence' },
+  'leadership': { key: 'leadership', char: 'presence' },
+  'mechanik': { key: 'mechanics', char: 'intellect' },
+  'mechanics': { key: 'mechanics', char: 'intellect' },
+  'medizin': { key: 'medicine', char: 'intellect' },
+  'medicine': { key: 'medicine', char: 'intellect' },
+  'verhandlung': { key: 'negotiation', char: 'presence' },
+  'negotiation': { key: 'negotiation', char: 'presence' },
+  'wahrnehmung': { key: 'perception', char: 'cunning' },
+  'perception': { key: 'perception', char: 'cunning' },
+  'pilot (planetar)': { key: 'pilotingPlanetary', char: 'agility' },
+  'planetares steuern': { key: 'pilotingPlanetary', char: 'agility' },
+  'pilotingplanetary': { key: 'pilotingPlanetary', char: 'agility' },
+  'pilot (weltraum)': { key: 'pilotingSpace', char: 'agility' },
+  'steuern (raum)': { key: 'pilotingSpace', char: 'agility' },
+  'pilotingspace': { key: 'pilotingSpace', char: 'agility' },
+  'widerstandskraft': { key: 'resilience', char: 'brawn' },
+  'resilience': { key: 'resilience', char: 'brawn' },
+  'fingerfertigkeit': { key: 'skulduggery', char: 'cunning' },
+  'skulduggery': { key: 'skulduggery', char: 'cunning' },
+  'heimlichkeit': { key: 'stealth', char: 'agility' },
+  'stealth': { key: 'stealth', char: 'agility' },
+  'szenekenntnis': { key: 'streetwise', char: 'cunning' },
+  'streetwise': { key: 'streetwise', char: 'cunning' },
+  'überleben': { key: 'survival', char: 'cunning' },
+  'survival': { key: 'survival', char: 'cunning' },
+  'aufmerksamkeit': { key: 'vigilance', char: 'willpower' },
+  'vigilance': { key: 'vigilance', char: 'willpower' },
+  'nahkampf (faust)': { key: 'brawl', char: 'brawn' },
+  'nahkampf (unbewaffnet)': { key: 'brawl', char: 'brawn' },
+  'brawl': { key: 'brawl', char: 'brawn' },
+  'artillerie': { key: 'gunnery', char: 'agility' },
+  'gunnery': { key: 'gunnery', char: 'agility' },
+  'nahkampf (waffe)': { key: 'melee', char: 'brawn' },
+  'nahkampf (bewaffnet)': { key: 'melee', char: 'brawn' },
+  'melee': { key: 'melee', char: 'brawn' },
+  'fernkampf (leicht)': { key: 'rangedLight', char: 'agility' },
+  'leichte fernkampfwaffen': { key: 'rangedLight', char: 'agility' },
+  'rangedlight': { key: 'rangedLight', char: 'agility' },
+  'fernkampf (schwer)': { key: 'rangedHeavy', char: 'agility' },
+  'schwere fernkampfwaffen': { key: 'rangedHeavy', char: 'agility' },
+  'rangedheavy': { key: 'rangedHeavy', char: 'agility' },
+  'kernwelten': { key: 'coreWorlds', char: 'intellect' },
+  'coreworlds': { key: 'coreWorlds', char: 'intellect' },
+  'allgemeinbildung': { key: 'education', char: 'intellect' },
+  'bildung': { key: 'education', char: 'intellect' },
+  'education': { key: 'education', char: 'intellect' },
+  'altes wissen': { key: 'lore', char: 'intellect' },
+  'sagenkunde': { key: 'lore', char: 'intellect' },
+  'lore': { key: 'lore', char: 'intellect' },
+  'äußerer rand': { key: 'outerRim', char: 'intellect' },
+  'outerrim': { key: 'outerRim', char: 'intellect' },
+  'unterwelt': { key: 'underworld', char: 'intellect' },
+  'underworld': { key: 'underworld', char: 'intellect' },
+  'kriegskunst': { key: 'warfare', char: 'intellect' },
+  'warfare': { key: 'warfare', char: 'intellect' },
+  'xenologie': { key: 'xenology', char: 'intellect' },
+  'xenology': { key: 'xenology', char: 'intellect' },
+  'lichtschwert': { key: 'lightsaber', char: 'brawn' },
+  'lightsaber': { key: 'lightsaber', char: 'brawn' },
+};
+
+function resolveSkill(skillName: string): { key: string; char: string } {
+  const normalized = skillName.toLowerCase().trim();
+  return SKILL_MAP[normalized] || { key: normalized, char: 'intellect' };
+}
 
 interface Message {
   role: 'gm' | 'player';
@@ -16,6 +104,8 @@ interface RollRequest {
   skill: string;
   difficulty: string;
   reason: string;
+  boost?: number;
+  setback?: number;
 }
 
 const DIFFICULTY_MAP: Record<string, number> = {
@@ -164,8 +254,8 @@ const ChatInterface: React.FC = () => {
     setIsTyping(false);
   };
 
-  const initiateRoll = (skill: string, difficulty: string, reason: string) => {
-    setActiveRollRequest({ skill, difficulty, reason });
+  const initiateRoll = (skill: string, difficulty: string, reason: string, boost?: number, setback?: number) => {
+    setActiveRollRequest({ skill, difficulty, reason, boost, setback });
     setShowDiceRoller(true);
   };
 
@@ -179,15 +269,16 @@ const ChatInterface: React.FC = () => {
 
   const getInitialPool = (): DicePool => {
     const difficultyLevel = DIFFICULTY_MAP[activeRollRequest?.difficulty.toLowerCase() || 'average'] || 2;
-    return {
-      ability: 2, 
-      proficiency: 0,
-      difficulty: difficultyLevel,
-      challenge: 0,
-      boost: 0,
-      setback: 0,
-      force: 0
-    };
+    const boost = activeRollRequest?.boost || 0;
+    const setback = activeRollRequest?.setback || 0;
+
+    // Resolve skill name to key + characteristic
+    const { key: skillKey, char: charKey } = resolveSkill(activeRollRequest?.skill || '');
+    const skillRank = (activePlayer.skillRanks || {})[skillKey] || 0;
+    const charValue = (characteristics as any)[charKey] || 2;
+
+    // Use FFG rules: buildSkillPool calculates ability vs proficiency dice
+    return buildSkillPool(charValue, skillRank, difficultyLevel, 0, boost, setback);
   };
 
   return (
@@ -245,6 +336,28 @@ const ChatInterface: React.FC = () => {
               </div>
             </section>
             <section>
+              <div className="text-[8px] text-zinc-600 font-black uppercase mb-4 tracking-[0.2em]">Fertigkeiten</div>
+              <div className="space-y-1">
+                {ALL_SKILLS.map(skill => {
+                  const skillRank = (activePlayer.skillRanks || {})[skill.key] || 0;
+                  const charVal = (characteristics as any)[skill.characteristic] || 2;
+                  return (
+                    <div key={skill.key} className={`flex justify-between items-center py-1.5 border-b border-zinc-900 last:border-0 ${skillRank === 0 ? 'opacity-40' : ''}`}>
+                      <span className={`text-[9px] font-bold uppercase tracking-tight ${skillRank > 0 ? 'text-zinc-300' : 'text-zinc-500'}`}>{skill.nameDE}</span>
+                      <div className="flex items-center gap-2">
+                        <div className="flex gap-0.5">
+                          {[1,2,3,4,5].map(p => (
+                            <div key={p} className={`w-2.5 h-2.5 rounded-full ${p <= skillRank ? 'bg-emerald-500 shadow-[0_0_4px_rgba(16,185,129,0.4)]' : 'bg-zinc-800'}`} />
+                          ))}
+                        </div>
+                        <span className="text-[7px] text-zinc-700 font-black w-8 text-right">{charVal}+{skillRank}</span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+            <section>
               <div className="text-[8px] text-zinc-600 font-black uppercase mb-4 tracking-[0.2em]">Equipment</div>
               <div className="space-y-2">
                 {ownedGear.length > 0 ? ownedGear.map((g, i) => (
@@ -255,6 +368,37 @@ const ChatInterface: React.FC = () => {
                 )) : <div className="text-[10px] text-zinc-800 italic uppercase">Keine Ausrüstung...</div>}
               </div>
             </section>
+            {activePlayer.vehicles && activePlayer.vehicles.length > 0 && (
+              <section>
+                <div className="text-[8px] text-zinc-600 font-black uppercase mb-4 tracking-[0.2em]">Schiff / Fahrzeug</div>
+                {activePlayer.vehicles.map((v) => (
+                  <div key={v.id} className="border border-zinc-800 bg-zinc-950 rounded-xl p-4 space-y-3">
+                    <div>
+                      <div className="text-[11px] font-black text-white uppercase italic tracking-tighter">{v.name}</div>
+                      <div className="text-[7px] text-zinc-600 uppercase tracking-widest">{v.manufacturer}</div>
+                    </div>
+                    {v.silhouette > 0 && (
+                      <div className="grid grid-cols-4 gap-2">
+                        <div className="text-center"><div className="text-[6px] text-zinc-700 font-black uppercase">SIL</div><div className="text-xs font-black text-zinc-400">{v.silhouette}</div></div>
+                        <div className="text-center"><div className="text-[6px] text-zinc-700 font-black uppercase">SPD</div><div className="text-xs font-black text-zinc-400">{v.speed}</div></div>
+                        <div className="text-center"><div className="text-[6px] text-zinc-700 font-black uppercase">ARM</div><div className="text-xs font-black text-zinc-400">{v.armor}</div></div>
+                        <div className="text-center"><div className="text-[6px] text-zinc-700 font-black uppercase">HULL</div><div className="text-xs font-black text-zinc-400">{v.currentHullTrauma}/{v.hullTraumaThreshold}</div></div>
+                      </div>
+                    )}
+                    {v.weapons.length > 0 && (
+                      <div className="space-y-1">
+                        {v.weapons.map((w, i) => (
+                          <div key={i} className="flex justify-between items-center text-[8px]">
+                            <span className="text-amber-500 font-black uppercase italic">{w.name}</span>
+                            <span className="text-zinc-600">DMG {w.damage}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </section>
+            )}
           </div>
         </div>
       )}
@@ -324,7 +468,7 @@ const ChatInterface: React.FC = () => {
                             <div className="text-[8px] text-amber-500 font-black uppercase tracking-widest mb-1">Incoming_Challenge</div>
                             <div className="text-xs font-black text-white uppercase italic">{msg.content.rollInfo.skill} <span className="text-zinc-500">//</span> {msg.content.rollInfo.difficulty}</div>
                         </div>
-                        <button onClick={() => initiateRoll(msg.content.rollInfo.skill, msg.content.rollInfo.difficulty, msg.content.rollInfo.reason)} className="bg-amber-600 hover:bg-amber-500 text-black font-black px-4 py-3 rounded-lg text-xs uppercase tracking-widest animate-pulse">🎲 Würfeln</button>
+                        <button onClick={() => initiateRoll(msg.content.rollInfo.skill, msg.content.rollInfo.difficulty, msg.content.rollInfo.reason, msg.content.rollInfo.boost, msg.content.rollInfo.setback)} className="bg-amber-600 hover:bg-amber-500 text-black font-black px-4 py-3 rounded-lg text-xs uppercase tracking-widest animate-pulse">🎲 Würfeln</button>
                     </div>
                   )}
                   <div className="grid grid-cols-1 gap-2 pt-4">
