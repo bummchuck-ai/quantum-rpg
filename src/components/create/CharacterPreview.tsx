@@ -30,7 +30,7 @@ const CharacterPreview: React.FC = () => {
           {speciesName && (
             <>
               <span className="text-[9px] text-zinc-700">|</span>
-              <span className="text-[9px] text-zinc-500 uppercase tracking-widest truncate">{speciesName}</span>
+              <span className="text-[9px] text-zinc-500 uppercase tracking-widest truncate">{speciesName}{p.selectedSubspecies ? ` (${p.selectedSubspecies})` : ''}</span>
             </>
           )}
         </div>

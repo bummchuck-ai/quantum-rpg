@@ -60,6 +60,7 @@ export interface Player {
   ownedGear: Gear[];
   wounds: number;
   strain: number;
+  selectedSubspecies: string | null;
   vehicles: PlayerVehicle[];
   questLog: Quest[];
 }
@@ -125,6 +126,7 @@ const createNewPlayer = (id: string): Player => ({
   ownedGear: [],
   wounds: 0,
   strain: 0,
+  selectedSubspecies: null,
   vehicles: [],
   questLog: [],
 });
@@ -166,7 +168,8 @@ export const useCharacterStore = create<GameState>()(
         availableXP: species.startingXP,
         skillRanks: { ...(species.freeSkillRanks || {}) },
         wounds: 0,
-        strain: 0
+        strain: 0,
+        selectedSubspecies: (species as any).selectedSubspecies || null,
       }),
 
       setCareer: (career) => get().updateActivePlayer({ career }),

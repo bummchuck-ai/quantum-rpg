@@ -206,7 +206,7 @@ function buildCharacterContext(character: any): string {
 
 ## Identität
 Name: ${character.name}
-Spezies: ${character.species?.name || 'Unbekannt'}
+Spezies: ${character.species?.name || 'Unbekannt'}${character.selectedSubspecies ? ` (${character.selectedSubspecies})` : ''}
 ${character.species?.description ? `Spezies-Beschreibung: ${character.species.description}` : ''}
 ${character.species?.abilities?.length > 0 ? `Spezies-Fähigkeiten: ${character.species.abilities.join('; ')}` : ''}
 Karriere: ${character.career?.name || 'Unbekannt'}

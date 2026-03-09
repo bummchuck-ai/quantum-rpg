@@ -57,21 +57,37 @@
     "strainThresholdBase": 8,
     "abilities": [
       "1 Rang in Handgemenge (nicht höher als 2 während der Erschaffung).",
-      "Amphibisch: Aqualishaner können unter Wasser ohne Einschränkungen atmen.",
-      "Zudem muss eine Subspezies gewählt werden:",
-      "Aquala:",
-      "1 Rang in Widerstandskraft (nicht höher als 2 während der Erschaffung).",
-      "Wenn Aquala Abzüge aufgrund von kalter oder feuchter Umgebung erhalten,",
-      "können sie einen bei diesen Proben ignorieren.",
-      "Ualaq:",
-      "1 Rang in Wahrnehmung oder Überleben (nicht höher als 2 während der Erschaffung).",
-      "Wenn Ualag Abzüge aufgrund von dunkler Umgebung erhalten,",
-      "so können sie 1 von diesen Proben ignorieren; in zu heller Umgebung erleiden sie",
-      "einen  bei Proben hinzu.",
-      "Quara:",
-      "1 Rang in Athletik oder Einschüchtern (nicht höher als 2 während der Erschaffung).",
-      "Wenn Ualag Abzüge aufgrund von widriger Umgebung erhalten,",
-      "so können sie 1 von diesen Proben ignorieren."
+      "Amphibisch: Aqualishaner können unter Wasser ohne Einschränkungen atmen."
+    ],
+    "subspecies": [
+      {
+        "name": "Aquala",
+        "description": "Die häufigste Subspezies mit glatten Flossen statt Händen. Angepasst an kalte und feuchte Umgebungen.",
+        "freeSkillRanks": { "resilience": 1 },
+        "abilities": [
+          "1 Rang in Widerstandskraft.",
+          "Kälte/Nässe-Resistenz: Kann einen Abzug aufgrund von kalter oder feuchter Umgebung ignorieren."
+        ]
+      },
+      {
+        "name": "Ualaq",
+        "description": "Seltene Subspezies mit vier Augen und hervorragender Nachtsicht. Empfindlich gegenüber hellem Licht.",
+        "freeSkillRanks": { "perception": 1 },
+        "abilities": [
+          "1 Rang in Wahrnehmung oder Überleben.",
+          "Nachtsicht: Kann einen Abzug aufgrund von dunkler Umgebung ignorieren.",
+          "Lichtempfindlich: Erleidet einen zusätzlichen Abzug in zu heller Umgebung."
+        ]
+      },
+      {
+        "name": "Quara",
+        "description": "Kräftigste Subspezies mit klauenartigen Händen. Extrem aggressiv und an widrige Bedingungen angepasst.",
+        "freeSkillRanks": { "athletics": 1 },
+        "abilities": [
+          "1 Rang in Athletik oder Einschüchtern.",
+          "Umgebungs-Resistenz: Kann einen Abzug aufgrund von widriger Umgebung ignorieren."
+        ]
+      }
     ],
     "freeSkillRanks": {
       "resilience": 1
@@ -1483,28 +1499,55 @@
     },
     "woundThresholdBase": 11,
     "strainThresholdBase": 10,
-    "abilities": [
-      "Zudem muss eine Subspezies gewählt werden:",
-      "Rote Nikto:",
-      "1 Rang in Widerstandskraft (nicht höher als 2 während der Erschaffung).",
-      "Wenn rote Nikto Abzüge aufgrund von trockener oder heißer Umgebung",
-      "erhalten, so können sie 1 von diesen Proben ignorieren.",
-      "Grüne Nikto:",
-      "1 Rang in Körperbeherrschung (nicht höher als 2 während der Erschaffung).",
-      "Grüne Nikto erhalten einen  auf Athletikproben beim Erklettern von Bäumen oder",
-      "ähnlichen Oberflächen",
-      "Grüne Nikto verfügen über Klauen (Handgemenge, Stärke +1 Wunden, Kritisch 3).",
-      "Berg-Nikto:",
-      "1 Rang in Überleben (nicht höher als 2 während der Erschaffung).",
-      "Berg-Nikto beginnen mit dem Talent Naturbursche.",
-      "Blasse Nikto:",
-      "1 Rang in Athletik (nicht höher als 2 während der Erschaffung).",
-      "Halbamphibisch: Blasse Nikto können für Stärke x2 Runden die Luft anhalten und erleiden",
-      "niemals Bewegungsabzüge wegen der Bewegung im Wasser.",
-      "Süd-Nikto:",
-      "1 Rang in Wahrnehmung (nicht höher als 2 während der Erschaffung).",
-      "Süd-Nikto erhalten einen  auf Wahrnehmungs- und Wachsamkeitsproben, um",
-      "Geräusche zu hören."
+    "abilities": [],
+    "subspecies": [
+      {
+        "name": "Rote Nikto",
+        "description": "Wüstenspezies von Kintan. Raue, ledrige Haut schützt vor extremer Hitze und Sandstürmen.",
+        "freeSkillRanks": { "resilience": 1 },
+        "abilities": [
+          "1 Rang in Widerstandskraft.",
+          "Hitze-Resistenz: Kann einen Abzug aufgrund von trockener oder heißer Umgebung ignorieren."
+        ]
+      },
+      {
+        "name": "Grüne Nikto",
+        "description": "Waldspezies mit natürlichen Klauen und schuppiger Haut. Exzellente Kletterer.",
+        "freeSkillRanks": { "coordination": 1 },
+        "abilities": [
+          "1 Rang in Körperbeherrschung.",
+          "Kletterer: Bonus auf Athletikproben beim Erklettern von Bäumen und ähnlichen Oberflächen.",
+          "Natürliche Klauen: Handgemenge-Waffe, Stärke +1 Wunden, Kritisch 3."
+        ]
+      },
+      {
+        "name": "Berg-Nikto",
+        "description": "Hochlandbewohner mit blauer Haut und kleinen Hörnern. Meister des Überlebens in der Wildnis.",
+        "freeSkillRanks": { "survival": 1 },
+        "abilities": [
+          "1 Rang in Überleben.",
+          "Beginnt mit dem Talent Naturbursche."
+        ]
+      },
+      {
+        "name": "Blasse Nikto",
+        "description": "Küstenbewohner mit heller Haut und Kiemenschlitzen. Können unter Wasser überleben.",
+        "freeSkillRanks": { "athletics": 1 },
+        "abilities": [
+          "1 Rang in Athletik.",
+          "Halbamphibisch: Kann Stärke x2 Runden die Luft anhalten.",
+          "Keine Bewegungsabzüge im Wasser."
+        ]
+      },
+      {
+        "name": "Süd-Nikto",
+        "description": "Steppenbewohner mit großen Ohren und ausgeprägtem Gehör. Hervorragende Späher.",
+        "freeSkillRanks": { "perception": 1 },
+        "abilities": [
+          "1 Rang in Wahrnehmung.",
+          "Scharfes Gehör: Bonus auf Wahrnehmungs- und Wachsamkeitsproben für Geräuscherkennung."
+        ]
+      }
     ],
     "freeSkillRanks": {
       "resilience": 1,
