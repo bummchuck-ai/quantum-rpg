@@ -7,16 +7,31 @@ import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
 
 const OBLIGATION_LIST = [
-  "Schulden (Debt)", "Kopfgeld (Bounty)", "Erpressung (Blackmail)", "Familie", 
-  "Sucht (Addiction)", "Verrat (Betrayal)", "Verbrechen (Criminal)", "Favor"
+  { name: "Schulden (Debt)", desc: "Du schuldest jemandem Mächtigem viel Geld oder einen Gefallen. Gläubiger schicken regelmäßig Eintreiber — und sie werden ungeduldig." },
+  { name: "Kopfgeld (Bounty)", desc: "Jemand hat ein Kopfgeld auf dich ausgesetzt. Kopfgeldjäger durchkämmen die Galaxis nach dir. Jeder Cantina-Besuch könnte dein letzter sein." },
+  { name: "Erpressung (Blackmail)", desc: "Jemand kennt dein dunkstes Geheimnis und nutzt es gegen dich. Solange du nicht zahlst oder gehorchst, hängt die Enthüllung über dir." },
+  { name: "Familie", desc: "Deine Familie braucht dich — finanziell, emotional oder weil sie in Gefahr ist. Ihre Probleme werden unweigerlich zu deinen." },
+  { name: "Sucht (Addiction)", desc: "Du bist abhängig von einer Substanz, einem Spiel oder einer Aktivität. Ohne deine Dosis wirst du unruhig, unkonzentriert — und verzweifelt." },
+  { name: "Verrat (Betrayal)", desc: "Du hast jemanden verraten — oder wurdest verraten. Diese offene Wunde zieht Konflikte an und vergiftet Vertrauen." },
+  { name: "Verbrechen (Criminal)", desc: "Du hast eine kriminelle Vergangenheit. Das Imperium, lokale Behörden oder Syndikate suchen nach dir. Ein falscher Schritt und du landest im Gefängnis." },
+  { name: "Favor", desc: "Du schuldest jemandem einen großen Gefallen — und diese Person wird ihn einfordern. Zum ungünstigsten Zeitpunkt." },
 ];
 const DUTY_LIST = [
-  "Kampfsiege", "Spionage", "Sabotage", "Rekrutierung", "Politische Unterstützung", 
-  "Innere Sicherheit", "Ressourcenbeschaffung"
+  { name: "Kampfsiege", desc: "Deine Pflicht ist es, auf dem Schlachtfeld zu siegen. Jeder gewonnene Kampf stärkt die Sache deiner Fraktion." },
+  { name: "Spionage", desc: "Du sammelst Informationen hinter feindlichen Linien. Dein Wissen kann Schlachten entscheiden — oder dich das Leben kosten." },
+  { name: "Sabotage", desc: "Du zerstörst feindliche Einrichtungen, Versorgungslinien und Ausrüstung. Stille Operationen mit großer Wirkung." },
+  { name: "Rekrutierung", desc: "Du gewinnst neue Verbündete für die Sache. Jeder neue Rekrut stärkt die Bewegung." },
+  { name: "Politische Unterstützung", desc: "Du schmiedest Allianzen und gewinnst politische Unterstützer. Diplomatie ist deine stärkste Waffe." },
+  { name: "Innere Sicherheit", desc: "Du schützt deine Fraktion vor Spionen, Verrätern und internen Bedrohungen. Vertrauen ist ein Luxus." },
+  { name: "Ressourcenbeschaffung", desc: "Du besorgst Waffen, Schiffe, Treibstoff und Vorräte. Ohne Nachschub stirbt jede Rebellion." },
 ];
 const MORALITY_LIST = [
-  "Tapferkeit / Zorn", "Liebe / Eifersucht", "Vorsicht / Furcht", "Gnade / Schwäche", 
-  "Stolz / Arroganz", "Neugier / Besessenheit"
+  { name: "Tapferkeit / Zorn", desc: "Du stellst dich mutig jeder Gefahr — aber dein Mut kann in blinden Zorn umschlagen. Die Dunkle Seite nährt sich von deiner Wut." },
+  { name: "Liebe / Eifersucht", desc: "Deine tiefe Bindung zu anderen gibt dir Stärke — aber Angst vor Verlust kann zu Eifersucht und Besitzdenken werden." },
+  { name: "Vorsicht / Furcht", desc: "Deine Vorsicht hält dich am Leben — aber sie kann in lähmende Furcht umschlagen, die dich handlungsunfähig macht." },
+  { name: "Gnade / Schwäche", desc: "Du schonst deine Feinde und gibst jedem eine zweite Chance — aber deine Gnade kann als Schwäche ausgenutzt werden." },
+  { name: "Stolz / Arroganz", desc: "Dein Selbstvertrauen inspiriert andere — aber es kann in Arroganz kippen, die dich blind für eigene Fehler macht." },
+  { name: "Neugier / Besessenheit", desc: "Dein Wissensdurst treibt dich an — aber er kann zur Besessenheit werden, die dich in verbotenes Wissen lockt." },
 ];
 
 const BackgroundSelector: React.FC = () => {
@@ -37,13 +52,16 @@ const BackgroundSelector: React.FC = () => {
     }
   }, [career]);
 
+  const [rollDesc, setRollDesc] = useState<string | null>(null);
+
   const handleRoll = () => {
     setRolling(true);
     setTimeout(() => {
       let list = suggestedType === 'Duty' ? DUTY_LIST : suggestedType === 'Morality' ? MORALITY_LIST : OBLIGATION_LIST;
-      const result = list[Math.floor(Math.random() * list.length)];
-      setRollResult(result);
-      setBackground(suggestedType, result, suggestedType === 'Morality' ? 50 : 10);
+      const pick = list[Math.floor(Math.random() * list.length)];
+      setRollResult(pick.name);
+      setRollDesc(pick.desc);
+      setBackground(suggestedType, pick.name, suggestedType === 'Morality' ? 50 : 10);
       setRolling(false);
     }, 1200);
   };
@@ -112,8 +130,11 @@ const BackgroundSelector: React.FC = () => {
             <div className="border border-amber-500/40 bg-amber-500/[0.03] p-8 text-center relative rounded-xl overflow-hidden shadow-2xl">
                <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>
                <div className="text-[10px] text-amber-500 uppercase font-black mb-3 opacity-60 tracking-widest">[ DECREE_RESULT ]</div>
-               <div className="text-4xl font-black text-white italic tracking-tighter uppercase mb-2">{rollResult}</div>
-               <div className="text-[10px] text-zinc-500 font-bold border-t border-zinc-900 mt-4 pt-4">INITIAL_MAGNITUDE: {suggestedType === 'Morality' ? '50' : '10'}</div>
+               <div className="text-4xl font-black text-white italic tracking-tighter uppercase mb-4">{rollResult}</div>
+               {rollDesc && (
+                 <div className="text-xs text-zinc-400 leading-relaxed font-sans italic border-t border-zinc-800 pt-4 mb-4 text-left">{rollDesc}</div>
+               )}
+               <div className="text-[10px] text-zinc-500 font-bold border-t border-zinc-900 pt-4">INITIAL_MAGNITUDE: {suggestedType === 'Morality' ? '50' : '10'}</div>
             </div>
 
             {suggestedType !== 'Morality' && (
