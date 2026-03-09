@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
   <!-- Armored vest -->
   <path d="M8 3l-1 1-4 2v8l4 2v6h10v-6l4-2V6l-4-2-1-1"/>
   <path d="M8 3c1 1.5 2.5 2 4 2s3-0.5 4-2"/>

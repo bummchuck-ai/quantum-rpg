@@ -7,6 +7,26 @@ import { useCharacterStore } from '@/store/characterStore';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
 
+// Map subcategory to SVG icon path
+const SUBCAT_ICONS: Record<string, string> = {
+  'Pistolen': '/icons/gear/pistol.svg',
+  'Gewehre': '/icons/gear/rifle.svg',
+  'Schwere Waffen': '/icons/gear/heavy.svg',
+  'Nahkampf': '/icons/gear/melee.svg',
+  'Granaten': '/icons/gear/grenade.svg',
+  'Kleidung': '/icons/gear/clothing.svg',
+  'Westen': '/icons/gear/vest.svg',
+  'Rüstung': '/icons/gear/armor.svg',
+  'Spezial': '/icons/gear/special-armor.svg',
+  'Kommunikation': '/icons/gear/comms.svg',
+  'Medizin': '/icons/gear/medical.svg',
+  'Werkzeug': '/icons/gear/tools.svg',
+  'Scanner & Optik': '/icons/gear/scanner.svg',
+  'Überleben': '/icons/gear/survival.svg',
+  'Sicherheit': '/icons/gear/security.svg',
+  'Droiden-Zubehör': '/icons/gear/droid.svg',
+};
+
 const ArmorySelector: React.FC = () => {
   const router = useRouter();
   const { players, activePlayerIndex, buyGear, sellGear } = useCharacterStore();
@@ -116,13 +136,25 @@ const ArmorySelector: React.FC = () => {
             >
                 <div className="p-4">
                     <div className="flex justify-between items-start mb-2">
-                        <div className="flex-1 pr-2">
-                            <div className="flex items-center gap-2 mb-1">
-                                <h2 className={`text-base font-black italic uppercase tracking-tighter leading-none ${purchased ? 'text-emerald-400' : 'text-white'}`}>{item.name}</h2>
-                                {purchased && <span className="text-[7px] bg-emerald-500 text-black px-1.5 py-0.5 rounded font-black uppercase">OWNED</span>}
-                            </div>
-                            <div className="text-[9px] text-zinc-400 font-bold uppercase tracking-wider">
-                                {category === 'weapons' ? `DMG: ${item.damage} / CRIT: ${item.critical}` : category === 'armor' ? `DEF: ${item.defense} / SOAK: ${item.soak}` : `ENC: ${item.encumbrance}`}
+                        <div className="flex items-start gap-3 flex-1 pr-2">
+                            {/* Category Icon */}
+                            {SUBCAT_ICONS[currentSubCategory] && (
+                              <div className="w-8 h-8 flex-shrink-0 text-zinc-600 mt-0.5">
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img src={SUBCAT_ICONS[currentSubCategory]} alt="" className="w-8 h-8 opacity-40" />
+                              </div>
+                            )}
+                            <div className="flex-1 min-w-0">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <h2 className={`text-base font-black italic uppercase tracking-tighter leading-none ${purchased ? 'text-emerald-400' : 'text-white'}`}>{item.name}</h2>
+                                    {purchased && <span className="text-[7px] bg-emerald-500 text-black px-1.5 py-0.5 rounded font-black uppercase">OWNED</span>}
+                                </div>
+                                <div className="text-[9px] text-zinc-400 font-bold uppercase tracking-wider">
+                                    {category === 'weapons' ? `DMG: ${item.damage} / CRIT: ${item.critical}` : category === 'armor' ? `DEF: ${item.defense} / SOAK: ${item.soak}` : `ENC: ${item.encumbrance}`}
+                                </div>
+                                {item.description && (
+                                  <p className="text-[10px] text-zinc-500 font-sans italic mt-1.5 leading-relaxed">{item.description}</p>
+                                )}
                             </div>
                         </div>
                         <div className="text-sm font-black text-amber-500 italic leading-none whitespace-nowrap">{item.price}</div>
