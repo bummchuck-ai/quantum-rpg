@@ -17,6 +17,26 @@ ALL_SKILLS.forEach(s => {
   SKILL_NAME_TO_KEY[s.nameDE.toLowerCase()] = s.key;
 });
 
+// Aliases for alternative German skill names used in careers.json
+SKILL_NAME_TO_KEY["Infiltration"] = "skulduggery";
+SKILL_NAME_TO_KEY["infiltration"] = "skulduggery";
+SKILL_NAME_TO_KEY["leichte Fernkampfwaffen"] = "rangedLight";
+SKILL_NAME_TO_KEY["schwere Fernkampfwaffen"] = "rangedHeavy";
+SKILL_NAME_TO_KEY["Verhandeln"] = "negotiation";
+SKILL_NAME_TO_KEY["verhandeln"] = "negotiation";
+SKILL_NAME_TO_KEY["Wachsamkeit"] = "vigilance";
+SKILL_NAME_TO_KEY["wachsamkeit"] = "vigilance";
+SKILL_NAME_TO_KEY["Computertechnik"] = "computers";
+SKILL_NAME_TO_KEY["computertechnik"] = "computers";
+SKILL_NAME_TO_KEY["Straßenwissen"] = "streetwise";
+SKILL_NAME_TO_KEY["straßenwissen"] = "streetwise";
+SKILL_NAME_TO_KEY["Lichtschwerter"] = "lightsaber";
+SKILL_NAME_TO_KEY["lichtschwerter"] = "lightsaber";
+SKILL_NAME_TO_KEY["Handgemenge"] = "brawl";
+SKILL_NAME_TO_KEY["handgemenge"] = "brawl";
+SKILL_NAME_TO_KEY["Nahkampfwaffen"] = "melee";
+SKILL_NAME_TO_KEY["nahkampfwaffen"] = "melee";
+
 const CHAR_LABELS: Record<string, string> = {
   brawn: 'STR', agility: 'GEW', intellect: 'INT',
   cunning: 'LST', willpower: 'WIL', presence: 'CHA'

@@ -326,7 +326,7 @@ export const useCharacterStore = create<GameState>()(
         const newPlayers = [...state.players];
         newPlayers[state.activePlayerIndex] = {
           ...player,
-          credits: player.credits + item.sellPrice,
+          credits: player.credits + (item.sellPrice || Math.floor(item.price * 0.5)),
           ownedGear: newGear
         };
         return { players: newPlayers };

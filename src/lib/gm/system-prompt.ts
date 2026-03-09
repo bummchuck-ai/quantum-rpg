@@ -208,7 +208,7 @@ function buildCharacterContext(character: any): string {
 Name: ${character.name}
 Spezies: ${character.species?.name || 'Unbekannt'}
 ${character.species?.description ? `Spezies-Beschreibung: ${character.species.description}` : ''}
-${character.species?.specialAbilities?.length > 0 ? `Spezies-Fähigkeiten: ${character.species.specialAbilities.join('; ')}` : ''}
+${character.species?.abilities?.length > 0 ? `Spezies-Fähigkeiten: ${character.species.abilities.join('; ')}` : ''}
 Karriere: ${character.career?.name || 'Unbekannt'}
 ${character.career?.description ? `Karriere-Beschreibung: ${character.career.description}` : ''}
 Spezialisierung: ${mainSpec?.name || 'Keine'}
@@ -331,7 +331,7 @@ function buildQuestContext(gameState: any): string {
         for (const obj of q.objectives) {
           const status = obj.completed || obj.isCompleted ? '[X]' : '[ ]';
           const progress = obj.targetProgress ? ` (${obj.currentProgress || 0}/${obj.targetProgress})` : '';
-          sections.push(`  ${status} ${obj.text || obj.description}${progress}`);
+          sections.push(`  ${status} ${obj.description}${progress}`);
         }
       }
     }

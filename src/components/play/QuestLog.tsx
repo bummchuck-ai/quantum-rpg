@@ -50,7 +50,7 @@ const QuestLog: React.FC<QuestLogProps> = ({ quests, npcs, onClose }) => {
                           <div className={`w-3 h-3 border rounded-sm flex items-center justify-center ${obj.completed ? 'bg-emerald-500 border-emerald-500' : 'border-zinc-700'}`}>
                             {obj.completed && <span className="text-[6px] text-black font-black">✓</span>}
                           </div>
-                          <span className={obj.completed ? 'text-zinc-600 line-through' : 'text-zinc-400'}>{obj.text}</span>
+                          <span className={obj.completed ? 'text-zinc-600 line-through' : 'text-zinc-400'}>{obj.description}</span>
                         </div>
                       ))}
                     </div>

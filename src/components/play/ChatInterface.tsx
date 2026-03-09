@@ -96,6 +96,15 @@ const SKILL_MAP: Record<string, { key: string; char: string }> = {
   'xenology': { key: 'xenology', char: 'intellect' },
   'lichtschwert': { key: 'lightsaber', char: 'brawn' },
   'lightsaber': { key: 'lightsaber', char: 'brawn' },
+  // Aliases for alternative German skill names used in careers.json
+  'infiltration': { key: 'skulduggery', char: 'cunning' },
+  'verhandeln': { key: 'negotiation', char: 'presence' },
+  'wachsamkeit': { key: 'vigilance', char: 'willpower' },
+  'computertechnik': { key: 'computers', char: 'intellect' },
+  'straßenwissen': { key: 'streetwise', char: 'cunning' },
+  'lichtschwerter': { key: 'lightsaber', char: 'brawn' },
+  'handgemenge': { key: 'brawl', char: 'brawn' },
+  'nahkampfwaffen': { key: 'melee', char: 'brawn' },
 };
 
 function resolveSkill(skillName: string): { key: string; char: string } {
@@ -247,7 +256,7 @@ const ChatInterface: React.FC = () => {
           title: sc.newQuest.title || 'Neue Mission',
           description: sc.newQuest.description || '',
           status: 'active',
-          objectives: (sc.newQuest.objectives || []).map((o: string) => ({ text: o, completed: false })),
+          objectives: (sc.newQuest.objectives || []).map((o: string) => ({ description: o, completed: false })),
           xpReward: sc.newQuest.xpReward,
           creditsReward: sc.newQuest.creditsReward,
         }));

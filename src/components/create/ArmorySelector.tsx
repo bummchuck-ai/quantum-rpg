@@ -205,7 +205,7 @@ const ArmorySelector: React.FC = () => {
                                     onClick={(e) => { e.stopPropagation(); sellGear(item); }}
                                     className="w-full bg-red-900/30 hover:bg-red-900/50 border border-red-900/50 text-red-400 text-center py-3 text-[10px] font-black uppercase tracking-widest italic rounded-xl active:scale-95 transition-all"
                                 >
-                                    SELL / UNDO (+{item.price})
+                                    SELL / UNDO (+{item.sellPrice || Math.floor(item.price * 0.5)})
                                 </button>
                             )}
                         </div>

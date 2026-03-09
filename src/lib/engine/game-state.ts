@@ -9,7 +9,7 @@ export interface Quest {
   title: string;
   description: string;
   status: 'active' | 'completed' | 'failed';
-  objectives: { text: string; completed: boolean }[];
+  objectives: { description: string; completed: boolean }[];
   xpReward?: number;
   creditsReward?: number;
 }
