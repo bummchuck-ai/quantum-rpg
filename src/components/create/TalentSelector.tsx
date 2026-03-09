@@ -67,13 +67,23 @@ const TalentSelector: React.FC = () => {
     // Also check if this talent has a 'top' connection and the talent above is owned
     if (t.connections?.includes('top')) {
       const directAbove = currentTree.talents.find(above => above.row === t.row - 1 && above.col === t.col);
-      if (directAbove && ownedTalents.includes(directAbove.name)) return true;
+      if (directAbove && ownedTalents.some(ot => ot.name === directAbove.name)) return true;
     }
-    return aboveRow.some(above => ownedTalents.includes(above.name));
+    return aboveRow.some(above => ownedTalents.some(ot => ot.name === above.name));
   };
 
   const handleBuy = (t: Talent) => {
-    buyTalent(t.name, t.row * 5, t.isRanked);
+    const talentObj = {
+      id: `${currentTree?.specialization}-${t.row}-${t.col}`,
+      name: t.name,
+      tier: t.row,
+      activation: 'passive' as const,
+      ranked: t.isRanked,
+      currentRank: 0,
+      description: t.description || '',
+      xpCost: t.row * 5,
+    };
+    buyTalent(talentObj);
   };
 
   if (!currentTree) {
@@ -164,7 +174,7 @@ const TalentSelector: React.FC = () => {
                     if (!talent) return <div key={colIndex} className="invisible"></div>;
 
                     const talentKey = `${rowIndex}-${colIndex}`;
-                    const isOwned = ownedTalents.includes(talent.name);
+                    const isOwned = ownedTalents.some(ot => ot.name === talent.name);
                     const isSelected = selectedTalentKey === talentKey;
                     const cost = talent.row * 5;
                     const hasTopConnection = talent.connections?.includes('top');
