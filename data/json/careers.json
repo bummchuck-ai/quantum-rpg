@@ -19,7 +19,8 @@
           "Überleben",
           "Wahrnehmung",
           "Xenologie"
-        ]
+        ],
+        "description": "Reitet und kontrolliert Kreaturen im Kampf — vom Dewback bis zum Rancor."
       },
       {
         "name": "Fahrer",
@@ -28,7 +29,8 @@
           "Mechanik",
           "Pilot (Planetar)",
           "Artillerie"
-        ]
+        ],
+        "description": "Meister planetarer Fahrzeuge — Speeder, Walkers, alles mit Repulsorlift."
       },
       {
         "name": "Geschützmeister",
@@ -37,7 +39,8 @@
           "Widerstandskraft",
           "Artillerie",
           "schwere Fernkampfwaffen"
-        ]
+        ],
+        "description": "Experte an Bordwaffen und schwerer Artillerie. Wenn es knallt, sitzt er am Abzug."
       },
       {
         "name": "Pilot",
@@ -46,7 +49,8 @@
           "Pilot (Planetar)",
           "Pilot (Weltraum)",
           "Artillerie"
-        ]
+        ],
+        "description": "Der beste Sternenjäger-Pilot, den Credits kaufen können. Cockpit ist Heimat."
       },
       {
         "name": "Rigger",
@@ -55,7 +59,8 @@
           "Widerstandskraft",
           "Artillerie",
           "Unterwelt"
-        ]
+        ],
+        "description": "Baut Fahrzeuge um und optimiert sie bis ans Limit. Jeder Speeder hat Potenzial."
       },
       {
         "name": "Teufelskerl",
@@ -64,9 +69,11 @@
           "Körperbeherrschung",
           "Pilot (Planetar)",
           "Pilot (Weltraum)"
-        ]
+        ],
+        "description": "Waghalsige Flugmanöver und unmögliche Stunts — das ist sein Alltag."
       }
-    ]
+    ],
+    "description": "Geborene Piloten und Fahrer — vom Sternjäger-Cockpit bis zum Speederbike. Wenn es schnell und gefährlich wird, sind sie in ihrem Element."
   },
   {
     "name": "Diplomat",
@@ -87,7 +94,8 @@
           "Täuschung",
           "Verhandeln",
           "Wachsamkeit"
-        ]
+        ],
+        "description": "Jurist und Verhandler. Kennt jedes Gesetz — und jede Lücke darin."
       },
       {
         "name": "Analyst",
@@ -96,7 +104,8 @@
           "Wahrnehmung",
           "Allgemeinbildung",
           "Kriegskunst"
-        ]
+        ],
+        "description": "Datenexperte, der aus Informationen die richtigen Schlüsse zieht."
       },
       {
         "name": "Aufwiegler",
@@ -105,7 +114,8 @@
           "Straßenwissen",
           "Täuschung",
           "Unterwelt"
-        ]
+        ],
+        "description": "Meister der Propaganda und Volksbewegungen. Worte sind seine Waffe."
       },
       {
         "name": "Botschafter",
@@ -114,7 +124,8 @@
           "Disziplin",
           "Verhandlung",
           "Kernwelten"
-        ]
+        ],
+        "description": "Offizielle Stimme zwischen Fraktionen. Diplomatie auf höchster Ebene."
       },
       {
         "name": "Propagandist",
@@ -123,7 +134,8 @@
           "Täuschung",
           "Wahrnehmung",
           "Kriegskunst"
-        ]
+        ],
+        "description": "Formt die öffentliche Meinung und manipuliert Medien für die Sache."
       },
       {
         "name": "Quartiermeister",
@@ -132,9 +144,11 @@
           "Infiltration",
           "Verhandlung",
           "Wachsamkeit"
-        ]
+        ],
+        "description": "Logistik-Genie — beschafft Nachschub, wo andere nur leere Lager sehen."
       }
-    ]
+    ],
+    "description": "Meister der Worte und Verhandlungen. Sie lösen Konflikte mit Charme, Überredung oder einer gut platzierten Lüge."
   },
   {
     "name": "Entdecker",
@@ -155,7 +169,8 @@
           "Disziplin",
           "Allgemeinbildung",
           "Altes Wissen"
-        ]
+        ],
+        "description": "Sucht verlorene Artefakte und vergessene Zivilisationen. Indiana Jones der Galaxis."
       },
       {
         "name": "Fahrer",
@@ -164,7 +179,8 @@
           "Mechanik",
           "Pilot (Planetar)",
           "Artillerie"
-        ]
+        ],
+        "description": "Meister planetarer Fahrzeuge — Speeder, Walkers, alles mit Repulsorlift."
       },
       {
         "name": "Grenzwanderer",
@@ -173,7 +189,8 @@
           "Körperbeherrschung",
           "Straßenwissen",
           "Verhandeln"
-        ]
+        ],
+        "description": "Überlebt in der Wildnis, wo andere nicht mal landen würden."
       },
       {
         "name": "Händler",
@@ -182,7 +199,8 @@
           "Verhandeln",
           "Kernwelten",
           "Unterwelt"
-        ]
+        ],
+        "description": "Kauft günstig, verkauft teuer — und kennt jeden Handelsweg der Galaxis."
       },
       {
         "name": "Kundschafter",
@@ -191,9 +209,11 @@
           "Medizin",
           "Pilot (Planetar)",
           "Überleben"
-        ]
+        ],
+        "description": "Erkundet unbekanntes Terrain und kartografiert neue Routen."
       }
-    ]
+    ],
+    "description": "Abenteurer, die das Unbekannte suchen. Verlorene Tempel, vergessene Welten, neue Hyperraumrouten — ihr Terrain."
   },
   {
     "name": "Gesandter",
@@ -214,7 +234,8 @@
           "Führungsqualität",
           "Verhandeln",
           "Lichtschwerter"
-        ]
+        ],
+        "description": "Beherrscht die ausgewogene Lichtschwert-Form VI — Diplomatie und Kampf vereint."
       },
       {
         "name": "Asket",
@@ -223,7 +244,8 @@
           "Disziplin",
           "Widerstandskraft",
           "Wachsamkeit"
-        ]
+        ],
+        "description": "Lebt in Bescheidenheit und stärkt den Geist durch Entbehrung."
       },
       {
         "name": "Heiler",
@@ -232,7 +254,8 @@
           "Medizin",
           "Allgemeinbildung",
           "Xenologie"
-        ]
+        ],
+        "description": "Nutzt die Macht, um Wunden zu heilen und Leben zu retten."
       },
       {
         "name": "Lehrer",
@@ -241,7 +264,8 @@
           "Wahrnehmung",
           "Allgemeinbildung",
           "Altes Wissen"
-        ]
+        ],
+        "description": "Gibt Wissen und Weisheit weiter — der nächsten Generation von Jedi."
       },
       {
         "name": "Schiedsmann",
@@ -250,7 +274,8 @@
           "Wahrnehmung",
           "Xenologie",
           "Lichtschwerter"
-        ]
+        ],
+        "description": "Neutraler Vermittler bei Konflikten. Seine Stimme bringt Frieden."
       },
       {
         "name": "Weiser",
@@ -259,9 +284,11 @@
           "Charme",
           "Coolness",
           "Altes Wissen"
-        ]
+        ],
+        "description": "Tiefes Wissen über die Macht und die Galaxis. Ein lebendiges Archiv."
       }
-    ]
+    ],
+    "description": "Machtbegabte Vermittler und Heiler. Sie nutzen die Macht, um zu lehren, zu heilen und Frieden zu stiften."
   },
   {
     "name": "Hüter",
@@ -281,7 +308,8 @@
           "Einschüchterung",
           "Disziplin",
           "Unterwelt"
-        ]
+        ],
+        "description": "Überwacht und leitet Operationen mit ruhiger Autorität."
       },
       {
         "name": "Beschützer",
@@ -290,7 +318,8 @@
           "Medizin",
           "Widerstandskraft",
           "leichte Fernkampfwaffen"
-        ]
+        ],
+        "description": "Stellt sich zwischen Unschuldige und Gefahr — sein Schild ist sein Wille."
       },
       {
         "name": "Friedenswahrer",
@@ -299,7 +328,8 @@
           "Führungsqualität",
           "Pilot (Planetar)",
           "Wahrnehmung"
-        ]
+        ],
+        "description": "Löst Konflikte, bevor sie eskalieren. Prävention statt Intervention."
       },
       {
         "name": "Kriegsführer",
@@ -308,7 +338,8 @@
           "Führungsqualität",
           "Wahrnehmung",
           "Überleben"
-        ]
+        ],
+        "description": "Kommandiert Truppen und leitet Schlachten mit der Macht als Kompass."
       },
       {
         "name": "Rüstmeister",
@@ -317,7 +348,8 @@
           "Mechanik",
           "Widerstandskraft",
           "Äußerer Rand"
-        ]
+        ],
+        "description": "Meister defensiver Technik — baut Schilde und Befestigungen."
       },
       {
         "name": "Soresu-Verteidiger",
@@ -326,9 +358,11 @@
           "Wachsamkeit",
           "Lichtschwerter",
           "Altes Wissen"
-        ]
+        ],
+        "description": "Meister der Lichtschwert-Form III — undurchdringliche Verteidigung."
       }
-    ]
+    ],
+    "description": "Die Verteidiger der Gerechtigkeit. Ob mit Lichtschwert oder Diplomatie — sie schützen die Schwachen."
   },
   {
     "name": "Ingenieur",
@@ -349,7 +383,8 @@
           "Coolness",
           "Mechanik",
           "Nahkampfwaffen"
-        ]
+        ],
+        "description": "Baut, programmiert und repariert Droiden aller Art."
       },
       {
         "name": "Mechaniker",
@@ -358,7 +393,8 @@
           "Mechanik",
           "Pilot (Weltraum)",
           "Handgemenge"
-        ]
+        ],
+        "description": "Kann alles reparieren — vom Comlink bis zum Hyperantrieb."
       },
       {
         "name": "Saboteur",
@@ -367,7 +403,8 @@
           "Infiltration",
           "Körperbeherrschung",
           "Mechanik"
-        ]
+        ],
+        "description": "Experte für kontrollierte Zerstörung feindlicher Systeme."
       },
       {
         "name": "Sappeur",
@@ -376,7 +413,8 @@
           "Mechanik",
           "Überleben",
           "Kriegskunst"
-        ]
+        ],
+        "description": "Kampfingenieur, der Befestigungen baut — und feindliche durchbricht."
       },
       {
         "name": "Schiffsbauer",
@@ -385,7 +423,8 @@
           "Pilot (Weltraum)",
           "Allgemeinbildung",
           "Artillerie"
-        ]
+        ],
+        "description": "Entwirft und modifiziert Raumschiffe. Jedes Schiff wird zum Unikat."
       },
       {
         "name": "Wissenschaftler",
@@ -394,9 +433,11 @@
           "Medizin",
           "Allgemeinbildung",
           "Altes Wissen"
-        ]
+        ],
+        "description": "Forscht an neuer Technologie und entschlüsselt alte Geheimnisse."
       }
-    ]
+    ],
+    "description": "Technik-Genies, die alles bauen, reparieren oder sabotieren können. Vom Droiden bis zum Sternzerstörer."
   },
   {
     "name": "Jedi",
@@ -416,7 +457,8 @@
           "Pilot (Planetar)",
           "Wachsamkeit",
           "Führungsqualität"
-        ]
+        ],
+        "description": "Führt Klontruppen in die Schlacht. Jedi-Weisheit trifft Militärstrategie."
       },
       {
         "name": "Meister",
@@ -424,7 +466,8 @@
           "Wahrnehmung",
           "Charme",
           "Kernwelten"
-        ]
+        ],
+        "description": "Höchster Rang im Orden. Jahrzehnte der Erfahrung in der Macht."
       },
       {
         "name": "Padawan",
@@ -433,7 +476,8 @@
           "Mechanik",
           "Wachsamkeit",
           "Allgemeinbildung"
-        ]
+        ],
+        "description": "Jedi-Schüler am Anfang des Weges. Die Macht beginnt gerade erst zu fließen."
       },
       {
         "name": "Ritter",
@@ -441,9 +485,11 @@
           "Coolness",
           "Führungsqualität",
           "Verhandeln"
-        ]
+        ],
+        "description": "Vollwertiger Jedi, der eigenständig Missionen im Dienst des Ordens ausführt."
       }
-    ]
+    ],
+    "description": "Hüter des Friedens und der Gerechtigkeit. Die Macht ist ihr Verbündeter — in all ihren Formen."
   },
   {
     "name": "Klonkrieger",
@@ -465,7 +511,8 @@
           "Mechanik",
           "Pilot (Planetar)",
           "Heimlichkeit"
-        ]
+        ],
+        "description": "Elite-Klone für Spezialmissionen. Eigenständiger als Standard-Klone."
       },
       {
         "name": "Klon-Kommandant",
@@ -474,7 +521,8 @@
           "Führungsqualität",
           "Kernwelten",
           "Kriegskunst"
-        ]
+        ],
+        "description": "Führt eine Klon-Einheit. Taktik und Loyalität sind seine Stärken."
       },
       {
         "name": "Klon-Offizier",
@@ -483,7 +531,8 @@
           "Führungsqualität",
           "Äußerer Rand",
           "Kriegskunst"
-        ]
+        ],
+        "description": "Mittlere Führungsebene — Bindeglied zwischen Jedi und Truppe."
       },
       {
         "name": "Klon-Pilot",
@@ -492,7 +541,8 @@
           "Pilot (Planetar)",
           "Pilot (Weltraum)",
           "Artillerie"
-        ]
+        ],
+        "description": "Spezialisiert auf LAAT-Kanonenboote und ARC-170 Sternjäger."
       },
       {
         "name": "Klon-Truppler",
@@ -501,7 +551,8 @@
           "Widerstandskraft",
           "Artillerie",
           "schwere Fernkampfwaffen"
-        ]
+        ],
+        "description": "Das Rückgrat der Großen Armee der Republik. Gut ausgebildet, loyal."
       },
       {
         "name": "Klon-Veteran",
@@ -510,9 +561,11 @@
           "Infiltration",
           "Überleben",
           "Nahkampfwaffen"
-        ]
+        ],
+        "description": "Überlebender zahlloser Schlachten. Erfahrung, die kein Training ersetzen kann."
       }
-    ]
+    ],
+    "description": "Genetisch perfektionierte Soldaten der Republik. Jeder identisch, doch jeder einzigartig im Kampf."
   },
   {
     "name": "Kolonist",
@@ -533,7 +586,8 @@
           "Körperbeherrschung",
           "Täuschung",
           "Nahkampfwaffen"
-        ]
+        ],
+        "description": "Schauspieler, Musiker oder Entertainer. Die Bühne ist sein Schlachtfeld."
       },
       {
         "name": "Doktor",
@@ -542,7 +596,8 @@
           "Medizin",
           "Widerstandskraft",
           "Allgemeinbildung"
-        ]
+        ],
+        "description": "Rettet Leben mit Medizin statt Macht. Bacta und Skalpell sind seine Werkzeuge."
       },
       {
         "name": "Gelehrter",
@@ -551,7 +606,8 @@
           "Äußerer Rand",
           "Unterwelt",
           "Xenologie"
-        ]
+        ],
+        "description": "Akademiker mit tiefem Wissen. Bibliotheken sind seine Schatzkammern."
       },
       {
         "name": "Geschäftsmann",
@@ -560,7 +616,8 @@
           "Verhandeln",
           "Allgemeinbildung",
           "Unterwelt"
-        ]
+        ],
+        "description": "Credits machen die Galaxis rund — und er weiß, wie man sie verdient."
       },
       {
         "name": "Marshall",
@@ -569,7 +626,8 @@
           "Wachsamkeit",
           "leichte Fernkampfwaffen",
           "Unterwelt"
-        ]
+        ],
+        "description": "Gesetz und Ordnung auf Frontier-Welten. Sheriff des Outer Rim."
       },
       {
         "name": "Politiker",
@@ -578,9 +636,11 @@
           "Einschüchterung",
           "Täuschung",
           "Kernwelten"
-        ]
+        ],
+        "description": "Navigiert die Korridore der Macht — im Senat wie in der Unterwelt."
       }
-    ]
+    ],
+    "description": "Zivilisten mit besonderen Talenten — Ärzte, Händler, Politiker. Nicht jeder Held trägt eine Waffe."
   },
   {
     "name": "Kommandant",
@@ -601,7 +661,8 @@
           "Medizin",
           "schwere Fernkampfwaffen",
           "Allgemeinbildung"
-        ]
+        ],
+        "description": "Formt Rekruten zu Soldaten. Drill und Disziplin sind sein Handwerk."
       },
       {
         "name": "Gruppenführer",
@@ -610,7 +671,8 @@
           "Pilot (Planetar)",
           "Pilot (Weltraum)",
           "Artillerie"
-        ]
+        ],
+        "description": "Führt kleine Einheiten im Gefecht. Jeder Soldat zählt."
       },
       {
         "name": "Kommodore",
@@ -619,7 +681,8 @@
           "Computertechnik",
           "Äußerer Rand",
           "Allgemeinbildung"
-        ]
+        ],
+        "description": "Kommandiert Flottenverbände. Weltraumschlachten sind sein Element."
       },
       {
         "name": "Repräsentant",
@@ -628,7 +691,8 @@
           "Führungsqualität",
           "Verhandeln",
           "Kernwelten"
-        ]
+        ],
+        "description": "Politisches Gesicht der Militäroperation. Diplomatie im Uniform."
       },
       {
         "name": "Stratege",
@@ -637,7 +701,8 @@
           "Coolness",
           "Wachsamkeit",
           "Kriegskunst"
-        ]
+        ],
+        "description": "Plant Feldzüge und sieht drei Züge voraus. Schach im galaktischen Maßstab."
       },
       {
         "name": "Taktiker",
@@ -646,9 +711,11 @@
           "Führungsqualität",
           "Handgemenge",
           "schwere Fernkampfwaffen"
-        ]
+        ],
+        "description": "Analysiert das Schlachtfeld und findet den optimalen Angriffsplan."
       }
-    ]
+    ],
+    "description": "Geborene Anführer, die andere in die Schlacht führen. Taktik, Strategie und Inspiration sind ihre Waffen."
   },
   {
     "name": "Kopfgeldjäger",
@@ -668,7 +735,8 @@
           "Infiltration",
           "Nahkampfwaffen",
           "schwere Fernkampfwaffen"
-        ]
+        ],
+        "description": "Stiller Tod aus dem Schatten. Ein Schuss, ein Treffer, spurlos verschwunden."
       },
       {
         "name": "Kampfsportler",
@@ -677,7 +745,8 @@
           "Handgemenge",
           "Disziplin",
           "Körperbeherrschung"
-        ]
+        ],
+        "description": "Tödlich auch ohne Waffen. Sein Körper ist die ultimative Waffe."
       },
       {
         "name": "Operator",
@@ -686,7 +755,8 @@
           "Pilot (Planetar)",
           "Pilot (Weltraum)",
           "Artillerie"
-        ]
+        ],
+        "description": "Tech-versierter Jäger mit Gadgets und Fallen für jede Situation."
       },
       {
         "name": "Powertech",
@@ -695,7 +765,8 @@
           "Einschüchterung",
           "Handgemenge",
           "leichte Fernkampfwaffen"
-        ]
+        ],
+        "description": "Schwer gepanzert und mit Flammenwerfer, Seilwerfer und Raketen ausgerüstet."
       },
       {
         "name": "Überlebenskünstler",
@@ -704,7 +775,8 @@
           "Wahrnehmung",
           "Widerstandskraft",
           "Xenologie"
-        ]
+        ],
+        "description": "Verfolgt Beute über Wochen durch jedes Terrain. Geduld ist alles."
       },
       {
         "name": "Zielfahnder",
@@ -713,9 +785,11 @@
           "Infiltration",
           "Verhandeln",
           "Unterwelt"
-        ]
+        ],
+        "description": "Findet jeden in der Galaxis. Datenbanken, Kontakte, Instinkt."
       }
-    ]
+    ],
+    "description": "Jäger, die für Credits jedes Ziel aufspüren. Ob tot oder lebendig — sie liefern immer ab."
   },
   {
     "name": "Krieger",
@@ -736,7 +810,8 @@
           "Straßenwissen",
           "leichte Fernkampfwaffen",
           "Unterwelt"
-        ]
+        ],
+        "description": "Sucht den Einzelkampf gegen würdige Gegner. Ehre im Duell."
       },
       {
         "name": "Juyo Berserker",
@@ -745,7 +820,8 @@
           "Disziplin",
           "Lichtschwerter",
           "Nahkampfwaffen"
-        ]
+        ],
+        "description": "Meister der aggressivsten Lichtschwert-Form VII. Kontrollierter Wahnsinn."
       },
       {
         "name": "Koloss",
@@ -754,7 +830,8 @@
           "Widerstandskraft",
           "Handgemenge",
           "Nahkampfwaffen"
-        ]
+        ],
+        "description": "Unaufhaltbare Kampfmaschine. Stärke und Macht vereint."
       },
       {
         "name": "Sternenjägerass",
@@ -763,7 +840,8 @@
           "Mechanik",
           "Pilot (Weltraum)",
           "Artillerie"
-        ]
+        ],
+        "description": "Machtbegabter Pilot, der im Cockpit eines Jägers unschlagbar ist."
       },
       {
         "name": "Shii-Cho-Ritter",
@@ -772,7 +850,8 @@
           "Körperbeherrschung",
           "Lichtschwerter",
           "Nahkampfwaffen"
-        ]
+        ],
+        "description": "Meister der ältesten Lichtschwert-Form I. Effektiv gegen viele Gegner."
       },
       {
         "name": "Stahlhand-Adept",
@@ -781,9 +860,11 @@
           "Disziplin",
           "Wachsamkeit",
           "Handgemenge"
-        ]
+        ],
+        "description": "Verbindet Nahkampf mit der Macht. Fäuste wie Durastahl."
       }
-    ]
+    ],
+    "description": "Machtbegabte Kämpfer, die Lichtschwert-Formen meistern. Aggressive Offensive statt defensive Meditation."
   },
   {
     "name": "Mystiker",
@@ -803,7 +884,8 @@
           "Widerstandskraft",
           "Allgemeinbildung",
           "Xenologie"
-        ]
+        ],
+        "description": "Verwandelt Materie mit der Macht. Tränke, Talismane und dunkle Artefakte."
       },
       {
         "name": "Magus",
@@ -812,7 +894,8 @@
           "Disziplin",
           "Medizin",
           "Altes Wissen"
-        ]
+        ],
+        "description": "Beherrscht arkane Machtrituale jenseits der Jedi-Lehren."
       },
       {
         "name": "Makashi-Duellant",
@@ -821,7 +904,8 @@
           "Coolness",
           "Körperbeherrschung",
           "Lichtschwerter"
-        ]
+        ],
+        "description": "Meister der eleganten Lichtschwert-Form II. Duell-Perfektion."
       },
       {
         "name": "Prophet",
@@ -830,7 +914,8 @@
           "Einschüchterung",
           "Führungsqualität",
           "Täuschung"
-        ]
+        ],
+        "description": "Sieht Visionen der Zukunft. Die Macht flüstert ihm Schicksale zu."
       },
       {
         "name": "Ratgeber",
@@ -839,7 +924,8 @@
           "Straßenwissen",
           "Täuschung",
           "Verhandeln"
-        ]
+        ],
+        "description": "Berät Anführer mit Machtvisionen und tiefem Verständnis."
       },
       {
         "name": "Seher",
@@ -848,9 +934,11 @@
           "Überleben",
           "Wachsamkeit",
           "Altes Wissen"
-        ]
+        ],
+        "description": "Blickt durch die Macht über Raum und Zeit. Allwissend, aber belastet."
       }
-    ]
+    ],
+    "description": "Machtnutzer, die verborgenes Wissen und dunkle Geheimnisse erforschen. Die Macht hat mehr Facetten als Licht und Dunkel."
   },
   {
     "name": "Schmuggler",
@@ -870,7 +958,8 @@
           "Heimlichkeit",
           "Infiltration",
           "Wachsamkeit"
-        ]
+        ],
+        "description": "Stiehlt alles, was nicht niet- und nagelfest ist. Unsichtbare Hände."
       },
       {
         "name": "Pilot",
@@ -879,7 +968,8 @@
           "Pilot (Planetar)",
           "Pilot (Weltraum)",
           "Artillerie"
-        ]
+        ],
+        "description": "Der beste Sternenjäger-Pilot, den Credits kaufen können. Cockpit ist Heimat."
       },
       {
         "name": "Pistolenheld",
@@ -888,7 +978,8 @@
           "Einschüchterung",
           "leichte Fernkampfwaffen",
           "Äußerer Rand"
-        ]
+        ],
+        "description": "Schnellster Blaster im Outer Rim. Han hat zuerst geschossen."
       },
       {
         "name": "Schmeichler",
@@ -897,7 +988,8 @@
           "Coolness",
           "Führungsqualität",
           "Verhandeln"
-        ]
+        ],
+        "description": "Redet sich aus jeder Situation heraus. Lächeln ist seine beste Waffe."
       },
       {
         "name": "Schurke",
@@ -906,7 +998,8 @@
           "Coolness",
           "Täuschung",
           "leichte Fernkampfwaffen"
-        ]
+        ],
+        "description": "Charmanter Ganove mit einem Herz aus Gold — meistens."
       },
       {
         "name": "Spieler",
@@ -915,9 +1008,11 @@
           "Coolness",
           "Infiltration",
           "Täuschung"
-        ]
+        ],
+        "description": "Sabacc-Meister und Glückspilz. Das nächste große Ding wartet immer."
       }
-    ]
+    ],
+    "description": "Charmante Gauner, die am Rand des Gesetzes leben. Schnelles Schiff, schnelle Hände, schnelles Mundwerk."
   },
   {
     "name": "Söldner",
@@ -938,7 +1033,8 @@
           "Wahrnehmung",
           "Artillerie",
           "schwere Fernkampfwaffen"
-        ]
+        ],
+        "description": "Schützt seinen Auftraggeber mit dem eigenen Leben. Professionell und loyal."
       },
       {
         "name": "Marodeur",
@@ -947,7 +1043,8 @@
           "Überleben",
           "Widerstandskraft",
           "Nahkampfwaffen"
-        ]
+        ],
+        "description": "Brutale Nahkampf-Maschine. Zerstört alles in Reichweite."
       },
       {
         "name": "Schwergewicht",
@@ -956,7 +1053,8 @@
           "schwere Fernkampfwaffen",
           "Wahrnehmung",
           "Widerstandskraft"
-        ]
+        ],
+        "description": "Schwere Waffen, schwere Rüstung, schwerer Schaden. Wandelnde Festung."
       },
       {
         "name": "Soldat",
@@ -965,7 +1063,8 @@
           "Führungsqualität",
           "Artillerie",
           "schwere Fernkampfwaffen"
-        ]
+        ],
+        "description": "Professioneller Krieger, der jeden Konflikt als Geschäft betrachtet."
       },
       {
         "name": "Sprengexperte",
@@ -974,7 +1073,8 @@
           "Coolness",
           "Infiltration",
           "Mechanik"
-        ]
+        ],
+        "description": "Alles fliegt irgendwann in die Luft — er entscheidet nur wann."
       },
       {
         "name": "Vollstrecker",
@@ -983,9 +1083,11 @@
           "Einschüchterung",
           "Straßenwissen",
           "Unterwelt"
-        ]
+        ],
+        "description": "Setzt den Willen seines Auftraggebers durch. Einschüchterung ist Alltag."
       }
-    ]
+    ],
+    "description": "Professionelle Kämpfer, die für den Höchstbietenden arbeiten. Keine Fragen, keine Skrupel, saubere Arbeit."
   },
   {
     "name": "Soldat",
@@ -1006,7 +1108,8 @@
           "Nahkampfwaffen",
           "Überleben",
           "Widerstandskraft"
-        ]
+        ],
+        "description": "Spezialkräfte für die härtesten Einsätze hinter feindlichen Linien."
       },
       {
         "name": "Kriegsingenieur",
@@ -1015,7 +1118,8 @@
           "Überleben",
           "Wahrnehmung",
           "Äußerer Rand"
-        ]
+        ],
+        "description": "Baut und zerstört im Auftrag der Armee. Brücken und Bunker."
       },
       {
         "name": "Mediziner",
@@ -1024,7 +1128,8 @@
           "Wachsamkeit",
           "Widerstandskraft",
           "Xenologie"
-        ]
+        ],
+        "description": "Feld-Sanitäter, der unter Feuer Leben rettet. Helden ohne Waffe."
       },
       {
         "name": "Schwergewicht",
@@ -1033,7 +1138,8 @@
           "schwere Fernkampfwaffen",
           "Wahrnehmung",
           "Widerstandskraft"
-        ]
+        ],
+        "description": "Schwere Waffen, schwere Rüstung, schwerer Schaden. Wandelnde Festung."
       },
       {
         "name": "Scharfschütze",
@@ -1042,7 +1148,8 @@
           "Wahrnehmung",
           "leichte Fernkampfwaffen",
           "schwere Fernkampfwaffen"
-        ]
+        ],
+        "description": "Ein Schuss über extreme Distanz — präzise, tödlich, unsichtbar."
       },
       {
         "name": "Vorreiter",
@@ -1051,9 +1158,11 @@
           "Coolness",
           "Wachsamkeit",
           "Widerstandskraft"
-        ]
+        ],
+        "description": "Späht feindliches Terrain aus und führt den Vorstoß an."
       }
-    ]
+    ],
+    "description": "Das Rückgrat jeder Armee. Disziplinierte Krieger, die den Krieg in all seinen Formen kennen."
   },
   {
     "name": "Spion",
@@ -1074,7 +1183,8 @@
           "Heimlichkeit",
           "Allgemeinbildung",
           "Unterwelt"
-        ]
+        ],
+        "description": "Bricht in jedes System ein. Firewalls sind nur Vorschläge."
       },
       {
         "name": "Infiltrator",
@@ -1083,7 +1193,8 @@
           "Straßenwissen",
           "Täuschung",
           "Nahkampfwaffen"
-        ]
+        ],
+        "description": "Wird zur Zielperson — Tarnung, Verkleidung, neue Identität."
       },
       {
         "name": "Kundschafter",
@@ -1092,7 +1203,8 @@
           "Medizin",
           "Pilot (Planetar)",
           "Überleben"
-        ]
+        ],
+        "description": "Erkundet unbekanntes Terrain und kartografiert neue Routen."
       },
       {
         "name": "Kurier",
@@ -1101,7 +1213,8 @@
           "Täuschung",
           "Straßenwissen",
           "Wachsamkeit"
-        ]
+        ],
+        "description": "Liefert geheime Botschaften durch feindliches Gebiet. Schnell und unsichtbar."
       },
       {
         "name": "Schläfer",
@@ -1110,7 +1223,8 @@
           "Coolness",
           "Disziplin",
           "Allgemeinbildung"
-        ]
+        ],
+        "description": "Lebt jahrelang als Undercover-Agent. Seine wahre Identität kennt niemand."
       },
       {
         "name": "Verhörspezialist",
@@ -1119,9 +1233,11 @@
           "Einschüchterung",
           "Medizin",
           "Wahrnehmung"
-        ]
+        ],
+        "description": "Extrahiert Informationen — mit Psychologie oder härteren Methoden."
       }
-    ]
+    ],
+    "description": "Meister der Täuschung und Informationsbeschaffung. Sie operieren im Schatten — wo die wahren Schlachten gewonnen werden."
   },
   {
     "name": "Sucher",
@@ -1141,7 +1257,8 @@
           "Körperbeherrschung",
           "Wahrnehmung",
           "Lichtschwerter"
-        ]
+        ],
+        "description": "Meister der akrobatischen Lichtschwert-Form IV. Sprünge und Wirbel."
       },
       {
         "name": "Einsiedler",
@@ -1150,7 +1267,8 @@
           "Heimlichkeit",
           "Überleben",
           "Xenologie"
-        ]
+        ],
+        "description": "Lebt zurückgezogen und in tiefer Verbindung mit der Macht."
       },
       {
         "name": "Jäger",
@@ -1159,7 +1277,8 @@
           "Körperbeherrschung",
           "Wachsamkeit",
           "schwere Fernkampfwaffen"
-        ]
+        ],
+        "description": "Spürt Beute auf — ob Tier oder Person. Die Macht zeigt den Weg."
       },
       {
         "name": "Navigator",
@@ -1168,7 +1287,8 @@
           "Wahrnehmung",
           "Überleben",
           "Äußerer Rand"
-        ]
+        ],
+        "description": "Findet Wege durch den Hyperraum, die kein Computer berechnen kann."
       },
       {
         "name": "Wanderer",
@@ -1177,7 +1297,8 @@
           "Überleben",
           "Widerstandskraft",
           "leichte Fernkampfwaffen"
-        ]
+        ],
+        "description": "Durchstreift die Galaxis ohne festes Ziel. Die Macht führt seine Schritte."
       },
       {
         "name": "Scharfrichter",
@@ -1186,9 +1307,11 @@
           "Wahrnehmung",
           "Nahkampfwaffen",
           "Schwere Fernkampfwaffen"
-        ]
+        ],
+        "description": "Vollstrecker der dunklen Seite. Richtet mit der Macht — gnadenlos."
       }
-    ]
+    ],
+    "description": "Machtsensitive Einzelgänger, die ihren eigenen Weg gehen. Die Macht führt sie — aber nicht immer zum Licht."
   },
   {
     "name": "Techniker",
@@ -1209,7 +1332,8 @@
           "Mechanik",
           "Medizin",
           "Wachsamkeit"
-        ]
+        ],
+        "description": "Verbindet organisches Leben mit Technologie. Cybernetics-Meister."
       },
       {
         "name": "Droidentechniker",
@@ -1218,7 +1342,8 @@
           "Coolness",
           "Mechanik",
           "Führungsqualität"
-        ]
+        ],
+        "description": "Programmiert und modifiziert Droiden für jeden Einsatzzweck."
       },
       {
         "name": "Illegaler Techie",
@@ -1227,7 +1352,8 @@
           "Straßenwissen",
           "Allgemeinbildung",
           "Unterwelt"
-        ]
+        ],
+        "description": "Baut verbotene Modifikationen und umgeht imperiale Restriktionen."
       },
       {
         "name": "Hacker",
@@ -1236,7 +1362,8 @@
           "Heimlichkeit",
           "Allgemeinbildung",
           "Unterwelt"
-        ]
+        ],
+        "description": "Bricht in jedes System ein. Firewalls sind nur Vorschläge."
       },
       {
         "name": "Modder",
@@ -1245,7 +1372,8 @@
           "Pilot (Weltraum)",
           "Straßenwissen",
           "Artillerie"
-        ]
+        ],
+        "description": "Tuning-Spezialist — macht aus Standardware Hochleistungsgeräte."
       },
       {
         "name": "Mechaniker",
@@ -1254,9 +1382,11 @@
           "Mechanik",
           "Pilot (Weltraum)",
           "Handgemenge"
-        ]
+        ],
+        "description": "Kann alles reparieren — vom Comlink bis zum Hyperantrieb."
       }
-    ]
+    ],
+    "description": "Bastler und Hacker, die aus Schrott Wunder bauen. Droiden, Schiffe, Waffen — alles wird modifiziert."
   },
   {
     "name": "Wächter",
@@ -1276,7 +1406,8 @@
           "Wahrnehmung",
           "Allgemeinbildung",
           "Unterwelt"
-        ]
+        ],
+        "description": "Löst Fälle mit der Macht als sechstem Sinn. Detektiv mit Lichtschwert."
       },
       {
         "name": "Handwerker",
@@ -1285,7 +1416,8 @@
           "Computertechnik",
           "Mechanik",
           "Allgemeinbildung"
-        ]
+        ],
+        "description": "Baut Lichtschwerter und Artefakte. Die Macht fließt durch seine Arbeit."
       },
       {
         "name": "Rennfahrer",
@@ -1294,7 +1426,8 @@
           "Körperbeherrschung",
           "Pilot (Planetar)",
           "Pilot (Weltraum)"
-        ]
+        ],
+        "description": "Podracing, Swoopbikes, Speeder — überall wo Geschwindigkeit zählt."
       },
       {
         "name": "Schatten",
@@ -1303,7 +1436,8 @@
           "Infiltration",
           "Straßenwissen",
           "Unterwelt"
-        ]
+        ],
+        "description": "Operiert verdeckt im Auftrag des Jedi-Ordens. Unsichtbar, aber tödlich."
       },
       {
         "name": "Shien-Experte",
@@ -1312,7 +1446,8 @@
           "Infiltration",
           "Widerstandskraft",
           "Lichtschwerter"
-        ]
+        ],
+        "description": "Meister der Lichtschwert-Form V — lenkt Blasterfeuer zurück zum Absender."
       },
       {
         "name": "Wache",
@@ -1321,7 +1456,8 @@
           "Heimlichkeit",
           "Wachsamkeit",
           "Lichtschwerter"
-        ]
+        ],
+        "description": "Beschützt wichtige Personen und Orte. Wachsam und unnachgiebig."
       },
       {
         "name": "Anhänger der Macht",
@@ -1330,11 +1466,13 @@
           "Disziplin",
           "Altes Wissen",
           "Wachsamkeit"
-        ]
+        ],
+        "description": "Spürt die Macht, aber ohne formelle Ausbildung. Rohe Begabung."
       },
       {
         "name": "Erwachender Machtsensitiver",
-        "skills": []
+        "skills": [],
+        "description": "Die Macht erwacht gerade erst. Alles ist neu, alles ist möglich."
       },
       {
         "name": "Kadett der imperialen Armee",
@@ -1343,7 +1481,8 @@
           "Pilot (Weltraum)",
           "Kriegskunst",
           "leichte Fernkampfwaffen"
-        ]
+        ],
+        "description": "Junger Offizier des Imperiums. Disziplin und Gehorsam."
       },
       {
         "name": "Klonsoldat im Ruhestand",
@@ -1353,7 +1492,8 @@
           "Wachsamkeit",
           "Kriegskunst",
           "schwere Fernkampfwaffen"
-        ]
+        ],
+        "description": "Alter Klon, der den Krieg überlebt hat. Müde, aber nicht gebrochen."
       },
       {
         "name": "Kommandant der Separatisten",
@@ -1362,7 +1502,8 @@
           "Einschüchterung",
           "Führungsqualität",
           "Kriegskunst"
-        ]
+        ],
+        "description": "Führte Droidenarmeen im Krieg. Taktiker der alten Schule."
       },
       {
         "name": "Krieger der Death Watch",
@@ -1371,11 +1512,13 @@
           "Pilot (Planetar)",
           "Einschüchterung",
           "leichte Fernkampfwaffen"
-        ]
+        ],
+        "description": "Mandalorianischer Extremist. Kampf und Ehre über alles."
       },
       {
         "name": "Machtsensitiver im Exil",
-        "skills": []
+        "skills": [],
+        "description": "Versteckt seine Machtsensitivität vor dem Imperium. Überleben ist alles."
       },
       {
         "name": "Marineoffizier der Republik",
@@ -1384,7 +1527,8 @@
           "Disziplin",
           "Führungsqualität",
           "Kriegskunst"
-        ]
+        ],
+        "description": "Kommandiert Schiffe der republikanischen Flotte. Pflicht und Ehre."
       },
       {
         "name": "Pirat",
@@ -1393,7 +1537,8 @@
           "Täuschung",
           "Infiltration",
           "Unterwelt"
-        ]
+        ],
+        "description": "Plündert Handelsrouten und lebt nach eigenen Regeln. Freiheit über alles."
       },
       {
         "name": "Plünderer",
@@ -1402,7 +1547,8 @@
           "Wahrnehmung",
           "Straßenwissen",
           "Überleben"
-        ]
+        ],
+        "description": "Durchsucht Schlachtfelder und Ruinen nach Wertvollem. Finder's keepers."
       },
       {
         "name": "Rekrut",
@@ -1411,7 +1557,8 @@
           "Disziplin",
           "Überleben",
           "Wachsamkeit"
-        ]
+        ],
+        "description": "Frisch dabei — noch grün, aber voller Potenzial und Enthusiasmus."
       },
       {
         "name": "Repräsentant der Republik",
@@ -1420,7 +1567,8 @@
           "Charme",
           "Verhandeln",
           "Allgemeinbildung"
-        ]
+        ],
+        "description": "Diplomatische Stimme der Republik. Verhandelt für Demokratie."
       },
       {
         "name": "Schiffskapitän",
@@ -1429,7 +1577,8 @@
           "Führungsqualität",
           "Pilot (Weltraum)",
           "Verhandeln"
-        ]
+        ],
+        "description": "Herr über sein Schiff und seine Crew. Verantwortung auf der Brücke."
       },
       {
         "name": "Schwester der Nacht",
@@ -1438,7 +1587,8 @@
           "Heimlichkeit",
           "Überleben",
           "Altes Wissen"
-        ]
+        ],
+        "description": "Dathomirianische Hexe mit dunkler Magie. Gefürchtet in der ganzen Galaxis."
       },
       {
         "name": "Senator",
@@ -1447,12 +1597,15 @@
           "Täuschung",
           "Verhandeln",
           "Allgemeinbildung"
-        ]
+        ],
+        "description": "Politische Macht im Galaktischen Senat. Jede Abstimmung zählt."
       },
       {
         "name": "Überlebender Padawan",
-        "skills": []
+        "skills": [],
+        "description": "Hat Order 66 überlebt. Traumatisiert, aber die Macht lebt weiter."
       }
-    ]
+    ],
+    "description": "Machtbegabte Ermittler und Vollstrecker. Sie nutzen die Macht subtil — ein Lichtschwert ist nur Plan B."
   }
 ]

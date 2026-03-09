@@ -9,11 +9,13 @@ import ProgressTracker from './ProgressTracker';
 
 interface Specialization {
   name: string;
+  description?: string;
   skills: string[];
 }
 
 interface Career {
   name: string;
+  description?: string;
   careerSkills: string[];
   forceRating: number;
   specializations: Specialization[];
@@ -85,9 +87,13 @@ const CareerSelector: React.FC = () => {
                           FORCE
                       </div>
                   )}
-                  <div className="flex justify-between items-center mb-3">
+                  <div className="flex justify-between items-center mb-2">
                       <h2 className="text-lg font-black text-white italic tracking-tighter uppercase leading-none">{c.name}</h2>
                   </div>
+
+                  {c.description && (
+                    <p className="text-[11px] text-zinc-400 leading-relaxed font-sans italic mb-3">{c.description}</p>
+                  )}
 
                   <div className="flex flex-wrap gap-1 mb-1">
                       {c.careerSkills.filter(s => s).slice(0, 4).map(skill => (
@@ -123,6 +129,9 @@ const CareerSelector: React.FC = () => {
                                             {[1,2,3,4].map(i => <div key={i} className={`w-1 h-1 rounded-full ${isSpecSelected ? 'bg-amber-500 shadow-[0_0_5px_rgba(245,158,11,1)]' : 'bg-zinc-800'}`}></div>)}
                                         </div>
                                     </div>
+                                    {spec.description && (
+                                      <p className="text-[10px] text-zinc-500 font-sans italic mt-1.5 leading-relaxed">{spec.description}</p>
+                                    )}
                                     
                                     {isSpecSelected && (
                                         <div className="animate-in fade-in duration-300 space-y-6 pt-5">
