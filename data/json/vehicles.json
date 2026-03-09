@@ -24,8 +24,11 @@
     "rarity": 1,
     "hardpoints": 1,
     "weapons": [],
-    "specialFeatures": ["Offene Kabine"],
-    "navsComputer": false
+    "specialFeatures": [
+      "Offene Kabine"
+    ],
+    "navsComputer": false,
+    "description": "Lukes Wüstenflitzer — günstig, zuverlässig, überall zu finden."
   },
   {
     "id": "74z-speeder-bike",
@@ -58,11 +61,14 @@
         "damage": 3,
         "critical": 4,
         "range": "close",
-        "special": ["Verbunden 1"]
+        "special": [
+          "Verbunden 1"
+        ]
       }
     ],
     "specialFeatures": [],
-    "navsComputer": false
+    "navsComputer": false,
+    "description": "Imperiales Aufklärungsfahrzeug — schnell, wendig, tödlich."
   },
   {
     "id": "at-st",
@@ -95,7 +101,9 @@
         "damage": 7,
         "critical": 3,
         "range": "long",
-        "special": ["Verbunden 1"]
+        "special": [
+          "Verbunden 1"
+        ]
       },
       {
         "name": "Leichter Blaster",
@@ -106,8 +114,11 @@
         "special": []
       }
     ],
-    "specialFeatures": ["Geländegängig"],
-    "navsComputer": false
+    "specialFeatures": [
+      "Geländegängig"
+    ],
+    "navsComputer": false,
+    "description": "Zweibeiniger Aufklärungsläufer — leicht, aber gefährlich."
   },
   {
     "id": "at-at",
@@ -140,7 +151,10 @@
         "damage": 9,
         "critical": 3,
         "range": "long",
-        "special": ["Verbunden 1", "Durchschlag 2"]
+        "special": [
+          "Verbunden 1",
+          "Durchschlag 2"
+        ]
       },
       {
         "name": "Mittlere Blaster (Kinn)",
@@ -148,11 +162,17 @@
         "damage": 6,
         "critical": 3,
         "range": "medium",
-        "special": ["Verbunden 1"]
+        "special": [
+          "Verbunden 1"
+        ]
       }
     ],
-    "specialFeatures": ["Geländegängig", "Schwere Panzerung"],
-    "navsComputer": false
+    "specialFeatures": [
+      "Geländegängig",
+      "Schwere Panzerung"
+    ],
+    "navsComputer": false,
+    "description": "Imperialer Kampfläufer — die wandelnde Festung des Imperiums."
   },
   {
     "id": "t-65-x-wing",
@@ -185,7 +205,9 @@
         "damage": 6,
         "critical": 3,
         "range": "close",
-        "special": ["Verbunden 3"]
+        "special": [
+          "Verbunden 3"
+        ]
       },
       {
         "name": "Protonentorpedos",
@@ -193,12 +215,20 @@
         "damage": 8,
         "critical": 2,
         "range": "short",
-        "special": ["Explosiv 4", "Durchschlag 4", "Munition 6", "Langsam 1"]
+        "special": [
+          "Explosiv 4",
+          "Durchschlag 4",
+          "Munition 6",
+          "Langsam 1"
+        ]
       }
     ],
-    "specialFeatures": ["Astromech-Schacht"],
+    "specialFeatures": [
+      "Astromech-Schacht"
+    ],
     "hyperdrive": 1,
-    "navsComputer": true
+    "navsComputer": true,
+    "description": "Rückgrat der Rebellion — vier Flügel, ein Ziel: Freiheit."
   },
   {
     "id": "tie-ln",
@@ -231,11 +261,14 @@
         "damage": 6,
         "critical": 3,
         "range": "close",
-        "special": ["Verbunden 1"]
+        "special": [
+          "Verbunden 1"
+        ]
       }
     ],
     "specialFeatures": [],
-    "navsComputer": false
+    "navsComputer": false,
+    "description": "Imperiums-Standardjäger — billig, schnell, zahlreich."
   },
   {
     "id": "yt-1300",
@@ -271,10 +304,13 @@
         "special": []
       }
     ],
-    "specialFeatures": ["Frachtbucht (165 Belastung)"],
+    "specialFeatures": [
+      "Frachtbucht (165 Belastung)"
+    ],
     "hyperdrive": 2,
     "backupHyperdrive": 12,
-    "navsComputer": true
+    "navsComputer": true,
+    "description": "Han Solos Millennium Falke ist das berühmteste Exemplar."
   },
   {
     "id": "lambda-shuttle",
@@ -307,7 +343,9 @@
         "damage": 5,
         "critical": 3,
         "range": "close",
-        "special": ["Verbunden 1"]
+        "special": [
+          "Verbunden 1"
+        ]
       },
       {
         "name": "Schwere Laserkanonen (Heck)",
@@ -315,13 +353,18 @@
         "damage": 6,
         "critical": 3,
         "range": "close",
-        "special": ["Verbunden 1"]
+        "special": [
+          "Verbunden 1"
+        ]
       }
     ],
-    "specialFeatures": ["Passagierkabine"],
+    "specialFeatures": [
+      "Passagierkabine"
+    ],
     "hyperdrive": 1,
     "backupHyperdrive": 10,
-    "navsComputer": true
+    "navsComputer": true,
+    "description": "Imperiale Kommandofähre — Vaders bevorzugtes Transportmittel."
   },
   {
     "id": "a-wing",
@@ -354,7 +397,9 @@
         "damage": 5,
         "critical": 3,
         "range": "close",
-        "special": ["Verbunden 1"]
+        "special": [
+          "Verbunden 1"
+        ]
       },
       {
         "name": "Erschütterungsraketen",
@@ -362,12 +407,19 @@
         "damage": 6,
         "critical": 3,
         "range": "short",
-        "special": ["Explosiv 3", "Durchschlag 2", "Munition 4"]
+        "special": [
+          "Explosiv 3",
+          "Durchschlag 2",
+          "Munition 4"
+        ]
       }
     ],
-    "specialFeatures": ["Sensorstörer"],
+    "specialFeatures": [
+      "Sensorstörer"
+    ],
     "hyperdrive": 1,
-    "navsComputer": true
+    "navsComputer": true,
+    "description": "Schnellster Jäger der Rebellen — gebaut für Abfangeinsätze."
   },
   {
     "id": "y-wing",
@@ -400,7 +452,9 @@
         "damage": 6,
         "critical": 3,
         "range": "close",
-        "special": ["Verbunden 1"]
+        "special": [
+          "Verbunden 1"
+        ]
       },
       {
         "name": "Mittlere Ionenkanonen",
@@ -408,7 +462,9 @@
         "damage": 6,
         "critical": 4,
         "range": "close",
-        "special": ["Ion"]
+        "special": [
+          "Ion"
+        ]
       },
       {
         "name": "Protonentorpedos",
@@ -416,12 +472,21 @@
         "damage": 8,
         "critical": 2,
         "range": "short",
-        "special": ["Explosiv 4", "Durchschlag 4", "Munition 8", "Langsam 1"]
+        "special": [
+          "Explosiv 4",
+          "Durchschlag 4",
+          "Munition 8",
+          "Langsam 1"
+        ]
       }
     ],
-    "specialFeatures": ["Astromech-Schacht", "Bombenaufhängung"],
+    "specialFeatures": [
+      "Astromech-Schacht",
+      "Bombenaufhängung"
+    ],
     "hyperdrive": 1,
-    "navsComputer": true
+    "navsComputer": true,
+    "description": "Schwerer Rebellenbomber — alt, aber unverwüstlich."
   },
   {
     "id": "ghtroc-720",
@@ -457,10 +522,14 @@
         "special": []
       }
     ],
-    "specialFeatures": ["Großer Laderaum", "Hochgradig modifizierbar"],
+    "specialFeatures": [
+      "Großer Laderaum",
+      "Hochgradig modifizierbar"
+    ],
     "hyperdrive": 3,
     "backupHyperdrive": 15,
-    "navsComputer": true
+    "navsComputer": true,
+    "description": "Beliebter Frachter am Outer Rim — günstig und anpassbar."
   },
   {
     "id": "hwk-290",
@@ -493,13 +562,20 @@
         "damage": 5,
         "critical": 3,
         "range": "close",
-        "special": ["Verbunden 1"]
+        "special": [
+          "Verbunden 1"
+        ]
       }
     ],
-    "specialFeatures": ["Wendig", "Kompakt", "Modifizierbar"],
+    "specialFeatures": [
+      "Wendig",
+      "Kompakt",
+      "Modifizierbar"
+    ],
     "hyperdrive": 2,
     "backupHyperdrive": 15,
-    "navsComputer": true
+    "navsComputer": true,
+    "description": "Kompakter Frachter — perfekt für Solopiloten und Agenten."
   },
   {
     "id": "yt-2400",
@@ -532,7 +608,9 @@
         "damage": 6,
         "critical": 3,
         "range": "close",
-        "special": ["Verbunden 1"]
+        "special": [
+          "Verbunden 1"
+        ]
       },
       {
         "name": "Konussionsraketenwerfer",
@@ -540,13 +618,21 @@
         "damage": 6,
         "critical": 3,
         "range": "short",
-        "special": ["Durchschlag 4", "Breite 1", "Munition 8"]
+        "special": [
+          "Durchschlag 4",
+          "Breite 1",
+          "Munition 8"
+        ]
       }
     ],
-    "specialFeatures": ["Schwere Bewaffnung", "Modifizierbar"],
+    "specialFeatures": [
+      "Schwere Bewaffnung",
+      "Modifizierbar"
+    ],
     "hyperdrive": 2,
     "backupHyperdrive": 12,
-    "navsComputer": true
+    "navsComputer": true,
+    "description": "Schwer bewaffneter CEC-Frachter — Dash Rendars Outrider-Klasse."
   },
   {
     "id": "wayfarer",
@@ -582,10 +668,14 @@
         "special": []
       }
     ],
-    "specialFeatures": ["Enormer Laderaum", "Modularer Frachtraum"],
+    "specialFeatures": [
+      "Enormer Laderaum",
+      "Modularer Frachtraum"
+    ],
     "hyperdrive": 2,
     "backupHyperdrive": 14,
-    "navsComputer": true
+    "navsComputer": true,
+    "description": "Modularer Massenfrachter — riesiger Laderaum, kaum Waffen."
   },
   {
     "id": "firespray",
@@ -618,7 +708,9 @@
         "damage": 5,
         "critical": 3,
         "range": "close",
-        "special": ["Verbunden 1"]
+        "special": [
+          "Verbunden 1"
+        ]
       },
       {
         "name": "Konussionsraketenwerfer",
@@ -626,7 +718,11 @@
         "damage": 6,
         "critical": 3,
         "range": "short",
-        "special": ["Durchschlag 4", "Breite 1", "Munition 3"]
+        "special": [
+          "Durchschlag 4",
+          "Breite 1",
+          "Munition 3"
+        ]
       },
       {
         "name": "Traktorstrahl",
@@ -634,13 +730,20 @@
         "damage": 0,
         "critical": 0,
         "range": "close",
-        "special": ["Traktorstrahl 4"]
+        "special": [
+          "Traktorstrahl 4"
+        ]
       }
     ],
-    "specialFeatures": ["Kampfschiff", "Traktorstrahl", "Gefängniszellen"],
+    "specialFeatures": [
+      "Kampfschiff",
+      "Traktorstrahl",
+      "Gefängniszellen"
+    ],
     "hyperdrive": 3,
     "backupHyperdrive": 15,
-    "navsComputer": true
+    "navsComputer": true,
+    "description": "Boba Fetts Slave I — Kopfgeldjäger-Legende der Galaxis."
   },
   {
     "id": "loronar-e9",
@@ -676,10 +779,15 @@
         "special": []
       }
     ],
-    "specialFeatures": ["Langstreckensensoren", "Versteckte Waffen", "Erkundungsausstattung"],
+    "specialFeatures": [
+      "Langstreckensensoren",
+      "Versteckte Waffen",
+      "Erkundungsausstattung"
+    ],
     "hyperdrive": 2,
     "backupHyperdrive": 12,
-    "navsComputer": true
+    "navsComputer": true,
+    "description": "Erkundungsschiff für den Unbekannten Raum — autark und diskret."
   },
   {
     "id": "xs-freighter",
@@ -723,10 +831,15 @@
         "special": []
       }
     ],
-    "specialFeatures": ["Schnell", "Gut bewaffnet", "Historisch"],
+    "specialFeatures": [
+      "Schnell",
+      "Gut bewaffnet",
+      "Historisch"
+    ],
     "hyperdrive": 2,
     "backupHyperdrive": 12,
-    "navsComputer": true
+    "navsComputer": true,
+    "description": "Schneller corellischer Frachter — beliebt bei Schmugglern."
   },
   {
     "id": "homestead",
@@ -753,8 +866,14 @@
     "rarity": 0,
     "hardpoints": 0,
     "weapons": [],
-    "specialFeatures": ["Passives Einkommen", "Sicherer Hafen", "Kontakte vor Ort", "Keine Mobilität"],
-    "navsComputer": false
+    "specialFeatures": [
+      "Passives Einkommen",
+      "Sicherer Hafen",
+      "Kontakte vor Ort",
+      "Keine Mobilität"
+    ],
+    "navsComputer": false,
+    "description": "Ein fester Stützpunkt — Heimat, Geschäft oder Unterschlupf."
   },
   {
     "id": "operations-base",
@@ -781,8 +900,14 @@
     "rarity": 0,
     "hardpoints": 0,
     "weapons": [],
-    "specialFeatures": ["Versteckt", "Kommunikationsausrüstung", "Waffenlager", "Keine Mobilität"],
-    "navsComputer": false
+    "specialFeatures": [
+      "Versteckt",
+      "Kommunikationsausrüstung",
+      "Waffenlager",
+      "Keine Mobilität"
+    ],
+    "navsComputer": false,
+    "description": "Geheime Rebellenbasis — versteckt, vernetzt, kampfbereit."
   },
   {
     "id": "bantha-ii-skiff",
@@ -809,8 +934,12 @@
     "rarity": 2,
     "hardpoints": 2,
     "weapons": [],
-    "specialFeatures": ["Offene Plattform", "Frachttransport"],
-    "navsComputer": false
+    "specialFeatures": [
+      "Offene Plattform",
+      "Frachttransport"
+    ],
+    "navsComputer": false,
+    "description": "Jabbas Frachtgleiter — offene Plattform über der Wüste."
   },
   {
     "id": "airspeeder-t-47",
@@ -843,7 +972,9 @@
         "damage": 5,
         "critical": 4,
         "range": "close",
-        "special": ["Verbunden 1"]
+        "special": [
+          "Verbunden 1"
+        ]
       },
       {
         "name": "Schleppseil",
@@ -851,10 +982,15 @@
         "damage": 0,
         "critical": 0,
         "range": "close",
-        "special": ["Verstricken 5"]
+        "special": [
+          "Verstricken 5"
+        ]
       }
     ],
-    "specialFeatures": ["Atmosphärisch"],
-    "navsComputer": false
+    "specialFeatures": [
+      "Atmosphärisch"
+    ],
+    "navsComputer": false,
+    "description": "Rebellenspeeder von Hoth — berühmt durch das Schleppseil."
   }
 ]

@@ -19,7 +19,7 @@ const MerchantInterface = () => {
   const merchant: Merchant | undefined = merchantsData[0]; // Fürs Erste den ersten Händler laden
 
   if (!activePlayer || !merchant) {
-    return <div className="p-4 text-gray-400">Kein aktiver Spieler oder Händler verfügbar.</div>;
+    return <div className="min-h-screen bg-black p-4 text-zinc-700 font-mono text-[10px] uppercase italic">Kein aktiver Spieler oder Haendler verfuegbar...</div>;
   }
 
   const handleBuy = (item: Gear) => {
@@ -31,29 +31,35 @@ const MerchantInterface = () => {
   };
 
   return (
-    <div className="p-4 bg-gray-800 text-white rounded-lg shadow-lg max-h-[80vh] overflow-y-auto">
-      <h2 className="text-2xl font-bold mb-4 text-yellow-400">{merchant.name}</h2>
-      <p className="text-lg text-gray-300 mb-4">Dein Guthaben: <span className="font-bold text-green-400">{activePlayer.credits} Credits</span></p>
+    <div className="min-h-screen bg-black text-zinc-300 font-mono">
+      {/* Header */}
+      <header className="p-4 border-b border-zinc-800 bg-zinc-950">
+        <h2 className="text-xl font-black text-white italic tracking-tighter uppercase">{merchant.name}_Shop</h2>
+        <div className="flex items-center gap-2 mt-2">
+          <span className="text-[8px] text-zinc-600 font-black uppercase tracking-[0.2em]">Guthaben</span>
+          <span className="text-sm font-black text-amber-500">{activePlayer.credits} CR</span>
+        </div>
+      </header>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="p-4 space-y-6">
         {/* Händlerinventar */}
-        <div>
-          <h3 className="text-xl font-semibold mb-3 text-blue-300">Angebot von {merchant.name}</h3>
+        <section>
+          <div className="text-[8px] text-amber-500 font-black uppercase tracking-[0.2em] mb-3">Angebot</div>
           {merchant.inventory.length === 0 ? (
-            <p className="text-gray-400">Keine Gegenstände im Angebot.</p>
+            <div className="text-[10px] text-zinc-700 italic uppercase">Keine Gegenstände im Angebot...</div>
           ) : (
-            <div className="space-y-3">
+            <div className="space-y-2">
               {merchant.inventory.map((item: Gear) => (
-                <div key={item.id} className="bg-gray-700 p-3 rounded-md border border-blue-500 flex justify-between items-center">
-                  <div>
-                    <h4 className="font-bold text-lg text-blue-200">{item.name}</h4>
-                    <p className="text-sm text-gray-300">{item.description}</p>
-                    <p className="text-sm text-yellow-300">Preis: {item.price} Credits</p>
+                <div key={item.id} className="bg-zinc-900/40 border border-zinc-800 rounded-xl p-4 flex justify-between items-center gap-3">
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-sm font-black text-white uppercase italic tracking-tight truncate">{item.name}</h4>
+                    <p className="text-[9px] text-zinc-500 mt-0.5 line-clamp-2">{item.description}</p>
+                    <p className="text-[9px] text-amber-500 font-black mt-1">{item.price} CR</p>
                   </div>
                   <button
                     onClick={() => handleBuy(item)}
                     disabled={activePlayer.credits < item.price}
-                    className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="bg-amber-500 hover:bg-amber-400 text-black font-black py-2 px-4 rounded-lg text-[9px] uppercase tracking-widest whitespace-nowrap disabled:opacity-30 disabled:cursor-not-allowed transition-all active:scale-90"
                   >
                     Kaufen
                   </button>
@@ -61,25 +67,25 @@ const MerchantInterface = () => {
               ))}
             </div>
           )}
-        </div>
+        </section>
 
         {/* Spielerinventar */}
-        <div>
-          <h3 className="text-xl font-semibold mb-3 text-purple-300">Dein Inventar</h3>
+        <section>
+          <div className="text-[8px] text-cyan-500 font-black uppercase tracking-[0.2em] mb-3">Dein Inventar</div>
           {activePlayer.ownedGear.length === 0 ? (
-            <p className="text-gray-400">Dein Inventar ist leer.</p>
+            <div className="text-[10px] text-zinc-700 italic uppercase">Inventar leer...</div>
           ) : (
-            <div className="space-y-3">
+            <div className="space-y-2">
               {activePlayer.ownedGear.map((item: Gear) => (
-                <div key={item.id} className="bg-gray-700 p-3 rounded-md border border-purple-500 flex justify-between items-center">
-                  <div>
-                    <h4 className="font-bold text-lg text-purple-200">{item.name}</h4>
-                    <p className="text-sm text-gray-300">{item.description}</p>
-                    <p className="text-sm text-yellow-300">Verkaufspreis: {item.sellPrice} Credits</p>
+                <div key={item.id} className="bg-zinc-900/40 border border-zinc-800 rounded-xl p-4 flex justify-between items-center gap-3">
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-sm font-black text-white uppercase italic tracking-tight truncate">{item.name}</h4>
+                    <p className="text-[9px] text-zinc-500 mt-0.5 line-clamp-2">{item.description}</p>
+                    <p className="text-[9px] text-emerald-500 font-black mt-1">Verkauf: {item.sellPrice} CR</p>
                   </div>
                   <button
                     onClick={() => handleSell(item)}
-                    className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                    className="bg-red-500/20 hover:bg-red-500/30 text-red-400 font-black py-2 px-4 rounded-lg text-[9px] uppercase tracking-widest whitespace-nowrap border border-red-500/30 transition-all active:scale-90"
                   >
                     Verkaufen
                   </button>
@@ -87,7 +93,7 @@ const MerchantInterface = () => {
               ))}
             </div>
           )}
-        </div>
+        </section>
       </div>
     </div>
   );

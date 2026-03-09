@@ -6,6 +6,7 @@ import talentsData from '@/../data/json/talents_connected.json';
 import { useCharacterStore } from '@/store/characterStore';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
+import CharacterPreview from './CharacterPreview';
 
 interface Talent {
   name: string;
@@ -100,6 +101,7 @@ const TalentSelector: React.FC = () => {
         </header>
 
         <ProgressTracker currentStep={6} />
+        <CharacterPreview />
 
         {treeNotFound ? (
           <div className="flex-1 flex flex-col items-center justify-center gap-6 text-center px-4">
@@ -159,6 +161,7 @@ const TalentSelector: React.FC = () => {
       </header>
 
       <ProgressTracker currentStep={6} />
+      <CharacterPreview />
 
       <div className="mb-8 border-l-2 border-amber-500 pl-4 py-1">
           <div className="text-[8px] text-zinc-600 font-black uppercase tracking-widest">Active_Tree</div>

@@ -68,6 +68,14 @@ Wenn Fahrzeuge oder Raumschiffe im Spiel eingesetzt werden:
 - Hüllentrauma und Systembelastung tracken den Zustand des Fahrzeugs
 - Kritische Treffer auf Fahrzeuge haben eigene Tabelle
 
+# CHARAKTERWISSEN — SO NUTZT DU ES
+- Sprich den Charakter IMMER mit seinem NAMEN an, nicht "du" oder "der Spieler"
+- Reagiere auf Spezies-Eigenheiten in der Erzählung (z.B. Twi'lek-Lekku bewegen sich bei Emotionen, Wookiees knurren, Droiden surren)
+- Webe den Hintergrund (Verpflichtung/Pflicht/Moral) ORGANISCH in die Geschichte — er schafft Dilemmas und treibt die Handlung
+- Respektiere die Ausrüstung: Gib dem Charakter KEINE Waffen/Items, die er bereits besitzt. Beschreibe wie er seine eigenen Waffen einsetzt
+- Kenne die Fertigkeiten: Wenn der Charakter bei etwas Rang 0 hat, betone die Schwierigkeit. Bei hohen Rängen, zeige Kompetenz in der Erzählung
+- Talente sind aktive Fähigkeiten — nutze sie narrativ (z.B. "Dank deinem Talent 'Überlebensinstinkt' spürst du die Gefahr")
+
 # REGELN
 - Du bestimmst NICHT die Aktionen des Spielercharakters
 - Du sagst dem Spieler, wann ein Wurf nötig ist und auf welche Fertigkeit
@@ -91,37 +99,140 @@ const SKILL_NAMES_DE: Record<string, string> = {
 
 function buildSkillContext(character: any): string {
   const skillRanks = character.skillRanks || {};
-  return ALL_SKILLS
-    .map(skill => {
-      const rank = skillRanks[skill.key] || 0;
-      return `- ${skill.nameDE}: Rang ${rank}`;
-    })
-    .join('\n');
+  const careerSkills = new Set<string>([
+    ...(character.career?.careerSkills || []),
+    ...(character.specializations?.[0]?.careerSkills || []),
+  ]);
+
+  const categories: Record<string, typeof ALL_SKILLS> = {
+    'Allgemeine Fertigkeiten': ALL_SKILLS.filter(s => s.category === 'general'),
+    'Kampffertigkeiten': ALL_SKILLS.filter(s => s.category === 'combat'),
+    'Wissensfertigkeiten': ALL_SKILLS.filter(s => s.category === 'knowledge'),
+  };
+
+  const sections: string[] = [];
+  for (const [catName, skills] of Object.entries(categories)) {
+    const trained = skills.filter(s => (skillRanks[s.key] || 0) > 0);
+    const untrained = skills.filter(s => (skillRanks[s.key] || 0) === 0);
+
+    const lines: string[] = [];
+    // Show trained skills with full info
+    for (const skill of trained) {
+      const rank = skillRanks[skill.key];
+      const career = careerSkills.has(skill.key) ? ' [Karriere]' : '';
+      lines.push(`  - ${skill.nameDE}: Rang ${rank}${career}`);
+    }
+    // Summarize untrained skills compactly
+    if (untrained.length > 0) {
+      const untrainedNames = untrained.map(s => s.nameDE).join(', ');
+      lines.push(`  - Untrainiert (Rang 0): ${untrainedNames}`);
+    }
+    sections.push(`### ${catName}\n${lines.join('\n')}`);
+  }
+  return sections.join('\n');
+}
+
+function buildTalentContext(character: any): string {
+  const talents = character.ownedTalents || [];
+  if (talents.length === 0) return '';
+
+  return `## Talente
+${talents.map((t: any) => {
+    const rankInfo = t.ranked ? ` (Rang ${t.currentRank})` : '';
+    return `- **${t.name}**${rankInfo}: ${t.description}`;
+  }).join('\n')}`;
+}
+
+function buildGearContext(character: any): string {
+  const gear = character.ownedGear || [];
+  if (gear.length === 0) return '## Ausrüstung\nKeine Ausrüstung.';
+
+  const weapons = gear.filter((g: any) => g.type === 'weapon');
+  const armor = gear.filter((g: any) => g.type === 'armor');
+  const other = gear.filter((g: any) => g.type !== 'weapon' && g.type !== 'armor');
+
+  const sections: string[] = ['## Ausrüstung'];
+
+  if (weapons.length > 0) {
+    sections.push('### Waffen');
+    for (const w of weapons) {
+      const props = (w.properties || []).map((p: any) => p.value ? `${p.name}: ${p.value}` : p.name).join(', ');
+      sections.push(`- **${w.name}**${props ? ` (${props})` : ''}${w.description ? ` — ${w.description}` : ''}`);
+    }
+  }
+
+  if (armor.length > 0) {
+    sections.push('### Rüstung');
+    for (const a of armor) {
+      const props = (a.properties || []).map((p: any) => p.value ? `${p.name}: ${p.value}` : p.name).join(', ');
+      sections.push(`- **${a.name}**${props ? ` (${props})` : ''}${a.description ? ` — ${a.description}` : ''}`);
+    }
+  }
+
+  if (other.length > 0) {
+    sections.push('### Sonstige Ausrüstung');
+    for (const item of other) {
+      sections.push(`- **${item.name}**${item.description ? ` — ${item.description}` : ''}`);
+    }
+  }
+
+  return sections.join('\n');
+}
+
+function buildBackgroundContext(character: any): string {
+  if (!character.backgroundType) return '';
+
+  const typeLabels: Record<string, string> = {
+    Obligation: 'Verpflichtung',
+    Duty: 'Pflicht',
+    Morality: 'Moral',
+  };
+  const label = typeLabels[character.backgroundType] || character.backgroundType;
+
+  return `## Hintergrund: ${label}
+Typ: ${character.backgroundOption || 'Unbekannt'}
+Wert: ${character.backgroundValue || 0}
+WICHTIG: Webe diese ${label} regelmäßig in die Erzählung ein! Sie schafft Dilemmas, treibt Nebenhandlungen und verbindet sich mit der Hauptquest.`;
 }
 
 // --- Build context from game state ---
 function buildCharacterContext(character: any): string {
-  const mainSpec = character.specializations?.[0]?.name || 'Unknown';
-  
-  return `# SPIELERCHARAKTER
-Name: ${character.name}
-Spezies: ${character.species?.name}
-Karriere: ${character.career?.name} / ${mainSpec}
-Hintergrund: ${character.backgroundOption}
+  const mainSpec = character.specializations?.[0];
+  const woundThreshold = (character.species?.woundThresholdBase || 10) + (character.characteristics?.brawn || 0);
+  const strainThreshold = (character.species?.strainThresholdBase || 10) + (character.characteristics?.willpower || 0);
+  const soakValue = (character.characteristics?.brawn || 0);
 
-## Eigenschaften
-Stärke: ${character.characteristics?.brawn} | Gewandtheit: ${character.characteristics?.agility}
-Intelligenz: ${character.characteristics?.intellect} | List: ${character.characteristics?.cunning}
-Willenskraft: ${character.characteristics?.willpower} | Charisma: ${character.characteristics?.presence}
+  return `# SPIELERCHARAKTER: ${character.name}
+
+## Identität
+Name: ${character.name}
+Spezies: ${character.species?.name || 'Unbekannt'}
+${character.species?.description ? `Spezies-Beschreibung: ${character.species.description}` : ''}
+${character.species?.specialAbilities?.length > 0 ? `Spezies-Fähigkeiten: ${character.species.specialAbilities.join('; ')}` : ''}
+Karriere: ${character.career?.name || 'Unbekannt'}
+${character.career?.description ? `Karriere-Beschreibung: ${character.career.description}` : ''}
+Spezialisierung: ${mainSpec?.name || 'Keine'}
+${mainSpec?.description ? `Spezialisierungs-Beschreibung: ${mainSpec.description}` : ''}
+
+## Eigenschaften (aktuelle Werte)
+Stärke: ${character.characteristics?.brawn} | Gewandtheit: ${character.characteristics?.agility} | Intelligenz: ${character.characteristics?.intellect}
+List: ${character.characteristics?.cunning} | Willenskraft: ${character.characteristics?.willpower} | Charisma: ${character.characteristics?.presence}
 
 ## Fertigkeiten
 ${buildSkillContext(character)}
 
+${buildTalentContext(character)}
+
+${buildBackgroundContext(character)}
+
+${buildGearContext(character)}
+
 ## Zustand
 Credits: ${character.credits}
-Wunden: ${character.wounds} (Schwelle: ${character.species?.woundThresholdBase + character.characteristics?.brawn})
-Stress: ${character.strain} (Schwelle: ${character.species?.strainThresholdBase + character.characteristics?.willpower})
-${character.vehicles?.length > 0 ? `Fahrzeug/Basis: ${character.vehicles[0].name} (${character.vehicles[0].category})` : 'Kein eigenes Fahrzeug'}
+Wunden: ${character.wounds}/${woundThreshold}
+Stress: ${character.strain}/${strainThreshold}
+Widerstandswert (Soak): ${soakValue}
+Verfügbare EP: ${character.availableXP || 0} | Ausgegebene EP: ${character.spentXP || 0}
 `;
 }
 
@@ -205,11 +316,43 @@ Der Kampf läuft! Beschreibe Kampfaktionen im Runden-System:
 function buildQuestContext(gameState: any): string {
   const quests = gameState.questLog || [];
   if (quests.length === 0) return '';
+
   const active = quests.filter((q: any) => q.status === 'active');
-  if (active.length === 0) return '';
-  return `## Aktive Missionen
-${active.map((q: any) => `- ${q.title}: ${q.description}`).join('\n')}
-`;
+  const completed = quests.filter((q: any) => q.status === 'completed');
+  if (active.length === 0 && completed.length === 0) return '';
+
+  const sections: string[] = ['## Missionslog'];
+
+  if (active.length > 0) {
+    sections.push('### Aktive Missionen');
+    for (const q of active) {
+      sections.push(`- **${q.title}**: ${q.description}`);
+      if (q.objectives?.length > 0) {
+        for (const obj of q.objectives) {
+          const status = obj.completed || obj.isCompleted ? '[X]' : '[ ]';
+          const progress = obj.targetProgress ? ` (${obj.currentProgress || 0}/${obj.targetProgress})` : '';
+          sections.push(`  ${status} ${obj.text || obj.description}${progress}`);
+        }
+      }
+    }
+  }
+
+  if (completed.length > 0) {
+    sections.push(`### Abgeschlossene Missionen: ${completed.map((q: any) => q.title).join(', ')}`);
+  }
+
+  return sections.join('\n');
+}
+
+function buildNPCContext(gameState: any): string {
+  const npcs = gameState.npcRelationships || [];
+  if (npcs.length === 0) return '';
+
+  return `## Bekannte NPCs
+${npcs.map((n: any) => {
+    const disposition = n.disposition > 30 ? 'freundlich' : n.disposition < -30 ? 'feindlich' : 'neutral';
+    return `- **${n.npcName}** (${disposition}): ${n.notes || 'Keine Details'}`;
+  }).join('\n')}`;
 }
 
 // --- Main function: Build the complete system prompt ---
@@ -221,6 +364,7 @@ export function buildSystemPrompt(gameState: any): string {
     buildForceContext(gameState),
     buildCombatContext(gameState),
     buildQuestContext(gameState),
+    buildNPCContext(gameState),
     buildSceneContext(gameState),
   ].filter(s => s.length > 0);
   return sections.join('\n\n---\n\n');

@@ -6,6 +6,7 @@ import gearData from '@/../data/json/gear.json';
 import { useCharacterStore } from '@/store/characterStore';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
+import CharacterPreview from './CharacterPreview';
 
 // Map subcategory to SVG icon path
 const SUBCAT_ICONS: Record<string, string> = {
@@ -71,6 +72,7 @@ const ArmorySelector: React.FC = () => {
       </header>
 
       <ProgressTracker currentStep={7} />
+      <CharacterPreview />
 
       {/* CATEGORY TABS */}
       <div className="grid grid-cols-3 gap-2 mb-4 sticky top-[65px] bg-black z-20 pb-2">

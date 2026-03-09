@@ -6,6 +6,7 @@ import { useCharacterStore } from '@/store/characterStore';
 import { ALL_SKILLS } from '@/lib/skills';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
+import CharacterPreview from './CharacterPreview';
 
 const SKILL_DATA = ALL_SKILLS;
 
@@ -67,6 +68,7 @@ const SkillSelector: React.FC = () => {
       </header>
 
       <ProgressTracker currentStep={5} />
+      <CharacterPreview />
 
       <div className="border border-zinc-800 bg-zinc-900/10 p-4 rounded-xl mb-4">
         <p className="text-[10px] leading-relaxed text-zinc-500 uppercase tracking-wider">

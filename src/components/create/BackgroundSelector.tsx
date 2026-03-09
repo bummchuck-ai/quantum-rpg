@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useCharacterStore } from '@/store/characterStore';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
+import CharacterPreview from './CharacterPreview';
 
 const OBLIGATION_LIST = [
   { name: "Schulden (Debt)", desc: "Du schuldest jemandem Mächtigem viel Geld oder einen Gefallen. Gläubiger schicken regelmäßig Eintreiber — und sie werden ungeduldig." },
@@ -88,6 +89,7 @@ const BackgroundSelector: React.FC = () => {
       </header>
 
       <ProgressTracker currentStep={3} />
+      <CharacterPreview />
 
       <div className="flex-1 flex flex-col gap-6">
         

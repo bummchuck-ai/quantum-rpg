@@ -3,72 +3,82 @@
 import ChatInterface from '@/components/play/ChatInterface';
 import QuestLog from '@/components/play/QuestLog';
 import MerchantInterface from '@/components/play/MerchantInterface';
-import TalentShop from '@/components/play/TalentShop'; // Neuer Import
+import TalentShop from '@/components/play/TalentShop';
 import { useCharacterStore } from '@/store/characterStore';
-import { Quest } from '@/types/quest';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+
+type Tab = 'chat' | 'quests' | 'shop' | 'talents';
+
+const TAB_CONFIG: { id: Tab; label: string; icon: string }[] = [
+  { id: 'chat', label: 'CHAT', icon: '💬' },
+  { id: 'quests', label: 'QUESTS', icon: '📋' },
+  { id: 'shop', label: 'SHOP', icon: '🏪' },
+  { id: 'talents', label: 'TALENTS', icon: '⚡' },
+];
 
 export default function PlayPage() {
-  const addQuest = useCharacterStore((state) => state.addQuest);
   const questLog = useCharacterStore((state) => state.players[state.activePlayerIndex]?.questLog);
-
-  const [activeTab, setActiveTab] = useState<'quests' | 'merchant' | 'talents'>('quests'); // State für den aktiven Tab erweitert
-
-  useEffect(() => {
-    if (questLog && !questLog.some(q => q.id === "first-steps")) {
-      const exampleQuest: Quest = {
-        id: "first-steps",
-        title: "Erste Schritte",
-        description: "Erkunde die Umgebung und sprich mit dem alten Einsiedler.",
-        status: "active",
-        objectives: [
-          { description: "Finde den alten Einsiedler", isCompleted: false },
-          { description: "Sprich mit dem alten Einsiedler", isCompleted: false },
-        ],
-        rewards: [
-          { type: "exp", value: 50 },
-          { type: "credits", value: 100 },
-          { type: "item", value: "Antiker Datapad" },
-        ],
-      };
-      addQuest(exampleQuest);
-    }
-  }, [addQuest, questLog]); // Abhängigkeiten für useEffect
+  const [activeTab, setActiveTab] = useState<Tab>('chat');
 
   return (
-    <main className="flex h-screen"> {/* Flex-Container für Layout */}
-      <div className="w-1/3 p-4 border-r border-gray-700 overflow-y-auto"> {/* Linker Bereich für QuestLog / MerchantInterface / TalentShop */}
-        <div className="flex mb-4">
-          <button
-            onClick={() => setActiveTab('quests')}
-            className={`px-4 py-2 rounded-l-lg ${activeTab === 'quests' ? 'bg-blue-600' : 'bg-gray-700'} text-white font-bold`}
-          >
-            Quests
-          </button>
-          <button
-            onClick={() => setActiveTab('merchant')}
-            className={`px-4 py-2 ${activeTab === 'merchant' ? 'bg-blue-600' : 'bg-gray-700'} text-white font-bold ml-1`}
-          >
-            Händler
-          </button>
-          <button
-            onClick={() => setActiveTab('talents')}
-            className={`px-4 py-2 rounded-r-lg ${activeTab === 'talents' ? 'bg-blue-600' : 'bg-gray-700'} text-white font-bold ml-1`}
-          >
-            Talente
-          </button>
+    <main className="relative h-screen w-screen bg-black font-mono overflow-hidden">
+      {/* Tab Content Area — full screen, stacked */}
+      <div className="h-full w-full">
+        {/* Chat — default view */}
+        <div className={activeTab === 'chat' ? 'h-full w-full' : 'hidden'}>
+          <ChatInterface />
         </div>
-        {activeTab === 'quests' ? (
-          <QuestLog quests={(questLog || []) as any} npcs={[]} onClose={() => setActiveTab('quests')} />
-        ) : activeTab === 'merchant' ? (
+
+        {/* Quests */}
+        <div className={activeTab === 'quests' ? 'h-full w-full' : 'hidden'}>
+          <QuestLog
+            quests={(questLog || []) as any}
+            npcs={[]}
+            onClose={() => setActiveTab('chat')}
+          />
+        </div>
+
+        {/* Merchant Shop */}
+        <div className={activeTab === 'shop' ? 'h-full w-full overflow-y-auto pb-20' : 'hidden'}>
           <MerchantInterface />
-        ) : (
+        </div>
+
+        {/* Talent Shop */}
+        <div className={activeTab === 'talents' ? 'h-full w-full overflow-y-auto pb-20' : 'hidden'}>
           <TalentShop />
-        )}
+        </div>
       </div>
-      <div className="w-2/3 p-4"> {/* ChatInterface Bereich */}
-        <ChatInterface />
-      </div>
+
+      {/* Bottom Tab Bar — fixed, glass-morphism */}
+      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-t border-zinc-800/60">
+        <div className="flex justify-around items-center h-16 max-w-lg mx-auto px-2">
+          {TAB_CONFIG.map((tab) => {
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex flex-col items-center justify-center gap-0.5 flex-1 py-2 transition-all active:scale-90 ${
+                  isActive ? 'text-amber-500' : 'text-zinc-600'
+                }`}
+              >
+                <span className="text-lg leading-none">{tab.icon}</span>
+                <span className={`text-[7px] font-black uppercase tracking-[0.15em] ${
+                  isActive ? 'text-amber-500' : 'text-zinc-600'
+                }`}>
+                  {tab.label}
+                </span>
+                {/* Active indicator dot */}
+                {isActive && (
+                  <span className="w-1 h-1 rounded-full bg-amber-500 mt-0.5 shadow-[0_0_6px_rgba(245,158,11,0.6)]" />
+                )}
+              </button>
+            );
+          })}
+        </div>
+        {/* Safe area padding for iPhones with home indicator */}
+        <div className="h-[env(safe-area-inset-bottom)]" />
+      </nav>
     </main>
   );
 }

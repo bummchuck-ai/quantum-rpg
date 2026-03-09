@@ -10,6 +10,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
+  viewportFit: 'cover',
   themeColor: '#000000',
 };
 
@@ -21,6 +22,12 @@ export default function RootLayout({
   return (
     <html lang="de" className="bg-black">
       <head>
+        {/* PWA Manifest & Apple Meta Tags */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
         {/* Tailwind CDN - The Lifesaver for Local Dev */}
         <script src="https://cdn.tailwindcss.com"></script>
         

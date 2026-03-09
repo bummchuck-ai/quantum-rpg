@@ -6,6 +6,7 @@ import { useCharacterStore, PlayerVehicle } from '@/store/characterStore';
 import vehicleData from '@/../data/json/vehicles.json';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
+import CharacterPreview from './CharacterPreview';
 
 type VehicleCategory = 'freighter' | 'starfighter' | 'shuttle' | 'base' | 'other';
 
@@ -104,6 +105,7 @@ const VehicleSelector: React.FC = () => {
       </header>
 
       <ProgressTracker currentStep={8} />
+      <CharacterPreview />
 
       <div className="border border-zinc-800 bg-zinc-900/10 p-4 rounded-xl mb-4">
         <p className="text-[10px] leading-relaxed text-zinc-500 uppercase tracking-wider">

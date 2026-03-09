@@ -6,6 +6,7 @@ import careersData from '@/../data/json/careers.json';
 import { useCharacterStore } from '@/store/characterStore';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
+import CharacterPreview from './CharacterPreview';
 
 interface Specialization {
   name: string;
@@ -58,6 +59,7 @@ const CareerSelector: React.FC = () => {
       </header>
 
       <ProgressTracker currentStep={2} />
+      <CharacterPreview />
 
       <div className="mb-6 sticky top-[65px] bg-black z-20 pb-4">
         <input 

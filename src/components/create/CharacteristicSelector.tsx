@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useCharacterStore, Characteristics } from '@/store/characterStore';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
+import CharacterPreview from './CharacterPreview';
 
 const CHAR_META: { key: keyof Characteristics; label: string; labelDe: string; icon: string }[] = [
   { key: 'brawn', label: 'STR', labelDe: 'Starke', icon: '' },
@@ -45,6 +46,7 @@ const CharacteristicSelector: React.FC = () => {
       </header>
 
       <ProgressTracker currentStep={4} />
+      <CharacterPreview />
 
       <div className="border border-zinc-800 bg-zinc-900/10 p-4 rounded-xl mb-6">
         <p className="text-[10px] leading-relaxed text-zinc-500 uppercase tracking-wider">

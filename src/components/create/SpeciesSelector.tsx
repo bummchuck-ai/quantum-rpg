@@ -36,6 +36,8 @@ function slugify(name: string): string {
 const SpeciesSelector: React.FC = () => {
   const router = useRouter();
   const setSpecies = useCharacterStore((state) => state.setSpecies);
+  const setName = useCharacterStore((state) => state.setName);
+  const playerName = useCharacterStore((state) => state.players[state.activePlayerIndex].name);
   const [selectedSpecies, setSelectedSpecies] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -65,6 +67,15 @@ const SpeciesSelector: React.FC = () => {
       </header>
 
       <ProgressTracker currentStep={1} />
+
+      <div className="mb-6">
+        <input
+          className="w-full bg-black border-b-2 border-amber-500/50 focus:border-amber-500 p-3 text-2xl font-mono font-black text-white uppercase tracking-wider outline-none placeholder:text-zinc-800 placeholder:font-normal placeholder:tracking-widest transition-colors"
+          placeholder="AGENT_CALLSIGN..."
+          value={playerName}
+          onChange={(e) => setName(e.target.value.toUpperCase())}
+        />
+      </div>
 
       <div className="mb-6 sticky top-[65px] bg-black z-20 pb-4">
         <input 
