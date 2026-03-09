@@ -10,6 +10,13 @@ import CharacterPreview from './CharacterPreview';
 
 const SKILL_DATA = ALL_SKILLS;
 
+// Lookup: German skill name → skill key (for careers.json which uses German names)
+const SKILL_NAME_TO_KEY: Record<string, string> = {};
+ALL_SKILLS.forEach(s => {
+  SKILL_NAME_TO_KEY[s.nameDE] = s.key;
+  SKILL_NAME_TO_KEY[s.nameDE.toLowerCase()] = s.key;
+});
+
 const CHAR_LABELS: Record<string, string> = {
   brawn: 'STR', agility: 'GEW', intellect: 'INT',
   cunning: 'LST', willpower: 'WIL', presence: 'CHA'
@@ -27,8 +34,8 @@ const SkillSelector: React.FC = () => {
 
   // Combine career + specialization skills
   const careerSkillKeys = new Set([
-    ...(career?.careerSkills || []),
-    ...(mainSpec?.skills || [])
+    ...(career?.careerSkills || []).map(s => SKILL_NAME_TO_KEY[s] || s),
+    ...(mainSpec?.skills || []).map(s => SKILL_NAME_TO_KEY[s] || s)
   ]);
 
   const isCareerSkill = (skill: string) => careerSkillKeys.has(skill);

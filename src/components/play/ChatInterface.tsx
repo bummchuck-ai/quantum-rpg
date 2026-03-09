@@ -164,7 +164,8 @@ const ChatInterface: React.FC = () => {
   const armorItems = ownedGear.filter((g: any) => g.soak !== undefined);
   const soak = characteristics.brawn + armorItems.reduce((acc: number, curr: any) => acc + (curr.soak || 0), 0);
   const defense = armorItems.reduce((acc: number, curr: any) => Math.max(acc, curr.defense || 0), 0);
-  const forceRating = calculateForceRating(career, ownedTalents);
+  const talentNames = ownedTalents.map((t: any) => typeof t === 'string' ? t : t.name);
+  const forceRating = calculateForceRating(career, talentNames);
   const isForceSensitive = isForceCareer(career);
   const encumbranceMax = 5 + characteristics.brawn;
 
@@ -225,6 +226,7 @@ const ChatInterface: React.FC = () => {
           userMessage: 'Beginne das Abenteuer! Beschreibe die erste Szene basierend auf unserem Team.'
         })
       });
+      if (!response.ok) throw new Error(`GM request failed: ${response.status} ${response.statusText}`);
       const data = await response.json();
       handleGMResponse(data);
     } catch (error) {
@@ -339,6 +341,7 @@ const ChatInterface: React.FC = () => {
           history: history.slice(-20)
         })
       });
+      if (!response.ok) throw new Error(`GM request failed: ${response.status} ${response.statusText}`);
       const data = await response.json();
       handleGMResponse(data);
     } catch (error) {
@@ -424,7 +427,7 @@ const ChatInterface: React.FC = () => {
       )}
       {showForcePowers && (
         <ForcePowerPanel
-          career={career} ownedTalents={ownedTalents} ownedPowers={ownedPowers}
+          career={career} ownedTalents={talentNames} ownedPowers={ownedPowers}
           ownedUpgrades={ownedUpgrades} availableXP={availableXP}
           onBuyPower={handleBuyPower} onBuyUpgrade={handleBuyUpgrade}
           onUsePower={handleUsePower} onClose={() => setShowForcePowers(false)}

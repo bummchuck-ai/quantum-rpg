@@ -4,6 +4,7 @@ import ChatInterface from '@/components/play/ChatInterface';
 import QuestLog from '@/components/play/QuestLog';
 import MerchantInterface from '@/components/play/MerchantInterface';
 import TalentShop from '@/components/play/TalentShop';
+import ErrorBoundary from '@/components/play/ErrorBoundary';
 import { useCharacterStore } from '@/store/characterStore';
 import { useState } from 'react';
 
@@ -21,6 +22,7 @@ export default function PlayPage() {
   const [activeTab, setActiveTab] = useState<Tab>('chat');
 
   return (
+    <ErrorBoundary>
     <main className="relative h-screen w-screen bg-black font-mono overflow-hidden">
       {/* Tab Content Area — full screen, stacked */}
       <div className="h-full w-full">
@@ -80,5 +82,6 @@ export default function PlayPage() {
         <div className="h-[env(safe-area-inset-bottom)]" />
       </nav>
     </main>
+    </ErrorBoundary>
   );
 }

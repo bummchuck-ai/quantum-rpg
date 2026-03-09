@@ -246,8 +246,8 @@ export interface Species {
     name: string;
     description: string;
     characteristics: Characteristics;
-    woundThresholdBonus: number;    // Added to Brawn for wound threshold
-  strainThresholdBonus: number;   // Added to Willpower for strain threshold
+    woundThresholdBase: number;     // Added to Brawn for wound threshold
+  strainThresholdBase: number;    // Added to Willpower for strain threshold
   startingXP: number;
     specialAbilities: string[];
     freeSkillRanks: Record<string, number>;  // skill: ranks

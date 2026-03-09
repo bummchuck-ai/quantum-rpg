@@ -82,7 +82,7 @@ const TalentSelector: React.FC = () => {
       ranked: t.isRanked,
       currentRank: 0,
       description: t.description || '',
-      xpCost: t.row * 5,
+      xpCost: t.cost,
     };
     buyTalent(talentObj);
   };

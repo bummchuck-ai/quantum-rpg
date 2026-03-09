@@ -25,7 +25,11 @@ export async function POST(req: Request) {
       const text = response.content[0].type === 'text' ? response.content[0].text : '';
       // Strip markdown code fences if present
       const clean = text.replace(/^```json\n?/, '').replace(/\n?```$/, '').trim();
-      return NextResponse.json(JSON.parse(clean));
+      try {
+        return NextResponse.json(JSON.parse(clean));
+      } catch {
+        return NextResponse.json({ narrative: 'Der GM antwortet nicht wie erwartet. Bitte versuche es erneut.', options: [{ id: 'A', text: 'Erneut versuchen' }] });
+      }
     }
 
     const { gameState, userMessage, history } = body;
@@ -59,7 +63,11 @@ export async function POST(req: Request) {
     const text = response.content[0].type === 'text' ? response.content[0].text : '';
     const clean = text.replace(/^```json\n?/, '').replace(/\n?```$/, '').trim();
 
-    return NextResponse.json(JSON.parse(clean));
+    try {
+      return NextResponse.json(JSON.parse(clean));
+    } catch {
+      return NextResponse.json({ narrative: 'Der GM antwortet nicht wie erwartet. Bitte versuche es erneut.', options: [{ id: 'A', text: 'Erneut versuchen' }] });
+    }
 
   } catch (error: any) {
     console.error('GM Error:', error);
