@@ -166,6 +166,7 @@ export interface Weapon {
     rarity: number;
     special: string[];
     addsBrawn?: boolean;    // For melee weapons: damage = Brawn + damage
+    image_url?: string; // NEU: Optionaler URL zum Waffenbild
 }
 
 // --- Armor ---
