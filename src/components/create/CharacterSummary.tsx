@@ -62,7 +62,7 @@ const CharacterSummary: React.FC = () => {
 
   const careerSkillKeys = new Set([
     ...(career?.careerSkills || []),
-    ...(mainSpec?.skills || [])
+    ...(mainSpec?.careerSkills || [])
   ]);
 
   const groupShip = vehicles?.[0];
@@ -192,7 +192,7 @@ const CharacterSummary: React.FC = () => {
                     })}
                   </div>
                 )}
-                {activeTab === 'talents' && <div className="grid grid-cols-1 gap-3 animate-in fade-in duration-300">{ownedTalents.length > 0 ? ownedTalents.map(t => (<div key={t} className="p-3 border border-zinc-900 bg-zinc-950/50 rounded-lg flex justify-between items-center"><span className="text-[10px] font-black text-amber-500 uppercase italic tracking-tighter">{t}</span><span className="text-[8px] text-zinc-800 font-bold tracking-widest">ENABLED</span></div>)) : <div className="text-[10px] text-zinc-800 text-center py-12 uppercase font-black tracking-widest">No_Talents_Extracted</div>}</div>}
+                {activeTab === 'talents' && <div className="grid grid-cols-1 gap-3 animate-in fade-in duration-300">{ownedTalents.length > 0 ? ownedTalents.map(t => (<div key={typeof t === 'string' ? t : t.id || t.name} className="p-3 border border-zinc-900 bg-zinc-950/50 rounded-lg flex justify-between items-center"><span className="text-[10px] font-black text-amber-500 uppercase italic tracking-tighter">{typeof t === 'string' ? t : t.name}</span>{typeof t !== 'string' && t.ranked && <span className="text-[8px] text-zinc-600 font-bold tracking-widest">Rang {t.currentRank}</span>}<span className="text-[8px] text-zinc-800 font-bold tracking-widest">ENABLED</span></div>)) : <div className="text-[10px] text-zinc-800 text-center py-12 uppercase font-black tracking-widest">No_Talents_Extracted</div>}</div>}
                 {activeTab === 'gear' && <div className="grid grid-cols-1 gap-3 animate-in fade-in duration-300">{ownedGear.length > 0 ? ownedGear.map(g => (<div key={g.name} className="p-4 border border-zinc-900 bg-zinc-950/50 rounded-xl flex justify-between items-center group shadow-md"><div><div className="text-[11px] font-black text-white uppercase italic tracking-tighter">{g.name}</div><div className="text-[8px] text-zinc-700 font-black uppercase mt-1">Status: EQUIPPED</div></div><div className="text-[9px] text-amber-500 font-black italic">{g.damage ? `DMG_${g.damage}` : `ABS_${g.soak}`}</div></div>)) : <div className="text-[10px] text-zinc-800 text-center py-12 uppercase font-black tracking-widest">No_Gear_Assigned</div>}</div>}
                 {activeTab === 'ship' && (
                   <div className="animate-in fade-in duration-300">

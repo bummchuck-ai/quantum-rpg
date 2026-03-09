@@ -100,7 +100,7 @@ const VehicleSelector: React.FC = () => {
         </div>
         <div className="text-right">
           <div className="text-[10px] text-amber-500 font-bold tracking-widest uppercase">Gruppen-Asset</div>
-          <div className="text-[7px] text-zinc-600 font-black uppercase tracking-widest">Step 10</div>
+          <div className="text-[7px] text-zinc-600 font-black uppercase tracking-widest">Step 8</div>
         </div>
       </header>
 

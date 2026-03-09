@@ -139,14 +139,19 @@ export const useCharacterStore = create<GameState>()(
         players: [...state.players, createNewPlayer(`player-${state.players.length + 1}`)]
       })),
 
-      removePlayer: (index) => set((state) => ({
-        players: state.players.filter((_, i) => i !== index),
-        activePlayerIndex: Math.max(0, state.activePlayerIndex - 1)
-      })),
+      removePlayer: (index) => set((state) => {
+        const newPlayers = state.players.filter((_, i) => i !== index);
+        if (newPlayers.length === 0) return state; // Prevent removing last player
+        return {
+          players: newPlayers,
+          activePlayerIndex: Math.min(Math.max(0, state.activePlayerIndex - (index <= state.activePlayerIndex ? 1 : 0)), newPlayers.length - 1)
+        };
+      }),
 
       setActivePlayer: (index) => set({ activePlayerIndex: index }),
 
       updateActivePlayer: (updates) => set((state) => {
+        if (state.activePlayerIndex >= state.players.length) return state;
         const newPlayers = [...state.players];
         newPlayers[state.activePlayerIndex] = { ...newPlayers[state.activePlayerIndex], ...updates };
         return { players: newPlayers };
@@ -306,18 +311,21 @@ export const useCharacterStore = create<GameState>()(
         const player = state.players[state.activePlayerIndex];
         if (player.credits < item.price) return state;
 
+        // Ensure item has an id for sell matching
+        const gearWithId = item.id ? item : { ...item, id: `gear-${item.name}-${Date.now()}` };
         const newPlayers = [...state.players];
         newPlayers[state.activePlayerIndex] = {
           ...player,
           credits: player.credits - item.price,
-          ownedGear: [...player.ownedGear, item]
+          ownedGear: [...player.ownedGear, gearWithId]
         };
         return { players: newPlayers };
       }),
 
       sellGear: (item: Gear) => set((state) => {
         const player = state.players[state.activePlayerIndex];
-        const gearIndex = player.ownedGear.findIndex(g => g.id === item.id);
+        // Match by id first, fall back to name match for items without ids
+        const gearIndex = player.ownedGear.findIndex(g => (g.id && item.id) ? g.id === item.id : g.name === item.name);
         if (gearIndex === -1) return state;
 
         const newGear = [...player.ownedGear];
