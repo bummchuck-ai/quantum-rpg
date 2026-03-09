@@ -9,6 +9,7 @@ import ProgressTracker from './ProgressTracker';
 
 interface Species {
   name: string;
+  description?: string;
   startingXP: number;
   characteristics: {
     brawn: number;
@@ -100,6 +101,9 @@ const SpeciesSelector: React.FC = () => {
               </div>
 
               <div className="p-4 space-y-3">
+                  {s.description && (
+                    <p className="text-[11px] text-zinc-400 leading-relaxed font-sans italic">{s.description}</p>
+                  )}
                   <div className="flex justify-between items-center text-[10px] uppercase font-bold text-zinc-500">
                       <span>Start XP</span>
                       <span className="text-amber-500 text-sm">{s.startingXP}</span>

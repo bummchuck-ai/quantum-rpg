@@ -19,7 +19,8 @@
     ],
     "freeSkillRanks": {
       "coordination": 1
-    }
+    },
+    "description": "Winzige, flinke Reptilien von Aleen. Trotz ihrer geringen Größe sind sie erstaunlich widerstandsfähig und agil."
   },
   {
     "name": "Anx",
@@ -38,7 +39,8 @@
       "Anx beginnen mit 1 Rang in den Talenten Todesstoß und Entwaffnendes Lächeln.",
       "Verdeckt ein Anx seinen Schädelkamm nicht, wird die Schwierigkeit seiner Täuschungsproben",
       "einmal aufgewertet."
-    ]
+    ],
+    "description": "Riesige, sanfte Wesen mit markanten Schädelkämmen. Ihre Emotionen sind für alle sichtbar — Täuschung fällt ihnen schwer."
   },
   {
     "name": "Aqualishaner",
@@ -73,7 +75,8 @@
     ],
     "freeSkillRanks": {
       "resilience": 1
-    }
+    },
+    "description": "Aggressive, walrossartige Amphibien. Bekannt für ihre Streitlust — der Typ, der dir in der Cantina den Arm abreißen will."
   },
   {
     "name": "Arcona",
@@ -97,7 +100,8 @@
       "nächsten  Begegnung  desorientiert.  Zudem muss  ihm eine  Disziplinsprobe gelingen  oder  er  erhält",
       "die Verpflichtung „Sucht 2“, falls er diese noch nicht bereits besitzt (und bis er  diese verloren hat,",
       "goldreflektierende Augen)."
-    ]
+    ],
+    "description": "Reptilienähnliche Wesen mit flachen, ambossförmigen Köpfen. Empfindlich gegenüber Salz, das bei ihnen wie eine Droge wirkt."
   },
   {
     "name": "Arkanier",
@@ -118,7 +122,8 @@
     ],
     "freeSkillRanks": {
       "medicine": 1
-    }
+    },
+    "description": "Hochintelligente Humanoide von Arkania. Bekannt für genetische Forschung und eine gewisse Arroganz gegenüber 'niederen' Spezies."
   },
   {
     "name": "Balosar",
@@ -136,7 +141,8 @@
     "abilities": [
       "1 Rang in Straßenwissen (nicht höher als 2 während der Erschaffung).",
       "Fühler: Balosar erhalten bei Wachsamkeitsproben automatisch  hinzu."
-    ]
+    ],
+    "description": "Humanoide mit einziehbaren Antennen, die Gifte und Pheromone wahrnehmen. Oft in der Unterwelt zu finden."
   },
   {
     "name": "Bardottaner",
@@ -156,7 +162,8 @@
     ],
     "freeSkillRanks": {
       "education": 1
-    }
+    },
+    "description": "Mystische Reptilien mit einer tiefen Verbindung zur Macht. Bekannt für ihre spirituellen Traditionen und Gelehrsamkeit."
   },
   {
     "name": "Besalisk",
@@ -178,7 +185,8 @@
     ],
     "freeSkillRanks": {
       "resilience": 1
-    }
+    },
+    "description": "Vierarmige, massige Humanoide. Gesellig, stark und perfekt für Jobs, bei denen man viele Hände braucht."
   },
   {
     "name": "Bith",
@@ -201,7 +209,8 @@
     ],
     "freeSkillRanks": {
       "perception": 1
-    }
+    },
+    "description": "Großköpfige Wesen mit überlegener Intelligenz und Sinneswahrnehmung. Die besten Musiker und Wissenschaftler der Galaxis."
   },
   {
     "name": "Bothaner",
@@ -219,7 +228,8 @@
     "abilities": [
       "1 Rang in Straßenwissen (nicht höher als 2 während der Erschaffung).",
       "Bothaner beginnen mit 1 Rang im Talent Überzeugendes Verhalten."
-    ]
+    ],
+    "description": "Pelzige Humanoide, berühmt für ihr Spionagenetzwerk. 'Viele Bothaner starben, um diese Informationen zu beschaffen.'"
   },
   {
     "name": "Caamasi",
@@ -240,7 +250,8 @@
       "über eine gesamte Szene oder Begegnung hinfort streckt. Diese Memnis kann er sich jederzeit",
       "perfekt ins Gedächtnis rufen und mit einem anderen Caamasi oder machtsensitivem Lebewesen",
       "teilen. Dies könnte ihm bei passenden Proben auch einen  gewähren."
-    ]
+    ],
+    "description": "Friedfertige, gold-gestreifte Humanoide mit der einzigartigen Fähigkeit, Erinnerungen telepathisch zu teilen."
   },
   {
     "name": "Cereaner",
@@ -259,7 +270,8 @@
       "1 Rang in Wachsamkeit (nicht höher als 2 während der Erschaffung).",
       "Binäre Verarbeitung: Cereaner behandeln alle Wissensfertigkeiten, als wären sie",
       "Berufsfertigkeiten."
-    ]
+    ],
+    "description": "Hochgewachsene Humanoide mit verlängerten Schädeln und zwei Gehirnen. Exzellente Denker und Strategen."
   },
   {
     "name": "Chadra-Fan",
@@ -281,7 +293,8 @@
     ],
     "freeSkillRanks": {
       "mechanics": 1
-    }
+    },
+    "description": "Kleine, fledermausartige Wesen voller Energie. Gesellig, neugierig und begabte Bastler — werden ungern allein gelassen."
   },
   {
     "name": "Chagrianer",
@@ -304,7 +317,8 @@
     ],
     "freeSkillRanks": {
       "resilience": 1
-    }
+    },
+    "description": "Blauhäutige Humanoide mit markanten Hörnern. Bekannt für diplomatisches Geschick und kulturelle Raffinesse."
   },
   {
     "name": "Chevin",
@@ -323,7 +337,8 @@
       "1 Rang in Verhandeln (nicht höher als 2 während der Erschaffung).",
       "Chevin beginnen mit 1 Rang im Talent Belastbarkeit.",
       "Chevin erhalten einen  auf alle geruchsbasierenden Wahrnehmungsproben."
-    ]
+    ],
+    "description": "Massive, elefantenartige Wesen mit langem Rüssel. Oft als Sklavenhändler und Schwarzmarkthändler berüchtigt."
   },
   {
     "name": "Chiss",
@@ -344,7 +359,8 @@
     ],
     "freeSkillRanks": {
       "cool": 1
-    }
+    },
+    "description": "Blauhäutige, rotäugige Humanoide aus den Unbekannten Regionen. Taktische Genies — Grand Admiral Thrawn ist ihr berühmtester Vertreter."
   },
   {
     "name": "Clawdit",
@@ -371,7 +387,8 @@
     ],
     "freeSkillRanks": {
       "resilience": 1
-    }
+    },
+    "description": "Gestaltwandler, die ihr Aussehen nach Belieben ändern können. Perfekte Spione und Infiltratoren."
   },
   {
     "name": "Cosianer",
@@ -392,7 +409,8 @@
     ],
     "freeSkillRanks": {
       "lore": 1
-    }
+    },
+    "description": "Vogelähnliche Humanoide mit buntem Gefieder. Bekannt für Weisheit, Langlebigkeit und eine ruhige, bedächtige Art."
   },
   {
     "name": "Dathomirianer",
@@ -410,7 +428,8 @@
     "abilities": [
       "1 Rang in Einschüchtern und 1 Rang in Überleben (nicht höher als 2 während der Erschaffung).",
       "Dathomirianer beginnen mit 1 Rang im Talent Naturbursche."
-    ]
+    ],
+    "description": "Machtbegabte Humanoide von Dathomir. Die Nachtschwestern nutzen dunkle Magie, die Männer dienen als Krieger."
   },
   {
     "name": "Devorianer",
@@ -428,7 +447,8 @@
     "abilities": [
       "1 Rang in Überleben oder Täuschung (nicht höher als 2 während der Erschaffung).",
       "Resistenter Metabolismus: Devorianer erhalten einen  auf alle Widerstandskraftproben."
-    ]
+    ],
+    "description": "Gehörnte Humanoide mit scharfen Zähnen. Männer sind rastlose Wanderer, Frauen die stabilen Hüterinnen der Heimat."
   },
   {
     "name": "Dowutin",
@@ -452,7 +472,8 @@
     ],
     "freeSkillRanks": {
       "resilience": 1
-    }
+    },
+    "description": "Gewaltige, bärenähnliche Humanoide. Unglaublich stark und zäh — selbst für Wookiees eine Herausforderung."
   },
   {
     "name": "Dresselianer",
@@ -477,7 +498,8 @@
     ],
     "freeSkillRanks": {
       "survival": 1
-    }
+    },
+    "description": "Faltige, lederhäutige Humanoide. Zähe Freiheitskämpfer, die das Imperium auf ihrer Heimatwelt Dressel bekämpften."
   },
   {
     "name": "Drabataner",
@@ -497,7 +519,8 @@
       "Großer Lärm: Bei einer Probe auf Führungsqualitäten oder Charme kann ein Drabataner",
       "einsetzen, um ein zusätzliches Ziel in Reichweite zu beeinflussen oder aber um Ziele zu",
       "beeinflussen, die 1 Kategorie weiter entfernt sind als eigentlich gestattet."
-    ]
+    ],
+    "description": "Robuste Humanoide mit natürlicher Panzerung. Ruhig und besonnen, aber tödlich im Kampf."
   },
   {
     "name": "Drall",
@@ -518,7 +541,8 @@
     ],
     "freeSkillRanks": {
       "education": 1
-    }
+    },
+    "description": "Kleine, pelzige Wesen aus dem Corellianischen System. Gelehrte und Historiker mit erstaunlicher Intelligenz."
   },
   {
     "name": "Droide",
@@ -545,7 +569,8 @@
       "bei organischen Wesen.",
       "Droiden  erhalten  in  zwei  zusätzlichen  Fertigkeiten  ihres  Berufs  und  einer  zusätzlichen  Fertigkeit",
       "ihrer Spezialisierung 1 Rang."
-    ]
+    ],
+    "description": "Künstliche Intelligenzen in mechanischen Körpern. Vom Protokolldroiden bis zum Kampfdroiden — unendlich vielseitig."
   },
   {
     "name": "Dug",
@@ -564,7 +589,8 @@
       "1 Rang in Handgemenge (nicht höher als 2 während der Erschaffung).",
       "Dug beginnen mit 1 Rang im Talent Defensive Steuermanöver (pro Rang +1 auf",
       "Verteidigung bei von ihnen gesteuerten Fahrzeugen/Raumschiffen)."
-    ]
+    ],
+    "description": "Aggressive Wesen, die auf ihren Armen laufen und ihre Beine als Hände nutzen. Kurzes Temperament, großer Stolz."
   },
   {
     "name": "Duros",
@@ -582,7 +608,8 @@
     "abilities": [
       "1 Rang in Pilot (Weltraum) (nicht höher als 2 während der Erschaffung).",
       "Intuitive Navigation: Duros erhalten zu allen Astronavigationsproben einen  hinzu."
-    ]
+    ],
+    "description": "Blauhäutige, rotäugige Humanoide und eine der ältesten Raumfahrerspezies. Geborene Piloten und Entdecker."
   },
   {
     "name": "Elom",
@@ -606,7 +633,8 @@
     ],
     "freeSkillRanks": {
       "resilience": 1
-    }
+    },
+    "description": "Unterirdisch lebende Wesen mit kräftigen Grabklauen. Ruhig, genügsam und erstaunlich weise."
   },
   {
     "name": "Elomin",
@@ -624,7 +652,8 @@
     "abilities": [
       "1 Rang in Charme oder Allgemeinbildung (nicht höher als 2 während",
       "der Erschaffung)."
-    ]
+    ],
+    "description": "Gehörnte Humanoide mit obsessiver Liebe zur Ordnung und Logik. Hervorragende Bürokraten und Strategen."
   },
   {
     "name": "Ewok",
@@ -647,7 +676,8 @@
       "Heimatplaneten findet. Mit der Zeit kann sich ein Ewok nach",
       "Entscheidung des Spielleiters an einzelne Technologien gewöhnen. Durch",
       "Zahlung von 10 EP kann ein Ewok diesen Nachteil entfernen."
-    ]
+    ],
+    "description": "Kleine, pelzige Teddy-Krieger von Endor. Unterschätze sie nicht — sie haben das Imperium besiegt. Mit Stöcken."
   },
   {
     "name": "Faleen",
@@ -671,7 +701,8 @@
     ],
     "freeSkillRanks": {
       "charm": 1
-    }
+    },
+    "description": "Atemberaubend schöne Humanoide mit natürlichen Pheromonen. Können andere Spezies fast mühelos verführen und manipulieren."
   },
   {
     "name": "Gand",
@@ -697,7 +728,8 @@
     ],
     "freeSkillRanks": {
       "discipline": 1
-    }
+    },
+    "description": "Insektoide Wesen, die Ammoniak atmen. Ihre 'Findsmen' sind legendäre Fährtenleser, die mystische Rituale nutzen."
   },
   {
     "name": "Gank",
@@ -720,7 +752,8 @@
       "Anfangskybernetik: Ein Gank kann bis zu zwei kybernetische Implantate",
       "im Wert von insgesamt 5000 Credits zu Spielbeginn besitzen. Diese",
       "Summe kann durch zusätzliche Verpflichtung erhöht werden."
-    ]
+    ],
+    "description": "Kybernetisch verstärkte Humanoide, die fast immer in Rüstung auftreten. Gefürchtete Kopfgeldjäger und Söldner."
   },
   {
     "name": "Geonosianer",
@@ -740,7 +773,8 @@
       "Wenn ein Geonosianer andere unterstützt, so erhält der Geholfene noch zusätzlich einen  hinzu",
       "und der Geonosianer regeneriert 1 Erschöpfung.",
       "Geonosianer können fliegen."
-    ]
+    ],
+    "description": "Insektoide Wesen mit Flügeln und Kastengesellschaft. Erbauer der Kampfdroiden und der ersten Todesstern-Pläne."
   },
   {
     "name": "Gigoraner",
@@ -761,7 +795,8 @@
       "oder Schnee erhält, so kann er einen von diesen Proben ignorieren.",
       "Schwache technologische Entwicklung: Gigoraner werten bei fortschrittlicher",
       "Technologie die Schwierigkeit von Mechanikproben einmal auf."
-    ]
+    ],
+    "description": "Große, pelzige Humanoide aus kalten Regionen. Kraftvoll, loyal und ausgezeichnete Nahkämpfer."
   },
   {
     "name": "Gossamer",
@@ -783,7 +818,8 @@
     ],
     "freeSkillRanks": {
       "survival": 1
-    }
+    },
+    "description": "Zarte, flügelartige Wesen mit einer einzigartigen Verbindung zur Natur. Selten und geheimnisvoll."
   },
   {
     "name": "Gotal",
@@ -805,7 +841,8 @@
     ],
     "freeSkillRanks": {
       "perception": 1
-    }
+    },
+    "description": "Humanoide mit kegelförmigen Hörnern, die als Sensoren dienen. Können Emotionen und Energiefelder wahrnehmen."
   },
   {
     "name": "Gran",
@@ -825,7 +862,8 @@
       "Verbesserte Sicht: Bei Fernkampf- oder Wahrnehmungsproben kann ein",
       "Gran bis zu  aufgrund von Umwelteinflüssen oder Verhüllung (nicht aber",
       "Verteidigung) entfernen."
-    ]
+    ],
+    "description": "Dreiäugige Humanoide, extrem sozial und gemeinschaftsorientiert. Einsamkeit kann sie buchstäblich in den Wahnsinn treiben."
   },
   {
     "name": "Gungan",
@@ -847,7 +885,8 @@
     ],
     "freeSkillRanks": {
       "athletics": 1
-    }
+    },
+    "description": "Amphibische Wesen von Naboo mit langen Ohren. Geschickte Handwerker und überraschend mutige Krieger. Meesa sagt: unterschätze sie nicht."
   },
   {
     "name": "Harch",
@@ -871,7 +910,8 @@
     ],
     "freeSkillRanks": {
       "perception": 1
-    }
+    },
+    "description": "Spinnenartige Wesen mit sechs Armen und scharfem Verstand. Brillante Taktiker und gefährliche Kämpfer."
   },
   {
     "name": "Hutte",
@@ -890,7 +930,8 @@
       "1 Rang in Einschüchtern oder Disziplin (nicht höher als 2 während der Erschaffung).",
       "Behäbig: Ein Hutte kann höchstens 1 Manöver pro Runde für Bewegung einsetzen.",
       "Ein Hutte beginnt mit je einem Rang in den Talenten Nicht auf den Kopf gefallen und Belastbarkeit."
-    ]
+    ],
+    "description": "Riesige, schneckenartige Wesen. Kontrollieren weite Teile der galaktischen Unterwelt. Gierig, langlebig und erstaunlich gerissen."
   },
   {
     "name": "Iakaru",
@@ -910,7 +951,8 @@
       "Brachiation: Ein Iakaru erhält keine Abzüge aufgrund von Gelände im Dschungel oder ähnlichen",
       "Landschaften. Sie erhalten  bei Proben auf Körperbeherrschung und Athletik in Bezug auf",
       "Schwingen, Klettern und Balancieren."
-    ]
+    ],
+    "description": "Affenähnliche Wesen mit Gleitmembranen. Neugierig, verspielt und erstaunlich geschickt mit Technik."
   },
   {
     "name": "Iktotchi",
@@ -930,7 +972,8 @@
       "Vorahnung: Ein Iktotchi kann einen bei einer Initiativeprobe einsetzen, damit er",
       "oder einer seiner Verbündeten ein freies Manöver vor der ersten Kampfrunde durch-",
       "führen kann. Zudem kann ihnen der Spielleiter kurze, flüchtige Blicke in die Zukunft gewähren."
-    ]
+    ],
+    "description": "Humanoide mit nach unten gebogenen Hörnern. Besitzen eine natürliche Vorausschau — sie spüren die Zukunft."
   },
   {
     "name": "Ishi Tib",
@@ -955,7 +998,8 @@
     ],
     "freeSkillRanks": {
       "discipline": 1
-    }
+    },
+    "description": "Amphibische Wesen mit sternförmigen Augen. Brillante Planer und Organisatoren, oft als Manager gefragt."
   },
   {
     "name": "Ithorianer",
@@ -978,7 +1022,8 @@
     ],
     "freeSkillRanks": {
       "survival": 1
-    }
+    },
+    "description": "Sanfte 'Hammerköpfe' mit tiefer Ehrfurcht vor der Natur. Ihre Mundstimme kann als Schallwaffe dienen."
   },
   {
     "name": "Jawa",
@@ -997,7 +1042,8 @@
       "1 Rang in Verhandeln oder Infiltration (nicht höher als 2 während der Erschaffung).",
       "Clevere Händler: Jawas könnten bei Proben auf Verhandeln ihre List anstelle ihres",
       "Charismas nutzen."
-    ]
+    ],
+    "description": "Winzige, verschleierte Wüstenbewohner von Tatooine. Sammler, Händler und Meister des Recyclings. Utini!"
   },
   {
     "name": "Kaminoaner",
@@ -1019,7 +1065,8 @@
     ],
     "freeSkillRanks": {
       "medicine": 1
-    }
+    },
+    "description": "Große, elegante Wesen von der Wasserwelt Kamino. Perfektionisten und Meister der Klontechnologie."
   },
   {
     "name": "Kalleraner",
@@ -1037,7 +1084,8 @@
     "abilities": [
       "1 Rang in Straßenwissen (nicht höher als 2 während der Erschaffung).",
       "Sensible Fühler: Kalleraner erhalten das Talent Geschärfte Sinne bei der Erschaffung."
-    ]
+    ],
+    "description": "Humanoide mit rauer Haut und pragmatischer Natur. Bekannt für Anpassungsfähigkeit und Überlebenswillen."
   },
   {
     "name": "Karkarodon",
@@ -1061,7 +1109,8 @@
     ],
     "freeSkillRanks": {
       "athletics": 1
-    }
+    },
+    "description": "Haiartige Amphibien mit rasiermesserscharfen Zähnen. Aggressive Krieger, die im Wasser nahezu unbesiegbar sind."
   },
   {
     "name": "Kel Dor",
@@ -1084,7 +1133,8 @@
       "solchen Antitox-Maske. Sauerstoff wird für sie als gefährliche Atmosphäre der Stufe 8 behandelt.",
       "Dafür können sie bis zu 5 Minuten im Vakuum überleben, bevor sie die negativen Auswirkungen",
       "erleiden."
-    ]
+    ],
+    "description": "Humanoide mit Atemmasken, da sie kein Sauerstoff vertragen. Oft machtempfindlich und bekannt für ihren Gerechtigkeitssinn."
   },
   {
     "name": "Klatooinianer",
@@ -1103,7 +1153,8 @@
       "1 Rang in 1 Nicht-Berufs-Fertigkeiten (höchstens Rang 2 zur Erschaffung).",
       "1 Rang in Handgemenge, leichte Fernkampfwaffen oder schwere Fernkampfwaffen",
       "(höchstens Rang 2 zur Erschaffung)"
-    ]
+    ],
+    "description": "Robuste Humanoide, die seit Jahrtausenden den Hutten dienen. Zäh, loyal und kampferprobt."
   },
   {
     "name": "Klon",
@@ -1121,7 +1172,8 @@
     "abilities": [
       "1 Rang in Kriegsführung und Widerstandskraft (höchstens Rang 2 zur Erschaffung).",
       "1 Rang im Talent Körperliches Training."
-    ]
+    ],
+    "description": "Genetisch perfektionierte Soldaten, geklont von Jango Fett. Jeder ist einzigartig trotz identischer DNA."
   },
   {
     "name": "Kubaz",
@@ -1141,7 +1193,8 @@
       "Verbesserte Sicht: Ein Kubaz kann bis zu  von Proben bei Fernkampf oder Wahrnehmung",
       "abziehen, die aufgrund von Tarnung oder passenden Umweltfaktoren auftreten (nicht aber wegen",
       "Verteidigung)."
-    ]
+    ],
+    "description": "Insektenfressende Humanoide mit langem Rüssel. Geschickte Spione und Informationshändler."
   },
   {
     "name": "Lannik",
@@ -1160,7 +1213,8 @@
       "1 Rang in Straßenwissen (höchstens Rang 2 während der Erschaffung).",
       "Unbezwingbar: Ein Lannik kann bis zu  von Proben entfernen, die durch kritische Wunden,",
       "dem Zustand Desorientiert oder Angst hinzugefügt wurden."
-    ]
+    ],
+    "description": "Kleine, großohrige Humanoide. Was ihnen an Größe fehlt, machen sie durch Mut und Kampfgeschick wett."
   },
   {
     "name": "Lasat",
@@ -1178,7 +1232,8 @@
     "abilities": [
       "1 Rang in Altes Wissen oder Handgemenge (höchstens Rang 2 zur Erschaffung).",
       "Kletterfüße: Ein Lasat kann sich auf vertikalen Oberflächen bewegen, als wären diese Horizontal."
-    ]
+    ],
+    "description": "Große, kräftige Humanoide mit natürlicher Stärke. Ihr Volk wurde vom Imperium fast ausgelöscht."
   },
   {
     "name": "Mellitos",
@@ -1204,7 +1259,8 @@
     ],
     "freeSkillRanks": {
       "perception": 1
-    }
+    },
+    "description": "Insektoide Wesen mit mehreren Augen. Fleißige Arbeiter und geschickte Handwerker."
   },
   {
     "name": "Mensch",
@@ -1221,7 +1277,8 @@
     "strainThresholdBase": 10,
     "abilities": [
       "1 Rang in 2 verschiedenen, Nicht-Berufs-Fertigkeiten (höchstens Rang 2 zur Erschaffung)."
-    ]
+    ],
+    "description": "Die häufigste Spezies der Galaxis. Vielseitig, anpassungsfähig und überall zu finden — vom Coruscant-Senat bis zur Outer-Rim-Cantina."
   },
   {
     "name": "Mensch - Corellia",
@@ -1239,7 +1296,8 @@
     "abilities": [
       "1 Rang in Pilot (Planetar) oder Pilot (Weltraum)",
       "(höchstens Rang 3 zur Erschaffung)."
-    ]
+    ],
+    "description": "Corellianer sind bekannt als die besten Piloten und größten Draufgänger der Galaxis. Han Solo lässt grüßen."
   },
   {
     "name": "Mensch - Mandalore",
@@ -1257,7 +1315,8 @@
     "abilities": [
       "1 Rang in 1 Kampffertigkeit oder jeweils 1 Rang in zwei",
       "Wissensfertigkeiten (höchstens Rang 2 während der Erschaffung)."
-    ]
+    ],
+    "description": "Mandalorianer leben nach einem strengen Krieger-Kodex. Beskar-Rüstung, Ehre und Familie über alles. This is the Way."
   },
   {
     "name": "Mikkianer",
@@ -1278,7 +1337,8 @@
     ],
     "freeSkillRanks": {
       "discipline": 1
-    }
+    },
+    "description": "Humanoide mit tentakelartigen Kopfauswüchsen. Kulturell vielfältig und oft in diplomatischen Rollen zu finden."
   },
   {
     "name": "Mirilaner",
@@ -1300,7 +1360,8 @@
     "freeSkillRanks": {
       "discipline": 1,
       "cool": 1
-    }
+    },
+    "description": "Humanoide mit markanten Gesichtstattoos, die ihren Lebensweg symbolisieren. Diszipliniert und naturverbunden."
   },
   {
     "name": "Mon Calamari",
@@ -1322,7 +1383,8 @@
     ],
     "freeSkillRanks": {
       "education": 1
-    }
+    },
+    "description": "Amphibische Wesen mit großen Augen. Brillante Schiffsbauer — ihre Kreuzer bildeten das Rückgrat der Rebellenflotte."
   },
   {
     "name": "Mustafarianer",
@@ -1343,7 +1405,8 @@
       "Nordmustafarianer beginnen mit 1 Rang im Talent Auge für Details (kann Erschöpfung bis zum",
       "Rang einsetzen, um bei Computertechnik- und Mechanikproben  in  umzuwandeln).",
       "Südmustafarianer beginnen mit 1 Rang im Talent Belastbarkeit (+1 auf Absorption je Rang)."
-    ]
+    ],
+    "description": "Hitzeresistente Wesen von der Lavawelt Mustafar. Leben unter extremsten Bedingungen der Galaxis."
   },
   {
     "name": "Muun",
@@ -1363,7 +1426,8 @@
       "der Erschaffung).",
       "Ein Muun erhält 1000 Credits, die er erst nach der Charaktererschaffung",
       "nutzen kann."
-    ]
+    ],
+    "description": "Große, dünne Humanoide mit überlegener mathematischer Intelligenz. Kontrollieren das Intergalaktische Bankenwesen."
   },
   {
     "name": "Nautolaner",
@@ -1385,7 +1449,8 @@
     ],
     "freeSkillRanks": {
       "athletics": 1
-    }
+    },
+    "description": "Amphibische Humanoide mit tentakelartigen Kopflappen. Können Emotionen über Pheromone im Wasser wahrnehmen."
   },
   {
     "name": "Neimodianer",
@@ -1402,7 +1467,8 @@
     "strainThresholdBase": 11,
     "abilities": [
       "1 Rang in Verhandeln oder Täuschung (höchstens Rang 2 bei der Erschaffung)."
-    ]
+    ],
+    "description": "Verwandte der Duros, bekannt für Habgier und Handelsgeschick. Führten die Handelsföderation — und die Blockade von Naboo."
   },
   {
     "name": "Nikto",
@@ -1446,7 +1512,8 @@
       "survival": 1,
       "athletics": 1,
       "perception": 1
-    }
+    },
+    "description": "Reptilienartige Humanoide in fünf Subspezies. Oft als Vollstrecker für Hutten und Syndikate tätig."
   },
   {
     "name": "Pantoraner",
@@ -1465,7 +1532,8 @@
       "1 Rang in Coolness oder Verhandeln (höchstens Rang 2 während der Erschaffung).",
       "Kälteanpassung: Wenn ein Pantoraner Abzüge aufgrund von kalter Umgebung erhält,",
       "so kann er einen von diesen Proben ignorieren."
-    ]
+    ],
+    "description": "Blauhäutige Humanoide von Pantora. Kultiviert, diplomatisch und bekannt für ihre goldenen Gesichtstattoos."
   },
   {
     "name": "Pau ́aner",
@@ -1485,7 +1553,8 @@
       "Sensibles Gehör: Pau ́aner erhalten einen  zu allen Proben auf Wachsamkeit und",
       "Wahrnehmung, solang sie Schutzkapseln für ihre Ohren tragen. Ohne diese erhalten sie den",
       "Bonus nicht, sondern bekommen  auf Wachsamkeits- und Wahrnehmungsproben."
-    ]
+    ],
+    "description": "Hochgewachsene, blasse Bewohner von Utapau. Leben in riesigen Sinklöchern und sind geschickte Verwalter."
   },
   {
     "name": "Phydolon",
@@ -1507,7 +1576,8 @@
       "Nacht versuchen (anstelle von 1 Woche).",
       "Symbiotische Isolation: Hält sich kein anderer Phyodolon in seiner Nähe auf, so regeneriert er am",
       "Ende einer Begegnung immer 1 Erschöpfung weniger (mindestens aber 1 Erschöpfung)."
-    ]
+    ],
+    "description": "Seltene, reptilienartige Wesen. Wenig bekannt, aber für ihre Anpassungsfähigkeit geschätzt."
   },
   {
     "name": "Polis Massaner",
@@ -1532,7 +1602,8 @@
     ],
     "freeSkillRanks": {
       "medicine": 1
-    }
+    },
+    "description": "Stille Wesen, die über Telepathie kommunizieren. Bekannt als hervorragende Mediziner — sie halfen bei der Geburt der Skywalker-Zwillinge."
   },
   {
     "name": "Quarren",
@@ -1553,7 +1624,8 @@
       "und erleiden niemals Abzüge aufgrund der Bewegung im Wasser.",
       "Tintenstoß: Einmal pro Begegnung kann ein Quarren 2 Erschöpfung erleiden, um einem Gegner",
       "innerhalb kurzer Reichweite einen  (unter Wasser: ) auf eine Kampfprobe zu geben."
-    ]
+    ],
+    "description": "Tintenfischgesichtige Wesen von Mon Cala. Pragmatisch und misstrauisch — das Gegenstück zu den optimistischen Mon Calamari."
   },
   {
     "name": "Rodianer",
@@ -1574,7 +1646,8 @@
     ],
     "freeSkillRanks": {
       "survival": 1
-    }
+    },
+    "description": "Grünhäutige Humanoide mit Facettenaugen und Saugnäpfen. Berüchtigte Kopfgeldjäger — Greedo war nur der Anfang."
   },
   {
     "name": "Sakiyaner",
@@ -1593,7 +1666,8 @@
       "1 Rang in Wahrnehmung oder Wachsamkeit (höchstens Rang 2 während der",
       "Erschaffung).",
       "Sakiyaner beginnen mit 1 Rang im Talent Fährtenleser."
-    ]
+    ],
+    "description": "Humanoide mit vergrößertem Gehirn und natürlichen Jagdinstinkten. Geborene Jäger mit photografischem Gedächtnis."
   },
   {
     "name": "Sathari",
@@ -1616,7 +1690,8 @@
     ],
     "freeSkillRanks": {
       "coordination": 1
-    }
+    },
+    "description": "Vogelähnliche Humanoide mit Restflügeln. Kulturell stolz und bekannt für ihre Poesie und Kriegskunst."
   },
   {
     "name": "Selonianer",
@@ -1639,7 +1714,8 @@
     ],
     "freeSkillRanks": {
       "coordination": 1
-    }
+    },
+    "description": "Otterartige Wesen aus dem Corellianischen System. Leben in matriarchalischen Clans und sind meisterhafte Tunnelbauer."
   },
   {
     "name": "Shistavanen",
@@ -1658,7 +1734,8 @@
       "1 Rang in Handgemenge oder Überleben (höchstens Rang 2 bei Erschaffung).",
       "Instinkte: Wenn ein Shistavanen auf Initiative würfelt, kann er seinen Rang in",
       "Überleben anstelle von dem in Disziplin oder Coolness nutzen."
-    ]
+    ],
+    "description": "Wolfsähnliche Humanoide mit scharfen Sinnen. Einzelgänger und hervorragende Fährtenleser und Jäger."
   },
   {
     "name": "Skakoaner",
@@ -1682,7 +1759,8 @@
     ],
     "freeSkillRanks": {
       "education": 1
-    }
+    },
+    "description": "Druckanzug-tragende Wesen, die nur unter extremem Druck überleben. Technologisch hochentwickelt — führten die Techno-Union."
   },
   {
     "name": "Sullustaner",
@@ -1703,7 +1781,8 @@
     ],
     "freeSkillRanks": {
       "astrogation": 1
-    }
+    },
+    "description": "Maulwurfartige Humanoide mit hervorragendem Orientierungssinn. Geborene Piloten — Nien Nunb flog den Millennium Falken."
   },
   {
     "name": "Thisspiasianer",
@@ -1726,7 +1805,8 @@
     ],
     "freeSkillRanks": {
       "discipline": 1
-    }
+    },
+    "description": "Schlangenartige Wesen mit vier Armen. Ruhig, weise und oft in beratenden Rollen zu finden."
   },
   {
     "name": "Tholotianer",
@@ -1750,7 +1830,8 @@
     ],
     "freeSkillRanks": {
       "xenology": 1
-    }
+    },
+    "description": "Humanoide mit tentakelartigen Kopfauswüchsen unter einer natürlichen Kappe. Oft machtempfindlich."
   },
   {
     "name": "Tognath",
@@ -1775,7 +1856,8 @@
       "solchen Antitox-Maske. Sauerstoff wird für sie als gefährliche Atmosphäre der Stufe 5 behandelt.",
       "Dafür können sie bis zu 5 Minuten im Vakuum überleben, bevor sie die negativen Auswirkungen",
       "erleiden."
-    ]
+    ],
+    "description": "Insektoide Wesen mit Exoskelett und Atemgerät. Robuste Kämpfer und Überlebenskünstler."
   },
   {
     "name": "Togruta",
@@ -1797,7 +1879,8 @@
     ],
     "freeSkillRanks": {
       "perception": 1
-    }
+    },
+    "description": "Farbenfrohe Humanoide mit Montrals und Lekku. Gemeinschaftswesen und geschickte Jäger — Ahsoka Tano ist eine von ihnen."
   },
   {
     "name": "Toydarianer",
@@ -1816,7 +1899,8 @@
       "Flugfähig: Können zusätzliche Manöver-Kosten aufgrund von Hindernissen in",
       "der Umwelt ignorieren.",
       "Klein: Toydarianer haben eine Silhouette von 0."
-    ]
+    ],
+    "description": "Geflügelte, rundliche Wesen. Immun gegen Jedi-Gedankentricks und erstaunlich gerissene Händler. Watto lässt grüßen."
   },
   {
     "name": "Tuskenräuber",
@@ -1840,7 +1924,8 @@
     ],
     "freeSkillRanks": {
       "survival": 1
-    }
+    },
+    "description": "Mysteriöse Wüstennomaden von Tatooine. Leben nach strengen Traditionen und verteidigen ihr Territorium erbarmungslos."
   },
   {
     "name": "Twi ́lek",
@@ -1859,7 +1944,8 @@
       "1 Rang in Charme oder Täuschung (höchstens Rang 2 während der Erschaffung).",
       "Wenn ein Twi ́lek Abzüge aufgrund von trockener oder heißer Umgebung erhält,",
       "so kann er von diesen Proben ignorieren."
-    ]
+    ],
+    "description": "Humanoide mit bunten Hautfarben und Lekku-Kopftentakeln. Eine der bekanntesten Spezies der Galaxis."
   },
   {
     "name": "Trandoshaner",
@@ -1884,7 +1970,8 @@
     ],
     "freeSkillRanks": {
       "perception": 1
-    }
+    },
+    "description": "Reptilienartige Jäger, die ihre Beute als religiöses Ritual betrachten. Natürliche Feinde der Wookiees."
   },
   {
     "name": "Verpine",
@@ -1910,7 +1997,8 @@
     ],
     "freeSkillRanks": {
       "mechanics": 1
-    }
+    },
+    "description": "Insektoide Wesen mit Schwarmgeist-Mentalität. Die besten Techniker und Ingenieure der Galaxis."
   },
   {
     "name": "Vurk",
@@ -1930,7 +2018,8 @@
       "Amphibisch: Quarren können unter Wasser ohne Einschränkungen atmen",
       "und erleiden niemals Abzüge aufgrund der Bewegung im Wasser.",
       "Kaltblüter: Ein Vurk erhält einen zusätzlichen  auf alle Proben in kaltem Klima."
-    ]
+    ],
+    "description": "Amphibische Humanoide mit hohen Schädelkämmen. Friedlich, spirituell und naturnah."
   },
   {
     "name": "Wookie",
@@ -1949,7 +2038,8 @@
       "1 Rang in Handgemenge (höchstens Rang 2 während der Erschaffung).",
       "Wookie-Zorn: Hat ein Wookie Schaden erlitten, so verursachen seine Angriffe in Handgemenge",
       "und Nahkampfwaffen +1 Schaden. Hat er eine kritische Wunde, so verursachen sie +2 Schaden."
-    ]
+    ],
+    "description": "Riesige, pelzige Krieger von Kashyyyk. Unglaublich stark, loyal bis zum Tod und besser als Chewbacca kannst du nicht werden."
   },
   {
     "name": "Wiphid",
@@ -1973,7 +2063,8 @@
     ],
     "freeSkillRanks": {
       "survival": 1
-    }
+    },
+    "description": "Massige, stoßzahnbewehrte Wesen aus eisigen Welten. Gefährliche Jäger mit erstaunlicher Ausdauer."
   },
   {
     "name": "Zabrak",
@@ -1994,6 +2085,7 @@
     ],
     "freeSkillRanks": {
       "survival": 1
-    }
+    },
+    "description": "Gehörnte Humanoide mit Gesichtstattoos. Willensstark und kampferprobt — Darth Maul war ein Zabrak."
   }
 ]
