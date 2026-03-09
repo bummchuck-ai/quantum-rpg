@@ -87,15 +87,15 @@ const SpeciesSelector: React.FC = () => {
                   : 'border-zinc-800 bg-zinc-900/20 hover:bg-zinc-900/40'
               }`}
             >
-              <div className="h-40 bg-zinc-950 relative flex items-end border-b border-zinc-900 overflow-hidden">
+              <div className="aspect-[4/3] bg-zinc-950 relative flex items-end border-b border-zinc-900 overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`/species/${slugify(s.name)}.jpg`}
                     alt={s.name}
-                    className="absolute inset-0 w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                    className="absolute inset-0 w-full h-full object-cover object-center opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                     onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
                   <h2 className="relative z-10 px-4 pb-3 text-base font-black text-white italic tracking-tighter uppercase leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">{s.name}</h2>
               </div>
 
