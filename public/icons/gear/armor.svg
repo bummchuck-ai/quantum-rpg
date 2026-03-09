@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Mandalorian helmet + chest armor -->
+  <path d="M6 10V8a6 6 0 0 1 12 0v2"/>
+  <path d="M6 10c-1 0-2 1-2 2v1l2 1v0"/>
+  <path d="M18 10c1 0 2 1 2 2v1l-2 1v0"/>
+  <path d="M6 10v4l6 3 6-3v-4"/>
+  <path d="M8.5 10l1.5 2h4l1.5-2"/>
+  <path d="M12 12v2"/>
+  <path d="M7 17v5h10v-5"/>
+  <path d="M9 17v5"/>
+  <path d="M15 17v5"/>
+  <path d="M12 17v5"/>
+</svg>

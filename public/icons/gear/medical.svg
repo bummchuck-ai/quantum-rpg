@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Medpac with health cross -->
+  <rect x="3" y="6" width="18" height="14" rx="2"/>
+  <path d="M3 10h18"/>
+  <path d="M9 6V4a3 3 0 0 1 6 0v2"/>
+  <!-- Health cross -->
+  <path d="M12 13v5"/>
+  <path d="M9.5 15.5h5"/>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Macrobinoculars / scanner -->
+  <rect x="2" y="8" width="8" height="10" rx="2"/>
+  <rect x="14" y="8" width="8" height="10" rx="2"/>
+  <path d="M10 12h4"/>
+  <circle cx="6" cy="13" r="2.5"/>
+  <circle cx="18" cy="13" r="2.5"/>
+  <circle cx="6" cy="13" r="1"/>
+  <circle cx="18" cy="13" r="1"/>
+  <path d="M6 8V6"/>
+  <path d="M18 8V6"/>
+</svg>

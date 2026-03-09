@@ -11,7 +11,8 @@
         "hardPoints": 0,
         "price": 40,
         "rarity": 4,
-        "special": ""
+        "special": "",
+        "description": "Primitive Waffe — aber auf Lothal überlebenswichtig."
       },
       {
         "name": "Leichte Blasterpistole",
@@ -23,7 +24,8 @@
         "hardPoints": 2,
         "price": 300,
         "rarity": 4,
-        "special": "Betäubungsoption"
+        "special": "Betäubungsoption",
+        "description": "Kompakte Seitenwaffe für Diplomaten und Spione."
       },
       {
         "name": "CDEF-Pistole",
@@ -35,7 +37,8 @@
         "hardPoints": 1,
         "price": 150,
         "rarity": 4,
-        "special": "Betäubungsoption, Minderwertig"
+        "special": "Betäubungsoption, Minderwertig",
+        "description": "Billigblaster aus den Fabriken von Czerka Arms."
       },
       {
         "name": "Blasterpistole SE-14C",
@@ -47,7 +50,8 @@
         "hardPoints": 2,
         "price": 650,
         "rarity": 6,
-        "special": "Vollautomatik, Betäubungsoption"
+        "special": "Vollautomatik, Betäubungsoption",
+        "description": "Imperiale Schnellfeuerwaffe — beliebt bei Offizieren."
       },
       {
         "name": "Blasterpistole Boonta",
@@ -59,7 +63,8 @@
         "hardPoints": 1,
         "price": 1000,
         "rarity": 8,
-        "special": "Betäubungsoption"
+        "special": "Betäubungsoption",
+        "description": "Seltene Pistole vom Hutt-Raumhafen Boonta."
       },
       {
         "name": "Blasterpistole",
@@ -71,7 +76,8 @@
         "hardPoints": 3,
         "price": 400,
         "rarity": 4,
-        "special": "Betäubungsoption"
+        "special": "Betäubungsoption",
+        "description": "Die Standard-Seitenwaffe der Galaxis — zuverlässig und tödlich."
       },
       {
         "name": "Blasterpistole ELG-3A",
@@ -83,7 +89,8 @@
         "hardPoints": 0,
         "price": 400,
         "rarity": 5,
-        "special": ""
+        "special": "",
+        "description": "Elegante Waffe aus Naboo — Senatorenstil."
       },
       {
         "name": "Betäubungsblaster",
@@ -95,7 +102,8 @@
         "hardPoints": 3,
         "price": 200,
         "rarity": 3,
-        "special": "Betäubungsschaden"
+        "special": "Betäubungsschaden",
+        "description": "Setzt Ziele außer Gefecht, ohne sie zu töten."
       },
       {
         "name": "Schw. Blasterpistole",
@@ -107,7 +115,8 @@
         "hardPoints": 3,
         "price": 700,
         "rarity": 6,
-        "special": "Betäubungsoption"
+        "special": "Betäubungsoption",
+        "description": "Schwerer Blaster für ernste Feuergefechte."
       },
       {
         "name": "Duell-Blasterpistole",
@@ -119,7 +128,8 @@
         "hardPoints": 2,
         "price": 750,
         "rarity": 5,
-        "special": "Präzise 1, Begrenzte Munition 1, Durchbohrend 1"
+        "special": "Präzise 1, Begrenzte Munition 1, Durchbohrend 1",
+        "description": "Für den ehrenvollen Zweikampf — ein Schuss zählt."
       },
       {
         "name": "Droidendisruptor",
@@ -131,7 +141,8 @@
         "hardPoints": 1,
         "price": 800,
         "rarity": 7,
-        "special": "Tödlich 3 (nur Droiden), Ionenschaden"
+        "special": "Tödlich 3 (nur Droiden), Ionenschaden",
+        "description": "Ionenstrahlen frittieren Droidenschaltkreise in Sekunden."
       },
       {
         "name": "Ionenblaster",
@@ -143,7 +154,8 @@
         "hardPoints": 3,
         "price": 250,
         "rarity": 3,
-        "special": "Ionenschaden, Desorientierend 5"
+        "special": "Ionenschaden, Desorientierend 5",
+        "description": "Schickt Droiden und Elektronik in den Kurzschluss."
       },
       {
         "name": "Explosivpfeil",
@@ -155,7 +167,8 @@
         "hardPoints": 0,
         "price": 50,
         "rarity": 6,
-        "special": "Explosion 4"
+        "special": "Explosion 4",
+        "description": "Detoniert beim Einschlag — Sabines Lieblingsmunition."
       },
       {
         "name": "Betäubungspfeil",
@@ -167,7 +180,8 @@
         "hardPoints": 0,
         "price": 60,
         "rarity": 6,
-        "special": "Betäubungsschaden"
+        "special": "Betäubungsschaden",
+        "description": "Lautlos und effektiv — perfekt für Kopfgeldjäger."
       },
       {
         "name": "Autopistole ASP-9",
@@ -179,7 +193,8 @@
         "hardPoints": 0,
         "price": 150,
         "rarity": 4,
-        "special": "Vollautomatik"
+        "special": "Vollautomatik",
+        "description": "Projektilwaffe mit hoher Feuerrate — Old-School-Killer."
       },
       {
         "name": "Pistole Fiver",
@@ -191,7 +206,8 @@
         "hardPoints": 1,
         "price": 200,
         "rarity": 4,
-        "special": "Präzise 1, begr. Munition 1"
+        "special": "Präzise 1, begr. Munition 1",
+        "description": "Einzelschuss-Pistole — präzise wie ein Scharfschütze."
       },
       {
         "name": "Statik-Pistole SSB-1",
@@ -203,7 +219,8 @@
         "hardPoints": 1,
         "price": 850,
         "rarity": 7,
-        "special": ""
+        "special": "",
+        "description": "Elektroschock-Waffe aus den Laboren von BlasTech."
       },
       {
         "name": "Bola",
@@ -215,7 +232,8 @@
         "hardPoints": 2,
         "price": 20,
         "rarity": 2,
-        "special": ""
+        "special": "",
+        "description": "Schleuderfesseln — primitiv, aber wirkungsvoll."
       },
       {
         "name": "Kyuzo Kriegsschild",
@@ -227,7 +245,8 @@
         "hardPoints": 0,
         "price": 750,
         "rarity": 8,
-        "special": ""
+        "special": "",
+        "description": "Wurfschild der Kyuzo — tödlich wie ein Bumerang."
       },
       {
         "name": "Netz",
@@ -239,7 +258,8 @@
         "hardPoints": 2,
         "price": 20,
         "rarity": 2,
-        "special": ""
+        "special": "",
+        "description": "Fangnetz für Kopfgeldjäger — Beute lebend gefangen."
       },
       {
         "name": "Voss Kriegsspeer",
@@ -251,7 +271,8 @@
         "hardPoints": 2,
         "price": 215,
         "rarity": 8,
-        "special": ""
+        "special": "",
+        "description": "Mystischer Speer der Voss-Krieger von Voss."
       },
       {
         "name": "Plasma-Ball",
@@ -263,7 +284,8 @@
         "hardPoints": 0,
         "price": 20,
         "rarity": 7,
-        "special": ""
+        "special": "",
+        "description": "Überhitzte Plasmakugel — brennt durch alles."
       },
       {
         "name": "Multiklebstoffkanone",
@@ -275,7 +297,8 @@
         "hardPoints": 1,
         "price": 250,
         "rarity": 1,
-        "special": ""
+        "special": "",
+        "description": "Sprüht Klebschaum — Ziele kleben wie Fliegen."
       },
       {
         "name": "Nietpistole",
@@ -287,7 +310,8 @@
         "hardPoints": 1,
         "price": 900,
         "rarity": 1,
-        "special": ""
+        "special": "",
+        "description": "Werkzeug oder Waffe — auf Schmugglerschiffen beides."
       }
     ],
     "Gewehre": [
@@ -301,7 +325,8 @@
         "hardPoints": 1,
         "price": 1000,
         "rarity": 6,
-        "special": ""
+        "special": "",
+        "description": "Projektilgewehr mit Dauerfeuer — laut und brutal."
       },
       {
         "name": "Weequay Blasterlanze",
@@ -313,7 +338,8 @@
         "hardPoints": 2,
         "price": 850,
         "rarity": 6,
-        "special": "Präzise 1, Sperrigkeit 2"
+        "special": "Präzise 1, Sperrigkeit 2",
+        "description": "Lange Waffe der Weequay — trifft auf Distanz."
       },
       {
         "name": "Mon Cal Speerblaster",
@@ -325,7 +351,8 @@
         "hardPoints": 3,
         "price": 1350,
         "rarity": 5,
-        "special": "Betäubungsoption"
+        "special": "Betäubungsoption",
+        "description": "Unterwassertauglich — Mon Calamari Ingenieurskunst."
       },
       {
         "name": "Bola Karabiner",
@@ -337,7 +364,8 @@
         "hardPoints": 3,
         "price": 1600,
         "rarity": 6,
-        "special": "Präzise 1, Verstrickend 1"
+        "special": "Präzise 1, Verstrickend 1",
+        "description": "Fangnetz und Blaster in einer Waffe vereint."
       },
       {
         "name": "Blasterkarabiner E5",
@@ -349,7 +377,8 @@
         "hardPoints": 4,
         "price": 550,
         "rarity": 3,
-        "special": "Betäubungsoption"
+        "special": "Betäubungsoption",
+        "description": "Standardwaffe der Separatisten-Kampfdroiden."
       },
       {
         "name": "Blasterkarabiner",
@@ -361,7 +390,8 @@
         "hardPoints": 4,
         "price": 850,
         "rarity": 5,
-        "special": "Betäubungsoption"
+        "special": "Betäubungsoption",
+        "description": "Vielseitiger Karabiner — Standard der Rebellenallianz."
       },
       {
         "name": "Blastergewehr",
@@ -373,7 +403,8 @@
         "hardPoints": 4,
         "price": 900,
         "rarity": 5,
-        "special": "Betäubungsoption"
+        "special": "Betäubungsoption",
+        "description": "Zuverlässiges Gewehr für jeden Infanteristen."
       },
       {
         "name": "Schw. Blastergewehr",
@@ -385,7 +416,8 @@
         "hardPoints": 4,
         "price": 1500,
         "rarity": 6,
-        "special": "Vollautomatik, Sperrigkeit 3"
+        "special": "Vollautomatik, Sperrigkeit 3",
+        "description": "Schweres Sturmgewehr — Feuerkraft auf Kosten der Mobilität."
       },
       {
         "name": "Schallgewehr SWE/2",
@@ -397,7 +429,8 @@
         "hardPoints": 3,
         "price": 1200,
         "rarity": 6,
-        "special": ""
+        "special": "",
+        "description": "Schallwellen statt Blasterbolzen — gegen Geonosianer."
       },
       {
         "name": "Bogenspanner",
@@ -409,7 +442,8 @@
         "hardPoints": 2,
         "price": 1250,
         "rarity": 7,
-        "special": "Sperrigkeit 3, Niederwerfen"
+        "special": "Sperrigkeit 3, Niederwerfen",
+        "description": "Mechanische Armbrust — Wookiee-Handwerkskunst."
       },
       {
         "name": "Langbogen",
@@ -421,7 +455,8 @@
         "hardPoints": 1,
         "price": 120,
         "rarity": 4,
-        "special": "Sperrigkeit 3, Begrenzte Munition 1, Durchbohrend 3"
+        "special": "Sperrigkeit 3, Begrenzte Munition 1, Durchbohrend 3",
+        "description": "Uralte Waffe — leise und tödlich auf Distanz."
       },
       {
         "name": "Kyuzo-Bogen",
@@ -433,7 +468,8 @@
         "hardPoints": 1,
         "price": 2400,
         "rarity": 8,
-        "special": ""
+        "special": "",
+        "description": "Meisterhaft gefertigter Bogen der Kyuzo-Krieger."
       },
       {
         "name": "Standardpfeil",
@@ -445,7 +481,8 @@
         "hardPoints": 0,
         "price": 1,
         "rarity": 5,
-        "special": ""
+        "special": "",
+        "description": "Einfacher Pfeil — billig und immer verfügbar."
       },
       {
         "name": "Brandpfeil",
@@ -457,7 +494,8 @@
         "hardPoints": 0,
         "price": 60,
         "rarity": 5,
-        "special": "Verbrennen 2"
+        "special": "Verbrennen 2",
+        "description": "Brennender Pfeil — setzt das Ziel in Flammen."
       },
       {
         "name": "Netzpfeil",
@@ -469,7 +507,8 @@
         "hardPoints": 0,
         "price": 30,
         "rarity": 5,
-        "special": "Verstrickend 2"
+        "special": "Verstrickend 2",
+        "description": "Fangnetz am Pfeil — Beute wird verstrickt."
       },
       {
         "name": "Sturmkarabiner",
@@ -481,7 +520,8 @@
         "hardPoints": 1,
         "price": 250,
         "rarity": 4,
-        "special": ""
+        "special": "",
+        "description": "Kurzläufiger Karabiner für Häuserkampf."
       },
       {
         "name": "Jagdgewehr Typ V",
@@ -493,7 +533,8 @@
         "hardPoints": 2,
         "price": 1750,
         "rarity": 7,
-        "special": "Präzise 1, Sperrigkeit 2"
+        "special": "Präzise 1, Sperrigkeit 2",
+        "description": "Präzisionsgewehr für die Großwildjagd."
       },
       {
         "name": "Vodran Jagdgewehr",
@@ -505,7 +546,8 @@
         "hardPoints": 2,
         "price": 800,
         "rarity": 7,
-        "special": "Sperrigkeit 2"
+        "special": "Sperrigkeit 2",
+        "description": "Robustes Gewehr vom Planeten Vodran."
       },
       {
         "name": "Stokhli Spraystab",
@@ -517,7 +559,8 @@
         "hardPoints": 0,
         "price": 2500,
         "rarity": 8,
-        "special": ""
+        "special": "",
+        "description": "Sprüht betäubendes Netz — beliebt bei Tierfängern."
       },
       {
         "name": "Aranea-Netzgewehr",
@@ -529,7 +572,8 @@
         "hardPoints": 2,
         "price": 775,
         "rarity": 5,
-        "special": ""
+        "special": "",
+        "description": "Verschießt klebrige Netze wie eine Riesenspinne."
       },
       {
         "name": "Gewirrkanone",
@@ -541,7 +585,8 @@
         "hardPoints": 1,
         "price": 500,
         "rarity": 5,
-        "special": "Verstrickend 3"
+        "special": "Verstrickend 3",
+        "description": "Verschießt Verstrickungsgranaten im Dauerfeuer."
       },
       {
         "name": "Flammenwerfer",
@@ -553,7 +598,8 @@
         "hardPoints": 2,
         "price": 1000,
         "rarity": 6,
-        "special": "Verbrennung 3, Explosion 8"
+        "special": "Verbrennung 3, Explosion 8",
+        "description": "Lodernde Flammen — mandalorianische Spezialdisziplin."
       },
       {
         "name": "Tenloss Säurewerfer",
@@ -565,7 +611,8 @@
         "hardPoints": 1,
         "price": 1250,
         "rarity": 7,
-        "special": ""
+        "special": "",
+        "description": "Sprüht ätzende Säure — Albtraum jeder Rüstung."
       },
       {
         "name": "Antipersonen",
@@ -577,7 +624,8 @@
         "hardPoints": 0,
         "price": 100,
         "rarity": 5,
-        "special": ""
+        "special": "",
+        "description": "Antipersonenmunition — tödlich im Flächeneinsatz."
       },
       {
         "name": "Panzerbrechend",
@@ -589,7 +637,8 @@
         "hardPoints": 0,
         "price": 150,
         "rarity": 6,
-        "special": ""
+        "special": "",
+        "description": "Durchschlägt Panzerplatten wie Flimsiplast."
       },
       {
         "name": "Tinte",
@@ -601,7 +650,8 @@
         "hardPoints": 0,
         "price": 50,
         "rarity": 5,
-        "special": ""
+        "special": "",
+        "description": "Markierungsmunition — markiert Ziele für Tracking."
       },
       {
         "name": "Ionen",
@@ -613,7 +663,8 @@
         "hardPoints": 0,
         "price": 150,
         "rarity": 6,
-        "special": ""
+        "special": "",
+        "description": "Ionenmunition — schaltet Technik und Droiden aus."
       },
       {
         "name": "Betäubung",
@@ -625,7 +676,8 @@
         "hardPoints": 0,
         "price": 300,
         "rarity": 5,
-        "special": ""
+        "special": "",
+        "description": "Betäubungsmunition — Ziel lebt, aber schläft."
       },
       {
         "name": "Ionenantriebkanone",
@@ -637,7 +689,8 @@
         "hardPoints": 0,
         "price": 300,
         "rarity": 2,
-        "special": ""
+        "special": "",
+        "description": "Umgebauter Ionenantrieb als improvisierte Waffe."
       },
       {
         "name": "Repulsorkanone",
@@ -649,7 +702,8 @@
         "hardPoints": 0,
         "price": 200,
         "rarity": 3,
-        "special": ""
+        "special": "",
+        "description": "Druckwelle aus Repulsor-Technologie — wirft alles um."
       }
     ],
     "Schwere Waffen": [
@@ -663,7 +717,8 @@
         "hardPoints": 3,
         "price": 3000,
         "rarity": 7,
-        "special": "Vollautomatik, Sperrigkeit 3"
+        "special": "Vollautomatik, Sperrigkeit 3",
+        "description": "Klontruppen-Klassiker — rotierendes Sperrfeuer."
       },
       {
         "name": "Raketenwerfer",
@@ -675,7 +730,8 @@
         "hardPoints": 2,
         "price": 2500,
         "rarity": 7,
-        "special": "Explosion 10, Sperrigkeit 3"
+        "special": "Explosion 10, Sperrigkeit 3",
+        "description": "Sprengt Panzer und Stellungen — schwer aber effektiv."
       }
     ],
     "Nahkampf": [
@@ -689,7 +745,8 @@
         "hardPoints": 0,
         "price": 25,
         "rarity": 1,
-        "special": ""
+        "special": "",
+        "description": "Einfaches Messer — jeder Soldat hat eines dabei."
       },
       {
         "name": "Überlebensmesser",
@@ -701,7 +758,8 @@
         "hardPoints": 0,
         "price": 100,
         "rarity": 3,
-        "special": ""
+        "special": "",
+        "description": "Robuste Klinge für Wildnis und Nahkampf."
       },
       {
         "name": "Nanodolch MSW-12",
@@ -713,7 +771,8 @@
         "hardPoints": 0,
         "price": 700,
         "rarity": 6,
-        "special": ""
+        "special": "",
+        "description": "Nanotechnologie-Klinge — hauchdünn und tödlich scharf."
       },
       {
         "name": "Faustdolch",
@@ -725,7 +784,8 @@
         "hardPoints": 0,
         "price": 75,
         "rarity": 4,
-        "special": ""
+        "special": "",
+        "description": "Verborgen in der Faust — Assassinen-Werkzeug."
       },
       {
         "name": "Klingenbrecher",
@@ -737,7 +797,8 @@
         "hardPoints": 1,
         "price": 250,
         "rarity": 5,
-        "special": ""
+        "special": "",
+        "description": "Fängt und bricht feindliche Klingen — Fechtkunst."
       },
       {
         "name": "Paradedolch",
@@ -749,7 +810,8 @@
         "hardPoints": 0,
         "price": 150,
         "rarity": 5,
-        "special": "Defensiv 1"
+        "special": "Defensiv 1",
+        "description": "Eleganter Verteidigungsdolch für die Nebenhand."
       },
       {
         "name": "Weik Zweihänder (2H)",
@@ -761,7 +823,8 @@
         "hardPoints": 2,
         "price": 315,
         "rarity": 8,
-        "special": "Sperrigkeit 4, Defensiv 1"
+        "special": "Sperrigkeit 4, Defensiv 1",
+        "description": "Schwerer Zweihänder vom Planeten Weik."
       },
       {
         "name": "Ryyk Klinge",
@@ -773,7 +836,8 @@
         "hardPoints": 3,
         "price": 400,
         "rarity": 8,
-        "special": ""
+        "special": "",
+        "description": "Ritualklinge der Wookiees — Ehre und Stärke."
       },
       {
         "name": "Zeremonienklinge",
@@ -785,7 +849,8 @@
         "hardPoints": 3,
         "price": 650,
         "rarity": 7,
-        "special": ""
+        "special": "",
+        "description": "Verzierte Klinge für Rituale und Zeremonien."
       },
       {
         "name": "Stabschwert",
@@ -797,7 +862,8 @@
         "hardPoints": 1,
         "price": 475,
         "rarity": 6,
-        "special": ""
+        "special": "",
+        "description": "Langes Klingenschwert — elegant und tödlich."
       },
       {
         "name": "Cortosis-Schwert",
@@ -809,7 +875,8 @@
         "hardPoints": 2,
         "price": 1350,
         "rarity": 7,
-        "special": ""
+        "special": "",
+        "description": "Cortosis-Legierung — widersteht sogar Lichtschwertern."
       },
       {
         "name": "Langaxt (2H)",
@@ -821,7 +888,8 @@
         "hardPoints": 1,
         "price": 610,
         "rarity": 4,
-        "special": ""
+        "special": "",
+        "description": "Schwere Streitaxt — brachiale Nahkampfgewalt."
       },
       {
         "name": "Riesige Axt (2H)",
@@ -833,7 +901,8 @@
         "hardPoints": 1,
         "price": 350,
         "rarity": 6,
-        "special": "Sperrigkeit 5"
+        "special": "Sperrigkeit 5",
+        "description": "Monströse Axt — nur für die Stärksten."
       },
       {
         "name": "Elektronetz",
@@ -845,7 +914,8 @@
         "hardPoints": 0,
         "price": 350,
         "rarity": 6,
-        "special": ""
+        "special": "",
+        "description": "Elektrifiziertes Netz — fesselt und betäubt zugleich."
       },
       {
         "name": "Peitsche",
@@ -857,7 +927,8 @@
         "hardPoints": 1,
         "price": 600,
         "rarity": 4,
-        "special": "Verstrickend 2, Betäubungsschaden"
+        "special": "Verstrickend 2, Betäubungsschaden",
+        "description": "Lederriemen — Slavers Lieblingswaffe."
       },
       {
         "name": "Neuronenpeitsche",
@@ -869,7 +940,8 @@
         "hardPoints": 1,
         "price": 750,
         "rarity": 6,
-        "special": "Verstrickend 1, Desorientierend 4, Betäubungsschaden"
+        "special": "Verstrickend 1, Desorientierend 4, Betäubungsschaden",
+        "description": "Stimuliert Schmerznerven direkt — pure Qual."
       },
       {
         "name": "Schlagstock",
@@ -881,7 +953,8 @@
         "hardPoints": 0,
         "price": 15,
         "rarity": 1,
-        "special": "Desorientierung 2"
+        "special": "Desorientierung 2",
+        "description": "Standard-Ordnungswaffe für Sicherheitskräfte."
       },
       {
         "name": "Klapp-Schlagstock",
@@ -893,7 +966,8 @@
         "hardPoints": 1,
         "price": 50,
         "rarity": 4,
-        "special": "Desorientierung 2"
+        "special": "Desorientierung 2",
+        "description": "Kompakt verstaubar — im Einsatz sofort bereit."
       },
       {
         "name": "Betäubungsknüppel",
@@ -905,7 +979,8 @@
         "hardPoints": 2,
         "price": 200,
         "rarity": 4,
-        "special": ""
+        "special": "",
+        "description": "Energiegeladener Knüppel — betäubt statt tötet."
       },
       {
         "name": "Sicherheitsstab (2H)",
@@ -917,7 +992,8 @@
         "hardPoints": 2,
         "price": 450,
         "rarity": 4,
-        "special": ""
+        "special": "",
+        "description": "Langer Stab für Sicherheitspersonal."
       },
       {
         "name": "Schockschlagstock",
@@ -929,7 +1005,8 @@
         "hardPoints": 2,
         "price": 300,
         "rarity": 4,
-        "special": ""
+        "special": "",
+        "description": "Elektroschock bei jedem Treffer — schmerzhaft."
       },
       {
         "name": "Schockstab (2H)",
@@ -941,7 +1018,8 @@
         "hardPoints": 2,
         "price": 400,
         "rarity": 5,
-        "special": ""
+        "special": "",
+        "description": "Langer Elektrostab — hält Gegner auf Distanz."
       },
       {
         "name": "Tuskbeast-Pike (2H)",
@@ -953,7 +1031,8 @@
         "hardPoints": 1,
         "price": 1050,
         "rarity": 8,
-        "special": "Niederwerfen, Defensiv 1"
+        "special": "Niederwerfen, Defensiv 1",
+        "description": "Tusken-Waffe — Symbol der Wüstenkrieger."
       },
       {
         "name": "Selonianische Glefe",
@@ -965,7 +1044,8 @@
         "hardPoints": 3,
         "price": 1200,
         "rarity": 7,
-        "special": "Defensiv 1, Durchbohrend 3"
+        "special": "Defensiv 1, Durchbohrend 3",
+        "description": "Elegante Stangenwaffe der Selonianer von Corellia."
       },
       {
         "name": "Sathari Diiro-Speer",
@@ -977,7 +1057,8 @@
         "hardPoints": 0,
         "price": 250,
         "rarity": 2,
-        "special": ""
+        "special": "",
+        "description": "Leichter Wurfspeer des Sathari-Vogelvolks."
       },
       {
         "name": "Gaffistab (2H)",
@@ -989,7 +1070,8 @@
         "hardPoints": 0,
         "price": 100,
         "rarity": 2,
-        "special": "Defensiv 1, Desorientier. 3"
+        "special": "Defensiv 1, Desorientier. 3",
+        "description": "Ikonische Waffe der Tusken-Räuber von Tatooine."
       },
       {
         "name": "Energielanze (2H)",
@@ -1001,7 +1083,8 @@
         "hardPoints": 3,
         "price": 500,
         "rarity": 4,
-        "special": ""
+        "special": "",
+        "description": "Energiegeladene Lanze — durchdringt Panzerungen."
       },
       {
         "name": "Mon Cal Korallenpike",
@@ -1013,7 +1096,8 @@
         "hardPoints": 3,
         "price": 1000,
         "rarity": 6,
-        "special": "Defensiv 1, Durchbohrend 2"
+        "special": "Defensiv 1, Durchbohrend 2",
+        "description": "Aus Meereskorallen geschmiedet — scharf wie Durastahl."
       },
       {
         "name": "Mon Cal Energielanze",
@@ -1025,7 +1109,8 @@
         "hardPoints": 2,
         "price": 1500,
         "rarity": 6,
-        "special": ""
+        "special": "",
+        "description": "Mon Calamari Kampftechnik — elegant und kraftvoll."
       },
       {
         "name": "Elektrostab (2H)",
@@ -1037,7 +1122,8 @@
         "hardPoints": 3,
         "price": 4500,
         "rarity": 6,
-        "special": "Cortosis-Legierung,"
+        "special": "Cortosis-Legierung,",
+        "description": "Cortosis-beschichtet — selbst gegen Jedi wirksam."
       },
       {
         "name": "Cortosis-Stab (2H)",
@@ -1049,7 +1135,8 @@
         "hardPoints": 2,
         "price": 2500,
         "rarity": 7,
-        "special": ""
+        "special": "",
+        "description": "Purer Cortosis — die Anti-Lichtschwert-Waffe."
       },
       {
         "name": "Drallischer Blitzstab",
@@ -1061,7 +1148,8 @@
         "hardPoints": 2,
         "price": 375,
         "rarity": 4,
-        "special": ""
+        "special": "",
+        "description": "Drallischer Elektrostab — entlädt Blitze."
       },
       {
         "name": "Amtsstab",
@@ -1073,7 +1161,8 @@
         "hardPoints": 2,
         "price": 350,
         "rarity": 6,
-        "special": ""
+        "special": "",
+        "description": "Zeremonielle Waffe hoher Würdenträger."
       },
       {
         "name": "Schwerer Stab",
@@ -1085,7 +1174,8 @@
         "hardPoints": 0,
         "price": 25,
         "rarity": 1,
-        "special": ""
+        "special": "",
+        "description": "Ein einfacher Stock — aber in den richtigen Händen..."
       },
       {
         "name": "Kl. Unruhen-Schild",
@@ -1097,7 +1187,8 @@
         "hardPoints": 1,
         "price": 75,
         "rarity": 4,
-        "special": "Defensiv 2,  Ablenkung 1"
+        "special": "Defensiv 2,  Ablenkung 1",
+        "description": "Schutzschild für Ordnungskräfte bei Aufständen."
       },
       {
         "name": "Cortosis-Schild",
@@ -1109,7 +1200,8 @@
         "hardPoints": 0,
         "price": 900,
         "rarity": 7,
-        "special": ""
+        "special": "",
+        "description": "Cortosis-Legierung — blockt sogar Lichtschwerter."
       },
       {
         "name": "Energiebuckler",
@@ -1121,7 +1213,8 @@
         "hardPoints": 1,
         "price": 1000,
         "rarity": 7,
-        "special": ""
+        "special": "",
+        "description": "Kompakter Energieschild — leicht und effektiv."
       },
       {
         "name": "Gungan Energieschild",
@@ -1133,7 +1226,8 @@
         "hardPoints": 0,
         "price": 1000,
         "rarity": 7,
-        "special": ""
+        "special": "",
+        "description": "Gungan-Technologie — Energiebarriere am Arm."
       },
       {
         "name": "Tarnvibromesser",
@@ -1145,7 +1239,8 @@
         "hardPoints": 1,
         "price": 350,
         "rarity": 6,
-        "special": ""
+        "special": "",
+        "description": "Unsichtbar im Scanner — Assassinen-Ausrüstung."
       },
       {
         "name": "Vibromesser",
@@ -1157,7 +1252,8 @@
         "hardPoints": 2,
         "price": 250,
         "rarity": 3,
-        "special": "Tödlich 1, Durchbohrend 2"
+        "special": "Tödlich 1, Durchbohrend 2",
+        "description": "Hochfrequenz-Klinge — schneidet durch Panzerung."
       },
       {
         "name": "Akrab Vibrodolch",
@@ -1169,7 +1265,8 @@
         "hardPoints": 1,
         "price": 550,
         "rarity": 5,
-        "special": "Tödlich 1, Durchbohrend 3"
+        "special": "Tödlich 1, Durchbohrend 3",
+        "description": "Vergiftete Vibroklinge der Akrab-Krieger."
       },
       {
         "name": "Parade-Vibromesser",
@@ -1181,7 +1278,8 @@
         "hardPoints": 2,
         "price": 400,
         "rarity": 6,
-        "special": ""
+        "special": "",
+        "description": "Vibroklinge mit Parierfunktion — Duellwaffe."
       },
       {
         "name": "Vibrorapier",
@@ -1193,7 +1291,8 @@
         "hardPoints": 2,
         "price": 1200,
         "rarity": 7,
-        "special": "Defensiv 1, Durchbohrend 5"
+        "special": "Defensiv 1, Durchbohrend 5",
+        "description": "Elegantes Fechtinstrument — tödlich wie ein Tanz."
       },
       {
         "name": "Vibroschwert",
@@ -1205,7 +1304,8 @@
         "hardPoints": 3,
         "price": 750,
         "rarity": 5,
-        "special": ""
+        "special": "",
+        "description": "Das Vibroschwert — Standardnahkampfwaffe der Galaxis."
       },
       {
         "name": "Vibroaxt (2H)",
@@ -1217,7 +1317,8 @@
         "hardPoints": 3,
         "price": 750,
         "rarity": 5,
-        "special": "Durchbohrend 2, Zertrümmern, Tödlich 3"
+        "special": "Durchbohrend 2, Zertrümmern, Tödlich 3",
+        "description": "Brutale Vibro-Axt — zerschmettert jede Verteidigung."
       },
       {
         "name": "Vibrospeer (2H)",
@@ -1229,7 +1330,8 @@
         "hardPoints": 2,
         "price": 950,
         "rarity": 6,
-        "special": "Tödlich 2, Durchbohrend 2"
+        "special": "Tödlich 2, Durchbohrend 2",
+        "description": "Langer Vibrospeer — Reichweite und Durchschlag."
       },
       {
         "name": "Vibrospeer M 14 (2H)",
@@ -1241,7 +1343,8 @@
         "hardPoints": 2,
         "price": 490,
         "rarity": 6,
-        "special": ""
+        "special": "",
+        "description": "Militärversion des Vibrospeer — Serienmodell."
       },
       {
         "name": "Vibromachete",
@@ -1253,7 +1356,8 @@
         "hardPoints": 1,
         "price": 550,
         "rarity": 4,
-        "special": ""
+        "special": "",
+        "description": "Dschungelklinge — kämpft sich durch alles."
       },
       {
         "name": "Vibroglefe (2H)",
@@ -1265,7 +1369,8 @@
         "hardPoints": 3,
         "price": 975,
         "rarity": 6,
-        "special": "Defensiv 2, Durchbohrend 3"
+        "special": "Defensiv 2, Durchbohrend 3",
+        "description": "Stangenwaffe mit Vibroklinge — defensiv und tödlich."
       },
       {
         "name": "Vibrosäge (2H)",
@@ -1277,7 +1382,8 @@
         "hardPoints": 3,
         "price": 1500,
         "rarity": 5,
-        "special": "Tödlich 2, Durchbohrend 2"
+        "special": "Tödlich 2, Durchbohrend 2",
+        "description": "Industriesäge als Waffe — grausam aber effektiv."
       },
       {
         "name": "Schlagring",
@@ -1289,7 +1395,8 @@
         "hardPoints": 0,
         "price": 25,
         "rarity": 0,
-        "special": "Desorientierend 3"
+        "special": "Desorientierend 3",
+        "description": "Einfacher Schlagring — verstärkt jeden Faustschlag."
       },
       {
         "name": "Vibroschlagring",
@@ -1301,7 +1408,8 @@
         "hardPoints": 1,
         "price": 350,
         "rarity": 4,
-        "special": ""
+        "special": "",
+        "description": "Vibrierender Schlagring — bricht Knochen."
       },
       {
         "name": "Cortosis-Handschuhe",
@@ -1313,7 +1421,8 @@
         "hardPoints": 2,
         "price": 1000,
         "rarity": 7,
-        "special": "Cortosis-Legierung"
+        "special": "Cortosis-Legierung",
+        "description": "Cortosis-Fäuste — fängt Lichtschwerter mit bloßen Händen."
       },
       {
         "name": "Schockstiefel",
@@ -1325,7 +1434,8 @@
         "hardPoints": 0,
         "price": 1250,
         "rarity": 5,
-        "special": ""
+        "special": "",
+        "description": "Elektrifizierte Stiefel — jeder Tritt ein Schock."
       },
       {
         "name": "Antikes Schwert",
@@ -1337,7 +1447,8 @@
         "hardPoints": 1,
         "price": 350,
         "rarity": 8,
-        "special": "Defensiv 1"
+        "special": "Defensiv 1",
+        "description": "Relikt vergangener Zeiten — vor der Ära der Blaster."
       },
       {
         "name": "Trainingsstab/-schwert",
@@ -1349,7 +1460,8 @@
         "hardPoints": 0,
         "price": 35,
         "rarity": 3,
-        "special": ""
+        "special": "",
+        "description": "Übungswaffe der Jedi-Tempel — Kampf ohne Risiko."
       },
       {
         "name": "Lichtpiken-Griff",
@@ -1361,7 +1473,8 @@
         "hardPoints": 3,
         "price": 600,
         "rarity": 7,
-        "special": ""
+        "special": "",
+        "description": "Griff für eine Lichtpike — braucht einen Kristall."
       },
       {
         "name": "Shoto-Griff",
@@ -1373,7 +1486,8 @@
         "hardPoints": 3,
         "price": 300,
         "rarity": 6,
-        "special": ""
+        "special": "",
+        "description": "Kurzer Lichtschwertgriff — für die Nebenhand."
       },
       {
         "name": "Wachenshoto-Griff",
@@ -1385,7 +1499,8 @@
         "hardPoints": 3,
         "price": 700,
         "rarity": 7,
-        "special": ""
+        "special": "",
+        "description": "Tempelwachen-Shoto — zeremonielle Qualität."
       },
       {
         "name": "Klappspaten",
@@ -1397,7 +1512,8 @@
         "hardPoints": 0,
         "price": 20,
         "rarity": 1,
-        "special": ""
+        "special": "",
+        "description": "Universalwerkzeug — gräbt, hackt und kämpft."
       },
       {
         "name": "Schweißgerät",
@@ -1409,7 +1525,8 @@
         "hardPoints": 0,
         "price": 1750,
         "rarity": 5,
-        "special": "Panzerbrechend 1, Unpräzise 2"
+        "special": "Panzerbrechend 1, Unpräzise 2",
+        "description": "Industrieschweißer — schmilzt Durastahl wie Butter."
       },
       {
         "name": "Strahlenbohrer J-7B",
@@ -1421,7 +1538,8 @@
         "hardPoints": 0,
         "price": 3000,
         "rarity": 5,
-        "special": ""
+        "special": "",
+        "description": "Bergbaubohrer — bohrt durch Fels und Feinde."
       },
       {
         "name": "Pulsbohrer (2H)",
@@ -1433,7 +1551,8 @@
         "hardPoints": 2,
         "price": 1100,
         "rarity": 4,
-        "special": ""
+        "special": "",
+        "description": "Pulsierender Bohrer — für hartes Gestein gemacht."
       },
       {
         "name": "Thermoschneidegerät",
@@ -1445,7 +1564,8 @@
         "hardPoints": 0,
         "price": 125,
         "rarity": 3,
-        "special": "Unpräzise 2, Verbrennen 1"
+        "special": "Unpräzise 2, Verbrennen 1",
+        "description": "Thermalklinge — schneidet Schotten wie Papier."
       }
     ],
     "Granaten": [
@@ -1459,7 +1579,8 @@
         "hardPoints": 0,
         "price": 100,
         "rarity": 5,
-        "special": ""
+        "special": "",
+        "description": "Molotov der Galaxis — brennt alles nieder."
       },
       {
         "name": "Mikrogranatenwerfer",
@@ -1471,7 +1592,8 @@
         "hardPoints": 2,
         "price": 2000,
         "rarity": 5,
-        "special": "Explosion 8, Sperrigkeit 3"
+        "special": "Explosion 8, Sperrigkeit 3",
+        "description": "Tragbarer Granatwerfer — verheerende Feuerkraft."
       },
       {
         "name": "Betäubungsgranate",
@@ -1483,7 +1605,8 @@
         "hardPoints": 0,
         "price": 75,
         "rarity": 4,
-        "special": ""
+        "special": "",
+        "description": "Betäubt alle im Radius — Imperial-Standardausrüstung."
       },
       {
         "name": "Giftgasgranate",
@@ -1495,7 +1618,8 @@
         "hardPoints": 0,
         "price": 50,
         "rarity": 5,
-        "special": ""
+        "special": "",
+        "description": "Giftgas in einer Kapsel — verboten, aber verfügbar."
       },
       {
         "name": "Ionisierungsgranate",
@@ -1507,7 +1631,8 @@
         "hardPoints": 0,
         "price": 65,
         "rarity": 4,
-        "special": ""
+        "special": "",
+        "description": "EMP-Explosion — schaltet alle Elektronik aus."
       },
       {
         "name": "Klebegranate",
@@ -1519,7 +1644,8 @@
         "hardPoints": 0,
         "price": 100,
         "rarity": 6,
-        "special": "Explosion -, Verstrickend 5"
+        "special": "Explosion -, Verstrickend 5",
+        "description": "Explodiert in Klebeschaum — keiner kommt mehr weg."
       },
       {
         "name": "Plasmagranate",
@@ -1531,7 +1657,8 @@
         "hardPoints": 0,
         "price": 125,
         "rarity": 6,
-        "special": ""
+        "special": "",
+        "description": "Superheißes Plasma — verdampft fast alles."
       },
       {
         "name": "Splittergranate",
@@ -1543,7 +1670,8 @@
         "hardPoints": 0,
         "price": 50,
         "rarity": 5,
-        "special": ""
+        "special": "",
+        "description": "Schrapnellregen — der Klassiker unter den Granaten."
       }
     ]
   },
@@ -1557,7 +1685,8 @@
         "encumbrance": 1,
         "hardPoints": 0,
         "rarity": 5,
-        "note": "Wird zu offiziellen Anlässen getragen"
+        "note": "Wird zu offiziellen Anlässen getragen",
+        "description": "Offizielle Uniform für imperiale Empfänge."
       },
       {
         "name": "Banale Kleidung",
@@ -1567,7 +1696,8 @@
         "encumbrance": 0,
         "hardPoints": 0,
         "rarity": 0,
-        "note": ""
+        "note": "",
+        "description": "Unauffällig — perfekt um in der Menge unterzutauchen."
       },
       {
         "name": "Frachtkleidung",
@@ -1577,7 +1707,8 @@
         "encumbrance": 1,
         "hardPoints": 0,
         "rarity": 0,
-        "note": ""
+        "note": "",
+        "description": "Robuste Arbeitskleidung für Raumhafenarbeiter."
       },
       {
         "name": "Robe des Diplomaten",
@@ -1587,7 +1718,8 @@
         "encumbrance": 2,
         "hardPoints": 0,
         "rarity": 6,
-        "note": ""
+        "note": "",
+        "description": "Feine Robe — öffnet Türen in der Galaxis."
       },
       {
         "name": "Prachtrobe",
@@ -1597,7 +1729,8 @@
         "encumbrance": 2,
         "hardPoints": 0,
         "rarity": 5,
-        "note": ""
+        "note": "",
+        "description": "Prunkgewand für Senatoren und Adlige."
       },
       {
         "name": "Verhüllende Robe",
@@ -1607,7 +1740,8 @@
         "encumbrance": 1,
         "hardPoints": 0,
         "rarity": 2,
-        "note": ""
+        "note": "",
+        "description": "Jedi-Klassiker — verbirgt Identität und Lichtschwert."
       },
       {
         "name": "Gepanzerte Kleidung",
@@ -1617,7 +1751,8 @@
         "encumbrance": 3,
         "hardPoints": 1,
         "rarity": 6,
-        "note": ""
+        "note": "",
+        "description": "Sieht normal aus, steckt aber einiges weg."
       },
       {
         "name": "Schwere Kleidung",
@@ -1627,7 +1762,8 @@
         "encumbrance": 1,
         "hardPoints": 0,
         "rarity": 0,
-        "note": ""
+        "note": "",
+        "description": "Dicke Stoffe — etwas Schutz gegen die Kälte."
       },
       {
         "name": "Truppen-Uniform",
@@ -1637,7 +1773,8 @@
         "encumbrance": 1,
         "hardPoints": 0,
         "rarity": 0,
-        "note": ""
+        "note": "",
+        "description": "Standarduniform der imperialen Streitkräfte."
       }
     ],
     "Westen": [
@@ -1649,7 +1786,8 @@
         "encumbrance": 0,
         "hardPoints": 1,
         "rarity": 2,
-        "note": "Erhöht Lastschwelle um 2"
+        "note": "Erhöht Lastschwelle um 2",
+        "description": "Viele Taschen — ein Scout braucht jede einzelne."
       },
       {
         "name": "Blastweste",
@@ -1659,7 +1797,8 @@
         "encumbrance": 3,
         "hardPoints": 1,
         "rarity": 3,
-        "note": ""
+        "note": "",
+        "description": "Blasterschutz für den Oberkörper — simpel und solid."
       },
       {
         "name": "Flak-Weste",
@@ -1669,7 +1808,8 @@
         "encumbrance": 3,
         "hardPoints": 1,
         "rarity": 2,
-        "note": ""
+        "note": "",
+        "description": "Schrapnellschutz — bewährt in tausend Schlachten."
       },
       {
         "name": "Windweste",
@@ -1679,7 +1819,8 @@
         "encumbrance": 1,
         "hardPoints": 0,
         "rarity": 3,
-        "note": ""
+        "note": "",
+        "description": "Isoliert gegen Wind und leichte Treffer."
       }
     ],
     "Rüstung": [
@@ -1691,7 +1832,8 @@
         "encumbrance": 1,
         "hardPoints": 3,
         "rarity": 7,
-        "note": ""
+        "note": "",
+        "description": "Prunkvolle Gewandung mit versteckten Extras."
       },
       {
         "name": "Hologramm-Kostüm",
@@ -1701,7 +1843,8 @@
         "encumbrance": 2,
         "hardPoints": 0,
         "rarity": 8,
-        "note": ""
+        "note": "",
+        "description": "Projiziert holographische Verkleidungen über den Träger."
       },
       {
         "name": "Schmugglermantel",
@@ -1711,7 +1854,8 @@
         "encumbrance": 3,
         "hardPoints": 0,
         "rarity": 7,
-        "note": ""
+        "note": "",
+        "description": "Versteckte Taschen überall — Han Solos Garderobe."
       },
       {
         "name": "Künstlerkostüm",
@@ -1721,7 +1865,8 @@
         "encumbrance": 0,
         "hardPoints": 0,
         "rarity": 4,
-        "note": ""
+        "note": "",
+        "description": "Bunte Verkleidung — perfekt für Tarnung oder Show."
       },
       {
         "name": "Boxencrewoverall",
@@ -1731,7 +1876,8 @@
         "encumbrance": 1,
         "hardPoints": 1,
         "rarity": 2,
-        "note": ""
+        "note": "",
+        "description": "Mechanikeranzug mit leichtem Schutz — Podrennen-Style."
       },
       {
         "name": "Fellrüstung",
@@ -1741,7 +1887,8 @@
         "encumbrance": 3,
         "hardPoints": 0,
         "rarity": 2,
-        "note": ""
+        "note": "",
+        "description": "Tierfell als Panzerung — primitiv, aber bewährt."
       },
       {
         "name": "Nomadenmantel",
@@ -1751,7 +1898,8 @@
         "encumbrance": 1,
         "hardPoints": 0,
         "rarity": 4,
-        "note": ""
+        "note": "",
+        "description": "Wüstenmantel — schützt vor Sand und Sonne."
       },
       {
         "name": "Signaljacke",
@@ -1761,7 +1909,8 @@
         "encumbrance": 3,
         "hardPoints": 0,
         "rarity": 8,
-        "note": ""
+        "note": "",
+        "description": "Integrierte Elektronik — sendet und empfängt Signale."
       },
       {
         "name": "Zweite Haut Rüstung",
@@ -1771,7 +1920,8 @@
         "encumbrance": 2,
         "hardPoints": 0,
         "rarity": 7,
-        "note": ""
+        "note": "",
+        "description": "Hautenge Panzerung — unsichtbar unter Kleidung."
       },
       {
         "name": "Chitinrüstung",
@@ -1781,7 +1931,8 @@
         "encumbrance": 4,
         "hardPoints": 1,
         "rarity": 6,
-        "note": ""
+        "note": "",
+        "description": "Aus Insektenpanzern gefertigt — leicht und zäh."
       },
       {
         "name": "Verpinen-Faserpanzer",
@@ -1791,7 +1942,8 @@
         "encumbrance": 3,
         "hardPoints": 2,
         "rarity": 5,
-        "note": ""
+        "note": "",
+        "description": "Verpinen-Ingenieurskunst — extrem widerstandsfähig."
       },
       {
         "name": "Bergsteigerrüstung",
@@ -1801,7 +1953,8 @@
         "encumbrance": 3,
         "hardPoints": 2,
         "rarity": 6,
-        "note": ""
+        "note": "",
+        "description": "Gepanzert und klettertauglich — für jedes Terrain."
       },
       {
         "name": "Faserrüstung",
@@ -1811,7 +1964,8 @@
         "encumbrance": 2,
         "hardPoints": 0,
         "rarity": 1,
-        "note": ""
+        "note": "",
+        "description": "Standardpanzerung der Galaxis — solider Schutz."
       },
       {
         "name": "Unruhenrüstung",
@@ -1821,7 +1975,8 @@
         "encumbrance": 3,
         "hardPoints": 2,
         "rarity": 1,
-        "note": ""
+        "note": "",
+        "description": "Schutzausrüstung für imperiale Ordnungskräfte."
       },
       {
         "name": "Plattenrüstung",
@@ -1831,7 +1986,8 @@
         "encumbrance": 4,
         "hardPoints": 3,
         "rarity": 5,
-        "note": "Rüstung kann voll versiegelt werden"
+        "note": "Rüstung kann voll versiegelt werden",
+        "description": "Schwere Panzerplatten — maximaler Körperschutz."
       }
     ],
     "Spezial": [
@@ -1843,7 +1999,8 @@
         "encumbrance": 2,
         "hardPoints": 1,
         "rarity": 6,
-        "note": ""
+        "note": "",
+        "description": "Spezialanzug für Archivare und Forscher."
       },
       {
         "name": "G-Anzug",
@@ -1853,7 +2010,8 @@
         "encumbrance": 2,
         "hardPoints": 1,
         "rarity": 3,
-        "note": ""
+        "note": "",
+        "description": "Kompensiert extreme Beschleunigung — Pilotenpflicht."
       },
       {
         "name": "Rennanzug",
@@ -1863,7 +2021,8 @@
         "encumbrance": 1,
         "hardPoints": 1,
         "rarity": 3,
-        "note": ""
+        "note": "",
+        "description": "Leichter Schutzanzug für Podrennen und Swoopbikes."
       },
       {
         "name": "Schutzanzug",
@@ -1873,7 +2032,8 @@
         "encumbrance": 2,
         "hardPoints": 1,
         "rarity": 1,
-        "note": ""
+        "note": "",
+        "description": "Allzweck-Schutzanzug gegen Hitze und Chemikalien."
       },
       {
         "name": "Weltraumschutzanzug",
@@ -1883,7 +2043,8 @@
         "encumbrance": 2,
         "hardPoints": 1,
         "rarity": 3,
-        "note": ""
+        "note": "",
+        "description": "Vollversiegelung gegen das Vakuum des Alls."
       },
       {
         "name": "Umweltanzug",
@@ -1893,7 +2054,8 @@
         "encumbrance": 2,
         "hardPoints": 1,
         "rarity": 2,
-        "note": ""
+        "note": "",
+        "description": "Schützt in giftigen und extremen Atmosphären."
       },
       {
         "name": "Ladungsanzug",
@@ -1903,7 +2065,8 @@
         "encumbrance": 3,
         "hardPoints": 0,
         "rarity": 6,
-        "note": ""
+        "note": "",
+        "description": "Gepanzerter Anzug für Sprengmeister und Minenräumer."
       }
     ]
   },
