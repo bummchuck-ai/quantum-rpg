@@ -121,20 +121,43 @@ ${buildSkillContext(character)}
 Credits: ${character.credits}
 Wunden: ${character.wounds} (Schwelle: ${character.species?.woundThresholdBase + character.characteristics?.brawn})
 Stress: ${character.strain} (Schwelle: ${character.species?.strainThresholdBase + character.characteristics?.willpower})
+${character.vehicles?.length > 0 ? `Fahrzeug/Basis: ${character.vehicles[0].name} (${character.vehicles[0].category})` : 'Kein eigenes Fahrzeug'}
 `;
 }
 
 function buildVehicleContext(gameState: any): string {
-  const vehicles = gameState.vehicles || gameState.character?.vehicles;
+  // Check multiple possible locations for vehicle data
+  const character = gameState.character || gameState;
+  const vehicles = character?.vehicles || gameState.vehicles || [];
   if (!vehicles || vehicles.length === 0) return '';
 
-  const vehicleList = vehicles.map((v: any) =>
-    `- ${v.name} (Silhouette: ${v.silhouette}, Geschwindigkeit: ${v.speed}, Panzerung: ${v.armor}, Hülle: ${v.currentHullTrauma || 0}/${v.hullTraumaThreshold}, Belastung: ${v.currentSystemStrain || 0}/${v.systemStrainThreshold})`
-  ).join('\n');
+  const v = vehicles[0]; // Primary vehicle
+  const isBase = v.category === 'base';
 
-  return `## Fahrzeuge
-${vehicleList}
-`;
+  let context = `## Gruppen-Fahrzeug / Basis
+Name: ${v.name}
+Typ: ${v.category}`;
+
+  if (isBase) {
+    context += `\nDies ist eine stationäre Basis — KEIN Raumschiff!
+Die Gruppe startet an diesem Ort. Sie haben KEIN eigenes Raumschiff.
+Für Reisen müssen sie Passage buchen, ein Schiff mieten oder stehlen.
+Besonderheiten: ${v.specialFeatures?.join(', ') || 'Keine'}`;
+  } else {
+    context += `
+Silhouette: ${v.silhouette} | Geschwindigkeit: ${v.speed} | Handling: ${v.handling}
+Panzerung: ${v.armor} | Hülle: ${v.currentHullTrauma || 0}/${v.hullTraumaThreshold} | System: ${v.currentSystemStrain || 0}/${v.systemStrainThreshold}
+Crew: ${v.crew} | Passagiere: ${v.passengers}`;
+    if (v.hyperdrive) context += `\nHyperantrieb: Klasse ${v.hyperdrive}`;
+    if (v.weapons?.length > 0) context += `\nBewaffnung: ${v.weapons.map((w: any) => w.name).join(', ')}`;
+    if (v.specialFeatures?.length > 0) context += `\nBesonderheiten: ${v.specialFeatures.join(', ')}`;
+  }
+
+  context += `\n\nWICHTIG: Der Spieler hat dieses Fahrzeug/diese Basis gewählt. Respektiere diese Wahl!
+Wenn es eine Basis ist, starte die Geschichte DORT — nicht in einem Raumschiff.
+Wenn es ein Frachter ist, beschreibe ihn als das Schiff der Gruppe.`;
+
+  return context;
 }
 
 function buildSceneContext(gameState: any): string {

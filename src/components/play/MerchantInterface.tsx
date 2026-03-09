@@ -3,7 +3,7 @@
 import React from 'react';
 import { useCharacterStore } from '@/store/characterStore';
 import { Gear } from '@/types/gear';
-import merchantsData from '@/data/merchants.json'; // Händlerdaten importieren
+import merchantsData from '@/../data/merchants.json';
 
 interface Merchant {
   id: string;

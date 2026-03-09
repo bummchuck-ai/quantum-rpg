@@ -3,7 +3,7 @@
 import React from 'react';
 import { useCharacterStore } from '@/store/characterStore';
 import { Talent } from '@/types/character';
-import allTalents from '@/data/allTalents.json'; // Talentdaten importieren
+import allTalents from '@/../data/allTalents.json';
 
 const MAX_TALENT_RANK = 5; // Muss mit dem Wert im characterStore.ts übereinstimmen
 

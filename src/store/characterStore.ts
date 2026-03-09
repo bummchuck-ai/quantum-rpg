@@ -12,6 +12,35 @@ import { Gear } from '../types/gear';
 
 const MAX_TALENT_RANK = 5; // Annahme für maximale Stufe eines Talents
 
+export interface PlayerVehicle {
+  id: string;
+  name: string;
+  category: string;
+  manufacturer?: string;
+  silhouette: number;
+  speed: number;
+  handling: number;
+  armor: number;
+  hullTraumaThreshold: number;
+  systemStrainThreshold: number;
+  currentHullTrauma: number;
+  currentSystemStrain: number;
+  defenseForward?: number;
+  defenseAft?: number;
+  sensorRange?: string;
+  crew: number;
+  passengers: number;
+  encumbrance?: number;
+  consumables?: string;
+  cost?: number;
+  hardpoints?: number;
+  weapons: any[];
+  specialFeatures: string[];
+  hyperdrive?: number;
+  backupHyperdrive?: number;
+  navsComputer?: boolean;
+}
+
 export interface Player {
   id: string;
   name: string;
@@ -30,6 +59,7 @@ export interface Player {
   ownedGear: Gear[];
   wounds: number;
   strain: number;
+  vehicles: PlayerVehicle[];
   questLog: Quest[];
 }
 
@@ -56,6 +86,10 @@ interface GameState {
   buyGear: (item: Gear) => void;
   sellGear: (item: Gear) => void;
   updateStatus: (wounds: number, strain: number, credits: number) => void;
+
+  // Vehicle Actions
+  selectVehicle: (vehicle: PlayerVehicle) => void;
+  removeVehicle: (vehicleId: string) => void;
 
   // Quest Actions
   addQuest: (quest: Quest) => void;
@@ -87,6 +121,7 @@ const createNewPlayer = (id: string): Player => ({
   ownedGear: [],
   wounds: 0,
   strain: 0,
+  vehicles: [],
   questLog: [],
 });
 
@@ -266,6 +301,27 @@ export const useCharacterStore = create<GameState>()(
           wounds: player.wounds + wounds,
           strain: player.strain + strain,
           credits: player.credits + credits
+        };
+        return { players: newPlayers };
+      }),
+
+      // Vehicle Actions
+      selectVehicle: (vehicle) => set((state) => {
+        const newPlayers = [...state.players];
+        const player = newPlayers[state.activePlayerIndex];
+        newPlayers[state.activePlayerIndex] = {
+          ...player,
+          vehicles: [vehicle], // Only one vehicle at a time
+        };
+        return { players: newPlayers };
+      }),
+
+      removeVehicle: (vehicleId) => set((state) => {
+        const newPlayers = [...state.players];
+        const player = newPlayers[state.activePlayerIndex];
+        newPlayers[state.activePlayerIndex] = {
+          ...player,
+          vehicles: player.vehicles.filter(v => v.id !== vehicleId),
         };
         return { players: newPlayers };
       }),

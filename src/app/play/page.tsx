@@ -1,3 +1,5 @@
+'use client';
+
 import ChatInterface from '@/components/play/ChatInterface';
 import QuestLog from '@/components/play/QuestLog';
 import MerchantInterface from '@/components/play/MerchantInterface';
@@ -57,7 +59,7 @@ export default function PlayPage() {
           </button>
         </div>
         {activeTab === 'quests' ? (
-          <QuestLog />
+          <QuestLog quests={(questLog || []) as any} npcs={[]} onClose={() => setActiveTab('quests')} />
         ) : activeTab === 'merchant' ? (
           <MerchantInterface />
         ) : (
