@@ -122,7 +122,10 @@ const SkillSelector: React.FC = () => {
                       </span>
                     )}
                   </div>
-                  <div className="flex items-center gap-2 mt-0.5">
+                  {skill.description && (
+                    <p className="text-[10px] text-zinc-500 font-sans italic mt-1 leading-relaxed">{skill.description}</p>
+                  )}
+                  <div className="flex items-center gap-2 mt-1">
                     <span className="text-[7px] text-zinc-600 uppercase tracking-widest">
                       {CHAR_LABELS[skill.characteristic]} {charValue}
                     </span>
