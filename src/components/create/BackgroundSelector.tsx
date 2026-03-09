@@ -6,6 +6,7 @@ import { useCharacterStore } from '@/store/characterStore';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
 import CharacterPreview from './CharacterPreview';
+import { playNavigate, playDiceRoll } from '@/lib/sounds';
 
 const OBLIGATION_LIST = [
   { name: "Schulden (Debt)", desc: "Du schuldest jemandem Mächtigem viel Geld oder einen Gefallen. Gläubiger schicken regelmäßig Eintreiber — und sie werden ungeduldig." },
@@ -56,6 +57,7 @@ const BackgroundSelector: React.FC = () => {
   const [rollDesc, setRollDesc] = useState<string | null>(null);
 
   const handleRoll = () => {
+    playDiceRoll();
     setRolling(true);
     setTimeout(() => {
       let list = suggestedType === 'Duty' ? DUTY_LIST : suggestedType === 'Morality' ? MORALITY_LIST : OBLIGATION_LIST;
@@ -68,6 +70,7 @@ const BackgroundSelector: React.FC = () => {
   };
 
   const handleConfirm = () => {
+    playNavigate();
     router.push('/create/attributes');
   };
 

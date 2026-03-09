@@ -7,6 +7,7 @@ import { useCharacterStore } from '@/store/characterStore';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
 import CharacterPreview from './CharacterPreview';
+import { playConfirm } from '@/lib/sounds';
 
 interface Specialization {
   name: string;
@@ -31,6 +32,7 @@ const CareerSelector: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleConfirm = (c: Career, s: Specialization) => {
+    playConfirm();
     setCareer(c);
     setSpecialization(s);
     router.push('/create/background');

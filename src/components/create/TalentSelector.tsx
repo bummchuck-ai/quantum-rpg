@@ -7,6 +7,7 @@ import { useCharacterStore } from '@/store/characterStore';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
 import CharacterPreview from './CharacterPreview';
+import { playXPSpend, playError, playNavigate } from '@/lib/sounds';
 
 interface Talent {
   name: string;
@@ -55,6 +56,7 @@ const TalentSelector: React.FC = () => {
   }, [specializations, allTrees]);
 
   const handleConfirm = () => {
+    playNavigate();
     router.push('/create/armory');
   };
 
@@ -74,6 +76,7 @@ const TalentSelector: React.FC = () => {
   };
 
   const handleBuy = (t: Talent) => {
+    playXPSpend();
     const talentObj = {
       id: `${currentTree?.specialization}-${t.row}-${t.col}`,
       name: t.name,

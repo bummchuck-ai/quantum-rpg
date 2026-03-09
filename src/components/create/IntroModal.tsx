@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { playClick, playDeploy } from '@/lib/sounds';
 
 const INTRO_SLIDES = [
   {
@@ -38,8 +39,10 @@ const IntroModal: React.FC<IntroModalProps> = ({ onClose }) => {
 
   const nextSlide = () => {
     if (currentSlide < INTRO_SLIDES.length - 1) {
+      playClick();
       setCurrentSlide(currentSlide + 1);
     } else {
+      playDeploy();
       onClose();
     }
   };

@@ -6,6 +6,7 @@ import IntroModal from '@/components/create/IntroModal';
 import StarWarsCrawl from '@/components/create/StarWarsCrawl';
 import { useRouter } from 'next/navigation';
 import { useCharacterStore } from '@/store/characterStore';
+import { playConfirm, playNavigate } from '@/lib/sounds';
 
 export default function Home() {
   const [showIntro, setShowIntro] = useState(false);
@@ -23,11 +24,13 @@ export default function Home() {
   }, [players]);
 
   const handleStart = () => {
+    playConfirm();
     resetStore(); // CLEAN SLATE
     setShowCrawl(true);
   };
 
   const handleContinue = () => {
+    playNavigate();
     const firstPlayer = players[0];
     if (firstPlayer?.name && firstPlayer?.species && firstPlayer?.career) {
       router.push('/play');

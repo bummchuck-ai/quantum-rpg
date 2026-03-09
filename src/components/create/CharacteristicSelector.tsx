@@ -6,6 +6,7 @@ import { useCharacterStore, Characteristics } from '@/store/characterStore';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
 import CharacterPreview from './CharacterPreview';
+import { playXPSpend, playNavigate } from '@/lib/sounds';
 
 const CHAR_META: { key: keyof Characteristics; label: string; labelDe: string; icon: string }[] = [
   { key: 'brawn', label: 'STR', labelDe: 'Starke', icon: '' },
@@ -25,6 +26,7 @@ const CharacteristicSelector: React.FC = () => {
   const baseChars = species?.characteristics || { brawn: 2, agility: 2, intellect: 2, cunning: 2, willpower: 2, presence: 2 };
 
   const handleConfirm = () => {
+    playNavigate();
     router.push('/create/skills');
   };
 
@@ -90,7 +92,7 @@ const CharacteristicSelector: React.FC = () => {
 
                   {/* Buy Button */}
                   <button
-                    onClick={() => buyCharacteristic(key)}
+                    onClick={() => { buyCharacteristic(key); playXPSpend(); }}
                     disabled={!canBuy}
                     className={`px-3 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-wider transition-all ${
                       canBuy

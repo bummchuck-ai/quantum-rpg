@@ -7,6 +7,7 @@ import vehicleData from '@/../data/json/vehicles.json';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
 import CharacterPreview from './CharacterPreview';
+import { playConfirm, playNavigate } from '@/lib/sounds';
 
 type VehicleCategory = 'freighter' | 'starfighter' | 'shuttle' | 'base' | 'other';
 
@@ -81,10 +82,12 @@ const VehicleSelector: React.FC = () => {
       navsComputer: vehicle.navsComputer,
     };
     selectVehicle(pv);
+    playConfirm();
     setSelectedId(vehicle.id);
   };
 
   const handleConfirm = () => {
+    playNavigate();
     router.push('/create/summary');
   };
 

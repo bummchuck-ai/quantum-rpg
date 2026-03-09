@@ -7,6 +7,7 @@ import { ALL_SKILLS } from '@/lib/skills';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
 import CharacterPreview from './CharacterPreview';
+import { playXPSpend, playRefund, playNavigate, playError } from '@/lib/sounds';
 
 const SKILL_DATA = ALL_SKILLS;
 
@@ -67,6 +68,7 @@ const SkillSelector: React.FC = () => {
   });
 
   const handleConfirm = () => {
+    playNavigate();
     router.push('/create/talents');
   };
 
@@ -184,7 +186,7 @@ const SkillSelector: React.FC = () => {
 
                   {/* Refund button */}
                   <button
-                    onClick={() => refundSkill(skill.key, isCareer)}
+                    onClick={() => { refundSkill(skill.key, isCareer); if (canRefund) playRefund(); }}
                     disabled={!canRefund}
                     className={`w-7 h-7 rounded-lg text-[10px] font-black transition-all ${
                       canRefund
@@ -197,7 +199,7 @@ const SkillSelector: React.FC = () => {
 
                   {/* Buy button */}
                   <button
-                    onClick={() => buySkill(skill.key, isCareer)}
+                    onClick={() => { if (canBuy) { buySkill(skill.key, isCareer); playXPSpend(); } else { playError(); } }}
                     disabled={!canBuy}
                     className={`w-7 h-7 rounded-lg text-[10px] font-black transition-all ${
                       canBuy

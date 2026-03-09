@@ -7,6 +7,7 @@ import { useCharacterStore } from '@/store/characterStore';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
 import CharacterPreview from './CharacterPreview';
+import { playCredits, playRefund, playNavigate, playError } from '@/lib/sounds';
 
 // Map subcategory to SVG icon path
 const SUBCAT_ICONS: Record<string, string> = {
@@ -40,6 +41,7 @@ const ArmorySelector: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleConfirm = () => {
+    playNavigate();
     router.push('/create/ship');
   };
 
@@ -190,7 +192,7 @@ const ArmorySelector: React.FC = () => {
 
                             {!purchased ? (
                                 <button 
-                                    onClick={(e) => { e.stopPropagation(); buyGear(item); }}
+                                    onClick={(e) => { e.stopPropagation(); if (credits >= item.price) { buyGear(item); playCredits(); } else { playError(); } }}
                                     disabled={credits < item.price}
                                     className={`w-full py-3 rounded-xl uppercase font-black italic tracking-widest text-[10px] transition-all shadow-lg ${
                                         credits >= item.price 
@@ -202,7 +204,7 @@ const ArmorySelector: React.FC = () => {
                                 </button>
                             ) : (
                                 <button 
-                                    onClick={(e) => { e.stopPropagation(); sellGear(item); }}
+                                    onClick={(e) => { e.stopPropagation(); sellGear(item); playRefund(); }}
                                     className="w-full bg-red-900/30 hover:bg-red-900/50 border border-red-900/50 text-red-400 text-center py-3 text-[10px] font-black uppercase tracking-widest italic rounded-xl active:scale-95 transition-all"
                                 >
                                     SELL / UNDO (+{item.sellPrice || Math.floor(item.price * 0.5)})

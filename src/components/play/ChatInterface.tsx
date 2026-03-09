@@ -15,6 +15,7 @@ import { ALL_SKILLS } from '@/lib/skills';
 import { isForceCareer, calculateForceRating } from '@/lib/engine/force-powers';
 import { createInitialCombatState, createPCCombatant, createNPCCombatant, nextRound, type CombatState } from '@/lib/engine/combat';
 import { createNewSession, addQuest, updateQuest, addNPC, updateNPC, flipDestiny, type GameSession, type Quest, type NPC } from '@/lib/engine/game-state';
+import { playDiceRoll, playQuestReceived } from '@/lib/sounds';
 
 // Skill name map (DE/EN → store key + characteristic)
 const SKILL_MAP: Record<string, { key: string; char: string }> = {
@@ -252,6 +253,7 @@ const ChatInterface: React.FC = () => {
 
       // Handle quest updates from GM
       if (sc.newQuest) {
+        playQuestReceived();
         setSession(prev => addQuest(prev, {
           title: sc.newQuest.title || 'Neue Mission',
           description: sc.newQuest.description || '',
@@ -360,6 +362,7 @@ const ChatInterface: React.FC = () => {
   };
 
   const initiateRoll = (skill: string, difficulty: string, reason: string, boost?: number, setback?: number) => {
+    playDiceRoll();
     setActiveRollRequest({ skill, difficulty, reason, boost, setback });
     setShowDiceRoller(true);
   };

@@ -6,6 +6,7 @@ import speciesData from '@/../data/json/species_raw.json';
 import { useCharacterStore } from '@/store/characterStore';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
+import { playConfirm } from '@/lib/sounds';
 
 interface Species {
   name: string;
@@ -42,6 +43,7 @@ const SpeciesSelector: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleConfirm = (s: Species) => {
+    playConfirm();
     setSpecies(s);
     router.push('/create/career');
   };

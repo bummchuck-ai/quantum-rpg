@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { ALL_SKILLS, SKILL_NAMES_DE } from '@/lib/skills';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
+import { playDeploy } from '@/lib/sounds';
 
 const CharacterSummary: React.FC = () => {
   const router = useRouter();
@@ -263,7 +264,7 @@ const CharacterSummary: React.FC = () => {
       </div>
       <HolocronGuide title="FINALE_ÜBERSICHT" description="Glückwunsch! Dein Charakter ist bereit. Vergiss nicht, deinem Helden einen Namen zu geben." advice="Überprüfe noch einmal deine Wounds und Strain. Wenn du bereit bist, klicke auf 'Deploy to Sector'!" />
       <div className="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/80 to-transparent z-40">
-          <button onClick={() => router.push('/play')} className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-5 rounded-xl uppercase italic tracking-widest text-sm shadow-[0_20px_40px_rgba(16,185,129,0.3)] transition-all active:scale-95 border-b-4 border-emerald-800">Deploy_to_Sector_→</button>
+          <button onClick={() => { playDeploy(); setTimeout(() => router.push('/play'), 1000); }} className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-5 rounded-xl uppercase italic tracking-widest text-sm shadow-[0_20px_40px_rgba(16,185,129,0.3)] transition-all active:scale-95 border-b-4 border-emerald-800">Deploy_to_Sector_→</button>
       </div>
     </main>
   );
