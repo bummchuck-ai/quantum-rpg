@@ -55,6 +55,7 @@ export interface Player {
   availableXP: number;
   spentXP: number;
   credits: number;
+  skillRanks: Record<string, number>;
   ownedTalents: Talent[]; // Typ angepasst
   ownedGear: Gear[];
   wounds: number;
@@ -82,6 +83,8 @@ interface GameState {
   setBackground: (type: 'Obligation' | 'Duty' | 'Morality', option: string, value: number) => void;
   applyBackgroundBonus: (bonus: string) => void;
   buyCharacteristic: (char: keyof Characteristics) => void;
+  buySkill: (skillKey: string, isCareer: boolean) => void;
+  refundSkill: (skillKey: string, isCareer: boolean) => void;
   buyTalent: (talentToBuy: Talent) => void; // Typ und Name angepasst
   buyGear: (item: Gear) => void;
   sellGear: (item: Gear) => void;
@@ -117,6 +120,7 @@ const createNewPlayer = (id: string): Player => ({
   availableXP: 0,
   spentXP: 0,
   credits: 500,
+  skillRanks: {},
   ownedTalents: [], // Typ angepasst
   ownedGear: [],
   wounds: 0,
@@ -155,6 +159,7 @@ export const useCharacterStore = create<GameState>()(
         species,
         characteristics: { ...species.characteristics },
         availableXP: species.startingXP,
+        skillRanks: { ...(species.freeSkillRanks || {}) },
         wounds: 0,
         strain: 0
       }),
@@ -219,6 +224,40 @@ export const useCharacterStore = create<GameState>()(
           characteristics: { ...player.characteristics, [char]: currentValue + 1 },
           availableXP: player.availableXP - cost,
           spentXP: player.spentXP + cost
+        };
+        return { players: newPlayers };
+      }),
+
+      buySkill: (skillKey, isCareer) => set((state) => {
+        const player = state.players[state.activePlayerIndex];
+        const currentRank = player.skillRanks[skillKey] || 0;
+        if (currentRank >= 2) return state; // Max rank 2 during creation
+        const cost = isCareer ? 5 : 10;
+        if (player.availableXP < cost) return state;
+
+        const newPlayers = [...state.players];
+        newPlayers[state.activePlayerIndex] = {
+          ...player,
+          skillRanks: { ...player.skillRanks, [skillKey]: currentRank + 1 },
+          availableXP: player.availableXP - cost,
+          spentXP: player.spentXP + cost,
+        };
+        return { players: newPlayers };
+      }),
+
+      refundSkill: (skillKey, isCareer) => set((state) => {
+        const player = state.players[state.activePlayerIndex];
+        const currentRank = player.skillRanks[skillKey] || 0;
+        const freeRanks = player.species?.freeSkillRanks?.[skillKey] || 0;
+        if (currentRank <= 0 || currentRank <= freeRanks) return state;
+        const cost = isCareer ? 5 : 10;
+
+        const newPlayers = [...state.players];
+        newPlayers[state.activePlayerIndex] = {
+          ...player,
+          skillRanks: { ...player.skillRanks, [skillKey]: currentRank - 1 },
+          availableXP: player.availableXP + cost,
+          spentXP: player.spentXP - cost,
         };
         return { players: newPlayers };
       }),
