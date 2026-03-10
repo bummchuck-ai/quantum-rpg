@@ -263,6 +263,9 @@ const ChatInterface: React.FC = () => {
     ownedPowers,
     ownedUpgrades,
     storySummary: session.storySummary || '',
+    criticalInjuries: session.criticalInjuries || [],
+    currentMood: session.scene.mood || 'neutral',
+    timeOfDay: (session.scene as any).timeOfDay || '',
     soak,
     defense,
   }), [activePlayer, players, session, messages, combat, forceRating, ownedPowers, ownedUpgrades, soak, defense]);
@@ -401,6 +404,7 @@ const ChatInterface: React.FC = () => {
             planet: sc.sceneChange.planet || prev.scene.planet,
             location: sc.sceneChange.location || prev.scene.location,
             description: sc.sceneChange.description || prev.scene.description,
+            ...(sc.sceneChange.timeOfDay ? { timeOfDay: sc.sceneChange.timeOfDay } : {}),
           },
           updatedAt: new Date().toISOString(),
         }));
@@ -418,6 +422,38 @@ const ChatInterface: React.FC = () => {
         setSession(prev => ({
           ...prev,
           totalXPEarned: prev.totalXPEarned + sc.xpAward.amount,
+        }));
+      }
+
+      // Handle combat end from GM
+      if (sc.combatEnd) {
+        setCombat(prev => ({ ...prev, active: false }));
+        setSession(prev => ({ ...prev, combatActive: false, updatedAt: new Date().toISOString() }));
+      }
+
+      // Handle critical injury from GM
+      if (sc.criticalInjury?.name) {
+        setSession(prev => ({
+          ...prev,
+          criticalInjuries: [
+            ...(prev.criticalInjuries || []),
+            {
+              id: `crit-${Date.now()}`,
+              name: sc.criticalInjury.name,
+              severity: sc.criticalInjury.severity || 50,
+              effect: sc.criticalInjury.effect || '',
+            },
+          ],
+          updatedAt: new Date().toISOString(),
+        }));
+      }
+
+      // Handle destiny flip from GM
+      if (sc.destinyFlip?.side) {
+        setSession(prev => ({
+          ...prev,
+          destinyPool: flipDestiny(prev.destinyPool, sc.destinyFlip.side),
+          updatedAt: new Date().toISOString(),
         }));
       }
 
@@ -461,6 +497,43 @@ const ChatInterface: React.FC = () => {
           content: {
             narrative: `+${xp.amount} EP erhalten${xp.reason ? `: ${xp.reason}` : ''}`,
             isXPToast: true,
+          },
+        });
+      }
+
+      // Critical injury toast
+      if (data.stateChanges?.criticalInjury?.name) {
+        const ci = data.stateChanges.criticalInjury;
+        updated.push({
+          role: 'gm',
+          content: {
+            narrative: `⚠️ Kritische Verletzung: ${ci.name} (Schwere: ${ci.severity || '?'}) — ${ci.effect || ''}`,
+            isSystemToast: true,
+          },
+        });
+      }
+
+      // Destiny flip toast
+      if (data.stateChanges?.destinyFlip?.side) {
+        const df = data.stateChanges.destinyFlip;
+        const icon = df.side === 'dark' ? '◑' : '◐';
+        updated.push({
+          role: 'gm',
+          content: {
+            narrative: `${icon} Schicksalspunkt (${df.side === 'dark' ? 'Dunkle Seite' : 'Helle Seite'}) verwendet${df.reason ? `: ${df.reason}` : ''}`,
+            isSystemToast: true,
+          },
+        });
+      }
+
+      // Combat end toast
+      if (data.stateChanges?.combatEnd) {
+        const outcome = data.stateChanges.combatEnd.outcome || 'beendet';
+        updated.push({
+          role: 'gm',
+          content: {
+            narrative: `⚔️ Kampf beendet: ${outcome}`,
+            isSystemToast: true,
           },
         });
       }

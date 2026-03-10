@@ -37,6 +37,14 @@ export interface SceneState {
   threats: string[];
 }
 
+export interface CriticalInjury {
+  id: string;
+  name: string;
+  severity: number; // d100 roll range (e.g. 1-5 = minor, 101-150 = severe)
+  effect: string;
+  healedAt?: string; // ISO date when healed, null if active
+}
+
 export interface GameSession {
   id: string;
   name: string;
@@ -49,6 +57,8 @@ export interface GameSession {
   sessionLog: string[];
   totalXPEarned: number;
   storySummary: string;
+  criticalInjuries: CriticalInjury[];
+  combatActive: boolean;
 }
 
 export interface SessionStartContext {
@@ -88,6 +98,8 @@ export function createNewSession(context: SessionStartContext | string): GameSes
     sessionLog: [],
     totalXPEarned: 0,
     storySummary: '',
+    criticalInjuries: [],
+    combatActive: false,
   };
 }
 

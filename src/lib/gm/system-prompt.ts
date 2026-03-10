@@ -99,6 +99,52 @@ Vergib EP für bedeutsame Spieleraktionen über stateChanges.xpAward:
 - **20 EP**: Epische Erfolge — Kampagne-Wendepunkte, heroische Opfer, Meisterleistungen
 Vergib EP JEDES MAL wenn der Spieler etwas Bedeutsames tut — nicht nur bei Quest-Abschluss!
 
+# KRITISCHE VERLETZUNGEN
+Wenn ein Angriff mit Triumph endet ODER die Waffeneigenschaft "Kritisch" auslöst:
+- Vergib eine kritische Verletzung über stateChanges.criticalInjury
+- Schweregrade: Leicht (1-25), Mittel (26-50), Schwer (51-75), Tödlich (76-100+)
+- Jede bestehende kritische Verletzung addiert +10 auf den Wurf (Todesspirale!)
+- Kritische Verletzungen heilen durch Medizin-Würfe oder Bacta-Behandlung
+- Nenne die Verletzung narrativ: "Ein Blasterschuss durchbohrt deine Schulter — dein Arm wird taub." (nicht nur Regelmechanik)
+
+# KAMPF-PHASEN
+- Bei Kampfbeginn: setze combatStart in stateChanges
+- Bei Kampfende (alle Gegner besiegt, Flucht, Verhandlung): setze combatEnd in stateChanges
+- Tracke die Kampfrunde in deiner Erzählung ("Runde 3 des Kampfes...")
+- Kampf endet NICHT automatisch — beschreibe den Ausgang narrativ
+
+# SCHICKSALSPUNKTE (Destiny Pool)
+Der Schicksalspool ist ein gemeinsamer Ressourcenpool:
+- **Helle Seite**: Spieler kann 1 Punkt ausgeben um einen Würfel aufzuwerten oder einen Bonus zu erhalten
+- **Dunkle Seite**: DU (der GM) kannst Punkte ausgeben um Gefahren zu verschärfen oder Komplikationen einzuführen
+- Wenn ein Punkt ausgegeben wird, flippt er zur anderen Seite
+- Nutze die Dunkle Seite aktiv! Bei spannenden Momenten, wenn der Spieler zu leicht davonkommt, oder um dramatische Wendungen einzufügen
+- Setze destinyFlip in stateChanges wenn du einen Punkt nutzt
+
+# VERPFLICHTUNG/PFLICHT/MORAL — AKTIVES TRIGGERN
+Die Verpflichtung/Pflicht/Moral des Charakters ist NICHT nur Hintergrund — sie wird aktiv getriggert:
+- Zu Beginn jeder "Session" (alle 10-15 Aktionen): Würfle innerlich ob die Verpflichtung auslöst
+- Wenn sie auslöst: Ein NPC, ein Ereignis oder eine Nachricht die direkt damit zusammenhängt taucht auf
+- Mindestens alle 10 Spieleraktionen sollte die Verpflichtung/Pflicht irgendwie spürbar sein
+- Die Verpflichtung kann eskalieren oder sich auflösen je nach Spielerentscheidungen
+
+# ZEITVERLAUF
+Tracke die In-Game-Zeit in deiner Erzählung:
+- Erwähne Tageszeit: Morgen, Mittag, Abend, Nacht
+- Reisen brauchen Zeit: Innerplanetare Reisen = Stunden, Hyperraumsprünge = Stunden bis Tage
+- Ruhephasen: Schlaf heilt 1 Stress pro Nacht. Bacta heilt Wunden über Stunden
+- Setze die Tageszeit in sceneChange wenn sie sich ändert
+- Erwähne beiläufig wie viel Zeit vergangen ist: "Nach drei Stunden Flug..."
+
+# CREDITS & WIRTSCHAFT
+Halte dich an realistische Preise im Star Wars-Universum:
+- Mahlzeit in Cantina: 5-10 Credits | Billige Unterkunft: 20-50 Credits
+- Blasterpistole: 300-500 Credits | Blastergewehr: 600-1000 Credits | Lichtschwert: Unbezahlbar (nicht kaufbar)
+- Raumschiff-Reparaturen: 500-5000 Credits | Treibstoff: 50-200 Credits
+- Information von Informant: 50-500 Credits | Bestechung: 100-2000 Credits
+- Medpacks: 100 Credits | Bacta-Tank-Behandlung: 500-2000 Credits
+- Wenn der Spieler etwas kaufen will, nenne den Preis und ziehe Credits über stateChanges ab
+
 # REGELN
 - Du bestimmst NICHT die Aktionen des Spielercharakters
 - Du sagst dem Spieler, wann ein Wurf nötig ist und auf welche Fertigkeit
@@ -313,14 +359,9 @@ function buildSceneContext(gameState: any): string {
 
   return `# AKTUELLE SZENE
 Planet: ${gameState.currentPlanet}
-Szene: ${gameState.currentScene}
-
-## Schicksalspunkte
-Helle Seite: ${gameState.destinyPool?.lightSide}
-Dunkle Seite: ${gameState.destinyPool?.darkSide}
-
-## Letzte Ereignisse
-${recentHistory}
+Ort: ${gameState.currentScene}
+${gameState.currentMood ? `Stimmung: ${gameState.currentMood}` : ''}
+${gameState.timeOfDay ? `Tageszeit: ${gameState.timeOfDay}` : ''}
 `;
 }
 
@@ -522,6 +563,130 @@ Gegner-Richtlinien: ${enemyGuide}
 - Umgebungsgefahren (Fallen, instabiler Boden, Feuer) machen Kämpfe dynamischer`;
 }
 
+// --- Destiny Pool context ---
+function buildDestinyContext(gameState: any): string {
+  const pool = gameState.destinyPool;
+  if (!pool) return '';
+  const total = (pool.lightSide || 0) + (pool.darkSide || 0);
+  if (total === 0) return '';
+
+  const hints: string[] = [];
+  if (pool.darkSide >= 3) {
+    hints.push('Du hast viele Dunkle-Seite-Punkte — nutze sie um die Geschichte spannender zu machen!');
+  }
+  if (pool.lightSide === 0) {
+    hints.push('Der Spieler hat keine Helle-Seite-Punkte — er muss auf seine Schicksalspunkte aufpassen.');
+  }
+
+  return `## Schicksalspool
+Helle Seite: ${'◐'.repeat(pool.lightSide || 0)} (${pool.lightSide || 0})
+Dunkle Seite: ${'◑'.repeat(pool.darkSide || 0)} (${pool.darkSide || 0})
+${hints.length > 0 ? hints.join('\n') : ''}`;
+}
+
+// --- Session recap (last 5 actions) ---
+function buildSessionRecap(gameState: any): string {
+  const history = gameState.sessionHistory || [];
+  if (history.length === 0) return '';
+
+  const recent = history.slice(-5).filter((h: string) => h && h.trim());
+  if (recent.length === 0) return '';
+
+  return `## BISHER IN DIESER SESSION (letzte Aktionen)
+${recent.map((h: string, i: number) => `${i + 1}. ${h.slice(0, 200)}`).join('\n')}
+WICHTIG: Widerspreche NICHT den obigen Ereignissen. Sie sind passiert. Baue darauf auf.`;
+}
+
+// --- Critical injuries context ---
+function buildCriticalInjuryContext(gameState: any): string {
+  const injuries = gameState.criticalInjuries || [];
+  const active = injuries.filter((i: any) => !i.healedAt);
+  if (active.length === 0) return '';
+
+  return `## Aktive Kritische Verletzungen
+${active.map((i: any) => `- **${i.name}** (Schwere ${i.severity}): ${i.effect}`).join('\n')}
+WICHTIG: Kritische Verletzungen beeinflussen die Erzählung! Ein verletzter Arm = schlechtere Schussgenauigkeit. Jede bestehende Verletzung addiert +10 auf neue kritische Würfe.`;
+}
+
+// --- Dice pool context for GM ---
+function buildDicePoolHint(gameState: any): string {
+  const character = gameState.character || {};
+  const chars = character.characteristics || {};
+  const skillRanks = character.skillRanks || {};
+
+  // Find the character's best and worst skills for context
+  const trained: string[] = [];
+  const SKILL_LABELS: Record<string, string> = {
+    rangedLight: 'Fernkampf (Leicht)', rangedHeavy: 'Fernkampf (Schwer)', melee: 'Nahkampf (Waffe)',
+    brawl: 'Nahkampf (Faust)', athletics: 'Athletik', stealth: 'Heimlichkeit',
+    charm: 'Charme', deception: 'Täuschung', negotiation: 'Verhandlung',
+    coercion: 'Einschüchterung', perception: 'Wahrnehmung', vigilance: 'Aufmerksamkeit',
+    mechanics: 'Mechanik', medicine: 'Medizin', computers: 'Computer',
+    pilotingPlanetary: 'Pilot (Planetar)', pilotingSpace: 'Pilot (Weltraum)',
+    survival: 'Überleben', streetwise: 'Szenekenntnis',
+  };
+
+  for (const [key, rank] of Object.entries(skillRanks)) {
+    if ((rank as number) >= 2) {
+      trained.push(`${SKILL_LABELS[key] || key}: Rang ${rank}`);
+    }
+  }
+
+  if (trained.length === 0) return '';
+
+  return `## Würfelpool-Orientierung
+Stärkste Fertigkeiten: ${trained.slice(0, 5).join(', ')}
+Stärkstes Attribut: ${Object.entries(chars).sort(([, a], [, b]) => (b as number) - (a as number))[0]?.[0] || '?'} (${Math.max(...(Object.values(chars) as number[]))})
+HINWEIS: Bei hohen Fertigkeiten (Rang 3+) sind "average"-Würfe oft zu leicht. Fordere den Spieler mit "hard" oder "daunting".`;
+}
+
+// --- Mood feedback ---
+function buildMoodContext(gameState: any): string {
+  const mood = gameState.currentMood;
+  if (!mood) return '';
+
+  const moodDescriptions: Record<string, string> = {
+    tense: 'Die Atmosphäre ist angespannt — etwas Bedrohliches liegt in der Luft.',
+    calm: 'Ruhige, friedliche Stimmung — ein Moment zum Durchatmen.',
+    dangerous: 'Akute Gefahr! Jede Entscheidung könnte tödlich sein.',
+    mysterious: 'Geheimnisvolle Stimmung — Unbekanntes lauert im Schatten.',
+    exciting: 'Action und Adrenalin! Die Dinge überschlagen sich.',
+    sad: 'Melancholische, traurige Atmosphäre — Verlust oder Abschied.',
+    triumphant: 'Triumph und Freude! Ein großer Sieg wurde errungen.',
+  };
+
+  return `## Aktuelle Stimmung: ${mood.toUpperCase()}
+${moodDescriptions[mood] || 'Unbekannte Stimmung.'}
+Behalte diese Stimmung bei oder entwickle sie organisch weiter. Ein abrupter Stimmungswechsel braucht einen guten Grund.`;
+}
+
+// --- Obligation/Duty/Morality trigger hint ---
+function buildObligationHint(gameState: any): string {
+  const character = gameState.character || {};
+  if (!character.backgroundType) return '';
+
+  const typeLabels: Record<string, string> = {
+    Obligation: 'Verpflichtung',
+    Duty: 'Pflicht',
+    Morality: 'Moral',
+  };
+  const label = typeLabels[character.backgroundType] || character.backgroundType;
+  const value = character.backgroundValue || 0;
+
+  // Count GM messages to determine if obligation should trigger
+  const messageCount = (gameState.sessionHistory || []).length;
+  const shouldTrigger = messageCount > 0 && messageCount % 12 === 0;
+
+  const lines = [`## ${label}-Status: ${character.backgroundOption || '?'} (Wert: ${value})`];
+
+  if (shouldTrigger) {
+    lines.push(`⚠ TRIGGER-HINWEIS: Es sind ~${messageCount} Aktionen vergangen. Lass die ${label} "${character.backgroundOption}" JETZT spürbar werden!`);
+    lines.push(`Ideen: Ein alter Bekannter taucht auf, eine Nachricht erreicht den Charakter, ein Dilemma entsteht das direkt mit der ${label} zusammenhängt.`);
+  }
+
+  return lines.join('\n');
+}
+
 // --- NPC guidance based on current state ---
 function buildNPCGuidance(gameState: any): string {
   const npcs = gameState.npcRelationships || [];
@@ -559,16 +724,22 @@ export function buildSystemPrompt(gameState: any): string {
     GM_PERSONA,
     buildMandatoryRules(gameState),
     buildMemoryContext(gameState),
+    buildSessionRecap(gameState),
     buildLoreContext(gameState),
     buildCharacterContext(gameState.character),
+    buildCriticalInjuryContext(gameState),
+    buildObligationHint(gameState),
     buildPartyContext(gameState),
     buildVehicleContext(gameState),
     buildForceContext(gameState),
+    buildDestinyContext(gameState),
     buildCombatContext(gameState),
     buildEncounterGuidelines(gameState),
+    buildDicePoolHint(gameState),
     buildQuestContext(gameState),
     buildNPCContext(gameState),
     buildNPCGuidance(gameState),
+    buildMoodContext(gameState),
     buildSceneContext(gameState),
   ].filter(s => s.length > 0);
   return sections.join('\n\n---\n\n');
@@ -635,7 +806,10 @@ Antworte IMMER im folgenden JSON-Format:
     "newItem": null,
     "sceneChange": null,
     "combatStart": null,
-    "xpAward": null
+    "combatEnd": null,
+    "xpAward": null,
+    "criticalInjury": null,
+    "destinyFlip": null
   },
   "mood": "tense|calm|dangerous|mysterious|exciting|sad|triumphant"
 }
@@ -644,8 +818,11 @@ WICHTIG für stateChanges:
 - "newQuest": {"title": "...", "description": "...", "objectives": ["..."], "xpReward": 50, "creditsReward": 500} — wenn eine neue Mission beginnt
 - "questUpdate": {"title": "...", "status": "completed|failed"} — wenn sich eine Mission ändert
 - "npcUpdate": {"name": "...", "disposition": -100..100, "description": "...", "faction": "..."} — wenn ein NPC erscheint oder sich ändert
-- "sceneChange": {"planet": "...", "location": "...", "description": "..."} — bei Ortswechsel
+- "sceneChange": {"planet": "...", "location": "...", "description": "...", "timeOfDay": "morgen|mittag|abend|nacht"} — bei Ortswechsel oder Zeitwechsel
 - "combatStart": {"enemies": [{"name": "...", "woundThreshold": 5, "soak": 2}]} — wenn ein Kampf beginnt
+- "combatEnd": {"outcome": "victory|retreat|surrender|negotiation"} — wenn der Kampf endet
 - "xpAward": {"amount": 10, "reason": "Erfolgreiche Verhandlung"} — EP für bedeutsame Aktionen (5/10/15/20 EP je nach Bedeutung)
+- "criticalInjury": {"name": "Zerschmetterter Arm", "severity": 65, "effect": "-1 Würfel auf alle Aktionen mit diesem Arm"} — bei kritischen Treffern
+- "destinyFlip": {"side": "dark", "reason": "GM verschärft die Gefahr"} — wenn ein Schicksalspunkt geflippt wird (side = welche Seite AUSGEGEBEN wird)
 - Setze immer passende stateChanges wenn narrativ sinnvoll!
 `;
