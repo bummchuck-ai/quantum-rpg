@@ -6,6 +6,8 @@ const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY || '',
 });
 
+export const maxDuration = 60; // Vercel Hobby allows up to 60s
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();

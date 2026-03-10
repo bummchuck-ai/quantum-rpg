@@ -263,7 +263,15 @@ const ChatInterface: React.FC = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           gameState: buildGameState(),
-          userMessage: 'Beginne das Abenteuer! Beschreibe die erste Szene basierend auf unserem Team.'
+          userMessage: (() => {
+            const v = activePlayer.vehicles?.[0];
+            const vehicleHint = v
+              ? v.category === 'base'
+                ? ` Die Gruppe startet auf ihrer Basis "${v.name}" — KEIN Raumschiff. Beschreibe den Startort dort.`
+                : ` Die Gruppe hat das Schiff "${v.name}". Starte die Szene an Bord oder in dessen Nähe.`
+              : '';
+            return `Beginne das Abenteuer! Beschreibe die erste Szene basierend auf unserem Team.${vehicleHint}`;
+          })()
         }),
         signal: controller.signal,
       });
