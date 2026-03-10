@@ -239,10 +239,12 @@ const ChatInterface: React.FC = () => {
       if (!response.ok) throw new Error(`GM request failed: ${response.status} ${response.statusText}`);
       const data = await response.json();
       handleGMResponse(data);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Intro failed:', error);
+      setMessages(prev => [...prev, { role: 'gm', content: { narrative: 'Der Game Master ist momentan nicht erreichbar. Bitte versuche es erneut.', error: error?.message || 'Unbekannter Fehler', options: [{ id: 'A', text: 'Erneut versuchen' }] } }]);
+    } finally {
+      setIsTyping(false);
     }
-    setIsTyping(false);
   };
 
   const handleGMResponse = (data: any) => {
@@ -355,10 +357,12 @@ const ChatInterface: React.FC = () => {
       if (!response.ok) throw new Error(`GM request failed: ${response.status} ${response.statusText}`);
       const data = await response.json();
       handleGMResponse(data);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Chat failed:', error);
+      setMessages(prev => [...prev, { role: 'gm', content: { narrative: 'Der Game Master ist momentan nicht erreichbar. Bitte versuche es erneut.', error: error?.message || 'Unbekannter Fehler', options: [{ id: 'A', text: 'Erneut versuchen' }] } }]);
+    } finally {
+      setIsTyping(false);
     }
-    setIsTyping(false);
   };
 
   const initiateRoll = (skill: string, difficulty: string, reason: string, boost?: number, setback?: number) => {
@@ -635,7 +639,7 @@ const ChatInterface: React.FC = () => {
       </header>
 
       {/* Chat area */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-6 pb-32">
+      <div className="flex-1 overflow-y-auto p-4 space-y-6 pb-44">
         {/* Combat tracker */}
         {combat.active && (
           <CombatTracker combat={combat} onEndCombat={handleEndCombat} onNextRound={handleNextRound} />
@@ -703,8 +707,8 @@ const ChatInterface: React.FC = () => {
         <div ref={chatEndRef} />
       </div>
 
-      {/* Input bar */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black via-black to-transparent z-30">
+      {/* Input bar — sits above the bottom tab nav (h-16 + safe-area) */}
+      <div className="fixed bottom-[calc(4rem+env(safe-area-inset-bottom))] left-0 right-0 p-4 bg-gradient-to-t from-black via-black to-transparent z-30">
         <div className="max-w-2xl mx-auto flex gap-2">
           <div className="flex-1 relative">
             <input

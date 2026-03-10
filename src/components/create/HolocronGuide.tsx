@@ -19,7 +19,7 @@ const HolocronGuide: React.FC<HolocronGuideProps> = ({ title, description, advic
   }, []);
 
   return (
-    <div className="fixed bottom-8 right-6 z-50 flex flex-col items-end">
+    <div className="fixed bottom-[calc(5rem+env(safe-area-inset-bottom))] right-6 z-40 flex flex-col items-end">
       {isOpen && (
         <div className="mb-4 w-72 bg-zinc-900 border border-amber-500/50 rounded-2xl p-6 shadow-[0_0_50px_rgba(245,158,11,0.2)] animate-in slide-in-from-bottom-8 fade-in duration-300">
           <div className="flex items-center gap-3 mb-4">
