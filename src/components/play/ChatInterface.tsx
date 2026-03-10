@@ -141,19 +141,7 @@ const ChatInterface: React.FC = () => {
 
   const activePlayer = players[activePlayerIndex];
 
-  // Route guard: redirect if character is incomplete (before any property access)
-  if (!activePlayer?.species || !activePlayer?.career) {
-    router.push('/');
-    return null;
-  }
-
-  const {
-    name, species, career, characteristics, credits, ownedGear,
-    specializations, backgroundOption, backgroundType, backgroundValue,
-    wounds, strain, ownedTalents, availableXP
-  } = activePlayer;
-
-  // Core chat state
+  // Core chat state — ALL hooks must come before any conditional return
   const [messages, setMessages] = useState<Message[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const [inputValue, setInputValue] = useState('');
@@ -168,16 +156,33 @@ const ChatInterface: React.FC = () => {
   const [activeRollRequest, setActiveRollRequest] = useState<RollRequest | null>(null);
 
   // Game state
-  const [session, setSession] = useState<GameSession>(() => createNewSession(name || 'Pilot'));
+  const [session, setSession] = useState<GameSession>(() => createNewSession(activePlayer?.name || 'Pilot'));
   const [combat, setCombat] = useState<CombatState>(() => createInitialCombatState());
   const [ownedPowers, setOwnedPowers] = useState<string[]>([]);
   const [ownedUpgrades, setOwnedUpgrades] = useState<string[]>([]);
 
   const chatEndRef = useRef<HTMLDivElement>(null);
 
+  // Route guard: redirect if character is incomplete (AFTER all hooks)
+  useEffect(() => {
+    if (!activePlayer?.species || !activePlayer?.career) {
+      router.push('/');
+    }
+  }, [activePlayer, router]);
+
+  if (!activePlayer?.species || !activePlayer?.career) {
+    return <div className="min-h-screen bg-black" />;
+  }
+
+  const {
+    name, species, career, characteristics, credits, ownedGear,
+    specializations, backgroundOption, backgroundType, backgroundValue,
+    wounds, strain, ownedTalents, availableXP
+  } = activePlayer;
+
   // Derived values
-  const woundThreshold = species ? species.woundThresholdBase + characteristics.brawn : 0;
-  const strainThreshold = species ? species.strainThresholdBase + characteristics.willpower : 0;
+  const woundThreshold = species.woundThresholdBase + characteristics.brawn;
+  const strainThreshold = species.strainThresholdBase + characteristics.willpower;
   const armorItems = ownedGear.filter((g: any) => g.soak !== undefined);
   const soak = characteristics.brawn + armorItems.reduce((acc: number, curr: any) => acc + (curr.soak || 0), 0);
   const defense = armorItems.reduce((acc: number, curr: any) => Math.max(acc, curr.defense || 0), 0);
