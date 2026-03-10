@@ -91,6 +91,7 @@ interface GameState {
   sellGear: (item: Gear) => void;
   updateStatus: (wounds: number, strain: number, credits: number) => void;
   spendXP: (amount: number) => void;
+  grantXP: (amount: number) => void;
 
   // Vehicle Actions
   selectVehicle: (vehicle: PlayerVehicle) => void;
@@ -375,6 +376,17 @@ export const useCharacterStore = create<GameState>()(
           ...player,
           availableXP: player.availableXP - amount,
           spentXP: player.spentXP + amount,
+        };
+        return { players: newPlayers };
+      }),
+
+      grantXP: (amount) => set((state) => {
+        if (amount <= 0) return state;
+        const player = state.players[state.activePlayerIndex];
+        const newPlayers = [...state.players];
+        newPlayers[state.activePlayerIndex] = {
+          ...player,
+          availableXP: player.availableXP + amount,
         };
         return { players: newPlayers };
       }),

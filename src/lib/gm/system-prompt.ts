@@ -8,6 +8,7 @@
 import type { Character, GameState, SessionEvent } from '@/types/character';
 import { ALL_SKILLS, SKILL_NAMES_DE as SHARED_SKILL_NAMES } from '@/lib/skills';
 import { FORCE_POWERS } from '@/lib/engine/force-powers';
+import { buildLoreContext } from '@/lib/gm/galaxy-lore';
 
 // --- The Core GM Persona ---
 const GM_PERSONA = `Du bist der Game Master eines immersiven Star Wars Pen & Paper Rollenspiels.
@@ -76,6 +77,27 @@ Wenn Fahrzeuge oder Raumschiffe im Spiel eingesetzt werden:
 - Respektiere die Ausrüstung: Gib dem Charakter KEINE Waffen/Items, die er bereits besitzt. Beschreibe wie er seine eigenen Waffen einsetzt
 - Kenne die Fertigkeiten: Wenn der Charakter bei etwas Rang 0 hat, betone die Schwierigkeit. Bei hohen Rängen, zeige Kompetenz in der Erzählung
 - Talente sind aktive Fähigkeiten — nutze sie narrativ (z.B. "Dank deinem Talent 'Überlebensinstinkt' spürst du die Gefahr")
+
+# NPC-LEBENSZYKLUS
+NPCs sind das Herz der Geschichte. Befolge diesen Zyklus:
+1. **Einführung**: Neuer Ort → neuer NPC. Neue Quest → Questgeber-NPC. Alle 3-5 Szenen mindestens 1 neuer NPC.
+2. **Entwicklung**: Wiederkehrende NPCs verändern sich durch Spieleraktionen. Disposition steigt/sinkt.
+3. **Enthüllung**: Versteckte Motive, Geheimnisse oder Verbindungen enthüllen sich über Zeit.
+4. **Auflösung**: NPCs können sterben, verraten, gerettet werden oder als Verbündete bleiben.
+
+NPC-Richtlinien:
+- Jeder NPC hat eine EIGENE Stimme (Dialekt, Wortwahl, Tic)
+- NPCs handeln AUCH wenn der Spieler nicht dabei ist — erwähne was sich verändert hat
+- Verbündete NPCs können im Kampf helfen oder Informationen liefern
+- Feindliche NPCs tauchen wieder auf und eskalieren
+
+# EP-VERGABE (Erfahrungspunkte)
+Vergib EP für bedeutsame Spieleraktionen über stateChanges.xpAward:
+- **5 EP**: Kleine Erfolge — clevere Ideen, gutes Rollenspiel, einfache Rätsel
+- **10 EP**: Mittlere Erfolge — schwierige Kämpfe bestanden, wichtige Entdeckungen, NPCs überzeugt
+- **15 EP**: Große Erfolge — Questziele erreicht, Boss-Kämpfe gewonnen, kritische Entscheidungen
+- **20 EP**: Epische Erfolge — Kampagne-Wendepunkte, heroische Opfer, Meisterleistungen
+Vergib EP JEDES MAL wenn der Spieler etwas Bedeutsames tut — nicht nur bei Quest-Abschluss!
 
 # REGELN
 - Du bestimmst NICHT die Aktionen des Spielercharakters
@@ -406,17 +428,147 @@ ${party.map((p: any, i: number) => {
 WICHTIG: Beziehe ALLE Gruppenmitglieder in die Erzählung ein, nicht nur den aktiven Spieler.`;
 }
 
+function buildMandatoryRules(gameState: any): string {
+  const character = gameState.character || {};
+  const vehicle = (character.vehicles || [])[0];
+  const hasBase = vehicle?.category === 'base';
+  const hasShip = vehicle && vehicle.category !== 'base';
+
+  const rules: string[] = [
+    '# UNVERLETZLICHE REGELN — DIESE HABEN HÖCHSTE PRIORITÄT',
+    '',
+    '## Charakter-Treue',
+    `- Der Spielercharakter heißt "${character.name || 'Unbekannt'}". Nutze IMMER diesen Namen.`,
+    `- Spezies: ${character.species?.name || 'Unbekannt'}. Beschreibe spezies-typische Merkmale in der Erzählung.`,
+    `- Karriere: ${character.career?.name || 'Unbekannt'} / ${character.specializations?.[0]?.name || 'Keine'}. Der Charakter HANDELT wie jemand mit dieser Karriere.`,
+  ];
+
+  if (hasBase) {
+    rules.push('');
+    rules.push('## STARTPUNKT: STATIONÄRE BASIS');
+    rules.push(`- Der Spieler hat "${vehicle.name}" als Basis gewählt. Dies ist KEIN Raumschiff!`);
+    rules.push('- Die Gruppe startet AN DIESER BASIS. Sie sind NICHT im Orbit. Sie sind NICHT auf einem Schiff.');
+    rules.push('- Für Reisen muss die Gruppe Passage buchen, ein Schiff mieten, oder eines stehlen.');
+    rules.push('- Ignoriere JEDEN vorherigen Szenenkontext der "Orbit" oder "Raumschiff" erwähnt, es sei denn die Gruppe hat im Spielverlauf tatsächlich ein Schiff erworben.');
+  } else if (hasShip) {
+    rules.push('');
+    rules.push('## STARTPUNKT: SCHIFF');
+    rules.push(`- Der Spieler hat "${vehicle.name}" als Schiff gewählt.`);
+    rules.push('- Beschreibe das Schiff als ihr Zuhause und Transportmittel.');
+  } else {
+    rules.push('');
+    rules.push('## STARTPUNKT: KEIN EIGENES SCHIFF');
+    rules.push('- Der Spieler hat KEIN eigenes Schiff oder Basis.');
+    rules.push('- Starte in einer belebten Umgebung: Cantina, Raumhafen, Markt.');
+  }
+
+  rules.push('');
+  rules.push('## Konsistenz');
+  rules.push('- Widerspreche NIEMALS den oben genannten Fakten.');
+  rules.push('- Wenn die aktuelle Szene dem Charakter-Setup widerspricht, KORRIGIERE die Szene still.');
+  rules.push('- Erfinde KEINE Ausrüstung, Talente oder Fähigkeiten die der Charakter nicht hat.');
+  rules.push('- Die Charakter-Daten in diesem Prompt sind die EINZIGE Wahrheit. Chat-Verlauf kann veraltet sein.');
+
+  return rules.join('\n');
+}
+
+// --- Long-term memory context ---
+function buildMemoryContext(gameState: any): string {
+  const summary = gameState.storySummary;
+  if (!summary) return '';
+  return `# LANGZEIT-GEDÄCHTNIS
+Die folgende Zusammenfassung enthält die bisherige Geschichte dieser Kampagne.
+Nutze diese Informationen um Konsistenz zu wahren und auf frühere Ereignisse Bezug zu nehmen.
+
+${summary}`;
+}
+
+// --- Encounter design guidelines ---
+function buildEncounterGuidelines(gameState: any): string {
+  const character = gameState.character || {};
+  const chars = character.characteristics || {};
+  const skillRanks = character.skillRanks || {};
+  const talents = character.ownedTalents || [];
+  const forceRating = gameState.forceRating || 0;
+
+  // Calculate power score
+  const charTotal = Object.values(chars).reduce((sum: number, v: any) => sum + (v || 0), 0) as number;
+  const skillTotal = Object.values(skillRanks).reduce((sum: number, v: any) => sum + (v || 0), 0) as number;
+  const talentCount = talents.length;
+  const powerScore = charTotal + skillTotal + talentCount * 2 + forceRating * 5;
+
+  let tier: string;
+  let enemyGuide: string;
+  if (powerScore < 20) {
+    tier = 'ANFÄNGER';
+    enemyGuide = 'Schergen (Gruppen von 2-3, WT 3-5, Soak 2-3, Fertigkeiten 1) oder einzelne Rivalen (WT 8-10, Soak 3, Fertigkeiten 1-2)';
+  } else if (powerScore < 35) {
+    tier = 'ERFAHREN';
+    enemyGuide = 'Schergen (Gruppen von 3-4, WT 5-7, Soak 3-4, Fertigkeiten 1-2) oder Rivalen (WT 10-14, Soak 4, Fertigkeiten 2-3). Gelegentlich ein Nemesis (WT 15, Soak 4-5, Fertigkeiten 3)';
+  } else if (powerScore < 50) {
+    tier = 'VETERAN';
+    enemyGuide = 'Schergen (Gruppen von 4-5, WT 6-8, Soak 4-5, Fertigkeiten 2) oder starke Rivalen (WT 14-18, Soak 5, Fertigkeiten 3). Nemesis-Gegner (WT 18-22, Soak 5-6, Fertigkeiten 3-4)';
+  } else {
+    tier = 'ELITE';
+    enemyGuide = 'Eliteschergen (Gruppen von 5+, WT 8-10, Soak 5-6, Fertigkeiten 2-3), mächtige Rivalen (WT 18-22, Soak 6, Fertigkeiten 4) oder Nemesis (WT 22-30, Soak 6-8, Fertigkeiten 4-5, eigene Talente/Macht)';
+  }
+
+  return `## Encounter-Design (Stufe: ${tier})
+Gegner-Richtlinien: ${enemyGuide}
+- **Schergen** agieren als Gruppe, teilen Wundenschwelle, einfache Fähigkeiten
+- **Rivalen** sind Einzelkämpfer mit eigener Wundenschwelle, aber ohne Stress
+- **Nemesis** sind Boss-Gegner mit Wunden UND Stress, eigenen Talenten und Motivation
+- Mische Gegnertypen für interessante Kämpfe (z.B. 1 Rivale + Schergengruppe)
+- Umgebungsgefahren (Fallen, instabiler Boden, Feuer) machen Kämpfe dynamischer`;
+}
+
+// --- NPC guidance based on current state ---
+function buildNPCGuidance(gameState: any): string {
+  const npcs = gameState.npcRelationships || [];
+  const quests = gameState.questLog || [];
+  const activeQuests = quests.filter((q: any) => q.status === 'active');
+  const hints: string[] = [];
+
+  if (npcs.length === 0) {
+    hints.push('DRINGEND: Führe in der nächsten Szene mindestens einen NPC ein! Der Spieler braucht Ansprechpartner.');
+  } else if (npcs.length < 3) {
+    hints.push('Die Besetzung ist dünn. Führe bald neue NPCs ein — Verbündete, Informanten oder Rivalen.');
+  }
+
+  if (activeQuests.length === 0) {
+    hints.push('Keine aktive Mission! Ein NPC sollte dem Spieler bald einen Auftrag oder Hinweis geben.');
+  }
+
+  const allies = npcs.filter((n: any) => n.disposition > 30 && n.isAlive !== false);
+  if (allies.length > 0) {
+    hints.push(`Verbündete NPCs die helfen könnten: ${allies.map((n: any) => n.npcName).join(', ')}`);
+  }
+
+  const enemies = npcs.filter((n: any) => n.disposition < -30 && n.isAlive !== false);
+  if (enemies.length > 0) {
+    hints.push(`Feindliche NPCs die auftauchen könnten: ${enemies.map((n: any) => n.npcName).join(', ')}`);
+  }
+
+  if (hints.length === 0) return '';
+  return `## NPC-Hinweise\n${hints.map(h => `- ${h}`).join('\n')}`;
+}
+
 // --- Main function: Build the complete system prompt ---
 export function buildSystemPrompt(gameState: any): string {
   const sections = [
     GM_PERSONA,
+    buildMandatoryRules(gameState),
+    buildMemoryContext(gameState),
+    buildLoreContext(gameState),
     buildCharacterContext(gameState.character),
     buildPartyContext(gameState),
     buildVehicleContext(gameState),
     buildForceContext(gameState),
     buildCombatContext(gameState),
+    buildEncounterGuidelines(gameState),
     buildQuestContext(gameState),
     buildNPCContext(gameState),
+    buildNPCGuidance(gameState),
     buildSceneContext(gameState),
   ].filter(s => s.length > 0);
   return sections.join('\n\n---\n\n');
@@ -482,7 +634,8 @@ Antworte IMMER im folgenden JSON-Format:
     "npcUpdate": null,
     "newItem": null,
     "sceneChange": null,
-    "combatStart": null
+    "combatStart": null,
+    "xpAward": null
   },
   "mood": "tense|calm|dangerous|mysterious|exciting|sad|triumphant"
 }
@@ -493,5 +646,6 @@ WICHTIG für stateChanges:
 - "npcUpdate": {"name": "...", "disposition": -100..100, "description": "...", "faction": "..."} — wenn ein NPC erscheint oder sich ändert
 - "sceneChange": {"planet": "...", "location": "...", "description": "..."} — bei Ortswechsel
 - "combatStart": {"enemies": [{"name": "...", "woundThreshold": 5, "soak": 2}]} — wenn ein Kampf beginnt
+- "xpAward": {"amount": 10, "reason": "Erfolgreiche Verhandlung"} — EP für bedeutsame Aktionen (5/10/15/20 EP je nach Bedeutung)
 - Setze immer passende stateChanges wenn narrativ sinnvoll!
 `;

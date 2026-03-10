@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 
+const SAVE_FORMAT_VERSION = 2;
+
 interface SaveSlot {
   id: string;
   name: string;
@@ -9,6 +11,8 @@ interface SaveSlot {
   species: string;
   career: string;
   timestamp: string;
+  level?: number;
+  messageCount?: number;
   data: string;
 }
 
@@ -33,6 +37,7 @@ interface SaveLoadPanelProps {
 }
 
 const STORAGE_KEY = 'quantum-rpg-saves';
+const AUTOSAVE_KEY = 'quantum-rpg-autosave';
 const MAX_SLOTS = 6;
 
 function getSaves(): SaveSlot[] {
@@ -46,6 +51,14 @@ function setSaves(saves: SaveSlot[]) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(saves));
 }
 
+/** Validate that save data has the expected structure */
+function validateSaveData(data: any): { valid: boolean; error?: string } {
+  if (!data || typeof data !== 'object') return { valid: false, error: 'Keine gültigen Daten.' };
+  if (!data.storeState) return { valid: false, error: 'Charakter-Daten fehlen.' };
+  if (!data.chatMessages && !data.savedAt) return { valid: false, error: 'Keine Spielstand-Struktur erkannt.' };
+  return { valid: true };
+}
+
 const SaveLoadPanel: React.FC<SaveLoadPanelProps> = ({
   exportState, importState, characterName, speciesName, careerName, chatMessages, sessionState, onClose, onRestoreSession
 }) => {
@@ -53,61 +66,114 @@ const SaveLoadPanel: React.FC<SaveLoadPanelProps> = ({
   const [tab, setTab] = useState<'save' | 'load'>('save');
   const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
+  const [hasAutosave, setHasAutosave] = useState(false);
+  const [autosaveInfo, setAutosaveInfo] = useState<{ savedAt: string; characterName?: string } | null>(null);
 
   useEffect(() => {
     setSavesState(getSaves());
-  }, []);
+    // Check for autosave
+    try {
+      const raw = localStorage.getItem(AUTOSAVE_KEY);
+      if (raw) {
+        const autoData = JSON.parse(raw);
+        setHasAutosave(true);
+        setAutosaveInfo({ savedAt: autoData.savedAt, characterName: characterName });
+      }
+    } catch { /* no autosave */ }
+  }, [characterName]);
+
+  const showSuccess = (msg: string) => {
+    setSuccess(msg);
+    setError(null);
+    setTimeout(() => setSuccess(null), 3000);
+  };
+
+  const buildSavePayload = () => JSON.stringify({
+    version: SAVE_FORMAT_VERSION,
+    storeState: exportState(),
+    chatMessages,
+    session: sessionState.session,
+    combat: sessionState.combat,
+    ownedPowers: sessionState.ownedPowers,
+    ownedUpgrades: sessionState.ownedUpgrades,
+    forceRating: sessionState.forceRating,
+    savedAt: new Date().toISOString(),
+  });
 
   const handleSave = (slotIndex: number) => {
     setError(null);
-    const fullData = JSON.stringify({
-      storeState: exportState(),
-      chatMessages,
-      session: sessionState.session,
-      combat: sessionState.combat,
-      ownedPowers: sessionState.ownedPowers,
-      ownedUpgrades: sessionState.ownedUpgrades,
-      forceRating: sessionState.forceRating,
-      savedAt: new Date().toISOString(),
-    });
-    const slot: SaveSlot = {
-      id: `slot-${slotIndex}`,
-      name: `Slot ${slotIndex + 1}`,
-      characterName,
-      species: speciesName,
-      career: careerName,
-      timestamp: new Date().toISOString(),
-      data: fullData,
-    };
-    const newSaves = [...saves];
-    const existingIdx = newSaves.findIndex(s => s.id === slot.id);
-    if (existingIdx >= 0) {
-      newSaves[existingIdx] = slot;
-    } else {
-      newSaves.push(slot);
+    try {
+      const fullData = buildSavePayload();
+      const slot: SaveSlot = {
+        id: `slot-${slotIndex}`,
+        name: `Slot ${slotIndex + 1}`,
+        characterName,
+        species: speciesName,
+        career: careerName,
+        timestamp: new Date().toISOString(),
+        messageCount: chatMessages.length,
+        data: fullData,
+      };
+      const newSaves = [...saves];
+      const existingIdx = newSaves.findIndex(s => s.id === slot.id);
+      if (existingIdx >= 0) {
+        newSaves[existingIdx] = slot;
+      } else {
+        newSaves.push(slot);
+      }
+      setSaves(newSaves);
+      setSavesState(newSaves);
+      showSuccess(`Slot ${slotIndex + 1} gespeichert.`);
+    } catch (e) {
+      setError('Speichern fehlgeschlagen. Möglicherweise ist der Speicher voll.');
     }
-    setSaves(newSaves);
-    setSavesState(newSaves);
+  };
+
+  const restoreFromData = (fullData: any) => {
+    const validation = validateSaveData(fullData);
+    if (!validation.valid) {
+      setError(validation.error || 'Ungültige Daten.');
+      return false;
+    }
+    importState(fullData.storeState);
+    if (onRestoreSession) {
+      onRestoreSession({
+        messages: fullData.chatMessages || [],
+        session: fullData.session,
+        combat: fullData.combat,
+        ownedPowers: fullData.ownedPowers,
+        ownedUpgrades: fullData.ownedUpgrades,
+      });
+    }
+    return true;
   };
 
   const handleLoad = (slot: SaveSlot) => {
     try {
       setError(null);
       const fullData = JSON.parse(slot.data);
-      importState(fullData.storeState);
-      if (onRestoreSession) {
-        onRestoreSession({
-          messages: fullData.chatMessages || [],
-          session: fullData.session,
-          combat: fullData.combat,
-          ownedPowers: fullData.ownedPowers,
-          ownedUpgrades: fullData.ownedUpgrades,
-        });
+      if (restoreFromData(fullData)) {
+        onClose();
       }
-      onClose();
     } catch (e) {
       console.error('Failed to load save:', e);
       setError('Spielstand konnte nicht geladen werden. Die Datei ist beschädigt.');
+    }
+  };
+
+  const handleLoadAutosave = () => {
+    try {
+      setError(null);
+      const raw = localStorage.getItem(AUTOSAVE_KEY);
+      if (!raw) { setError('Kein Autosave gefunden.'); return; }
+      const fullData = JSON.parse(raw);
+      if (restoreFromData(fullData)) {
+        onClose();
+      }
+    } catch (e) {
+      console.error('Failed to load autosave:', e);
+      setError('Autosave konnte nicht geladen werden.');
     }
   };
 
@@ -120,23 +186,19 @@ const SaveLoadPanel: React.FC<SaveLoadPanelProps> = ({
 
   const handleExportFile = () => {
     setError(null);
-    const fullData = JSON.stringify({
-      storeState: exportState(),
-      chatMessages,
-      session: sessionState.session,
-      combat: sessionState.combat,
-      ownedPowers: sessionState.ownedPowers,
-      ownedUpgrades: sessionState.ownedUpgrades,
-      forceRating: sessionState.forceRating,
-      savedAt: new Date().toISOString(),
-    });
-    const blob = new Blob([fullData], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `quantum-${characterName || 'save'}-${new Date().toISOString().slice(0, 10)}.json`;
-    a.click();
-    URL.revokeObjectURL(url);
+    try {
+      const fullData = buildSavePayload();
+      const blob = new Blob([fullData], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `quantum-${characterName || 'save'}-${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showSuccess('Datei exportiert.');
+    } catch (e) {
+      setError('Export fehlgeschlagen.');
+    }
   };
 
   const handleImportFile = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -148,23 +210,26 @@ const SaveLoadPanel: React.FC<SaveLoadPanelProps> = ({
         setError(null);
         const content = event.target?.result as string;
         const fullData = JSON.parse(content);
-        importState(fullData.storeState || content);
-        if (onRestoreSession) {
-          onRestoreSession({
-            messages: fullData.chatMessages || [],
-            session: fullData.session,
-            combat: fullData.combat,
-            ownedPowers: fullData.ownedPowers,
-            ownedUpgrades: fullData.ownedUpgrades,
-          });
+        // Support legacy format (storeState only) and new format
+        if (fullData.storeState) {
+          if (restoreFromData(fullData)) {
+            showSuccess('Spielstand importiert.');
+            setTimeout(onClose, 1000);
+          }
+        } else {
+          // Legacy: raw character store export
+          importState(content);
+          showSuccess('Charakter importiert (altes Format).');
+          setTimeout(onClose, 1000);
         }
-        onClose();
       } catch (err) {
         console.error('Import failed:', err);
         setError('Import fehlgeschlagen. Die Datei enthält kein gültiges JSON.');
       }
     };
     reader.readAsText(file);
+    // Reset file input so same file can be re-imported
+    e.target.value = '';
   };
 
   const formatDate = (iso: string) => {
@@ -195,6 +260,28 @@ const SaveLoadPanel: React.FC<SaveLoadPanelProps> = ({
             {error}
           </div>
         )}
+        {success && (
+          <div className="mx-4 mt-3 p-3 bg-emerald-500/10 border border-emerald-500/50 rounded-xl text-[10px] font-bold text-emerald-400 uppercase tracking-wide">
+            {success}
+          </div>
+        )}
+
+        {/* Autosave Recovery */}
+        {tab === 'load' && hasAutosave && (
+          <div className="mx-4 mt-3 p-3 bg-amber-500/5 border border-amber-500/30 rounded-xl">
+            <div className="flex justify-between items-center">
+              <div>
+                <div className="text-[9px] font-black text-amber-500 uppercase">Autosave vorhanden</div>
+                {autosaveInfo?.savedAt && (
+                  <div className="text-[7px] text-zinc-600 mt-0.5">{formatDate(autosaveInfo.savedAt)}</div>
+                )}
+              </div>
+              <button onClick={handleLoadAutosave} className="bg-amber-600/80 text-black text-[8px] font-black px-3 py-1.5 rounded-lg hover:bg-amber-500">
+                Wiederherstellen
+              </button>
+            </div>
+          </div>
+        )}
 
         <div className="p-4 space-y-2 max-h-80 overflow-y-auto">
           {Array.from({ length: MAX_SLOTS }).map((_, i) => {
@@ -205,7 +292,7 @@ const SaveLoadPanel: React.FC<SaveLoadPanelProps> = ({
                   <div className="flex justify-between items-start">
                     <div>
                       <div className="text-[10px] font-black text-white uppercase italic">{slot.characterName}</div>
-                      <div className="text-[8px] text-zinc-500">{slot.species} • {slot.career}</div>
+                      <div className="text-[8px] text-zinc-500">{slot.species} • {slot.career}{slot.messageCount ? ` • ${slot.messageCount} Nachrichten` : ''}</div>
                       <div className="text-[7px] text-zinc-700 mt-1">{formatDate(slot.timestamp)}</div>
                     </div>
                     <div className="flex gap-2">

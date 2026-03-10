@@ -14,7 +14,7 @@ import { DicePool, formatRollResult, RollResult, buildSkillPool } from '@/lib/en
 import { ALL_SKILLS } from '@/lib/skills';
 import { isForceCareer, calculateForceRating } from '@/lib/engine/force-powers';
 import { createInitialCombatState, createPCCombatant, createNPCCombatant, nextRound, type CombatState } from '@/lib/engine/combat';
-import { createNewSession, addQuest, updateQuest, addNPC, updateNPC, flipDestiny, type GameSession, type Quest, type NPC } from '@/lib/engine/game-state';
+import { createNewSession, addQuest, updateQuest, addNPC, updateNPC, flipDestiny, type GameSession, type Quest, type NPC, type SessionStartContext } from '@/lib/engine/game-state';
 import { playDiceRoll, playQuestReceived } from '@/lib/sounds';
 
 // Skill name map (DE/EN → store key + characteristic)
@@ -136,7 +136,7 @@ const AUTOSAVE_INTERVAL = 60000;
 const ChatInterface: React.FC = () => {
   const router = useRouter();
   const {
-    players, activePlayerIndex, updateStatus, exportState, importState, setActivePlayer, spendXP, buyGear
+    players, activePlayerIndex, updateStatus, exportState, importState, setActivePlayer, spendXP, buyGear, grantXP
   } = useCharacterStore();
 
   const activePlayer = players[activePlayerIndex];
@@ -155,14 +155,27 @@ const ChatInterface: React.FC = () => {
   const [showDiceRoller, setShowDiceRoller] = useState(false);
   const [activeRollRequest, setActiveRollRequest] = useState<RollRequest | null>(null);
 
-  // Game state
-  const [session, setSession] = useState<GameSession>(() => createNewSession(activePlayer?.name || 'Pilot'));
+  // Game state — derive initial scene from character choices (vehicle/base)
+  const [session, setSession] = useState<GameSession>(() => {
+    const vehicle = activePlayer?.vehicles?.[0];
+    const ctx: SessionStartContext = {
+      characterName: activePlayer?.name || 'Pilot',
+      speciesName: activePlayer?.species?.name,
+      careerName: activePlayer?.career?.name,
+      vehicle: vehicle ? {
+        name: vehicle.name,
+        category: vehicle.category,
+        specialFeatures: vehicle.specialFeatures,
+      } : null,
+    };
+    return createNewSession(ctx);
+  });
   const [combat, setCombat] = useState<CombatState>(() => createInitialCombatState());
   const [ownedPowers, setOwnedPowers] = useState<string[]>([]);
   const [ownedUpgrades, setOwnedUpgrades] = useState<string[]>([]);
 
   const chatEndRef = useRef<HTMLDivElement>(null);
-
+  const gmMessageCount = useRef(0);
   // Route guard: redirect if character is incomplete (AFTER all hooks)
   useEffect(() => {
     if (!activePlayer?.species || !activePlayer?.career) {
@@ -190,7 +203,6 @@ const ChatInterface: React.FC = () => {
   const forceRating = calculateForceRating(career, talentNames);
   const isForceSensitive = isForceCareer(career);
   const encumbranceMax = 5 + characteristics.brawn;
-
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
@@ -204,6 +216,7 @@ const ChatInterface: React.FC = () => {
     const interval = setInterval(() => {
       try {
         const autoSaveData = JSON.stringify({
+          version: 2,
           storeState: exportState(),
           chatMessages: messages,
           session,
@@ -219,7 +232,7 @@ const ChatInterface: React.FC = () => {
   }, [messages, session, combat, ownedPowers, ownedUpgrades, exportState]);
 
   const buildGameState = useCallback(() => ({
-    character: { ...activePlayer },
+    character: { ...activePlayer, vehicles: activePlayer.vehicles || [] }, // Ensure vehicles array is always present
     party: players.map(p => ({
       name: p.name,
       species: p.species?.name,
@@ -249,29 +262,72 @@ const ChatInterface: React.FC = () => {
     forceRating,
     ownedPowers,
     ownedUpgrades,
+    storySummary: session.storySummary || '',
     soak,
     defense,
   }), [activePlayer, players, session, messages, combat, forceRating, ownedPowers, ownedUpgrades, soak, defense]);
 
-  const startGame = async () => {
-    setIsTyping(true);
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 30000);
+  const buildStartMessage = (): string => {
+    const vehicle = activePlayer?.vehicles?.[0];
+    const parts: string[] = [];
+
+    parts.push(`[SPIELSTART] Beginne das Abenteuer für ${name}.`);
+    parts.push(`Spezies: ${species?.name || 'Unbekannt'}. Karriere: ${career?.name || 'Unbekannt'} / ${specializations?.[0]?.name || 'Keine Spezialisierung'}.`);
+
+    if (backgroundType && backgroundOption) {
+      const bgLabel = backgroundType === 'Obligation' ? 'Verpflichtung' : backgroundType === 'Duty' ? 'Pflicht' : 'Moral';
+      parts.push(`${bgLabel}: ${backgroundOption} (Wert: ${backgroundValue}).`);
+    }
+
+    if (vehicle) {
+      if (vehicle.category === 'base') {
+        parts.push(`WICHTIG: Der Spieler hat eine STATIONÄRE BASIS gewählt: "${vehicle.name}". Starte die Geschichte IN dieser Basis. Der Charakter hat KEIN eigenes Raumschiff!`);
+      } else {
+        parts.push(`Der Spieler hat ein Schiff gewählt: "${vehicle.name}" (${vehicle.category}). Starte die Geschichte an Bord dieses Schiffes.`);
+      }
+    } else {
+      parts.push('Der Spieler hat kein eigenes Schiff oder Basis. Starte in einer Cantina oder einem Raumhafen.');
+    }
+
+    parts.push('Beschreibe die Eröffnungsszene atmosphärisch und stelle die Situation vor. Biete 3 Optionen an.');
+    return parts.join(' ');
+  };
+
+  const generateStorySummary = useCallback(async (currentMessages: Message[]) => {
+    const narratives = currentMessages
+      .filter(m => m.role === 'gm' && m.content.narrative)
+      .map(m => m.content.narrative)
+      .slice(-20);
+    if (narratives.length < 5) return;
+
     try {
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           gameState: buildGameState(),
-          userMessage: (() => {
-            const v = activePlayer.vehicles?.[0];
-            const vehicleHint = v
-              ? v.category === 'base'
-                ? ` Die Gruppe startet auf ihrer Basis "${v.name}" — KEIN Raumschiff. Beschreibe den Startort dort.`
-                : ` Die Gruppe hat das Schiff "${v.name}". Starte die Szene an Bord oder in dessen Nähe.`
-              : '';
-            return `Beginne das Abenteuer! Beschreibe die erste Szene basierend auf unserem Team.${vehicleHint}`;
-          })()
+          userMessage: `[SYSTEM] Erstelle eine kompakte Zusammenfassung der bisherigen Geschichte (max 500 Wörter). Fokus auf: Schlüsselereignisse, NPC-Beziehungen, besuchte Orte, aktive Bedrohungen, Errungenschaften des Spielers. Bisherige Erzählungen:\n\n${narratives.join('\n\n')}`,
+        }),
+      });
+      if (!response.ok) return;
+      const data = await response.json();
+      if (data.narrative) {
+        setSession(prev => ({ ...prev, storySummary: data.narrative }));
+      }
+    } catch { /* silent — summary is non-critical */ }
+  }, [buildGameState]);
+
+  const startGame = async () => {
+    setIsTyping(true);
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 60000);
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          gameState: buildGameState(),
+          userMessage: buildStartMessage(),
         }),
         signal: controller.signal,
       });
@@ -284,7 +340,7 @@ const ChatInterface: React.FC = () => {
       const narrative = isTimeout
         ? 'GM antwortet nicht (Timeout). Bitte erneut versuchen.'
         : 'Der Game Master ist momentan nicht erreichbar. Bitte versuche es erneut.';
-      setMessages(prev => [...prev, { role: 'gm', content: { narrative, error: isTimeout ? 'Timeout nach 30s' : (error?.message || 'Unbekannter Fehler'), options: [{ id: 'A', text: 'Erneut versuchen' }] } }]);
+      setMessages(prev => [...prev, { role: 'gm', content: { narrative, error: isTimeout ? 'Timeout nach 60s' : (error?.message || 'Unbekannter Fehler'), options: [{ id: 'A', text: 'Erneut versuchen' }] } }]);
     } finally {
       clearTimeout(timeout);
       setIsTyping(false);
@@ -356,6 +412,15 @@ const ChatInterface: React.FC = () => {
         buyGear({ ...item, price: 0, id: `gm-${item.name}-${Date.now()}` });
       }
 
+      // Handle XP awards from GM
+      if (sc.xpAward?.amount > 0) {
+        grantXP(sc.xpAward.amount);
+        setSession(prev => ({
+          ...prev,
+          totalXPEarned: prev.totalXPEarned + sc.xpAward.amount,
+        }));
+      }
+
       // Handle combat start from GM
       if (sc.combatStart) {
         const newCombat = createInitialCombatState();
@@ -379,7 +444,29 @@ const ChatInterface: React.FC = () => {
       setSession(prev => ({ ...prev, scene: { ...prev.scene, mood: data.mood } }));
     }
 
-    setMessages(prev => [...prev, { role: 'gm', content: data }]);
+    // Track GM messages and trigger summary generation every 10 messages
+    gmMessageCount.current += 1;
+    if (gmMessageCount.current % 10 === 0) {
+      generateStorySummary([...messages, { role: 'gm', content: data }]);
+    }
+
+    setMessages(prev => {
+      const updated = [...prev, { role: 'gm', content: data }];
+
+      // Add XP toast as a system message if XP was awarded
+      if (data.stateChanges?.xpAward?.amount > 0) {
+        const xp = data.stateChanges.xpAward;
+        updated.push({
+          role: 'gm',
+          content: {
+            narrative: `+${xp.amount} EP erhalten${xp.reason ? `: ${xp.reason}` : ''}`,
+            isXPToast: true,
+          },
+        });
+      }
+
+      return updated;
+    });
   };
 
   const handleSendMessage = async (text: string) => {
@@ -390,7 +477,7 @@ const ChatInterface: React.FC = () => {
     setInputValue('');
     setIsTyping(true);
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 30000);
+    const timeout = setTimeout(() => controller.abort(), 60000); // Timeout auf 60 Sekunden erhöht
     try {
       const history = updatedMessages.map(m => ({
         role: m.role === 'gm' ? 'assistant' as const : 'user' as const,
@@ -416,7 +503,7 @@ const ChatInterface: React.FC = () => {
       const narrative = isTimeout
         ? 'GM antwortet nicht (Timeout). Bitte erneut versuchen.'
         : 'Der Game Master ist momentan nicht erreichbar. Bitte versuche es erneut.';
-      setMessages(prev => [...prev, { role: 'gm', content: { narrative, error: isTimeout ? 'Timeout nach 30s' : (error?.message || 'Unbekannter Fehler'), options: [{ id: 'A', text: 'Erneut versuchen' }] } }]);
+      setMessages(prev => [...prev, { role: 'gm', content: { narrative, error: isTimeout ? 'Timeout nach 60s' : (error?.message || 'Unbekannter Fehler'), options: [{ id: 'A', text: 'Erneut versuchen' }] } }]);
     } finally {
       clearTimeout(timeout);
       setIsTyping(false);
@@ -521,10 +608,10 @@ const ChatInterface: React.FC = () => {
       {showQuestLog && (
         <QuestLog quests={session.quests} npcs={session.npcs} onClose={() => setShowQuestLog(false)} />
       )}
-      {showInventory && (
+      {/* Removed Inventory Panel overlay as it will be integrated into Character Sheet */}
+      {/* {showInventory && (
         <InventoryPanel ownedGear={ownedGear} credits={credits} encumbranceMax={encumbranceMax} onClose={() => setShowInventory(false)} />
-      )}
-
+      )} */}
       {/* Character Sheet */}
       {showCharSheet && (
         <div className="absolute inset-0 z-[100] bg-black animate-in fade-in zoom-in duration-300 flex flex-col">
@@ -534,11 +621,16 @@ const ChatInterface: React.FC = () => {
           </header>
           <div className="flex-1 overflow-y-auto p-4 space-y-6">
             {/* Identity */}
-            <section className="bg-zinc-900/40 border border-zinc-800 p-4 rounded-xl">
-              <div className="text-[8px] text-zinc-600 font-black uppercase mb-2 tracking-[0.2em]">Identität</div>
-              <div className="text-sm font-black text-white italic">{name}</div>
-              <div className="text-[9px] text-zinc-500">{species?.name} • {career?.name} / {specializations?.[0]?.name || '—'}</div>
-              {isForceSensitive && <div className="text-[8px] text-purple-400 font-black mt-1">MACHTSENSITIV • Force Rating: {forceRating}</div>}
+            <section className="bg-zinc-900/40 border border-zinc-800 p-4 rounded-xl flex items-center gap-4">
+              {activePlayer.species?.image && (
+                <img src={activePlayer.species.image} alt={activePlayer.species.name} className="w-24 h-24 object-cover rounded-lg border border-zinc-700" />
+              )}
+              <div>
+                <div className="text-[8px] text-zinc-600 font-black uppercase mb-2 tracking-[0.2em]">Identität</div>
+                <div className="text-sm font-black text-white italic">{name}</div>
+                <div className="text-[9px] text-zinc-500">{species?.name} • {career?.name} / {specializations?.[0]?.name || '—'}</div>
+                {isForceSensitive && <div className="text-[8px] text-purple-400 font-black mt-1">MACHTSENSITIV • Force Rating: {forceRating}</div>}
+              </div>
             </section>
             {/* Attributes */}
             <section>
@@ -594,9 +686,9 @@ const ChatInterface: React.FC = () => {
                 })}
               </div>
             </section>
-            {/* Equipment summary */}
+            {/* Integrated Inventory */}
             <section>
-              <div className="text-[8px] text-zinc-600 font-black uppercase mb-3 tracking-[0.2em]">Equipment</div>
+              <div className="text-[8px] text-zinc-600 font-black uppercase mb-3 tracking-[0.2em]">Inventar ({ownedGear.length}/{encumbranceMax})</div>
               <div className="space-y-1.5">
                 {ownedGear.length > 0 ? ownedGear.map((g: any, i: number) => (
                   <div key={i} className="p-2 border border-zinc-800 bg-zinc-950 rounded-lg flex justify-between items-center">
@@ -605,21 +697,27 @@ const ChatInterface: React.FC = () => {
                   </div>
                 )) : <div className="text-[9px] text-zinc-800 italic uppercase">Keine Ausrüstung...</div>}
               </div>
+              <div className="text-[8px] text-zinc-600 font-black uppercase mt-3 tracking-[0.2em]">Credits</div>
+              <div className="text-xs font-black text-white italic">{credits} Cr</div>
             </section>
-            {/* Vehicles */}
+            {/* Vehicles / Base */}
             {activePlayer.vehicles && activePlayer.vehicles.length > 0 && (
               <section>
-                <div className="text-[8px] text-zinc-600 font-black uppercase mb-3 tracking-[0.2em]">Schiff / Fahrzeug</div>
+                <div className="text-[8px] text-zinc-600 font-black uppercase mb-3 tracking-[0.2em]">Schiff / Basis</div>
                 {activePlayer.vehicles.map((v) => (
                   <div key={v.id} className="border border-zinc-800 bg-zinc-950 rounded-xl p-3 space-y-2">
                     <div className="text-[10px] font-black text-white uppercase italic tracking-tighter">{v.name}</div>
                     <div className="text-[7px] text-zinc-600">{v.manufacturer}</div>
-                    {v.silhouette > 0 && (
-                      <div className="grid grid-cols-4 gap-2 text-center">
-                        {[['SIL', v.silhouette], ['SPD', v.speed], ['ARM', v.armor], ['HULL', `${v.currentHullTrauma}/${v.hullTraumaThreshold}`]].map(([l, v]) => (
-                          <div key={String(l)}><div className="text-[6px] text-zinc-700 font-black uppercase">{l}</div><div className="text-xs font-black text-zinc-400">{v}</div></div>
-                        ))}
-                      </div>
+                    {v.category === 'base' ? (
+                      <div className="text-[8px] text-zinc-500">Typ: Basis</div>
+                    ) : (
+                      v.silhouette > 0 && (
+                        <div className="grid grid-cols-4 gap-2 text-center">
+                          {[['SIL', v.silhouette], ['SPD', v.speed], ['ARM', v.armor], ['HULL', `${v.currentHullTrauma}/${v.hullTraumaThreshold}`]].map(([l, val]) => (
+                            <div key={String(l)}><div className="text-[6px] text-zinc-700 font-black uppercase">{l}</div><div className="text-xs font-black text-zinc-400">{val}</div></div>
+                          ))}
+                        </div>
+                      )
                     )}
                   </div>
                 ))}
@@ -667,9 +765,10 @@ const ChatInterface: React.FC = () => {
 
         {/* Quick-access toolbar */}
         <div className="px-3 pb-2 flex gap-1.5 overflow-x-auto no-scrollbar">
-          <button onClick={() => setShowInventory(true)} className="text-[8px] font-black uppercase tracking-wider bg-zinc-900 border border-zinc-800 px-3 py-1.5 rounded-lg text-zinc-400 hover:text-white hover:border-zinc-600 whitespace-nowrap">
+          {/* Removed Inventar Button */}
+          {/* <button onClick={() => setShowInventory(true)} className="text-[8px] font-black uppercase tracking-wider bg-zinc-900 border border-zinc-800 px-3 py-1.5 rounded-lg text-zinc-400 hover:text-white hover:border-zinc-600 whitespace-nowrap">
             Inventar
-          </button>
+          </button> */}
           <button onClick={() => setShowQuestLog(true)} className="text-[8px] font-black uppercase tracking-wider bg-zinc-900 border border-zinc-800 px-3 py-1.5 rounded-lg text-zinc-400 hover:text-white hover:border-zinc-600 whitespace-nowrap">
             Missionen{session.quests.filter(q => q.status === 'active').length > 0 ? ` (${session.quests.filter(q => q.status === 'active').length})` : ''}
           </button>
@@ -727,6 +826,11 @@ const ChatInterface: React.FC = () => {
             <div className={`max-w-[92%] ${msg.role === 'player' ? 'bg-zinc-900 border border-zinc-800 p-3 rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl shadow-xl' : 'space-y-3'}`}>
               {msg.role === 'gm' ? (
                 <div className="space-y-4">
+                  {msg.content.isXPToast ? (
+                    <div className="bg-emerald-500/10 border border-emerald-500/40 px-4 py-2 rounded-xl text-center animate-in fade-in zoom-in duration-500">
+                      <span className="text-sm font-black text-emerald-400 uppercase tracking-wider">{msg.content.narrative}</span>
+                    </div>
+                  ) : (<>
                   {msg.content.error && <div className="bg-red-500/10 border border-red-500/50 p-3 rounded-xl text-xs font-mono text-red-200">{msg.content.error}</div>}
                   {msg.content.narrative && <p className="text-base md:text-lg leading-relaxed text-zinc-300 font-sans italic">{msg.content.narrative}</p>}
                   {Array.isArray(msg.content.npcDialogue) && msg.content.npcDialogue.length > 0 && (
@@ -761,6 +865,7 @@ const ChatInterface: React.FC = () => {
                       </button>
                     ))}
                   </div>
+                </>)}
                 </div>
               ) : (
                 <p className="text-xs text-white font-black italic uppercase tracking-tight">{msg.content.narrative}</p>
@@ -797,5 +902,4 @@ const ChatInterface: React.FC = () => {
     </main>
   );
 };
-
 export default ChatInterface;

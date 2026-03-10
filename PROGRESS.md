@@ -155,39 +155,57 @@ From Charaktererschaffung V14.pdf:
 - Updated README.md with architecture overview
 - Created this PROGRESS.md file
 
+### Session 2 (2026-03-10) — GM Consistency Fix + Save/Load Refinement
+
+**Bug Report**: GM ignores player choices (species, career, vehicle/base). Always starts in Tatooine orbit regardless of selection.
+
+**Root Cause Analysis (5 issues found):**
+1. `createNewSession()` in game-state.ts hardcoded `planet: 'Tatooine'`, `location: 'Orbit'`
+2. `startGame()` sent generic message without character context to GM
+3. System prompt had contradictory scene info (vehicle=base but scene=orbit)
+4. `max_tokens: 1024` too low for structured JSON responses
+5. Fragile JSON parsing in API route
+
+**Fixes Applied:**
+- `src/lib/engine/game-state.ts` — Rewrote `createNewSession()` to accept `SessionStartContext`, added `deriveStartingScene()` (base→start at base, ship→start aboard, none→cantina)
+- `src/components/play/ChatInterface.tsx` — Added `buildStartMessage()` with rich character context, updated session init to pass vehicle data
+- `src/lib/gm/system-prompt.ts` — Added `buildMandatoryRules()` as top-priority section with character identity, starting point, and consistency rules
+- `src/app/api/chat/route.ts` — Increased `max_tokens` to 2048, added regex JSON extraction fallback
+- `src/components/play/ChatInterface.tsx` — Fixed pre-existing encoding corruption (549 backslash-escape chars throughout file)
+
+**Save/Load Refinements:**
+- Added save format version (`SAVE_FORMAT_VERSION = 2`) for future migrations
+- Added data validation (`validateSaveData()`) on load with user-friendly errors
+- Added autosave detection and recovery UI in Load tab
+- Added success toast messages after save/export operations
+- Added message count display per save slot
+- Added legacy format support for imported files
+- Refactored save/export to use shared `buildSavePayload()` and `restoreFromData()`
+
+**Other Fixes:**
+- `README.md` — Complete rewrite, removed broken blockquote nesting
+- Confirmed Skills data (`src/lib/skills.ts`, 34 FFG skills) already exists and is complete
+- Confirmed Force Powers data (`src/lib/engine/force-powers.ts`, 8 powers) already exists and is complete
+
+**Build**: Passes (Next.js 16.1.6 Turbopack, all 14 routes)
+
 ---
 
 ## 6. NEXT STEPS (Priority Order)
 
-### Priority 1 — Data Extraction (PDFs to JSON)
-These JSON files are CRITICAL. Without them, character creation cannot work.
+### Priority 1 — Remaining Data Gaps
+Most data exists but some may need expansion:
+- `data/json/talents.json` — May have sample data only, needs full talent trees
+- Species data split across multiple files — could use consolidation
 
-```
-content/rules/species.json      ← Complete Species Guide v6 (358 pages)
-content/rules/careers.json      ← Charaktererschaffung V14 + Talentbäume
-content/rules/talents.json      ← SW Talentbäume V26 (179 pages)
-content/rules/skills.json       ← Fertigkeiten-1-2-1 (12 pages)
-content/rules/weapons.json      ← Waffen und Rüstungen V4 (33 pages)
-content/rules/force_powers.json ← SW Machtkräfte V4 (23 pages)
-```
+### Priority 2 — Testing & Quality
+- Test full character creation flow end-to-end
+- Test GM consistency with various character builds (base vs ship vs none)
+- Test save/load with both new and legacy formats
 
-### Priority 2 — Character Engine
-- src/lib/engine/character.ts — Derived stats, XP validation, skill ranks
-
-### Priority 3 — Next.js Project Setup
-- package.json, tsconfig.json, tailwind.config.ts, next.config.js
-- App layout, global styles, fonts
-- API route: /api/game/action (Claude API integration)
-
-### Priority 4 — Character Creator UI
-- 10-step wizard component (mobile-first)
-
-### Priority 5 — Game Session UI
-- Chat-based GM interface, dice roller, character sheet sidebar
-
-### Priority 6 — Housekeeping
-- Fix README.md formatting
+### Priority 3 — Polish
 - Organize Google Drive PDFs into subfolders
+- Consider adding more Force powers from the rulebook
 
 ---
 
@@ -195,14 +213,15 @@ content/rules/force_powers.json ← SW Machtkräfte V4 (23 pages)
 
 | Decision | Choice | Reason |
 |----------|--------|--------|
-| Framework | Next.js 14 (App Router) | SSR, API routes, modern React |
+| Framework | Next.js 16 (App Router) | SSR, API routes, modern React |
 | State | Zustand | Simple, persist middleware |
-| Styling | Tailwind CSS | Rapid, mobile-first |
-| AI | Claude API (Anthropic) | Claude IS the Game Master |
+| Styling | Tailwind CSS v4 | Rapid, mobile-first |
+| AI | Claude API (claude-sonnet-4-6) | Claude IS the Game Master |
 | Dice | Deterministic TypeScript | Must be rules-accurate |
 | GM Arch | Single prompt per action | Antigravity 9-agent was too fragmented |
 | Language | German (game), English (code) | User preference |
-| Save | LocalStorage + optional cloud | Offline-first |
+| Save | LocalStorage (6 slots + autosave) + file export | Offline-first |
+| Save Format | Versioned JSON (v2) | Future migration support |
 
 ---
 
@@ -217,11 +236,11 @@ content/rules/force_powers.json ← SW Machtkräfte V4 (23 pages)
 
 ## 9. NOTES FOR FUTURE AI SESSIONS
 
-1. **PDF extraction is the bottleneck.** 358-page Species Guide and 179-page Talent Trees need structured JSON. Consider uploading PDFs directly to Claude or using extraction scripts.
-2. **Character creation depth is the #1 user priority.** Felix tried many times — it was always incomplete. This time it MUST cover every option.
-3. **The dice engine is DONE.** Do not rebuild it. See src/lib/engine/dice.ts.
-4. **Do NOT use the Antigravity multi-agent approach.** Use ONE Claude API call per player action with comprehensive system prompt (see src/lib/gm/system-prompt.ts).
-5. **The astrum-versum-rpg app in Google Drive is reference only.** We build fresh.
-6. **README.md needs a formatting fix** — blockquote nesting issue.
-7. **User communicates in German**, code/docs in English.
-8. **For faster development**, use a local dev environment (Cursor, Windsurf, or Claude Code CLI) instead of the GitHub web interface.
+1. **The dice engine is DONE.** Do not rebuild it. See src/lib/engine/dice.ts.
+2. **Skills and Force Powers are DONE.** See src/lib/skills.ts and src/lib/engine/force-powers.ts.
+3. **Do NOT use the Antigravity multi-agent approach.** Use ONE Claude API call per player action.
+4. **GM consistency is now enforced** via `buildMandatoryRules()` in system-prompt.ts. If the GM still drifts, strengthen those rules.
+5. **ChatInterface.tsx had encoding corruption** (backslash-escaped quotes/newlines). If it happens again, check the file for `\'`, `\"`, `\n` literals.
+6. **User communicates in German**, code/docs in English.
+7. **Save format is versioned (v2).** If the data structure changes, increment the version and add migration logic.
+8. **Character creation depth is the #1 user priority.** Felix tried many times — it was always incomplete. This time it MUST cover every option.

@@ -19,7 +19,7 @@ export async function POST(req: Request) {
 
       const response = await anthropic.messages.create({
         model: 'claude-sonnet-4-6',
-        max_tokens: 1024,
+        max_tokens: 2048,
         system: systemMsg?.content || '',
         messages: [{ role: 'user', content: userMsg?.content || '' }],
       });
@@ -57,18 +57,31 @@ export async function POST(req: Request) {
 
     const response = await anthropic.messages.create({
       model: 'claude-sonnet-4-6',
-      max_tokens: 1024,
+      max_tokens: 2048,
       system: systemInstruction,
       messages: messages.slice(-20),
     });
 
     const text = response.content[0].type === 'text' ? response.content[0].text : '';
-    const clean = text.replace(/^```json\n?/, '').replace(/\n?```$/, '').trim();
+    // Strip markdown fences, handle various formats
+    let clean = text.replace(/^```(?:json)?\n?/, '').replace(/\n?```$/, '').trim();
+
+    // Try to extract JSON if wrapped in other text
+    const jsonMatch = clean.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      clean = jsonMatch[0];
+    }
 
     try {
       return NextResponse.json(JSON.parse(clean));
     } catch {
-      return NextResponse.json({ narrative: 'Der GM antwortet nicht wie erwartet. Bitte versuche es erneut.', options: [{ id: 'A', text: 'Erneut versuchen' }] });
+      // If JSON parsing fails, wrap the raw text as narrative
+      return NextResponse.json({
+        narrative: text || 'Der GM antwortet nicht wie erwartet. Bitte versuche es erneut.',
+        options: [{ id: 'A', text: 'Erneut versuchen' }],
+        stateChanges: {},
+        mood: 'mysterious',
+      });
     }
 
   } catch (error: any) {
