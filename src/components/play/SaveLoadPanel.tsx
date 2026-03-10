@@ -20,6 +20,7 @@ interface SaveLoadPanelProps {
   careerName: string;
   chatMessages: any[];
   onClose: () => void;
+  onRestoreChat?: (messages: any[]) => void;
 }
 
 const STORAGE_KEY = 'quantum-rpg-saves';
@@ -37,7 +38,7 @@ function setSaves(saves: SaveSlot[]) {
 }
 
 const SaveLoadPanel: React.FC<SaveLoadPanelProps> = ({
-  exportState, importState, characterName, speciesName, careerName, chatMessages, onClose
+  exportState, importState, characterName, speciesName, careerName, chatMessages, onClose, onRestoreChat
 }) => {
   const [saves, setSavesState] = useState<SaveSlot[]>([]);
   const [tab, setTab] = useState<'save' | 'load'>('save');
@@ -77,7 +78,10 @@ const SaveLoadPanel: React.FC<SaveLoadPanelProps> = ({
     try {
       const fullData = JSON.parse(slot.data);
       importState(fullData.storeState);
-      window.location.reload();
+      if (fullData.chatMessages && onRestoreChat) {
+        onRestoreChat(fullData.chatMessages);
+      }
+      onClose();
     } catch (e) {
       console.error('Failed to load save:', e);
     }
@@ -114,7 +118,10 @@ const SaveLoadPanel: React.FC<SaveLoadPanelProps> = ({
         const content = event.target?.result as string;
         const fullData = JSON.parse(content);
         importState(fullData.storeState || content);
-        window.location.reload();
+        if (fullData.chatMessages && onRestoreChat) {
+          onRestoreChat(fullData.chatMessages);
+        }
+        onClose();
       } catch (err) {
         console.error('Import failed:', err);
       }

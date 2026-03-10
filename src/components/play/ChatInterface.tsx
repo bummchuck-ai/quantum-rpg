@@ -240,9 +240,10 @@ const ChatInterface: React.FC = () => {
     combatants: combat.active ? combat.combatants : [],
     forceRating,
     ownedPowers,
+    ownedUpgrades,
     soak,
     defense,
-  }), [activePlayer, players, session, messages, combat, forceRating, ownedPowers, soak, defense]);
+  }), [activePlayer, players, session, messages, combat, forceRating, ownedPowers, ownedUpgrades, soak, defense]);
 
   const startGame = async () => {
     setIsTyping(true);
@@ -463,6 +464,7 @@ const ChatInterface: React.FC = () => {
           exportState={exportState} importState={importState}
           characterName={name} speciesName={species?.name || ''} careerName={career?.name || ''}
           chatMessages={messages} onClose={() => setShowSaveLoad(false)}
+          onRestoreChat={(restored) => setMessages(restored)}
         />
       )}
       {showDiceRoller && activeRollRequest && (

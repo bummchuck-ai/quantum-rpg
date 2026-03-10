@@ -7,6 +7,7 @@
 
 import type { Character, GameState, SessionEvent } from '@/types/character';
 import { ALL_SKILLS, SKILL_NAMES_DE as SHARED_SKILL_NAMES } from '@/lib/skills';
+import { FORCE_POWERS } from '@/lib/engine/force-powers';
 
 // --- The Core GM Persona ---
 const GM_PERSONA = `Du bist der Game Master eines immersiven Star Wars Pen & Paper Rollenspiels.
@@ -156,16 +157,27 @@ function buildGearContext(character: any): string {
   if (weapons.length > 0) {
     sections.push('### Waffen');
     for (const w of weapons) {
+      const stats = [
+        w.damage !== undefined ? `Schaden: ${w.damage}` : null,
+        w.critical ? `Kritisch: ${w.critical}` : null,
+        w.range ? `Reichweite: ${w.range}` : null,
+        w.encumbrance ? `Belastung: ${w.encumbrance}` : null,
+      ].filter(Boolean).join(' | ');
       const props = (w.properties || []).map((p: any) => p.value ? `${p.name}: ${p.value}` : p.name).join(', ');
-      sections.push(`- **${w.name}**${props ? ` (${props})` : ''}${w.description ? ` — ${w.description}` : ''}`);
+      sections.push(`- **${w.name}** [${stats}]${props ? ` (${props})` : ''}${w.description ? ` — ${w.description}` : ''}`);
     }
   }
 
   if (armor.length > 0) {
     sections.push('### Rüstung');
     for (const a of armor) {
+      const stats = [
+        a.soak !== undefined ? `Soak: +${a.soak}` : null,
+        a.defense !== undefined ? `Verteidigung: ${a.defense}` : null,
+        a.encumbrance ? `Belastung: ${a.encumbrance}` : null,
+      ].filter(Boolean).join(' | ');
       const props = (a.properties || []).map((p: any) => p.value ? `${p.name}: ${p.value}` : p.name).join(', ');
-      sections.push(`- **${a.name}**${props ? ` (${props})` : ''}${a.description ? ` — ${a.description}` : ''}`);
+      sections.push(`- **${a.name}** [${stats}]${props ? ` (${props})` : ''}${a.description ? ` — ${a.description}` : ''}`);
     }
   }
 
@@ -293,12 +305,27 @@ ${recentHistory}
 function buildForceContext(gameState: any): string {
   const forceRating = gameState.forceRating || 0;
   if (forceRating === 0) return '';
-  const powers = gameState.ownedPowers || [];
+  const ownedPowerIds = gameState.ownedPowers || [];
+  const ownedUpgradeIds = gameState.ownedUpgrades || [];
+
+  const powerDetails = ownedPowerIds.map((pid: string) => {
+    const power = FORCE_POWERS.find(p => p.id === pid);
+    if (!power) return `- ${pid}`;
+    const boughtUpgrades = power.upgrades
+      .filter(u => ownedUpgradeIds.includes(u.id))
+      .map(u => `${u.name}: ${u.description}`)
+      .join('; ');
+    return `- **${power.nameDE}** (${power.name}): ${power.descriptionDE}\n  Basiseffekt: ${power.baseEffect}${boughtUpgrades ? `\n  Upgrades: ${boughtUpgrades}` : ''}`;
+  }).join('\n');
+
   return `## Macht
 Macht-Rang: ${forceRating}
-Erlernte Machtkräfte: ${powers.length > 0 ? powers.join(', ') : 'Keine'}
-Der Charakter ist machtsensitiv. Wenn er die Macht einsetzt, würfle Machtwürfel.
-Dunkle-Seite-Punkte erzeugen Belastung (Conflict), Lichtseite-Punkte sind "frei".
+${powerDetails || 'Keine Machtkräfte erlernt.'}
+
+REGELN: Wenn der Charakter die Macht einsetzt, würfle Machtwürfel (${forceRating} Machtwürfel).
+- Lichtseite-Punkte (◐) können frei genutzt werden
+- Dunkle-Seite-Punkte (◑) erzeugen 1 Stress (Conflict) pro Nutzung
+- Der Spieler entscheidet, ob er Dunkle-Seite-Punkte nutzen will
 `;
 }
 
