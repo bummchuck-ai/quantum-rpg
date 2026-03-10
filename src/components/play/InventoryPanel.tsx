@@ -13,7 +13,7 @@ const InventoryPanel: React.FC<InventoryPanelProps> = ({ ownedGear, credits, enc
   const weapons = ownedGear.filter(g => g.damage !== undefined);
   const armor = ownedGear.filter(g => g.soak !== undefined && g.damage === undefined);
   const items = ownedGear.filter(g => g.damage === undefined && g.soak === undefined);
-  const totalEncumbrance = ownedGear.reduce((acc, g) => acc + (g.encumbrance || 1), 0);
+  const totalEncumbrance = ownedGear.reduce((acc, g) => acc + (g.encumbrance ?? 1), 0);
   const overEncumbered = totalEncumbrance > encumbranceMax;
 
   return (

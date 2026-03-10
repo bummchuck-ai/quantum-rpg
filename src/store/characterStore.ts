@@ -165,12 +165,16 @@ export const useCharacterStore = create<GameState>()(
 
       setSpecies: (species) => get().updateActivePlayer({
         species,
+        selectedSubspecies: (species as any).selectedSubspecies || null,
         characteristics: { ...species.characteristics },
         availableXP: species.startingXP,
+        spentXP: 0,
         skillRanks: { ...(species.freeSkillRanks || {}) },
+        ownedTalents: [],
+        backgroundBonus: 'none',
+        credits: 500,
         wounds: 0,
         strain: 0,
-        selectedSubspecies: (species as any).selectedSubspecies || null,
       }),
 
       setCareer: (career) => get().updateActivePlayer({ career }),

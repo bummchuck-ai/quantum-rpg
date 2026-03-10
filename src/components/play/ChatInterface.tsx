@@ -689,7 +689,7 @@ const ChatInterface: React.FC = () => {
                 <div className="space-y-4">
                   {msg.content.error && <div className="bg-red-500/10 border border-red-500/50 p-3 rounded-xl text-xs font-mono text-red-200">{msg.content.error}</div>}
                   {msg.content.narrative && <p className="text-base md:text-lg leading-relaxed text-zinc-300 font-sans italic">{msg.content.narrative}</p>}
-                  {msg.content.npcDialogue?.length > 0 && (
+                  {Array.isArray(msg.content.npcDialogue) && msg.content.npcDialogue.length > 0 && (
                     <div className="space-y-2 border-l-2 border-amber-500/30 pl-4 bg-amber-500/[0.02] py-2">
                       {msg.content.npcDialogue.map((d: any, idx: number) => (
                         <div key={idx}>

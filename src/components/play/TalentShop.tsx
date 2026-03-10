@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useCharacterStore } from '@/store/characterStore';
 import talentsData from '@/../data/json/talents_connected.json';
+import { findTalentTree } from '@/lib/talent-aliases';
 
 interface TalentNode {
   name: string;
@@ -30,12 +31,8 @@ const TalentShop = () => {
 
   useEffect(() => {
     if (!activePlayer?.specializations?.length) return;
-    const specName = activePlayer.specializations[0].name.toLowerCase();
-    const tree = allTrees.find(t => t.specialization.toLowerCase() === specName)
-      || allTrees.find(t => {
-        const tSpec = t.specialization.toLowerCase();
-        return tSpec.startsWith(specName) || specName.startsWith(tSpec);
-      });
+    const specName = activePlayer.specializations[0].name;
+    const tree = findTalentTree(allTrees, specName);
     if (tree) setCurrentTree(tree);
   }, [activePlayer?.specializations, allTrees]);
 
@@ -120,7 +117,7 @@ const TalentShop = () => {
                   const talentKey = `${rowIndex}-${colIndex}`;
                   const isOwned = ownedTalents.some(ot => ot.name === talent.name);
                   const isSelected = selectedTalentKey === talentKey;
-                  const cost = talent.row * 5;
+                  const cost = talent.cost || (talent.row * 5);
                   const hasTopConnection = talent.connections?.includes('top');
                   const isUnlocked = canPurchase(talent);
 

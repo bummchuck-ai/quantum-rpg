@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import talentsData from '@/../data/json/talents_connected.json';
+import { findTalentTree } from '@/lib/talent-aliases';
 import { useCharacterStore } from '@/store/characterStore';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
@@ -38,13 +39,7 @@ const TalentSelector: React.FC = () => {
 
   useEffect(() => {
     if (specializations.length > 0) {
-      const specName = specializations[0].name.toLowerCase();
-      // Try exact match first, then substring match
-      const tree = allTrees.find(t => t.specialization.toLowerCase() === specName)
-        || allTrees.find(t => {
-          const tSpec = t.specialization.toLowerCase();
-          return tSpec.startsWith(specName) || specName.startsWith(tSpec);
-        });
+      const tree = findTalentTree(allTrees, specializations[0].name);
       if (tree) {
         setCurrentTree(tree);
       } else {
