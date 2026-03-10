@@ -809,6 +809,7 @@ Antworte IMMER im folgenden JSON-Format:
     "combatEnd": null,
     "xpAward": null,
     "criticalInjury": null,
+    "healInjury": null,
     "destinyFlip": null
   },
   "mood": "tense|calm|dangerous|mysterious|exciting|sad|triumphant"
@@ -823,6 +824,7 @@ WICHTIG für stateChanges:
 - "combatEnd": {"outcome": "victory|retreat|surrender|negotiation"} — wenn der Kampf endet
 - "xpAward": {"amount": 10, "reason": "Erfolgreiche Verhandlung"} — EP für bedeutsame Aktionen (5/10/15/20 EP je nach Bedeutung)
 - "criticalInjury": {"name": "Zerschmetterter Arm", "severity": 65, "effect": "-1 Würfel auf alle Aktionen mit diesem Arm"} — bei kritischen Treffern
+- "healInjury": {"name": "Zerschmetterter Arm"} — wenn eine kritische Verletzung geheilt wird (durch Medizin, Bacta, etc.)
 - "destinyFlip": {"side": "dark", "reason": "GM verschärft die Gefahr"} — wenn ein Schicksalspunkt geflippt wird (side = welche Seite AUSGEGEBEN wird)
 - Setze immer passende stateChanges wenn narrativ sinnvoll!
 `;

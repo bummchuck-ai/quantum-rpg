@@ -35,6 +35,7 @@ export interface SceneState {
   description: string;
   mood: string;
   threats: string[];
+  timeOfDay?: string; // morgen | mittag | abend | nacht
 }
 
 export interface CriticalInjury {

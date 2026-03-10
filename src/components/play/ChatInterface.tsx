@@ -265,7 +265,7 @@ const ChatInterface: React.FC = () => {
     storySummary: session.storySummary || '',
     criticalInjuries: session.criticalInjuries || [],
     currentMood: session.scene.mood || 'neutral',
-    timeOfDay: (session.scene as any).timeOfDay || '',
+    timeOfDay: session.scene.timeOfDay || '',
     soak,
     defense,
   }), [activePlayer, players, session, messages, combat, forceRating, ownedPowers, ownedUpgrades, soak, defense]);
@@ -448,6 +448,19 @@ const ChatInterface: React.FC = () => {
         }));
       }
 
+      // Handle injury healing from GM
+      if (sc.healInjury?.name) {
+        setSession(prev => ({
+          ...prev,
+          criticalInjuries: (prev.criticalInjuries || []).map(ci =>
+            ci.name.toLowerCase() === sc.healInjury.name.toLowerCase()
+              ? { ...ci, healedAt: new Date().toISOString() }
+              : ci
+          ),
+          updatedAt: new Date().toISOString(),
+        }));
+      }
+
       // Handle destiny flip from GM
       if (sc.destinyFlip?.side) {
         setSession(prev => ({
@@ -521,6 +534,17 @@ const ChatInterface: React.FC = () => {
           role: 'gm',
           content: {
             narrative: `${icon} Schicksalspunkt (${df.side === 'dark' ? 'Dunkle Seite' : 'Helle Seite'}) verwendet${df.reason ? `: ${df.reason}` : ''}`,
+            isSystemToast: true,
+          },
+        });
+      }
+
+      // Heal injury toast
+      if (data.stateChanges?.healInjury?.name) {
+        updated.push({
+          role: 'gm',
+          content: {
+            narrative: `💚 Verletzung geheilt: ${data.stateChanges.healInjury.name}`,
             isSystemToast: true,
           },
         });
@@ -902,6 +926,10 @@ const ChatInterface: React.FC = () => {
                   {msg.content.isXPToast ? (
                     <div className="bg-emerald-500/10 border border-emerald-500/40 px-4 py-2 rounded-xl text-center animate-in fade-in zoom-in duration-500">
                       <span className="text-sm font-black text-emerald-400 uppercase tracking-wider">{msg.content.narrative}</span>
+                    </div>
+                  ) : msg.content.isSystemToast ? (
+                    <div className="bg-amber-500/10 border border-amber-500/30 px-4 py-2 rounded-xl text-center animate-in fade-in zoom-in duration-500">
+                      <span className="text-xs font-black text-amber-400 uppercase tracking-wider">{msg.content.narrative}</span>
                     </div>
                   ) : (<>
                   {msg.content.error && <div className="bg-red-500/10 border border-red-500/50 p-3 rounded-xl text-xs font-mono text-red-200">{msg.content.error}</div>}
