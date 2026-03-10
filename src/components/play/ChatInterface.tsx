@@ -136,7 +136,7 @@ const AUTOSAVE_INTERVAL = 60000;
 const ChatInterface: React.FC = () => {
   const router = useRouter();
   const {
-    players, activePlayerIndex, updateStatus, exportState, importState, setActivePlayer
+    players, activePlayerIndex, updateStatus, exportState, importState, setActivePlayer, spendXP, buyGear
   } = useCharacterStore();
 
   const activePlayer = players[activePlayerIndex];
@@ -212,18 +212,37 @@ const ChatInterface: React.FC = () => {
 
   const buildGameState = useCallback(() => ({
     character: { ...activePlayer },
-    party: players,
+    party: players.map(p => ({
+      name: p.name,
+      species: p.species?.name,
+      career: p.career?.name,
+      specialization: p.specializations?.[0]?.name,
+      wounds: p.wounds,
+      strain: p.strain,
+      woundThreshold: (p.species?.woundThresholdBase || 10) + (p.characteristics?.brawn || 0),
+      strainThreshold: (p.species?.strainThresholdBase || 10) + (p.characteristics?.willpower || 0),
+    })),
     currentPlanet: session.scene.planet,
     currentScene: session.scene.location,
     sessionHistory: messages.slice(-10).map(m => m.content.narrative || ''),
     destinyPool: session.destinyPool,
     questLog: session.quests,
-    npcRelationships: session.npcs.map(n => ({ npcName: n.name, disposition: n.disposition, notes: n.description })),
+    npcRelationships: session.npcs.map(n => ({
+      npcName: n.name,
+      disposition: n.disposition,
+      notes: n.description,
+      faction: n.faction || null,
+      isAlive: n.isAlive,
+      location: n.location || null,
+    })),
     combatActive: combat.active,
     combatRound: combat.round,
+    combatants: combat.active ? combat.combatants : [],
     forceRating,
     ownedPowers,
-  }), [activePlayer, players, session, messages, combat, forceRating, ownedPowers]);
+    soak,
+    defense,
+  }), [activePlayer, players, session, messages, combat, forceRating, ownedPowers, soak, defense]);
 
   const startGame = async () => {
     setIsTyping(true);
@@ -304,6 +323,12 @@ const ChatInterface: React.FC = () => {
           },
           updatedAt: new Date().toISOString(),
         }));
+      }
+
+      // Handle new items from GM
+      if (sc.newItem) {
+        const item = sc.newItem;
+        buyGear({ ...item, price: 0, id: `gm-${item.name}-${Date.now()}` });
       }
 
       // Handle combat start from GM
@@ -391,14 +416,16 @@ const ChatInterface: React.FC = () => {
 
   // Force power handlers
   const handleBuyPower = (powerId: string) => {
-    if (availableXP >= 5) {
+    const cost = 5;
+    if (availableXP >= cost) {
       setOwnedPowers(prev => [...prev, powerId]);
-      // Note: XP deduction would go through store
+      spendXP(cost);
     }
   };
   const handleBuyUpgrade = (upgradeId: string, cost: number) => {
     if (availableXP >= cost) {
       setOwnedUpgrades(prev => [...prev, upgradeId]);
+      spendXP(cost);
     }
   };
   const handleUsePower = (power: any) => {

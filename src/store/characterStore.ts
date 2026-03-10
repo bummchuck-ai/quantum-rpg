@@ -90,6 +90,7 @@ interface GameState {
   buyGear: (item: Gear) => void;
   sellGear: (item: Gear) => void;
   updateStatus: (wounds: number, strain: number, credits: number) => void;
+  spendXP: (amount: number) => void;
 
   // Vehicle Actions
   selectVehicle: (vehicle: PlayerVehicle) => void;
@@ -279,7 +280,7 @@ export const useCharacterStore = create<GameState>()(
         const newOwnedTalents = [...ownedTalents];
         const existingTalentIndex = newOwnedTalents.findIndex(t => t.id === talentToBuy.id);
 
-        if (talentToBuy.ranked) {
+        if (talentToBuy.ranked || (talentToBuy as any).isRanked) {
           if (existingTalentIndex !== -1) {
             // Talent existiert, Rang erhöhen
             const existingTalent = newOwnedTalents[existingTalentIndex];
@@ -345,12 +346,26 @@ export const useCharacterStore = create<GameState>()(
 
       updateStatus: (wounds, strain, credits) => set((state) => {
         const player = state.players[state.activePlayerIndex];
+        const woundThreshold = (player.species?.woundThresholdBase || 10) + (player.characteristics?.brawn || 0);
+        const strainThreshold = (player.species?.strainThresholdBase || 10) + (player.characteristics?.willpower || 0);
         const newPlayers = [...state.players];
         newPlayers[state.activePlayerIndex] = {
           ...player,
-          wounds: player.wounds + wounds,
-          strain: player.strain + strain,
-          credits: player.credits + credits
+          wounds: Math.max(0, Math.min(woundThreshold, player.wounds + wounds)),
+          strain: Math.max(0, Math.min(strainThreshold, player.strain + strain)),
+          credits: Math.max(0, player.credits + credits)
+        };
+        return { players: newPlayers };
+      }),
+
+      spendXP: (amount) => set((state) => {
+        const player = state.players[state.activePlayerIndex];
+        if (player.availableXP < amount) return state;
+        const newPlayers = [...state.players];
+        newPlayers[state.activePlayerIndex] = {
+          ...player,
+          availableXP: player.availableXP - amount,
+          spentXP: player.spentXP + amount,
         };
         return { players: newPlayers };
       }),

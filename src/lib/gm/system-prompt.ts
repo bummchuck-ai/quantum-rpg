@@ -231,7 +231,8 @@ ${buildGearContext(character)}
 Credits: ${character.credits}
 Wunden: ${character.wounds}/${woundThreshold}
 Stress: ${character.strain}/${strainThreshold}
-Widerstandswert (Soak): ${soakValue}
+Widerstandswert (Soak): ${soakValue} (Stärke) + ${(character.ownedGear || []).filter((g: any) => g.soak).reduce((sum: number, g: any) => sum + g.soak, 0)} (Rüstung) = ${soakValue + (character.ownedGear || []).filter((g: any) => g.soak).reduce((sum: number, g: any) => sum + g.soak, 0)} gesamt
+Verteidigung: ${(character.ownedGear || []).filter((g: any) => g.defense).reduce((max: number, g: any) => Math.max(max, g.defense || 0), 0)}
 Verfügbare EP: ${character.availableXP || 0} | Ausgegebene EP: ${character.spentXP || 0}
 `;
 }
@@ -303,8 +304,15 @@ Dunkle-Seite-Punkte erzeugen Belastung (Conflict), Lichtseite-Punkte sind "frei"
 
 function buildCombatContext(gameState: any): string {
   if (!gameState.combatActive) return '';
+  const combatants = gameState.combatants || [];
+  const enemyList = combatants
+    .filter((c: any) => c.type === 'npc' || c.type === 'enemy')
+    .map((c: any) => `- **${c.name}**: Wunden ${c.wounds || 0}/${c.woundThreshold || '?'}, Soak ${c.soak || 0}${c.isDefeated ? ' [BESIEGT]' : ''}`)
+    .join('\n');
+
   return `## KAMPF AKTIV
 Runde: ${gameState.combatRound || 1}
+${enemyList ? `### Gegner im Kampf\n${enemyList}` : ''}
 Der Kampf läuft! Beschreibe Kampfaktionen im Runden-System:
 - Jeder Charakter hat 1 Aktion + 1 Manöver pro Runde
 - Aktionen: Angriff, Fertigkeit einsetzen, Macht einsetzen
@@ -350,9 +358,25 @@ function buildNPCContext(gameState: any): string {
 
   return `## Bekannte NPCs
 ${npcs.map((n: any) => {
-    const disposition = n.disposition > 30 ? 'freundlich' : n.disposition < -30 ? 'feindlich' : 'neutral';
-    return `- **${n.npcName}** (${disposition}): ${n.notes || 'Keine Details'}`;
+    const disp = n.disposition;
+    const dispositionLabel = disp > 60 ? 'sehr freundlich' : disp > 30 ? 'freundlich' : disp < -60 ? 'sehr feindlich' : disp < -30 ? 'feindlich' : 'neutral';
+    const alive = n.isAlive === false ? ' [TOT]' : '';
+    const faction = n.faction ? ` | Fraktion: ${n.faction}` : '';
+    const location = n.location ? ` | Ort: ${n.location}` : '';
+    return `- **${n.npcName}** (${dispositionLabel}${alive}${faction}${location}): ${n.notes || 'Keine Details'}`;
   }).join('\n')}`;
+}
+
+function buildPartyContext(gameState: any): string {
+  const party = gameState.party || [];
+  if (party.length <= 1) return '';
+
+  return `## Gruppe (${party.length} Mitglieder)
+${party.map((p: any, i: number) => {
+    const isActive = i === 0; // First is always active player
+    return `- **${p.name}**${isActive ? ' (AKTIVER SPIELER)' : ''}: ${p.species || '?'} ${p.career || '?'} / ${p.specialization || '?'} — Wunden: ${p.wounds || 0}/${p.woundThreshold || '?'}, Stress: ${p.strain || 0}/${p.strainThreshold || '?'}`;
+  }).join('\n')}
+WICHTIG: Beziehe ALLE Gruppenmitglieder in die Erzählung ein, nicht nur den aktiven Spieler.`;
 }
 
 // --- Main function: Build the complete system prompt ---
@@ -360,6 +384,7 @@ export function buildSystemPrompt(gameState: any): string {
   const sections = [
     GM_PERSONA,
     buildCharacterContext(gameState.character),
+    buildPartyContext(gameState),
     buildVehicleContext(gameState),
     buildForceContext(gameState),
     buildCombatContext(gameState),
