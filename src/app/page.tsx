@@ -124,7 +124,7 @@ export default function Home() {
 
       {/* Footer Readout */}
       <div className="text-[8px] text-zinc-700 text-center tracking-[0.2em] pt-8">
-        © 2026 // IEE_MARKETING_LABS // DEPLOYED_REGION: OUTER_RIM_BBS
+        © 2026 // FELIX_BUMMCHUCK-AI // DEPLOYED_REGION: OUTER_RIM_BBS
       </div>
 
     </main>
