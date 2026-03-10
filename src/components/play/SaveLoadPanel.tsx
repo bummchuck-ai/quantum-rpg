@@ -1,20 +1,11 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-
-const SAVE_FORMAT_VERSION = 2;
-
-interface SaveSlot {
-  id: string;
-  name: string;
-  characterName: string;
-  species: string;
-  career: string;
-  timestamp: string;
-  level?: number;
-  messageCount?: number;
-  data: string;
-}
+import {
+  getSaves, setSaves, validateSaveData, formatDate,
+  AUTOSAVE_KEY, MAX_SLOTS, SAVE_FORMAT_VERSION,
+  type SaveSlot,
+} from '@/lib/save-utils';
 
 interface SessionStateData {
   session: any;
@@ -34,29 +25,6 @@ interface SaveLoadPanelProps {
   sessionState: SessionStateData;
   onClose: () => void;
   onRestoreSession?: (data: { messages: any[]; session?: any; combat?: any; ownedPowers?: string[]; ownedUpgrades?: string[] }) => void;
-}
-
-const STORAGE_KEY = 'quantum-rpg-saves';
-const AUTOSAVE_KEY = 'quantum-rpg-autosave';
-const MAX_SLOTS = 6;
-
-function getSaves(): SaveSlot[] {
-  if (typeof window === 'undefined') return [];
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-  } catch { return []; }
-}
-
-function setSaves(saves: SaveSlot[]) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(saves));
-}
-
-/** Validate that save data has the expected structure */
-function validateSaveData(data: any): { valid: boolean; error?: string } {
-  if (!data || typeof data !== 'object') return { valid: false, error: 'Keine gültigen Daten.' };
-  if (!data.storeState) return { valid: false, error: 'Charakter-Daten fehlen.' };
-  if (!data.chatMessages && !data.savedAt) return { valid: false, error: 'Keine Spielstand-Struktur erkannt.' };
-  return { valid: true };
 }
 
 const SaveLoadPanel: React.FC<SaveLoadPanelProps> = ({
@@ -230,11 +198,6 @@ const SaveLoadPanel: React.FC<SaveLoadPanelProps> = ({
     reader.readAsText(file);
     // Reset file input so same file can be re-imported
     e.target.value = '';
-  };
-
-  const formatDate = (iso: string) => {
-    const d = new Date(iso);
-    return `${d.toLocaleDateString('de-DE')} ${d.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}`;
   };
 
   return (

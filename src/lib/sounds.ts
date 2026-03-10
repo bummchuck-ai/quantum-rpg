@@ -7,7 +7,42 @@
 
 let audioCtx: AudioContext | null = null;
 
+// ============================================================
+// VOLUME & SETTINGS SYSTEM
+// ============================================================
+const SETTINGS_KEY = 'quantum-rpg-settings';
+let masterVolume = 0.8;
+let sfxMuted = false;
+let ambientMuted = false;
+let settingsLoaded = false;
+
+function loadSettings() {
+  if (settingsLoaded || typeof window === 'undefined') return;
+  settingsLoaded = true;
+  try {
+    const raw = localStorage.getItem(SETTINGS_KEY);
+    if (raw) {
+      const s = JSON.parse(raw);
+      masterVolume = s.masterVolume ?? 0.8;
+      sfxMuted = s.sfxMuted ?? false;
+      ambientMuted = s.ambientMuted ?? false;
+    }
+  } catch { /* use defaults */ }
+}
+
+function saveSettings() {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.setItem(SETTINGS_KEY, JSON.stringify({
+      masterVolume,
+      sfxMuted,
+      ambientMuted,
+    }));
+  } catch { /* storage full */ }
+}
+
 function getCtx(): AudioContext {
+  loadSettings();
   if (!audioCtx) {
     audioCtx = new AudioContext();
   }
@@ -20,7 +55,7 @@ function getCtx(): AudioContext {
 // --- Utility ---
 function createGain(ctx: AudioContext, volume: number): GainNode {
   const gain = ctx.createGain();
-  gain.gain.value = volume;
+  gain.gain.value = sfxMuted ? 0 : volume * masterVolume;
   gain.connect(ctx.destination);
   return gain;
 }
@@ -601,6 +636,7 @@ export function getAmbientType(): string | null {
 /** Ambient: deep space drone — peaceful, floating */
 export function playAmbientSpace() {
   if (currentAmbientType === 'space') return;
+  if (ambientMuted) return;
   stopAmbient();
   const ctx = getCtx();
   const t = ctx.currentTime;
@@ -640,6 +676,7 @@ export function playAmbientSpace() {
 /** Ambient: danger tension — pulsing low drone */
 export function playAmbientDanger() {
   if (currentAmbientType === 'danger') return;
+  if (ambientMuted) return;
   stopAmbient();
   const ctx = getCtx();
   const t = ctx.currentTime;
@@ -679,6 +716,7 @@ export function playAmbientDanger() {
 /** Ambient: cantina — upbeat repeating pattern */
 export function playAmbientCantina() {
   if (currentAmbientType === 'cantina') return;
+  if (ambientMuted) return;
   stopAmbient();
   const ctx = getCtx();
   currentAmbientType = 'cantina';
@@ -710,4 +748,33 @@ export function playAmbientCantina() {
   ambientInterval = setInterval(playNote, 220);
   ambientOscillators = [];
   ambientGains = [];
+}
+
+// ============================================================
+// VOLUME CONTROL API (used by SystemPanel)
+// ============================================================
+
+/** Set master volume (0.0 – 1.0) and persist */
+export function setMasterVolume(v: number) {
+  masterVolume = Math.max(0, Math.min(1, v));
+  saveSettings();
+}
+
+/** Mute/unmute SFX and persist */
+export function setSFXMuted(m: boolean) {
+  sfxMuted = m;
+  saveSettings();
+}
+
+/** Mute/unmute ambient and persist. Stops ambient if muting. */
+export function setAmbientMuted(m: boolean) {
+  ambientMuted = m;
+  if (m) stopAmbient();
+  saveSettings();
+}
+
+/** Get current settings snapshot */
+export function getSettings(): { masterVolume: number; sfxMuted: boolean; ambientMuted: boolean } {
+  loadSettings();
+  return { masterVolume, sfxMuted, ambientMuted };
 }

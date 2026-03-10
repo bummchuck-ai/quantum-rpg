@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
 import IntroModal from '@/components/create/IntroModal';
 import StarWarsCrawl from '@/components/create/StarWarsCrawl';
+import ArchivePanel from '@/components/start/ArchivePanel';
+import SystemPanel from '@/components/start/SystemPanel';
 import { useRouter } from 'next/navigation';
 import { useCharacterStore } from '@/store/characterStore';
 import { playConfirm, playNavigate } from '@/lib/sounds';
@@ -12,6 +13,8 @@ export default function Home() {
   const [showIntro, setShowIntro] = useState(false);
   const [showCrawl, setShowCrawl] = useState(false);
   const [hasSave, setHasSave] = useState(false);
+  const [showArchive, setShowArchive] = useState(false);
+  const [showSystem, setShowSystem] = useState(false);
   const router = useRouter();
   const resetStore = useCharacterStore((state) => state.reset);
   const players = useCharacterStore((state) => state.players);
@@ -111,11 +114,17 @@ export default function Home() {
         </div>
 
         <div className="flex gap-3">
-          <div className="flex-1 border border-zinc-800 p-4 hover:border-zinc-600 transition-colors cursor-pointer group rounded-xl text-center">
+          <div
+            onClick={() => { playNavigate(); setShowArchive(true); }}
+            className="flex-1 border border-zinc-800 p-4 hover:border-zinc-600 transition-colors cursor-pointer group rounded-xl text-center"
+          >
             <div className="text-[8px] text-zinc-600 group-hover:text-zinc-400">DATABASE</div>
             <div className="text-xs font-bold text-zinc-400 group-hover:text-white uppercase tracking-widest">Archiv</div>
           </div>
-          <div className="flex-1 border border-zinc-800 p-4 hover:border-zinc-600 transition-colors cursor-pointer group rounded-xl text-center">
+          <div
+            onClick={() => { playNavigate(); setShowSystem(true); }}
+            className="flex-1 border border-zinc-800 p-4 hover:border-zinc-600 transition-colors cursor-pointer group rounded-xl text-center"
+          >
             <div className="text-[8px] text-zinc-600 group-hover:text-zinc-400">SETTINGS</div>
             <div className="text-xs font-bold text-zinc-400 group-hover:text-white uppercase tracking-widest">System</div>
           </div>
@@ -126,6 +135,19 @@ export default function Home() {
       <div className="text-[8px] text-zinc-700 text-center tracking-[0.2em] pt-8">
         © 2026 // FELIX_BUMMCHUCK-AI // DEPLOYED_REGION: OUTER_RIM_BBS
       </div>
+
+      {/* Archive Panel */}
+      {showArchive && (
+        <ArchivePanel
+          onClose={() => setShowArchive(false)}
+          onLoadSave={() => router.push('/play')}
+        />
+      )}
+
+      {/* System Panel */}
+      {showSystem && (
+        <SystemPanel onClose={() => setShowSystem(false)} />
+      )}
 
     </main>
   );

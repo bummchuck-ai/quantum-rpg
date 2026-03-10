@@ -23,16 +23,7 @@ import {
   playAmbientSpace, playAmbientDanger, playAmbientCantina,
   stopAmbient, getAmbientType,
 } from '@/lib/sounds';
-
-// Slug helper for species image paths (mirrors SpeciesSelector)
-function slugify(name: string): string {
-  return name
-    .toLowerCase()
-    .replace(/[áàäâ]/g, 'a').replace(/[éèëê]/g, 'e').replace(/[íìïî]/g, 'i')
-    .replace(/[óòöô]/g, 'o').replace(/[úùüû]/g, 'u').replace(/[ß]/g, 'ss')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');
-}
+import { PENDING_RESTORE_KEY, slugify } from '@/lib/save-utils';
 
 // Skill name map (DE/EN → store key + characteristic)
 const SKILL_MAP: Record<string, { key: string; char: string }> = {
@@ -237,6 +228,28 @@ const ChatInterface: React.FC = () => {
   }, [messages]);
 
   useEffect(() => {
+    // Check for pending restore from start screen Archive
+    const pendingRaw = localStorage.getItem(PENDING_RESTORE_KEY);
+    if (pendingRaw) {
+      try {
+        const pendingData = JSON.parse(pendingRaw);
+        localStorage.removeItem(PENDING_RESTORE_KEY);
+        // Restore chat messages
+        if (pendingData.chatMessages?.length > 0) {
+          setMessages(pendingData.chatMessages);
+        }
+        // Restore session state
+        if (pendingData.session) setSession(pendingData.session);
+        if (pendingData.combat) setCombat(pendingData.combat);
+        if (pendingData.ownedPowers) setOwnedPowers(pendingData.ownedPowers);
+        if (pendingData.ownedUpgrades) setOwnedUpgrades(pendingData.ownedUpgrades);
+        return; // Skip startGame() — we restored from save
+      } catch (e) {
+        console.error('Pending restore failed, starting fresh:', e);
+        localStorage.removeItem(PENDING_RESTORE_KEY);
+      }
+    }
+    // Normal flow: start new game via GM API
     startGame();
   }, []);
 
