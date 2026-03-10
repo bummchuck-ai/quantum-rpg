@@ -140,6 +140,13 @@ const ChatInterface: React.FC = () => {
   } = useCharacterStore();
 
   const activePlayer = players[activePlayerIndex];
+
+  // Route guard: redirect if character is incomplete (before any property access)
+  if (!activePlayer?.species || !activePlayer?.career) {
+    router.push('/');
+    return null;
+  }
+
   const {
     name, species, career, characteristics, credits, ownedGear,
     specializations, backgroundOption, backgroundType, backgroundValue,
@@ -184,10 +191,6 @@ const ChatInterface: React.FC = () => {
   }, [messages]);
 
   useEffect(() => {
-    if (!activePlayer.species || !activePlayer.career) {
-      router.push('/');
-      return;
-    }
     startGame();
   }, []);
 
@@ -247,6 +250,8 @@ const ChatInterface: React.FC = () => {
 
   const startGame = async () => {
     setIsTyping(true);
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 30000);
     try {
       const response = await fetch('/api/chat', {
         method: 'POST',
@@ -254,15 +259,21 @@ const ChatInterface: React.FC = () => {
         body: JSON.stringify({
           gameState: buildGameState(),
           userMessage: 'Beginne das Abenteuer! Beschreibe die erste Szene basierend auf unserem Team.'
-        })
+        }),
+        signal: controller.signal,
       });
       if (!response.ok) throw new Error(`GM request failed: ${response.status} ${response.statusText}`);
       const data = await response.json();
       handleGMResponse(data);
     } catch (error: any) {
       console.error('Intro failed:', error);
-      setMessages(prev => [...prev, { role: 'gm', content: { narrative: 'Der Game Master ist momentan nicht erreichbar. Bitte versuche es erneut.', error: error?.message || 'Unbekannter Fehler', options: [{ id: 'A', text: 'Erneut versuchen' }] } }]);
+      const isTimeout = error?.name === 'AbortError';
+      const narrative = isTimeout
+        ? 'GM antwortet nicht (Timeout). Bitte erneut versuchen.'
+        : 'Der Game Master ist momentan nicht erreichbar. Bitte versuche es erneut.';
+      setMessages(prev => [...prev, { role: 'gm', content: { narrative, error: isTimeout ? 'Timeout nach 30s' : (error?.message || 'Unbekannter Fehler'), options: [{ id: 'A', text: 'Erneut versuchen' }] } }]);
     } finally {
+      clearTimeout(timeout);
       setIsTyping(false);
     }
   };
@@ -365,6 +376,8 @@ const ChatInterface: React.FC = () => {
     setMessages(updatedMessages);
     setInputValue('');
     setIsTyping(true);
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 30000);
     try {
       const history = updatedMessages.map(m => ({
         role: m.role === 'gm' ? 'assistant' as const : 'user' as const,
@@ -378,15 +391,21 @@ const ChatInterface: React.FC = () => {
           gameState: buildGameState(),
           userMessage: text,
           history: history.slice(-20)
-        })
+        }),
+        signal: controller.signal,
       });
       if (!response.ok) throw new Error(`GM request failed: ${response.status} ${response.statusText}`);
       const data = await response.json();
       handleGMResponse(data);
     } catch (error: any) {
       console.error('Chat failed:', error);
-      setMessages(prev => [...prev, { role: 'gm', content: { narrative: 'Der Game Master ist momentan nicht erreichbar. Bitte versuche es erneut.', error: error?.message || 'Unbekannter Fehler', options: [{ id: 'A', text: 'Erneut versuchen' }] } }]);
+      const isTimeout = error?.name === 'AbortError';
+      const narrative = isTimeout
+        ? 'GM antwortet nicht (Timeout). Bitte erneut versuchen.'
+        : 'Der Game Master ist momentan nicht erreichbar. Bitte versuche es erneut.';
+      setMessages(prev => [...prev, { role: 'gm', content: { narrative, error: isTimeout ? 'Timeout nach 30s' : (error?.message || 'Unbekannter Fehler'), options: [{ id: 'A', text: 'Erneut versuchen' }] } }]);
     } finally {
+      clearTimeout(timeout);
       setIsTyping(false);
     }
   };
@@ -463,8 +482,16 @@ const ChatInterface: React.FC = () => {
         <SaveLoadPanel
           exportState={exportState} importState={importState}
           characterName={name} speciesName={species?.name || ''} careerName={career?.name || ''}
-          chatMessages={messages} onClose={() => setShowSaveLoad(false)}
-          onRestoreChat={(restored) => setMessages(restored)}
+          chatMessages={messages}
+          sessionState={{ session, combat, ownedPowers, ownedUpgrades, forceRating }}
+          onClose={() => setShowSaveLoad(false)}
+          onRestoreSession={(data) => {
+            setMessages(data.messages);
+            if (data.session) setSession(data.session);
+            if (data.combat) setCombat(data.combat);
+            if (data.ownedPowers) setOwnedPowers(data.ownedPowers);
+            if (data.ownedUpgrades) setOwnedUpgrades(data.ownedUpgrades);
+          }}
         />
       )}
       {showDiceRoller && activeRollRequest && (

@@ -12,6 +12,14 @@ interface SaveSlot {
   data: string;
 }
 
+interface SessionStateData {
+  session: any;
+  combat: any;
+  ownedPowers: string[];
+  ownedUpgrades: string[];
+  forceRating: number;
+}
+
 interface SaveLoadPanelProps {
   exportState: () => string;
   importState: (data: string) => void;
@@ -19,8 +27,9 @@ interface SaveLoadPanelProps {
   speciesName: string;
   careerName: string;
   chatMessages: any[];
+  sessionState: SessionStateData;
   onClose: () => void;
-  onRestoreChat?: (messages: any[]) => void;
+  onRestoreSession?: (data: { messages: any[]; session?: any; combat?: any; ownedPowers?: string[]; ownedUpgrades?: string[] }) => void;
 }
 
 const STORAGE_KEY = 'quantum-rpg-saves';
@@ -38,20 +47,27 @@ function setSaves(saves: SaveSlot[]) {
 }
 
 const SaveLoadPanel: React.FC<SaveLoadPanelProps> = ({
-  exportState, importState, characterName, speciesName, careerName, chatMessages, onClose, onRestoreChat
+  exportState, importState, characterName, speciesName, careerName, chatMessages, sessionState, onClose, onRestoreSession
 }) => {
   const [saves, setSavesState] = useState<SaveSlot[]>([]);
   const [tab, setTab] = useState<'save' | 'load'>('save');
   const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     setSavesState(getSaves());
   }, []);
 
   const handleSave = (slotIndex: number) => {
+    setError(null);
     const fullData = JSON.stringify({
       storeState: exportState(),
       chatMessages,
+      session: sessionState.session,
+      combat: sessionState.combat,
+      ownedPowers: sessionState.ownedPowers,
+      ownedUpgrades: sessionState.ownedUpgrades,
+      forceRating: sessionState.forceRating,
       savedAt: new Date().toISOString(),
     });
     const slot: SaveSlot = {
@@ -76,14 +92,22 @@ const SaveLoadPanel: React.FC<SaveLoadPanelProps> = ({
 
   const handleLoad = (slot: SaveSlot) => {
     try {
+      setError(null);
       const fullData = JSON.parse(slot.data);
       importState(fullData.storeState);
-      if (fullData.chatMessages && onRestoreChat) {
-        onRestoreChat(fullData.chatMessages);
+      if (onRestoreSession) {
+        onRestoreSession({
+          messages: fullData.chatMessages || [],
+          session: fullData.session,
+          combat: fullData.combat,
+          ownedPowers: fullData.ownedPowers,
+          ownedUpgrades: fullData.ownedUpgrades,
+        });
       }
       onClose();
     } catch (e) {
       console.error('Failed to load save:', e);
+      setError('Spielstand konnte nicht geladen werden. Die Datei ist beschädigt.');
     }
   };
 
@@ -95,9 +119,15 @@ const SaveLoadPanel: React.FC<SaveLoadPanelProps> = ({
   };
 
   const handleExportFile = () => {
+    setError(null);
     const fullData = JSON.stringify({
       storeState: exportState(),
       chatMessages,
+      session: sessionState.session,
+      combat: sessionState.combat,
+      ownedPowers: sessionState.ownedPowers,
+      ownedUpgrades: sessionState.ownedUpgrades,
+      forceRating: sessionState.forceRating,
       savedAt: new Date().toISOString(),
     });
     const blob = new Blob([fullData], { type: 'application/json' });
@@ -115,15 +145,23 @@ const SaveLoadPanel: React.FC<SaveLoadPanelProps> = ({
     const reader = new FileReader();
     reader.onload = (event) => {
       try {
+        setError(null);
         const content = event.target?.result as string;
         const fullData = JSON.parse(content);
         importState(fullData.storeState || content);
-        if (fullData.chatMessages && onRestoreChat) {
-          onRestoreChat(fullData.chatMessages);
+        if (onRestoreSession) {
+          onRestoreSession({
+            messages: fullData.chatMessages || [],
+            session: fullData.session,
+            combat: fullData.combat,
+            ownedPowers: fullData.ownedPowers,
+            ownedUpgrades: fullData.ownedUpgrades,
+          });
         }
         onClose();
       } catch (err) {
         console.error('Import failed:', err);
+        setError('Import fehlgeschlagen. Die Datei enthält kein gültiges JSON.');
       }
     };
     reader.readAsText(file);
@@ -151,6 +189,12 @@ const SaveLoadPanel: React.FC<SaveLoadPanelProps> = ({
             Laden
           </button>
         </div>
+
+        {error && (
+          <div className="mx-4 mt-3 p-3 bg-red-500/10 border border-red-500/50 rounded-xl text-[10px] font-bold text-red-400 uppercase tracking-wide">
+            {error}
+          </div>
+        )}
 
         <div className="p-4 space-y-2 max-h-80 overflow-y-auto">
           {Array.from({ length: MAX_SLOTS }).map((_, i) => {

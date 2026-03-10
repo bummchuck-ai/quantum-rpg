@@ -151,7 +151,9 @@ export const useCharacterStore = create<GameState>()(
         };
       }),
 
-      setActivePlayer: (index) => set({ activePlayerIndex: index }),
+      setActivePlayer: (index) => set((state) => ({
+        activePlayerIndex: Math.min(Math.max(0, index), state.players.length - 1),
+      })),
 
       updateActivePlayer: (updates) => set((state) => {
         if (state.activePlayerIndex >= state.players.length) return state;
@@ -171,10 +173,13 @@ export const useCharacterStore = create<GameState>()(
         spentXP: 0,
         skillRanks: { ...(species.freeSkillRanks || {}) },
         ownedTalents: [],
+        ownedGear: [],
         backgroundBonus: 'none',
         credits: 500,
         wounds: 0,
         strain: 0,
+        questLog: [],
+        vehicles: [],
       }),
 
       setCareer: (career) => get().updateActivePlayer({ career }),
