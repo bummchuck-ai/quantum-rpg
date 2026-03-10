@@ -51,8 +51,8 @@ export default function PlayPage() {
         </div>
       </div>
 
-      {/* Bottom Tab Bar — fixed, glass-morphism */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-t border-zinc-800/60">
+      {/* Bottom Tab Bar — fixed, glass-morphism, larger touch targets */}
+      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-black/85 backdrop-blur-xl border-t border-zinc-800/50">
         <div className="flex justify-around items-center h-16 max-w-lg mx-auto px-2">
           {TAB_CONFIG.map((tab) => {
             const isActive = activeTab === tab.id;
@@ -64,15 +64,15 @@ export default function PlayPage() {
                   isActive ? 'text-amber-500' : 'text-zinc-600'
                 }`}
               >
-                <span className="text-lg leading-none">{tab.icon}</span>
-                <span className={`text-[7px] font-black uppercase tracking-[0.15em] ${
+                <span className="text-xl leading-none">{tab.icon}</span>
+                <span className={`text-[8px] font-black uppercase tracking-[0.12em] ${
                   isActive ? 'text-amber-500' : 'text-zinc-600'
                 }`}>
                   {tab.label}
                 </span>
-                {/* Active indicator dot */}
+                {/* Active indicator dot with glow */}
                 {isActive && (
-                  <span className="w-1 h-1 rounded-full bg-amber-500 mt-0.5 shadow-[0_0_6px_rgba(245,158,11,0.6)]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-0.5 glow-pulse" />
                 )}
               </button>
             );

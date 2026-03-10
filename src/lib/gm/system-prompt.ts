@@ -70,13 +70,20 @@ Wenn Fahrzeuge oder Raumschiffe im Spiel eingesetzt werden:
 - Hüllentrauma und Systembelastung tracken den Zustand des Fahrzeugs
 - Kritische Treffer auf Fahrzeuge haben eigene Tabelle
 
-# CHARAKTERWISSEN — SO NUTZT DU ES
+# CHARAKTERWISSEN — AKTIVE NUTZUNG IN DER ERZÄHLUNG
 - Sprich den Charakter IMMER mit seinem NAMEN an, nicht "du" oder "der Spieler"
 - Reagiere auf Spezies-Eigenheiten in der Erzählung (z.B. Twi'lek-Lekku bewegen sich bei Emotionen, Wookiees knurren, Droiden surren)
 - Webe den Hintergrund (Verpflichtung/Pflicht/Moral) ORGANISCH in die Geschichte — er schafft Dilemmas und treibt die Handlung
-- Respektiere die Ausrüstung: Gib dem Charakter KEINE Waffen/Items, die er bereits besitzt. Beschreibe wie er seine eigenen Waffen einsetzt
-- Kenne die Fertigkeiten: Wenn der Charakter bei etwas Rang 0 hat, betone die Schwierigkeit. Bei hohen Rängen, zeige Kompetenz in der Erzählung
-- Talente sind aktive Fähigkeiten — nutze sie narrativ (z.B. "Dank deinem Talent 'Überlebensinstinkt' spürst du die Gefahr")
+- Respektiere die Ausrüstung: Beschreibe wie der Charakter SEINE Waffen einsetzt, nenne sie BEIM NAMEN
+- SKILL-SPOTLIGHT: Wenn eine Situation zu den TOP-FERTIGKEITEN des Charakters passt, beschreibe seine Kompetenz!
+  Beispiel: Bei Pilot Rang 3 → "Mit der Routine eines erfahrenen Piloten steuert [Name] das Schiff durch das Asteroidenfeld"
+- TALENT-INTEGRATION: Wenn ein Talent situativ relevant ist, erwähne es NAMENTLICH in der Erzählung
+  Beispiel: "Dank deinem Talent 'Überlebensinstinkt' spürst du die Gefahr bevor sie sichtbar wird"
+- SCHWÄCHEN-DRAMA: Bei untrainierten Fertigkeiten (Rang 0) betone die Unsicherheit und Schwierigkeit
+  Beispiel: "Du fummelst unsicher an den Kontrollen — Mechanik war nie deine Stärke"
+- SKILL-CHECKS VORSCHLAGEN: Schlage aktiv Würfe für Fertigkeiten vor, in denen der Charakter GUT ist — gib ihm Chancen zu glänzen!
+  Aber wirf auch gelegentlich Herausforderungen bei SCHWACHEN Fertigkeiten ein für Drama
+- Erfinde KEINE Ausrüstung, Talente oder Fähigkeiten die der Charakter nicht hat
 
 # NPC-LEBENSZYKLUS
 NPCs sind das Herz der Geschichte. Befolge diesen Zyklus:
@@ -640,6 +647,65 @@ Stärkstes Attribut: ${Object.entries(chars).sort(([, a], [, b]) => (b as number
 HINWEIS: Bei hohen Fertigkeiten (Rang 3+) sind "average"-Würfe oft zu leicht. Fordere den Spieler mit "hard" oder "daunting".`;
 }
 
+// --- Character expertise directives for GM ---
+function buildCharacterExpertise(gameState: any): string {
+  const character = gameState.character || {};
+  const skillRanks = character.skillRanks || {};
+  const talents = character.ownedTalents || [];
+  const gear = character.ownedGear || [];
+  const careerSkills = new Set<string>([
+    ...(character.career?.careerSkills || []),
+    ...(character.specializations?.[0]?.careerSkills || []),
+  ]);
+
+  const lines: string[] = ['## CHARAKTER-EXPERTISE — AKTIV NUTZEN!'];
+
+  // Top skills (rank 2+)
+  const topSkills = Object.entries(skillRanks)
+    .filter(([, rank]) => (rank as number) >= 2)
+    .sort(([, a], [, b]) => (b as number) - (a as number))
+    .slice(0, 5)
+    .map(([key, rank]) => `${SKILL_NAMES_DE[key] || key} (Rang ${rank})`);
+
+  if (topSkills.length > 0) {
+    lines.push('### Stärkste Fertigkeiten — DIESE in Szenen einbauen!');
+    lines.push(topSkills.join(', '));
+    lines.push('ANWEISUNG: Baue Situationen ein, in denen DIESE Fertigkeiten relevant sind. Der Spieler soll seine Stärken SPÜREN.');
+  }
+
+  // Untrained career skills = drama potential
+  const weakCareerSkills = [...careerSkills]
+    .filter(sk => (skillRanks[sk] || 0) === 0)
+    .slice(0, 3)
+    .map(sk => SKILL_NAMES_DE[sk] || sk);
+
+  if (weakCareerSkills.length > 0) {
+    lines.push('### Untrainierte Karriere-Fertigkeiten — DRAMA-POTENZIAL');
+    lines.push(weakCareerSkills.join(', '));
+    lines.push('Diese Fertigkeiten SOLLTE der Charakter beherrschen, tut es aber nicht. Nutze das für Spannung!');
+  }
+
+  // Active talents
+  if (talents.length > 0) {
+    const talentList = talents.slice(0, 5).map((t: any) => {
+      const desc = (t.description || '').slice(0, 80);
+      return `"${t.name}": ${desc}`;
+    });
+    lines.push('### Aktive Talente — NAMENTLICH erwähnen wenn relevant!');
+    lines.push(talentList.join('\n'));
+  }
+
+  // Named weapons for combat
+  const weapons = gear.filter((g: any) => g.type === 'weapon');
+  if (weapons.length > 0) {
+    lines.push('### Waffen — BEIM NAMEN nennen im Kampf!');
+    lines.push(weapons.map((w: any) => w.name).join(', '));
+  }
+
+  if (lines.length <= 1) return '';
+  return lines.join('\n');
+}
+
 // --- Mood feedback ---
 function buildMoodContext(gameState: any): string {
   const mood = gameState.currentMood;
@@ -736,6 +802,7 @@ export function buildSystemPrompt(gameState: any): string {
     buildCombatContext(gameState),
     buildEncounterGuidelines(gameState),
     buildDicePoolHint(gameState),
+    buildCharacterExpertise(gameState),
     buildQuestContext(gameState),
     buildNPCContext(gameState),
     buildNPCGuidance(gameState),

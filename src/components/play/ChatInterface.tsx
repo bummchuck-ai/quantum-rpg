@@ -15,7 +15,24 @@ import { ALL_SKILLS } from '@/lib/skills';
 import { isForceCareer, calculateForceRating } from '@/lib/engine/force-powers';
 import { createInitialCombatState, createPCCombatant, createNPCCombatant, nextRound, type CombatState } from '@/lib/engine/combat';
 import { createNewSession, addQuest, updateQuest, addNPC, updateNPC, flipDestiny, type GameSession, type Quest, type NPC, type SessionStartContext } from '@/lib/engine/game-state';
-import { playDiceRoll, playQuestReceived } from '@/lib/sounds';
+import {
+  playDiceRoll, playQuestReceived,
+  playCombatStart, playCombatVictory, playCombatDefeat,
+  playCriticalHit, playDestinyFlip, playNPCMeet,
+  playForceUse, playSceneChange,
+  playAmbientSpace, playAmbientDanger, playAmbientCantina,
+  stopAmbient, getAmbientType,
+} from '@/lib/sounds';
+
+// Slug helper for species image paths (mirrors SpeciesSelector)
+function slugify(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[áàäâ]/g, 'a').replace(/[éèëê]/g, 'e').replace(/[íìïî]/g, 'i')
+    .replace(/[óòöô]/g, 'o').replace(/[úùüû]/g, 'u').replace(/[ß]/g, 'ss')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+}
 
 // Skill name map (DE/EN → store key + characteristic)
 const SKILL_MAP: Record<string, { key: string; char: string }> = {
@@ -154,6 +171,18 @@ const ChatInterface: React.FC = () => {
   const [showForcePowers, setShowForcePowers] = useState(false);
   const [showDiceRoller, setShowDiceRoller] = useState(false);
   const [activeRollRequest, setActiveRollRequest] = useState<RollRequest | null>(null);
+  const [ambientMuted, setAmbientMuted] = useState(false);
+  const [showSkillsRef, setShowSkillsRef] = useState(false);
+  const [toasts, setToasts] = useState<{ id: string; text: string; type: 'xp' | 'system' | 'combat' | 'heal'; ts: number }[]>([]);
+
+  // Toast auto-dismiss
+  useEffect(() => {
+    if (toasts.length === 0) return;
+    const timer = setTimeout(() => {
+      setToasts(prev => prev.slice(1));
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [toasts]);
 
   // Game state — derive initial scene from character choices (vehicle/base)
   const [session, setSession] = useState<GameSession>(() => {
@@ -190,7 +219,7 @@ const ChatInterface: React.FC = () => {
   const {
     name, species, career, characteristics, credits, ownedGear,
     specializations, backgroundOption, backgroundType, backgroundValue,
-    wounds, strain, ownedTalents, availableXP
+    wounds, strain, ownedTalents, availableXP, selectedSubspecies
   } = activePlayer;
 
   // Derived values
@@ -356,6 +385,8 @@ const ChatInterface: React.FC = () => {
       const sc = data.stateChanges;
       updateStatus(sc.wounds || 0, sc.strain || 0, sc.credits || 0);
 
+      // --- Sound triggers for state changes ---
+
       // Handle quest updates from GM
       if (sc.newQuest) {
         playQuestReceived();
@@ -384,6 +415,7 @@ const ChatInterface: React.FC = () => {
             isAlive: sc.npcUpdate.isAlive ?? existing.isAlive,
           }));
         } else if (sc.npcUpdate.name) {
+          playNPCMeet();
           setSession(prev => addNPC(prev, {
             name: sc.npcUpdate.name,
             disposition: sc.npcUpdate.disposition || 0,
@@ -397,6 +429,7 @@ const ChatInterface: React.FC = () => {
 
       // Handle scene changes
       if (sc.sceneChange) {
+        playSceneChange();
         setSession(prev => ({
           ...prev,
           scene: {
@@ -427,12 +460,19 @@ const ChatInterface: React.FC = () => {
 
       // Handle combat end from GM
       if (sc.combatEnd) {
+        const outcome = sc.combatEnd.outcome?.toLowerCase() || '';
+        if (outcome.includes('sieg') || outcome.includes('victory') || outcome.includes('gewon')) {
+          playCombatVictory();
+        } else {
+          playCombatDefeat();
+        }
         setCombat(prev => ({ ...prev, active: false }));
         setSession(prev => ({ ...prev, combatActive: false, updatedAt: new Date().toISOString() }));
       }
 
       // Handle critical injury from GM
       if (sc.criticalInjury?.name) {
+        playCriticalHit();
         setSession(prev => ({
           ...prev,
           criticalInjuries: [
@@ -463,6 +503,7 @@ const ChatInterface: React.FC = () => {
 
       // Handle destiny flip from GM
       if (sc.destinyFlip?.side) {
+        playDestinyFlip();
         setSession(prev => ({
           ...prev,
           destinyPool: flipDestiny(prev.destinyPool, sc.destinyFlip.side),
@@ -472,6 +513,7 @@ const ChatInterface: React.FC = () => {
 
       // Handle combat start from GM
       if (sc.combatStart) {
+        playCombatStart();
         const newCombat = createInitialCombatState();
         newCombat.active = true;
         newCombat.round = 1;
@@ -488,9 +530,20 @@ const ChatInterface: React.FC = () => {
       }
     }
 
-    // Update mood
+    // Update mood + trigger ambient music
     if (data.mood) {
       setSession(prev => ({ ...prev, scene: { ...prev.scene, mood: data.mood } }));
+      // Ambient music follows mood (only when not muted)
+      if (!ambientMuted) {
+        const m = data.mood.toLowerCase();
+        if (m === 'dangerous' || m === 'tense') {
+          if (getAmbientType() !== 'danger') playAmbientDanger();
+        } else if (m === 'calm' || m === 'mysterious') {
+          if (getAmbientType() !== 'space') playAmbientSpace();
+        } else if (m === 'exciting' || m === 'triumphant') {
+          if (getAmbientType() !== 'cantina') playAmbientCantina();
+        }
+      }
     }
 
     // Track GM messages and trigger summary generation every 10 messages
@@ -499,71 +552,29 @@ const ChatInterface: React.FC = () => {
       generateStorySummary([...messages, { role: 'gm', content: data }]);
     }
 
-    setMessages(prev => {
-      const updated = [...prev, { role: 'gm', content: data }];
+    // Fire toast overlays for state change events
+    if (data.stateChanges?.xpAward?.amount > 0) {
+      const xp = data.stateChanges.xpAward;
+      setToasts(prev => [...prev, { id: `xp-${Date.now()}`, text: `+${xp.amount} EP${xp.reason ? `: ${xp.reason}` : ''}`, type: 'xp', ts: Date.now() }]);
+    }
+    if (data.stateChanges?.criticalInjury?.name) {
+      const ci = data.stateChanges.criticalInjury;
+      setToasts(prev => [...prev, { id: `crit-${Date.now()}`, text: `Kritische Verletzung: ${ci.name}`, type: 'combat', ts: Date.now() }]);
+    }
+    if (data.stateChanges?.destinyFlip?.side) {
+      const df = data.stateChanges.destinyFlip;
+      const label = df.side === 'dark' ? 'Dunkle Seite' : 'Helle Seite';
+      setToasts(prev => [...prev, { id: `df-${Date.now()}`, text: `Schicksalspunkt (${label})${df.reason ? `: ${df.reason}` : ''}`, type: 'system', ts: Date.now() }]);
+    }
+    if (data.stateChanges?.healInjury?.name) {
+      setToasts(prev => [...prev, { id: `heal-${Date.now()}`, text: `Geheilt: ${data.stateChanges.healInjury.name}`, type: 'heal', ts: Date.now() }]);
+    }
+    if (data.stateChanges?.combatEnd) {
+      const outcome = data.stateChanges.combatEnd.outcome || 'beendet';
+      setToasts(prev => [...prev, { id: `cend-${Date.now()}`, text: `Kampf ${outcome}`, type: 'combat', ts: Date.now() }]);
+    }
 
-      // Add XP toast as a system message if XP was awarded
-      if (data.stateChanges?.xpAward?.amount > 0) {
-        const xp = data.stateChanges.xpAward;
-        updated.push({
-          role: 'gm',
-          content: {
-            narrative: `+${xp.amount} EP erhalten${xp.reason ? `: ${xp.reason}` : ''}`,
-            isXPToast: true,
-          },
-        });
-      }
-
-      // Critical injury toast
-      if (data.stateChanges?.criticalInjury?.name) {
-        const ci = data.stateChanges.criticalInjury;
-        updated.push({
-          role: 'gm',
-          content: {
-            narrative: `⚠️ Kritische Verletzung: ${ci.name} (Schwere: ${ci.severity || '?'}) — ${ci.effect || ''}`,
-            isSystemToast: true,
-          },
-        });
-      }
-
-      // Destiny flip toast
-      if (data.stateChanges?.destinyFlip?.side) {
-        const df = data.stateChanges.destinyFlip;
-        const icon = df.side === 'dark' ? '◑' : '◐';
-        updated.push({
-          role: 'gm',
-          content: {
-            narrative: `${icon} Schicksalspunkt (${df.side === 'dark' ? 'Dunkle Seite' : 'Helle Seite'}) verwendet${df.reason ? `: ${df.reason}` : ''}`,
-            isSystemToast: true,
-          },
-        });
-      }
-
-      // Heal injury toast
-      if (data.stateChanges?.healInjury?.name) {
-        updated.push({
-          role: 'gm',
-          content: {
-            narrative: `💚 Verletzung geheilt: ${data.stateChanges.healInjury.name}`,
-            isSystemToast: true,
-          },
-        });
-      }
-
-      // Combat end toast
-      if (data.stateChanges?.combatEnd) {
-        const outcome = data.stateChanges.combatEnd.outcome || 'beendet';
-        updated.push({
-          role: 'gm',
-          content: {
-            narrative: `⚔️ Kampf beendet: ${outcome}`,
-            isSystemToast: true,
-          },
-        });
-      }
-
-      return updated;
-    });
+    setMessages(prev => [...prev, { role: 'gm', content: data }]);
   };
 
   const handleSendMessage = async (text: string) => {
@@ -646,6 +657,7 @@ const ChatInterface: React.FC = () => {
     }
   };
   const handleUsePower = (power: any) => {
+    playForceUse();
     handleSendMessage(`[MACHT] Ich setze die Machtkraft "${power.nameDE}" ein.`);
     setShowForcePowers(false);
   };
@@ -661,6 +673,7 @@ const ChatInterface: React.FC = () => {
 
   // Destiny pool handler
   const handleFlipDestiny = (side: 'light' | 'dark') => {
+    playDestinyFlip();
     setSession(prev => ({ ...prev, destinyPool: flipDestiny(prev.destinyPool, side) }));
     const action = side === 'light' ? 'einen Lichtseiten-Punkt' : 'einen Dunkelseiten-Punkt';
     handleSendMessage(`[SYSTEM] ${name} nutzt ${action}.`);
@@ -709,74 +722,98 @@ const ChatInterface: React.FC = () => {
       {/* {showInventory && (
         <InventoryPanel ownedGear={ownedGear} credits={credits} encumbranceMax={encumbranceMax} onClose={() => setShowInventory(false)} />
       )} */}
-      {/* Character Sheet */}
+      {/* Character Sheet — Slide-up panel */}
       {showCharSheet && (
-        <div className="absolute inset-0 z-[100] bg-black animate-in fade-in zoom-in duration-300 flex flex-col">
-          <header className="p-4 border-b border-zinc-800 flex justify-between items-center bg-zinc-950">
-            <h2 className="text-xl font-black text-white italic tracking-tighter uppercase">{name}_Bogen</h2>
-            <button onClick={() => setShowCharSheet(false)} className="w-11 h-11 border border-zinc-800 flex items-center justify-center text-xl">✕</button>
-          </header>
-          <div className="flex-1 overflow-y-auto p-4 space-y-6">
+        <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm" onClick={() => setShowCharSheet(false)}>
+          <div className="fixed inset-x-0 bottom-0 max-h-[92vh] bg-zinc-950 rounded-t-3xl slide-up-sheet flex flex-col border-t border-zinc-800/60" onClick={(e) => e.stopPropagation()}>
+            {/* Drag handle */}
+            <div className="flex justify-center pt-3 pb-1">
+              <div className="w-12 h-1 bg-zinc-700 rounded-full" />
+            </div>
+            <header className="px-4 pb-3 flex justify-between items-center">
+              <h2 className="text-lg font-black text-white italic tracking-tight uppercase">{name}</h2>
+              <button onClick={() => setShowCharSheet(false)} className="w-9 h-9 border border-zinc-800 rounded-lg flex items-center justify-center text-lg text-zinc-500 active:scale-90">✕</button>
+            </header>
+            <div className="flex-1 overflow-y-auto px-4 pb-8 space-y-5">
             {/* Identity */}
-            <section className="bg-zinc-900/40 border border-zinc-800 p-4 rounded-xl flex items-center gap-4">
-              {activePlayer.species?.image && (
-                <img src={activePlayer.species.image} alt={activePlayer.species.name} className="w-24 h-24 object-cover rounded-lg border border-zinc-700" />
+            <section className="bg-zinc-900/40 border border-zinc-800 p-3.5 rounded-xl flex items-center gap-3.5">
+              {species?.name && (
+                <img
+                  src={selectedSubspecies
+                    ? `/species/${slugify(species.name)}-${slugify(selectedSubspecies)}.jpg`
+                    : `/species/${slugify(species.name)}.jpg`
+                  }
+                  alt={selectedSubspecies || species.name}
+                  className="w-20 h-20 object-cover rounded-xl border border-zinc-700"
+                  onError={(e) => {
+                    const img = e.target as HTMLImageElement;
+                    if (!img.dataset.fallback) {
+                      img.dataset.fallback = '1';
+                      img.src = `/species/${slugify(species.name)}.jpg`;
+                    } else {
+                      img.style.display = 'none';
+                    }
+                  }}
+                />
               )}
-              <div>
-                <div className="text-[8px] text-zinc-600 font-black uppercase mb-2 tracking-[0.2em]">Identität</div>
-                <div className="text-sm font-black text-white italic">{name}</div>
-                <div className="text-[9px] text-zinc-500">{species?.name} • {career?.name} / {specializations?.[0]?.name || '—'}</div>
-                {isForceSensitive && <div className="text-[8px] text-purple-400 font-black mt-1">MACHTSENSITIV • Force Rating: {forceRating}</div>}
+              <div className="min-w-0">
+                <div className="text-sm font-black text-white italic truncate">{name}</div>
+                <div className="text-[10px] text-zinc-500">{species?.name} • {career?.name} / {specializations?.[0]?.name || '—'}</div>
+                {isForceSensitive && <div className="text-[9px] text-purple-400 font-black mt-1">MACHTSENSITIV • FR {forceRating}</div>}
               </div>
             </section>
-            {/* Attributes */}
+            {/* Attributes — D6DB-inspired cards */}
             <section>
-              <div className="text-[8px] text-zinc-600 font-black uppercase mb-3 tracking-[0.2em]">Attribute</div>
+              <div className="text-[9px] text-zinc-600 font-black uppercase mb-2.5 tracking-[0.2em]">Attribute</div>
               <div className="grid grid-cols-3 gap-2">
                 {Object.entries(characteristics).map(([key, val]) => (
-                  <div key={key} className="flex flex-col items-center bg-zinc-900/40 border border-zinc-800 p-2.5 rounded-xl">
-                    <span className="text-xl font-black text-white leading-none mb-1">{val}</span>
-                    <span className="text-[7px] text-zinc-600 uppercase font-black">{key.substring(0, 3)}</span>
+                  <div key={key} className="flex flex-col items-center bg-zinc-900/50 border border-zinc-800 p-3 rounded-xl">
+                    <span className="text-2xl font-black text-white leading-none mb-1">{val}</span>
+                    <span className="text-[9px] text-zinc-500 uppercase font-black tracking-wide">{
+                      key === 'brawn' ? 'Stärke' : key === 'agility' ? 'Geschick' : key === 'intellect' ? 'Intellekt' :
+                      key === 'cunning' ? 'List' : key === 'willpower' ? 'Willenskr.' : key === 'presence' ? 'Präsenz' : key.substring(0, 5)
+                    }</span>
                   </div>
                 ))}
               </div>
             </section>
             {/* Derived Stats */}
             <section className="grid grid-cols-4 gap-2">
-              <div className="bg-zinc-900/40 border border-zinc-800 p-3 rounded-xl text-center">
-                <div className="text-[6px] text-zinc-600 font-black uppercase tracking-widest">Soak</div>
-                <div className="text-lg font-black text-white">{soak}</div>
+              <div className="bg-zinc-900/50 border border-zinc-800 p-2.5 rounded-xl text-center">
+                <div className="text-[7px] text-zinc-600 font-black uppercase tracking-widest">Soak</div>
+                <div className="text-xl font-black text-white">{soak}</div>
               </div>
-              <div className="bg-zinc-900/40 border border-zinc-800 p-3 rounded-xl text-center">
-                <div className="text-[6px] text-zinc-600 font-black uppercase tracking-widest">DEF</div>
-                <div className="text-lg font-black text-white">{defense}</div>
+              <div className="bg-zinc-900/50 border border-zinc-800 p-2.5 rounded-xl text-center">
+                <div className="text-[7px] text-zinc-600 font-black uppercase tracking-widest">DEF</div>
+                <div className="text-xl font-black text-white">{defense}</div>
               </div>
-              <div className="bg-red-500/5 border border-red-500/20 p-3 rounded-xl text-center">
-                <div className="text-[6px] text-red-500/50 font-black uppercase tracking-widest">Wounds</div>
-                <div className="text-lg font-black text-red-500">{wounds}/{woundThreshold}</div>
+              <div className="bg-red-500/5 border border-red-500/20 p-2.5 rounded-xl text-center">
+                <div className="text-[7px] text-red-500/60 font-black uppercase tracking-widest">Wunden</div>
+                <div className="text-xl font-black text-red-500">{wounds}/{woundThreshold}</div>
               </div>
-              <div className="bg-blue-500/5 border border-blue-500/20 p-3 rounded-xl text-center">
-                <div className="text-[6px] text-blue-500/50 font-black uppercase tracking-widest">Strain</div>
-                <div className="text-lg font-black text-blue-400">{strain}/{strainThreshold}</div>
+              <div className="bg-blue-500/5 border border-blue-500/20 p-2.5 rounded-xl text-center">
+                <div className="text-[7px] text-blue-500/60 font-black uppercase tracking-widest">Stress</div>
+                <div className="text-xl font-black text-blue-400">{strain}/{strainThreshold}</div>
               </div>
             </section>
-            {/* Skills */}
+            {/* Skills — show trained first */}
             <section>
-              <div className="text-[8px] text-zinc-600 font-black uppercase mb-3 tracking-[0.2em]">Fertigkeiten</div>
-              <div className="space-y-1">
-                {ALL_SKILLS.map(skill => {
+              <div className="text-[9px] text-zinc-600 font-black uppercase mb-2.5 tracking-[0.2em]">Fertigkeiten</div>
+              <div className="space-y-0.5">
+                {[...ALL_SKILLS].sort((a, b) => ((activePlayer.skillRanks || {})[b.key] || 0) - ((activePlayer.skillRanks || {})[a.key] || 0)).map(skill => {
                   const skillRank = (activePlayer.skillRanks || {})[skill.key] || 0;
                   const charVal = (characteristics as any)[skill.characteristic] || 2;
+                  if (skillRank === 0) return null; // Hide untrained by default in sheet
                   return (
-                    <div key={skill.key} className={`flex justify-between items-center py-1 border-b border-zinc-900 last:border-0 ${skillRank === 0 ? 'opacity-30' : ''}`}>
-                      <span className={`text-[9px] font-bold uppercase tracking-tight ${skillRank > 0 ? 'text-zinc-300' : 'text-zinc-500'}`}>{skill.nameDE}</span>
+                    <div key={skill.key} className="flex justify-between items-center py-1.5 border-b border-zinc-900/50 last:border-0">
+                      <span className="text-[10px] font-bold uppercase tracking-tight text-zinc-300">{skill.nameDE}</span>
                       <div className="flex items-center gap-2">
                         <div className="flex gap-0.5">
                           {[1, 2, 3, 4, 5].map(p => (
-                            <div key={p} className={`w-2 h-2 rounded-full ${p <= skillRank ? 'bg-emerald-500 shadow-[0_0_4px_rgba(16,185,129,0.4)]' : 'bg-zinc-800'}`} />
+                            <div key={p} className={`w-2.5 h-2.5 rounded-full ${p <= skillRank ? 'bg-emerald-500 shadow-[0_0_4px_rgba(16,185,129,0.4)]' : 'bg-zinc-800'}`} />
                           ))}
                         </div>
-                        <span className="text-[7px] text-zinc-700 font-black w-8 text-right">{charVal}+{skillRank}</span>
+                        <span className="text-[9px] text-zinc-600 font-black w-8 text-right tabular-nums">{charVal}+{skillRank}</span>
                       </div>
                     </div>
                   );
@@ -785,17 +822,19 @@ const ChatInterface: React.FC = () => {
             </section>
             {/* Integrated Inventory */}
             <section>
-              <div className="text-[8px] text-zinc-600 font-black uppercase mb-3 tracking-[0.2em]">Inventar ({ownedGear.length}/{encumbranceMax})</div>
+              <div className="text-[9px] text-zinc-600 font-black uppercase mb-2.5 tracking-[0.2em]">Inventar ({ownedGear.length}/{encumbranceMax})</div>
               <div className="space-y-1.5">
                 {ownedGear.length > 0 ? ownedGear.map((g: any, i: number) => (
-                  <div key={i} className="p-2 border border-zinc-800 bg-zinc-950 rounded-lg flex justify-between items-center">
-                    <span className="text-[9px] font-black text-white uppercase italic">{g.name}</span>
-                    <span className="text-[7px] text-amber-500 font-black italic">{g.damage ? `DMG_${g.damage}` : g.soak ? `SOAK_${g.soak}` : 'ITEM'}</span>
+                  <div key={i} className="p-2.5 border border-zinc-800 bg-zinc-900/40 rounded-xl flex justify-between items-center">
+                    <span className="text-[10px] font-black text-white uppercase italic">{g.name}</span>
+                    <span className="text-[8px] text-amber-500 font-black">{g.damage ? `DMG ${g.damage}` : g.soak ? `SOAK ${g.soak}` : 'ITEM'}</span>
                   </div>
-                )) : <div className="text-[9px] text-zinc-800 italic uppercase">Keine Ausrüstung...</div>}
+                )) : <div className="text-[10px] text-zinc-700 italic">Keine Ausrüstung...</div>}
               </div>
-              <div className="text-[8px] text-zinc-600 font-black uppercase mt-3 tracking-[0.2em]">Credits</div>
-              <div className="text-xs font-black text-white italic">{credits} Cr</div>
+              <div className="flex items-center gap-2 mt-3">
+                <span className="text-[9px] text-zinc-600 font-black uppercase tracking-[0.2em]">Credits</span>
+                <span className="text-sm font-black text-amber-500">{credits} Cr</span>
+              </div>
             </section>
             {/* Vehicles / Base */}
             {activePlayer.vehicles && activePlayer.vehicles.length > 0 && (
@@ -820,70 +859,167 @@ const ChatInterface: React.FC = () => {
                 ))}
               </section>
             )}
+            </div>
           </div>
         </div>
       )}
 
-      {/* Header HUD */}
-      <header className="bg-zinc-950/80 border-b border-zinc-800 backdrop-blur-md z-20 shadow-2xl">
-        <div className="p-3 flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <button onClick={() => setShowCharSheet(true)} className="w-11 h-11 border border-amber-500/50 rounded bg-amber-500/5 flex items-center justify-center active:scale-90">
-              <span className="text-amber-500 font-black italic text-lg">{name?.charAt(0) || 'Q'}</span>
+      {/* Header HUD — Compact 3-row layout */}
+      <header className="bg-zinc-950/90 border-b border-zinc-800/60 backdrop-blur-xl z-20 shadow-2xl">
+        {/* Row 1: Avatar + Name + W/S bars + Save */}
+        <div className="px-3 pt-2.5 pb-1.5 flex justify-between items-center">
+          <div className="flex items-center gap-2.5">
+            <button onClick={() => setShowCharSheet(true)} className="w-10 h-10 border border-amber-500/40 rounded-lg bg-amber-500/5 flex items-center justify-center active:scale-90 transition-transform overflow-hidden">
+              {species?.name ? (
+                <img
+                  src={selectedSubspecies
+                    ? `/species/${slugify(species.name)}-${slugify(selectedSubspecies)}.jpg`
+                    : `/species/${slugify(species.name)}.jpg`
+                  }
+                  alt={species.name}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    const img = e.target as HTMLImageElement;
+                    if (!img.dataset.fallback) {
+                      img.dataset.fallback = '1';
+                      img.src = `/species/${slugify(species.name)}.jpg`;
+                    } else {
+                      img.style.display = 'none';
+                      // Show fallback initial
+                      const span = document.createElement('span');
+                      span.className = 'text-amber-500 font-black italic text-base';
+                      span.textContent = name?.charAt(0) || 'Q';
+                      img.parentElement?.appendChild(span);
+                    }
+                  }}
+                />
+              ) : (
+                <span className="text-amber-500 font-black italic text-base">{name?.charAt(0) || 'Q'}</span>
+              )}
             </button>
-            <div>
-              <h1 className="text-xs font-black text-white italic tracking-tighter truncate max-w-[100px]">{name || 'PILOT_UNKNOWN'}</h1>
-              <div className="text-[7px] text-zinc-500 tracking-[0.15em] uppercase">{credits} Cr • {session.scene.planet}</div>
+            <div className="min-w-0">
+              <h1 className="text-sm font-black text-white italic tracking-tight truncate max-w-[120px] leading-tight">{name || 'PILOT_UNKNOWN'}</h1>
+              <div className="text-[8px] text-zinc-500 tracking-wide">{species?.name} • {career?.name}</div>
             </div>
           </div>
-          <div className="flex gap-3 items-center">
-            {/* Wound/Strain mini bars */}
+          <div className="flex gap-2.5 items-center">
+            {/* Wound/Strain compact bars */}
             <div className="flex flex-col gap-1 items-end">
-              <div className="flex items-center gap-1.5">
-                <span className="text-[7px] text-red-500/50 font-black">W</span>
-                <div className="w-16 h-1.5 bg-zinc-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-red-500 transition-all" style={{ width: `${Math.max(0, Math.min(100, (wounds / Math.max(1, woundThreshold)) * 100))}%` }} />
+              <div className="flex items-center gap-1">
+                <span className="text-[8px] text-red-500/60 font-black">W</span>
+                <div className="w-14 h-2 bg-zinc-800/80 rounded-full overflow-hidden">
+                  <div className="h-full bg-red-500 transition-all rounded-full" style={{ width: `${Math.max(0, Math.min(100, (wounds / Math.max(1, woundThreshold)) * 100))}%` }} />
                 </div>
-                <span className="text-[7px] text-red-500 font-black w-8">{wounds}/{woundThreshold}</span>
+                <span className="text-[8px] text-red-500 font-black w-7 text-right tabular-nums">{wounds}/{woundThreshold}</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <span className="text-[7px] text-blue-500/50 font-black">S</span>
-                <div className="w-16 h-1.5 bg-zinc-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-blue-500 transition-all" style={{ width: `${Math.max(0, Math.min(100, (strain / Math.max(1, strainThreshold)) * 100))}%` }} />
+              <div className="flex items-center gap-1">
+                <span className="text-[8px] text-blue-500/60 font-black">S</span>
+                <div className="w-14 h-2 bg-zinc-800/80 rounded-full overflow-hidden">
+                  <div className="h-full bg-blue-500 transition-all rounded-full" style={{ width: `${Math.max(0, Math.min(100, (strain / Math.max(1, strainThreshold)) * 100))}%` }} />
                 </div>
-                <span className="text-[7px] text-blue-400 font-black w-8">{strain}/{strainThreshold}</span>
+                <span className="text-[8px] text-blue-400 font-black w-7 text-right tabular-nums">{strain}/{strainThreshold}</span>
               </div>
             </div>
-            <button onClick={() => setShowSaveLoad(true)} className="w-11 h-11 border border-zinc-800 rounded bg-zinc-900 flex items-center justify-center active:scale-90 text-sm">
+            <button onClick={() => setShowSaveLoad(true)} className="w-9 h-9 border border-zinc-800 rounded-lg bg-zinc-900/80 flex items-center justify-center active:scale-90 text-sm transition-transform">
               💾
             </button>
           </div>
         </div>
 
-        {/* Quick-access toolbar */}
-        <div className="px-3 pb-2 flex gap-1.5 overflow-x-auto no-scrollbar">
-          {/* Removed Inventar Button */}
-          {/* <button onClick={() => setShowInventory(true)} className="text-[8px] font-black uppercase tracking-wider bg-zinc-900 border border-zinc-800 px-3 py-1.5 rounded-lg text-zinc-400 hover:text-white hover:border-zinc-600 whitespace-nowrap">
-            Inventar
-          </button> */}
-          <button onClick={() => setShowQuestLog(true)} className="text-[8px] font-black uppercase tracking-wider bg-zinc-900 border border-zinc-800 px-3 py-1.5 rounded-lg text-zinc-400 hover:text-white hover:border-zinc-600 whitespace-nowrap">
-            Missionen{session.quests.filter(q => q.status === 'active').length > 0 ? ` (${session.quests.filter(q => q.status === 'active').length})` : ''}
+        {/* Row 2: Scene location with mood-colored left border */}
+        <div className={`mx-3 mb-1.5 px-2.5 py-1 rounded-lg bg-zinc-900/40 border-l-2 ${
+          session.scene.mood === 'dangerous' || session.scene.mood === 'tense' ? 'border-red-500/60' :
+          session.scene.mood === 'calm' ? 'border-cyan-500/60' :
+          session.scene.mood === 'mysterious' ? 'border-purple-500/60' :
+          session.scene.mood === 'exciting' || session.scene.mood === 'triumphant' ? 'border-amber-500/60' :
+          'border-zinc-700/60'
+        }`}>
+          <div className="flex items-center gap-1.5 text-[9px]">
+            <span className="text-zinc-600">🌍</span>
+            <span className="text-zinc-400 font-bold">{session.scene.planet}</span>
+            <span className="text-zinc-700">›</span>
+            <span className={`font-bold ${moodColors[session.scene.mood] || 'text-zinc-400'}`}>{session.scene.location || '...'}</span>
+            {session.scene.timeOfDay && (<>
+              <span className="text-zinc-700">•</span>
+              <span className="text-zinc-500">{session.scene.timeOfDay === 'morgen' || session.scene.timeOfDay === 'morning' ? '☀' : session.scene.timeOfDay === 'nacht' || session.scene.timeOfDay === 'night' ? '🌙' : '🌤'} {session.scene.timeOfDay}</span>
+            </>)}
+          </div>
+        </div>
+
+        {/* Row 3: Quick-access toolbar with icon buttons */}
+        <div className="px-3 pb-2 flex gap-1.5 overflow-x-auto no-scrollbar items-center">
+          <button onClick={() => setShowQuestLog(true)} className="text-[9px] font-black uppercase tracking-wider bg-zinc-900/80 border border-zinc-800 px-2.5 py-1.5 rounded-lg text-zinc-400 hover:text-white hover:border-zinc-600 whitespace-nowrap active:scale-95 transition-all flex items-center gap-1">
+            <span className="text-xs">📋</span>{session.quests.filter(q => q.status === 'active').length > 0 && <span className="text-amber-500">{session.quests.filter(q => q.status === 'active').length}</span>}
           </button>
           {isForceSensitive && (
-            <button onClick={() => setShowForcePowers(true)} className="text-[8px] font-black uppercase tracking-wider bg-purple-500/10 border border-purple-500/30 px-3 py-1.5 rounded-lg text-purple-400 hover:text-purple-300 hover:border-purple-500/50 whitespace-nowrap">
-              Macht (FR{forceRating})
+            <button onClick={() => setShowForcePowers(true)} className="text-[9px] font-black uppercase tracking-wider bg-purple-500/10 border border-purple-500/30 px-2.5 py-1.5 rounded-lg text-purple-400 hover:text-purple-300 hover:border-purple-500/50 whitespace-nowrap active:scale-95 transition-all flex items-center gap-1">
+              <span className="text-xs">⚡</span>FR{forceRating}
             </button>
           )}
           {/* Destiny Pool */}
+          <button onClick={() => handleFlipDestiny('light')} className="flex items-center gap-0.5 text-[9px] font-black bg-zinc-900/80 border border-zinc-800 px-2 py-1.5 rounded-lg text-cyan-400 hover:border-cyan-500/50 active:scale-95 transition-all" title="Lichtseiten-Punkt nutzen">
+            ◐<span className="tabular-nums">{session.destinyPool.lightSide}</span>
+          </button>
+          <button onClick={() => handleFlipDestiny('dark')} className="flex items-center gap-0.5 text-[9px] font-black bg-zinc-900/80 border border-zinc-800 px-2 py-1.5 rounded-lg text-red-400 hover:border-red-500/50 active:scale-95 transition-all" title="Dunkelseiten-Punkt nutzen">
+            ◑<span className="tabular-nums">{session.destinyPool.darkSide}</span>
+          </button>
           <div className="flex items-center gap-1 ml-auto">
-            <button onClick={() => handleFlipDestiny('light')} className="flex items-center gap-1 text-[8px] font-black bg-zinc-900 border border-zinc-800 px-2 py-1.5 rounded-lg text-cyan-400 hover:border-cyan-500/50" title="Lichtseiten-Punkt nutzen">
-              <span className="text-xs">⚪</span>{session.destinyPool.lightSide}
+            {/* Ambient music toggle */}
+            <button
+              onClick={() => {
+                if (ambientMuted) {
+                  setAmbientMuted(false);
+                  const m = session.scene.mood?.toLowerCase() || '';
+                  if (m === 'dangerous' || m === 'tense') playAmbientDanger();
+                  else if (m === 'calm' || m === 'mysterious') playAmbientSpace();
+                  else if (m === 'exciting' || m === 'triumphant') playAmbientCantina();
+                } else {
+                  setAmbientMuted(true);
+                  stopAmbient();
+                }
+              }}
+              className={`text-[9px] font-black bg-zinc-900/80 border px-2 py-1.5 rounded-lg active:scale-90 transition-all ${ambientMuted ? 'border-zinc-800 text-zinc-600' : 'border-amber-500/30 text-amber-400'}`}
+              title={ambientMuted ? 'Musik an' : 'Musik aus'}
+            >
+              {ambientMuted ? '🔇' : '♪'}
             </button>
-            <button onClick={() => handleFlipDestiny('dark')} className="flex items-center gap-1 text-[8px] font-black bg-zinc-900 border border-zinc-800 px-2 py-1.5 rounded-lg text-red-400 hover:border-red-500/50" title="Dunkelseiten-Punkt nutzen">
-              <span className="text-xs">⚫</span>{session.destinyPool.darkSide}
+            {/* Dice roller shortcut */}
+            <button onClick={() => { setActiveRollRequest({ skill: 'perception', difficulty: 'average', reason: 'Freier Wurf' }); setShowDiceRoller(true); }} className="text-[9px] font-black bg-zinc-900/80 border border-zinc-800 px-2 py-1.5 rounded-lg text-amber-500/70 hover:text-amber-400 active:scale-90 transition-all" title="Freier Wurf">
+              🎲
+            </button>
+            {/* Skills quick reference */}
+            <button
+              onClick={() => setShowSkillsRef(prev => !prev)}
+              className={`text-[9px] font-black bg-zinc-900/80 border px-2 py-1.5 rounded-lg active:scale-90 transition-all ${showSkillsRef ? 'border-amber-500/40 text-amber-400' : 'border-zinc-800 text-zinc-500 hover:text-zinc-300'}`}
+              title="Skills Referenz"
+            >
+              📊
             </button>
           </div>
         </div>
+
+        {/* Skills Quick Reference dropdown */}
+        {showSkillsRef && (
+          <div className="px-3 pb-2 max-h-[40vh] overflow-y-auto">
+            <div className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-2.5">
+              <div className="grid grid-cols-2 gap-x-4 gap-y-0.5">
+                {ALL_SKILLS.filter(s => ((activePlayer.skillRanks || {})[s.key] || 0) > 0).map(s => {
+                  const rank = (activePlayer.skillRanks || {})[s.key] || 0;
+                  const charVal = (characteristics as any)[s.characteristic] || 2;
+                  return (
+                    <div key={s.key} className="flex justify-between items-center py-0.5">
+                      <span className="text-[9px] font-bold text-zinc-300 uppercase truncate">{s.nameDE}</span>
+                      <span className="text-[9px] font-black text-amber-500/80 tabular-nums ml-1">{charVal}+{rank}</span>
+                    </div>
+                  );
+                })}
+              </div>
+              {ALL_SKILLS.filter(s => ((activePlayer.skillRanks || {})[s.key] || 0) > 0).length === 0 && (
+                <div className="text-[9px] text-zinc-600 italic text-center py-2">Keine trainierten Fertigkeiten</div>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* Multi-player bar */}
         {players.length > 1 && (
@@ -892,7 +1028,7 @@ const ChatInterface: React.FC = () => {
               <div key={p.id} onClick={() => setActivePlayer(idx)} className={`min-w-[90px] p-1.5 border rounded-lg flex items-center gap-2 cursor-pointer transition-all ${activePlayerIndex === idx ? 'border-amber-500 bg-amber-500/10' : 'border-zinc-900 bg-black/40 opacity-40'}`}>
                 <div className="w-5 h-5 rounded bg-zinc-800 flex items-center justify-center text-[9px] font-black">{p.name?.charAt(0) || idx + 1}</div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-[7px] font-black uppercase truncate text-white">{p.name || 'PILOT'}</div>
+                  <div className="text-[8px] font-black uppercase truncate text-white">{p.name || 'PILOT'}</div>
                   <div className="h-0.5 w-full bg-zinc-800 mt-0.5 rounded-full overflow-hidden">
                     <div className="h-full bg-red-500" style={{ width: `${Math.max(0, 100 - (p.wounds / ((p.species?.woundThresholdBase || 10) + p.characteristics.brawn)) * 100)}%` }} />
                   </div>
@@ -904,97 +1040,98 @@ const ChatInterface: React.FC = () => {
       </header>
 
       {/* Chat area */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-6 pb-44">
+      <div className="flex-1 overflow-y-auto p-4 space-y-5 pb-44">
         {/* Combat tracker */}
         {combat.active && (
           <CombatTracker combat={combat} onEndCombat={handleEndCombat} onNextRound={handleNextRound} />
         )}
 
-        {/* Scene indicator */}
-        {session.scene.location && (
-          <div className="text-center py-2">
-            <div className="text-[7px] text-zinc-700 font-black uppercase tracking-[0.3em]">{session.scene.planet}</div>
-            <div className={`text-[9px] font-black uppercase tracking-wider ${moodColors[session.scene.mood] || 'text-zinc-500'}`}>{session.scene.location}</div>
-          </div>
-        )}
-
         {messages.map((msg, i) => (
           <div key={i} className={`flex ${msg.role === 'player' ? 'justify-end' : 'justify-start'} animate-in fade-in slide-in-from-bottom-2 duration-500`}>
-            <div className={`max-w-[92%] ${msg.role === 'player' ? 'bg-zinc-900 border border-zinc-800 p-3 rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl shadow-xl' : 'space-y-3'}`}>
+            <div className={`max-w-[92%] ${msg.role === 'player' ? 'bg-zinc-900/80 border border-zinc-800 p-3.5 rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl shadow-xl' : 'space-y-3'}`}>
               {msg.role === 'gm' ? (
                 <div className="space-y-4">
-                  {msg.content.isXPToast ? (
-                    <div className="bg-emerald-500/10 border border-emerald-500/40 px-4 py-2 rounded-xl text-center animate-in fade-in zoom-in duration-500">
-                      <span className="text-sm font-black text-emerald-400 uppercase tracking-wider">{msg.content.narrative}</span>
-                    </div>
-                  ) : msg.content.isSystemToast ? (
-                    <div className="bg-amber-500/10 border border-amber-500/30 px-4 py-2 rounded-xl text-center animate-in fade-in zoom-in duration-500">
-                      <span className="text-xs font-black text-amber-400 uppercase tracking-wider">{msg.content.narrative}</span>
-                    </div>
-                  ) : (<>
-                  {msg.content.error && <div className="bg-red-500/10 border border-red-500/50 p-3 rounded-xl text-xs font-mono text-red-200">{msg.content.error}</div>}
-                  {msg.content.narrative && <p className="text-base md:text-lg leading-relaxed text-zinc-300 font-sans italic">{msg.content.narrative}</p>}
+                  {msg.content.error && <div className="bg-red-500/10 border border-red-500/50 p-3 rounded-xl text-sm font-mono text-red-200">{msg.content.error}</div>}
+                  {msg.content.narrative && <p className="text-[15px] leading-[1.7] text-zinc-300 font-sans italic">{msg.content.narrative}</p>}
                   {Array.isArray(msg.content.npcDialogue) && msg.content.npcDialogue.length > 0 && (
-                    <div className="space-y-2 border-l-2 border-amber-500/30 pl-4 bg-amber-500/[0.02] py-2">
+                    <div className="space-y-2.5 border-l-2 border-amber-500/30 pl-4 bg-amber-500/[0.02] py-2 rounded-r-lg">
                       {msg.content.npcDialogue.map((d: any, idx: number) => (
                         <div key={idx}>
-                          <span className="text-[8px] font-black text-amber-500 uppercase tracking-[0.2em]">{d.name}</span>
-                          <p className="text-xs text-zinc-400 mt-0.5 italic font-sans leading-relaxed">&ldquo;{d.text}&rdquo;</p>
+                          <span className="text-[10px] font-black text-amber-500 uppercase tracking-[0.15em]">{d.name}</span>
+                          <p className="text-sm text-zinc-400 mt-0.5 italic font-sans leading-relaxed">&ldquo;{d.text}&rdquo;</p>
                         </div>
                       ))}
                     </div>
                   )}
                   {msg.content.requiresRoll && msg.content.rollInfo && (
-                    <div className="bg-amber-500/5 border border-amber-500/30 p-3 rounded-xl flex items-center justify-between">
-                      <div className="flex-1">
-                        <div className="text-[8px] text-amber-500 font-black uppercase tracking-widest mb-0.5">Incoming_Challenge</div>
-                        <div className="text-xs font-black text-white uppercase italic">{msg.content.rollInfo.skill} <span className="text-zinc-500">//</span> {msg.content.rollInfo.difficulty}</div>
-                        {msg.content.rollInfo.reason && <div className="text-[8px] text-zinc-600 mt-0.5">{msg.content.rollInfo.reason}</div>}
+                    <div className="bg-amber-500/5 border border-amber-500/30 p-3.5 rounded-xl flex items-center justify-between gap-3">
+                      <div className="flex-1 min-w-0">
+                        <div className="text-[9px] text-amber-500 font-black uppercase tracking-widest mb-0.5">Probe</div>
+                        <div className="text-sm font-black text-white uppercase italic truncate">{msg.content.rollInfo.skill} <span className="text-zinc-600">//</span> {msg.content.rollInfo.difficulty}</div>
+                        {msg.content.rollInfo.reason && <div className="text-[9px] text-zinc-500 mt-0.5 truncate">{msg.content.rollInfo.reason}</div>}
                       </div>
-                      <button onClick={() => initiateRoll(msg.content.rollInfo.skill, msg.content.rollInfo.difficulty, msg.content.rollInfo.reason, msg.content.rollInfo.boost, msg.content.rollInfo.setback)} className="bg-amber-600 hover:bg-amber-500 text-black font-black px-4 py-2.5 rounded-lg text-xs uppercase tracking-widest animate-pulse">
+                      <button onClick={() => initiateRoll(msg.content.rollInfo.skill, msg.content.rollInfo.difficulty, msg.content.rollInfo.reason, msg.content.rollInfo.boost, msg.content.rollInfo.setback)} className="bg-amber-600 hover:bg-amber-500 text-black font-black px-5 py-2.5 rounded-xl text-xs uppercase tracking-widest animate-pulse shrink-0">
                         Würfeln
                       </button>
                     </div>
                   )}
-                  <div className="grid grid-cols-1 gap-1.5 pt-2">
+                  <div className="grid grid-cols-1 gap-1.5 pt-1">
                     {msg.content.options?.map((opt: any) => (
-                      <button key={opt.id} onClick={() => handleSendMessage(opt.text)} className="bg-zinc-900/50 border border-zinc-800 hover:border-amber-500/50 p-3 rounded-xl text-left transition-all active:scale-95">
-                        <div className="flex items-center gap-2">
-                          <span className="text-[9px] text-amber-500 font-black opacity-40 border border-amber-500/20 w-5 h-5 flex items-center justify-center rounded uppercase italic">{opt.id}</span>
-                          <span className="text-[9px] text-zinc-400 font-black uppercase">{opt.text}</span>
+                      <button key={opt.id} onClick={() => handleSendMessage(opt.text)} className="bg-zinc-900/50 border border-zinc-800 hover:border-amber-500/50 p-3.5 rounded-xl text-left transition-all active:scale-[0.98]">
+                        <div className="flex items-center gap-2.5">
+                          <span className="text-[9px] text-amber-500 font-black opacity-50 border border-amber-500/20 w-5 h-5 flex items-center justify-center rounded shrink-0">{opt.id}</span>
+                          <span className="text-[11px] text-zinc-400 font-bold leading-snug">{opt.text}</span>
                         </div>
                       </button>
                     ))}
                   </div>
-                </>)}
                 </div>
               ) : (
-                <p className="text-xs text-white font-black italic uppercase tracking-tight">{msg.content.narrative}</p>
+                <p className="text-sm text-white font-bold italic">{msg.content.narrative}</p>
               )}
             </div>
           </div>
         ))}
         {isTyping && (
           <div className="flex justify-start animate-pulse">
-            <div className="bg-zinc-900/20 text-[8px] text-amber-500 font-black uppercase tracking-[0.5em] p-2 border border-amber-500/10 rounded">GM_Thinking...</div>
+            <div className="bg-zinc-900/30 text-[9px] text-amber-500 font-black uppercase tracking-[0.3em] px-3 py-2 border border-amber-500/10 rounded-lg">GM denkt...</div>
           </div>
         )}
         <div ref={chatEndRef} />
       </div>
 
+      {/* Toast overlay — fixed above input bar */}
+      {toasts.length > 0 && (
+        <div className="fixed bottom-[calc(7.5rem+env(safe-area-inset-bottom))] left-0 right-0 z-40 flex flex-col items-center gap-2 px-4 pointer-events-none">
+          {toasts.map((t) => {
+            const colors = {
+              xp: 'bg-emerald-500/15 border-emerald-500/40 text-emerald-400',
+              system: 'bg-amber-500/15 border-amber-500/40 text-amber-400',
+              combat: 'bg-red-500/15 border-red-500/40 text-red-400',
+              heal: 'bg-green-500/15 border-green-500/40 text-green-400',
+            };
+            return (
+              <div key={t.id} className={`toast-up px-5 py-2 rounded-xl border backdrop-blur-md ${colors[t.type]} shadow-lg`}>
+                <span className="text-xs font-black uppercase tracking-wider">{t.text}</span>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
       {/* Input bar — sits above the bottom tab nav (h-16 + safe-area) */}
-      <div className="fixed bottom-[calc(4rem+env(safe-area-inset-bottom))] left-0 right-0 p-4 bg-gradient-to-t from-black via-black to-transparent z-30">
+      <div className="fixed bottom-[calc(4rem+env(safe-area-inset-bottom))] left-0 right-0 p-3 bg-gradient-to-t from-black via-black/95 to-transparent z-30">
         <div className="max-w-2xl mx-auto flex gap-2">
           <div className="flex-1 relative">
             <input
-              className="w-full bg-zinc-950 border border-zinc-800 p-4 rounded-2xl text-xs outline-none focus:border-amber-500 text-white placeholder:text-zinc-800 shadow-2xl font-mono"
-              placeholder="EINGABE_KOMMANDO..."
+              className="w-full bg-zinc-950 border border-zinc-800 px-4 py-3.5 rounded-2xl text-sm outline-none focus:border-amber-500/60 text-white placeholder:text-zinc-700 shadow-2xl font-mono transition-colors"
+              placeholder="Eingabe..."
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && handleSendMessage(inputValue)}
+              onKeyDown={(e) => { if (e.key === 'Enter') { handleSendMessage(inputValue); setShowSkillsRef(false); } }}
             />
           </div>
-          <button onClick={() => handleSendMessage(inputValue)} className="bg-amber-600 hover:bg-amber-500 text-black px-6 rounded-2xl transition-all active:scale-90 font-black text-sm">
+          <button onClick={() => { handleSendMessage(inputValue); setShowSkillsRef(false); }} className="bg-amber-600 hover:bg-amber-500 text-black px-7 rounded-2xl transition-all active:scale-90 font-black text-base">
             GO
           </button>
         </div>
