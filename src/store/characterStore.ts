@@ -478,6 +478,14 @@ export const useCharacterStore = create<GameState>()(
       importState: (json) => {
         try {
           const state = JSON.parse(json);
+          // Basic validation
+          if (!state.players || !Array.isArray(state.players) || state.players.length === 0) {
+            console.error("Invalid save: missing players array");
+            return;
+          }
+          if (state.activePlayerIndex >= state.players.length) {
+            state.activePlayerIndex = 0;
+          }
           set({ ...state });
         } catch (e) {
           console.error("Savegame corrupted", e);

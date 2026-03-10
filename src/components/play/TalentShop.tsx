@@ -32,10 +32,10 @@ const TalentShop = () => {
     if (!activePlayer?.specializations?.length) return;
     const specName = activePlayer.specializations[0].name.toLowerCase();
     const tree = allTrees.find(t => t.specialization.toLowerCase() === specName)
-      || allTrees.find(t =>
-        t.specialization.toLowerCase().includes(specName) ||
-        specName.includes(t.specialization.toLowerCase())
-      );
+      || allTrees.find(t => {
+        const tSpec = t.specialization.toLowerCase();
+        return tSpec.startsWith(specName) || specName.startsWith(tSpec);
+      });
     if (tree) setCurrentTree(tree);
   }, [activePlayer?.specializations, allTrees]);
 

@@ -490,7 +490,7 @@ const ChatInterface: React.FC = () => {
         <div className="absolute inset-0 z-[100] bg-black animate-in fade-in zoom-in duration-300 flex flex-col">
           <header className="p-4 border-b border-zinc-800 flex justify-between items-center bg-zinc-950">
             <h2 className="text-xl font-black text-white italic tracking-tighter uppercase">{name}_Bogen</h2>
-            <button onClick={() => setShowCharSheet(false)} className="w-10 h-10 border border-zinc-800 flex items-center justify-center text-xl">✕</button>
+            <button onClick={() => setShowCharSheet(false)} className="w-11 h-11 border border-zinc-800 flex items-center justify-center text-xl">✕</button>
           </header>
           <div className="flex-1 overflow-y-auto p-4 space-y-6">
             {/* Identity */}
@@ -593,7 +593,7 @@ const ChatInterface: React.FC = () => {
       <header className="bg-zinc-950/80 border-b border-zinc-800 backdrop-blur-md z-20 shadow-2xl">
         <div className="p-3 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <button onClick={() => setShowCharSheet(true)} className="w-9 h-9 border border-amber-500/50 rounded bg-amber-500/5 flex items-center justify-center active:scale-90">
+            <button onClick={() => setShowCharSheet(true)} className="w-11 h-11 border border-amber-500/50 rounded bg-amber-500/5 flex items-center justify-center active:scale-90">
               <span className="text-amber-500 font-black italic text-lg">{name?.charAt(0) || 'Q'}</span>
             </button>
             <div>
@@ -619,7 +619,7 @@ const ChatInterface: React.FC = () => {
                 <span className="text-[7px] text-blue-400 font-black w-8">{strain}/{strainThreshold}</span>
               </div>
             </div>
-            <button onClick={() => setShowSaveLoad(true)} className="w-9 h-9 border border-zinc-800 rounded bg-zinc-900 flex items-center justify-center active:scale-90 text-sm">
+            <button onClick={() => setShowSaveLoad(true)} className="w-11 h-11 border border-zinc-800 rounded bg-zinc-900 flex items-center justify-center active:scale-90 text-sm">
               💾
             </button>
           </div>

@@ -41,10 +41,10 @@ const TalentSelector: React.FC = () => {
       const specName = specializations[0].name.toLowerCase();
       // Try exact match first, then substring match
       const tree = allTrees.find(t => t.specialization.toLowerCase() === specName)
-        || allTrees.find(t =>
-          t.specialization.toLowerCase().includes(specName) ||
-          specName.includes(t.specialization.toLowerCase())
-        );
+        || allTrees.find(t => {
+          const tSpec = t.specialization.toLowerCase();
+          return tSpec.startsWith(specName) || specName.startsWith(tSpec);
+        });
       if (tree) {
         setCurrentTree(tree);
       } else {
@@ -95,8 +95,8 @@ const TalentSelector: React.FC = () => {
       <main className="min-h-dvh w-full bg-black text-zinc-300 font-mono flex flex-col p-6">
         <header className="flex justify-between items-center border-b border-zinc-800 pb-4 mb-6 sticky top-0 bg-black z-30">
           <div className="flex gap-3 items-center">
-            <button onClick={() => router.push('/create/skills')} className="w-8 h-8 border border-zinc-700 flex items-center justify-center text-zinc-500 font-black text-xs hover:border-amber-500 hover:text-amber-500 transition-all rounded">←</button>
-            <div className="w-8 h-8 border border-amber-500 flex items-center justify-center text-amber-500 font-black italic">6</div>
+            <button onClick={() => router.push('/create/skills')} className="w-11 h-11 border border-zinc-700 flex items-center justify-center text-zinc-500 font-black text-xs hover:border-amber-500 hover:text-amber-500 transition-all rounded">←</button>
+            <div className="w-11 h-11 border border-amber-500 flex items-center justify-center text-amber-500 font-black italic">6</div>
             <div>
               <h1 className="text-xl font-black text-white italic tracking-tighter uppercase">TRAINING_CENTER</h1>
             </div>
@@ -151,8 +151,8 @@ const TalentSelector: React.FC = () => {
       
       <header className="flex justify-between items-center border-b border-zinc-800 pb-4 mb-6 sticky top-0 bg-black z-30">
         <div className="flex gap-3 items-center">
-            <button onClick={() => router.push('/create/skills')} className="w-8 h-8 border border-zinc-700 flex items-center justify-center text-zinc-500 font-black text-xs hover:border-amber-500 hover:text-amber-500 transition-all rounded">←</button>
-            <div className="w-8 h-8 border border-amber-500 flex items-center justify-center text-amber-500 font-black italic">6</div>
+            <button onClick={() => router.push('/create/skills')} className="w-11 h-11 border border-zinc-700 flex items-center justify-center text-zinc-500 font-black text-xs hover:border-amber-500 hover:text-amber-500 transition-all rounded">←</button>
+            <div className="w-11 h-11 border border-amber-500 flex items-center justify-center text-amber-500 font-black italic">6</div>
             <div>
                 <h1 className="text-xl font-black text-white italic tracking-tighter uppercase">TRAINING_CENTER</h1>
             </div>
