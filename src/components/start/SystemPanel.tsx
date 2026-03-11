@@ -2,12 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { setMasterVolume, setSFXMuted, setAmbientMuted, getSettings, playClick } from '@/lib/sounds';
+import { ALL_SKILLS } from '@/lib/skills';
 
 interface SystemPanelProps {
   onClose: () => void;
 }
 
-type SystemTab = 'settings' | 'credits' | 'debug';
+type SystemTab = 'settings' | 'hilfe' | 'credits' | 'debug';
 
 interface StorageInfo {
   keys: { key: string; size: number }[];
@@ -114,19 +115,20 @@ const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
 
         {/* Tab Toggle */}
         <div className="flex border-b border-zinc-800">
-          {(['settings', 'credits', 'debug'] as SystemTab[]).map((t) => (
+          {(['settings', 'hilfe', 'credits', 'debug'] as SystemTab[]).map((t) => (
             <button
               key={t}
               onClick={() => { setTab(t); setConfirmClearSaves(false); setConfirmClearAll(false); }}
               className={`flex-1 py-3 text-[10px] font-black uppercase tracking-widest transition-colors ${
                 tab === t
                   ? t === 'settings' ? 'text-amber-500 border-b-2 border-amber-500 bg-amber-500/5'
+                    : t === 'hilfe' ? 'text-cyan-500 border-b-2 border-cyan-500 bg-cyan-500/5'
                     : t === 'credits' ? 'text-emerald-500 border-b-2 border-emerald-500 bg-emerald-500/5'
                     : 'text-red-500 border-b-2 border-red-500 bg-red-500/5'
                   : 'text-zinc-600'
               }`}
             >
-              {t === 'settings' ? 'Einstellungen' : t === 'credits' ? 'Credits' : 'Debug'}
+              {t === 'settings' ? 'Einst.' : t === 'hilfe' ? 'Hilfe' : t === 'credits' ? 'Credits' : 'Debug'}
             </button>
           ))}
         </div>
@@ -182,6 +184,60 @@ const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
                 >
                   <div className={`absolute top-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform ${ambMuted ? 'left-0.5' : 'left-[1.625rem]'}`} />
                 </button>
+              </div>
+            </div>
+          )}
+
+          {/* === HILFE === */}
+          {tab === 'hilfe' && (
+            <div className="space-y-5">
+              {/* Game Tips */}
+              <div>
+                <div className="text-[9px] font-black text-cyan-500 uppercase tracking-wider mb-2">Spieltipps</div>
+                <div className="space-y-2">
+                  <HelpCard icon="💾" text="Auto-Save ist alle 60 Sekunden aktiv. Manuell speichern über das Disketten-Symbol im HUD." />
+                  <HelpCard icon="📋" text="Aktive Missionen siehst du über den Missions-Button in der Toolbar." />
+                  <HelpCard icon="◐" text="Schicksalspunkte (Licht/Dunkel) kannst du über die Anzeige in der Toolbar wenden." />
+                  <HelpCard icon="🎲" text="Freie Würfe startest du über das Würfel-Symbol. Der GM fordert Proben automatisch an." />
+                  <HelpCard icon="♪" text="Ambient-Musik wechselt je nach Stimmung der Szene. Toggle über das Musik-Symbol." />
+                  <HelpCard icon="⚡" text="Machtkräfte erscheinen in der Toolbar nur für machtbegabte Karrieren." />
+                </div>
+              </div>
+
+              {/* Species Quick Reference */}
+              <div>
+                <div className="text-[9px] font-black text-cyan-500 uppercase tracking-wider mb-2">Spezies-Guide</div>
+                <div className="space-y-1.5">
+                  <SpeciesGuideEntry name="Mensch" desc="Vielseitig, 1 freier Rang in 2 nicht-Karriere-Fertigkeiten." bonus="+1 Nicht-Karriere Skill" />
+                  <SpeciesGuideEntry name="Twi'lek" desc="Charmant und geschickt. Natürliche Überzeugungskraft." bonus="Charme / Täuschung" />
+                  <SpeciesGuideEntry name="Wookiee" desc="Riesig, stark, loyal. Regeneriert durch Wutanfälle." bonus="Stärke / Zähigkeit" />
+                  <SpeciesGuideEntry name="Rodianisch" desc="Geborene Jäger mit scharfen Sinnen." bonus="Wahrnehmung / Überleben" />
+                  <SpeciesGuideEntry name="Togruta" desc="Echolot-Sinne, Rudel-Instinkt, Jedi-Tradition." bonus="Wahrnehmung / Gruppeninstinkt" />
+                  <SpeciesGuideEntry name="Bothanisch" desc="Spione und Informationshändler der Galaxis." bonus="Streetwise / Überzeugung" />
+                  <SpeciesGuideEntry name="Droide" desc="Programmiert, unermüdlich, modular erweiterbar." bonus="Kein Essen/Schlafen" />
+                </div>
+              </div>
+
+              {/* Skills Reference */}
+              <div>
+                <div className="text-[9px] font-black text-cyan-500 uppercase tracking-wider mb-2">Fertigkeiten-Übersicht</div>
+                <div className="bg-zinc-950 border border-zinc-800 rounded-xl p-2.5">
+                  {(['general', 'combat', 'knowledge'] as const).map(cat => (
+                    <div key={cat} className="mb-2 last:mb-0">
+                      <div className="text-[8px] font-black text-zinc-600 uppercase tracking-wider mb-1">
+                        {cat === 'general' ? 'Allgemein' : cat === 'combat' ? 'Kampf' : 'Wissen'}
+                      </div>
+                      <div className="grid grid-cols-2 gap-x-3 gap-y-0.5">
+                        {ALL_SKILLS.filter(s => s.category === cat).map(s => (
+                          <div key={s.key} className="flex justify-between items-center">
+                            <span className="text-[9px] text-zinc-400 truncate">{s.nameDE}</span>
+                            <span className="text-[8px] text-zinc-600 shrink-0 ml-1">{s.characteristic === 'brawn' ? 'ST' : s.characteristic === 'agility' ? 'GE' : s.characteristic === 'intellect' ? 'IN' : s.characteristic === 'cunning' ? 'LI' : s.characteristic === 'willpower' ? 'WI' : 'CH'}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           )}
@@ -325,6 +381,29 @@ function CreditLine({ label, value }: { label: string; value: string }) {
     <div className="flex justify-between items-baseline">
       <span className="text-[9px] text-zinc-600 uppercase tracking-wider">{label}</span>
       <span className="text-[10px] text-white font-bold">{value}</span>
+    </div>
+  );
+}
+
+/** Help card for tips */
+function HelpCard({ icon, text }: { icon: string; text: string }) {
+  return (
+    <div className="flex items-start gap-2.5 bg-zinc-950 border border-zinc-800 rounded-xl p-2.5">
+      <span className="text-sm shrink-0">{icon}</span>
+      <span className="text-[10px] text-zinc-400 leading-relaxed">{text}</span>
+    </div>
+  );
+}
+
+/** Species guide entry */
+function SpeciesGuideEntry({ name, desc, bonus }: { name: string; desc: string; bonus: string }) {
+  return (
+    <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-2 flex justify-between items-start gap-2">
+      <div className="min-w-0">
+        <div className="text-[10px] font-black text-white uppercase">{name}</div>
+        <div className="text-[8px] text-zinc-500 leading-snug mt-0.5">{desc}</div>
+      </div>
+      <div className="text-[8px] text-cyan-500/70 font-bold shrink-0 text-right">{bonus}</div>
     </div>
   );
 }

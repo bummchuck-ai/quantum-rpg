@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useCharacterStore } from '@/store/characterStore';
 import { useRouter } from 'next/navigation';
-import HolocronGuide from '../create/HolocronGuide';
 import DiceRollerModal from './DiceRollerModal';
 import CombatTracker from './CombatTracker';
 import ForcePowerPanel from './ForcePowerPanel';
@@ -22,6 +21,8 @@ import {
   playForceUse, playSceneChange,
   playAmbientSpace, playAmbientDanger, playAmbientCantina,
   stopAmbient, getAmbientType,
+  setAmbientMuted as setSoundsAmbientMuted,
+  getSettings as getSoundSettings,
 } from '@/lib/sounds';
 import { PENDING_RESTORE_KEY, slugify } from '@/lib/save-utils';
 
@@ -162,8 +163,8 @@ const ChatInterface: React.FC = () => {
   const [showForcePowers, setShowForcePowers] = useState(false);
   const [showDiceRoller, setShowDiceRoller] = useState(false);
   const [activeRollRequest, setActiveRollRequest] = useState<RollRequest | null>(null);
-  const [ambientMuted, setAmbientMuted] = useState(false);
-  const [showSkillsRef, setShowSkillsRef] = useState(false);
+  const [ambientMuted, setAmbientMutedLocal] = useState(() => getSoundSettings().ambientMuted);
+  // Skills ref removed from HUD — available in Settings > Help
   const [toasts, setToasts] = useState<{ id: string; text: string; type: 'xp' | 'system' | 'combat' | 'heal'; ts: number }[]>([]);
 
   // Toast auto-dismiss
@@ -959,35 +960,40 @@ const ChatInterface: React.FC = () => {
           </div>
         </div>
 
-        {/* Row 3: Quick-access toolbar with icon buttons */}
-        <div className="px-3 pb-2 flex gap-1.5 overflow-x-auto no-scrollbar items-center">
-          <button onClick={() => setShowQuestLog(true)} className="text-[9px] font-black uppercase tracking-wider bg-zinc-900/80 border border-zinc-800 px-2.5 py-1.5 rounded-lg text-zinc-400 hover:text-white hover:border-zinc-600 whitespace-nowrap active:scale-95 transition-all flex items-center gap-1">
+        {/* Row 3: Compact toolbar — only essential buttons */}
+        <div className="px-3 pb-2 flex gap-1.5 items-center">
+          <button onClick={() => setShowQuestLog(true)} className="text-[9px] font-black bg-zinc-900/80 border border-zinc-800 px-2.5 py-1.5 rounded-lg text-zinc-400 hover:text-white hover:border-zinc-600 active:scale-95 transition-all flex items-center gap-1" title="Missionen">
             <span className="text-xs">📋</span>{session.quests.filter(q => q.status === 'active').length > 0 && <span className="text-amber-500">{session.quests.filter(q => q.status === 'active').length}</span>}
           </button>
           {isForceSensitive && (
-            <button onClick={() => setShowForcePowers(true)} className="text-[9px] font-black uppercase tracking-wider bg-purple-500/10 border border-purple-500/30 px-2.5 py-1.5 rounded-lg text-purple-400 hover:text-purple-300 hover:border-purple-500/50 whitespace-nowrap active:scale-95 transition-all flex items-center gap-1">
+            <button onClick={() => setShowForcePowers(true)} className="text-[9px] font-black bg-purple-500/10 border border-purple-500/30 px-2.5 py-1.5 rounded-lg text-purple-400 hover:text-purple-300 hover:border-purple-500/50 active:scale-95 transition-all flex items-center gap-1" title="Machtkräfte">
               <span className="text-xs">⚡</span>FR{forceRating}
             </button>
           )}
-          {/* Destiny Pool */}
-          <button onClick={() => handleFlipDestiny('light')} className="flex items-center gap-0.5 text-[9px] font-black bg-zinc-900/80 border border-zinc-800 px-2 py-1.5 rounded-lg text-cyan-400 hover:border-cyan-500/50 active:scale-95 transition-all" title="Lichtseiten-Punkt nutzen">
-            ◐<span className="tabular-nums">{session.destinyPool.lightSide}</span>
-          </button>
-          <button onClick={() => handleFlipDestiny('dark')} className="flex items-center gap-0.5 text-[9px] font-black bg-zinc-900/80 border border-zinc-800 px-2 py-1.5 rounded-lg text-red-400 hover:border-red-500/50 active:scale-95 transition-all" title="Dunkelseiten-Punkt nutzen">
-            ◑<span className="tabular-nums">{session.destinyPool.darkSide}</span>
-          </button>
+          {/* Destiny Pool — merged into single display */}
+          <div className="flex items-center gap-0.5 text-[9px] font-black bg-zinc-900/80 border border-zinc-800 px-2 py-1.5 rounded-lg">
+            <button onClick={() => handleFlipDestiny('light')} className="text-cyan-400 hover:text-cyan-300 active:scale-90 transition-all flex items-center gap-0.5" title="Licht nutzen">
+              ◐<span className="tabular-nums">{session.destinyPool.lightSide}</span>
+            </button>
+            <span className="text-zinc-700 mx-0.5">/</span>
+            <button onClick={() => handleFlipDestiny('dark')} className="text-red-400 hover:text-red-300 active:scale-90 transition-all flex items-center gap-0.5" title="Dunkel nutzen">
+              ◑<span className="tabular-nums">{session.destinyPool.darkSide}</span>
+            </button>
+          </div>
           <div className="flex items-center gap-1 ml-auto">
             {/* Ambient music toggle */}
             <button
               onClick={() => {
                 if (ambientMuted) {
-                  setAmbientMuted(false);
+                  setAmbientMutedLocal(false);
+                  setSoundsAmbientMuted(false);
                   const m = session.scene.mood?.toLowerCase() || '';
                   if (m === 'dangerous' || m === 'tense') playAmbientDanger();
                   else if (m === 'calm' || m === 'mysterious') playAmbientSpace();
                   else if (m === 'exciting' || m === 'triumphant') playAmbientCantina();
                 } else {
-                  setAmbientMuted(true);
+                  setAmbientMutedLocal(true);
+                  setSoundsAmbientMuted(true);
                   stopAmbient();
                 }
               }}
@@ -1000,39 +1006,8 @@ const ChatInterface: React.FC = () => {
             <button onClick={() => { setActiveRollRequest({ skill: 'perception', difficulty: 'average', reason: 'Freier Wurf' }); setShowDiceRoller(true); }} className="text-[9px] font-black bg-zinc-900/80 border border-zinc-800 px-2 py-1.5 rounded-lg text-amber-500/70 hover:text-amber-400 active:scale-90 transition-all" title="Freier Wurf">
               🎲
             </button>
-            {/* Skills quick reference */}
-            <button
-              onClick={() => setShowSkillsRef(prev => !prev)}
-              className={`text-[9px] font-black bg-zinc-900/80 border px-2 py-1.5 rounded-lg active:scale-90 transition-all ${showSkillsRef ? 'border-amber-500/40 text-amber-400' : 'border-zinc-800 text-zinc-500 hover:text-zinc-300'}`}
-              title="Skills Referenz"
-            >
-              📊
-            </button>
           </div>
         </div>
-
-        {/* Skills Quick Reference dropdown */}
-        {showSkillsRef && (
-          <div className="px-3 pb-2 max-h-[40vh] overflow-y-auto">
-            <div className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-2.5">
-              <div className="grid grid-cols-2 gap-x-4 gap-y-0.5">
-                {ALL_SKILLS.filter(s => ((activePlayer.skillRanks || {})[s.key] || 0) > 0).map(s => {
-                  const rank = (activePlayer.skillRanks || {})[s.key] || 0;
-                  const charVal = (characteristics as any)[s.characteristic] || 2;
-                  return (
-                    <div key={s.key} className="flex justify-between items-center py-0.5">
-                      <span className="text-[9px] font-bold text-zinc-300 uppercase truncate">{s.nameDE}</span>
-                      <span className="text-[9px] font-black text-amber-500/80 tabular-nums ml-1">{charVal}+{rank}</span>
-                    </div>
-                  );
-                })}
-              </div>
-              {ALL_SKILLS.filter(s => ((activePlayer.skillRanks || {})[s.key] || 0) > 0).length === 0 && (
-                <div className="text-[9px] text-zinc-600 italic text-center py-2">Keine trainierten Fertigkeiten</div>
-              )}
-            </div>
-          </div>
-        )}
 
         {/* Multi-player bar */}
         {players.length > 1 && (
@@ -1065,13 +1040,13 @@ const ChatInterface: React.FC = () => {
               {msg.role === 'gm' ? (
                 <div className="space-y-4">
                   {msg.content.error && <div className="bg-red-500/10 border border-red-500/50 p-3 rounded-xl text-sm font-mono text-red-200">{msg.content.error}</div>}
-                  {msg.content.narrative && <p className="text-[15px] leading-[1.7] text-zinc-300 font-sans italic">{msg.content.narrative}</p>}
+                  {msg.content.narrative && <p className="text-base leading-[1.75] text-zinc-300 font-sans">{msg.content.narrative}</p>}
                   {Array.isArray(msg.content.npcDialogue) && msg.content.npcDialogue.length > 0 && (
                     <div className="space-y-2.5 border-l-2 border-amber-500/30 pl-4 bg-amber-500/[0.02] py-2 rounded-r-lg">
                       {msg.content.npcDialogue.map((d: any, idx: number) => (
                         <div key={idx}>
                           <span className="text-[10px] font-black text-amber-500 uppercase tracking-[0.15em]">{d.name}</span>
-                          <p className="text-sm text-zinc-400 mt-0.5 italic font-sans leading-relaxed">&ldquo;{d.text}&rdquo;</p>
+                          <p className="text-[15px] text-zinc-400 mt-0.5 font-sans leading-relaxed">&ldquo;{d.text}&rdquo;</p>
                         </div>
                       ))}
                     </div>
@@ -1093,14 +1068,14 @@ const ChatInterface: React.FC = () => {
                       <button key={opt.id} onClick={() => handleSendMessage(opt.text)} className="bg-zinc-900/50 border border-zinc-800 hover:border-amber-500/50 p-3.5 rounded-xl text-left transition-all active:scale-[0.98]">
                         <div className="flex items-center gap-2.5">
                           <span className="text-[9px] text-amber-500 font-black opacity-50 border border-amber-500/20 w-5 h-5 flex items-center justify-center rounded shrink-0">{opt.id}</span>
-                          <span className="text-[11px] text-zinc-400 font-bold leading-snug">{opt.text}</span>
+                          <span className="text-[13px] text-zinc-400 font-bold leading-snug">{opt.text}</span>
                         </div>
                       </button>
                     ))}
                   </div>
                 </div>
               ) : (
-                <p className="text-sm text-white font-bold italic">{msg.content.narrative}</p>
+                <p className="text-base text-white font-bold">{msg.content.narrative}</p>
               )}
             </div>
           </div>
@@ -1141,15 +1116,15 @@ const ChatInterface: React.FC = () => {
               placeholder="Eingabe..."
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              onKeyDown={(e) => { if (e.key === 'Enter') { handleSendMessage(inputValue); setShowSkillsRef(false); } }}
+              onKeyDown={(e) => { if (e.key === 'Enter') handleSendMessage(inputValue); }}
             />
           </div>
-          <button onClick={() => { handleSendMessage(inputValue); setShowSkillsRef(false); }} className="bg-amber-600 hover:bg-amber-500 text-black px-7 rounded-2xl transition-all active:scale-90 font-black text-base">
+          <button onClick={() => handleSendMessage(inputValue)} className="bg-amber-600 hover:bg-amber-500 text-black px-7 rounded-2xl transition-all active:scale-90 font-black text-base">
             GO
           </button>
         </div>
       </div>
-      <HolocronGuide title="QUANTUM_RPG" description="Nutze die Toolbar-Buttons für Inventar, Missionen und Machtkräfte. Schicksalspunkte können über die Punkte oben rechts gewendet werden." advice="Auto-Save alle 60 Sekunden aktiv. Manuell speichern über das Disketten-Symbol!" />
+      {/* HolocronGuide removed — tips now in Settings > Hilfe */}
     </main>
   );
 };

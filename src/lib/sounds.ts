@@ -593,6 +593,7 @@ let ambientOscillators: OscillatorNode[] = [];
 let ambientGains: GainNode[] = [];
 let ambientInterval: ReturnType<typeof setInterval> | null = null;
 let currentAmbientType: string | null = null;
+let ambientGeneration = 0; // Guard against race conditions in stop/start transitions
 
 /** Stop all ambient music with fade-out */
 export function stopAmbient() {
@@ -600,8 +601,17 @@ export function stopAmbient() {
   if (!ctx) return;
   const t = ctx.currentTime;
 
-  // Fade out all gains
-  for (const g of ambientGains) {
+  // Capture references to the CURRENT oscillators/gains before any new ones are created
+  const oscsToStop = [...ambientOscillators];
+  const gainsToStop = [...ambientGains];
+  const gen = ++ambientGeneration;
+
+  // Clear arrays immediately so new playAmbient* calls start fresh
+  ambientOscillators = [];
+  ambientGains = [];
+
+  // Fade out captured gains
+  for (const g of gainsToStop) {
     try {
       g.gain.cancelScheduledValues(t);
       g.gain.setValueAtTime(g.gain.value, t);
@@ -609,16 +619,14 @@ export function stopAmbient() {
     } catch { /* already disconnected */ }
   }
 
-  // Stop oscillators after fade
+  // Stop captured oscillators after fade — uses closed-over refs, not global arrays
   setTimeout(() => {
-    for (const osc of ambientOscillators) {
+    for (const osc of oscsToStop) {
       try { osc.stop(); osc.disconnect(); } catch { /* already stopped */ }
     }
-    for (const g of ambientGains) {
+    for (const g of gainsToStop) {
       try { g.disconnect(); } catch { /* already disconnected */ }
     }
-    ambientOscillators = [];
-    ambientGains = [];
   }, 600);
 
   if (ambientInterval) {
