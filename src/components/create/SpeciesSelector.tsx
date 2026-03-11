@@ -6,6 +6,7 @@ import speciesData from '@/../data/json/species_raw.json';
 import { useCharacterStore } from '@/store/characterStore';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
+import SwipeCards from '@/components/ui/SwipeCards';
 import { playConfirm, playClick } from '@/lib/sounds';
 
 interface Subspecies {
@@ -125,7 +126,7 @@ const SpeciesSelector: React.FC = () => {
         />
       </div>
 
-      <div className="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-32">
+      <SwipeCards>
         {filteredSpecies.map((s) => {
           const isSelected = selectedSpecies === s.name;
           return (
@@ -288,7 +289,7 @@ const SpeciesSelector: React.FC = () => {
             </div>
           );
         })}
-      </div>
+      </SwipeCards>
 
       <HolocronGuide
         title="SPEZIES_WAHL"

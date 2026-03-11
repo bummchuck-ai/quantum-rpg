@@ -7,6 +7,7 @@ import { useCharacterStore } from '@/store/characterStore';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
 import CharacterPreview from './CharacterPreview';
+import SwipeCards from '@/components/ui/SwipeCards';
 import { playConfirm } from '@/lib/sounds';
 
 interface Specialization {
@@ -72,7 +73,7 @@ const CareerSelector: React.FC = () => {
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-32">
+      <SwipeCards>
         {filteredCareers.map((c) => {
           const isSelected = selectedCareer === c.name;
           return (
@@ -164,7 +165,7 @@ const CareerSelector: React.FC = () => {
             </div>
           );
         })}
-      </div>
+      </SwipeCards>
 
       <HolocronGuide 
         title="KARRIERE_PFAD" 
