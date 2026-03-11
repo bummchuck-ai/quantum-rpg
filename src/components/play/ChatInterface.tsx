@@ -426,7 +426,11 @@ const ChatInterface: React.FC = () => {
         }));
       }
       if (sc.questUpdate) {
-        const quest = session.quests.find(q => q.title.toLowerCase().includes(sc.questUpdate.title?.toLowerCase() || ''));
+        const questTitle = sc.questUpdate.title?.toLowerCase() || '';
+        const quest = questTitle
+          ? session.quests.find(q => q.title.toLowerCase() === questTitle)
+            || session.quests.find(q => q.title.toLowerCase().includes(questTitle))
+          : null;
         if (quest) {
           setSession(prev => updateQuest(prev, quest.id, { status: sc.questUpdate.status || quest.status }));
         }

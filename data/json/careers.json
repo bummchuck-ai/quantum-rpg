@@ -456,7 +456,8 @@
         "skills": [
           "Pilot (Planetar)",
           "Wachsamkeit",
-          "Führungsqualität"
+          "Führungsqualität",
+          "Coolness"
         ],
         "description": "Führt Klontruppen in die Schlacht. Jedi-Weisheit trifft Militärstrategie."
       },
@@ -465,7 +466,8 @@
         "skills": [
           "Wahrnehmung",
           "Charme",
-          "Kernwelten"
+          "Kernwelten",
+          "Disziplin"
         ],
         "description": "Höchster Rang im Orden. Jahrzehnte der Erfahrung in der Macht."
       },
@@ -484,7 +486,8 @@
         "skills": [
           "Coolness",
           "Führungsqualität",
-          "Verhandeln"
+          "Verhandeln",
+          "Athletik"
         ],
         "description": "Vollwertiger Jedi, der eigenständig Missionen im Dienst des Ordens ausführt."
       }
@@ -1471,7 +1474,12 @@
       },
       {
         "name": "Erwachender Machtsensitiver",
-        "skills": [],
+        "skills": [
+          "Coolness",
+          "Wahrnehmung",
+          "Überleben",
+          "Wachsamkeit"
+        ],
         "description": "Die Macht erwacht gerade erst. Alles ist neu, alles ist möglich."
       },
       {
@@ -1490,8 +1498,7 @@
           "Disziplin",
           "Widerstandskraft",
           "Wachsamkeit",
-          "Kriegskunst",
-          "schwere Fernkampfwaffen"
+          "Kriegskunst"
         ],
         "description": "Alter Klon, der den Krieg überlebt hat. Müde, aber nicht gebrochen."
       },
@@ -1517,7 +1524,12 @@
       },
       {
         "name": "Machtsensitiver im Exil",
-        "skills": [],
+        "skills": [
+          "Heimlichkeit",
+          "Szenekenntnis",
+          "Überleben",
+          "Wachsamkeit"
+        ],
         "description": "Versteckt seine Machtsensitivität vor dem Imperium. Überleben ist alles."
       },
       {
@@ -1602,7 +1614,12 @@
       },
       {
         "name": "Überlebender Padawan",
-        "skills": [],
+        "skills": [
+          "Disziplin",
+          "Wahrnehmung",
+          "Wachsamkeit",
+          "Lichtschwerter"
+        ],
         "description": "Hat Order 66 überlebt. Traumatisiert, aber die Macht lebt weiter."
       }
     ],

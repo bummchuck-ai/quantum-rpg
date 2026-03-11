@@ -63,7 +63,9 @@
       {
         "name": "Aquala",
         "description": "Die häufigste Subspezies mit glatten Flossen statt Händen. Angepasst an kalte und feuchte Umgebungen.",
-        "freeSkillRanks": { "resilience": 1 },
+        "freeSkillRanks": {
+          "resilience": 1
+        },
         "abilities": [
           "1 Rang in Widerstandskraft.",
           "Kälte/Nässe-Resistenz: Kann einen Abzug aufgrund von kalter oder feuchter Umgebung ignorieren."
@@ -72,7 +74,9 @@
       {
         "name": "Ualaq",
         "description": "Seltene Subspezies mit vier Augen und hervorragender Nachtsicht. Empfindlich gegenüber hellem Licht.",
-        "freeSkillRanks": { "perception": 1 },
+        "freeSkillRanks": {
+          "perception": 1
+        },
         "abilities": [
           "1 Rang in Wahrnehmung oder Überleben.",
           "Nachtsicht: Kann einen Abzug aufgrund von dunkler Umgebung ignorieren.",
@@ -82,7 +86,9 @@
       {
         "name": "Quara",
         "description": "Kräftigste Subspezies mit klauenartigen Händen. Extrem aggressiv und an widrige Bedingungen angepasst.",
-        "freeSkillRanks": { "athletics": 1 },
+        "freeSkillRanks": {
+          "athletics": 1
+        },
         "abilities": [
           "1 Rang in Athletik oder Einschüchtern.",
           "Umgebungs-Resistenz: Kann einen Abzug aufgrund von widriger Umgebung ignorieren."
@@ -1504,7 +1510,9 @@
       {
         "name": "Rote Nikto",
         "description": "Wüstenspezies von Kintan. Raue, ledrige Haut schützt vor extremer Hitze und Sandstürmen.",
-        "freeSkillRanks": { "resilience": 1 },
+        "freeSkillRanks": {
+          "resilience": 1
+        },
         "abilities": [
           "1 Rang in Widerstandskraft.",
           "Hitze-Resistenz: Kann einen Abzug aufgrund von trockener oder heißer Umgebung ignorieren."
@@ -1513,7 +1521,9 @@
       {
         "name": "Grüne Nikto",
         "description": "Waldspezies mit natürlichen Klauen und schuppiger Haut. Exzellente Kletterer.",
-        "freeSkillRanks": { "coordination": 1 },
+        "freeSkillRanks": {
+          "coordination": 1
+        },
         "abilities": [
           "1 Rang in Körperbeherrschung.",
           "Kletterer: Bonus auf Athletikproben beim Erklettern von Bäumen und ähnlichen Oberflächen.",
@@ -1523,7 +1533,9 @@
       {
         "name": "Berg-Nikto",
         "description": "Hochlandbewohner mit blauer Haut und kleinen Hörnern. Meister des Überlebens in der Wildnis.",
-        "freeSkillRanks": { "survival": 1 },
+        "freeSkillRanks": {
+          "survival": 1
+        },
         "abilities": [
           "1 Rang in Überleben.",
           "Beginnt mit dem Talent Naturbursche."
@@ -1532,7 +1544,9 @@
       {
         "name": "Blasse Nikto",
         "description": "Küstenbewohner mit heller Haut und Kiemenschlitzen. Können unter Wasser überleben.",
-        "freeSkillRanks": { "athletics": 1 },
+        "freeSkillRanks": {
+          "athletics": 1
+        },
         "abilities": [
           "1 Rang in Athletik.",
           "Halbamphibisch: Kann Stärke x2 Runden die Luft anhalten.",
@@ -1542,7 +1556,9 @@
       {
         "name": "Süd-Nikto",
         "description": "Steppenbewohner mit großen Ohren und ausgeprägtem Gehör. Hervorragende Späher.",
-        "freeSkillRanks": { "perception": 1 },
+        "freeSkillRanks": {
+          "perception": 1
+        },
         "abilities": [
           "1 Rang in Wahrnehmung.",
           "Scharfes Gehör: Bonus auf Wahrnehmungs- und Wachsamkeitsproben für Geräuscherkennung."
@@ -1579,7 +1595,7 @@
     "description": "Blauhäutige Humanoide von Pantora. Kultiviert, diplomatisch und bekannt für ihre goldenen Gesichtstattoos."
   },
   {
-    "name": "Pau ́aner",
+    "name": "Pau'aner",
     "startingXP": 95,
     "characteristics": {
       "brawn": 1,
@@ -1971,7 +1987,7 @@
     "description": "Mysteriöse Wüstennomaden von Tatooine. Leben nach strengen Traditionen und verteidigen ihr Territorium erbarmungslos."
   },
   {
-    "name": "Twi ́lek",
+    "name": "Twi'lek",
     "startingXP": 100,
     "characteristics": {
       "brawn": 1,

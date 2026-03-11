@@ -297,10 +297,8 @@ export interface DerivedStats {
 
 // --- Quest System ---
 export interface QuestReward {
-    type: 'xp' | 'credits' | 'item';
-    value: number; // For xp/credits
-    itemId?: string; // For item
-    itemQuantity?: number; // For item
+    type: 'exp' | 'credits' | 'item';
+    value: number | string; // number for exp/credits, item ID string for item
 }
 
 export interface QuestObjective {

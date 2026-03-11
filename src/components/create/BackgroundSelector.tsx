@@ -49,7 +49,7 @@ const BackgroundSelector: React.FC = () => {
   useEffect(() => {
     if (career) {
       if ((career as any).forceRating > 0) setSuggestedType('Morality');
-      else if (['Soldat', 'Kommandant', 'Klonkrieger', 'Ass'].includes(career.name)) setSuggestedType('Duty');
+      else if (['Soldat', 'Kommandant', 'Klonkrieger', 'Ace'].includes(career.name)) setSuggestedType('Duty');
       else setSuggestedType('Obligation');
     }
   }, [career]);
