@@ -96,8 +96,8 @@ const SwipeCards: React.FC<SwipeCardsProps> = ({
     startRef.current = { x: e.clientX, y: e.clientY };
     dirRef.current = null;
     setIsDragging(true);
-    // Capture pointer for mouse dragging
-    (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
+    // Capture pointer on container (not e.target — child re-renders would lose capture)
+    containerRef.current?.setPointerCapture(e.pointerId);
   }, [viewMode]);
 
   const onPointerMove = useCallback((e: React.PointerEvent) => {
@@ -123,8 +123,12 @@ const SwipeCards: React.FC<SwipeCardsProps> = ({
     setDragX(offset);
   }, [isDragging, viewMode, index, items.length]);
 
-  const onPointerUp = useCallback(() => {
+  const onPointerUp = useCallback((e?: React.PointerEvent) => {
     if (!isDragging) return;
+    // Release pointer capture
+    if (e && containerRef.current) {
+      try { containerRef.current.releasePointerCapture(e.pointerId); } catch { /* ignore */ }
+    }
     setIsDragging(false);
     if (dirRef.current === 'h') {
       if (dragX < -SWIPE_THRESHOLD && index < items.length - 1) goTo(index + 1);
@@ -253,20 +257,21 @@ const SwipeCards: React.FC<SwipeCardsProps> = ({
         <div
           ref={containerRef}
           className="relative overflow-visible"
-          style={{ perspective: '1200px' }}
+          style={{ perspective: '1200px', touchAction: 'pan-y' }}
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
           onPointerCancel={onPointerUp}
-          onPointerLeave={onPointerUp}
         >
           {/* Render prev, active, next */}
           {items.map((item, i) => {
             const diff = Math.abs(i - index);
             if (diff > 1) return null;
+            // Use child's key (stable across filter changes) instead of array index
+            const stableKey = React.isValidElement(item) ? (item.key || i) : i;
             return (
               <div
-                key={i}
+                key={stableKey}
                 style={getCardStyle(i)}
                 className="will-change-transform"
               >

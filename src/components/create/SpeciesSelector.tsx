@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import speciesData from '@/../data/json/species_raw.json';
 import { useCharacterStore } from '@/store/characterStore';
@@ -64,9 +64,10 @@ const SpeciesSelector: React.FC = () => {
   // View mode tracking for auto-expand behavior
   const [viewMode, setViewMode] = useState<ViewMode>('swipe');
 
-  const filteredSpecies = (speciesData as Species[]).filter(s =>
-    s.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredSpecies = useMemo(() =>
+    (speciesData as Species[]).filter(s =>
+      s.name.toLowerCase().includes(searchTerm.toLowerCase())
+    ), [searchTerm]);
 
   const handleConfirm = useCallback((s: Species) => {
     playConfirm();

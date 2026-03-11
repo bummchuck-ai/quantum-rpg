@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import careersData from '@/../data/json/careers.json';
 import { useCharacterStore } from '@/store/characterStore';
@@ -43,10 +43,11 @@ const CareerSelector: React.FC = () => {
     router.push('/create/background');
   };
 
-  const filteredCareers = (careersData as Career[]).filter(c =>
-    c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    c.specializations.some(s => s.name.toLowerCase().includes(searchTerm.toLowerCase()))
-  );
+  const filteredCareers = useMemo(() =>
+    (careersData as Career[]).filter(c =>
+      c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      c.specializations.some(s => s.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    ), [searchTerm]);
 
   // Auto-expand in swipe mode: set selected career to the active card
   const handleActiveIndexChange = useCallback((index: number) => {
