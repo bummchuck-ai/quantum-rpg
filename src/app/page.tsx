@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import IntroModal from '@/components/create/IntroModal';
 import StarWarsCrawl from '@/components/create/StarWarsCrawl';
 import ArchivePanel from '@/components/start/ArchivePanel';
 import SystemPanel from '@/components/start/SystemPanel';
@@ -11,7 +10,6 @@ import { playConfirm, playNavigate } from '@/lib/sounds';
 import { t } from '@/lib/i18n';
 
 export default function Home() {
-  const [showIntro, setShowIntro] = useState(false);
   const [showCrawl, setShowCrawl] = useState(false);
   const [hasSave, setHasSave] = useState(false);
   const [showArchive, setShowArchive] = useState(false);
@@ -45,7 +43,7 @@ export default function Home() {
 
   const handleCrawlComplete = () => {
     setShowCrawl(false);
-    setShowIntro(true);
+    router.push('/create');
   };
 
   return (
@@ -55,10 +53,6 @@ export default function Home() {
         <StarWarsCrawl onComplete={handleCrawlComplete} />
       )}
 
-      {showIntro && (
-        <IntroModal onClose={() => router.push('/create')} />
-      )}
-      
       {/* Header Status Bar */}
       <div className="flex justify-between items-start text-[9px] text-zinc-600 tracking-widest">
         <div className="space-y-1">
