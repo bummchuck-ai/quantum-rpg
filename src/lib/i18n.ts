@@ -243,6 +243,30 @@ const dict: Record<string, { de: string; en: string }> = {
   holocronCareerDesc: { de: "Deine Karriere und Spezialisierung definieren deine 'Career Skills'. Das sind Fähigkeiten, die du kostengünstiger steigern kannst. Jede Karriere bietet unterschiedliche Schwerpunkte – von Kampf über Technik bis hin zur Diplomatie.", en: "Your career and specialization define your 'Career Skills'. These are abilities you can advance more cheaply. Each career offers different focuses — from combat to tech to diplomacy." },
   holocronCareerAdvice: { de: "Wähle eine Spezialisierung, die deine Spezies-Werte ergänzt. Ein 'Smuggler' braucht Agility und Cunning, während ein 'Guardian' eher auf Brawn und Willpower setzt. Keine Sorge, du bist nicht auf diese Skills festgelegt, sie sind nur dein Startpunkt!", en: "Choose a specialization that complements your species stats. A Smuggler needs Agility and Cunning, while a Guardian relies on Brawn and Willpower. Don't worry, you're not locked to these skills — they're just your starting point!" },
 
+  // ---- SPLASH SCREEN ----
+  splashTitle: { de: 'QUANTUM', en: 'QUANTUM' },
+  splashSubtitle: { de: 'CHRONICLES', en: 'CHRONICLES' },
+
+  // ---- TUTORIAL CARDS ----
+  tutorialSpeciesTitle: { de: 'WÄHLE DEINE SPEZIES', en: 'CHOOSE YOUR SPECIES' },
+  tutorialSpeciesBody: { de: 'Jede Spezies hat einzigartige Attribute, Fähigkeiten und Boni. Von Menschen über Twi\'leks bis Wookiees — deine Wahl formt deinen Charakter.', en: 'Each species has unique attributes, abilities and bonuses. From Humans to Twi\'leks to Wookiees — your choice shapes your character.' },
+  tutorialCareerTitle: { de: 'WÄHLE DEINE KARRIERE', en: 'CHOOSE YOUR CAREER' },
+  tutorialCareerBody: { de: 'Deine Karriere bestimmt deine Kern-Fertigkeiten und Spezialisierung. Schmuggler, Kopfgeldjäger, Jedi — jeder Pfad bietet andere Stärken.', en: 'Your career determines your core skills and specialization. Smuggler, Bounty Hunter, Jedi — each path offers different strengths.' },
+  tutorialGearTitle: { de: 'RÜSTE DICH AUS', en: 'GEAR UP' },
+  tutorialGearBody: { de: 'Waffen, Rüstung und Ausrüstung für dein Abenteuer. Vergiss nicht Stimpacks und einen Comlink — ohne stirbst du schnell!', en: 'Weapons, armor and equipment for your adventure. Don\'t forget Stimpacks and a Comlink — you\'ll die fast without them!' },
+  tutorialStart: { de: 'LOS GEHT\'S', en: 'LET\'S GO' },
+  tutorialSkip: { de: 'Überspringen', en: 'Skip' },
+
+  // ---- INTRO CRAWL ----
+  crawlGenerating: { de: 'Erstelle dein Intro...', en: 'Generating your intro...' },
+  crawlSkip: { de: 'Überspringen', en: 'Skip' },
+  crawlFallback: { de: 'In einer weit, weit entfernten Galaxis erwacht ein neuer Held. Die Sterne warten auf deine Geschichte...', en: 'In a galaxy far, far away, a new hero awakens. The stars await your story...' },
+
+  // ---- TALENT TREE BROWSER ----
+  searchTalentTree: { de: 'Talentbaum suchen...', en: 'Search talent tree...' },
+  recommendedForYou: { de: 'Empfohlen', en: 'Recommended' },
+  allTalentTrees: { de: 'Alle Talentbäume', en: 'All Talent Trees' },
+
   // ---- MISC ----
   available: { de: 'Available', en: 'Available' },
   owned: { de: 'OWNED', en: 'OWNED' },

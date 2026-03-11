@@ -9,6 +9,7 @@ import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
 import CharacterPreview from './CharacterPreview';
 import { playXPSpend, playError, playNavigate } from '@/lib/sounds';
+import { t } from '@/lib/i18n';
 
 interface Talent {
   name: string;
@@ -36,6 +37,7 @@ const TalentSelector: React.FC = () => {
   const [currentTree, setCurrentTree] = useState<TalentTree | null>(null);
   const [selectedTalentKey, setSelectedTalentKey] = useState<string | null>(null);
   const [treeNotFound, setTreeNotFound] = useState(false);
+  const [treeSearch, setTreeSearch] = useState('');
 
   useEffect(() => {
     if (specializations.length > 0) {
@@ -101,29 +103,85 @@ const TalentSelector: React.FC = () => {
         <ProgressTracker currentStep={6} />
         <CharacterPreview />
 
-        {treeNotFound ? (
-          <div className="flex-1 flex flex-col items-center justify-center gap-6 text-center px-4">
-            <div className="text-amber-500 text-sm font-black uppercase tracking-widest">Kein Talentbaum gefunden</div>
-            <p className="text-zinc-500 text-xs max-w-md">
-              Für die gewählte Spezialisierung{specializations.length > 0 ? ` "${specializations[0].name}"` : ''} wurde kein passender Talentbaum gefunden. Du kannst diesen Schritt überspringen und später Talente wählen.
-            </p>
-            <select
-              className="bg-zinc-900 border border-zinc-700 text-zinc-300 text-xs rounded-lg px-4 py-3 w-full max-w-sm focus:border-amber-500 outline-none"
-              onChange={(e) => {
-                const tree = allTrees.find(t => t.specialization === e.target.value);
-                if (tree) { setCurrentTree(tree); setTreeNotFound(false); }
-              }}
-              defaultValue=""
-            >
-              <option value="" disabled>Talentbaum manuell wählen...</option>
-              {allTrees.map(t => (
-                <option key={t.specialization} value={t.specialization}>
-                  {t.career} → {t.specialization}
-                </option>
-              ))}
-            </select>
-          </div>
-        ) : (
+        {treeNotFound ? (() => {
+          const playerCareer = activePlayer.career?.name || '';
+          const filtered = allTrees.filter(tr =>
+            treeSearch === '' ||
+            tr.specialization.toLowerCase().includes(treeSearch.toLowerCase()) ||
+            tr.career.toLowerCase().includes(treeSearch.toLowerCase())
+          );
+          const grouped: Record<string, TalentTree[]> = {};
+          filtered.forEach(tr => {
+            if (!grouped[tr.career]) grouped[tr.career] = [];
+            grouped[tr.career].push(tr);
+          });
+          // Sort: player's career first
+          const sortedCareers = Object.keys(grouped).sort((a, b) => {
+            if (a === playerCareer) return -1;
+            if (b === playerCareer) return 1;
+            return a.localeCompare(b);
+          });
+
+          return (
+            <div className="flex-1 flex flex-col gap-4 pb-32">
+              <div className="text-center mb-2">
+                <div className="text-amber-500 text-sm font-black uppercase tracking-widest mb-2">{t('noTalentTree')}</div>
+                <p className="text-zinc-500 text-xs max-w-md mx-auto">
+                  {t('noTalentTreeDesc')}
+                </p>
+              </div>
+
+              {/* Search input */}
+              <input
+                type="text"
+                value={treeSearch}
+                onChange={(e) => setTreeSearch(e.target.value)}
+                placeholder={t('searchTalentTree')}
+                className="bg-zinc-900 border border-zinc-700 text-zinc-300 text-xs rounded-xl px-4 py-3 w-full focus:border-amber-500 outline-none transition-colors"
+              />
+
+              {/* Grouped card grid */}
+              <div className="space-y-4 overflow-y-auto max-h-[50vh] pr-1">
+                {sortedCareers.map(careerName => (
+                  <div key={careerName}>
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className={`w-1.5 h-1.5 rounded-full ${careerName === playerCareer ? 'bg-amber-500' : 'bg-zinc-700'}`} />
+                      <h3 className="text-[10px] font-black uppercase tracking-widest text-zinc-500">
+                        {careerName}
+                        {careerName === playerCareer && (
+                          <span className="ml-2 text-[8px] text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-full">{t('recommendedForYou')}</span>
+                        )}
+                      </h3>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2">
+                      {grouped[careerName].map(tr => (
+                        <div
+                          key={tr.specialization}
+                          onClick={() => {
+                            playNavigate();
+                            setCurrentTree(tr);
+                            setTreeNotFound(false);
+                          }}
+                          className={`border rounded-xl p-3 cursor-pointer transition-all duration-200 hover:scale-[1.02] active:scale-95 ${
+                            careerName === playerCareer
+                              ? 'border-amber-500/30 bg-amber-500/[0.03] hover:border-amber-500 hover:bg-amber-500/[0.06]'
+                              : 'border-zinc-800 bg-zinc-900/40 hover:border-zinc-600 hover:bg-zinc-800/50'
+                          }`}
+                        >
+                          <div className="text-[10px] font-black text-white uppercase tracking-tight leading-tight">{tr.specialization}</div>
+                          <div className="text-[8px] text-zinc-600 mt-1">{tr.talents?.length || 0} Talents</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+                {sortedCareers.length === 0 && (
+                  <div className="text-center text-zinc-700 text-xs py-8 uppercase tracking-widest">No_Results_Found</div>
+                )}
+              </div>
+            </div>
+          );
+        })() : (
           <div className="flex-1 flex items-center justify-center text-amber-500 text-center uppercase tracking-[0.5em] animate-pulse">
             Initializing_Tree_Database...
           </div>
@@ -134,7 +192,7 @@ const TalentSelector: React.FC = () => {
             onClick={() => router.push('/create/armory')}
             className="w-full bg-white text-black font-black py-5 rounded-xl uppercase italic tracking-widest text-xs shadow-[0_20px_40px_rgba(0,0,0,0.8)] transition-all active:scale-95 border-b-4 border-zinc-400"
           >
-            {treeNotFound ? 'Überspringen_→' : 'Confirm_Training_Data_→'}
+            {treeNotFound ? t('skipStep') : t('confirmTraining')}
           </button>
         </div>
       </main>

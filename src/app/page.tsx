@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import StarWarsCrawl from '@/components/create/StarWarsCrawl';
+import SplashScreen from '@/components/start/SplashScreen';
+import TutorialCards from '@/components/start/TutorialCards';
 import ArchivePanel from '@/components/start/ArchivePanel';
 import SystemPanel from '@/components/start/SystemPanel';
 import { useRouter } from 'next/navigation';
@@ -10,7 +11,8 @@ import { playConfirm, playNavigate } from '@/lib/sounds';
 import { t } from '@/lib/i18n';
 
 export default function Home() {
-  const [showCrawl, setShowCrawl] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
+  const [showTutorial, setShowTutorial] = useState(false);
   const [hasSave, setHasSave] = useState(false);
   const [showArchive, setShowArchive] = useState(false);
   const [showSystem, setShowSystem] = useState(false);
@@ -28,7 +30,12 @@ export default function Home() {
   const handleStart = () => {
     playConfirm();
     resetStore(); // CLEAN SLATE
-    setShowCrawl(true);
+    setShowTutorial(true);
+  };
+
+  const handleTutorialComplete = () => {
+    setShowTutorial(false);
+    router.push('/create');
   };
 
   const handleContinue = () => {
@@ -41,16 +48,17 @@ export default function Home() {
     }
   };
 
-  const handleCrawlComplete = () => {
-    setShowCrawl(false);
-    router.push('/create');
-  };
-
   return (
     <main className="h-screen w-screen flex flex-col justify-between p-8 font-mono overflow-hidden select-none bg-black">
-      
-      {showCrawl && (
-        <StarWarsCrawl onComplete={handleCrawlComplete} />
+
+      {/* Splash Screen — shows once on app load */}
+      {showSplash && (
+        <SplashScreen onComplete={() => setShowSplash(false)} />
+      )}
+
+      {/* Tutorial Cards — shows after "Neues Abenteuer" */}
+      {showTutorial && (
+        <TutorialCards onComplete={handleTutorialComplete} />
       )}
 
       {/* Header Status Bar */}
@@ -86,7 +94,7 @@ export default function Home() {
             {/* Corner Accents */}
             <div className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-amber-500"></div>
             <div className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-amber-500"></div>
-            
+
             <div className="flex justify-between items-center text-center w-full">
               <div className="w-full">
                 <div className="text-[10px] text-amber-500 font-black mb-1 opacity-50 uppercase tracking-widest">[ INITIALIZE_LINK ]</div>
