@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import careersData from '@/../data/json/careers.json';
 import { useCharacterStore } from '@/store/characterStore';
@@ -8,7 +8,8 @@ import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
 import CharacterPreview from './CharacterPreview';
 import SwipeCards from '@/components/ui/SwipeCards';
-import { playConfirm } from '@/lib/sounds';
+import { playConfirm, playClick } from '@/lib/sounds';
+import { t } from '@/lib/i18n';
 
 interface Specialization {
   name: string;
@@ -24,13 +25,16 @@ interface Career {
   specializations: Specialization[];
 }
 
+type ViewMode = 'swipe' | 'grid';
+
 const CareerSelector: React.FC = () => {
   const router = useRouter();
   const { setCareer, setSpecialization } = useCharacterStore();
-  
+
   const [selectedCareer, setSelectedCareer] = useState<string | null>(null);
   const [selectedSpec, setSelectedSpec] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [viewMode, setViewMode] = useState<ViewMode>('swipe');
 
   const handleConfirm = (c: Career, s: Specialization) => {
     playConfirm();
@@ -39,14 +43,30 @@ const CareerSelector: React.FC = () => {
     router.push('/create/background');
   };
 
-  const filteredCareers = (careersData as Career[]).filter(c => 
+  const filteredCareers = (careersData as Career[]).filter(c =>
     c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     c.specializations.some(s => s.name.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
+  // Auto-expand in swipe mode: set selected career to the active card
+  const handleActiveIndexChange = useCallback((index: number) => {
+    if (viewMode === 'swipe' && filteredCareers[index]) {
+      setSelectedCareer(filteredCareers[index].name);
+      setSelectedSpec(null);
+    }
+  }, [viewMode, filteredCareers]);
+
+  const handleViewModeChange = useCallback((mode: ViewMode) => {
+    setViewMode(mode);
+    if (mode === 'grid') {
+      setSelectedCareer(null);
+      setSelectedSpec(null);
+    }
+  }, []);
+
   return (
     <main className="min-h-dvh w-full bg-black text-zinc-300 font-mono flex flex-col p-6">
-      
+
       {/* HUD Header */}
       <header className="flex justify-between items-center border-b border-zinc-800 pb-4 mb-6 sticky top-0 bg-black z-30">
         <div className="flex gap-3 items-center">
@@ -57,7 +77,7 @@ const CareerSelector: React.FC = () => {
             </div>
         </div>
         <div className="text-right pl-4">
-            <div className="text-[10px] text-amber-500 font-bold tracking-widest uppercase">Select_Path</div>
+            <div className="text-[10px] text-amber-500 font-bold tracking-widest uppercase">{t('selectPath')}</div>
         </div>
       </header>
 
@@ -65,24 +85,33 @@ const CareerSelector: React.FC = () => {
       <CharacterPreview />
 
       <div className="mb-6 sticky top-[65px] bg-black z-20 pb-4">
-        <input 
+        <input
           className="w-full bg-zinc-950 border border-zinc-800 p-4 rounded-xl text-xs outline-none focus:border-amber-500 text-white placeholder:text-zinc-800 shadow-2xl"
-          placeholder="FILTER_MATRIX..."
+          placeholder={t('filterCareer')}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
 
-      <SwipeCards>
+      <SwipeCards
+        onActiveIndexChange={handleActiveIndexChange}
+        onViewModeChange={handleViewModeChange}
+      >
         {filteredCareers.map((c) => {
           const isSelected = selectedCareer === c.name;
           return (
-            <div 
+            <div
               key={c.name}
-              onClick={() => setSelectedCareer(isSelected ? null : c.name)}
-              className={`border transition-all duration-300 rounded-xl overflow-hidden cursor-pointer h-fit ${
-                isSelected 
-                  ? 'border-white bg-white/[0.05] shadow-[0_0_20px_rgba(255,255,255,0.1)]' 
+              onClick={() => {
+                if (viewMode === 'grid') {
+                  playClick();
+                  setSelectedCareer(isSelected ? null : c.name);
+                  setSelectedSpec(null);
+                }
+              }}
+              className={`border transition-all duration-300 rounded-xl overflow-hidden ${viewMode === 'grid' ? 'cursor-pointer' : ''} h-fit ${
+                isSelected
+                  ? 'border-white bg-white/[0.05] shadow-[0_0_20px_rgba(255,255,255,0.1)]'
                   : 'border-zinc-800 bg-zinc-900/20 hover:bg-zinc-900/40'
               }`}
             >
@@ -112,19 +141,19 @@ const CareerSelector: React.FC = () => {
                   <div className="bg-black/40 p-6 pt-0 animate-in slide-in-from-top-4 duration-500 space-y-6">
                       <div className="text-[10px] text-amber-500 font-black uppercase tracking-[0.3em] mb-4 border-t border-zinc-900 pt-6 flex items-center gap-2">
                           <div className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-ping"></div>
-                          Select_Specialization_Path
+                          {t('selectSpecPath')}
                       </div>
-                      
+
                       <div className="grid grid-cols-1 gap-4">
                           {c.specializations.map((spec) => {
                             const isSpecSelected = selectedSpec === spec.name;
                             return (
-                                <div 
+                                <div
                                     key={spec.name}
-                                    onClick={(e) => { e.stopPropagation(); setSelectedSpec(isSpecSelected ? null : spec.name); }}
-                                    className={`p-5 border rounded-2xl transition-all ${
-                                        isSpecSelected 
-                                        ? 'border-white bg-white/10 ring-1 ring-white shadow-inner' 
+                                    onClick={(e) => { e.stopPropagation(); playClick(); setSelectedSpec(isSpecSelected ? null : spec.name); }}
+                                    className={`p-5 border rounded-2xl transition-all cursor-pointer ${
+                                        isSpecSelected
+                                        ? 'border-white bg-white/10 ring-1 ring-white shadow-inner'
                                         : 'border-zinc-800 bg-zinc-950 active:border-zinc-600'
                                     }`}
                                 >
@@ -137,7 +166,7 @@ const CareerSelector: React.FC = () => {
                                     {spec.description && (
                                       <p className="text-[11px] text-zinc-400 font-sans mt-1.5 leading-relaxed">{spec.description}</p>
                                     )}
-                                    
+
                                     {isSpecSelected && (
                                         <div className="animate-in fade-in duration-300 space-y-6 pt-5">
                                             <div className="grid grid-cols-2 gap-2">
@@ -148,11 +177,11 @@ const CareerSelector: React.FC = () => {
                                                     </div>
                                                 ))}
                                             </div>
-                                            <button 
+                                            <button
                                                 onClick={(e) => { e.stopPropagation(); handleConfirm(c, spec); }}
                                                 className="w-full bg-amber-600 hover:bg-amber-500 text-black font-black py-4 rounded-xl uppercase italic tracking-widest text-xs shadow-2xl active:scale-95 transition-all"
                                             >
-                                                Authorize_Specialization_→
+                                                {t('authorizeSpec')}
                                             </button>
                                         </div>
                                     )}
@@ -167,10 +196,10 @@ const CareerSelector: React.FC = () => {
         })}
       </SwipeCards>
 
-      <HolocronGuide 
-        title="KARRIERE_PFAD" 
-        description="Deine Karriere und Spezialisierung definieren deine 'Career Skills'. Das sind Fähigkeiten, die du kostengünstiger steigern kannst. Jede Karriere bietet unterschiedliche Schwerpunkte – von Kampf über Technik bis hin zur Diplomatie."
-        advice="Wähle eine Spezialisierung, die deine Spezies-Werte ergänzt. Ein 'Smuggler' braucht Agility und Cunning, während ein 'Guardian' eher auf Brawn und Willpower setzt. Keine Sorge, du bist nicht auf diese Skills festgelegt, sie sind nur dein Startpunkt!"
+      <HolocronGuide
+        title={t('holocronCareer')}
+        description={t('holocronCareerDesc')}
+        advice={t('holocronCareerAdvice')}
       />
     </main>
   );

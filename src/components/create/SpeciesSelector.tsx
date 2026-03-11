@@ -1,13 +1,15 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import speciesData from '@/../data/json/species_raw.json';
 import { useCharacterStore } from '@/store/characterStore';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
+import IdentityModal from './IdentityModal';
 import SwipeCards from '@/components/ui/SwipeCards';
 import { playConfirm, playClick } from '@/lib/sounds';
+import { t } from '@/lib/i18n';
 
 interface Subspecies {
   name: string;
@@ -44,40 +46,64 @@ function slugify(name: string): string {
     .replace(/^-|-$/g, '');
 }
 
+type ViewMode = 'swipe' | 'grid';
+
 const SpeciesSelector: React.FC = () => {
   const router = useRouter();
   const setSpecies = useCharacterStore((state) => state.setSpecies);
-  const setName = useCharacterStore((state) => state.setName);
-  const playerName = useCharacterStore((state) => state.players[state.activePlayerIndex].name);
+  const updateActivePlayer = useCharacterStore((state) => state.updateActivePlayer);
+
   const [selectedSpecies, setSelectedSpecies] = useState<string | null>(null);
   const [selectedSubspecies, setSelectedSubspecies] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
 
-  const handleConfirm = (s: Species) => {
+  // Identity Modal state
+  const [showIdentityModal, setShowIdentityModal] = useState(false);
+  const [pendingSpecies, setPendingSpecies] = useState<Species | null>(null);
+
+  // View mode tracking for auto-expand behavior
+  const [viewMode, setViewMode] = useState<ViewMode>('swipe');
+
+  const filteredSpecies = (speciesData as Species[]).filter(s =>
+    s.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleConfirm = useCallback((s: Species) => {
     playConfirm();
 
     // If species has subspecies, merge the selected subspecies data
+    let speciesPayload: any = s;
     if (s.subspecies && s.subspecies.length > 0) {
       const sub = s.subspecies.find(ss => ss.name === selectedSubspecies);
-      if (!sub) return; // Safety: can't confirm without subspecies selection
+      if (!sub) return;
 
-      // Merge base + subspecies free skill ranks
       const mergedSkillRanks = { ...(s.freeSkillRanks || {}), ...sub.freeSkillRanks };
-      // Merge abilities
       const mergedAbilities = [...s.abilities, `[${sub.name}]`, ...sub.abilities];
 
-      const mergedSpecies = {
+      speciesPayload = {
         ...s,
         abilities: mergedAbilities,
         freeSkillRanks: mergedSkillRanks,
         selectedSubspecies: sub.name,
       };
-      setSpecies(mergedSpecies);
-    } else {
-      setSpecies(s);
     }
+
+    // Save species to store, then show identity modal
+    setSpecies(speciesPayload);
+    setPendingSpecies(speciesPayload);
+    setShowIdentityModal(true);
+  }, [selectedSubspecies, setSpecies]);
+
+  const handleIdentityConfirm = useCallback((name: string, age: number | null, backgroundStory: string) => {
+    updateActivePlayer({ name, age, backgroundStory });
+    setShowIdentityModal(false);
     router.push('/create/career');
-  };
+  }, [updateActivePlayer, router]);
+
+  const handleIdentityClose = useCallback(() => {
+    setShowIdentityModal(false);
+    setPendingSpecies(null);
+  }, []);
 
   const hasSubspecies = (s: Species) => s.subspecies && s.subspecies.length > 0;
 
@@ -86,9 +112,23 @@ const SpeciesSelector: React.FC = () => {
     return selectedSubspecies !== null;
   };
 
-  const filteredSpecies = (speciesData as Species[]).filter(s =>
-    s.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Auto-expand in swipe mode: set selected species to the active card
+  const handleActiveIndexChange = useCallback((index: number) => {
+    if (viewMode === 'swipe' && filteredSpecies[index]) {
+      setSelectedSpecies(filteredSpecies[index].name);
+      setSelectedSubspecies(null);
+    }
+  }, [viewMode, filteredSpecies]);
+
+  const handleViewModeChange = useCallback((mode: ViewMode) => {
+    setViewMode(mode);
+    // When switching to grid, collapse all cards
+    if (mode === 'grid') {
+      setSelectedSpecies(null);
+      setSelectedSubspecies(null);
+    }
+    // When switching to swipe, the onActiveIndexChange will auto-expand
+  }, []);
 
   return (
     <main className="min-h-dvh w-full bg-black text-zinc-300 font-mono flex flex-col p-6">
@@ -98,48 +138,49 @@ const SpeciesSelector: React.FC = () => {
             <button onClick={() => router.push('/')} className="w-8 h-8 border border-zinc-700 flex items-center justify-center text-zinc-500 font-black text-xs hover:border-amber-500 hover:text-amber-500 transition-all rounded">←</button>
             <div className="w-8 h-8 border border-amber-500 flex items-center justify-center text-amber-500 font-black italic">1</div>
             <div>
-                <h1 className="text-xl font-black text-white italic tracking-tighter uppercase">DATA_BASE: SPEZIES</h1>
+                <h1 className="text-xl font-black text-white italic tracking-tighter uppercase">{t('speciesHeader')}</h1>
             </div>
         </div>
         <div className="text-right pl-2">
-            <div className="text-[10px] text-amber-500 font-bold tracking-widest uppercase">Select_Origin</div>
+            <div className="text-[10px] text-amber-500 font-bold tracking-widest uppercase">{t('selectOrigin')}</div>
         </div>
       </header>
 
       <ProgressTracker currentStep={1} />
 
-      <div className="mb-6">
-        <input
-          className="w-full bg-black border-b-2 border-amber-500/50 focus:border-amber-500 p-3 text-2xl font-mono font-black text-white uppercase tracking-wider outline-none placeholder:text-zinc-800 placeholder:font-normal placeholder:tracking-widest transition-colors"
-          placeholder="AGENT_CALLSIGN..."
-          value={playerName}
-          onChange={(e) => setName(e.target.value.toUpperCase())}
-        />
-      </div>
-
       <div className="mb-6 sticky top-[65px] bg-black z-20 pb-4">
         <input
           className="w-full bg-zinc-950 border border-zinc-800 p-4 rounded-xl text-xs outline-none focus:border-amber-500 text-white placeholder:text-zinc-800 shadow-2xl"
-          placeholder="FILTER_BY_NAME..."
+          placeholder={t('filterSpecies')}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
 
-      <SwipeCards>
+      <SwipeCards
+        onActiveIndexChange={handleActiveIndexChange}
+        onViewModeChange={handleViewModeChange}
+      >
         {filteredSpecies.map((s) => {
           const isSelected = selectedSpecies === s.name;
           return (
             <div
               key={s.name}
-              onClick={() => { setSelectedSpecies(isSelected ? null : s.name); setSelectedSubspecies(null); }}
-              className={`group border transition-all duration-300 rounded-xl overflow-hidden cursor-pointer h-fit ${
+              onClick={() => {
+                if (viewMode === 'grid') {
+                  playClick();
+                  setSelectedSpecies(isSelected ? null : s.name);
+                  setSelectedSubspecies(null);
+                }
+              }}
+              className={`group border transition-all duration-300 rounded-xl overflow-hidden ${viewMode === 'grid' ? 'cursor-pointer' : ''} h-fit ${
                 isSelected
                   ? 'border-white bg-white/[0.05] shadow-[0_0_20px_rgba(255,255,255,0.1)]'
                   : 'border-zinc-800 bg-zinc-900/20 hover:bg-zinc-900/40'
               }`}
             >
-              <div className="aspect-[4/3] bg-zinc-950 relative flex items-end border-b border-zinc-900 overflow-hidden">
+              {/* Portrait with scan effect */}
+              <div className="aspect-[4/3] bg-zinc-950 relative flex items-end border-b border-zinc-900 overflow-hidden card-scan">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`/species/${slugify(s.name)}.jpg`}
@@ -152,7 +193,7 @@ const SpeciesSelector: React.FC = () => {
                     <h2 className="text-base font-black text-white italic tracking-tighter uppercase leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">{s.name}</h2>
                     {hasSubspecies(s) && (
                       <span className="text-[7px] text-cyan-400 font-black uppercase tracking-widest px-1.5 py-0.5 border border-cyan-500/30 rounded bg-cyan-500/10 mb-0.5">
-                        {s.subspecies!.length} Subspezies
+                        {s.subspecies!.length} {t('subspecies')}
                       </span>
                     )}
                   </div>
@@ -163,7 +204,7 @@ const SpeciesSelector: React.FC = () => {
                     <p className="text-xs text-zinc-300 leading-relaxed font-sans">{s.description}</p>
                   )}
                   <div className="flex justify-between items-center text-[10px] uppercase font-bold text-zinc-500">
-                      <span>Start XP</span>
+                      <span>{t('startXP')}</span>
                       <span className="text-amber-500 text-sm">{s.startingXP}</span>
                   </div>
 
@@ -188,7 +229,7 @@ const SpeciesSelector: React.FC = () => {
                             <div className="space-y-3">
                               <div className="text-[10px] text-amber-500 font-black uppercase tracking-[0.3em] flex items-center gap-2">
                                   <div className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></div>
-                                  Traits_Analysis
+                                  {t('traitsAnalysis')}
                               </div>
                               <ul className="space-y-4">
                                   {s.abilities.map((a, i) => (
@@ -203,7 +244,7 @@ const SpeciesSelector: React.FC = () => {
                             <div className="space-y-3">
                               <div className="text-[10px] text-cyan-400 font-black uppercase tracking-[0.3em] flex items-center gap-2">
                                 <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse"></div>
-                                Subspezies_Wählen
+                                {t('selectSubspecies')}
                               </div>
                               <div className="space-y-2">
                                 {s.subspecies!.map((sub) => {
@@ -227,7 +268,6 @@ const SpeciesSelector: React.FC = () => {
                                             alt={sub.name}
                                             className="w-full h-full object-cover object-top"
                                             onError={(e) => {
-                                              // Fallback to parent species image
                                               const img = e.target as HTMLImageElement;
                                               if (!img.dataset.fallback) {
                                                 img.dataset.fallback = '1';
@@ -245,7 +285,7 @@ const SpeciesSelector: React.FC = () => {
                                               {sub.name}
                                             </span>
                                             {isSubSelected && (
-                                              <span className="text-[6px] bg-cyan-500 text-black px-1.5 py-0.5 rounded font-black uppercase">Gewählt</span>
+                                              <span className="text-[6px] bg-cyan-500 text-black px-1.5 py-0.5 rounded font-black uppercase">{t('chosen')}</span>
                                             )}
                                           </div>
                                           <p className="text-[11px] text-zinc-400 font-sans leading-relaxed mb-2">{sub.description}</p>
@@ -266,7 +306,7 @@ const SpeciesSelector: React.FC = () => {
                               </div>
                               {!selectedSubspecies && (
                                 <div className="text-[9px] text-red-400/60 font-black uppercase tracking-widest text-center py-2 animate-pulse">
-                                  Subspezies muss gewählt werden
+                                  {t('mustSelectSubspecies')}
                                 </div>
                               )}
                             </div>
@@ -281,7 +321,7 @@ const SpeciesSelector: React.FC = () => {
                                   : 'bg-zinc-900 text-zinc-600 cursor-not-allowed border border-zinc-800'
                               }`}
                           >
-                              {!canConfirm(s) ? 'Subspezies_wählen...' : 'Authorize_Identity_→'}
+                              {!canConfirm(s) ? t('selectSubspeciesBtn') : t('authorizeIdentity')}
                           </button>
                       </div>
                   )}
@@ -292,10 +332,19 @@ const SpeciesSelector: React.FC = () => {
       </SwipeCards>
 
       <HolocronGuide
-        title="SPEZIES_WAHL"
-        description="Deine Spezies bestimmt deine biologischen Grundlagen. Brawn (BR) ist Stärke, Agility (AG) ist Geschick, Intellect (IN) ist Wissen, Cunning (CU) ist List, Willpower (WL) ist Wille und Presence (PR) ist Ausstrahlung."
-        advice="Manche Spezies haben Subspezies mit eigenen Boni! Achte auf die cyan markierten Einträge. Die zusätzlichen Skill-Ränge werden automatisch angerechnet."
+        title={t('holocronSpecies')}
+        description={t('holocronSpeciesDesc')}
+        advice={t('holocronSpeciesAdvice')}
       />
+
+      {/* Identity Modal — shown after species confirm */}
+      {showIdentityModal && pendingSpecies && (
+        <IdentityModal
+          speciesName={pendingSpecies.name}
+          onConfirm={handleIdentityConfirm}
+          onClose={handleIdentityClose}
+        />
+      )}
     </main>
   );
 };

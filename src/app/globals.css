@@ -144,6 +144,43 @@ body {
   50% { box-shadow: 0 0 12px rgba(245, 158, 11, 0.8); }
 }
 
+/* Card scan sweep — light bar over species portraits */
+.card-scan {
+  position: relative;
+  overflow: hidden;
+}
+.card-scan::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(245, 158, 11, 0.06) 45%,
+    rgba(245, 158, 11, 0.15) 50%,
+    rgba(245, 158, 11, 0.06) 55%,
+    transparent 100%
+  );
+  animation: card-scan 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes card-scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* Slide in from top — for card expansion */
+.slide-in-from-top-4 {
+  animation-name: slide-in-top;
+}
+
+@keyframes slide-in-top {
+  from { opacity: 0; transform: translateY(-1rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* No scrollbar utility */
 .no-scrollbar::-webkit-scrollbar {
   display: none;

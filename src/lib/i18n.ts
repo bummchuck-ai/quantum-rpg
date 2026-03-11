@@ -211,6 +211,38 @@ const dict: Record<string, { de: string; en: string }> = {
   selectTreePrompt: { de: 'Talentbaum wählen...', en: 'Select talent tree...' },
   selectTreeHelp: { de: 'Wähle einen Talentbaum oben aus', en: 'Select a talent tree above' },
 
+  // ---- IDENTITY MODAL ----
+  identityTitle: { de: 'IDENTITÄT_ETABLIEREN', en: 'ESTABLISH_IDENTITY' },
+  identitySubtitle: { de: 'Agent-Profil vervollständigen', en: 'Complete Agent Profile' },
+  identityName: { de: 'AGENT_CALLSIGN', en: 'AGENT_CALLSIGN' },
+  identityNamePlaceholder: { de: 'Name eingeben...', en: 'Enter name...' },
+  identityAge: { de: 'ALTER', en: 'AGE' },
+  identityAgePlaceholder: { de: 'Alter', en: 'Age' },
+  identityStandard: { de: 'Standard', en: 'Standard' },
+  identityBackground: { de: 'HINTERGRUND', en: 'BACKGROUND' },
+  identityBackgroundDesc: { de: 'Wähle oder generiere eine kurze Hintergrundgeschichte', en: 'Choose or generate a short backstory' },
+  identityGenerate: { de: 'GENERIEREN', en: 'GENERATE' },
+  identityGenerating: { de: 'GENERIERE...', en: 'GENERATING...' },
+  identityRegenerate: { de: 'NEU GENERIEREN', en: 'REGENERATE' },
+  identityCustom: { de: 'EIGENEN TEXT SCHREIBEN', en: 'WRITE CUSTOM TEXT' },
+  identityCustomPlaceholder: { de: 'Schreibe deine eigene Hintergrundgeschichte...', en: 'Write your own backstory...' },
+  identityConfirm: { de: 'IDENTITÄT_BESTÄTIGEN_→', en: 'CONFIRM_IDENTITY_→' },
+  identityNameRequired: { de: 'Name ist erforderlich', en: 'Name is required' },
+  identityOrText: { de: 'oder', en: 'or' },
+
+  // ---- SELECTORS (SPECIES / CAREER) ----
+  selectOrigin: { de: 'Select_Origin', en: 'Select_Origin' },
+  filterSpecies: { de: 'FILTER_BY_NAME...', en: 'FILTER_BY_NAME...' },
+  filterCareer: { de: 'FILTER_MATRIX...', en: 'FILTER_MATRIX...' },
+  traitsAnalysis: { de: 'Traits_Analysis', en: 'Traits_Analysis' },
+  startXP: { de: 'Start XP', en: 'Start XP' },
+  selectPath: { de: 'Select_Path', en: 'Select_Path' },
+  selectSpecPath: { de: 'Select_Specialization_Path', en: 'Select_Specialization_Path' },
+  authorizeSpec: { de: 'Authorize_Specialization_→', en: 'Authorize_Specialization_→' },
+  holocronCareer: { de: 'KARRIERE_PFAD', en: 'CAREER_PATH' },
+  holocronCareerDesc: { de: "Deine Karriere und Spezialisierung definieren deine 'Career Skills'. Das sind Fähigkeiten, die du kostengünstiger steigern kannst. Jede Karriere bietet unterschiedliche Schwerpunkte – von Kampf über Technik bis hin zur Diplomatie.", en: "Your career and specialization define your 'Career Skills'. These are abilities you can advance more cheaply. Each career offers different focuses — from combat to tech to diplomacy." },
+  holocronCareerAdvice: { de: "Wähle eine Spezialisierung, die deine Spezies-Werte ergänzt. Ein 'Smuggler' braucht Agility und Cunning, während ein 'Guardian' eher auf Brawn und Willpower setzt. Keine Sorge, du bist nicht auf diese Skills festgelegt, sie sind nur dein Startpunkt!", en: "Choose a specialization that complements your species stats. A Smuggler needs Agility and Cunning, while a Guardian relies on Brawn and Willpower. Don't worry, you're not locked to these skills — they're just your starting point!" },
+
   // ---- MISC ----
   available: { de: 'Available', en: 'Available' },
   owned: { de: 'OWNED', en: 'OWNED' },

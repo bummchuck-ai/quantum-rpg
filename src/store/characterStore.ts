@@ -61,6 +61,8 @@ export interface Player {
   wounds: number;
   strain: number;
   selectedSubspecies: string | null;
+  age: number | null;
+  backgroundStory: string;
   vehicles: PlayerVehicle[];
   questLog: Quest[];
 }
@@ -129,6 +131,8 @@ const createNewPlayer = (id: string): Player => ({
   wounds: 0,
   strain: 0,
   selectedSubspecies: null,
+  age: null,
+  backgroundStory: '',
   vehicles: [],
   questLog: [],
 });
@@ -179,6 +183,8 @@ export const useCharacterStore = create<GameState>()(
         credits: 500,
         wounds: 0,
         strain: 0,
+        age: null,
+        backgroundStory: '',
         questLog: [],
         vehicles: [],
       }),
