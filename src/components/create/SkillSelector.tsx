@@ -8,6 +8,7 @@ import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
 import CharacterPreview from './CharacterPreview';
 import { playXPSpend, playRefund, playNavigate, playError } from '@/lib/sounds';
+import { t } from '@/lib/i18n';
 
 const SKILL_DATA = ALL_SKILLS;
 
@@ -117,7 +118,7 @@ const SkillSelector: React.FC = () => {
               filter === f ? 'bg-zinc-800 text-white shadow-md' : 'text-zinc-700'
             }`}
           >
-            {f === 'all' ? 'Alle' : f === 'career' ? 'Karriere' : f === 'general' ? 'Allgem.' : f === 'combat' ? 'Kampf' : 'Wissen'}
+            {f === 'all' ? t('all') : f === 'career' ? t('career') : f === 'general' ? t('generalShort') : f === 'combat' ? t('combat') : t('knowledge')}
           </button>
         ))}
       </div>

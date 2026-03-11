@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import SplashScreen from '@/components/start/SplashScreen';
 import TutorialCards from '@/components/start/TutorialCards';
 import ArchivePanel from '@/components/start/ArchivePanel';
@@ -13,19 +13,16 @@ import { t } from '@/lib/i18n';
 export default function Home() {
   const [showSplash, setShowSplash] = useState(true);
   const [showTutorial, setShowTutorial] = useState(false);
-  const [hasSave, setHasSave] = useState(false);
   const [showArchive, setShowArchive] = useState(false);
   const [showSystem, setShowSystem] = useState(false);
   const router = useRouter();
   const resetStore = useCharacterStore((state) => state.reset);
   const players = useCharacterStore((state) => state.players);
 
-  useEffect(() => {
-    const firstPlayer = players[0];
-    if (firstPlayer?.species && firstPlayer?.career) {
-      setHasSave(true);
-    }
-  }, [players]);
+  const firstPlayer = players[0];
+  const hasSave = !!(firstPlayer?.species && firstPlayer?.career);
+
+  const handleSplashComplete = useCallback(() => setShowSplash(false), []);
 
   const handleStart = () => {
     playConfirm();
@@ -49,11 +46,11 @@ export default function Home() {
   };
 
   return (
-    <main className="h-screen w-screen flex flex-col justify-between p-8 font-mono overflow-hidden select-none bg-black">
+    <main className="h-dvh w-screen flex flex-col justify-between p-8 font-mono overflow-hidden select-none bg-black">
 
       {/* Splash Screen — shows once on app load */}
       {showSplash && (
-        <SplashScreen onComplete={() => setShowSplash(false)} />
+        <SplashScreen onComplete={handleSplashComplete} />
       )}
 
       {/* Tutorial Cards — shows after "Neues Abenteuer" */}

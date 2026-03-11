@@ -12,10 +12,10 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    // 1. Raw message request (e.g. from Story Generator)
+    // 1. Raw message request (e.g. from Story Generator, IntroCrawl)
     if (body.messages) {
-      const systemMsg = body.messages.find((m: any) => m.role === 'system');
-      const userMsg = body.messages.find((m: any) => m.role === 'user');
+      const systemMsg = body.messages.find((m: { role: string; content: string }) => m.role === 'system');
+      const userMsg = body.messages.find((m: { role: string; content: string }) => m.role === 'user');
 
       const response = await anthropic.messages.create({
         model: 'claude-sonnet-4-6',
@@ -25,6 +25,12 @@ export async function POST(req: Request) {
       });
 
       const text = response.content[0].type === 'text' ? response.content[0].text : '';
+
+      // If caller requested raw text (e.g. IntroCrawl), return it directly
+      if (body.rawText) {
+        return NextResponse.json({ rawText: text.trim() });
+      }
+
       // Strip markdown code fences if present
       const clean = text.replace(/^```json\n?/, '').replace(/\n?```$/, '').trim();
       try {

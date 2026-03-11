@@ -268,10 +268,10 @@ const dict: Record<string, { de: string; en: string }> = {
   allTalentTrees: { de: 'Alle Talentbäume', en: 'All Talent Trees' },
 
   // ---- MISC ----
-  available: { de: 'Available', en: 'Available' },
-  owned: { de: 'OWNED', en: 'OWNED' },
-  buyItem: { de: 'BUY ITEM', en: 'BUY ITEM' },
-  insufficientFunds: { de: 'INSUFFICIENT FUNDS', en: 'INSUFFICIENT FUNDS' },
+  available: { de: 'Verfügbar', en: 'Available' },
+  owned: { de: 'BESITZT', en: 'OWNED' },
+  buyItem: { de: 'KAUFEN', en: 'BUY ITEM' },
+  insufficientFunds: { de: 'NICHT GENUG CREDITS', en: 'INSUFFICIENT FUNDS' },
 };
 
 // ============================================================

@@ -7,6 +7,7 @@ import TalentShop from '@/components/play/TalentShop';
 import ErrorBoundary from '@/components/play/ErrorBoundary';
 import { useCharacterStore } from '@/store/characterStore';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 type Tab = 'chat' | 'quests' | 'shop' | 'talents';
 
@@ -18,8 +19,18 @@ const TAB_CONFIG: { id: Tab; label: string; icon: string }[] = [
 ];
 
 export default function PlayPage() {
-  const questLog = useCharacterStore((state) => state.players[state.activePlayerIndex]?.questLog);
+  const router = useRouter();
+  const player = useCharacterStore((state) => state.players[state.activePlayerIndex]);
+  const questLog = player?.questLog;
   const [activeTab, setActiveTab] = useState<Tab>('chat');
+
+  // Guard: redirect if no character data
+  if (!player?.species || !player?.career) {
+    if (typeof window !== 'undefined') {
+      router.push('/');
+    }
+    return null;
+  }
 
   return (
     <ErrorBoundary>

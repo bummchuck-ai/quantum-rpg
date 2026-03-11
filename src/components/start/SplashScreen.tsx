@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { t } from '@/lib/i18n';
 
 interface SplashScreenProps {
@@ -17,24 +17,27 @@ const STARS = Array.from({ length: 40 }, (_, i) => ({
 }));
 
 const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
-  const [phase, setPhase] = useState(0); // 0=hidden, 1=title, 2=subtitle, 3=ship, 4=fadeout
+  const [phase, setPhase] = useState(0);
+  const onCompleteRef = useRef(onComplete);
+  onCompleteRef.current = onComplete;
+  const skippedRef = useRef(false);
 
   useEffect(() => {
     const timers = [
-      setTimeout(() => setPhase(1), 200),        // Title fades in
-      setTimeout(() => setPhase(2), 1500),        // Subtitle appears
-      setTimeout(() => setPhase(3), 2500),        // Ship flies across
-      setTimeout(() => setPhase(4), 3500),        // Everything fades out
-      setTimeout(() => onComplete(), 4200),       // Done
+      setTimeout(() => setPhase(1), 200),
+      setTimeout(() => setPhase(2), 1500),
+      setTimeout(() => setPhase(3), 2500),
+      setTimeout(() => setPhase(4), 3500),
+      setTimeout(() => { if (!skippedRef.current) onCompleteRef.current(); }, 4200),
     ];
     return () => timers.forEach(clearTimeout);
-  }, [onComplete]);
+  }, []);
 
   return (
     <div
-      onClick={onComplete}
+      onClick={() => { if (!skippedRef.current) { skippedRef.current = true; onCompleteRef.current(); } }}
       className={`fixed inset-0 bg-black z-[300] flex flex-col items-center justify-center cursor-pointer select-none transition-opacity duration-700 ${
-        phase >= 4 ? 'opacity-0' : 'opacity-100'
+        phase >= 4 ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >
       {/* Starfield */}
@@ -65,7 +68,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
 
       {/* Subtitle: CHRONICLES */}
       <div
-        className={`mt-4 flex items-center gap-3 transition-all duration-800 ease-out ${
+        className={`mt-4 flex items-center gap-3 transition-all duration-700 ease-out ${
           phase >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}
       >
@@ -93,10 +96,10 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
 
       {/* Skip hint */}
       <div className={`absolute bottom-8 text-zinc-700 text-[9px] uppercase tracking-widest transition-opacity duration-500 ${phase >= 1 ? 'opacity-100' : 'opacity-0'}`}>
-        [ Tap to skip ]
+        [ {t('crawlSkip')} ]
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes twinkle {
           0%, 100% { opacity: inherit; }
           50% { opacity: 0.02; }

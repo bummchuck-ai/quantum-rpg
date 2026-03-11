@@ -18,6 +18,10 @@ const TutorialCards: React.FC<TutorialCardsProps> = ({ onComplete }) => {
   const [activeCard, setActiveCard] = useState(0);
   const [fadeOut, setFadeOut] = useState(false);
   const autoTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const finishTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isFinishing = useRef(false);
+  const onCompleteRef = useRef(onComplete);
+  onCompleteRef.current = onComplete;
 
   const resetAutoAdvance = () => {
     if (autoTimer.current) clearTimeout(autoTimer.current);
@@ -31,7 +35,10 @@ const TutorialCards: React.FC<TutorialCardsProps> = ({ onComplete }) => {
 
   useEffect(() => {
     resetAutoAdvance();
-    return () => { if (autoTimer.current) clearTimeout(autoTimer.current); };
+    return () => {
+      if (autoTimer.current) clearTimeout(autoTimer.current);
+      if (finishTimer.current) clearTimeout(finishTimer.current);
+    };
   }, [activeCard]);
 
   const handleNext = () => {
@@ -44,9 +51,12 @@ const TutorialCards: React.FC<TutorialCardsProps> = ({ onComplete }) => {
   };
 
   const handleFinish = () => {
+    if (isFinishing.current) return;
+    isFinishing.current = true;
     playConfirm();
     setFadeOut(true);
-    setTimeout(onComplete, 500);
+    if (autoTimer.current) clearTimeout(autoTimer.current);
+    finishTimer.current = setTimeout(() => onCompleteRef.current(), 500);
   };
 
   const isLast = activeCard === CARDS.length - 1;
