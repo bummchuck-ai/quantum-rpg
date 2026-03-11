@@ -181,12 +181,12 @@ const SpeciesSelector: React.FC = () => {
               }`}
             >
               {/* Portrait — cinematic banner */}
-              <div className="aspect-[5/2] bg-zinc-950 relative flex items-end overflow-hidden">
+              <div className="aspect-[5/3] bg-zinc-950 relative flex items-end overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`/species/${slugify(s.name)}.jpg`}
                     alt={s.name}
-                    className="absolute inset-0 w-full h-full object-cover object-top opacity-70 group-hover:opacity-90 transition-all duration-500"
+                    className="absolute inset-0 w-full h-full object-cover object-top opacity-80 group-hover:opacity-95 transition-all duration-500"
                     onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent"></div>

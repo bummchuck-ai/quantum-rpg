@@ -91,13 +91,19 @@ const SwipeCards: React.FC<SwipeCardsProps> = ({
   }, [isDragging, dragX, getContainerWidth]);
 
   // ── Pointer events (touch + mouse) ──
+  // Store pointerId so we can capture it lazily in onPointerMove
+  const pointerIdRef = useRef<number | null>(null);
+  const capturedRef = useRef(false);
+
   const onPointerDown = useCallback((e: React.PointerEvent) => {
     if (viewMode !== 'swipe') return;
     startRef.current = { x: e.clientX, y: e.clientY };
     dirRef.current = null;
+    pointerIdRef.current = e.pointerId;
+    capturedRef.current = false;
     setIsDragging(true);
-    // Capture pointer on container (not e.target — child re-renders would lose capture)
-    containerRef.current?.setPointerCapture(e.pointerId);
+    // Do NOT capture pointer here — it would block button clicks.
+    // Capture is deferred to onPointerMove once horizontal swipe is confirmed.
   }, [viewMode]);
 
   const onPointerMove = useCallback((e: React.PointerEvent) => {
@@ -108,6 +114,11 @@ const SwipeCards: React.FC<SwipeCardsProps> = ({
     // Lock direction on first significant movement
     if (dirRef.current === null && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
       dirRef.current = Math.abs(dx) > Math.abs(dy) ? 'h' : 'v';
+      // Capture pointer only when horizontal swipe is confirmed
+      if (dirRef.current === 'h' && !capturedRef.current && pointerIdRef.current !== null) {
+        try { containerRef.current?.setPointerCapture(pointerIdRef.current); } catch { /* ignore */ }
+        capturedRef.current = true;
+      }
     }
 
     if (dirRef.current !== 'h') return;
@@ -125,10 +136,12 @@ const SwipeCards: React.FC<SwipeCardsProps> = ({
 
   const onPointerUp = useCallback((e?: React.PointerEvent) => {
     if (!isDragging) return;
-    // Release pointer capture
-    if (e && containerRef.current) {
+    // Release pointer capture only if we actually captured it
+    if (e && containerRef.current && capturedRef.current) {
       try { containerRef.current.releasePointerCapture(e.pointerId); } catch { /* ignore */ }
     }
+    capturedRef.current = false;
+    pointerIdRef.current = null;
     setIsDragging(false);
     if (dirRef.current === 'h') {
       if (dragX < -SWIPE_THRESHOLD && index < items.length - 1) goTo(index + 1);
