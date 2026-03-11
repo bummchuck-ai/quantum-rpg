@@ -96,7 +96,7 @@ const CareerSelector: React.FC = () => {
                   </div>
 
                   {c.description && (
-                    <p className="text-[11px] text-zinc-400 leading-relaxed font-sans italic mb-3">{c.description}</p>
+                    <p className="text-xs text-zinc-300 leading-relaxed font-sans mb-3">{c.description}</p>
                   )}
 
                   <div className="flex flex-wrap gap-1 mb-1">
@@ -134,7 +134,7 @@ const CareerSelector: React.FC = () => {
                                         </div>
                                     </div>
                                     {spec.description && (
-                                      <p className="text-[10px] text-zinc-500 font-sans italic mt-1.5 leading-relaxed">{spec.description}</p>
+                                      <p className="text-[11px] text-zinc-400 font-sans mt-1.5 leading-relaxed">{spec.description}</p>
                                     )}
                                     
                                     {isSpecSelected && (

@@ -205,7 +205,7 @@ const TalentSelector: React.FC = () => {
                                     {isOwned && <div className="w-2 h-2 bg-emerald-500 rounded-full shadow-[0_0_5px_rgba(16,185,129,0.8)]"></div>}
                                 </div>
 
-                                <p className="text-[9px] text-zinc-500 leading-snug line-clamp-3">
+                                <p className="text-[11px] text-zinc-400 leading-snug line-clamp-3">
                                     {talent.description || "Passiv"}
                                 </p>
 

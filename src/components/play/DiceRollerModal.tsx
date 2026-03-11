@@ -168,10 +168,7 @@ const DiceRollerModal: React.FC<DiceRollerModalProps> = ({
           {!result ? (
             <button onClick={handleRoll} disabled={isRolling} className="w-full bg-white text-black font-black py-4 rounded-xl uppercase italic tracking-widest text-sm hover:bg-zinc-200 active:scale-95 transition-all shadow-[0_0_30px_rgba(255,255,255,0.1)]">{isRolling ? 'CALCULATING_PHYSICS...' : 'ROLL_DICE_→'}</button>
           ) : (
-            <div className="flex gap-3">
-              <button onClick={() => setResult(null)} className="flex-1 bg-zinc-900 text-zinc-400 font-bold py-4 rounded-xl uppercase tracking-widest text-xs hover:text-white transition-all">Reroll</button>
-              <button onClick={handleConfirm} className="flex-[2] bg-emerald-600 text-white font-black py-4 rounded-xl uppercase italic tracking-widest text-xs hover:bg-emerald-500 active:scale-95 transition-all shadow-[0_0_30px_rgba(16,185,129,0.3)]">COMMIT_RESULT_→</button>
-            </div>
+            <button onClick={handleConfirm} className="w-full bg-emerald-600 text-white font-black py-4 rounded-xl uppercase italic tracking-widest text-xs hover:bg-emerald-500 active:scale-95 transition-all shadow-[0_0_30px_rgba(16,185,129,0.3)]">COMMIT_RESULT_→</button>
           )}
         </div>
       </div>

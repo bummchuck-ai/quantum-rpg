@@ -143,7 +143,7 @@ const SpeciesSelector: React.FC = () => {
                   <img
                     src={`/species/${slugify(s.name)}.jpg`}
                     alt={s.name}
-                    className="absolute inset-0 w-full h-full object-cover object-center opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                    className="absolute inset-0 w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                     onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
@@ -159,7 +159,7 @@ const SpeciesSelector: React.FC = () => {
 
               <div className="p-4 space-y-3">
                   {s.description && (
-                    <p className="text-[11px] text-zinc-400 leading-relaxed font-sans italic">{s.description}</p>
+                    <p className="text-xs text-zinc-300 leading-relaxed font-sans">{s.description}</p>
                   )}
                   <div className="flex justify-between items-center text-[10px] uppercase font-bold text-zinc-500">
                       <span>Start XP</span>
@@ -224,7 +224,7 @@ const SpeciesSelector: React.FC = () => {
                                           <img
                                             src={`/species/${slugify(s.name)}-${slugify(sub.name)}.jpg`}
                                             alt={sub.name}
-                                            className="w-full h-full object-cover"
+                                            className="w-full h-full object-cover object-top"
                                             onError={(e) => {
                                               // Fallback to parent species image
                                               const img = e.target as HTMLImageElement;
@@ -247,7 +247,7 @@ const SpeciesSelector: React.FC = () => {
                                               <span className="text-[6px] bg-cyan-500 text-black px-1.5 py-0.5 rounded font-black uppercase">Gewählt</span>
                                             )}
                                           </div>
-                                          <p className="text-[10px] text-zinc-500 font-sans italic leading-relaxed mb-2">{sub.description}</p>
+                                          <p className="text-[11px] text-zinc-400 font-sans leading-relaxed mb-2">{sub.description}</p>
 
                                           {/* Subspecies abilities (shown when selected) */}
                                           {isSubSelected && (

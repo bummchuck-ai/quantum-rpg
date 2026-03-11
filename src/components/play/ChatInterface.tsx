@@ -19,10 +19,6 @@ import {
   playCombatStart, playCombatVictory, playCombatDefeat,
   playCriticalHit, playDestinyFlip, playNPCMeet,
   playForceUse, playSceneChange,
-  playAmbientSpace, playAmbientDanger, playAmbientCantina,
-  stopAmbient, getAmbientType,
-  setAmbientMuted as setSoundsAmbientMuted,
-  getSettings as getSoundSettings,
 } from '@/lib/sounds';
 import { PENDING_RESTORE_KEY, slugify } from '@/lib/save-utils';
 
@@ -163,7 +159,6 @@ const ChatInterface: React.FC = () => {
   const [showForcePowers, setShowForcePowers] = useState(false);
   const [showDiceRoller, setShowDiceRoller] = useState(false);
   const [activeRollRequest, setActiveRollRequest] = useState<RollRequest | null>(null);
-  const [ambientMuted, setAmbientMutedLocal] = useState(() => getSoundSettings().ambientMuted);
   // Skills ref removed from HUD — available in Settings > Help
   const [toasts, setToasts] = useState<{ id: string; text: string; type: 'xp' | 'system' | 'combat' | 'heal'; ts: number }[]>([]);
 
@@ -544,20 +539,9 @@ const ChatInterface: React.FC = () => {
       }
     }
 
-    // Update mood + trigger ambient music
+    // Update mood (ambient music removed — preparing for real audio files)
     if (data.mood) {
       setSession(prev => ({ ...prev, scene: { ...prev.scene, mood: data.mood } }));
-      // Ambient music follows mood (only when not muted)
-      if (!ambientMuted) {
-        const m = data.mood.toLowerCase();
-        if (m === 'dangerous' || m === 'tense') {
-          if (getAmbientType() !== 'danger') playAmbientDanger();
-        } else if (m === 'calm' || m === 'mysterious') {
-          if (getAmbientType() !== 'space') playAmbientSpace();
-        } else if (m === 'exciting' || m === 'triumphant') {
-          if (getAmbientType() !== 'cantina') playAmbientCantina();
-        }
-      }
     }
 
     // Track GM messages and trigger summary generation every 10 messages
@@ -758,7 +742,7 @@ const ChatInterface: React.FC = () => {
                     : `/species/${slugify(species.name)}.jpg`
                   }
                   alt={selectedSubspecies || species.name}
-                  className="w-20 h-20 object-cover rounded-xl border border-zinc-700"
+                  className="w-20 h-20 object-cover object-top rounded-xl border border-zinc-700"
                   onError={(e) => {
                     const img = e.target as HTMLImageElement;
                     if (!img.dataset.fallback) {
@@ -891,7 +875,7 @@ const ChatInterface: React.FC = () => {
                     : `/species/${slugify(species.name)}.jpg`
                   }
                   alt={species.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                   onError={(e) => {
                     const img = e.target as HTMLImageElement;
                     if (!img.dataset.fallback) {
@@ -960,11 +944,8 @@ const ChatInterface: React.FC = () => {
           </div>
         </div>
 
-        {/* Row 3: Compact toolbar — only essential buttons */}
+        {/* Row 3: Compact toolbar — Force powers + Destiny pool only */}
         <div className="px-3 pb-2 flex gap-1.5 items-center">
-          <button onClick={() => setShowQuestLog(true)} className="text-[9px] font-black bg-zinc-900/80 border border-zinc-800 px-2.5 py-1.5 rounded-lg text-zinc-400 hover:text-white hover:border-zinc-600 active:scale-95 transition-all flex items-center gap-1" title="Missionen">
-            <span className="text-xs">📋</span>{session.quests.filter(q => q.status === 'active').length > 0 && <span className="text-amber-500">{session.quests.filter(q => q.status === 'active').length}</span>}
-          </button>
           {isForceSensitive && (
             <button onClick={() => setShowForcePowers(true)} className="text-[9px] font-black bg-purple-500/10 border border-purple-500/30 px-2.5 py-1.5 rounded-lg text-purple-400 hover:text-purple-300 hover:border-purple-500/50 active:scale-95 transition-all flex items-center gap-1" title="Machtkräfte">
               <span className="text-xs">⚡</span>FR{forceRating}
@@ -978,33 +959,6 @@ const ChatInterface: React.FC = () => {
             <span className="text-zinc-700 mx-0.5">/</span>
             <button onClick={() => handleFlipDestiny('dark')} className="text-red-400 hover:text-red-300 active:scale-90 transition-all flex items-center gap-0.5" title="Dunkel nutzen">
               ◑<span className="tabular-nums">{session.destinyPool.darkSide}</span>
-            </button>
-          </div>
-          <div className="flex items-center gap-1 ml-auto">
-            {/* Ambient music toggle */}
-            <button
-              onClick={() => {
-                if (ambientMuted) {
-                  setAmbientMutedLocal(false);
-                  setSoundsAmbientMuted(false);
-                  const m = session.scene.mood?.toLowerCase() || '';
-                  if (m === 'dangerous' || m === 'tense') playAmbientDanger();
-                  else if (m === 'calm' || m === 'mysterious') playAmbientSpace();
-                  else if (m === 'exciting' || m === 'triumphant') playAmbientCantina();
-                } else {
-                  setAmbientMutedLocal(true);
-                  setSoundsAmbientMuted(true);
-                  stopAmbient();
-                }
-              }}
-              className={`text-[9px] font-black bg-zinc-900/80 border px-2 py-1.5 rounded-lg active:scale-90 transition-all ${ambientMuted ? 'border-zinc-800 text-zinc-600' : 'border-amber-500/30 text-amber-400'}`}
-              title={ambientMuted ? 'Musik an' : 'Musik aus'}
-            >
-              {ambientMuted ? '🔇' : '♪'}
-            </button>
-            {/* Dice roller shortcut */}
-            <button onClick={() => { setActiveRollRequest({ skill: 'perception', difficulty: 'average', reason: 'Freier Wurf' }); setShowDiceRoller(true); }} className="text-[9px] font-black bg-zinc-900/80 border border-zinc-800 px-2 py-1.5 rounded-lg text-amber-500/70 hover:text-amber-400 active:scale-90 transition-all" title="Freier Wurf">
-              🎲
             </button>
           </div>
         </div>
