@@ -1,5 +1,5 @@
 import Anthropic from '@anthropic-ai/sdk';
-import { buildSystemPrompt, RESPONSE_FORMAT } from '../../../lib/gm/system-prompt';
+import { buildSystemPrompt, getResponseFormat } from '../../../lib/gm/system-prompt';
 import { NextResponse } from 'next/server';
 
 const anthropic = new Anthropic({
@@ -34,15 +34,16 @@ export async function POST(req: Request) {
       }
     }
 
-    const { gameState, userMessage, history } = body;
+    const { gameState, userMessage, history, language } = body;
 
     // 2. Regular Game State request
     if (!gameState || !gameState.character) {
       throw new Error('Invalid GameState provided to GM.');
     }
 
-    // Build system prompt
-    const systemInstruction = buildSystemPrompt(gameState) + '\n\n' + RESPONSE_FORMAT;
+    // Build system prompt (language-aware)
+    const lang = language === 'en' ? 'en' : 'de';
+    const systemInstruction = buildSystemPrompt(gameState, lang) + '\n\n' + getResponseFormat(lang);
 
     // Build conversation history for multi-turn
     const messages: { role: 'user' | 'assistant'; content: string }[] = [];

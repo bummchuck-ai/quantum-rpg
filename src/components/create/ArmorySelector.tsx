@@ -156,6 +156,9 @@ const ArmorySelector: React.FC = () => {
                                 <div className="text-[9px] text-zinc-400 font-bold uppercase tracking-wider">
                                     {category === 'weapons' ? `DMG: ${item.damage} / CRIT: ${item.critical}` : category === 'armor' ? `DEF: ${item.defense} / SOAK: ${item.soak}` : `ENC: ${item.encumbrance}`}
                                 </div>
+                                {item.description && (
+                                  <p className="text-[11px] text-zinc-400 font-sans mt-1 leading-snug line-clamp-1">{item.description}</p>
+                                )}
                             </div>
                         </div>
                         <div className="text-sm font-black text-amber-500 italic leading-none whitespace-nowrap">{item.price}</div>
@@ -183,7 +186,7 @@ const ArmorySelector: React.FC = () => {
 
                             <div className="bg-zinc-950 border border-zinc-800 p-3 rounded-xl shadow-inner">
                                 <p className="text-sm text-zinc-300 leading-snug font-sans">
-                                    {category === 'equipment' ? item.description : category === 'weapons' ? item.special : item.note || 'No further data found.'}
+                                    {item.description || (category === 'weapons' ? item.special : item.note) || 'Keine Beschreibung verfügbar.'}
                                 </p>
                             </div>
 

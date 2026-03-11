@@ -21,6 +21,8 @@ import {
   playForceUse, playSceneChange,
 } from '@/lib/sounds';
 import { PENDING_RESTORE_KEY, slugify } from '@/lib/save-utils';
+import { useSpeech } from '@/hooks/useSpeech';
+import { getLanguage, t } from '@/lib/i18n';
 
 // Skill name map (DE/EN → store key + characteristic)
 const SKILL_MAP: Record<string, { key: string; char: string }> = {
@@ -162,6 +164,13 @@ const ChatInterface: React.FC = () => {
   // Skills ref removed from HUD — available in Settings > Help
   const [toasts, setToasts] = useState<{ id: string; text: string; type: 'xp' | 'system' | 'combat' | 'heal'; ts: number }[]>([]);
 
+  // TTS / STT
+  const {
+    ttsEnabled, isSpeaking, speakText, stopSpeaking,
+    sttEnabled, sttSupported, isListening, transcript,
+    startListening, stopListening, clearTranscript
+  } = useSpeech();
+
   // Toast auto-dismiss
   useEffect(() => {
     if (toasts.length === 0) return;
@@ -170,6 +179,14 @@ const ChatInterface: React.FC = () => {
     }, 3000);
     return () => clearTimeout(timer);
   }, [toasts]);
+
+  // STT: Sync final transcript to input
+  useEffect(() => {
+    if (transcript && !isListening) {
+      setInputValue(prev => prev ? `${prev} ${transcript}` : transcript);
+      clearTranscript();
+    }
+  }, [transcript, isListening, clearTranscript]);
 
   // Game state — derive initial scene from character choices (vehicle/base)
   const [session, setSession] = useState<GameSession>(() => {
@@ -379,9 +396,9 @@ const ChatInterface: React.FC = () => {
       console.error('Intro failed:', error);
       const isTimeout = error?.name === 'AbortError';
       const narrative = isTimeout
-        ? 'GM antwortet nicht (Timeout). Bitte erneut versuchen.'
-        : 'Der Game Master ist momentan nicht erreichbar. Bitte versuche es erneut.';
-      setMessages(prev => [...prev, { role: 'gm', content: { narrative, error: isTimeout ? 'Timeout nach 60s' : (error?.message || 'Unbekannter Fehler'), options: [{ id: 'A', text: 'Erneut versuchen' }] } }]);
+        ? t('gmTimeout')
+        : t('gmUnavailable');
+      setMessages(prev => [...prev, { role: 'gm', content: { narrative, error: isTimeout ? 'Timeout nach 60s' : (error?.message || 'Unbekannter Fehler'), options: [{ id: 'A', text: t('retryOption') }] } }]);
     } finally {
       clearTimeout(timeout);
       setIsTyping(false);
@@ -557,22 +574,34 @@ const ChatInterface: React.FC = () => {
     }
     if (data.stateChanges?.criticalInjury?.name) {
       const ci = data.stateChanges.criticalInjury;
-      setToasts(prev => [...prev, { id: `crit-${Date.now()}`, text: `Kritische Verletzung: ${ci.name}`, type: 'combat', ts: Date.now() }]);
+      setToasts(prev => [...prev, { id: `crit-${Date.now()}`, text: `${getLanguage() === 'en' ? 'Critical Injury' : 'Kritische Verletzung'}: ${ci.name}`, type: 'combat', ts: Date.now() }]);
     }
     if (data.stateChanges?.destinyFlip?.side) {
       const df = data.stateChanges.destinyFlip;
-      const label = df.side === 'dark' ? 'Dunkle Seite' : 'Helle Seite';
-      setToasts(prev => [...prev, { id: `df-${Date.now()}`, text: `Schicksalspunkt (${label})${df.reason ? `: ${df.reason}` : ''}`, type: 'system', ts: Date.now() }]);
+      const label = df.side === 'dark' ? t('darkSide') : t('lightSide');
+      setToasts(prev => [...prev, { id: `df-${Date.now()}`, text: `${t('destinyPoint')} (${label})${df.reason ? `: ${df.reason}` : ''}`, type: 'system', ts: Date.now() }]);
     }
     if (data.stateChanges?.healInjury?.name) {
-      setToasts(prev => [...prev, { id: `heal-${Date.now()}`, text: `Geheilt: ${data.stateChanges.healInjury.name}`, type: 'heal', ts: Date.now() }]);
+      setToasts(prev => [...prev, { id: `heal-${Date.now()}`, text: `${t('healed')}: ${data.stateChanges.healInjury.name}`, type: 'heal', ts: Date.now() }]);
     }
     if (data.stateChanges?.combatEnd) {
-      const outcome = data.stateChanges.combatEnd.outcome || 'beendet';
-      setToasts(prev => [...prev, { id: `cend-${Date.now()}`, text: `Kampf ${outcome}`, type: 'combat', ts: Date.now() }]);
+      const outcome = data.stateChanges.combatEnd.outcome || '';
+      setToasts(prev => [...prev, { id: `cend-${Date.now()}`, text: `${t('combatWord')} ${outcome}`, type: 'combat', ts: Date.now() }]);
     }
 
     setMessages(prev => [...prev, { role: 'gm', content: data }]);
+
+    // TTS: Read narrative aloud if enabled
+    if (ttsEnabled && data.narrative && !data.error) {
+      let textToRead = data.narrative;
+      const lang = getLanguage();
+      if (Array.isArray(data.npcDialogue)) {
+        data.npcDialogue.forEach((d: { name: string; text: string }) => {
+          textToRead += ` ${d.name} ${lang === 'en' ? 'says' : 'sagt'}: ${d.text}`;
+        });
+      }
+      speakText(textToRead, lang === 'en' ? 'en-US' : 'de-DE');
+    }
   };
 
   const handleSendMessage = async (text: string) => {
@@ -596,7 +625,8 @@ const ChatInterface: React.FC = () => {
         body: JSON.stringify({
           gameState: buildGameState(),
           userMessage: text,
-          history: history.slice(-20)
+          history: history.slice(-20),
+          language: getLanguage(),
         }),
         signal: controller.signal,
       });
@@ -607,9 +637,9 @@ const ChatInterface: React.FC = () => {
       console.error('Chat failed:', error);
       const isTimeout = error?.name === 'AbortError';
       const narrative = isTimeout
-        ? 'GM antwortet nicht (Timeout). Bitte erneut versuchen.'
-        : 'Der Game Master ist momentan nicht erreichbar. Bitte versuche es erneut.';
-      setMessages(prev => [...prev, { role: 'gm', content: { narrative, error: isTimeout ? 'Timeout nach 60s' : (error?.message || 'Unbekannter Fehler'), options: [{ id: 'A', text: 'Erneut versuchen' }] } }]);
+        ? t('gmTimeout')
+        : t('gmUnavailable');
+      setMessages(prev => [...prev, { role: 'gm', content: { narrative, error: isTimeout ? 'Timeout nach 60s' : (error?.message || 'Unbekannter Fehler'), options: [{ id: 'A', text: t('retryOption') }] } }]);
     } finally {
       clearTimeout(timeout);
       setIsTyping(false);
@@ -663,7 +693,7 @@ const ChatInterface: React.FC = () => {
   // Combat handlers
   const handleEndCombat = () => {
     setCombat(prev => ({ ...prev, active: false }));
-    handleSendMessage('[SYSTEM] Der Kampf ist beendet.');
+    handleSendMessage('[SYSTEM] Combat has ended.');
   };
   const handleNextRound = () => {
     setCombat(prev => nextRound(prev));
@@ -827,7 +857,7 @@ const ChatInterface: React.FC = () => {
                     <span className="text-[10px] font-black text-white uppercase italic">{g.name}</span>
                     <span className="text-[8px] text-amber-500 font-black">{g.damage ? `DMG ${g.damage}` : g.soak ? `SOAK ${g.soak}` : 'ITEM'}</span>
                   </div>
-                )) : <div className="text-[10px] text-zinc-700 italic">Keine Ausrüstung...</div>}
+                )) : <div className="text-[10px] text-zinc-700 italic">{t('noGear')}</div>}
               </div>
               <div className="flex items-center gap-2 mt-3">
                 <span className="text-[9px] text-zinc-600 font-black uppercase tracking-[0.2em]">Credits</span>
@@ -1008,12 +1038,12 @@ const ChatInterface: React.FC = () => {
                   {msg.content.requiresRoll && msg.content.rollInfo && (
                     <div className="bg-amber-500/5 border border-amber-500/30 p-3.5 rounded-xl flex items-center justify-between gap-3">
                       <div className="flex-1 min-w-0">
-                        <div className="text-[9px] text-amber-500 font-black uppercase tracking-widest mb-0.5">Probe</div>
+                        <div className="text-[9px] text-amber-500 font-black uppercase tracking-widest mb-0.5">{getLanguage() === 'en' ? 'Check' : 'Probe'}</div>
                         <div className="text-sm font-black text-white uppercase italic truncate">{msg.content.rollInfo.skill} <span className="text-zinc-600">//</span> {msg.content.rollInfo.difficulty}</div>
                         {msg.content.rollInfo.reason && <div className="text-[9px] text-zinc-500 mt-0.5 truncate">{msg.content.rollInfo.reason}</div>}
                       </div>
                       <button onClick={() => initiateRoll(msg.content.rollInfo.skill, msg.content.rollInfo.difficulty, msg.content.rollInfo.reason, msg.content.rollInfo.boost, msg.content.rollInfo.setback)} className="bg-amber-600 hover:bg-amber-500 text-black font-black px-5 py-2.5 rounded-xl text-xs uppercase tracking-widest animate-pulse shrink-0">
-                        Würfeln
+                        {t('rollDice')}
                       </button>
                     </div>
                   )}
@@ -1029,14 +1059,25 @@ const ChatInterface: React.FC = () => {
                   </div>
                 </div>
               ) : (
-                <p className="text-base text-white font-bold">{msg.content.narrative}</p>
+                <p className="text-sm text-zinc-200">{msg.content.narrative}</p>
               )}
             </div>
           </div>
         ))}
         {isTyping && (
           <div className="flex justify-start animate-pulse">
-            <div className="bg-zinc-900/30 text-[9px] text-amber-500 font-black uppercase tracking-[0.3em] px-3 py-2 border border-amber-500/10 rounded-lg">GM denkt...</div>
+            <div className="bg-zinc-900/30 text-[9px] text-amber-500 font-black uppercase tracking-[0.3em] px-3 py-2 border border-amber-500/10 rounded-lg">{t('gmThinking')}</div>
+          </div>
+        )}
+        {isSpeaking && (
+          <div className="flex justify-start">
+            <button
+              onClick={stopSpeaking}
+              className="bg-amber-500/10 text-[9px] text-amber-400 font-black uppercase tracking-[0.3em] px-4 py-2 border border-amber-500/30 rounded-lg animate-pulse hover:bg-amber-500/20 transition-colors flex items-center gap-2"
+            >
+              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+              {t('narratorActive')}
+            </button>
           </div>
         )}
         <div ref={chatEndRef} />
@@ -1066,13 +1107,33 @@ const ChatInterface: React.FC = () => {
         <div className="max-w-2xl mx-auto flex gap-2">
           <div className="flex-1 relative">
             <input
-              className="w-full bg-zinc-950 border border-zinc-800 px-4 py-3.5 rounded-2xl text-sm outline-none focus:border-amber-500/60 text-white placeholder:text-zinc-700 shadow-2xl font-mono transition-colors"
-              placeholder="Eingabe..."
-              value={inputValue}
+              className={`w-full bg-zinc-950 border px-4 py-3.5 rounded-2xl text-sm outline-none text-white placeholder:text-zinc-700 shadow-2xl font-mono transition-colors ${
+                isListening ? 'border-red-500/60' : 'border-zinc-800 focus:border-amber-500/60'
+              }`}
+              placeholder={isListening ? t('listening') : t('inputPlaceholder')}
+              value={isListening ? transcript : inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyDown={(e) => { if (e.key === 'Enter') handleSendMessage(inputValue); }}
+              readOnly={isListening}
             />
           </div>
+          {sttEnabled && sttSupported && (
+            <button
+              onPointerDown={() => { stopSpeaking(); startListening(); }}
+              onPointerUp={() => stopListening()}
+              onPointerLeave={() => { if (isListening) stopListening(); }}
+              className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all active:scale-90 shrink-0 ${
+                isListening
+                  ? 'bg-red-500 text-white animate-pulse shadow-[0_0_20px_rgba(239,68,68,0.4)]'
+                  : 'bg-zinc-900 border border-zinc-700 text-zinc-400 hover:border-amber-500/50 hover:text-amber-400'
+              }`}
+              title={t('holdToSpeak')}
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1-9c0-.55.45-1 1-1s1 .45 1 1v6c0 .55-.45 1-1 1s-1-.45-1-1V5zm6 6c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+              </svg>
+            </button>
+          )}
           <button onClick={() => handleSendMessage(inputValue)} className="bg-amber-600 hover:bg-amber-500 text-black px-7 rounded-2xl transition-all active:scale-90 font-black text-base">
             GO
           </button>

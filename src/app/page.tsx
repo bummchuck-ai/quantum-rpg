@@ -8,6 +8,7 @@ import SystemPanel from '@/components/start/SystemPanel';
 import { useRouter } from 'next/navigation';
 import { useCharacterStore } from '@/store/characterStore';
 import { playConfirm, playNavigate } from '@/lib/sounds';
+import { t } from '@/lib/i18n';
 
 export default function Home() {
   const [showIntro, setShowIntro] = useState(false);
@@ -95,7 +96,7 @@ export default function Home() {
             <div className="flex justify-between items-center text-center w-full">
               <div className="w-full">
                 <div className="text-[10px] text-amber-500 font-black mb-1 opacity-50 uppercase tracking-widest">[ INITIALIZE_LINK ]</div>
-                <h2 className="text-3xl font-black text-white italic tracking-tighter uppercase">NEUES ABENTEUER</h2>
+                <h2 className="text-3xl font-black text-white italic tracking-tighter uppercase">{t('newAdventure')}</h2>
               </div>
             </div>
           </div>
@@ -109,8 +110,8 @@ export default function Home() {
               : 'border-zinc-900 bg-zinc-900/10 opacity-40 cursor-not-allowed'
           }`}
         >
-          {hasSave && <div className="text-[8px] text-emerald-500 font-black uppercase tracking-widest mb-1">{players[0]?.name || 'Charakter'} — {players[0]?.species?.name}</div>}
-          <h2 className={`text-xl font-black uppercase italic tracking-tighter ${hasSave ? 'text-white' : 'text-zinc-600'}`}>FORTSETZEN</h2>
+          {hasSave && <div className="text-[8px] text-emerald-500 font-black uppercase tracking-widest mb-1">{players[0]?.name || t('defaultPlayerName')} — {players[0]?.species?.name}</div>}
+          <h2 className={`text-xl font-black uppercase italic tracking-tighter ${hasSave ? 'text-white' : 'text-zinc-600'}`}>{t('continueGame')}</h2>
         </div>
 
         <div className="flex gap-3">
@@ -119,14 +120,14 @@ export default function Home() {
             className="flex-1 border border-zinc-800 p-4 hover:border-zinc-600 transition-colors cursor-pointer group rounded-xl text-center"
           >
             <div className="text-[8px] text-zinc-600 group-hover:text-zinc-400">DATABASE</div>
-            <div className="text-xs font-bold text-zinc-400 group-hover:text-white uppercase tracking-widest">Archiv</div>
+            <div className="text-xs font-bold text-zinc-400 group-hover:text-white uppercase tracking-widest">{t('archive')}</div>
           </div>
           <div
             onClick={() => { playNavigate(); setShowSystem(true); }}
             className="flex-1 border border-zinc-800 p-4 hover:border-zinc-600 transition-colors cursor-pointer group rounded-xl text-center"
           >
             <div className="text-[8px] text-zinc-600 group-hover:text-zinc-400">SETTINGS</div>
-            <div className="text-xs font-bold text-zinc-400 group-hover:text-white uppercase tracking-widest">System</div>
+            <div className="text-xs font-bold text-zinc-400 group-hover:text-white uppercase tracking-widest">{t('system')}</div>
           </div>
         </div>
       </div>

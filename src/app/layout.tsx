@@ -65,6 +65,14 @@ export default function RootLayout({
           `
         }} />
 
+        {/* Dynamic html lang attribute based on user setting */}
+        <script dangerouslySetInnerHTML={{ __html: `
+          try {
+            var s = JSON.parse(localStorage.getItem('quantum-rpg-settings') || '{}');
+            if (s.language === 'en') document.documentElement.lang = 'en';
+          } catch(e) {}
+        `}} />
+
         <style>{`
           /* GLOBAL RESET & SCANLINES */
           body {

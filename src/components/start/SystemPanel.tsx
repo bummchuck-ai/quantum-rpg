@@ -2,7 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { setMasterVolume, setSFXMuted, setAmbientMuted, getSettings, playClick } from '@/lib/sounds';
+import { checkTTSSupport, checkSTTSupport, getSpeechSettings, setTTSEnabled, setSTTEnabled } from '@/lib/speech';
 import { ALL_SKILLS } from '@/lib/skills';
+import { getLanguage, setLanguage, t, type Language } from '@/lib/i18n';
 
 interface SystemPanelProps {
   onClose: () => void;
@@ -44,6 +46,11 @@ const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
   const [sfxMuted, setSfxMuted] = useState(false);
   const [ambMuted, setAmbMuted] = useState(false);
   const [storageInfo, setStorageInfo] = useState<StorageInfo>({ keys: [], totalSize: 0 });
+  const [ttsOn, setTtsOn] = useState(false);
+  const [sttOn, setSttOn] = useState(false);
+  const [ttsSupported, setTtsSupported] = useState(false);
+  const [sttSupported, setSttSupported] = useState(false);
+  const [lang, setLang] = useState<Language>('de');
   const [confirmClearSaves, setConfirmClearSaves] = useState(false);
   const [confirmClearAll, setConfirmClearAll] = useState(false);
   const [clearMsg, setClearMsg] = useState<string | null>(null);
@@ -55,6 +62,13 @@ const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
     setSfxMuted(s.sfxMuted);
     setAmbMuted(s.ambientMuted);
     setStorageInfo(getStorageInfo());
+    // Speech settings
+    setTtsSupported(checkTTSSupport());
+    setSttSupported(checkSTTSupport());
+    const speech = getSpeechSettings();
+    setTtsOn(speech.ttsEnabled);
+    setSttOn(speech.sttEnabled);
+    setLang(getLanguage());
   }, []);
 
   const handleVolumeChange = (val: number) => {
@@ -79,7 +93,7 @@ const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
     localStorage.removeItem('quantum-rpg-saves');
     localStorage.removeItem('quantum-rpg-autosave');
     setConfirmClearSaves(false);
-    setClearMsg('Alle Spielstände gelöscht.');
+    setClearMsg(t('savesDeleted'));
     setStorageInfo(getStorageInfo());
     setTimeout(() => setClearMsg(null), 3000);
   };
@@ -94,7 +108,7 @@ const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
     }
     keysToRemove.forEach(k => localStorage.removeItem(k));
     setConfirmClearAll(false);
-    setClearMsg(`${keysToRemove.length} Einträge gelöscht. Seite wird neu geladen...`);
+    setClearMsg(`${keysToRemove.length} ${t('dataDeleted')}`);
     setStorageInfo(getStorageInfo());
     setTimeout(() => window.location.reload(), 2000);
   };
@@ -115,20 +129,20 @@ const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
 
         {/* Tab Toggle */}
         <div className="flex border-b border-zinc-800">
-          {(['settings', 'hilfe', 'credits', 'debug'] as SystemTab[]).map((t) => (
+          {(['settings', 'hilfe', 'credits', 'debug'] as SystemTab[]).map((tk) => (
             <button
-              key={t}
-              onClick={() => { setTab(t); setConfirmClearSaves(false); setConfirmClearAll(false); }}
+              key={tk}
+              onClick={() => { setTab(tk); setConfirmClearSaves(false); setConfirmClearAll(false); }}
               className={`flex-1 py-3 text-[10px] font-black uppercase tracking-widest transition-colors ${
-                tab === t
-                  ? t === 'settings' ? 'text-amber-500 border-b-2 border-amber-500 bg-amber-500/5'
-                    : t === 'hilfe' ? 'text-cyan-500 border-b-2 border-cyan-500 bg-cyan-500/5'
-                    : t === 'credits' ? 'text-emerald-500 border-b-2 border-emerald-500 bg-emerald-500/5'
+                tab === tk
+                  ? tk === 'settings' ? 'text-amber-500 border-b-2 border-amber-500 bg-amber-500/5'
+                    : tk === 'hilfe' ? 'text-cyan-500 border-b-2 border-cyan-500 bg-cyan-500/5'
+                    : tk === 'credits' ? 'text-emerald-500 border-b-2 border-emerald-500 bg-emerald-500/5'
                     : 'text-red-500 border-b-2 border-red-500 bg-red-500/5'
                   : 'text-zinc-600'
               }`}
             >
-              {t === 'settings' ? 'Einst.' : t === 'hilfe' ? 'Hilfe' : t === 'credits' ? 'Credits' : 'Debug'}
+              {tk === 'settings' ? t('settings') : tk === 'hilfe' ? t('help') : tk === 'credits' ? t('credits') : t('debug')}
             </button>
           ))}
         </div>
@@ -136,13 +150,37 @@ const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
         {/* Content */}
         <div className="p-5 max-h-[55vh] overflow-y-auto">
 
-          {/* === EINSTELLUNGEN === */}
+          {/* === SETTINGS === */}
           {tab === 'settings' && (
             <div className="space-y-5">
+              {/* Language Toggle */}
+              <div className="flex justify-between items-center">
+                <div>
+                  <div className="text-[10px] font-black text-zinc-400 uppercase tracking-wider">{t('language')}</div>
+                </div>
+                <div className="flex border border-zinc-700 rounded-lg overflow-hidden">
+                  <button
+                    onClick={() => { setLang('de'); setLanguage('de'); }}
+                    className={`px-3 py-1.5 text-[10px] font-black uppercase tracking-wider transition-colors ${
+                      lang === 'de' ? 'bg-amber-500 text-black' : 'bg-zinc-900 text-zinc-500 hover:text-zinc-300'
+                    }`}
+                  >DE</button>
+                  <button
+                    onClick={() => { setLang('en'); setLanguage('en'); }}
+                    className={`px-3 py-1.5 text-[10px] font-black uppercase tracking-wider transition-colors ${
+                      lang === 'en' ? 'bg-amber-500 text-black' : 'bg-zinc-900 text-zinc-500 hover:text-zinc-300'
+                    }`}
+                  >EN</button>
+                </div>
+              </div>
+
+              {/* Separator */}
+              <div className="h-px bg-zinc-800" />
+
               {/* Master Volume */}
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <label className="text-[10px] font-black text-zinc-400 uppercase tracking-wider">Master-Lautstärke</label>
+                  <label className="text-[10px] font-black text-zinc-400 uppercase tracking-wider">{t('masterVolume')}</label>
                   <span className="text-[10px] font-black text-amber-500">{volume}%</span>
                 </div>
                 <input
@@ -161,8 +199,8 @@ const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
               {/* SFX Toggle */}
               <div className="flex justify-between items-center">
                 <div>
-                  <div className="text-[10px] font-black text-zinc-400 uppercase tracking-wider">Sound-Effekte</div>
-                  <div className="text-[8px] text-zinc-600 mt-0.5">UI-Klicks, Würfel, Kampf</div>
+                  <div className="text-[10px] font-black text-zinc-400 uppercase tracking-wider">{t('soundEffects')}</div>
+                  <div className="text-[8px] text-zinc-600 mt-0.5">{t('sfxDesc')}</div>
                 </div>
                 <button
                   onClick={handleSFXToggle}
@@ -175,8 +213,8 @@ const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
               {/* Ambient Toggle */}
               <div className="flex justify-between items-center">
                 <div>
-                  <div className="text-[10px] font-black text-zinc-400 uppercase tracking-wider">Ambient-Musik</div>
-                  <div className="text-[8px] text-zinc-600 mt-0.5">Hintergrund-Atmosphäre</div>
+                  <div className="text-[10px] font-black text-zinc-400 uppercase tracking-wider">{t('ambientMusic')}</div>
+                  <div className="text-[8px] text-zinc-600 mt-0.5">{t('ambientDesc')}</div>
                 </div>
                 <button
                   onClick={handleAmbientToggle}
@@ -185,52 +223,95 @@ const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
                   <div className={`absolute top-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform ${ambMuted ? 'left-0.5' : 'left-[1.625rem]'}`} />
                 </button>
               </div>
+
+              {/* Separator */}
+              <div className="h-px bg-zinc-800" />
+
+              {/* TTS Toggle */}
+              <div className="flex justify-between items-center">
+                <div>
+                  <div className="text-[10px] font-black text-zinc-400 uppercase tracking-wider">{t('narratorVoice')}</div>
+                  <div className="text-[8px] text-zinc-600 mt-0.5">
+                    {ttsSupported ? t('narratorDesc') : t('notSupported')}
+                  </div>
+                </div>
+                <button
+                  onClick={() => { const v = !ttsOn; setTtsOn(v); setTTSEnabled(v); }}
+                  disabled={!ttsSupported}
+                  className={`w-12 h-6 rounded-full transition-colors relative ${
+                    !ttsSupported ? 'bg-zinc-900 opacity-30 cursor-not-allowed' :
+                    ttsOn ? 'bg-amber-500' : 'bg-zinc-800'
+                  }`}
+                >
+                  <div className={`absolute top-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform ${ttsOn ? 'left-[1.625rem]' : 'left-0.5'}`} />
+                </button>
+              </div>
+
+              {/* STT Toggle */}
+              <div className="flex justify-between items-center">
+                <div>
+                  <div className="text-[10px] font-black text-zinc-400 uppercase tracking-wider">{t('speechInput')}</div>
+                  <div className="text-[8px] text-zinc-600 mt-0.5">
+                    {sttSupported ? t('speechInputDesc') : t('notSupported')}
+                  </div>
+                </div>
+                <button
+                  onClick={() => { const v = !sttOn; setSttOn(v); setSTTEnabled(v); }}
+                  disabled={!sttSupported}
+                  className={`w-12 h-6 rounded-full transition-colors relative ${
+                    !sttSupported ? 'bg-zinc-900 opacity-30 cursor-not-allowed' :
+                    sttOn ? 'bg-amber-500' : 'bg-zinc-800'
+                  }`}
+                >
+                  <div className={`absolute top-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform ${sttOn ? 'left-[1.625rem]' : 'left-0.5'}`} />
+                </button>
+              </div>
             </div>
           )}
 
-          {/* === HILFE === */}
+          {/* === HELP === */}
           {tab === 'hilfe' && (
             <div className="space-y-5">
               {/* Game Tips */}
               <div>
-                <div className="text-[9px] font-black text-cyan-500 uppercase tracking-wider mb-2">Spieltipps</div>
+                <div className="text-[9px] font-black text-cyan-500 uppercase tracking-wider mb-2">{t('gameTips')}</div>
                 <div className="space-y-2">
-                  <HelpCard icon="💾" text="Auto-Save ist alle 60 Sekunden aktiv. Manuell speichern über das Disketten-Symbol im HUD." />
-                  <HelpCard icon="📋" text="Aktive Missionen siehst du über den Missions-Button in der Toolbar." />
-                  <HelpCard icon="◐" text="Schicksalspunkte (Licht/Dunkel) kannst du über die Anzeige in der Toolbar wenden." />
-                  <HelpCard icon="🎲" text="Freie Würfe startest du über das Würfel-Symbol. Der GM fordert Proben automatisch an." />
-                  <HelpCard icon="♪" text="Ambient-Musik wechselt je nach Stimmung der Szene. Toggle über das Musik-Symbol." />
-                  <HelpCard icon="⚡" text="Machtkräfte erscheinen in der Toolbar nur für machtbegabte Karrieren." />
+                  <HelpCard icon="💾" text={t('tipAutoSave')} />
+                  <HelpCard icon="📋" text={t('tipMissions')} />
+                  <HelpCard icon="◐" text={t('tipDestiny')} />
+                  <HelpCard icon="🎲" text={t('tipDice')} />
+                  <HelpCard icon="♪" text={t('tipAmbient')} />
+                  <HelpCard icon="⚡" text={t('tipForce')} />
                 </div>
               </div>
 
               {/* Species Quick Reference */}
               <div>
-                <div className="text-[9px] font-black text-cyan-500 uppercase tracking-wider mb-2">Spezies-Guide</div>
+                <div className="text-[9px] font-black text-cyan-500 uppercase tracking-wider mb-2">{t('speciesGuide')}</div>
                 <div className="space-y-1.5">
-                  <SpeciesGuideEntry name="Mensch" desc="Vielseitig, 1 freier Rang in 2 nicht-Karriere-Fertigkeiten." bonus="+1 Nicht-Karriere Skill" />
-                  <SpeciesGuideEntry name="Twi'lek" desc="Charmant und geschickt. Natürliche Überzeugungskraft." bonus="Charme / Täuschung" />
-                  <SpeciesGuideEntry name="Wookiee" desc="Riesig, stark, loyal. Regeneriert durch Wutanfälle." bonus="Stärke / Zähigkeit" />
-                  <SpeciesGuideEntry name="Rodianisch" desc="Geborene Jäger mit scharfen Sinnen." bonus="Wahrnehmung / Überleben" />
-                  <SpeciesGuideEntry name="Togruta" desc="Echolot-Sinne, Rudel-Instinkt, Jedi-Tradition." bonus="Wahrnehmung / Gruppeninstinkt" />
-                  <SpeciesGuideEntry name="Bothanisch" desc="Spione und Informationshändler der Galaxis." bonus="Streetwise / Überzeugung" />
-                  <SpeciesGuideEntry name="Droide" desc="Programmiert, unermüdlich, modular erweiterbar." bonus="Kein Essen/Schlafen" />
+                  <SpeciesGuideEntry name="Mensch" desc={t('speciesHuman')} bonus={lang === 'en' ? '+1 Non-Career Skill' : '+1 Nicht-Karriere Skill'} />
+                  <SpeciesGuideEntry name="Twi'lek" desc={t('speciesTwilek')} bonus={lang === 'en' ? 'Charm / Deception' : 'Charme / Täuschung'} />
+                  <SpeciesGuideEntry name="Wookiee" desc={t('speciesWookiee')} bonus={lang === 'en' ? 'Brawn / Resilience' : 'Stärke / Zähigkeit'} />
+                  <SpeciesGuideEntry name={lang === 'en' ? 'Rodian' : 'Rodianisch'} desc={t('speciesRodian')} bonus={lang === 'en' ? 'Perception / Survival' : 'Wahrnehmung / Überleben'} />
+                  <SpeciesGuideEntry name="Togruta" desc={t('speciesTogruta')} bonus={lang === 'en' ? 'Perception / Pack Instinct' : 'Wahrnehmung / Gruppeninstinkt'} />
+                  <SpeciesGuideEntry name={lang === 'en' ? 'Bothan' : 'Bothanisch'} desc={t('speciesBothan')} bonus={lang === 'en' ? 'Streetwise / Persuasion' : 'Streetwise / Überzeugung'} />
+                  <SpeciesGuideEntry name={lang === 'en' ? 'Droid' : 'Droide'} desc={t('speciesDroid')} bonus={lang === 'en' ? 'No Food/Sleep' : 'Kein Essen/Schlafen'} />
                 </div>
               </div>
 
               {/* Skills Reference */}
               <div>
-                <div className="text-[9px] font-black text-cyan-500 uppercase tracking-wider mb-2">Fertigkeiten-Übersicht</div>
+                <div className="text-[9px] font-black text-cyan-500 uppercase tracking-wider mb-2">{t('skillsOverview')}</div>
                 <div className="bg-zinc-950 border border-zinc-800 rounded-xl p-2.5">
                   {(['general', 'combat', 'knowledge'] as const).map(cat => (
                     <div key={cat} className="mb-2 last:mb-0">
                       <div className="text-[8px] font-black text-zinc-600 uppercase tracking-wider mb-1">
-                        {cat === 'general' ? 'Allgemein' : cat === 'combat' ? 'Kampf' : 'Wissen'}
+                        {cat === 'general' ? t('general') : cat === 'combat' ? t('combat') : t('knowledge')}
                       </div>
                       <div className="grid grid-cols-2 gap-x-3 gap-y-0.5">
                         {ALL_SKILLS.filter(s => s.category === cat).map(s => (
                           <div key={s.key} className="flex justify-between items-center">
-                            <span className="text-[9px] text-zinc-400 truncate">{s.nameDE}</span>
+                            <span className="text-[9px] text-zinc-400 truncate capitalize">{lang === 'en' ? s.key : s.nameDE}</span>
                             <span className="text-[8px] text-zinc-600 shrink-0 ml-1">{s.characteristic === 'brawn' ? 'ST' : s.characteristic === 'agility' ? 'GE' : s.characteristic === 'intellect' ? 'IN' : s.characteristic === 'cunning' ? 'LI' : s.characteristic === 'willpower' ? 'WI' : 'CH'}</span>
                           </div>
                         ))}
@@ -254,23 +335,22 @@ const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
               <div className="h-px bg-zinc-800 my-4" />
 
               <div className="space-y-3">
-                <CreditLine label="Konzept & Entwicklung" value="Felix Bummchuck" />
-                <CreditLine label="KI Game Master" value="Claude AI (Anthropic)" />
-                <CreditLine label="Regelwerk" value="FFG Star Wars RPG / Genesys" />
+                <CreditLine label={t('conceptDev')} value="Felix Bummchuck" />
+                <CreditLine label={t('aiGM')} value="Claude AI (Anthropic)" />
+                <CreditLine label={t('ruleSystem')} value="FFG Star Wars RPG / Genesys" />
                 <CreditLine label="Framework" value="Next.js + React" />
                 <CreditLine label="Styling" value="Tailwind CSS v4" />
                 <CreditLine label="State Management" value="Zustand" />
-                <CreditLine label="Sound Engine" value="Web Audio API (Synthese)" />
+                <CreditLine label="Sound Engine" value="Web Audio API" />
                 <CreditLine label="Deployment" value="Vercel" />
               </div>
 
               <div className="h-px bg-zinc-800 my-4" />
 
               <div className="text-center text-[8px] text-zinc-700 space-y-1">
-                <div>Star Wars ist ein Warenzeichen von Lucasfilm Ltd.</div>
-                <div>Genesys/FFG ist ein Warenzeichen von Fantasy Flight Games.</div>
-                <div className="mt-2 text-zinc-600">Dieses Projekt ist ein Fan-Werk und steht in keiner</div>
-                <div className="text-zinc-600">Verbindung zu den Rechteinhabern.</div>
+                <div>{t('copyrightSW')}</div>
+                <div>{t('copyrightFFG')}</div>
+                <div className="mt-2 text-zinc-600">{t('copyrightFan')}</div>
               </div>
             </div>
           )}
@@ -290,7 +370,7 @@ const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
                 <div className="text-[9px] font-black text-zinc-500 uppercase tracking-wider mb-2">LocalStorage</div>
                 <div className="bg-zinc-950 border border-zinc-800 rounded-xl p-3 space-y-1.5 max-h-40 overflow-y-auto">
                   {storageInfo.keys.length === 0 ? (
-                    <div className="text-[9px] text-zinc-700 italic">Keine Einträge</div>
+                    <div className="text-[9px] text-zinc-700 italic">{t('noEntries')}</div>
                   ) : (
                     storageInfo.keys.map(({ key, size }) => (
                       <div key={key} className="flex justify-between text-[9px]">
@@ -303,7 +383,7 @@ const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
                   )}
                 </div>
                 <div className="text-[8px] text-zinc-700 mt-1.5 text-right">
-                  Gesamt: {formatBytes(storageInfo.totalSize)}
+                  {t('totalSize')}: {formatBytes(storageInfo.totalSize)}
                 </div>
               </div>
 
@@ -315,13 +395,13 @@ const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
                       onClick={handleClearSaves}
                       className="flex-1 bg-red-600 text-white font-black py-2.5 rounded-xl text-[9px] uppercase tracking-widest"
                     >
-                      Ja, Spielstände löschen
+                      {t('confirmDeleteSaves')}
                     </button>
                     <button
                       onClick={() => setConfirmClearSaves(false)}
                       className="flex-1 bg-zinc-800 text-zinc-400 font-bold py-2.5 rounded-xl text-[9px] uppercase tracking-widest"
                     >
-                      Abbrechen
+                      {t('cancel')}
                     </button>
                   </div>
                 ) : (
@@ -329,7 +409,7 @@ const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
                     onClick={() => setConfirmClearSaves(true)}
                     className="w-full bg-zinc-800 hover:bg-zinc-700 text-zinc-400 font-bold py-2.5 rounded-xl text-[9px] uppercase tracking-widest"
                   >
-                    Alle Spielstände löschen
+                    {t('deleteAllSaves')}
                   </button>
                 )}
 
@@ -339,13 +419,13 @@ const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
                       onClick={handleClearAll}
                       className="flex-1 bg-red-600 text-white font-black py-2.5 rounded-xl text-[9px] uppercase tracking-widest"
                     >
-                      Ja, ALLES löschen
+                      {t('confirmDeleteAll')}
                     </button>
                     <button
                       onClick={() => setConfirmClearAll(false)}
                       className="flex-1 bg-zinc-800 text-zinc-400 font-bold py-2.5 rounded-xl text-[9px] uppercase tracking-widest"
                     >
-                      Abbrechen
+                      {t('cancel')}
                     </button>
                   </div>
                 ) : (
@@ -353,7 +433,7 @@ const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
                     onClick={() => setConfirmClearAll(true)}
                     className="w-full bg-zinc-800 hover:bg-zinc-700 text-red-400/70 font-bold py-2.5 rounded-xl text-[9px] uppercase tracking-widest"
                   >
-                    Alle App-Daten löschen
+                    {t('deleteAllData')}
                   </button>
                 )}
               </div>
@@ -367,7 +447,7 @@ const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
             onClick={onClose}
             className="w-full bg-white text-black font-black py-3 rounded-xl uppercase tracking-widest text-xs"
           >
-            Schließen
+            {t('close')}
           </button>
         </div>
       </div>
