@@ -180,17 +180,17 @@ const SpeciesSelector: React.FC = () => {
                   : 'border-zinc-700/40 bg-zinc-950 shadow-[0_8px_32px_rgba(0,0,0,0.6)] hover:border-zinc-600/50'
               }`}
             >
-              {/* Portrait — cinematic banner */}
-              <div className="aspect-[5/3] bg-zinc-950 relative flex items-end overflow-hidden">
+              {/* Portrait — tall card to show full character art */}
+              <div className="aspect-[3/4] bg-zinc-950 relative flex items-end overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`/species/${slugify(s.name)}.jpg`}
                     alt={s.name}
-                    className="absolute inset-0 w-full h-full object-cover object-top opacity-80 group-hover:opacity-95 transition-all duration-500"
+                    className="absolute inset-0 w-full h-full object-cover object-center opacity-90 group-hover:opacity-100 transition-all duration-500"
                     onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent"></div>
-                  <div className="relative z-10 px-4 pb-2.5 flex items-end gap-2 w-full">
+                  <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent"></div>
+                  <div className="relative z-10 px-4 pb-3 flex items-end gap-2 w-full">
                     <h2 className="text-sm font-black text-white italic tracking-tight uppercase leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">{s.name}</h2>
                     {hasSubspecies(s) && (
                       <span className="text-[6px] text-cyan-400 font-black uppercase tracking-widest px-1.5 py-0.5 border border-cyan-500/30 rounded bg-cyan-500/10 mb-px">
