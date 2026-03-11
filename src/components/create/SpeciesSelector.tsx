@@ -174,77 +174,76 @@ const SpeciesSelector: React.FC = () => {
                   setSelectedSubspecies(null);
                 }
               }}
-              className={`group border transition-all duration-300 rounded-xl overflow-hidden ${viewMode === 'grid' ? 'cursor-pointer' : ''} h-fit ${
+              className={`group border transition-all duration-300 rounded-2xl overflow-hidden ${viewMode === 'grid' ? 'cursor-pointer' : ''} h-fit ${
                 isSelected
-                  ? 'border-white bg-white/[0.05] shadow-[0_0_20px_rgba(255,255,255,0.1)]'
-                  : 'border-zinc-800 bg-zinc-900/20 hover:bg-zinc-900/40'
+                  ? 'border-amber-500/30 bg-zinc-950 shadow-[0_0_20px_rgba(245,158,11,0.06),0_8px_32px_rgba(0,0,0,0.7)]'
+                  : 'border-zinc-700/40 bg-zinc-950 shadow-[0_8px_32px_rgba(0,0,0,0.6)] hover:border-zinc-600/50'
               }`}
             >
-              {/* Portrait with scan effect */}
-              <div className="aspect-[4/3] bg-zinc-950 relative flex items-end border-b border-zinc-900 overflow-hidden card-scan">
+              {/* Portrait — cinematic banner */}
+              <div className="aspect-[5/2] bg-zinc-950 relative flex items-end overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`/species/${slugify(s.name)}.jpg`}
                     alt={s.name}
-                    className="absolute inset-0 w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                    className="absolute inset-0 w-full h-full object-cover object-top opacity-70 group-hover:opacity-90 transition-all duration-500"
                     onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
-                  <div className="relative z-10 px-4 pb-3 flex items-end gap-2">
-                    <h2 className="text-base font-black text-white italic tracking-tighter uppercase leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">{s.name}</h2>
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent"></div>
+                  <div className="relative z-10 px-4 pb-2.5 flex items-end gap-2 w-full">
+                    <h2 className="text-sm font-black text-white italic tracking-tight uppercase leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">{s.name}</h2>
                     {hasSubspecies(s) && (
-                      <span className="text-[7px] text-cyan-400 font-black uppercase tracking-widest px-1.5 py-0.5 border border-cyan-500/30 rounded bg-cyan-500/10 mb-0.5">
+                      <span className="text-[6px] text-cyan-400 font-black uppercase tracking-widest px-1.5 py-0.5 border border-cyan-500/30 rounded bg-cyan-500/10 mb-px">
                         {s.subspecies!.length} {t('subspecies')}
                       </span>
                     )}
+                    <span className="ml-auto text-amber-500 text-xs font-black">{s.startingXP} XP</span>
                   </div>
               </div>
 
-              <div className="p-4 space-y-2">
+              <div className="px-3 pb-3 pt-2 space-y-2">
                   {s.description && (
-                    <p className="text-[11px] text-zinc-400 leading-snug font-sans">{s.description}</p>
+                    <p className="text-xs text-zinc-300 leading-relaxed font-sans">{s.description}</p>
                   )}
-                  <div className="flex justify-between items-center text-[10px] uppercase font-bold text-zinc-500">
-                      <span>{t('startXP')}</span>
-                      <span className="text-amber-500 text-sm">{s.startingXP}</span>
-                  </div>
 
                   <div className="grid grid-cols-6 gap-1">
                       {Object.entries(s.characteristics).map(([stat, val]) => (
-                          <div key={stat} className="bg-black/40 border border-zinc-900 py-1 rounded flex flex-col items-center">
-                              <span className="text-xs font-bold text-white">{val}</span>
-                              <span className="text-[5px] text-zinc-600 uppercase font-black tracking-tighter">{stat.substring(0, 3)}</span>
+                          <div key={stat} className="bg-black/60 border border-zinc-800/60 py-1.5 rounded-lg flex flex-col items-center">
+                              <span className="text-sm font-black text-white">{val}</span>
+                              <span className="text-[6px] text-zinc-500 uppercase font-bold tracking-tight">{stat.substring(0, 3)}</span>
                           </div>
                       ))}
                   </div>
 
                   {isSelected && (
-                      <div className="animate-in slide-in-from-top-4 duration-500 space-y-4 pt-4 border-t border-zinc-900 mt-2">
-                          <div className="grid grid-cols-2 gap-3 text-[9px] text-zinc-500 font-black uppercase tracking-widest text-center">
-                              <div className="bg-zinc-950 p-3 border border-zinc-900 rounded-lg">Wounds: {s.woundThresholdBase}+BR</div>
-                              <div className="bg-zinc-950 p-3 border border-zinc-900 rounded-lg">Strain: {s.strainThresholdBase}+WL</div>
+                      <div className="animate-in slide-in-from-top-4 duration-500 space-y-3 pt-3 border-t border-zinc-800/50 mt-1">
+                          <div className="grid grid-cols-2 gap-2 text-[9px] text-zinc-400 font-bold uppercase tracking-widest text-center">
+                              <div className="bg-black/40 p-2 border border-zinc-800/50 rounded-lg">Wounds {s.woundThresholdBase}+BR</div>
+                              <div className="bg-black/40 p-2 border border-zinc-800/50 rounded-lg">Strain {s.strainThresholdBase}+WL</div>
                           </div>
 
                           {/* Base Abilities */}
                           {s.abilities.length > 0 && (
-                            <div className="space-y-2">
-                              <div className="text-[10px] text-amber-500 font-black uppercase tracking-[0.3em] flex items-center gap-2">
-                                  <div className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></div>
+                            <div className="bg-black/30 border border-zinc-800/40 rounded-xl p-3 space-y-2">
+                              <div className="text-[9px] text-amber-500/80 font-black uppercase tracking-[0.2em] flex items-center gap-1.5">
+                                  <div className="w-1 h-1 bg-amber-500 rounded-full"></div>
                                   {t('traitsAnalysis')}
                               </div>
-                              <ul className="space-y-2">
+                              <div className="space-y-1.5">
                                   {s.abilities.map((a, i) => (
-                                      <li key={i} className="text-[11px] text-zinc-400 leading-snug pl-3 border-l-2 border-amber-500/20 font-sans italic">{a}</li>
+                                      <p key={i} className="text-[11px] text-zinc-300 leading-relaxed font-sans">
+                                        <span className="text-amber-500/50 mr-1.5">›</span>{a}
+                                      </p>
                                   ))}
-                              </ul>
+                              </div>
                             </div>
                           )}
 
                           {/* Subspecies Selection */}
                           {hasSubspecies(s) && (
-                            <div className="space-y-3">
-                              <div className="text-[10px] text-cyan-400 font-black uppercase tracking-[0.3em] flex items-center gap-2">
-                                <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse"></div>
+                            <div className="space-y-2">
+                              <div className="text-[9px] text-cyan-400/80 font-black uppercase tracking-[0.2em] flex items-center gap-1.5">
+                                <div className="w-1 h-1 bg-cyan-400 rounded-full"></div>
                                 {t('selectSubspecies')}
                               </div>
                               <div className="space-y-2">
@@ -254,15 +253,15 @@ const SpeciesSelector: React.FC = () => {
                                     <div
                                       key={sub.name}
                                       onClick={(e) => { e.stopPropagation(); playClick(); setSelectedSubspecies(isSubSelected ? null : sub.name); }}
-                                      className={`border rounded-xl p-3 cursor-pointer transition-all duration-200 ${
+                                      className={`border rounded-xl p-2.5 cursor-pointer transition-all duration-200 ${
                                         isSubSelected
-                                          ? 'border-cyan-500 bg-cyan-500/[0.08] shadow-[0_0_12px_rgba(34,211,238,0.15)]'
-                                          : 'border-zinc-800 bg-zinc-950/50 hover:border-zinc-700'
+                                          ? 'border-cyan-500/50 bg-cyan-500/[0.06] shadow-[0_0_12px_rgba(34,211,238,0.1)]'
+                                          : 'border-zinc-800/60 bg-black/40 hover:border-zinc-700'
                                       }`}
                                     >
-                                      <div className="flex items-start gap-3">
+                                      <div className="flex items-start gap-2.5">
                                         {/* Portrait */}
-                                        <div className="w-14 h-14 rounded-lg overflow-hidden border border-zinc-800 flex-shrink-0 bg-zinc-950">
+                                        <div className="w-11 h-11 rounded-lg overflow-hidden border border-zinc-800/60 flex-shrink-0 bg-zinc-950">
                                           {/* eslint-disable-next-line @next/next/no-img-element */}
                                           <img
                                             src={`/species/${slugify(s.name)}-${slugify(sub.name)}.jpg`}
@@ -289,13 +288,13 @@ const SpeciesSelector: React.FC = () => {
                                               <span className="text-[6px] bg-cyan-500 text-black px-1.5 py-0.5 rounded font-black uppercase">{t('chosen')}</span>
                                             )}
                                           </div>
-                                          <p className="text-[11px] text-zinc-400 font-sans leading-relaxed mb-2">{sub.description}</p>
+                                          <p className="text-[10px] text-zinc-400 font-sans leading-snug">{sub.description}</p>
 
                                           {/* Subspecies abilities (shown when selected) */}
                                           {isSubSelected && (
-                                            <div className="space-y-1.5 mt-2 pt-2 border-t border-zinc-800 animate-in fade-in duration-300">
+                                            <div className="space-y-1 mt-1.5 pt-1.5 border-t border-zinc-800/50 animate-in fade-in duration-300">
                                               {sub.abilities.map((a, i) => (
-                                                <div key={i} className="text-[10px] text-cyan-300/70 font-sans italic pl-3 border-l border-cyan-500/30">{a}</div>
+                                                <div key={i} className="text-[10px] text-cyan-300/60 font-sans pl-2.5 border-l border-cyan-500/20">{a}</div>
                                               ))}
                                             </div>
                                           )}
@@ -306,7 +305,7 @@ const SpeciesSelector: React.FC = () => {
                                 })}
                               </div>
                               {!selectedSubspecies && (
-                                <div className="text-[9px] text-red-400/60 font-black uppercase tracking-widest text-center py-2 animate-pulse">
+                                <div className="text-[8px] text-red-400/50 font-black uppercase tracking-widest text-center py-1.5 animate-pulse">
                                   {t('mustSelectSubspecies')}
                                 </div>
                               )}
@@ -316,7 +315,7 @@ const SpeciesSelector: React.FC = () => {
                           <button
                               onClick={(e) => { e.stopPropagation(); if (canConfirm(s)) handleConfirm(s); }}
                               disabled={!canConfirm(s)}
-                              className={`w-full font-black py-5 rounded-2xl uppercase italic tracking-widest text-xs shadow-2xl transition-all mt-4 ${
+                              className={`w-full font-black py-3.5 rounded-xl uppercase italic tracking-widest text-[11px] shadow-xl transition-all mt-2 ${
                                 canConfirm(s)
                                   ? 'bg-amber-600 hover:bg-amber-500 text-black active:scale-95'
                                   : 'bg-zinc-900 text-zinc-600 cursor-not-allowed border border-zinc-800'

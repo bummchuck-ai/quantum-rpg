@@ -210,7 +210,7 @@ const SwipeCards: React.FC<SwipeCardsProps> = ({
   // ═══ SWIPE VIEW ═══
   if (viewMode === 'swipe') {
     return (
-      <div className="pb-32">
+      <div className="pb-32 max-w-lg mx-auto">
         {/* View Toggle + Nav */}
         <div className="flex items-center justify-between mb-4 px-1">
           <button
@@ -299,7 +299,7 @@ const SwipeCards: React.FC<SwipeCardsProps> = ({
 
   // ═══ GRID VIEW ═══
   return (
-    <div className="pb-32">
+    <div className="pb-32 max-w-2xl mx-auto">
       {/* View Toggle */}
       <div className="flex justify-end mb-4 px-1">
         <button
