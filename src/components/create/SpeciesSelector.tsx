@@ -200,9 +200,9 @@ const SpeciesSelector: React.FC = () => {
                   </div>
               </div>
 
-              <div className="p-4 space-y-3">
+              <div className="p-4 space-y-2">
                   {s.description && (
-                    <p className="text-xs text-zinc-300 leading-relaxed font-sans">{s.description}</p>
+                    <p className="text-[11px] text-zinc-400 leading-snug font-sans">{s.description}</p>
                   )}
                   <div className="flex justify-between items-center text-[10px] uppercase font-bold text-zinc-500">
                       <span>{t('startXP')}</span>
@@ -219,7 +219,7 @@ const SpeciesSelector: React.FC = () => {
                   </div>
 
                   {isSelected && (
-                      <div className="animate-in slide-in-from-top-4 duration-500 space-y-6 pt-6 border-t border-zinc-900 mt-2">
+                      <div className="animate-in slide-in-from-top-4 duration-500 space-y-4 pt-4 border-t border-zinc-900 mt-2">
                           <div className="grid grid-cols-2 gap-3 text-[9px] text-zinc-500 font-black uppercase tracking-widest text-center">
                               <div className="bg-zinc-950 p-3 border border-zinc-900 rounded-lg">Wounds: {s.woundThresholdBase}+BR</div>
                               <div className="bg-zinc-950 p-3 border border-zinc-900 rounded-lg">Strain: {s.strainThresholdBase}+WL</div>
@@ -227,14 +227,14 @@ const SpeciesSelector: React.FC = () => {
 
                           {/* Base Abilities */}
                           {s.abilities.length > 0 && (
-                            <div className="space-y-3">
+                            <div className="space-y-2">
                               <div className="text-[10px] text-amber-500 font-black uppercase tracking-[0.3em] flex items-center gap-2">
                                   <div className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></div>
                                   {t('traitsAnalysis')}
                               </div>
-                              <ul className="space-y-4">
+                              <ul className="space-y-2">
                                   {s.abilities.map((a, i) => (
-                                      <li key={i} className="text-xs text-zinc-400 leading-relaxed pl-4 border-l-2 border-amber-500/20 font-sans italic">{a}</li>
+                                      <li key={i} className="text-[11px] text-zinc-400 leading-snug pl-3 border-l-2 border-amber-500/20 font-sans italic">{a}</li>
                                   ))}
                               </ul>
                             </div>
