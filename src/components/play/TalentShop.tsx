@@ -96,7 +96,7 @@ const TalentShop = () => {
         >
           <option value="" disabled>Talentbaum wählen...</option>
           {allTrees.map(t => (
-            <option key={t.specialization} value={t.specialization}>
+            <option key={`${t.career}-${t.specialization}`} value={t.specialization}>
               {t.career} → {t.specialization}
             </option>
           ))}

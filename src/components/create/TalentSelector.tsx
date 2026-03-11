@@ -183,7 +183,7 @@ const TalentSelector: React.FC = () => {
                   <div className="grid grid-cols-2 gap-2">
                     {grouped[careerName].map(tr => (
                       <div
-                        key={tr.specialization}
+                        key={`${tr.career}-${tr.specialization}`}
                         onClick={() => {
                           playNavigate();
                           setCurrentTree(tr);
