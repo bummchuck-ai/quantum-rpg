@@ -531,6 +531,7 @@ const ChatInterface: React.FC = () => {
               name: sc.criticalInjury.name,
               severity: sc.criticalInjury.severity || 50,
               effect: sc.criticalInjury.effect || '',
+              permanent: sc.criticalInjury.permanent ?? false,
             },
           ],
           updatedAt: new Date().toISOString(),

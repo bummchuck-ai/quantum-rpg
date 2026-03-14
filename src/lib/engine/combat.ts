@@ -38,6 +38,7 @@ export interface CriticalInjury {
   severity: number; // d100 roll result
   effect: string;
   permanent: boolean;
+  healedAt?: string; // ISO date when healed, undefined if active
 }
 
 export interface StatusEffect {

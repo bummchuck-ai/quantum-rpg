@@ -7,6 +7,9 @@
 import type { Quest } from '@/types/quest';
 export type { Quest } from '@/types/quest';
 
+import type { CriticalInjury } from './combat';
+export type { CriticalInjury } from './combat';
+
 export interface NPC {
   id: string;
   name: string;
@@ -29,14 +32,6 @@ export interface SceneState {
   mood: string;
   threats: string[];
   timeOfDay?: string; // morgen | mittag | abend | nacht
-}
-
-export interface CriticalInjury {
-  id: string;
-  name: string;
-  severity: number; // d100 roll range (e.g. 1-5 = minor, 101-150 = severe)
-  effect: string;
-  healedAt?: string; // ISO date when healed, null if active
 }
 
 export interface GameSession {
