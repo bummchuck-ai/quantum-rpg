@@ -49,7 +49,7 @@ const IntroCrawl: React.FC<IntroCrawlProps> = ({ onComplete }) => {
 
         const response = await fetch('/api/chat', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'application/json', 'x-api-secret': process.env.NEXT_PUBLIC_API_SECRET || '' },
           body: JSON.stringify({
             messages: [
               { role: 'user', content: prompt }

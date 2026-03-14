@@ -27,6 +27,15 @@ const anthropic = new Anthropic({ apiKey: apiKey || '' });
 export const maxDuration = 60; // Vercel Hobby allows up to 60s
 
 export async function POST(req: Request) {
+  // API secret check
+  const apiSecret = process.env.QUANTUM_API_SECRET;
+  if (apiSecret && req.headers.get('x-api-secret') !== apiSecret) {
+    return NextResponse.json(
+      { error: 'Unauthorized' },
+      { status: 401 }
+    );
+  }
+
   const ip = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
   if (isRateLimited(ip)) {
     return NextResponse.json(
@@ -120,10 +129,7 @@ export async function POST(req: Request) {
   } catch (error) {
     console.error('GM Error:', error);
     return NextResponse.json(
-      {
-        error: 'DER GAME MASTER IST AKTUELL NICHT ERREICHBAR.',
-        details: error instanceof Error ? error.message : String(error),
-      },
+      { error: 'DER GAME MASTER IST AKTUELL NICHT ERREICHBAR.' },
       { status: 500 }
     );
   }
