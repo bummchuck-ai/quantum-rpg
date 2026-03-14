@@ -2,13 +2,39 @@ import Anthropic from '@anthropic-ai/sdk';
 import { buildSystemPrompt, getResponseFormat } from '../../../lib/gm/system-prompt';
 import { NextResponse } from 'next/server';
 
-const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY || '',
-});
+// Simple in-memory rate limiter
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT = 30; // max requests per window
+const RATE_WINDOW = 60 * 1000; // 1 minute
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_WINDOW });
+    return false;
+  }
+  entry.count++;
+  return entry.count > RATE_LIMIT;
+}
+
+const apiKey = process.env.ANTHROPIC_API_KEY;
+if (!apiKey) {
+  console.error('WARNING: ANTHROPIC_API_KEY is not set!');
+}
+const anthropic = new Anthropic({ apiKey: apiKey || '' });
 
 export const maxDuration = 60; // Vercel Hobby allows up to 60s
 
 export async function POST(req: Request) {
+  const ip = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
+  if (isRateLimited(ip)) {
+    return NextResponse.json(
+      { error: 'Zu viele Anfragen. Bitte warte einen Moment.' },
+      { status: 429 }
+    );
+  }
+
   try {
     const body = await req.json();
 
