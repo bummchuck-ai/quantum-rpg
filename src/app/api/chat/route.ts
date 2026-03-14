@@ -117,12 +117,12 @@ export async function POST(req: Request) {
       });
     }
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('GM Error:', error);
     return NextResponse.json(
       {
         error: 'DER GAME MASTER IST AKTUELL NICHT ERREICHBAR.',
-        details: error.message,
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 }
     );

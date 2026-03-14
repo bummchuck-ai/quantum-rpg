@@ -392,13 +392,13 @@ const ChatInterface: React.FC = () => {
       if (!response.ok) throw new Error(`GM request failed: ${response.status} ${response.statusText}`);
       const data = await response.json();
       handleGMResponse(data);
-    } catch (error: any) {
+    } catch (error) {
       console.error('Intro failed:', error);
-      const isTimeout = error?.name === 'AbortError';
+      const isTimeout = error instanceof Error && error.name === 'AbortError';
       const narrative = isTimeout
         ? t('gmTimeout')
         : t('gmUnavailable');
-      setMessages(prev => [...prev, { role: 'gm', content: { narrative, error: isTimeout ? 'Timeout nach 60s' : (error?.message || 'Unbekannter Fehler'), options: [{ id: 'A', text: t('retryOption') }] } }]);
+      setMessages(prev => [...prev, { role: 'gm', content: { narrative, error: isTimeout ? 'Timeout nach 60s' : (error instanceof Error ? error.message : String(error)), options: [{ id: 'A', text: t('retryOption') }] } }]);
     } finally {
       clearTimeout(timeout);
       setIsTyping(false);
@@ -637,13 +637,13 @@ const ChatInterface: React.FC = () => {
       if (!response.ok) throw new Error(`GM request failed: ${response.status} ${response.statusText}`);
       const data = await response.json();
       handleGMResponse(data);
-    } catch (error: any) {
+    } catch (error) {
       console.error('Chat failed:', error);
-      const isTimeout = error?.name === 'AbortError';
+      const isTimeout = error instanceof Error && error.name === 'AbortError';
       const narrative = isTimeout
         ? t('gmTimeout')
         : t('gmUnavailable');
-      setMessages(prev => [...prev, { role: 'gm', content: { narrative, error: isTimeout ? 'Timeout nach 60s' : (error?.message || 'Unbekannter Fehler'), options: [{ id: 'A', text: t('retryOption') }] } }]);
+      setMessages(prev => [...prev, { role: 'gm', content: { narrative, error: isTimeout ? 'Timeout nach 60s' : (error instanceof Error ? error.message : String(error)), options: [{ id: 'A', text: t('retryOption') }] } }]);
     } finally {
       clearTimeout(timeout);
       setIsTyping(false);
