@@ -28,42 +28,10 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
 
-        {/* Tailwind CDN - The Lifesaver for Local Dev */}
-        <script src="https://cdn.tailwindcss.com"></script>
-        
         {/* Google Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
-
-        <script dangerouslySetInnerHTML={{
-          __html: `
-            tailwind.config = {
-              theme: {
-                extend: {
-                  colors: {
-                    'obsidian': '#050505',
-                    'amber': {
-                      DEFAULT: '#FFB800',
-                      dim: 'rgba(255, 184, 0, 0.2)',
-                      glow: 'rgba(255, 184, 0, 0.5)',
-                    },
-                    'blue': {
-                      data: '#00AAFF',
-                    },
-                    'red': {
-                      alert: '#FF3333',
-                    }
-                  },
-                  fontFamily: {
-                    sans: ['Rajdhani', 'sans-serif'],
-                    mono: ['"Share Tech Mono"', 'monospace'],
-                  },
-                }
-              }
-            }
-          `
-        }} />
 
         {/* Dynamic html lang attribute based on user setting */}
         <script dangerouslySetInnerHTML={{ __html: `

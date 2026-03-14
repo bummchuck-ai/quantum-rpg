@@ -8,8 +8,23 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        obsidian: '#050505',
+        amber: {
+          DEFAULT: '#FFB800',
+          dim: 'rgba(255, 184, 0, 0.2)',
+          glow: 'rgba(255, 184, 0, 0.5)',
+        },
+        blue: {
+          data: '#00AAFF',
+        },
+        red: {
+          alert: '#FF3333',
+        },
+      },
       fontFamily: {
-        mono: ['var(--font-geist-mono)', 'monospace'],
+        sans: ['Rajdhani', 'sans-serif'],
+        mono: ['"Share Tech Mono"', 'monospace'],
       },
       animation: {
         'spin-slow': 'spin 8s linear infinite',
@@ -17,6 +32,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [],
 };
 export default config;
