@@ -7,7 +7,7 @@ import {
   Career,
   Talent, // Import Talent
 } from '../types/character';
-import { Quest, Objective, Reward } from '../types/quest';
+import { Quest, QuestObjective, QuestReward } from '../types/quest';
 import { Gear } from '../types/gear';
 
 const MAX_TALENT_RANK = 5; // Annahme für maximale Stufe eines Talents
@@ -437,13 +437,13 @@ export const useCharacterStore = create<GameState>()(
               if (obj.description === objectiveDescription) {
                 if (progress !== undefined && obj.targetProgress !== undefined) {
                   const newProgress = Math.min(obj.targetProgress, (obj.currentProgress || 0) + progress);
-                  return { ...obj, currentProgress: newProgress, isCompleted: newProgress >= obj.targetProgress };
+                  return { ...obj, currentProgress: newProgress, completed: newProgress >= obj.targetProgress };
                 }
-                return { ...obj, isCompleted: true };
+                return { ...obj, completed: true };
               }
               return obj;
             });
-            const allObjectivesCompleted = newObjectives.every(obj => obj.isCompleted);
+            const allObjectivesCompleted = newObjectives.every(obj => obj.completed);
             return { ...quest, objectives: newObjectives, status: allObjectivesCompleted ? 'completed' : quest.status };
           }
           return quest;

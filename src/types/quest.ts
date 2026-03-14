@@ -1,14 +1,15 @@
 
-export interface Objective {
+export interface QuestObjective {
+  id?: string;
   description: string;
-  isCompleted: boolean;
-  currentProgress?: number; // Optional: Aktueller Fortschritt für Ziele mit Fortschrittsanzeige
-  targetProgress?: number; // Optional: Benötigter Fortschritt für Ziele mit Fortschrittsanzeige
+  completed: boolean;
+  currentProgress?: number;
+  targetProgress?: number;
 }
 
-export interface Reward {
+export interface QuestReward {
   type: 'exp' | 'credits' | 'item';
-  value: number | string; // item ID for 'item'
+  value: number | string;
 }
 
 export interface Quest {
@@ -16,6 +17,10 @@ export interface Quest {
   title: string;
   description: string;
   status: 'active' | 'completed' | 'failed';
-  objectives: Objective[];
-  rewards: Reward[];
+  objectives: QuestObjective[];
+  rewards: QuestReward[];
+  giver?: string;
+  location?: string;
+  xpReward?: number;
+  creditsReward?: number;
 }

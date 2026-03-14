@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import type { Quest, NPC } from '@/lib/engine/game-state';
+import type { Quest } from '@/types/quest';
+import type { NPC } from '@/lib/engine/game-state';
 
 interface QuestLogProps {
   quests: Quest[];

@@ -296,30 +296,10 @@ export interface DerivedStats {
     currentStrain: number;
 }
 
-// --- Quest System ---
-export interface QuestReward {
-    type: 'exp' | 'credits' | 'item';
-    value: number | string; // number for exp/credits, item ID string for item
-}
-
-export interface QuestObjective {
-    id: string;
-    description: string;
-    completed: boolean;
-    currentProgress?: number; // E.g., for "Defeat X enemies"
-    targetProgress?: number;  // E.g., for "Defeat X enemies"
-}
-
-export interface QuestEntry {
-    id: string;
-    title: string;
-    description: string;
-    status: 'active' | 'completed' | 'failed';
-    objectives: QuestObjective[];
-    rewards: QuestReward[];
-    giver?: string; // Optional: NPC name who gave the quest
-    location?: string; // Optional: Where the quest was given or needs to be completed
-}
+// --- Quest System (canonical types in ./quest.ts) ---
+import type { Quest } from './quest';
+export type { Quest, QuestObjective, QuestReward } from './quest';
+export type QuestEntry = Quest;
 
 
 // --- The Complete Character ---

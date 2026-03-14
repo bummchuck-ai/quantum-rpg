@@ -439,6 +439,7 @@ const ChatInterface: React.FC = () => {
           description: sc.newQuest.description || '',
           status: 'active',
           objectives: (sc.newQuest.objectives || []).map((o: string) => ({ description: o, completed: false })),
+          rewards: [],
           xpReward: sc.newQuest.xpReward,
           creditsReward: sc.newQuest.creditsReward,
         }));

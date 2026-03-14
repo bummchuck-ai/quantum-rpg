@@ -4,15 +4,8 @@
 // Manages the full game state: quests, NPCs, scene, destiny
 // ============================================================
 
-export interface Quest {
-  id: string;
-  title: string;
-  description: string;
-  status: 'active' | 'completed' | 'failed';
-  objectives: { description: string; completed: boolean }[];
-  xpReward?: number;
-  creditsReward?: number;
-}
+import type { Quest } from '@/types/quest';
+export type { Quest } from '@/types/quest';
 
 export interface NPC {
   id: string;

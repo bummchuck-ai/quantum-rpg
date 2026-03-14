@@ -611,7 +611,7 @@ function buildQuestContext(gameState: any): string {
       sections.push(`- **${q.title}**: ${q.description}`);
       if (q.objectives?.length > 0) {
         for (const obj of q.objectives) {
-          const status = obj.completed || obj.isCompleted ? '[X]' : '[ ]';
+          const status = obj.completed ? '[X]' : '[ ]';
           const progress = obj.targetProgress ? ` (${obj.currentProgress || 0}/${obj.targetProgress})` : '';
           sections.push(`  ${status} ${obj.description}${progress}`);
         }
