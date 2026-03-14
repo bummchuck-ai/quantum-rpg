@@ -62,44 +62,8 @@ export interface SkillRanks {
 
 export type SkillKey = keyof SkillRanks;
 
-// Mapping skills to their governing characteristic
-export const SKILL_CHARACTERISTICS: Record<SkillKey, CharacteristicKey> = {
-    astrogation: 'intellect',
-    athletics: 'brawn',
-    charm: 'presence',
-    coercion: 'willpower',
-    computers: 'intellect',
-    cool: 'presence',
-    coordination: 'agility',
-    deception: 'cunning',
-    discipline: 'willpower',
-    leadership: 'presence',
-    mechanics: 'intellect',
-    medicine: 'intellect',
-    negotiation: 'presence',
-    perception: 'cunning',
-    pilotingPlanetary: 'agility',
-    pilotingSpace: 'agility',
-    resilience: 'brawn',
-    skulduggery: 'cunning',
-    stealth: 'agility',
-    streetwise: 'cunning',
-    survival: 'cunning',
-    vigilance: 'willpower',
-    brawl: 'brawn',
-    gunnery: 'agility',
-    melee: 'brawn',
-    rangedLight: 'agility',
-    rangedHeavy: 'agility',
-    coreWorlds: 'intellect',
-    education: 'intellect',
-    lore: 'intellect',
-    outerRim: 'intellect',
-    underworld: 'intellect',
-    warfare: 'intellect',
-    xenology: 'intellect',
-    lightsaber: 'brawn',
-};
+// Re-export SKILL_CHARACTERISTICS from canonical source (derived from ALL_SKILLS)
+export { SKILL_CHARACTERISTICS } from '@/lib/skills';
 
 // --- Obligation / Duty / Morality ---
 export type ObligationType =
