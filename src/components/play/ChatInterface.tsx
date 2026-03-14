@@ -120,9 +120,27 @@ function resolveSkill(skillName: string): { key: string; char: string } {
   return SKILL_MAP[normalized] || { key: normalized, char: 'intellect' };
 }
 
+interface GMResponse {
+  narrative: string;
+  options?: { id: string; text: string }[];
+  stateChanges?: Record<string, unknown>;
+  mood?: string;
+  combatAction?: unknown;
+  error?: string;
+  npcDialogue?: { speaker: string; text: string }[];
+  requiresRoll?: boolean;
+  rollInfo?: {
+    skill: string;
+    difficulty: string;
+    reason?: string;
+    boost?: number;
+    setback?: number;
+  };
+}
+
 interface Message {
   role: 'gm' | 'player';
-  content: any;
+  content: string | GMResponse;
 }
 
 interface RollRequest {
@@ -300,7 +318,7 @@ const ChatInterface: React.FC = () => {
     })),
     currentPlanet: session.scene.planet,
     currentScene: session.scene.location,
-    sessionHistory: messages.slice(-10).map(m => m.content.narrative || ''),
+    sessionHistory: messages.slice(-10).map(m => typeof m.content === 'string' ? m.content : m.content.narrative || ''),
     destinyPool: session.destinyPool,
     questLog: session.quests,
     npcRelationships: session.npcs.map(n => ({
@@ -353,8 +371,8 @@ const ChatInterface: React.FC = () => {
 
   const generateStorySummary = useCallback(async (currentMessages: Message[]) => {
     const narratives = currentMessages
-      .filter(m => m.role === 'gm' && m.content.narrative)
-      .map(m => m.content.narrative)
+      .filter(m => m.role === 'gm' && typeof m.content !== 'string' && m.content.narrative)
+      .map(m => typeof m.content === 'string' ? m.content : m.content.narrative)
       .slice(-20);
     if (narratives.length < 5) return;
 
@@ -620,7 +638,7 @@ const ChatInterface: React.FC = () => {
     try {
       const history = updatedMessages.map(m => ({
         role: m.role === 'gm' ? 'assistant' as const : 'user' as const,
-        content: m.role === 'gm' ? JSON.stringify(m.content) : (m.content.narrative || '')
+        content: m.role === 'gm' ? JSON.stringify(m.content) : (typeof m.content === 'string' ? m.content : m.content.narrative || '')
       }));
 
       const response = await fetch('/api/chat', {
@@ -1025,15 +1043,15 @@ const ChatInterface: React.FC = () => {
         {messages.map((msg, i) => (
           <div key={i} className={`flex ${msg.role === 'player' ? 'justify-end' : 'justify-start'} animate-in fade-in slide-in-from-bottom-2 duration-500`}>
             <div className={`max-w-[92%] ${msg.role === 'player' ? 'bg-zinc-900/80 border border-zinc-800 p-3.5 rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl shadow-xl' : 'space-y-3'}`}>
-              {msg.role === 'gm' ? (
+              {msg.role === 'gm' && typeof msg.content !== 'string' ? (
                 <div className="space-y-4">
                   {msg.content.error && <div className="bg-red-500/10 border border-red-500/50 p-3 rounded-xl text-sm font-mono text-red-200">{msg.content.error}</div>}
                   {msg.content.narrative && <p className="text-base leading-[1.75] text-zinc-300 font-sans">{msg.content.narrative}</p>}
                   {Array.isArray(msg.content.npcDialogue) && msg.content.npcDialogue.length > 0 && (
                     <div className="space-y-2.5 border-l-2 border-amber-500/30 pl-4 bg-amber-500/[0.02] py-2 rounded-r-lg">
-                      {msg.content.npcDialogue.map((d: any, idx: number) => (
+                      {msg.content.npcDialogue.map((d: { speaker: string; text: string }, idx: number) => (
                         <div key={idx}>
-                          <span className="text-[10px] font-black text-amber-500 uppercase tracking-[0.15em]">{d.name}</span>
+                          <span className="text-[10px] font-black text-amber-500 uppercase tracking-[0.15em]">{d.speaker}</span>
                           <p className="text-[15px] text-zinc-400 mt-0.5 font-sans leading-relaxed">&ldquo;{d.text}&rdquo;</p>
                         </div>
                       ))}
@@ -1046,13 +1064,13 @@ const ChatInterface: React.FC = () => {
                         <div className="text-sm font-black text-white uppercase italic truncate">{msg.content.rollInfo.skill} <span className="text-zinc-600">//</span> {msg.content.rollInfo.difficulty}</div>
                         {msg.content.rollInfo.reason && <div className="text-[9px] text-zinc-500 mt-0.5 truncate">{msg.content.rollInfo.reason}</div>}
                       </div>
-                      <button onClick={() => initiateRoll(msg.content.rollInfo.skill, msg.content.rollInfo.difficulty, msg.content.rollInfo.reason, msg.content.rollInfo.boost, msg.content.rollInfo.setback)} className="bg-amber-600 hover:bg-amber-500 text-black font-black px-5 py-2.5 rounded-xl text-xs uppercase tracking-widest animate-pulse shrink-0">
+                      <button onClick={() => { const ri = (msg.content as GMResponse).rollInfo!; initiateRoll(ri.skill, ri.difficulty, ri.reason || '', ri.boost, ri.setback); }} className="bg-amber-600 hover:bg-amber-500 text-black font-black px-5 py-2.5 rounded-xl text-xs uppercase tracking-widest animate-pulse shrink-0">
                         {t('rollDice')}
                       </button>
                     </div>
                   )}
                   <div className="grid grid-cols-1 gap-1.5 pt-1">
-                    {msg.content.options?.map((opt: any) => (
+                    {msg.content.options?.map((opt: { id: string; text: string }) => (
                       <button key={opt.id} onClick={() => handleSendMessage(opt.text)} className="bg-zinc-900/50 border border-zinc-800 hover:border-amber-500/50 p-3.5 rounded-xl text-left transition-all active:scale-[0.98]">
                         <div className="flex items-center gap-2.5">
                           <span className="text-[9px] text-amber-500 font-black opacity-50 border border-amber-500/20 w-5 h-5 flex items-center justify-center rounded shrink-0">{opt.id}</span>
@@ -1063,7 +1081,7 @@ const ChatInterface: React.FC = () => {
                   </div>
                 </div>
               ) : (
-                <p className="text-sm text-zinc-200">{msg.content.narrative}</p>
+                <p className="text-sm text-zinc-200">{typeof msg.content === 'string' ? msg.content : msg.content.narrative}</p>
               )}
             </div>
           </div>

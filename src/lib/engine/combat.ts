@@ -154,28 +154,31 @@ export function createNPCCombatant(name: string, stats: Partial<Combatant>): Com
   };
 }
 
-// Apply damage after soak
-export function applyDamage(combatant: Combatant, rawDamage: number): { newWounds: number; exceededThreshold: boolean } {
+// Apply damage after soak — returns new Combatant (no mutation)
+export function applyDamage(combatant: Combatant, rawDamage: number): { combatant: Combatant; newWounds: number; exceededThreshold: boolean } {
   const effectiveDamage = Math.max(0, rawDamage - combatant.soak);
-  combatant.wounds += effectiveDamage;
+  const newWounds = combatant.wounds + effectiveDamage;
+  const updated = { ...combatant, wounds: newWounds };
   return {
+    combatant: updated,
     newWounds: effectiveDamage,
-    exceededThreshold: combatant.wounds >= combatant.woundThreshold,
+    exceededThreshold: newWounds >= combatant.woundThreshold,
   };
 }
 
-// Advance to next round
+// Advance to next round — returns new state (no mutation)
 export function nextRound(state: CombatState): CombatState {
-  // Tick down status effects
-  for (const c of state.combatants) {
-    c.statusEffects = c.statusEffects
+  const updatedCombatants = state.combatants.map(c => ({
+    ...c,
+    statusEffects: c.statusEffects
       .map(e => ({ ...e, duration: e.duration === -1 ? -1 : e.duration - 1 }))
-      .filter(e => e.duration !== 0);
-    c.hasActed = false;
-  }
+      .filter(e => e.duration !== 0),
+    hasActed: false,
+  }));
   return {
     ...state,
     round: state.round + 1,
     currentSlotIndex: 0,
+    combatants: updatedCombatants,
   };
 }
