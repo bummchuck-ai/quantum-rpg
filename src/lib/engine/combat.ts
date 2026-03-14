@@ -5,6 +5,9 @@
 // Initiative, rounds, wounds, strain, critical injuries
 // ============================================================
 
+import { calculateDerivedStats } from '@/lib/engine/derived-stats';
+import type { Gear } from '@/types/gear';
+
 export type CombatSlotType = 'pc' | 'npc';
 
 export interface CombatSlot {
@@ -110,25 +113,27 @@ export function createInitialCombatState(): CombatState {
 }
 
 export function createPCCombatant(player: any): Combatant {
-  const brawn = player.characteristics?.brawn || 2;
-  const willpower = player.characteristics?.willpower || 2;
-  const woundBase = player.species?.woundThresholdBase || 10;
-  const strainBase = player.species?.strainThresholdBase || 10;
-  const armor = (player.ownedGear || []).filter((g: any) => g.soak !== undefined);
-  const soakVal = brawn + armor.reduce((acc: number, curr: any) => acc + (curr.soak || 0), 0);
-  const defVal = armor.reduce((acc: number, curr: any) => Math.max(acc, curr.defense || 0), 0);
+  const characteristics = {
+    brawn: player.characteristics?.brawn || 2,
+    willpower: player.characteristics?.willpower || 2,
+  };
+  const derived = calculateDerivedStats(
+    player.species,
+    characteristics,
+    (player.ownedGear || []) as Gear[]
+  );
 
   return {
     id: player.id,
     name: player.name || 'Unbekannt',
     type: 'pc',
     wounds: player.wounds || 0,
-    woundThreshold: woundBase + brawn,
+    woundThreshold: derived.woundThreshold,
     strain: player.strain || 0,
-    strainThreshold: strainBase + willpower,
-    soak: soakVal,
-    defenseMelee: defVal,
-    defenseRanged: defVal,
+    strainThreshold: derived.strainThreshold,
+    soak: derived.soak,
+    defenseMelee: derived.defense,
+    defenseRanged: derived.defense,
     criticalInjuries: [],
     statusEffects: [],
     hasActed: false,

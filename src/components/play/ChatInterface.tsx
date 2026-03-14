@@ -14,6 +14,7 @@ import { ALL_SKILLS } from '@/lib/skills';
 import { isForceCareer, calculateForceRating } from '@/lib/engine/force-powers';
 import { createInitialCombatState, createPCCombatant, createNPCCombatant, nextRound, type CombatState } from '@/lib/engine/combat';
 import { createNewSession, addQuest, updateQuest, addNPC, updateNPC, flipDestiny, type GameSession, type Quest, type NPC, type SessionStartContext } from '@/lib/engine/game-state';
+import { calculateDerivedStats } from '@/lib/engine/derived-stats';
 import {
   playDiceRoll, playQuestReceived,
   playCombatStart, playCombatVictory, playCombatDefeat,
@@ -245,11 +246,7 @@ const ChatInterface: React.FC = () => {
   } = activePlayer;
 
   // Derived values
-  const woundThreshold = species.woundThresholdBase + characteristics.brawn;
-  const strainThreshold = species.strainThresholdBase + characteristics.willpower;
-  const armorItems = ownedGear.filter((g: any) => g.soak !== undefined);
-  const soak = characteristics.brawn + armorItems.reduce((acc: number, curr: any) => acc + (curr.soak || 0), 0);
-  const defense = armorItems.reduce((acc: number, curr: any) => Math.max(acc, curr.defense || 0), 0);
+  const { woundThreshold, strainThreshold, soak, defense } = calculateDerivedStats(species, characteristics, ownedGear);
   const talentNames = ownedTalents.map((t: any) => typeof t === 'string' ? t : t.name);
   const forceRating = calculateForceRating(career, talentNames);
   const isForceSensitive = isForceCareer(career);
@@ -306,16 +303,19 @@ const ChatInterface: React.FC = () => {
 
   const buildGameState = useCallback(() => ({
     character: { ...activePlayer, vehicles: activePlayer.vehicles || [] }, // Ensure vehicles array is always present
-    party: players.map(p => ({
-      name: p.name,
-      species: p.species?.name,
-      career: p.career?.name,
-      specialization: p.specializations?.[0]?.name,
-      wounds: p.wounds,
-      strain: p.strain,
-      woundThreshold: (p.species?.woundThresholdBase || 10) + (p.characteristics?.brawn || 0),
-      strainThreshold: (p.species?.strainThresholdBase || 10) + (p.characteristics?.willpower || 0),
-    })),
+    party: players.map(p => {
+      const stats = calculateDerivedStats(p.species, p.characteristics ?? { brawn: 0, willpower: 0 }, []);
+      return {
+        name: p.name,
+        species: p.species?.name,
+        career: p.career?.name,
+        specialization: p.specializations?.[0]?.name,
+        wounds: p.wounds,
+        strain: p.strain,
+        woundThreshold: stats.woundThreshold,
+        strainThreshold: stats.strainThreshold,
+      };
+    }),
     currentPlanet: session.scene.planet,
     currentScene: session.scene.location,
     sessionHistory: messages.slice(-10).map(m => typeof m.content === 'string' ? m.content : m.content.narrative || ''),
@@ -1024,7 +1024,7 @@ const ChatInterface: React.FC = () => {
                 <div className="flex-1 min-w-0">
                   <div className="text-[8px] font-black uppercase truncate text-white">{p.name || 'PILOT'}</div>
                   <div className="h-0.5 w-full bg-zinc-800 mt-0.5 rounded-full overflow-hidden">
-                    <div className="h-full bg-red-500" style={{ width: `${Math.max(0, 100 - (p.wounds / ((p.species?.woundThresholdBase || 10) + p.characteristics.brawn)) * 100)}%` }} />
+                    <div className="h-full bg-red-500" style={{ width: `${Math.max(0, 100 - (p.wounds / Math.max(1, calculateDerivedStats(p.species, p.characteristics, []).woundThreshold)) * 100)}%` }} />
                   </div>
                 </div>
               </div>

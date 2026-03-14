@@ -7,6 +7,7 @@ import { ALL_SKILLS, SKILL_NAMES_DE } from '@/lib/skills';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
 import { playDeploy } from '@/lib/sounds';
+import { calculateDerivedStats } from '@/lib/engine/derived-stats';
 
 const CharacterSummary: React.FC = () => {
   const router = useRouter();
@@ -55,11 +56,7 @@ const CharacterSummary: React.FC = () => {
     setGenerating(false);
   };
 
-  const woundThreshold = species ? species.woundThresholdBase + characteristics.brawn : 0;
-  const strainThreshold = species ? species.strainThresholdBase + characteristics.willpower : 0;
-  const armor = ownedGear.filter(g => g.soak !== undefined);
-  const soak = characteristics.brawn + armor.reduce((acc, curr) => acc + (curr.soak || 0), 0);
-  const defense = armor.reduce((acc, curr) => Math.max(acc, curr.defense || 0), 0);
+  const { woundThreshold, strainThreshold, soak, defense } = calculateDerivedStats(species, characteristics, ownedGear);
 
   const careerSkillKeys = new Set<string>([
     ...(career?.careerSkills || []),
