@@ -14,4 +14,19 @@ export interface Gear {
   weight?: number; // Optionales Gewicht
   properties?: GearProperty[]; // Zusätzliche Eigenschaften
   image_url?: string; // Optional: Bild-URL (später für Waffenbilder)
+  // Weapon fields
+  damage?: number;
+  critical?: number;
+  skill?: string;
+  range?: string;
+  special?: string;
+  addsBrawn?: boolean;
+  // Armor fields
+  soak?: number;
+  defense?: number;
+  // Shared fields
+  encumbrance?: number;
+  hardPoints?: number;
+  rarity?: number;
+  note?: string;
 }

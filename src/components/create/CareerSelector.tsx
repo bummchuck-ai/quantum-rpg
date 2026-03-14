@@ -10,19 +10,20 @@ import CharacterPreview from './CharacterPreview';
 import SwipeCards from '@/components/ui/SwipeCards';
 import { playConfirm, playClick } from '@/lib/sounds';
 import { t } from '@/lib/i18n';
+import type { Career as StoreCareer, Specialization as StoreSpecialization } from '@/types/character';
 
-interface Specialization {
+interface LocalSpecialization {
   name: string;
   description?: string;
   skills: string[];
 }
 
-interface Career {
+interface LocalCareer {
   name: string;
   description?: string;
   careerSkills: string[];
   forceRating: number;
-  specializations: Specialization[];
+  specializations: LocalSpecialization[];
 }
 
 type ViewMode = 'swipe' | 'grid';
@@ -36,15 +37,15 @@ const CareerSelector: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [viewMode, setViewMode] = useState<ViewMode>('swipe');
 
-  const handleConfirm = (c: Career, s: Specialization) => {
+  const handleConfirm = (c: LocalCareer, s: LocalSpecialization) => {
     playConfirm();
-    setCareer(c);
-    setSpecialization(s);
+    setCareer(c as unknown as StoreCareer);
+    setSpecialization(s as unknown as StoreSpecialization);
     router.push('/create/background');
   };
 
   const filteredCareers = useMemo(() =>
-    (careersData as Career[]).filter(c =>
+    (careersData as LocalCareer[]).filter(c =>
       c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       c.specializations.some(s => s.name.toLowerCase().includes(searchTerm.toLowerCase()))
     ), [searchTerm]);

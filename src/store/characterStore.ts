@@ -467,7 +467,7 @@ export const useCharacterStore = create<GameState>()(
                 newCredits += (reward.value as number);
               }
             });
-            return { ...quest, status: 'completed' };
+            return { ...quest, status: 'completed' as const };
           }
           return quest;
         });
@@ -486,7 +486,7 @@ export const useCharacterStore = create<GameState>()(
         const player = state.players[state.activePlayerIndex];
         const newQuestLog = player.questLog.map(quest => {
           if (quest.id === questId) {
-            return { ...quest, status: 'failed' };
+            return { ...quest, status: 'failed' as const };
           }
           return quest;
         });

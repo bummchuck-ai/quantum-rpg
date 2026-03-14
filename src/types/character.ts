@@ -268,6 +268,7 @@ export interface Specialization {
     name: string;
     description: string;
     careerSkills: SkillKey[];       // 4 additional career skills
+  skills?: string[];              // Alternative field name used in JSON data
   talentTree: TalentTreeNode[][];  // 5 rows x 4 columns
 }
 

@@ -16,7 +16,7 @@ const MerchantInterface = () => {
   const buyGear = useCharacterStore((state) => state.buyGear);
   const sellGear = useCharacterStore((state) => state.sellGear);
 
-  const merchant: Merchant | undefined = merchantsData[0]; // Fürs Erste den ersten Händler laden
+  const merchant: Merchant | undefined = (merchantsData as Merchant[])[0]; // Fürs Erste den ersten Händler laden
 
   if (!activePlayer || !merchant) {
     return <div className="min-h-screen bg-black p-4 text-zinc-700 font-mono text-[10px] uppercase italic">Kein aktiver Spieler oder Haendler verfuegbar...</div>;

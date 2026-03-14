@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { useCharacterStore, Characteristics } from '@/store/characterStore';
+import { useCharacterStore } from '@/store/characterStore';
+import type { Characteristics } from '@/types/character';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
 import CharacterPreview from './CharacterPreview';

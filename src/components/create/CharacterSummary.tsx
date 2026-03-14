@@ -61,7 +61,7 @@ const CharacterSummary: React.FC = () => {
   const soak = characteristics.brawn + armor.reduce((acc, curr) => acc + (curr.soak || 0), 0);
   const defense = armor.reduce((acc, curr) => Math.max(acc, curr.defense || 0), 0);
 
-  const careerSkillKeys = new Set([
+  const careerSkillKeys = new Set<string>([
     ...(career?.careerSkills || []),
     ...(mainSpec?.careerSkills || [])
   ]);
