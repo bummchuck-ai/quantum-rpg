@@ -11,6 +11,7 @@ import { ALL_SKILLS } from '@/lib/skills';
 import { calculateDerivedStats } from '@/lib/engine/derived-stats';
 import { slugify } from '@/lib/save-utils';
 import { getLanguage, t } from '@/lib/i18n';
+import { getVoicesForLang, setTTSVoiceName, getSpeechSettings } from '@/lib/speech';
 import { useGameSession } from './useGameSession';
 import type { GMResponse } from './types';
 
@@ -23,15 +24,28 @@ const QuickSettings: React.FC<{
   onTestTTS: () => void;
 }> = ({ onSaveLoad, ttsEnabled, sttEnabled, onToggleTTS, onToggleSTT, onTestTTS }) => {
   const [open, setOpen] = useState(false);
+  const [showVoices, setShowVoices] = useState(false);
+  const [selectedVoice, setSelectedVoice] = useState<string | null>(null);
+  const lang = getLanguage();
+  const voices = open && ttsEnabled ? getVoicesForLang(lang === 'en' ? 'en' : 'de') : [];
+
+  // Load saved voice on open
+  React.useEffect(() => {
+    if (open) {
+      const s = getSpeechSettings();
+      setSelectedVoice(s.ttsVoiceName);
+    }
+  }, [open]);
+
   return (
     <div className="relative">
-      <button onClick={() => setOpen(!open)} className="w-9 h-9 border border-zinc-800 rounded-lg bg-zinc-900/80 flex items-center justify-center active:scale-90 text-sm transition-transform">
+      <button onClick={() => { setOpen(!open); setShowVoices(false); }} className="w-9 h-9 border border-zinc-800 rounded-lg bg-zinc-900/80 flex items-center justify-center active:scale-90 text-sm transition-transform">
         ⚙
       </button>
       {open && (
         <>
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
-          <div className="absolute right-0 top-11 z-50 w-48 bg-zinc-900 border border-zinc-700 rounded-xl p-2 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200 space-y-1">
+          <div className="absolute right-0 top-11 z-50 w-56 bg-zinc-900 border border-zinc-700 rounded-xl p-2 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200 space-y-1">
             <button onClick={() => { onSaveLoad(); setOpen(false); }} className="w-full flex items-center gap-2 px-3 py-2 text-[11px] text-zinc-300 hover:bg-zinc-800 rounded-lg transition-colors">
               <span>💾</span> Save / Load
             </button>
@@ -46,6 +60,33 @@ const QuickSettings: React.FC<{
                 </button>
               )}
             </div>
+            {ttsEnabled && (
+              <>
+                <button onClick={() => setShowVoices(!showVoices)} className="w-full flex items-center justify-between px-3 py-2 text-[11px] text-zinc-300 hover:bg-zinc-800 rounded-lg transition-colors">
+                  <span>🗣 Stimme</span>
+                  <span className="text-[9px] text-zinc-500 truncate max-w-[100px]">{selectedVoice?.split(' ')[0] || 'Auto'}</span>
+                </button>
+                {showVoices && voices.length > 0 && (
+                  <div className="max-h-40 overflow-y-auto border border-zinc-800 rounded-lg">
+                    <button
+                      onClick={() => { setTTSVoiceName(null); setSelectedVoice(null); onTestTTS(); }}
+                      className={`w-full text-left px-3 py-1.5 text-[10px] hover:bg-zinc-800 transition-colors ${!selectedVoice ? 'text-amber-400 font-bold' : 'text-zinc-400'}`}
+                    >
+                      Auto (Standard)
+                    </button>
+                    {voices.map(v => (
+                      <button
+                        key={v.name}
+                        onClick={() => { setTTSVoiceName(v.name); setSelectedVoice(v.name); onTestTTS(); }}
+                        className={`w-full text-left px-3 py-1.5 text-[10px] hover:bg-zinc-800 transition-colors ${selectedVoice === v.name ? 'text-amber-400 font-bold' : 'text-zinc-400'}`}
+                      >
+                        {v.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </>
+            )}
             <button onClick={onToggleSTT} className="w-full flex items-center justify-between px-3 py-2 text-[11px] text-zinc-300 hover:bg-zinc-800 rounded-lg transition-colors">
               <span>🎙 Spracheingabe</span>
               <span className={`text-[9px] font-black ${sttEnabled ? 'text-emerald-400' : 'text-zinc-600'}`}>{sttEnabled ? 'ON' : 'OFF'}</span>

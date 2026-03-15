@@ -29,10 +29,11 @@ interface SpeechSettings {
   sttEnabled: boolean;
   ttsRate: number;
   ttsPitch: number;
+  ttsVoiceName: string | null;
 }
 
 function loadSpeechSettings(): SpeechSettings {
-  if (typeof window === 'undefined') return { ttsEnabled: false, sttEnabled: false, ttsRate: 1.0, ttsPitch: 1.0 };
+  if (typeof window === 'undefined') return { ttsEnabled: false, sttEnabled: false, ttsRate: 1.0, ttsPitch: 1.0, ttsVoiceName: null };
   try {
     const raw = localStorage.getItem(SETTINGS_KEY);
     if (raw) {
@@ -42,10 +43,11 @@ function loadSpeechSettings(): SpeechSettings {
         sttEnabled: s.sttEnabled ?? false,
         ttsRate: s.ttsRate ?? 1.0,
         ttsPitch: s.ttsPitch ?? 1.0,
+        ttsVoiceName: s.ttsVoiceName ?? null,
       };
     }
   } catch { /* use defaults */ }
-  return { ttsEnabled: false, sttEnabled: false, ttsRate: 1.0, ttsPitch: 1.0 };
+  return { ttsEnabled: false, sttEnabled: false, ttsRate: 1.0, ttsPitch: 1.0, ttsVoiceName: null };
 }
 
 function saveSpeechSettings(settings: Partial<SpeechSettings>) {
@@ -68,6 +70,24 @@ export function setTTSEnabled(enabled: boolean) {
 
 export function setSTTEnabled(enabled: boolean) {
   saveSpeechSettings({ sttEnabled: enabled });
+}
+
+export function setTTSVoiceName(name: string | null) {
+  saveSpeechSettings({ ttsVoiceName: name });
+}
+
+/** Get all available voices for a language prefix (e.g., 'de' or 'en') */
+export function getVoicesForLang(lang: string): { name: string; label: string }[] {
+  if (!checkTTSSupport()) return [];
+  ensureVoicesLoaded();
+  const voices = speechSynthesis.getVoices();
+  const prefix = lang.split('-')[0];
+  return voices
+    .filter(v => v.lang.startsWith(prefix))
+    .map(v => ({
+      name: v.name,
+      label: `${v.name} (${v.lang})${v.localService ? '' : ' *'}`,
+    }));
 }
 
 // ============================================================
@@ -123,19 +143,25 @@ export function getVoiceForLang(lang: string): SpeechSynthesisVoice | null {
   if (!checkTTSSupport()) return null;
   ensureVoicesLoaded();
   const voices = speechSynthesis.getVoices();
-  if (voices.length === 0) return null; // Voices not loaded yet (iOS first call)
+  if (voices.length === 0) return null;
+
+  // 1. User-selected voice (saved in settings)
+  const settings = loadSpeechSettings();
+  if (settings.ttsVoiceName) {
+    const saved = voices.find(v => v.name === settings.ttsVoiceName);
+    if (saved) return saved;
+  }
 
   const prefix = lang.split('-')[0];
-  // Prefer premium/enhanced voices (iOS "Siri", Chrome "Google")
+  // 2. Premium/enhanced voices
   const premium = voices.find(v => v.lang.startsWith(prefix) && (v.name.includes('enhanced') || v.name.includes('Premium') || v.localService === false));
   if (premium) return premium;
-  // Exact match (e.g., 'de-DE')
+  // 3. Exact match
   const exact = voices.find(v => v.lang === lang);
   if (exact) return exact;
-  // Prefix match (e.g., 'de')
+  // 4. Prefix match
   const partial = voices.find(v => v.lang.startsWith(prefix));
   if (partial) return partial;
-  // Any voice as last resort
   return voices[0] || null;
 }
 
