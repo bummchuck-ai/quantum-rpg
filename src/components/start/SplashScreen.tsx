@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import HolocronOrb from '@/components/ui/HolocronOrb';
 import { t } from '@/lib/i18n';
+import { startSoundtrack, getSpeechSettings } from '@/lib/speech';
 
 interface SplashScreenProps {
   onComplete: () => void;
@@ -60,9 +61,27 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
     return () => clearInterval(interval);
   }, [phase]);
 
+  // Start soundtrack on first user interaction (iOS requires gesture)
+  const musicStarted = useRef(false);
+  const tryStartMusic = () => {
+    if (!musicStarted.current) {
+      musicStarted.current = true;
+      startSoundtrack();
+    }
+  };
+
+  // Also try on first phase change (auto-play on desktop)
+  useEffect(() => {
+    if (phase >= 1 && !musicStarted.current) {
+      musicStarted.current = true;
+      startSoundtrack();
+    }
+  }, [phase]);
+
   const handleSkip = () => {
     if (!skippedRef.current) {
       skippedRef.current = true;
+      tryStartMusic(); // ensure music starts even on skip
       setFadeOut(true);
       setTimeout(() => onCompleteRef.current(), 400);
     }
@@ -70,6 +89,8 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
 
   return (
     <div
+      onTouchStart={tryStartMusic}
+      onMouseDown={tryStartMusic}
       onClick={handleSkip}
       className={`fixed inset-0 bg-black z-[300] flex flex-col items-center justify-center cursor-pointer select-none transition-opacity duration-700 ${
         fadeOut ? 'opacity-0 pointer-events-none' : 'opacity-100'
