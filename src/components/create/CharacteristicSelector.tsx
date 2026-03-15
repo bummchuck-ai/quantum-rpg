@@ -119,6 +119,7 @@ const CharacteristicSelector: React.FC = () => {
       </div>
 
       <HolocronGuide
+        sectionKey="attributes"
         title="ATTRIBUTE"
         description="Attribute sind das Fundament deines Charakters. Starke bestimmt Nahkampf und Widerstand, Gewandtheit deine Fernkampf-Fahigkeit, Intelligenz dein Wissen. Jedes Attribut beeinflusst mehrere Fahigkeiten."
         advice="ACHTUNG: Nach der Erschaffung konnen Attribute NUR noch durch das seltene Talent 'Widmung' (Reihe 5) gesteigert werden! Investiere jetzt oder bereue es spater. Die meisten Spieler steigern 1-2 Kernattribute auf 3-4."

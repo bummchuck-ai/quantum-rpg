@@ -332,6 +332,7 @@ const SpeciesSelector: React.FC = () => {
       </SwipeCards>
 
       <HolocronGuide
+        sectionKey="species"
         title={t('holocronSpecies')}
         description={t('holocronSpeciesDesc')}
         advice={t('holocronSpeciesAdvice')}

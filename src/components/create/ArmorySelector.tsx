@@ -218,7 +218,8 @@ const ArmorySelector: React.FC = () => {
         })}
       </div>
 
-      <HolocronGuide 
+      <HolocronGuide
+        sectionKey="armory"
         title="AUSRÜSTUNG" 
         description="Hier kaufst du Waffen, Rüstungen und Ausrüstung. 'Encumbrance' ist das Gewicht – trage nicht zu viel! 'Hard Points' sind Plätze für Upgrades. Vergiss nicht die Basics unter 'Gear': Stimpacks, Comlink, Werkzeug."
         advice="Spare nicht an der Rüstung! Ein guter Soak-Wert rettet dir den Hintern. Kaufe mindestens 2-3 Stimpacks und einen Comlink – ohne stirbst du schnell. Der Rest ist Geschmackssache."

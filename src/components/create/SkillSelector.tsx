@@ -222,6 +222,7 @@ const SkillSelector: React.FC = () => {
       </div>
 
       <HolocronGuide
+        sectionKey="skills"
         title="FERTIGKEITEN"
         description="Fertigkeiten bestimmen, wie gut dein Charakter bestimmte Aufgaben bewältigt. Jede Fertigkeit nutzt ein Attribut — je höher beides, desto mehr Würfel im Pool."
         advice="Karriere-Skills sind günstiger (5 XP statt 10). Investiere zuerst in die Skills, die zu deinem Spielstil passen. Piloten brauchen Steuern, Kämpfer Fernkampf oder Nahkampf, Schmuggler Täuschung und Szenekenntnis."

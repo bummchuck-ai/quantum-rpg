@@ -329,6 +329,7 @@ const VehicleSelector: React.FC = () => {
       </div>
 
       <HolocronGuide
+        sectionKey="vehicle"
         title="GRUPPEN-ASSET"
         description="Jede Abenteurergruppe startet mit einem gemeinsamen Schiff oder einer Basis. Dies ist ein Gruppenentscheid — alle teilen dieses Asset."
         advice="Frachter bieten Mobilität und Laderaum. Kampfschiffe bieten Feuerkraft. Basen bieten Sicherheit, aber keine Mobilität. Wähle weise für euren Spielstil!"

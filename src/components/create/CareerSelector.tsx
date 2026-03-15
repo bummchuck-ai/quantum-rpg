@@ -199,6 +199,7 @@ const CareerSelector: React.FC = () => {
       </SwipeCards>
 
       <HolocronGuide
+        sectionKey="career"
         title={t('holocronCareer')}
         description={t('holocronCareerDesc')}
         advice={t('holocronCareerAdvice')}

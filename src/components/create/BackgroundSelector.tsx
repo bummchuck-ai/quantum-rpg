@@ -171,7 +171,8 @@ const BackgroundSelector: React.FC = () => {
         )}
       </div>
 
-      <HolocronGuide 
+      <HolocronGuide
+        sectionKey="background"
         title="SCHICKSAL_SCAN" 
         description="Dein Hintergrund bestimmt, was dich antreibt. 'Obligation' sind Schulden oder Verpflichtungen, 'Duty' ist dein Dienst an einer Sache (z.B. Rebellion) und 'Morality' ist dein innerer Kompass als Machtnutzer."
         advice="Du kannst dein Schicksal erhöhen (Load), um dafür zusätzliche Start-XP (+10) oder Credits (+2.500) zu erhalten. Das ist ein super Boost für den Anfang, macht dein Leben aber später gefährlicher, wenn die Würfel gegen dich fallen!"

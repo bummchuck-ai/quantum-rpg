@@ -27,19 +27,23 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-title" content="Q-RPG" />
 
         {/* Google Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
 
-        {/* Dynamic html lang attribute based on user setting */}
+        {/* Dynamic html lang attribute + Service Worker registration */}
         <script dangerouslySetInnerHTML={{ __html: `
           try {
             var s = JSON.parse(localStorage.getItem('quantum-rpg-settings') || '{}');
             if (s.language === 'en') document.documentElement.lang = 'en';
           } catch(e) {}
+          if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').catch(function() {});
+          }
         `}} />
 
         <style>{`
