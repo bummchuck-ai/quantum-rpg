@@ -1,10 +1,55 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { setMasterVolume, setSFXMuted, setAmbientMuted, getSettings, playClick } from '@/lib/sounds';
-import { checkTTSSupport, checkSTTSupport, getSpeechSettings, setTTSEnabled, setSTTEnabled } from '@/lib/speech';
+import { setMasterVolume, getSettings, playClick } from '@/lib/sounds';
+import { checkTTSSupport, checkSTTSupport, getSpeechSettings, setTTSEnabled, setSTTEnabled, startSoundtrack, stopSoundtrack, setMusicVolume, setSpeakerVolume, getMusicPlaying } from '@/lib/speech';
 import { ALL_SKILLS } from '@/lib/skills';
 import { getLanguage, setLanguage, t, type Language } from '@/lib/i18n';
+
+const AudioSlider: React.FC<{ label: string; icon: string; value: number; onChange: (v: number) => void }> = ({ label, icon, value, onChange }) => (
+  <div className="flex items-center gap-2">
+    <span className="text-sm w-5">{icon}</span>
+    <span className="text-[9px] text-zinc-500 font-bold w-14">{label}</span>
+    <input type="range" min="0" max="100" value={Math.round(value * 100)}
+      onChange={(e) => onChange(parseInt(e.target.value) / 100)}
+      className="flex-1 h-1 accent-amber-500 bg-zinc-800 rounded-full appearance-none cursor-pointer" />
+    <span className="text-[9px] text-zinc-600 w-8 text-right">{Math.round(value * 100)}%</span>
+  </div>
+);
+
+const AudioControls: React.FC = () => {
+  const [musicOn, setMusicOnState] = useState(false);
+  const [musicVol, setMusicVol] = useState(0.3);
+  const [speakerVol, setSpeakerVol] = useState(0.8);
+  const [sfxVol, setSfxVol] = useState(0.8);
+
+  useEffect(() => {
+    setMusicOnState(getMusicPlaying());
+    const s = getSpeechSettings();
+    setMusicVol(s.musicVolume);
+    setSpeakerVol(s.speakerVolume);
+    setSfxVol(getSettings().masterVolume);
+  }, []);
+
+  return (
+    <div className="space-y-3">
+      <div className="flex justify-between items-center">
+        <div className="text-[10px] font-black text-zinc-400 uppercase tracking-wider">🎵 Soundtrack</div>
+        <button onClick={() => {
+          if (musicOn) { stopSoundtrack(); setMusicOnState(false); }
+          else { startSoundtrack(); setMusicOnState(true); }
+        }} className={`w-12 h-6 rounded-full transition-colors relative ${musicOn ? 'bg-amber-500' : 'bg-zinc-800'}`}>
+          <div className={`absolute top-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform ${musicOn ? 'left-[1.625rem]' : 'left-0.5'}`} />
+        </button>
+      </div>
+      {musicOn && (
+        <AudioSlider label="Musik" icon="🎵" value={musicVol} onChange={(v) => { setMusicVol(v); setMusicVolume(v); }} />
+      )}
+      <AudioSlider label="Sprecher" icon="🗣" value={speakerVol} onChange={(v) => { setSpeakerVol(v); setSpeakerVolume(v); }} />
+      <AudioSlider label="Effekte" icon="💥" value={sfxVol} onChange={(v) => { setSfxVol(v); setMasterVolume(v); }} />
+    </div>
+  );
+};
 
 interface SystemPanelProps {
   onClose: () => void;
@@ -42,9 +87,6 @@ function formatBytes(bytes: number): string {
 
 const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
   const [tab, setTab] = useState<SystemTab>('settings');
-  const [volume, setVolume] = useState(80);
-  const [sfxMuted, setSfxMuted] = useState(false);
-  const [ambMuted, setAmbMuted] = useState(false);
   const [storageInfo, setStorageInfo] = useState<StorageInfo>({ keys: [], totalSize: 0 });
   const [ttsOn, setTtsOn] = useState(false);
   const [sttOn, setSttOn] = useState(false);
@@ -55,14 +97,8 @@ const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
   const [confirmClearAll, setConfirmClearAll] = useState(false);
   const [clearMsg, setClearMsg] = useState<string | null>(null);
 
-  // Load initial settings
   useEffect(() => {
-    const s = getSettings();
-    setVolume(Math.round(s.masterVolume * 100));
-    setSfxMuted(s.sfxMuted);
-    setAmbMuted(s.ambientMuted);
     setStorageInfo(getStorageInfo());
-    // Speech settings
     setTtsSupported(checkTTSSupport());
     setSttSupported(checkSTTSupport());
     const speech = getSpeechSettings();
@@ -70,24 +106,6 @@ const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
     setSttOn(speech.sttEnabled);
     setLang(getLanguage());
   }, []);
-
-  const handleVolumeChange = (val: number) => {
-    setVolume(val);
-    setMasterVolume(val / 100);
-  };
-
-  const handleSFXToggle = () => {
-    const next = !sfxMuted;
-    setSfxMuted(next);
-    setSFXMuted(next);
-    if (!next) playClick(); // Play a sound when unmuting
-  };
-
-  const handleAmbientToggle = () => {
-    const next = !ambMuted;
-    setAmbMuted(next);
-    setAmbientMuted(next);
-  };
 
   const handleClearSaves = () => {
     localStorage.removeItem('quantum-rpg-saves');
@@ -177,52 +195,8 @@ const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
               {/* Separator */}
               <div className="h-px bg-zinc-800" />
 
-              {/* Master Volume */}
-              <div>
-                <div className="flex justify-between items-center mb-2">
-                  <label className="text-[10px] font-black text-zinc-400 uppercase tracking-wider">{t('masterVolume')}</label>
-                  <span className="text-[10px] font-black text-amber-500">{volume}%</span>
-                </div>
-                <input
-                  type="range"
-                  min="0"
-                  max="100"
-                  value={volume}
-                  onChange={(e) => handleVolumeChange(Number(e.target.value))}
-                  className="w-full h-1.5 bg-zinc-800 rounded-full appearance-none cursor-pointer
-                    [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4
-                    [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-amber-500 [&::-webkit-slider-thumb]:cursor-pointer
-                    [&::-webkit-slider-thumb]:shadow-[0_0_8px_rgba(245,158,11,0.4)]"
-                />
-              </div>
-
-              {/* SFX Toggle */}
-              <div className="flex justify-between items-center">
-                <div>
-                  <div className="text-[10px] font-black text-zinc-400 uppercase tracking-wider">{t('soundEffects')}</div>
-                  <div className="text-[8px] text-zinc-600 mt-0.5">{t('sfxDesc')}</div>
-                </div>
-                <button
-                  onClick={handleSFXToggle}
-                  className={`w-12 h-6 rounded-full transition-colors relative ${sfxMuted ? 'bg-zinc-800' : 'bg-amber-500'}`}
-                >
-                  <div className={`absolute top-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform ${sfxMuted ? 'left-0.5' : 'left-[1.625rem]'}`} />
-                </button>
-              </div>
-
-              {/* Ambient Toggle */}
-              <div className="flex justify-between items-center">
-                <div>
-                  <div className="text-[10px] font-black text-zinc-400 uppercase tracking-wider">{t('ambientMusic')}</div>
-                  <div className="text-[8px] text-zinc-600 mt-0.5">{t('ambientDesc')}</div>
-                </div>
-                <button
-                  onClick={handleAmbientToggle}
-                  className={`w-12 h-6 rounded-full transition-colors relative ${ambMuted ? 'bg-zinc-800' : 'bg-amber-500'}`}
-                >
-                  <div className={`absolute top-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform ${ambMuted ? 'left-0.5' : 'left-[1.625rem]'}`} />
-                </button>
-              </div>
+              {/* Soundtrack */}
+              <AudioControls />
 
               {/* Separator */}
               <div className="h-px bg-zinc-800" />
