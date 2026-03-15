@@ -335,7 +335,7 @@ const SystemPanel: React.FC<SystemPanelProps> = ({ onClose }) => {
               <div className="h-px bg-zinc-800 my-4" />
 
               <div className="space-y-3">
-                <CreditLine label={t('conceptDev')} value="Felix Bummchuck" />
+                <CreditLine label={t('conceptDev')} value="Felix Kolbow" />
                 <CreditLine label={t('aiGM')} value="Claude AI (Anthropic)" />
                 <CreditLine label={t('ruleSystem')} value="FFG Star Wars RPG / Genesys" />
                 <CreditLine label="Framework" value="Next.js + React" />

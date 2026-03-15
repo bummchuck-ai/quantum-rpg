@@ -46,6 +46,7 @@ const ArmorySelector: React.FC = () => {
   const [subCategory, setSubCategory] = useState<string | null>(null);
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [sortMode, setSortMode] = useState<'price-asc' | 'price-desc' | 'name-asc' | 'name-desc'>('price-asc');
 
   const handleConfirm = () => {
     playNavigate();
@@ -58,9 +59,17 @@ const ArmorySelector: React.FC = () => {
   const currentSubCategory = subCategory || subCategories[0];
 
   const items = (gearData[category] as any)[currentSubCategory] || [];
-  const filteredItems = items.filter((item: any) => 
-    item.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredItems = [...items]
+    .filter((item: any) => item.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    .sort((a: any, b: any) => {
+      switch (sortMode) {
+        case 'price-asc': return (a.price || 0) - (b.price || 0);
+        case 'price-desc': return (b.price || 0) - (a.price || 0);
+        case 'name-asc': return a.name.localeCompare(b.name, 'de');
+        case 'name-desc': return b.name.localeCompare(a.name, 'de');
+        default: return 0;
+      }
+    });
 
   return (
     <main className="min-h-dvh w-full bg-black text-zinc-300 font-mono flex flex-col p-6 safe-area-top">
@@ -118,13 +127,33 @@ const ArmorySelector: React.FC = () => {
           ))}
       </div>
 
-      <div className="mb-6 sticky top-[175px] bg-black z-20 pb-4">
-        <input 
+      <div className="mb-4 sticky top-[175px] bg-black z-20 pb-2 space-y-2">
+        <input
           className="w-full bg-zinc-950 border border-zinc-800 p-4 rounded-xl text-xs outline-none focus:border-amber-500 text-white placeholder:text-zinc-800 shadow-2xl"
           placeholder="SEARCH_MANIFEST..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
+        <div className="flex gap-1.5">
+          {([
+            { id: 'price-asc', label: 'Preis ↑' },
+            { id: 'price-desc', label: 'Preis ↓' },
+            { id: 'name-asc', label: 'A → Z' },
+            { id: 'name-desc', label: 'Z → A' },
+          ] as { id: typeof sortMode; label: string }[]).map(s => (
+            <button
+              key={s.id}
+              onClick={() => setSortMode(s.id)}
+              className={`px-3 py-1.5 text-[8px] font-black uppercase tracking-wider rounded-lg border transition-all ${
+                sortMode === s.id
+                  ? 'border-amber-500/50 bg-amber-500/10 text-amber-400'
+                  : 'border-zinc-800 bg-zinc-950 text-zinc-600 hover:text-zinc-400'
+              }`}
+            >
+              {s.label}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* GEAR TILES GRID */}
