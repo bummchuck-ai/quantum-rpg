@@ -32,7 +32,7 @@ const CharacteristicSelector: React.FC = () => {
   };
 
   return (
-    <main className="min-h-dvh w-full bg-black text-zinc-300 font-mono flex flex-col p-6 safe-area-top">
+    <main className="min-h-dvh w-full bg-black text-zinc-300 font-mono flex flex-col p-6 safe-area-top safe-area-fixed">
 
       <header className="flex justify-between items-center border-b border-zinc-800 pb-4 mb-6 sticky top-0 bg-black z-30">
         <div className="flex gap-3 items-center">

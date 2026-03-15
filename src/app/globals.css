@@ -14,9 +14,21 @@
   --sab: env(safe-area-inset-bottom, 0px);
 }
 
-/* PWA standalone mode: safe area spacer for pages without custom headers */
+/* PWA standalone mode: safe area spacer */
 .safe-area-top {
   padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Fixed safe area bar — black bar behind iPhone status bar/notch */
+.safe-area-fixed::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: env(safe-area-inset-top, 0px);
+  background: #000;
+  z-index: 9999;
 }
 
 body {

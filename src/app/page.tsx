@@ -47,7 +47,7 @@ export default function Home() {
   };
 
   return (
-    <main className="h-dvh w-screen flex flex-col justify-between p-8 font-mono overflow-hidden select-none bg-black" style={{ paddingTop: 'max(2rem, env(safe-area-inset-top, 2rem))' }}>
+    <main className="h-dvh w-screen flex flex-col justify-between p-8 font-mono overflow-hidden select-none bg-black safe-area-top safe-area-fixed">
 
       {/* Background Holocron Orb — ambient decoration */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">

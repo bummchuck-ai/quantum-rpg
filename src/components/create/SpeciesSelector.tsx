@@ -133,7 +133,7 @@ const SpeciesSelector: React.FC = () => {
   }, []);
 
   return (
-    <main className="h-dvh w-full bg-black text-zinc-300 font-mono flex flex-col safe-area-top">
+    <main className="h-dvh w-full bg-black text-zinc-300 font-mono flex flex-col safe-area-top safe-area-fixed">
 
       {/* FIXED HEADER — does not scroll */}
       <div className="shrink-0 px-5 pt-4 pb-3 bg-black z-30 border-b border-zinc-800/50">
