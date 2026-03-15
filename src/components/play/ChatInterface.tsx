@@ -14,6 +14,7 @@ import { calculateDerivedStats } from '@/lib/engine/derived-stats';
 import { slugify } from '@/lib/save-utils';
 import { getLanguage, t } from '@/lib/i18n';
 import { getVoicesForLang, setTTSVoiceName, getSpeechSettings, startSoundtrack, stopSoundtrack, setMusicVolume, setSpeakerVolume, getMusicPlaying } from '@/lib/speech';
+import { setMasterVolume, getSettings as getSfxSettings } from '@/lib/sounds';
 import { useGameSession } from './useGameSession';
 import type { GMResponse } from './types';
 
@@ -34,6 +35,7 @@ const MusicControls: React.FC = () => {
   const [musicOn, setMusicOn] = useState(getMusicPlaying());
   const [musicVol, setMusicVol] = useState(() => getSpeechSettings().musicVolume);
   const [speakerVol, setSpeakerVol] = useState(() => getSpeechSettings().speakerVolume);
+  const [sfxVol, setSfxVol] = useState(() => getSfxSettings().masterVolume);
 
   return (
     <div className="space-y-1">
@@ -47,7 +49,8 @@ const MusicControls: React.FC = () => {
       {musicOn && (
         <VolumeSlider label="Musik" icon="🎵" value={musicVol} onChange={(v) => { setMusicVol(v); setMusicVolume(v); }} />
       )}
-      <VolumeSlider label="Sprecher" icon="🔊" value={speakerVol} onChange={(v) => { setSpeakerVol(v); setSpeakerVolume(v); }} />
+      <VolumeSlider label="Sprecher" icon="🗣" value={speakerVol} onChange={(v) => { setSpeakerVol(v); setSpeakerVolume(v); }} />
+      <VolumeSlider label="Effekte" icon="💥" value={sfxVol} onChange={(v) => { setSfxVol(v); setMasterVolume(v); }} />
     </div>
   );
 };
