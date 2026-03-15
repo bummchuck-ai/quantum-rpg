@@ -2,19 +2,6 @@
   "weapons": {
     "Pistolen": [
       {
-        "name": "Feuerbombe",
-        "skill": "LFW",
-        "damage": 7,
-        "critical": 3,
-        "range": "K",
-        "encumbrance": 1,
-        "hardPoints": 0,
-        "price": 100,
-        "rarity": 5,
-        "special": "",
-        "description": "Molotov der Galaxis — brennt alles nieder."
-      },
-      {
         "name": "CDEF-Pistole",
         "skill": "LFW",
         "damage": 5,
@@ -409,17 +396,17 @@
         "description": "Sprüht ätzende Säure — Albtraum jeder Rüstung."
       },
       {
-        "name": "Stokhli Spraystab",
-        "skill": "SFW",
-        "damage": 0,
-        "critical": 0,
-        "range": "W",
-        "encumbrance": 4,
-        "hardPoints": 0,
-        "price": 2500,
-        "rarity": 8,
-        "special": "",
-        "description": "Sprüht betäubendes Netz — beliebt bei Tierfängern."
+        "name": "Mikrogranatenwerfer",
+        "skill": "ART",
+        "damage": 10,
+        "critical": 3,
+        "range": "M",
+        "encumbrance": 5,
+        "hardPoints": 2,
+        "price": 2000,
+        "rarity": 5,
+        "special": "Explosion 8, Sperrigkeit 3",
+        "description": "Tragbarer Granatwerfer — verheerende Feuerkraft."
       },
       {
         "name": "Raketenwerfer",
@@ -567,6 +554,19 @@
         "rarity": 3,
         "special": "Tödlich 1, Durchbohrend 2",
         "description": "Hochfrequenz-Klinge — schneidet durch Panzerung."
+      },
+      {
+        "name": "Weik Zweihänder (2H)",
+        "skill": "NKW",
+        "damage": 4,
+        "critical": 3,
+        "range": "N",
+        "encumbrance": 4,
+        "hardPoints": 2,
+        "price": 315,
+        "rarity": 8,
+        "special": "Sperrigkeit 4, Defensiv 1",
+        "description": "Schwerer Zweihänder vom Planeten Weik."
       },
       {
         "name": "Riesige Axt (2H)",
@@ -894,19 +894,6 @@
         "rarity": 4,
         "special": "",
         "description": "Elektroschock bei jedem Treffer — schmerzhaft."
-      },
-      {
-        "name": "Weik Zweihänder (2H)",
-        "skill": "NKW",
-        "damage": 4,
-        "critical": 3,
-        "range": "N",
-        "encumbrance": 4,
-        "hardPoints": 2,
-        "price": 315,
-        "rarity": 8,
-        "special": "Sperrigkeit 4, Defensiv 1",
-        "description": "Schwerer Zweihänder vom Planeten Weik."
       },
       {
         "name": "Amtsstab",
@@ -1431,6 +1418,19 @@
         "description": "Industrieschweißer — schmilzt Durastahl wie Butter."
       },
       {
+        "name": "Stokhli Spraystab",
+        "skill": "SFW",
+        "damage": 0,
+        "critical": 0,
+        "range": "W",
+        "encumbrance": 4,
+        "hardPoints": 0,
+        "price": 2500,
+        "rarity": 8,
+        "special": "",
+        "description": "Sprüht betäubendes Netz — beliebt bei Tierfängern."
+      },
+      {
         "name": "Strahlenbohrer J-7B",
         "skill": "NKW",
         "damage": 9,
@@ -1511,6 +1511,19 @@
         "description": "Explodiert in Klebeschaum — keiner kommt mehr weg."
       },
       {
+        "name": "Feuerbombe",
+        "skill": "LFW",
+        "damage": 7,
+        "critical": 3,
+        "range": "K",
+        "encumbrance": 1,
+        "hardPoints": 0,
+        "price": 300,
+        "rarity": 5,
+        "special": "Verbrauchsgegenstand (einmalig)",
+        "description": "Molotov der Galaxis — brennt alles nieder."
+      },
+      {
         "name": "Plasmagranate",
         "skill": "LFW",
         "damage": 12,
@@ -1522,19 +1535,6 @@
         "rarity": 6,
         "special": "Verbrauchsgegenstand (einmalig)",
         "description": "Superheißes Plasma — verdampft fast alles."
-      },
-      {
-        "name": "Mikrogranatenwerfer",
-        "skill": "ART",
-        "damage": 10,
-        "critical": 3,
-        "range": "M",
-        "encumbrance": 5,
-        "hardPoints": 2,
-        "price": 6000,
-        "rarity": 5,
-        "special": "Explosion 8, Sperrigkeit 3, Verbrauchsgegenstand (einmalig)",
-        "description": "Tragbarer Granatwerfer — verheerende Feuerkraft."
       }
     ],
     "Munition": [
@@ -1719,6 +1719,17 @@
         "description": "Dicke Stoffe — etwas Schutz gegen die Kälte."
       },
       {
+        "name": "Künstlerkostüm",
+        "defense": 0,
+        "soak": 0,
+        "price": 50,
+        "encumbrance": 0,
+        "hardPoints": 0,
+        "rarity": 4,
+        "note": "",
+        "description": "Bunte Verkleidung — perfekt für Tarnung oder Show."
+      },
+      {
         "name": "Gesellschafts-Uniform",
         "defense": 0,
         "soak": 0,
@@ -1832,17 +1843,6 @@
       }
     ],
     "Rüstung": [
-      {
-        "name": "Künstlerkostüm",
-        "defense": 0,
-        "soak": 0,
-        "price": 50,
-        "encumbrance": 0,
-        "hardPoints": 0,
-        "rarity": 4,
-        "note": "",
-        "description": "Bunte Verkleidung — perfekt für Tarnung oder Show."
-      },
       {
         "name": "Nomadenmantel",
         "defense": 0,
