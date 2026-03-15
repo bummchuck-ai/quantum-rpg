@@ -244,18 +244,25 @@ export const useCharacterStore = create<GameState>()(
           case 'cr2500': newCredits += 2500; break;
         }
 
-        // Determine value increase based on bonus
-        let valueIncrease = 0;
-        if (bonus === 'xp5' || bonus === 'cr1000') valueIncrease = 5;
-        if (bonus === 'xp10' || bonus === 'cr2500') valueIncrease = 10;
+        // Determine value change based on bonus and type
+        let newValue = baseValue;
+        if (player.backgroundType === 'Morality') {
+          // Morality: taking bonus DROPS morality from 50 to 29 (closer to Dark Side)
+          if (bonus === 'xp10' || bonus === 'cr2500') newValue = 29;
+          else if (bonus === 'xp5' || bonus === 'cr1000') newValue = 39;
+        } else {
+          // Obligation/Duty: taking bonus INCREASES the value
+          if (bonus === 'xp5' || bonus === 'cr1000') newValue = baseValue + 5;
+          if (bonus === 'xp10' || bonus === 'cr2500') newValue = baseValue + 10;
+        }
 
         const newPlayers = [...state.players];
         newPlayers[state.activePlayerIndex] = {
           ...player,
           backgroundBonus: bonus as any,
-          availableXP: baseXP - player.spentXP,
+          availableXP: baseXP - (player.spentXP ?? 0),
           credits: newCredits,
-          backgroundValue: baseValue + valueIncrease
+          backgroundValue: newValue
         };
         return { players: newPlayers };
       }),

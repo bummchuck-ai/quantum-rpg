@@ -142,21 +142,20 @@ const BackgroundSelector: React.FC = () => {
                <div className="text-[10px] text-zinc-500 font-bold border-t border-zinc-900 pt-4">INITIAL_MAGNITUDE: {suggestedType === 'Morality' ? '50' : '10'}</div>
             </div>
 
-            {suggestedType !== 'Morality' && (
-              <div className="bg-zinc-900/20 border border-zinc-800 p-6 rounded-xl relative">
+            <div className="bg-zinc-900/20 border border-zinc-800 p-6 rounded-xl relative">
                 <div className="absolute -top-2 left-4 bg-black px-2 text-[8px] text-zinc-500 font-black uppercase tracking-widest">Optional_Pact</div>
                 <div className="grid grid-cols-1 gap-3">
-                  {[ 
-                    { id: 'none', label: 'STANDARD_LOAD', sub: 'No bonus assigned', color: 'zinc' },
-                    { id: 'xp10', label: 'UPGRADE: +10 XP', sub: 'Increase Load (+10)', color: 'amber' },
-                    { id: 'cr2500', label: 'CREDIT_BOOST: +2.5k', sub: 'Increase Load (+10)', color: 'emerald' }
+                  {[
+                    { id: 'none', label: 'STANDARD_LOAD', sub: suggestedType === 'Morality' ? 'Moralität bleibt bei 50' : 'Kein Bonus', color: 'zinc' },
+                    { id: 'xp10', label: 'UPGRADE: +10 XP', sub: suggestedType === 'Morality' ? 'Moralität sinkt auf 29 (Dunkle Seite!)' : 'Schicksal erhöht sich (+10)', color: 'amber' },
+                    { id: 'cr2500', label: 'CREDIT_BOOST: +2.5k', sub: suggestedType === 'Morality' ? 'Moralität sinkt auf 29 (Dunkle Seite!)' : 'Schicksal erhöht sich (+10)', color: 'emerald' }
                   ].map(opt => (
-                    <button 
-                      key={opt.id} 
+                    <button
+                      key={opt.id}
                       onClick={() => applyBackgroundBonus(opt.id as any)}
                       className={`p-4 border text-left transition-all rounded-lg ${
-                        backgroundBonus === opt.id 
-                          ? 'border-white bg-white/10 ring-1 ring-white' 
+                        backgroundBonus === opt.id
+                          ? 'border-white bg-white/10 ring-1 ring-white'
                           : 'border-zinc-800 bg-zinc-900/40 active:border-zinc-600'
                       }`}
                     >
@@ -166,7 +165,6 @@ const BackgroundSelector: React.FC = () => {
                   ))}
                 </div>
               </div>
-            )}
           </div>
         )}
       </div>
