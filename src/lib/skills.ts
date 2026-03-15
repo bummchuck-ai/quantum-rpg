@@ -173,6 +173,13 @@ export const SKILL_MAP: Record<string, { key: string; char: string }> = {
   'lichtschwerter': { key: 'lightsaber', char: 'brawn' },
   'handgemenge': { key: 'brawl', char: 'brawn' },
   'nahkampfwaffen': { key: 'melee', char: 'brawn' },
+  // Gear.json weapon skill abbreviations
+  'nkw': { key: 'melee', char: 'brawn' },
+  'sfw': { key: 'rangedHeavy', char: 'agility' },
+  'lfw': { key: 'rangedLight', char: 'agility' },
+  'hg': { key: 'brawl', char: 'brawn' },
+  'art': { key: 'gunnery', char: 'agility' },
+  'ls': { key: 'lightsaber', char: 'brawn' },
 };
 
 /** Resolve a skill name (DE or EN, any case) to its canonical store key and characteristic */

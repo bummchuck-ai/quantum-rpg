@@ -231,7 +231,7 @@ export function useGameSession() {
     try {
       const response = await fetch('/api/chat', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-api-secret': process.env.NEXT_PUBLIC_API_SECRET || '' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           gameState: buildGameState(),
           userMessage: `[SYSTEM] Erstelle eine kompakte Zusammenfassung der bisherigen Geschichte (max 500 Wörter). Fokus auf: Schlüsselereignisse, NPC-Beziehungen, besuchte Orte, aktive Bedrohungen, Errungenschaften des Spielers. Bisherige Erzählungen:\n\n${narratives.join('\n\n')}`,
@@ -465,7 +465,7 @@ export function useGameSession() {
 
       const response = await fetch('/api/chat', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-api-secret': process.env.NEXT_PUBLIC_API_SECRET || '' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           gameState: buildGameState(),
           userMessage: text,
@@ -497,7 +497,7 @@ export function useGameSession() {
     try {
       const response = await fetch('/api/chat', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-api-secret': process.env.NEXT_PUBLIC_API_SECRET || '' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           gameState: buildGameState(),
           userMessage: buildStartMessage(),

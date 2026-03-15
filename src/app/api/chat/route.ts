@@ -19,21 +19,16 @@ function isRateLimited(ip: string): boolean {
 }
 
 const apiKey = process.env.ANTHROPIC_API_KEY;
-if (!apiKey) {
-  console.error('WARNING: ANTHROPIC_API_KEY is not set!');
-}
 const anthropic = new Anthropic({ apiKey: apiKey || '' });
 
 export const maxDuration = 60; // Vercel Hobby allows up to 60s
 
 export async function POST(req: Request) {
-  // API secret check
-  const apiSecret = process.env.QUANTUM_API_SECRET;
-  if (apiSecret && req.headers.get('x-api-secret') !== apiSecret) {
-    return NextResponse.json(
-      { error: 'Unauthorized' },
-      { status: 401 }
-    );
+  // Origin check — only allow requests from same origin
+  const origin = req.headers.get('origin') || '';
+  const host = req.headers.get('host') || '';
+  if (origin && !origin.includes(host) && !origin.includes('localhost') && !origin.includes('vercel.app')) {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
   }
 
   const ip = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';

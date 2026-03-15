@@ -460,6 +460,7 @@ export const useCharacterStore = create<GameState>()(
         let newAvailableXP = player.availableXP;
         const newQuestLog = player.questLog.map(quest => {
           if (quest.id === questId && quest.status === 'active') {
+            // Check rewards array first
             quest.rewards.forEach(reward => {
               if (reward.type === 'exp') {
                 newAvailableXP += (reward.value as number);
@@ -467,6 +468,13 @@ export const useCharacterStore = create<GameState>()(
                 newCredits += (reward.value as number);
               }
             });
+            // Also check xpReward/creditsReward fields (set by GM)
+            if ((quest as any).xpReward) {
+              newAvailableXP += (quest as any).xpReward;
+            }
+            if ((quest as any).creditsReward) {
+              newCredits += (quest as any).creditsReward;
+            }
             return { ...quest, status: 'completed' as const };
           }
           return quest;
