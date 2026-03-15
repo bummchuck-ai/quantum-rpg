@@ -98,6 +98,8 @@ const TalentTreeGrid: React.FC<TalentTreeGridProps> = ({
     return false;
   };
 
+  const MAX_RANK = 5;
+
   const handleBuy = (tal: TalentNode) => {
     const tid = makeTalentId(tree.specialization, tal.row, tal.col);
     onPurchase({
@@ -106,25 +108,27 @@ const TalentTreeGrid: React.FC<TalentTreeGridProps> = ({
       tier: tal.row,
       activation: 'passive' as const,
       ranked: tal.isRanked,
-      currentRank: 0,
+      currentRank: tal.isRanked ? 1 : 0, // ranked starts at 1, non-ranked at 0
       description: tal.description || '',
       xpCost: tal.cost,
     });
   };
 
   return (
-    <div className="space-y-4 overflow-x-auto">
+    <div className="space-y-3 overflow-x-auto pb-2">
       {Array.from({ length: maxRow }, (_, i) => i + 1).map(rowIndex => (
         <div key={rowIndex}>
-          {showTierLabels && (
-            <div className="text-[7px] text-zinc-700 font-black uppercase tracking-widest mb-2">
-              Tier {rowIndex} — {rowIndex * 5} XP
+          <div className="flex items-center gap-2 mb-1.5">
+            <div className="text-[7px] text-zinc-700 font-black uppercase tracking-widest">
+              Tier {rowIndex}
             </div>
-          )}
-          <div className="grid grid-cols-4 gap-2 min-w-[600px] md:min-w-0">
+            <div className="flex-1 h-px bg-zinc-800/50" />
+            <div className="text-[7px] text-zinc-700 font-black">{rowIndex * 5} XP</div>
+          </div>
+          <div className="grid grid-cols-4 gap-1.5 min-w-[560px] md:min-w-0">
             {[1, 2, 3, 4].map(colIndex => {
               const talent = tree.talents.find(t => t.row === rowIndex && t.col === colIndex);
-              if (!talent) return <div key={colIndex} className="invisible" />;
+              if (!talent) return <div key={colIndex} />;
 
               const talentKey = `${rowIndex}-${colIndex}`;
               const tid = makeTalentId(tree.specialization, talent.row, talent.col);
@@ -133,71 +137,92 @@ const TalentTreeGrid: React.FC<TalentTreeGridProps> = ({
               const isSelected = selectedTalentKey === talentKey;
               const cost = talent.cost;
               const hasTopConnection = talent.connections?.includes('top');
+              const hasBottomConnection = talent.connections?.includes('bottom');
               const isUnlocked = canPurchase(talent);
-              const canRebuy = talent.isRanked && isOwned && (!ownedEntry || ownedEntry.currentRank < 5);
+              // Rank-up only if: ranked + owned + under max rank + prerequisites still valid
+              const canRebuy = talent.isRanked && isOwned && isUnlocked
+                && (!ownedEntry || ownedEntry.currentRank < MAX_RANK);
+              const isLocked = !isOwned && !isUnlocked;
+              const canAfford = availableXP >= cost;
 
               return (
                 <div key={colIndex} className="relative flex flex-col items-center">
+                  {/* Connection line above */}
                   {hasTopConnection && (
-                    <div className="absolute -top-4 h-4 w-0.5 bg-zinc-700 z-0" />
+                    <div className="w-px h-3 bg-zinc-700/60 -mb-px" />
                   )}
 
                   <div
                     onClick={() => setSelectedTalentKey(isSelected ? null : talentKey)}
-                    className={`relative z-10 w-full h-full min-h-[90px] p-2 border rounded-lg flex flex-col justify-between cursor-pointer transition-all duration-200 ${
+                    className={`relative w-full p-1.5 border rounded-lg cursor-pointer transition-all duration-150 ${
                       isSelected
-                        ? 'border-white bg-zinc-800 shadow-[0_0_12px_rgba(255,255,255,0.1)] scale-[1.03]'
+                        ? 'border-amber-500 bg-zinc-800 shadow-[0_0_10px_rgba(245,158,11,0.15)]'
                         : isOwned
-                        ? 'border-emerald-500/50 bg-emerald-900/10'
-                        : 'border-zinc-800 bg-zinc-900/40 hover:bg-zinc-800'
+                        ? 'border-emerald-500/40 bg-emerald-950/20'
+                        : isLocked
+                        ? 'border-zinc-800/50 bg-zinc-950/60 opacity-50'
+                        : 'border-zinc-700/50 bg-zinc-900/30 hover:border-zinc-600'
                     }`}
                   >
-                    <div className="flex justify-between items-start mb-1">
-                      <h3 className={`text-[9px] font-black uppercase leading-tight ${isOwned ? 'text-emerald-400' : 'text-zinc-200'}`}>
+                    {/* Header: Name + Status */}
+                    <div className="flex justify-between items-start gap-1">
+                      <h3 className={`text-[8px] font-black uppercase leading-none ${
+                        isOwned ? 'text-emerald-400' : isLocked ? 'text-zinc-600' : 'text-zinc-300'
+                      }`}>
                         {talent.name}
                       </h3>
                       {isOwned && (
-                        <div className="flex items-center gap-0.5">
-                          {talent.isRanked && ownedEntry && (
-                            <span className="text-[7px] text-emerald-400 font-black">R{ownedEntry.currentRank}</span>
+                        <div className="flex items-center gap-0.5 shrink-0">
+                          {talent.isRanked && ownedEntry && ownedEntry.currentRank > 0 && (
+                            <span className="text-[6px] text-emerald-400 font-black bg-emerald-500/10 px-1 rounded">R{ownedEntry.currentRank}</span>
                           )}
-                          <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full shadow-[0_0_4px_rgba(16,185,129,0.8)]" />
+                          <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
                         </div>
                       )}
                     </div>
 
-                    <p className="text-[9px] text-zinc-500 leading-tight line-clamp-2">
-                      {talent.description || 'Passiv'}
-                    </p>
+                    {/* Description (only when selected) */}
+                    {isSelected && (
+                      <p className="text-[8px] text-zinc-500 leading-tight mt-1 line-clamp-3">
+                        {talent.description || 'Passiv'}
+                      </p>
+                    )}
 
-                    <div className="mt-1 pt-1 border-t border-zinc-800/50 flex justify-between items-center">
-                      <span className="text-[8px] text-zinc-600 font-black">{cost} XP</span>
+                    {/* Footer: Cost + Type */}
+                    <div className="flex justify-between items-center mt-1">
+                      <span className={`text-[7px] font-black ${isLocked ? 'text-zinc-700' : 'text-zinc-500'}`}>{cost}</span>
                       {talent.isRanked && (
-                        <span className="text-[6px] bg-zinc-800 text-zinc-500 px-1 py-0.5 rounded uppercase">Ranked</span>
+                        <span className="text-[5px] bg-zinc-800 text-zinc-600 px-1 py-px rounded uppercase leading-none">R</span>
                       )}
                     </div>
 
                     {/* Buy / Rank-up Overlay */}
                     {isSelected && (!isOwned || canRebuy) && (
-                      <div className="absolute inset-0 bg-black/90 flex items-center justify-center rounded-xl animate-in fade-in duration-200">
-                        {isUnlocked || canRebuy ? (
+                      <div className="absolute inset-0 bg-black/85 flex flex-col items-center justify-center rounded-lg animate-in fade-in duration-150 gap-1 p-1">
+                        {(isUnlocked || canRebuy) ? (
                           <button
                             onClick={(e) => { e.stopPropagation(); handleBuy(talent); }}
-                            disabled={availableXP < cost}
-                            className={`px-4 py-2 rounded-lg font-black uppercase text-[10px] tracking-widest ${
-                              availableXP >= cost
-                                ? 'bg-amber-500 text-black hover:bg-amber-400'
-                                : 'bg-zinc-800 text-zinc-600 cursor-not-allowed'
+                            disabled={!canAfford}
+                            className={`px-3 py-1.5 rounded-md font-black uppercase text-[8px] tracking-wider ${
+                              canAfford
+                                ? 'bg-amber-500 text-black active:scale-95'
+                                : 'bg-zinc-800 text-zinc-600'
                             }`}
                           >
-                            {canRebuy ? `Rank Up (${cost})` : `Buy (${cost})`}
+                            {canRebuy ? `Rank Up` : `Kaufen`}
                           </button>
                         ) : (
-                          <span className="text-[9px] text-red-400 font-black uppercase tracking-widest">LOCKED</span>
+                          <span className="text-[7px] text-red-400/70 font-black uppercase">Gesperrt</span>
                         )}
+                        <span className="text-[6px] text-zinc-600">{cost} XP</span>
                       </div>
                     )}
                   </div>
+
+                  {/* Connection line below */}
+                  {hasBottomConnection && (
+                    <div className="w-px h-3 bg-zinc-700/60 -mt-px" />
+                  )}
                 </div>
               );
             })}
