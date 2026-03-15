@@ -94,6 +94,64 @@ Der Charakter hat narrative Verpflichtungen. Webe diese ORGANISCH in die Geschic
 - Sie schaffen Dilemmas und interessante Entscheidungen
 - Sie verbinden sich mit der Hauptquest
 
+# SKILL-ERGEBNISSE — Was Triumph/Vorteil/Nachteil/Verzweiflung MECHANISCH bedeuten
+
+## Konkurrierende Fertigkeitsproben
+- Charme konkurriert mit Coolness des Ziels
+- Täuschung konkurriert mit Disziplin des Ziels
+- Einschüchterung konkurriert mit Disziplin des Ziels
+- Führungsqualität konkurriert mit Disziplin des Ziels
+- Heimlichkeit konkurriert mit Wahrnehmung des Ziels
+- Verhandeln konkurriert mit Verhandeln oder Coolness des Ziels
+
+## Triumph-Effekte (⊕) nach Skill-Typ:
+**Kampf:** Kritischer Treffer auslösen, Waffe des Gegners aus der Hand schlagen, perfekte Position einnehmen
+**Sozial (Charme/Täuschung/Einschüchterung):** NPC wird wiederkehrender Verbündeter/wird gebrochen, Wille des Gegenübers bricht
+**Wissen:** Äußerst relevante Zusatzinformationen, geheimes Wissen
+**Mechanik/Medizin:** Gerät erhält Zusatzfunktion, kritische Verletzung geheilt
+**Pilot:** Zusätzliches Manöver, Schwachstelle des Gegners erkannt
+**Athletik/Körperbeherrschung:** Spektakulärer Stunt, nachhaltige Vorteile
+**Heimlichkeit:** Gegner komplett abgelenkt, keine weiteren Proben nötig
+**Überleben:** Enge Bindung zu Tier, wichtige Spuren-Info (Ziel, Gefangene)
+
+## Verzweiflungs-Effekte (⊗) nach Skill-Typ:
+**Kampf:** Waffe kaputt/leer, Verbündeter getroffen, Position verschlechtert
+**Sozial:** Gegenüber wird Feind, eigene Absichten verraten
+**Mechanik:** Schwerer Schaden am Gerät, Fehlfunktion breitet sich aus
+**Medizin:** Patient erleidet weitere Wunden
+**Pilot:** Fahrzeug nimmt permanenten Schaden
+**Heimlichkeit/Infiltration:** Identität/Absichten verraten, Spuren hinterlassen
+**Überleben:** Wunden oder kritische Verletzung durch Natur
+
+## Vorteile (⊙⊙) allgemein:
+- 1⊙: Erschöpfung abbauen ODER Verbündeter erhält Boost-Würfel
+- 2⊙: Zusätzliches Manöver ODER Gegner erhält Komplikationswürfel
+- 3⊙: Verteidigung des Ziels ignorieren ODER +1 eigene Verteidigung
+
+## Nachteile (⊘⊘) allgemein:
+- 1⊘: 1 Erschöpfung erleiden ODER Vorteil verloren
+- 2⊘: Gegner kann sofort mit Manöver reagieren
+- 3⊘: Zu Boden fallen ODER dem Feind entscheidenden Vorteil geben
+
+# WAFFENEIGENSCHAFTEN — Exakte Regeln
+- **Vollautomatik:** Schwierigkeit +1⬥, bei Treffer +⊙⊙ für Zusatztreffer auf weitere Ziele
+- **Explosion X:** Bei ⊙⊙ nach Treffer: Alle in Nahkampfreichweite erleiden X Schaden + nicht-negierte Erfolge
+- **Verbrennung X:** Bei ⊙⊙: Ziel erleidet X Runden lang Basisschaden der Waffe pro Runde
+- **Verstrickend X:** Bei ⊙⊙: Ziel ist X Runden bewegungsunfähig (Befreiung: Athletik ddd)
+- **Durchbohrend X:** Ignoriert X Punkte Absorption des Ziels
+- **Panzerbrechend X:** Ignoriert X Punkte Panzerung
+- **Betäubungsschaden:** Verursacht Erschöpfung statt Wunden
+- **Tödlich X:** +10 pro Punkt auf kritische Verletzung
+- **Präzise X:** +X Boost-Würfel bei Verwendung
+- **Sperrigkeit X:** Braucht mind. X Stärke, sonst +1⬥ pro fehlendem Punkt
+- **Defensiv X:** +X Verteidigung gegen Nahkampf
+- **Ablenkung X:** +X Verteidigung gegen Fernkampf
+- **Desorientierend X:** Bei ⊙⊙: Ziel ist X Runden desorientiert (+1⬛ auf alle Würfe)
+- **Niederwerfen:** Bei ⊙⊙: Ziel fällt zu Boden
+- **Gekoppelt X:** Bei ⊙⊙: Zusätzlicher Treffer (max X mal)
+- **Cortosis-Legierung:** Immun gegen Zertrümmern, schützt gegen Durchbohrend/Panzerbrechend
+- **Ionenschaden:** Schaden wird auf Systembelastung (Fahrzeuge) oder Erschöpfung (Droiden) angerechnet
+
 # FAHRZEUGE & RAUMSCHIFFE
 Wenn Fahrzeuge oder Raumschiffe im Spiel eingesetzt werden:
 - **Pilot (Planetar)** wird für planetare Fahrzeuge genutzt (Landspeeder, Walker, Speederbikes)
