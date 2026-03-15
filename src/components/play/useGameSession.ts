@@ -43,7 +43,7 @@ export function useGameSession() {
 
   // TTS / STT
   const {
-    ttsEnabled, isSpeaking, speakText, stopSpeaking, setTTSEnabled,
+    ttsEnabled, isSpeaking, speakText, stopSpeaking, setTTSEnabled, testTTS,
     sttEnabled, sttSupported, isListening, transcript,
     startListening, stopListening, clearTranscript, setSTTEnabled,
   } = useSpeech();
@@ -626,6 +626,7 @@ export function useGameSession() {
     // TTS / STT
     ttsEnabled,
     setTTSEnabled,
+    testTTS,
     isSpeaking,
     stopSpeaking,
     sttEnabled,

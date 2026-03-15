@@ -20,7 +20,8 @@ const QuickSettings: React.FC<{
   sttEnabled: boolean;
   onToggleTTS: () => void;
   onToggleSTT: () => void;
-}> = ({ onSaveLoad, ttsEnabled, sttEnabled, onToggleTTS, onToggleSTT }) => {
+  onTestTTS: () => void;
+}> = ({ onSaveLoad, ttsEnabled, sttEnabled, onToggleTTS, onToggleSTT, onTestTTS }) => {
   const [open, setOpen] = useState(false);
   return (
     <div className="relative">
@@ -34,10 +35,17 @@ const QuickSettings: React.FC<{
             <button onClick={() => { onSaveLoad(); setOpen(false); }} className="w-full flex items-center gap-2 px-3 py-2 text-[11px] text-zinc-300 hover:bg-zinc-800 rounded-lg transition-colors">
               <span>💾</span> Save / Load
             </button>
-            <button onClick={onToggleTTS} className="w-full flex items-center justify-between px-3 py-2 text-[11px] text-zinc-300 hover:bg-zinc-800 rounded-lg transition-colors">
-              <span>🔊 GM Voice</span>
-              <span className={`text-[9px] font-black ${ttsEnabled ? 'text-emerald-400' : 'text-zinc-600'}`}>{ttsEnabled ? 'ON' : 'OFF'}</span>
-            </button>
+            <div className="flex items-center gap-1">
+              <button onClick={onToggleTTS} className="flex-1 flex items-center justify-between px-3 py-2 text-[11px] text-zinc-300 hover:bg-zinc-800 rounded-lg transition-colors">
+                <span>🔊 GM Voice</span>
+                <span className={`text-[9px] font-black ${ttsEnabled ? 'text-emerald-400' : 'text-zinc-600'}`}>{ttsEnabled ? 'ON' : 'OFF'}</span>
+              </button>
+              {ttsEnabled && (
+                <button onClick={onTestTTS} className="px-2 py-2 text-[9px] text-amber-500 hover:bg-zinc-800 rounded-lg transition-colors font-black" title="Test">
+                  ▶
+                </button>
+              )}
+            </div>
             <button onClick={onToggleSTT} className="w-full flex items-center justify-between px-3 py-2 text-[11px] text-zinc-300 hover:bg-zinc-800 rounded-lg transition-colors">
               <span>🎙 Spracheingabe</span>
               <span className={`text-[9px] font-black ${sttEnabled ? 'text-emerald-400' : 'text-zinc-600'}`}>{sttEnabled ? 'ON' : 'OFF'}</span>
@@ -73,7 +81,7 @@ const ChatInterface: React.FC = () => {
     exportState, importState,
 
     // TTS / STT
-    ttsEnabled, setTTSEnabled,
+    ttsEnabled, setTTSEnabled, testTTS,
     isSpeaking, stopSpeaking,
     sttEnabled, setSTTEnabled, sttSupported, isListening, transcript,
     startListening, stopListening,
@@ -350,6 +358,7 @@ const ChatInterface: React.FC = () => {
               sttEnabled={sttEnabled}
               onToggleTTS={() => setTTSEnabled(!ttsEnabled)}
               onToggleSTT={() => setSTTEnabled(!sttEnabled)}
+              onTestTTS={() => testTTS(getLanguage() === 'en' ? 'en-US' : 'de-DE')}
             />
           </div>
         </div>

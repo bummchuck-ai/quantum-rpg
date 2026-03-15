@@ -11,6 +11,7 @@ import {
   stopSpeaking as stopTTS,
   createRecognition,
   warmUpTTS,
+  testSpeak,
 } from '@/lib/speech';
 
 export interface UseSpeechReturn {
@@ -21,6 +22,7 @@ export interface UseSpeechReturn {
   speakText: (text: string, lang?: string) => void;
   stopSpeaking: () => void;
   setTTSEnabled: (v: boolean) => void;
+  testTTS: (lang?: string) => void;
 
   // STT
   sttSupported: boolean;
@@ -154,11 +156,18 @@ export function useSpeech(): UseSpeechReturn {
     }
   }, []);
 
+  const testTTS = useCallback((lang: string = 'de-DE') => {
+    warmUpTTS();
+    // Small delay to let warmup complete
+    setTimeout(() => testSpeak(lang), 300);
+  }, []);
+
   return {
     ttsSupported,
     ttsEnabled,
     isSpeaking,
     speakText,
+    testTTS,
     stopSpeaking,
     setTTSEnabled,
     sttSupported,

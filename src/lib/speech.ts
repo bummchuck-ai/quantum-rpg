@@ -91,14 +91,32 @@ function ensureVoicesLoaded(): void {
 }
 
 // iOS Safari requires a user gesture to unlock speechSynthesis.
-// Call this on any button click to "warm up" TTS.
+// This speaks an actual word (silently) to fully unlock the audio session.
+let ttsUnlocked = false;
 export function warmUpTTS(): void {
-  if (!checkTTSSupport()) return;
-  const utterance = new SpeechSynthesisUtterance('');
-  utterance.volume = 0;
+  if (!checkTTSSupport() || ttsUnlocked) return;
+  const utterance = new SpeechSynthesisUtterance('.');
+  utterance.volume = 0.01; // near-silent but not zero (iOS ignores volume=0)
+  utterance.rate = 10; // fastest possible
+  utterance.onend = () => { ttsUnlocked = true; };
+  utterance.onerror = () => { ttsUnlocked = true; }; // still mark as unlocked
   speechSynthesis.speak(utterance);
-  speechSynthesis.cancel();
   ensureVoicesLoaded();
+}
+
+// Test TTS: speak a short phrase audibly (for debugging)
+export function testSpeak(lang: string = 'de-DE'): void {
+  if (!checkTTSSupport()) return;
+  stopSpeaking();
+  const utterance = new SpeechSynthesisUtterance(
+    lang.startsWith('de') ? 'Game Master aktiv.' : 'Game Master active.'
+  );
+  utterance.lang = lang;
+  utterance.rate = 1.0;
+  utterance.volume = 1.0;
+  const voice = getVoiceForLang(lang);
+  if (voice) utterance.voice = voice;
+  speechSynthesis.speak(utterance);
 }
 
 export function getVoiceForLang(lang: string): SpeechSynthesisVoice | null {
