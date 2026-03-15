@@ -1,0 +1,44 @@
+{
+  "desire": [
+    { "id": "ambition", "name": "Ehrgeiz", "nameEN": "Ambition", "description": "Du willst an die Spitze — egal in welchem Bereich." },
+    { "id": "power", "name": "Macht", "nameEN": "Power", "description": "Du strebst nach Kontrolle über andere und die Galaxis." },
+    { "id": "knowledge", "name": "Wissen", "nameEN": "Knowledge", "description": "Du willst die Geheimnisse der Galaxis verstehen." },
+    { "id": "love", "name": "Liebe", "nameEN": "Love", "description": "Du suchst nach wahrer Verbundenheit und Zugehörigkeit." },
+    { "id": "freedom", "name": "Freiheit", "nameEN": "Freedom", "description": "Du willst niemandem Rechenschaft schulden." },
+    { "id": "justice", "name": "Gerechtigkeit", "nameEN": "Justice", "description": "Du willst Unrecht bekämpfen und die Schwachen beschützen." },
+    { "id": "wealth", "name": "Reichtum", "nameEN": "Wealth", "description": "Credits sind die universelle Sprache — und du willst fließend sein." },
+    { "id": "fame", "name": "Ruhm", "nameEN": "Fame", "description": "Du willst, dass die Galaxis deinen Namen kennt." },
+    { "id": "safety", "name": "Sicherheit", "nameEN": "Safety", "description": "Du willst einen sicheren Ort für dich und die, die dir wichtig sind." },
+    { "id": "expertise", "name": "Meisterschaft", "nameEN": "Expertise", "description": "Du willst in deinem Handwerk der Beste sein." }
+  ],
+  "fear": [
+    { "id": "isolation", "name": "Isolation", "nameEN": "Isolation", "description": "Allein zu sein ist dein schlimmster Albtraum." },
+    { "id": "insignificance", "name": "Bedeutungslosigkeit", "nameEN": "Obscurity", "description": "Du fürchtest, vergessen zu werden." },
+    { "id": "failure", "name": "Versagen", "nameEN": "Failure", "description": "Du hast Angst, nicht gut genug zu sein." },
+    { "id": "death", "name": "Tod", "nameEN": "Death", "description": "Der Gedanke an das Ende lähmt dich." },
+    { "id": "change", "name": "Veränderung", "nameEN": "Change", "description": "Du fürchtest das Unbekannte und klammmerst dich an das Vertraute." },
+    { "id": "truth", "name": "Die Wahrheit", "nameEN": "The Truth", "description": "Du fürchtest, was du über dich selbst oder deine Vergangenheit erfahren könntest." },
+    { "id": "betrayal", "name": "Verrat", "nameEN": "Betrayal", "description": "Du vertraust niemandem vollständig — aus gutem Grund." },
+    { "id": "commitment", "name": "Bindung", "nameEN": "Commitment", "description": "Verantwortung für andere zu übernehmen macht dir Angst." }
+  ],
+  "strength": [
+    { "id": "courage", "name": "Mut", "nameEN": "Bravery", "description": "Du stellst dich der Gefahr, wenn andere wegrennen." },
+    { "id": "discipline", "name": "Disziplin", "nameEN": "Discipline", "description": "Du bleibst fokussiert, egal was passiert." },
+    { "id": "compassion", "name": "Mitgefühl", "nameEN": "Compassion", "description": "Du spürst das Leid anderer und handelst." },
+    { "id": "resourcefulness", "name": "Einfallsreichtum", "nameEN": "Resourcefulness", "description": "Du findest immer einen Weg." },
+    { "id": "enthusiasm", "name": "Enthusiasmus", "nameEN": "Enthusiasm", "description": "Deine Begeisterung steckt andere an." },
+    { "id": "independence", "name": "Unabhängigkeit", "nameEN": "Independence", "description": "Du brauchst niemanden — und genau das macht dich stark." },
+    { "id": "loyalty", "name": "Treue", "nameEN": "Loyalty", "description": "Für deine Leute gehst du durchs Feuer." },
+    { "id": "patience", "name": "Geduld", "nameEN": "Patience", "description": "Du wartest auf den richtigen Moment." }
+  ],
+  "flaw": [
+    { "id": "anger", "name": "Zorn", "nameEN": "Anger", "description": "Dein Temperament ist dein größter Feind." },
+    { "id": "recklessness", "name": "Rücksichtslosigkeit", "nameEN": "Recklessness", "description": "Du handelst erst, denkst später." },
+    { "id": "greed", "name": "Gier", "nameEN": "Greed", "description": "Es ist nie genug." },
+    { "id": "laziness", "name": "Faulheit", "nameEN": "Laziness", "description": "Warum anstrengen wenn's auch einfach geht?" },
+    { "id": "arrogance", "name": "Arroganz", "nameEN": "Arrogance", "description": "Du hältst dich für besser als alle anderen." },
+    { "id": "distrust", "name": "Misstrauen", "nameEN": "Distrust", "description": "Du siehst in jedem einen potenziellen Feind." },
+    { "id": "obsession", "name": "Besessenheit", "nameEN": "Obsession", "description": "Wenn du etwas willst, lässt dich nichts aufhalten — auch nicht Vernunft." },
+    { "id": "cowardice", "name": "Feigheit", "nameEN": "Cowardice", "description": "Wenn es brenzlig wird, suchst du das Weite." }
+  ]
+}

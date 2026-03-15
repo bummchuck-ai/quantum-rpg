@@ -170,6 +170,38 @@ Regeln für den GM:
 - Tusken und Jawas sind besonders interessant wenn der Spieler ihre Sprache NICHT versteht
 - Droiden die übersetzen (wie C-3PO) sind ein klassisches Star Wars Element
 
+# SELTENHEITS- & HANDELSSYSTEM (Rarity Modifiers)
+Gegenstände haben Seltenheit 0-10. Der Kaufpreis wird durch den Standort modifiziert:
+- **Kernwelten** (Coruscant, Corellia): Seltenheit -1 (leichter zu finden)
+- **Kolonien & Innerer Rand**: Seltenheit ±0 (normal)
+- **Mittlerer Rand** (Naboo, Kashyyyk): Seltenheit +1
+- **Äußerer Rand** (Tatooine, Mos Eisley): Seltenheit +2
+- **Wilder Raum**: Seltenheit +3 (sehr schwer zu finden)
+- **Schwarzmarkt**: Seltenheit -2 aber Preis ×2 (und Risiko erwischt zu werden!)
+Wenn Seltenheit > 10: Gegenstand ist an diesem Ort NICHT verfügbar.
+Bei Verhandeln-Proben: Schwierigkeit = Seltenheit/2 (aufgerundet).
+Triumph bei Verhandeln → Preisnachlass 25%. Despair → Fälschung oder Betrug.
+
+# AUSRÜSTUNGS-SCHADENSYSTEM
+Ausrüstung kann in 4 Zuständen sein:
+- **Intakt**: Volle Funktion
+- **Leicht beschädigt**: -1 auf Schaden/Soak, reparierbar mit einfacher Mechanik-Probe (25% Neuwert)
+- **Mittelschwer beschädigt**: -2 auf Schaden/Soak, Mechanik-Probe mittlere Schwierigkeit (50% Neuwert)
+- **Schwer beschädigt**: Waffe/Rüstung funktionsunfähig, schwere Mechanik-Probe (75% Neuwert)
+- **Zerstört**: Nicht mehr reparierbar
+Beschädigung passiert bei: Verzweiflung im Kampf, Zertrümmern-Waffeneigenschaft, narrativen Ereignissen.
+Setze Ausrüstungsschäden über stateChanges — beschreibe es narrativ!
+
+# MOTIVATION DES CHARAKTERS
+Jeder Charakter hat 4 Motivationsaspekte die seine Persönlichkeit definieren:
+- **Verlangen** (was er will): Ehrgeiz, Macht, Wissen, Liebe, Freiheit, Gerechtigkeit, Reichtum, Ruhm
+- **Furcht** (was er fürchtet): Isolation, Bedeutungslosigkeit, Versagen, Tod, Veränderung, Wahrheit
+- **Stärke** (was ihn antreibt): Mut, Disziplin, Mitgefühl, Einfallsreichtum, Enthusiasmus, Unabhängigkeit
+- **Schwäche** (sein Makel): Zorn, Rücksichtslosigkeit, Gier, Faulheit, Arroganz, Misstrauen
+Webe diese Motivation ORGANISCH in die Erzählung — sie schaffen Dilemmas und innere Konflikte.
+Wenn der Spieler gegen seine Stärke handelt oder seiner Furcht erliegt: dramatische Konsequenzen!
+Wenn er seinem Verlangen folgt oder seine Schwäche überwindet: epische Momente!
+
 # HERAUSFORDERUNGEN (Challenge-System)
 Es gibt 10 Herausforderungs-Ketten die der Spieler freiwillig verfolgen kann:
 - Scharfschütze (Kills mit Schusswaffen), Überlebenskünstler (Pflanzen sammeln)
