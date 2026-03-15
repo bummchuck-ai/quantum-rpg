@@ -80,10 +80,25 @@ let voicesLoaded = false;
 function ensureVoicesLoaded(): void {
   if (voicesLoaded || typeof window === 'undefined' || !checkTTSSupport()) return;
   // Trigger voice loading — some browsers need this
-  speechSynthesis.getVoices();
+  const voices = speechSynthesis.getVoices();
+  if (voices.length > 0) {
+    voicesLoaded = true;
+    return;
+  }
   speechSynthesis.addEventListener('voiceschanged', () => {
     voicesLoaded = true;
   });
+}
+
+// iOS Safari requires a user gesture to unlock speechSynthesis.
+// Call this on any button click to "warm up" TTS.
+export function warmUpTTS(): void {
+  if (!checkTTSSupport()) return;
+  const utterance = new SpeechSynthesisUtterance('');
+  utterance.volume = 0;
+  speechSynthesis.speak(utterance);
+  speechSynthesis.cancel();
+  ensureVoicesLoaded();
 }
 
 export function getVoiceForLang(lang: string): SpeechSynthesisVoice | null {

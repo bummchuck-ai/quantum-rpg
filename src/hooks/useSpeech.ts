@@ -10,6 +10,7 @@ import {
   speakNarrative,
   stopSpeaking as stopTTS,
   createRecognition,
+  warmUpTTS,
 } from '@/lib/speech';
 
 export interface UseSpeechReturn {
@@ -81,7 +82,11 @@ export function useSpeech(): UseSpeechReturn {
   const setTTSEnabled = useCallback((v: boolean) => {
     setTtsEnabled(v);
     persistTTSEnabled(v);
-    if (!v) stopTTS();
+    if (v) {
+      warmUpTTS(); // iOS: unlock speechSynthesis on user gesture
+    } else {
+      stopTTS();
+    }
   }, []);
 
   const startListening = useCallback((lang: string = 'de-DE') => {

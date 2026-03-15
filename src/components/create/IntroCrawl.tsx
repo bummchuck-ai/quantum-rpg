@@ -20,10 +20,12 @@ const IntroCrawl: React.FC<IntroCrawlProps> = ({ onComplete }) => {
   const [crawlText, setCrawlText] = useState<string>('');
   const [loading, setLoading] = useState(true);
   const [scrolling, setScrolling] = useState(false);
+  const [paused, setPaused] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout>[]>([]);
   const rafRef = useRef<number | null>(null);
+  const pausedRef = useRef(false);
   const mountedRef = useRef(true);
   const onCompleteRef = useRef(onComplete);
   onCompleteRef.current = onComplete;
@@ -91,13 +93,21 @@ const IntroCrawl: React.FC<IntroCrawlProps> = ({ onComplete }) => {
     if (!scrolling || !scrollRef.current) return;
 
     const el = scrollRef.current;
-    const scrollDuration = 15000;
-    const start = performance.now();
+    const scrollDuration = 25000; // slower crawl for readability
+    let startTime = performance.now();
+    let pausedAt = 0;
     const maxScroll = el.scrollHeight - el.clientHeight;
 
     const animate = (now: number) => {
       if (!mountedRef.current) return;
-      const elapsed = now - start;
+      if (pausedRef.current) {
+        // While paused, keep requesting frames but don't advance
+        rafRef.current = requestAnimationFrame(animate);
+        startTime = now - pausedAt; // adjust start so progress doesn't jump
+        return;
+      }
+      const elapsed = now - startTime;
+      pausedAt = elapsed;
       const progress = Math.min(elapsed / scrollDuration, 1);
       const eased = progress < 0.5
         ? 2 * progress * progress
@@ -115,7 +125,7 @@ const IntroCrawl: React.FC<IntroCrawlProps> = ({ onComplete }) => {
             if (mountedRef.current) onCompleteRef.current();
           }, 1200);
           timerRef.current.push(navTimer);
-        }, 2000);
+        }, 3000); // longer pause at end
         timerRef.current.push(endTimer);
       }
     };
@@ -219,8 +229,16 @@ const IntroCrawl: React.FC<IntroCrawlProps> = ({ onComplete }) => {
         div[style*="overflowY: scroll"]::-webkit-scrollbar { display: none; }
       `}</style>
 
-      {/* Skip button */}
-      <div className="absolute bottom-8 right-8 z-30">
+      {/* Controls: Pause + Skip */}
+      <div className="absolute bottom-8 right-8 z-30 flex gap-4">
+        {scrolling && !fadeOut && (
+          <button
+            onClick={() => { pausedRef.current = !pausedRef.current; setPaused(!paused); }}
+            className="text-zinc-600 hover:text-amber-400 text-[10px] uppercase tracking-widest transition-colors"
+          >
+            [ {paused ? '▶ PLAY' : '⏸ PAUSE'} ]
+          </button>
+        )}
         <button
           onClick={handleSkip}
           className="text-zinc-600 hover:text-amber-400 text-[10px] uppercase tracking-widest transition-colors"
