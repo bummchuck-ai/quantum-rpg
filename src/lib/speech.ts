@@ -92,9 +92,15 @@ let soundtrack: HTMLAudioElement | null = null;
 
 export function startSoundtrack(): void {
   if (typeof window === 'undefined') return;
-  if (soundtrack) return; // already playing
+  // Check if splash screen already started it
+  const existing = (window as any).__qrpgSoundtrack as HTMLAudioElement | undefined;
+  if (existing && !existing.paused) {
+    soundtrack = existing;
+    return;
+  }
+  if (soundtrack && !soundtrack.paused) return;
   const settings = loadSpeechSettings();
-  soundtrack = new Audio('/audio/soundtrack.mp3');
+  soundtrack = existing || new Audio('/audio/soundtrack.mp3');
   soundtrack.loop = true;
   soundtrack.volume = settings.musicVolume;
   soundtrack.play().catch(() => { /* needs user gesture */ });

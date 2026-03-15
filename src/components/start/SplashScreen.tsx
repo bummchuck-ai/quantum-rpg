@@ -61,22 +61,25 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
     return () => clearInterval(interval);
   }, [phase]);
 
-  // Start soundtrack on first user interaction (iOS requires gesture)
+  // Start soundtrack on first user interaction (iOS REQUIRES user gesture for audio)
   const musicStarted = useRef(false);
   const tryStartMusic = () => {
-    if (!musicStarted.current) {
-      musicStarted.current = true;
-      startSoundtrack();
-    }
+    if (musicStarted.current) return;
+    musicStarted.current = true;
+    // Create and play directly inside the gesture handler — iOS requirement
+    try {
+      const audio = new Audio('/audio/soundtrack.mp3');
+      audio.loop = true;
+      audio.volume = 0.3;
+      const playPromise = audio.play();
+      if (playPromise) {
+        playPromise.then(() => {
+          // Store reference for volume control later
+          (window as any).__qrpgSoundtrack = audio;
+        }).catch(() => { musicStarted.current = false; });
+      }
+    } catch { musicStarted.current = false; }
   };
-
-  // Also try on first phase change (auto-play on desktop)
-  useEffect(() => {
-    if (phase >= 1 && !musicStarted.current) {
-      musicStarted.current = true;
-      startSoundtrack();
-    }
-  }, [phase]);
 
   const handleSkip = () => {
     if (!skippedRef.current) {
