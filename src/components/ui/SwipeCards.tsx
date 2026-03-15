@@ -312,9 +312,9 @@ const SwipeCards: React.FC<SwipeCardsProps> = ({
 
   // ═══ GRID VIEW ═══
   return (
-    <div className="pb-32 max-w-2xl mx-auto">
+    <div className="pb-32 max-w-2xl mx-auto px-1">
       {/* View Toggle */}
-      <div className="flex justify-end mb-4 px-1">
+      <div className="flex justify-end mb-3 px-1">
         <button
           onClick={toggleView}
           className="border border-zinc-800 hover:border-zinc-600 rounded-lg px-2.5 py-1.5 text-[9px] text-zinc-500 hover:text-zinc-300 font-black uppercase tracking-widest transition-all"
@@ -323,7 +323,7 @@ const SwipeCards: React.FC<SwipeCardsProps> = ({
           ◇ SWIPE
         </button>
       </div>
-      <div className={`grid ${gridClassName} gap-4`}>
+      <div className={`grid grid-cols-2 ${gridClassName} gap-2`}>
         {items}
       </div>
     </div>

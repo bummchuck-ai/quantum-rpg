@@ -157,6 +157,7 @@ const SpeciesSelector: React.FC = () => {
       </div>
 
       {/* SCROLLABLE CARDS AREA */}
+      <div className="flex-1 overflow-y-auto px-4 pt-3">
       <SwipeCards
         onActiveIndexChange={handleActiveIndexChange}
         onViewModeChange={handleViewModeChange}
@@ -179,52 +180,46 @@ const SpeciesSelector: React.FC = () => {
                   : 'border-zinc-700/40 bg-zinc-950 shadow-[0_8px_32px_rgba(0,0,0,0.6)] hover:border-zinc-600/50'
               }`}
             >
-              {/* DOSSIER-STYLE CARD */}
-              <div className="relative overflow-hidden">
-                  {/* Portrait background */}
-                  <div className="aspect-[4/5] bg-zinc-950 relative">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={`/species/${slugify(s.name)}.jpg`}
-                      alt={s.name}
-                      loading="lazy"
-                      width={600}
-                      height={600}
-                      className="absolute inset-0 w-full h-full object-cover object-top opacity-80"
-                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                    />
+              {/* DOSSIER CARD — Square portrait with overlaid info */}
+              <div className="relative aspect-square bg-zinc-950 overflow-hidden">
+                {/* Portrait */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`/species/${slugify(s.name)}.jpg`}
+                  alt={s.name}
+                  loading="lazy"
+                  width={600}
+                  height={600}
+                  className="absolute inset-0 w-full h-full object-cover object-top"
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                />
 
-                    {/* Top overlay: Name + Subspecies badge */}
-                    <div className="absolute top-0 left-0 right-0 p-3 bg-gradient-to-b from-black/80 via-black/40 to-transparent z-10">
-                      <h2 className="text-lg font-black text-white italic tracking-tight uppercase leading-none">{s.name}</h2>
+                {/* Top: Name */}
+                <div className="absolute top-0 left-0 right-0 p-2.5 bg-gradient-to-b from-black/80 to-transparent z-10">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <h2 className="text-base font-black text-white italic tracking-tight uppercase leading-none drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">{s.name}</h2>
                       {hasSubspecies(s) && (
-                        <span className="text-[6px] text-cyan-400 font-black uppercase tracking-widest mt-1 inline-block">
+                        <span className="text-[5px] text-cyan-400 font-black uppercase tracking-widest mt-0.5 inline-block">
                           {s.subspecies!.length} {t('subspecies')}
                         </span>
                       )}
                     </div>
-
-                    {/* Bottom overlay: Stats on image */}
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-3 pt-8 z-10">
-                      {/* XP badge */}
-                      <div className="flex justify-between items-end mb-2">
-                        <div className="flex gap-3 text-[8px] text-zinc-400 font-bold uppercase">
-                          <span>W {s.woundThresholdBase}+BR</span>
-                          <span>S {s.strainThresholdBase}+WL</span>
-                        </div>
-                        <span className="text-amber-500 text-sm font-black">{s.startingXP} XP</span>
-                      </div>
-                      {/* Attributes row */}
-                      <div className="grid grid-cols-6 gap-1">
-                        {Object.entries(s.characteristics).map(([stat, val]) => (
-                          <div key={stat} className="bg-black/60 backdrop-blur-sm border border-zinc-700/40 py-1 rounded flex flex-col items-center">
-                            <span className="text-sm font-black text-white">{val}</span>
-                            <span className="text-[5px] text-zinc-500 uppercase font-bold">{stat.substring(0, 3)}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+                    <span className="text-amber-500 text-xs font-black drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">{s.startingXP} XP</span>
                   </div>
+                </div>
+
+                {/* Bottom: Attributes */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/70 to-transparent p-2.5 pt-6 z-10">
+                  <div className="grid grid-cols-6 gap-1">
+                    {Object.entries(s.characteristics).map(([stat, val]) => (
+                      <div key={stat} className="bg-black/50 backdrop-blur-sm border border-zinc-700/30 py-0.5 rounded flex flex-col items-center">
+                        <span className="text-sm font-black text-white leading-none">{val}</span>
+                        <span className="text-[5px] text-zinc-500 uppercase font-bold">{stat.substring(0, 3)}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
 
                   {isSelected && (
@@ -338,6 +333,7 @@ const SpeciesSelector: React.FC = () => {
           );
         })}
       </SwipeCards>
+      </div>
 
       <HolocronGuide
         sectionKey="species"
