@@ -11,15 +11,22 @@ import { playCredits, playRefund, playNavigate, playError } from '@/lib/sounds';
 
 // Map subcategory to SVG icon path
 const SUBCAT_ICONS: Record<string, string> = {
+  // Weapons
   'Pistolen': '/icons/gear/pistol.svg',
   'Gewehre': '/icons/gear/rifle.svg',
   'Schwere Waffen': '/icons/gear/heavy.svg',
-  'Nahkampf': '/icons/gear/melee.svg',
+  'Bögen & Schleudern': '/icons/gear/rifle.svg',
+  'Klingen': '/icons/gear/melee.svg',
+  'Stumpf & Stäbe': '/icons/gear/melee.svg',
+  'Exotisch': '/icons/gear/special-armor.svg',
   'Granaten': '/icons/gear/grenade.svg',
+  'Munition': '/icons/gear/grenade.svg',
+  // Armor
   'Kleidung': '/icons/gear/clothing.svg',
   'Westen': '/icons/gear/vest.svg',
   'Rüstung': '/icons/gear/armor.svg',
   'Spezial': '/icons/gear/special-armor.svg',
+  // Equipment
   'Kommunikation': '/icons/gear/comms.svg',
   'Medizin': '/icons/gear/medical.svg',
   'Werkzeug': '/icons/gear/tools.svg',
