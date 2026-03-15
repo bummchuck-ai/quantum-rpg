@@ -179,57 +179,60 @@ const SpeciesSelector: React.FC = () => {
                   : 'border-zinc-700/40 bg-zinc-950 shadow-[0_8px_32px_rgba(0,0,0,0.6)] hover:border-zinc-600/50'
               }`}
             >
-              {/* Portrait — compact 3:2 ratio */}
-              <div className="aspect-[3/2] bg-zinc-950 relative flex items-end overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`/species/${slugify(s.name)}.jpg`}
-                    alt={s.name}
-                    loading="lazy"
-                    width={600}
-                    height={600}
-                    className="absolute inset-0 w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-all duration-500"
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent"></div>
-                  {/* Name + XP overlay on image */}
-                  <div className="relative z-10 px-3 pb-2 flex items-end justify-between w-full">
-                    <div className="flex items-center gap-2">
-                      <h2 className="text-base font-black text-white italic tracking-tight uppercase drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">{s.name}</h2>
+              {/* DOSSIER-STYLE CARD */}
+              <div className="relative overflow-hidden">
+                  {/* Portrait background */}
+                  <div className="aspect-[4/5] bg-zinc-950 relative">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`/species/${slugify(s.name)}.jpg`}
+                      alt={s.name}
+                      loading="lazy"
+                      width={600}
+                      height={600}
+                      className="absolute inset-0 w-full h-full object-cover object-top opacity-80"
+                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                    />
+
+                    {/* Top overlay: Name + Subspecies badge */}
+                    <div className="absolute top-0 left-0 right-0 p-3 bg-gradient-to-b from-black/80 via-black/40 to-transparent z-10">
+                      <h2 className="text-lg font-black text-white italic tracking-tight uppercase leading-none">{s.name}</h2>
                       {hasSubspecies(s) && (
-                        <span className="text-[5px] text-cyan-400 font-black uppercase tracking-widest px-1 py-0.5 border border-cyan-500/30 rounded bg-cyan-500/10">
-                          {s.subspecies!.length} SUB
+                        <span className="text-[6px] text-cyan-400 font-black uppercase tracking-widest mt-1 inline-block">
+                          {s.subspecies!.length} {t('subspecies')}
                         </span>
                       )}
                     </div>
-                    <span className="text-amber-500 text-xs font-black drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">{s.startingXP} XP</span>
-                  </div>
-              </div>
 
-              {/* Stats bar — always visible, compact */}
-              <div className="px-3 py-2">
-                  <div className="grid grid-cols-6 gap-1">
-                      {Object.entries(s.characteristics).map(([stat, val]) => (
-                          <div key={stat} className="bg-black/60 border border-zinc-800/60 py-1 rounded flex flex-col items-center">
-                              <span className="text-xs font-black text-white">{val}</span>
-                              <span className="text-[5px] text-zinc-600 uppercase font-bold">{stat.substring(0, 3)}</span>
+                    {/* Bottom overlay: Stats on image */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-3 pt-8 z-10">
+                      {/* XP badge */}
+                      <div className="flex justify-between items-end mb-2">
+                        <div className="flex gap-3 text-[8px] text-zinc-400 font-bold uppercase">
+                          <span>W {s.woundThresholdBase}+BR</span>
+                          <span>S {s.strainThresholdBase}+WL</span>
+                        </div>
+                        <span className="text-amber-500 text-sm font-black">{s.startingXP} XP</span>
+                      </div>
+                      {/* Attributes row */}
+                      <div className="grid grid-cols-6 gap-1">
+                        {Object.entries(s.characteristics).map(([stat, val]) => (
+                          <div key={stat} className="bg-black/60 backdrop-blur-sm border border-zinc-700/40 py-1 rounded flex flex-col items-center">
+                            <span className="text-sm font-black text-white">{val}</span>
+                            <span className="text-[5px] text-zinc-500 uppercase font-bold">{stat.substring(0, 3)}</span>
                           </div>
-                      ))}
+                        ))}
+                      </div>
+                    </div>
                   </div>
               </div>
 
                   {isSelected && (
-                      <div className="animate-in fade-in duration-300 px-3 pb-3 space-y-2 border-t border-zinc-800/30">
+                      <div className="animate-in fade-in duration-300 px-3 pb-3 space-y-2">
                           {/* Description */}
                           {s.description && (
                             <p className="text-[11px] text-zinc-400 leading-snug font-sans pt-2">{s.description}</p>
                           )}
-
-                          {/* Thresholds */}
-                          <div className="flex gap-1.5 text-[7px] text-zinc-500 font-bold uppercase tracking-wider">
-                              <div className="flex-1 bg-black/40 py-1 border border-zinc-800/50 rounded text-center">W {s.woundThresholdBase}+BR</div>
-                              <div className="flex-1 bg-black/40 py-1 border border-zinc-800/50 rounded text-center">S {s.strainThresholdBase}+WL</div>
-                          </div>
 
                           {/* Abilities */}
                           {s.abilities.length > 0 && (
