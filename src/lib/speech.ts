@@ -239,18 +239,13 @@ function splitIntoChunks(text: string, maxLen: number = 200): string[] {
 }
 
 // Google Cloud TTS — server-side, high quality
-let cloudTTSAvailable = true;
-let ttsAudioElement: HTMLAudioElement | null = null;
+let cloudTTSFailed = false; // only set after confirmed server failure, reset on retry
 
 // Call this from a user gesture to pre-unlock audio playback on iOS
 export function warmUpCloudTTS(): void {
   if (typeof window === 'undefined') return;
-  if (ttsAudioElement) return;
-  ttsAudioElement = new Audio();
-  ttsAudioElement.volume = 0.01;
-  // Play silent to unlock
-  ttsAudioElement.src = 'data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//OEwAAAANIAAAAAExBTUUzLjEwMFVVVVVVVVVVVVVV';
-  ttsAudioElement.play().catch(() => {});
+  // Reset failure flag on user gesture — allow retry
+  cloudTTSFailed = false;
 }
 
 async function speakWithCloudTTS(
@@ -261,8 +256,6 @@ async function speakWithCloudTTS(
 ): Promise<boolean> {
   try {
     const settings = loadSpeechSettings();
-    // If user selected a browser voice, skip cloud TTS
-    if (settings.ttsVoiceName?.startsWith('browser:')) return false;
 
     const response = await fetch('/api/tts', {
       method: 'POST',
@@ -275,7 +268,7 @@ async function speakWithCloudTTS(
     });
 
     if (!response.ok) {
-      cloudTTSAvailable = false;
+      cloudTTSFailed = true;
       return false;
     }
 
@@ -289,18 +282,24 @@ async function speakWithCloudTTS(
     const blob = new Blob([bytes], { type: 'audio/mp3' });
     const url = URL.createObjectURL(blob);
 
-    // Reuse pre-unlocked audio element (iOS requirement)
-    const audio = ttsAudioElement || new Audio();
-    audio.volume = settings.speakerVolume;
-    audio.onplay = () => onStart?.();
-    audio.onended = () => { currentAudio = null; URL.revokeObjectURL(url); onEnd?.(); };
-    audio.onerror = () => { currentAudio = null; URL.revokeObjectURL(url); cloudTTSAvailable = false; onEnd?.(); };
-    audio.src = url;
-    currentAudio = audio;
-    await audio.play();
-    return true;
+    return new Promise<boolean>((resolve) => {
+      const audio = new Audio(url);
+      audio.volume = settings.speakerVolume;
+      audio.onplay = () => onStart?.();
+      audio.onended = () => { currentAudio = null; URL.revokeObjectURL(url); onEnd?.(); };
+      audio.onerror = () => {
+        currentAudio = null;
+        URL.revokeObjectURL(url);
+        onEnd?.();
+        resolve(false);
+      };
+      currentAudio = audio;
+      audio.play().then(() => resolve(true)).catch(() => {
+        URL.revokeObjectURL(url);
+        resolve(false);
+      });
+    });
   } catch {
-    cloudTTSAvailable = false;
     return false;
   }
 }
@@ -317,8 +316,8 @@ export function speakNarrative(
   // Cancel any ongoing speech
   stopSpeaking();
 
-  // Try Google Cloud TTS first (better quality, works on iOS)
-  if (cloudTTSAvailable) {
+  // Try Google Cloud TTS first (better quality)
+  if (!cloudTTSFailed) {
     speakWithCloudTTS(text, lang, onStart, onEnd).then(ok => {
       if (!ok) {
         // Fallback to Web Speech API

@@ -156,8 +156,8 @@ const SpeciesSelector: React.FC = () => {
         />
       </div>
 
-      {/* CARDS AREA — scrollable so expanded cards + button are always reachable */}
-      <div className="flex-1 min-h-0 px-4 pt-3 overflow-y-auto">
+      {/* CARDS AREA — grid scrolls, swipe doesn't (touch conflict) */}
+      <div className={`flex-1 min-h-0 px-4 pt-3 ${viewMode === 'grid' ? 'overflow-y-auto' : 'overflow-visible'}`}>
       <SwipeCards
         onActiveIndexChange={handleActiveIndexChange}
         onViewModeChange={handleViewModeChange}
