@@ -3,7 +3,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import HolocronOrb from '@/components/ui/HolocronOrb';
 import { t } from '@/lib/i18n';
-import { startSoundtrack, getSpeechSettings } from '@/lib/speech';
+import { startSoundtrack, getSpeechSettings, warmUpCloudTTS } from '@/lib/speech';
 
 interface SplashScreenProps {
   onComplete: () => void;
@@ -66,6 +66,8 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
   const tryStartMusic = () => {
     if (musicStarted.current) return;
     musicStarted.current = true;
+    // Unlock audio playback for Cloud TTS too
+    warmUpCloudTTS();
     // Create and play directly inside the gesture handler — iOS requirement
     try {
       const audio = new Audio('/audio/soundtrack.mp3');

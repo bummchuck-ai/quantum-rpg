@@ -239,7 +239,19 @@ function splitIntoChunks(text: string, maxLen: number = 200): string[] {
 }
 
 // Google Cloud TTS — server-side, high quality
-let cloudTTSAvailable = true; // assume available, disable on first failure
+let cloudTTSAvailable = true;
+let ttsAudioElement: HTMLAudioElement | null = null;
+
+// Call this from a user gesture to pre-unlock audio playback on iOS
+export function warmUpCloudTTS(): void {
+  if (typeof window === 'undefined') return;
+  if (ttsAudioElement) return;
+  ttsAudioElement = new Audio();
+  ttsAudioElement.volume = 0.01;
+  // Play silent to unlock
+  ttsAudioElement.src = 'data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//OEwAAAANIAAAAAExBTUUzLjEwMFVVVVVVVVVVVVVV';
+  ttsAudioElement.play().catch(() => {});
+}
 
 async function speakWithCloudTTS(
   text: string,
@@ -270,18 +282,20 @@ async function speakWithCloudTTS(
     const data = await response.json();
     if (!data.audioContent) return false;
 
-    // Convert base64 to blob URL (more reliable on iOS than data: URI)
+    // Convert base64 to blob URL
     const binary = atob(data.audioContent);
     const bytes = new Uint8Array(binary.length);
     for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
     const blob = new Blob([bytes], { type: 'audio/mp3' });
     const url = URL.createObjectURL(blob);
 
-    const audio = new Audio(url);
+    // Reuse pre-unlocked audio element (iOS requirement)
+    const audio = ttsAudioElement || new Audio();
     audio.volume = settings.speakerVolume;
     audio.onplay = () => onStart?.();
     audio.onended = () => { currentAudio = null; URL.revokeObjectURL(url); onEnd?.(); };
-    audio.onerror = () => { currentAudio = null; URL.revokeObjectURL(url); onEnd?.(); };
+    audio.onerror = () => { currentAudio = null; URL.revokeObjectURL(url); cloudTTSAvailable = false; onEnd?.(); };
+    audio.src = url;
     currentAudio = audio;
     await audio.play();
     return true;

@@ -11,6 +11,7 @@ import {
   stopSpeaking as stopTTS,
   createRecognition,
   warmUpTTS,
+  warmUpCloudTTS,
   testSpeak,
 } from '@/lib/speech';
 
@@ -86,6 +87,7 @@ export function useSpeech(): UseSpeechReturn {
     persistTTSEnabled(v);
     if (v) {
       warmUpTTS(); // iOS: unlock speechSynthesis on user gesture
+      warmUpCloudTTS(); // iOS: unlock Audio element for Cloud TTS
     } else {
       stopTTS();
     }
