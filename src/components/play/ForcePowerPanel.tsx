@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { FORCE_POWERS, type ForcePower, type ForcePowerUpgrade, isForceCareer, calculateForceRating } from '@/lib/engine/force-powers';
 
 interface ForcePowerPanelProps {
-  career: any;
+  career: { name: string; forceRating?: number } | null;
   ownedTalents: string[];
   ownedPowers: string[]; // IDs of purchased powers
   ownedUpgrades: string[]; // IDs of purchased upgrades

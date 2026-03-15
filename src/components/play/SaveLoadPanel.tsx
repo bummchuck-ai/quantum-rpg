@@ -3,10 +3,13 @@
 import React from 'react';
 import { SAVE_FORMAT_VERSION } from '@/lib/save-utils';
 import SaveSlotGrid from '@/components/shared/SaveSlotGrid';
+import type { Message } from './types';
+import type { GameSession } from '@/lib/engine/game-state';
+import type { CombatState } from '@/lib/engine/combat';
 
 interface SessionStateData {
-  session: any;
-  combat: any;
+  session: GameSession;
+  combat: CombatState | null;
   ownedPowers: string[];
   ownedUpgrades: string[];
   forceRating: number;
@@ -18,10 +21,10 @@ interface SaveLoadPanelProps {
   characterName: string;
   speciesName: string;
   careerName: string;
-  chatMessages: any[];
+  chatMessages: Message[];
   sessionState: SessionStateData;
   onClose: () => void;
-  onRestoreSession?: (data: { messages: any[]; session?: any; combat?: any; ownedPowers?: string[]; ownedUpgrades?: string[] }) => void;
+  onRestoreSession?: (data: { messages: Message[]; session?: GameSession; combat?: CombatState | null; ownedPowers?: string[]; ownedUpgrades?: string[] }) => void;
 }
 
 const SaveLoadPanel: React.FC<SaveLoadPanelProps> = ({

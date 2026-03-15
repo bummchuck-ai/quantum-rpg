@@ -107,9 +107,9 @@ export async function POST(req: Request) {
 
     const response = await anthropic.messages.create({
       model: 'claude-sonnet-4-6',
-      max_tokens: 2048,
+      max_tokens: 1500, // optimized: GM responses rarely exceed 1000 tokens
       system: systemInstruction,
-      messages: messages.slice(-20),
+      messages: messages.slice(-14), // 7 turns of context (player+gm each)
     });
 
     const text = response.content[0].type === 'text' ? response.content[0].text : '';

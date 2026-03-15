@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
+import type { Gear } from '@/types/gear';
 
 interface InventoryPanelProps {
-  ownedGear: any[];
+  ownedGear: Gear[];
   credits: number;
   encumbranceMax: number;
   onClose: () => void;
@@ -49,11 +50,11 @@ const InventoryPanel: React.FC<InventoryPanelProps> = ({ ownedGear, credits, enc
                     <div>KRIT {w.critical || '-'}</div>
                     <div>RANGE {w.range || 'kurz'}</div>
                     <div>ENC {w.encumbrance || 1}</div>
-                    <div>HP {w.hardpoints || 0}</div>
+                    <div>HP {w.hardPoints || 0}</div>
                   </div>
-                  {w.special && w.special.length > 0 && (
+                  {w.special && (
                     <div className="mt-2 flex flex-wrap gap-1">
-                      {w.special.map((s: string, j: number) => (
+                      {(Array.isArray(w.special) ? w.special : [w.special]).map((s: string, j: number) => (
                         <span key={j} className="text-[7px] bg-amber-500/10 text-amber-400 px-1.5 py-0.5 rounded">{s}</span>
                       ))}
                     </div>
@@ -77,7 +78,7 @@ const InventoryPanel: React.FC<InventoryPanelProps> = ({ ownedGear, credits, enc
                     <h3 className="text-[11px] font-black text-white uppercase italic">{a.name}</h3>
                     <div className="flex gap-3">
                       <span className="text-[8px] text-blue-400 font-black">SOAK +{a.soak}</span>
-                      {a.defense > 0 && <span className="text-[8px] text-cyan-400 font-black">DEF +{a.defense}</span>}
+                      {(a.defense || 0) > 0 && <span className="text-[8px] text-cyan-400 font-black">DEF +{a.defense}</span>}
                     </div>
                   </div>
                 </div>

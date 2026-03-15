@@ -73,7 +73,8 @@ const SpeciesSelector: React.FC = () => {
     playConfirm();
 
     // If species has subspecies, merge the selected subspecies data
-    let speciesPayload: any = s;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let speciesPayload: any = s; // Species + optional selectedSubspecies for store
     if (s.subspecies && s.subspecies.length > 0) {
       const sub = s.subspecies.find(ss => ss.name === selectedSubspecies);
       if (!sub) return;

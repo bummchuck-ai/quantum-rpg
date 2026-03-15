@@ -34,7 +34,7 @@ export interface PlayerVehicle {
   consumables?: string;
   cost?: number;
   hardpoints?: number;
-  weapons: any[];
+  weapons: { name: string; firingArc?: string; damage?: number; critical?: number; range?: string; special?: string[] }[];
   specialFeatures: string[];
   hyperdrive?: number;
   backupHyperdrive?: number;
@@ -483,11 +483,11 @@ export const useCharacterStore = create<GameState>()(
               }
             });
             // Also check xpReward/creditsReward fields (set by GM)
-            if ((quest as any).xpReward) {
-              newAvailableXP += (quest as any).xpReward;
+            if (quest.xpReward) {
+              newAvailableXP += quest.xpReward;
             }
-            if ((quest as any).creditsReward) {
-              newCredits += (quest as any).creditsReward;
+            if (quest.creditsReward) {
+              newCredits += quest.creditsReward;
             }
             return { ...quest, status: 'completed' as const };
           }
