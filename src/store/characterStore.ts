@@ -67,6 +67,9 @@ export interface Player {
   questLog: Quest[];
   forcePowers: string[];
   forceUpgrades: string[];
+  isDeceased: boolean;
+  deathCause: string | null;
+  deathLocation: string | null;
 }
 
 interface GameState {
@@ -139,6 +142,9 @@ const createNewPlayer = (id: string): Player => ({
   questLog: [],
   forcePowers: [],
   forceUpgrades: [],
+  isDeceased: false,
+  deathCause: null,
+  deathLocation: null,
 });
 
 export const useCharacterStore = create<GameState>()(
@@ -558,6 +564,9 @@ export const useCharacterStore = create<GameState>()(
             vehicles: Array.isArray(p.vehicles) ? p.vehicles : [],
             forcePowers: Array.isArray(p.forcePowers) ? p.forcePowers : [],
             forceUpgrades: Array.isArray(p.forceUpgrades) ? p.forceUpgrades : [],
+            isDeceased: !!p.isDeceased,
+            deathCause: p.deathCause || null,
+            deathLocation: p.deathLocation || null,
           }));
           set({ players: state.players, activePlayerIndex: state.activePlayerIndex });
         } catch (e) {

@@ -7,6 +7,7 @@ import CombatTracker from './CombatTracker';
 import ForcePowerPanel from './ForcePowerPanel';
 import QuestLog from './QuestLog';
 import SaveLoadPanel from './SaveLoadPanel';
+import GameOverScreen from './GameOverScreen';
 import { ALL_SKILLS } from '@/lib/skills';
 import { calculateDerivedStats } from '@/lib/engine/derived-stats';
 import { slugify } from '@/lib/save-utils';
@@ -179,6 +180,22 @@ const ChatInterface: React.FC<{ showQuestsTab?: boolean; onCloseQuests?: () => v
 
   return (
     <main className="h-screen w-screen bg-black text-zinc-300 font-mono flex flex-col overflow-hidden relative">
+      {/* Game Over Screen */}
+      {activePlayer?.isDeceased && (
+        <GameOverScreen
+          playerName={name || 'Unbekannt'}
+          speciesName={species?.name || 'Unbekannt'}
+          careerName={career?.name || 'Unbekannt'}
+          deathCause={activePlayer.deathCause || 'Unbekannte Ursache'}
+          deathLocation={activePlayer.deathLocation || session.scene.location || 'Unbekannt'}
+          totalXP={(activePlayer.availableXP || 0) + (activePlayer.spentXP || 0)}
+          questsCompleted={session.quests.filter(q => q.status === 'completed').length}
+          selectedSubspecies={selectedSubspecies}
+          onNewGame={() => { router.push('/'); }}
+          onLoadSave={() => setShowSaveLoad(true)}
+        />
+      )}
+
       {/* Overlays */}
       {showQuestsTab && (
         <div className="absolute inset-0 z-[90] bg-black">

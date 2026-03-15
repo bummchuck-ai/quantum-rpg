@@ -431,6 +431,16 @@ export function useGameSession() {
       }
     }
 
+    // Handle character death from GM
+    if (data.stateChanges?.characterDeath) {
+      const death = data.stateChanges.characterDeath;
+      updateActivePlayer({
+        isDeceased: true,
+        deathCause: death.cause || 'Unbekannt',
+        deathLocation: death.location || session.scene.location || 'Unbekannt',
+      });
+    }
+
     // Update mood
     if (data.mood) {
       setSession(prev => ({ ...prev, scene: { ...prev.scene, mood: data.mood } }));
