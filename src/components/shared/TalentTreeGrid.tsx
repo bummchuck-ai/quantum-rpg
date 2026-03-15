@@ -121,7 +121,7 @@ const TalentTreeGrid: React.FC<TalentTreeGridProps> = ({
               Tier {rowIndex} — {rowIndex * 5} XP
             </div>
           )}
-          <div className="grid grid-cols-4 gap-3 min-w-[700px] md:min-w-0">
+          <div className="grid grid-cols-4 gap-2 min-w-[600px] md:min-w-0">
             {[1, 2, 3, 4].map(colIndex => {
               const talent = tree.talents.find(t => t.row === rowIndex && t.col === colIndex);
               if (!talent) return <div key={colIndex} className="invisible" />;
@@ -144,38 +144,36 @@ const TalentTreeGrid: React.FC<TalentTreeGridProps> = ({
 
                   <div
                     onClick={() => setSelectedTalentKey(isSelected ? null : talentKey)}
-                    className={`relative z-10 w-full h-full min-h-[120px] p-3 border rounded-xl flex flex-col justify-between cursor-pointer transition-all duration-200 ${
+                    className={`relative z-10 w-full h-full min-h-[90px] p-2 border rounded-lg flex flex-col justify-between cursor-pointer transition-all duration-200 ${
                       isSelected
-                        ? 'border-white bg-zinc-800 shadow-[0_0_15px_rgba(255,255,255,0.1)] scale-105'
+                        ? 'border-white bg-zinc-800 shadow-[0_0_12px_rgba(255,255,255,0.1)] scale-[1.03]'
                         : isOwned
                         ? 'border-emerald-500/50 bg-emerald-900/10'
                         : 'border-zinc-800 bg-zinc-900/40 hover:bg-zinc-800'
                     }`}
                   >
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className={`text-[10px] font-black uppercase leading-tight ${isOwned ? 'text-emerald-400' : 'text-zinc-200'}`}>
+                    <div className="flex justify-between items-start mb-1">
+                      <h3 className={`text-[9px] font-black uppercase leading-tight ${isOwned ? 'text-emerald-400' : 'text-zinc-200'}`}>
                         {talent.name}
                       </h3>
                       {isOwned && (
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center gap-0.5">
                           {talent.isRanked && ownedEntry && (
                             <span className="text-[7px] text-emerald-400 font-black">R{ownedEntry.currentRank}</span>
                           )}
-                          <div className="w-2 h-2 bg-emerald-500 rounded-full shadow-[0_0_5px_rgba(16,185,129,0.8)]" />
+                          <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full shadow-[0_0_4px_rgba(16,185,129,0.8)]" />
                         </div>
                       )}
                     </div>
 
-                    <p className="text-[11px] text-zinc-400 leading-snug line-clamp-3">
+                    <p className="text-[9px] text-zinc-500 leading-tight line-clamp-2">
                       {talent.description || 'Passiv'}
                     </p>
 
-                    <div className="mt-2 pt-2 border-t border-zinc-800/50 flex justify-between items-center">
-                      <span className="text-[9px] text-zinc-600 font-black uppercase tracking-wider">{cost} XP</span>
-                      {talent.isRanked ? (
-                        <span className="text-[7px] bg-zinc-800 text-zinc-400 px-1 py-0.5 rounded uppercase">Ranked</span>
-                      ) : (
-                        <span className="text-[7px] text-zinc-700 uppercase">Passive</span>
+                    <div className="mt-1 pt-1 border-t border-zinc-800/50 flex justify-between items-center">
+                      <span className="text-[8px] text-zinc-600 font-black">{cost} XP</span>
+                      {talent.isRanked && (
+                        <span className="text-[6px] bg-zinc-800 text-zinc-500 px-1 py-0.5 rounded uppercase">Ranked</span>
                       )}
                     </div>
 

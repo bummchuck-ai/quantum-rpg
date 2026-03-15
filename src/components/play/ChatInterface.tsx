@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import DiceRollerModal from './DiceRollerModal';
 import CombatTracker from './CombatTracker';
@@ -13,6 +13,41 @@ import { slugify } from '@/lib/save-utils';
 import { getLanguage, t } from '@/lib/i18n';
 import { useGameSession } from './useGameSession';
 import type { GMResponse } from './types';
+
+const QuickSettings: React.FC<{
+  onSaveLoad: () => void;
+  ttsEnabled: boolean;
+  sttEnabled: boolean;
+  onToggleTTS: () => void;
+  onToggleSTT: () => void;
+}> = ({ onSaveLoad, ttsEnabled, sttEnabled, onToggleTTS, onToggleSTT }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="relative">
+      <button onClick={() => setOpen(!open)} className="w-9 h-9 border border-zinc-800 rounded-lg bg-zinc-900/80 flex items-center justify-center active:scale-90 text-sm transition-transform">
+        ⚙
+      </button>
+      {open && (
+        <>
+          <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
+          <div className="absolute right-0 top-11 z-50 w-48 bg-zinc-900 border border-zinc-700 rounded-xl p-2 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200 space-y-1">
+            <button onClick={() => { onSaveLoad(); setOpen(false); }} className="w-full flex items-center gap-2 px-3 py-2 text-[11px] text-zinc-300 hover:bg-zinc-800 rounded-lg transition-colors">
+              <span>💾</span> Save / Load
+            </button>
+            <button onClick={onToggleTTS} className="w-full flex items-center justify-between px-3 py-2 text-[11px] text-zinc-300 hover:bg-zinc-800 rounded-lg transition-colors">
+              <span>🔊 GM Voice</span>
+              <span className={`text-[9px] font-black ${ttsEnabled ? 'text-emerald-400' : 'text-zinc-600'}`}>{ttsEnabled ? 'ON' : 'OFF'}</span>
+            </button>
+            <button onClick={onToggleSTT} className="w-full flex items-center justify-between px-3 py-2 text-[11px] text-zinc-300 hover:bg-zinc-800 rounded-lg transition-colors">
+              <span>🎙 Spracheingabe</span>
+              <span className={`text-[9px] font-black ${sttEnabled ? 'text-emerald-400' : 'text-zinc-600'}`}>{sttEnabled ? 'ON' : 'OFF'}</span>
+            </button>
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
 
 const ChatInterface: React.FC = () => {
   const router = useRouter();
@@ -38,8 +73,9 @@ const ChatInterface: React.FC = () => {
     exportState, importState,
 
     // TTS / STT
+    ttsEnabled, setTTSEnabled,
     isSpeaking, stopSpeaking,
-    sttEnabled, sttSupported, isListening, transcript,
+    sttEnabled, setSTTEnabled, sttSupported, isListening, transcript,
     startListening, stopListening,
 
     // Handlers
@@ -308,9 +344,13 @@ const ChatInterface: React.FC = () => {
                 <span className="text-[8px] text-blue-400 font-black w-7 text-right tabular-nums">{strain}/{strainThreshold}</span>
               </div>
             </div>
-            <button onClick={() => setShowSaveLoad(true)} className="w-9 h-9 border border-zinc-800 rounded-lg bg-zinc-900/80 flex items-center justify-center active:scale-90 text-sm transition-transform">
-              💾
-            </button>
+            <QuickSettings
+              onSaveLoad={() => setShowSaveLoad(true)}
+              ttsEnabled={ttsEnabled}
+              sttEnabled={sttEnabled}
+              onToggleTTS={() => setTTSEnabled(!ttsEnabled)}
+              onToggleSTT={() => setSTTEnabled(!sttEnabled)}
+            />
           </div>
         </div>
 
@@ -384,13 +424,13 @@ const ChatInterface: React.FC = () => {
               {msg.role === 'gm' && typeof msg.content !== 'string' ? (
                 <div className="space-y-4">
                   {msg.content.error && <div className="bg-red-500/10 border border-red-500/50 p-3 rounded-xl text-sm font-mono text-red-200">{msg.content.error}</div>}
-                  {msg.content.narrative && <p className="text-base leading-[1.75] text-zinc-300 font-sans">{msg.content.narrative}</p>}
+                  {msg.content.narrative && <p className="text-[15px] leading-snug text-zinc-300 font-sans">{msg.content.narrative}</p>}
                   {Array.isArray(msg.content.npcDialogue) && msg.content.npcDialogue.length > 0 && (
                     <div className="space-y-2.5 border-l-2 border-amber-500/30 pl-4 bg-amber-500/[0.02] py-2 rounded-r-lg">
                       {msg.content.npcDialogue.map((d: { speaker: string; text: string }, idx: number) => (
                         <div key={idx}>
                           <span className="text-[10px] font-black text-amber-500 uppercase tracking-[0.15em]">{d.speaker}</span>
-                          <p className="text-[15px] text-zinc-400 mt-0.5 font-sans leading-relaxed">&ldquo;{d.text}&rdquo;</p>
+                          <p className="text-[14px] text-zinc-400 mt-0.5 font-sans leading-snug">&ldquo;{d.text}&rdquo;</p>
                         </div>
                       ))}
                     </div>

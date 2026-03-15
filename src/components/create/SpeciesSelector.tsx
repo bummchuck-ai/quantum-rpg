@@ -181,8 +181,8 @@ const SpeciesSelector: React.FC = () => {
                   : 'border-zinc-700/40 bg-zinc-950 shadow-[0_8px_32px_rgba(0,0,0,0.6)] hover:border-zinc-600/50'
               }`}
             >
-              {/* Portrait — tall card to show full character art */}
-              <div className="aspect-[3/4] bg-zinc-950 relative flex items-end overflow-hidden">
+              {/* Portrait — square card, scaled down for 400px image quality */}
+              <div className="aspect-square bg-zinc-950 relative flex items-end overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`/species/${slugify(s.name)}.jpg`}
@@ -190,7 +190,7 @@ const SpeciesSelector: React.FC = () => {
                     loading="lazy"
                     width={400}
                     height={400}
-                    className="absolute inset-0 w-full h-full object-cover object-center opacity-90 group-hover:opacity-100 transition-all duration-500"
+                    className="absolute inset-0 w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-all duration-500"
                     onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                   />
                   <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent"></div>

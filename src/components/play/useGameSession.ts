@@ -43,9 +43,9 @@ export function useGameSession() {
 
   // TTS / STT
   const {
-    ttsEnabled, isSpeaking, speakText, stopSpeaking,
+    ttsEnabled, isSpeaking, speakText, stopSpeaking, setTTSEnabled,
     sttEnabled, sttSupported, isListening, transcript,
-    startListening, stopListening, clearTranscript
+    startListening, stopListening, clearTranscript, setSTTEnabled,
   } = useSpeech();
 
   // Toast auto-dismiss (single timer, prevents queue explosion)
@@ -625,9 +625,11 @@ export function useGameSession() {
 
     // TTS / STT
     ttsEnabled,
+    setTTSEnabled,
     isSpeaking,
     stopSpeaking,
     sttEnabled,
+    setSTTEnabled,
     sttSupported,
     isListening,
     transcript,
