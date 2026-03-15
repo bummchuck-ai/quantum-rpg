@@ -155,6 +155,164 @@ export const FORCE_POWERS: ForcePower[] = [
       { id: 'bind-mag1', name: 'Umfang', description: 'Zusätzliches Ziel', cost: 15, purchased: false },
     ]
   },
+  // === NEW POWERS (from SW Machtkräfte V4.pdf) ===
+  {
+    id: 'seek',
+    name: 'Seek',
+    nameDE: 'Suchen',
+    description: 'Use the Force to locate people, objects, or information.',
+    descriptionDE: 'Nutze die Macht, um Personen, Objekte oder Informationen zu finden.',
+    baseEffect: 'Spend ◐ to gain insight into the general direction of a target.',
+    forceRating: 1,
+    upgrades: [
+      { id: 'seek-str1', name: 'Stärke', description: 'Genauere Ortung', cost: 10, purchased: false },
+      { id: 'seek-range1', name: 'Reichweite', description: 'Reichweite +1 Band', cost: 10, purchased: false },
+      { id: 'seek-mag1', name: 'Umfang', description: 'Zusätzliches Ziel suchen', cost: 10, purchased: false },
+      { id: 'seek-control1', name: 'Kontrolle', description: 'Schwachstellen des Ziels erkennen', cost: 15, purchased: false },
+      { id: 'seek-mastery', name: 'Meisterschaft', description: 'Exakte Position + verborgene Gedanken', cost: 25, purchased: false, requires: ['seek-control1'] },
+    ]
+  },
+  {
+    id: 'misdirect',
+    name: 'Misdirect',
+    nameDE: 'Irreführung',
+    description: 'Create illusions to confuse or hide.',
+    descriptionDE: 'Erschaffe Illusionen, um zu verwirren oder zu verbergen.',
+    baseEffect: 'Spend ◐ to make one target within short range unable to perceive you.',
+    forceRating: 1,
+    upgrades: [
+      { id: 'mis-str1', name: 'Stärke', description: 'Illusion wirkt realer', cost: 10, purchased: false },
+      { id: 'mis-range1', name: 'Reichweite', description: 'Reichweite +1 Band', cost: 10, purchased: false },
+      { id: 'mis-mag1', name: 'Umfang', description: 'Zusätzliche Ziele', cost: 10, purchased: false },
+      { id: 'mis-duration1', name: 'Dauer', description: 'Effekt hält eine Runde an', cost: 15, purchased: false },
+      { id: 'mis-control1', name: 'Kontrolle', description: 'Illusionen mit Ton und Bewegung', cost: 15, purchased: false },
+      { id: 'mis-mastery', name: 'Meisterschaft', description: 'Komplexe Illusionen, ganze Szenen', cost: 25, purchased: false, requires: ['mis-control1'] },
+    ]
+  },
+  {
+    id: 'suppress',
+    name: 'Suppress',
+    nameDE: 'Unterdrücken',
+    description: 'Counter or suppress another Force user\'s powers.',
+    descriptionDE: 'Unterdrücke die Machtkräfte eines anderen Machtnutzers.',
+    baseEffect: 'Spend ◐◐ to add ◆◆ to a target\'s next Force power check.',
+    forceRating: 2,
+    upgrades: [
+      { id: 'sup-str1', name: 'Stärke', description: 'Ziel verliert 1 Kraftpunkt', cost: 15, purchased: false },
+      { id: 'sup-range1', name: 'Reichweite', description: 'Reichweite +1 Band', cost: 10, purchased: false },
+      { id: 'sup-duration1', name: 'Dauer', description: 'Unterdrückung hält an', cost: 15, purchased: false },
+      { id: 'sup-mastery', name: 'Meisterschaft', description: 'Machtkraft des Ziels komplett blockieren', cost: 25, purchased: false, requires: ['sup-str1'] },
+    ]
+  },
+  {
+    id: 'battle-meditation',
+    name: 'Battle Meditation',
+    nameDE: 'Kampfmeditation',
+    description: 'Coordinate allies through the Force in combat.',
+    descriptionDE: 'Koordiniere Verbündete durch die Macht im Kampf.',
+    baseEffect: 'Spend ◐◐ to add ◻ to all allies\' next combat checks within short range.',
+    forceRating: 2,
+    upgrades: [
+      { id: 'bm-str1', name: 'Stärke', description: 'Verbündete erhalten +1 Verteidigung', cost: 15, purchased: false },
+      { id: 'bm-range1', name: 'Reichweite', description: 'Reichweite +1 Band', cost: 10, purchased: false },
+      { id: 'bm-mag1', name: 'Umfang', description: 'Alle Verbündeten in Reichweite', cost: 15, purchased: false },
+      { id: 'bm-duration1', name: 'Dauer', description: 'Effekt hält ganze Begegnung', cost: 20, purchased: false },
+      { id: 'bm-control1', name: 'Kontrolle', description: 'Feinde in Reichweite erhalten Komplikation', cost: 20, purchased: false },
+      { id: 'bm-mastery', name: 'Meisterschaft', description: 'Aufwertung aller Verbündeten-Proben', cost: 30, purchased: false, requires: ['bm-control1'] },
+    ]
+  },
+  {
+    id: 'conjure',
+    name: 'Conjure',
+    nameDE: 'Beschwören',
+    description: 'Create illusory Force weapons or objects.',
+    descriptionDE: 'Erschaffe illusionäre Machtwaffen oder Objekte.',
+    baseEffect: 'Spend ◐ to create an illusory melee weapon (DMG 5, Crit 3).',
+    forceRating: 1,
+    upgrades: [
+      { id: 'con-str1', name: 'Stärke', description: 'Schaden +2', cost: 10, purchased: false },
+      { id: 'con-str2', name: 'Stärke', description: 'Schaden +2', cost: 15, purchased: false, requires: ['con-str1'] },
+      { id: 'con-control1', name: 'Kontrolle', description: 'Fernkampfwaffe statt Nahkampf', cost: 15, purchased: false },
+      { id: 'con-duration1', name: 'Dauer', description: 'Waffe bleibt für Begegnung', cost: 15, purchased: false },
+    ]
+  },
+  {
+    id: 'imbue',
+    name: 'Imbue',
+    nameDE: 'Durchdringen',
+    description: 'Enhance an ally\'s abilities through the Force.',
+    descriptionDE: 'Verstärke die Fähigkeiten eines Verbündeten durch die Macht.',
+    baseEffect: 'Spend ◐ to grant +1 to one characteristic of a target within short range for 1 round.',
+    forceRating: 1,
+    upgrades: [
+      { id: 'imb-str1', name: 'Stärke', description: '+1 zusätzliche Eigenschaft', cost: 15, purchased: false },
+      { id: 'imb-range1', name: 'Reichweite', description: 'Reichweite +1 Band', cost: 10, purchased: false },
+      { id: 'imb-duration1', name: 'Dauer', description: 'Effekt hält Begegnung', cost: 20, purchased: false },
+      { id: 'imb-control1', name: 'Kontrolle', description: 'Auf sich selbst anwenden', cost: 10, purchased: false },
+    ]
+  },
+  {
+    id: 'endure',
+    name: 'Endure',
+    nameDE: 'Ertragen',
+    description: 'Use the Force to ignore pain and injury.',
+    descriptionDE: 'Nutze die Macht, um Schmerz und Verletzungen zu ignorieren.',
+    baseEffect: 'Spend ◐ to ignore effects of one Critical Injury for the encounter.',
+    forceRating: 1,
+    upgrades: [
+      { id: 'end-str1', name: 'Stärke', description: 'Ignoriere zusätzliche Critical Injury', cost: 15, purchased: false },
+      { id: 'end-control1', name: 'Kontrolle', description: 'Heile 2 Wunden beim Aktivieren', cost: 15, purchased: false },
+      { id: 'end-duration1', name: 'Dauer', description: 'Effekt hält bis geheilt', cost: 20, purchased: false },
+      { id: 'end-mastery', name: 'Meisterschaft', description: 'Ignoriere ALLE aktiven Critical Injuries', cost: 30, purchased: false, requires: ['end-str1'] },
+    ]
+  },
+  {
+    id: 'ebb-flow',
+    name: 'Ebb/Flow',
+    nameDE: 'Ebbe/Flut',
+    description: 'Manipulate the flow of the Force.',
+    descriptionDE: 'Manipuliere den Fluss der Macht.',
+    baseEffect: 'Spend ◐ to recover 1 strain, or inflict 1 strain on target within short range.',
+    forceRating: 1,
+    upgrades: [
+      { id: 'ef-str1', name: 'Stärke', description: '+1 Erschöpfung heilen/verursachen', cost: 10, purchased: false },
+      { id: 'ef-range1', name: 'Reichweite', description: 'Reichweite +1 Band', cost: 10, purchased: false },
+      { id: 'ef-control1', name: 'Kontrolle', description: 'Erfolge zu Erschöpfungsabbau', cost: 15, purchased: false },
+      { id: 'ef-control2', name: 'Kontrolle', description: 'Vorteile zu Macht-Punkt-Regeneration', cost: 15, purchased: false },
+    ]
+  },
+  {
+    id: 'farsight',
+    name: 'Farsight',
+    nameDE: 'Fernsicht',
+    description: 'See beyond normal vision.',
+    descriptionDE: 'Sieh über das normale Sichtfeld hinaus.',
+    baseEffect: 'Spend ◐ to see to medium range, ignoring obstacles.',
+    forceRating: 1,
+    upgrades: [
+      { id: 'far-str1', name: 'Stärke', description: 'Detailreiche Wahrnehmung', cost: 10, purchased: false },
+      { id: 'far-range1', name: 'Reichweite', description: 'Reichweite +1 Band', cost: 10, purchased: false },
+      { id: 'far-range2', name: 'Reichweite', description: 'Reichweite +1 Band', cost: 15, purchased: false, requires: ['far-range1'] },
+      { id: 'far-control1', name: 'Kontrolle', description: 'In die Vergangenheit eines Ortes blicken', cost: 20, purchased: false },
+      { id: 'far-mastery', name: 'Meisterschaft', description: 'Durch Wände und über Planeten hinweg sehen', cost: 25, purchased: false, requires: ['far-range2'] },
+    ]
+  },
+  {
+    id: 'manipulate',
+    name: 'Manipulate',
+    nameDE: 'Manipulieren',
+    description: 'Repair or modify machines through the Force.',
+    descriptionDE: 'Repariere oder modifiziere Maschinen durch die Macht.',
+    baseEffect: 'Spend ◐ to perform a Mechanik check using Force instead of tools.',
+    forceRating: 1,
+    upgrades: [
+      { id: 'man-str1', name: 'Stärke', description: 'Reparatur +1 Wunde an Maschine', cost: 10, purchased: false },
+      { id: 'man-range1', name: 'Reichweite', description: 'Reichweite +1 Band', cost: 10, purchased: false },
+      { id: 'man-control1', name: 'Kontrolle', description: 'Maschinen sabotieren statt reparieren', cost: 15, purchased: false },
+      { id: 'man-control2', name: 'Kontrolle', description: 'Droiden mit der Macht steuern', cost: 20, purchased: false },
+      { id: 'man-mastery', name: 'Meisterschaft', description: 'Komplexe Fahrzeuge auf Entfernung steuern', cost: 30, purchased: false, requires: ['man-control2'] },
+    ]
+  },
 ];
 
 // Check if a career grants Force sensitivity
