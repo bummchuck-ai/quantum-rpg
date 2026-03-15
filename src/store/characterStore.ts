@@ -260,7 +260,7 @@ export const useCharacterStore = create<GameState>()(
         newPlayers[state.activePlayerIndex] = {
           ...player,
           backgroundBonus: bonus as any,
-          availableXP: baseXP - (player.spentXP ?? 0),
+          availableXP: Math.max(0, baseXP - (player.spentXP ?? 0)),
           credits: newCredits,
           backgroundValue: newValue
         };

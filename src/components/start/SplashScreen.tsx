@@ -36,18 +36,19 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
 
   // Phase progression
   useEffect(() => {
+    let fadeTimer: ReturnType<typeof setTimeout>;
     const timers = [
-      setTimeout(() => setPhase(1), 300),       // Orb appears
-      setTimeout(() => setPhase(2), 1200),       // Title appears
-      setTimeout(() => setPhase(3), 1800),       // Loading text starts
-      setTimeout(() => {                          // Fade out + complete
+      setTimeout(() => setPhase(1), 300),
+      setTimeout(() => setPhase(2), 1200),
+      setTimeout(() => setPhase(3), 1800),
+      setTimeout(() => {
         if (!skippedRef.current) {
           setFadeOut(true);
-          setTimeout(() => onCompleteRef.current(), 800);
+          fadeTimer = setTimeout(() => onCompleteRef.current(), 800);
         }
       }, 6000),
     ];
-    return () => timers.forEach(clearTimeout);
+    return () => { timers.forEach(clearTimeout); clearTimeout(fadeTimer); };
   }, []);
 
   // Cycle loading texts

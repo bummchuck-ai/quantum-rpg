@@ -49,10 +49,13 @@ const HolocronOrb: React.FC<HolocronOrbProps> = ({ size = 200, opacity = 1, clas
     const cx = size / 2;
     const cy = size / 2;
     const radius = size * 0.35;
+    let lastTimestamp = 0;
     let time = 0;
 
-    const render = () => {
-      time += 0.016;
+    const render = (timestamp: number) => {
+      const delta = lastTimestamp ? (timestamp - lastTimestamp) / 1000 : 0.016;
+      lastTimestamp = timestamp;
+      time += delta;
       ctx.clearRect(0, 0, size, size);
 
       const rotY = time * 0.4; // rotation speed
