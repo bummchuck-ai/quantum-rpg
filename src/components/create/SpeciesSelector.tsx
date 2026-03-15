@@ -133,32 +133,30 @@ const SpeciesSelector: React.FC = () => {
   }, []);
 
   return (
-    <main className="min-h-dvh w-full bg-black text-zinc-300 font-mono flex flex-col p-6 safe-area-top">
+    <main className="h-dvh w-full bg-black text-zinc-300 font-mono flex flex-col safe-area-top">
 
-      <header className="flex justify-between items-center border-b border-zinc-800 pb-4 mb-6 sticky top-0 bg-black z-30">
-        <div className="flex gap-3 items-center">
-            <button onClick={() => router.push('/')} className="w-8 h-8 border border-zinc-700 flex items-center justify-center text-zinc-500 font-black text-xs hover:border-amber-500 hover:text-amber-500 transition-all rounded">←</button>
-            <div className="w-8 h-8 border border-amber-500 flex items-center justify-center text-amber-500 font-black italic">1</div>
-            <div>
-                <h1 className="text-xl font-black text-white italic tracking-tighter uppercase">{t('speciesHeader')}</h1>
-            </div>
-        </div>
-        <div className="text-right pl-2">
-            <div className="text-[10px] text-amber-500 font-bold tracking-widest uppercase">{t('selectOrigin')}</div>
-        </div>
-      </header>
+      {/* FIXED HEADER — does not scroll */}
+      <div className="shrink-0 px-5 pt-4 pb-3 bg-black z-30 border-b border-zinc-800/50">
+        <header className="flex justify-between items-center mb-3">
+          <div className="flex gap-3 items-center">
+              <button onClick={() => router.push('/')} className="w-8 h-8 border border-zinc-700 flex items-center justify-center text-zinc-500 font-black text-xs hover:border-amber-500 hover:text-amber-500 transition-all rounded">←</button>
+              <div className="w-8 h-8 border border-amber-500 flex items-center justify-center text-amber-500 font-black italic">1</div>
+              <h1 className="text-lg font-black text-white italic tracking-tighter uppercase">{t('speciesHeader')}</h1>
+          </div>
+          <div className="text-[9px] text-amber-500 font-bold tracking-widest uppercase">{t('selectOrigin')}</div>
+        </header>
 
-      <ProgressTracker currentStep={1} />
+        <ProgressTracker currentStep={1} />
 
-      <div className="mb-6 sticky top-[65px] bg-black z-20 pb-4">
         <input
-          className="w-full bg-zinc-950 border border-zinc-800 p-4 rounded-xl text-xs outline-none focus:border-amber-500 text-white placeholder:text-zinc-800 shadow-2xl"
+          className="w-full bg-zinc-950 border border-zinc-800 p-3 rounded-xl text-xs outline-none focus:border-amber-500 text-white placeholder:text-zinc-800 shadow-lg mt-3"
           placeholder={t('filterSpecies')}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
 
+      {/* SCROLLABLE CARDS AREA */}
       <SwipeCards
         onActiveIndexChange={handleActiveIndexChange}
         onViewModeChange={handleViewModeChange}
@@ -181,8 +179,8 @@ const SpeciesSelector: React.FC = () => {
                   : 'border-zinc-700/40 bg-zinc-950 shadow-[0_8px_32px_rgba(0,0,0,0.6)] hover:border-zinc-600/50'
               }`}
             >
-              {/* Portrait — square card, scaled down for 400px image quality */}
-              <div className="aspect-square bg-zinc-950 relative flex items-end overflow-hidden">
+              {/* Portrait — compact 3:2 ratio */}
+              <div className="aspect-[3/2] bg-zinc-950 relative flex items-end overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`/species/${slugify(s.name)}.jpg`}
@@ -193,50 +191,55 @@ const SpeciesSelector: React.FC = () => {
                     className="absolute inset-0 w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-all duration-500"
                     onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                   />
-                  <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent"></div>
-                  <div className="relative z-10 px-4 pb-3 flex items-end gap-2 w-full">
-                    <h2 className="text-sm font-black text-white italic tracking-tight uppercase leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">{s.name}</h2>
-                    {hasSubspecies(s) && (
-                      <span className="text-[6px] text-cyan-400 font-black uppercase tracking-widest px-1.5 py-0.5 border border-cyan-500/30 rounded bg-cyan-500/10 mb-px">
-                        {s.subspecies!.length} {t('subspecies')}
-                      </span>
-                    )}
-                    <span className="ml-auto text-amber-500 text-xs font-black">{s.startingXP} XP</span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent"></div>
+                  {/* Name + XP overlay on image */}
+                  <div className="relative z-10 px-3 pb-2 flex items-end justify-between w-full">
+                    <div className="flex items-center gap-2">
+                      <h2 className="text-base font-black text-white italic tracking-tight uppercase drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">{s.name}</h2>
+                      {hasSubspecies(s) && (
+                        <span className="text-[5px] text-cyan-400 font-black uppercase tracking-widest px-1 py-0.5 border border-cyan-500/30 rounded bg-cyan-500/10">
+                          {s.subspecies!.length} SUB
+                        </span>
+                      )}
+                    </div>
+                    <span className="text-amber-500 text-xs font-black drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">{s.startingXP} XP</span>
                   </div>
               </div>
 
-              <div className="px-3 pb-3 pt-2 space-y-2">
-                  {s.description && (
-                    <p className="text-xs text-zinc-300 leading-relaxed font-sans">{s.description}</p>
-                  )}
-
+              {/* Stats bar — always visible, compact */}
+              <div className="px-3 py-2">
                   <div className="grid grid-cols-6 gap-1">
                       {Object.entries(s.characteristics).map(([stat, val]) => (
-                          <div key={stat} className="bg-black/60 border border-zinc-800/60 py-1.5 rounded-lg flex flex-col items-center">
-                              <span className="text-sm font-black text-white">{val}</span>
-                              <span className="text-[6px] text-zinc-500 uppercase font-bold tracking-tight">{stat.substring(0, 3)}</span>
+                          <div key={stat} className="bg-black/60 border border-zinc-800/60 py-1 rounded flex flex-col items-center">
+                              <span className="text-xs font-black text-white">{val}</span>
+                              <span className="text-[5px] text-zinc-600 uppercase font-bold">{stat.substring(0, 3)}</span>
                           </div>
                       ))}
                   </div>
+              </div>
 
                   {isSelected && (
-                      <div className="animate-in fade-in duration-300 space-y-2.5 pt-2.5 border-t border-zinc-800/50 mt-1">
-                          {/* Thresholds inline */}
-                          <div className="flex gap-2 text-[8px] text-zinc-500 font-bold uppercase tracking-wider">
-                              <div className="flex-1 bg-black/40 py-1.5 px-2 border border-zinc-800/50 rounded-lg text-center">W {s.woundThresholdBase}+BR</div>
-                              <div className="flex-1 bg-black/40 py-1.5 px-2 border border-zinc-800/50 rounded-lg text-center">S {s.strainThresholdBase}+WL</div>
-                              <div className="flex-1 bg-black/40 py-1.5 px-2 border border-amber-500/20 rounded-lg text-center text-amber-500">{s.startingXP} XP</div>
+                      <div className="animate-in fade-in duration-300 px-3 pb-3 space-y-2 border-t border-zinc-800/30">
+                          {/* Description */}
+                          {s.description && (
+                            <p className="text-[11px] text-zinc-400 leading-snug font-sans pt-2">{s.description}</p>
+                          )}
+
+                          {/* Thresholds */}
+                          <div className="flex gap-1.5 text-[7px] text-zinc-500 font-bold uppercase tracking-wider">
+                              <div className="flex-1 bg-black/40 py-1 border border-zinc-800/50 rounded text-center">W {s.woundThresholdBase}+BR</div>
+                              <div className="flex-1 bg-black/40 py-1 border border-zinc-800/50 rounded text-center">S {s.strainThresholdBase}+WL</div>
                           </div>
 
-                          {/* Abilities — clean card list */}
+                          {/* Abilities */}
                           {s.abilities.length > 0 && (
-                            <div className="space-y-1.5">
-                              <div className="text-[8px] text-amber-500/70 font-black uppercase tracking-[0.15em]">
+                            <div className="space-y-1">
+                              <div className="text-[7px] text-amber-500/70 font-black uppercase tracking-[0.15em]">
                                 {t('traitsAnalysis')}
                               </div>
                               {s.abilities.map((a, i) => (
-                                <div key={i} className="bg-zinc-900/60 border border-zinc-800/30 rounded-lg px-3 py-2">
-                                  <p className="text-[11px] text-zinc-300 leading-snug font-sans">{a}</p>
+                                <div key={i} className="bg-zinc-900/40 border border-zinc-800/20 rounded px-2.5 py-1.5">
+                                  <p className="text-[10px] text-zinc-300 leading-snug font-sans">{a}</p>
                                 </div>
                               ))}
                             </div>
@@ -328,7 +331,6 @@ const SpeciesSelector: React.FC = () => {
                           </button>
                       </div>
                   )}
-              </div>
             </div>
           );
         })}
