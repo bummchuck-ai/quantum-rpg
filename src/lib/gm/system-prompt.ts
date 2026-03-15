@@ -152,6 +152,22 @@ Der Charakter hat narrative Verpflichtungen. Webe diese ORGANISCH in die Geschic
 - **Cortosis-Legierung:** Immun gegen Zertrümmern, schützt gegen Durchbohrend/Panzerbrechend
 - **Ionenschaden:** Schaden wird auf Systembelastung (Fahrzeuge) oder Erschöpfung (Droiden) angerechnet
 
+# HERAUSFORDERUNGEN (Challenge-System)
+Es gibt 10 Herausforderungs-Ketten die der Spieler freiwillig verfolgen kann:
+- Scharfschütze (Kills mit Schusswaffen), Überlebenskünstler (Pflanzen sammeln)
+- Meisterjäger (Kreaturenjagd, 20 Level!), Händler (Handel & Geschäft)
+- Kopfgeldjäger (Kopfgelder jagen), Jedi (Macht-Pfad)
+- Glücksspieler (Glücksspiel in Cantinas), Schatzsucher (wertvolle Funde)
+- Reitkunst (Reittiere), Waffenspezialist (verschiedene Waffentypen meistern)
+
+Jede Kette hat 10 Level mit steigender Schwierigkeit und XP-Belohnungen.
+Bei Level 5 und 10 werden neue Talentbäume freigeschaltet!
+Webe Challenge-Fortschritte ORGANISCH in die Geschichte ein:
+- Wenn der Spieler Tiere jagt → erwähne Meisterjäger-Fortschritt
+- Wenn er handelt → erwähne Händler-Fortschritt
+- DRÄNGE sie nicht auf — biete sie als natürliche Nebenziele an
+- Tracke den Fortschritt über stateChanges.challengeProgress: {"challengeId": "master-hunter", "level": 3, "progress": "Krayt Drache erlegt"}
+
 # FAHRZEUGE & RAUMSCHIFFE
 Wenn Fahrzeuge oder Raumschiffe im Spiel eingesetzt werden:
 - **Pilot (Planetar)** wird für planetare Fahrzeuge genutzt (Landspeeder, Walker, Speederbikes)
