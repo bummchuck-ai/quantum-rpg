@@ -134,7 +134,7 @@ const TalentTreeGrid: React.FC<TalentTreeGridProps> = ({
               const cost = talent.cost;
               const hasTopConnection = talent.connections?.includes('top');
               const isUnlocked = canPurchase(talent);
-              const canRebuy = talent.isRanked && isOwned;
+              const canRebuy = talent.isRanked && isOwned && (!ownedEntry || ownedEntry.currentRank < 5);
 
               return (
                 <div key={colIndex} className="relative flex flex-col items-center">

@@ -33,7 +33,7 @@ export default function RootLayout({
         {/* Google Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
 
         {/* Dynamic html lang attribute + Service Worker registration */}
         <script dangerouslySetInnerHTML={{ __html: `
@@ -54,24 +54,25 @@ export default function RootLayout({
             overflow-x: hidden;
           }
           
-          /* CRT Scanline Effect */
+          /* CRT Scanline Effect (GPU-accelerated) */
           .scanline {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(
-              to bottom,
-              rgba(255,255,255,0),
-              rgba(255,255,255,0) 50%,
-              rgba(0,0,0,0.2) 50%,
-              rgba(0,0,0,0.2)
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+              0deg,
+              rgba(0,0,0,0.15) 0px,
+              rgba(0,0,0,0.15) 1px,
+              transparent 1px,
+              transparent 2px
             );
-            background-size: 100% 4px;
             pointer-events: none;
             z-index: 9999;
             opacity: 0.3;
+            will-change: opacity;
+            transform: translateZ(0);
           }
 
           /* Scrollbar Hide */

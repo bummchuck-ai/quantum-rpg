@@ -14,6 +14,7 @@ const ArchivePanel: React.FC<ArchivePanelProps> = ({ onClose, onLoadSave }) => {
   const importState = useCharacterStore((state) => state.importState);
 
   const handleLoad = (fullData: any) => {
+    if (!fullData?.storeState) return; // Guard against null/undefined
     // Import character store state
     importState(typeof fullData.storeState === 'string' ? fullData.storeState : JSON.stringify(fullData.storeState));
     // Store full data for deferred restore by ChatInterface

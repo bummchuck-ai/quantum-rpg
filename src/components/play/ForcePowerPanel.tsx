@@ -52,7 +52,12 @@ const ForcePowerPanel: React.FC<ForcePowerPanelProps> = ({
       </header>
 
       <div className="flex-1 overflow-y-auto p-4 space-y-3">
-        {selectedPower ? (
+        {availablePowers.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-16 space-y-3">
+            <div className="text-4xl opacity-20">✦</div>
+            <p className="text-[10px] text-zinc-600 uppercase tracking-widest text-center">Keine Machtkräfte verfügbar.<br/>Force Rating zu niedrig.</p>
+          </div>
+        ) : selectedPower ? (
           <div className="space-y-4">
             <button onClick={() => setSelectedPower(null)} className="text-[9px] text-zinc-500 hover:text-white uppercase tracking-widest">← Zurück</button>
             <div className="bg-zinc-900 border border-purple-500/30 rounded-xl p-4">
