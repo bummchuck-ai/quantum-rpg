@@ -176,4 +176,4 @@ const DiceRollerModal: React.FC<DiceRollerModalProps> = ({
   );
 };
 
-export default DiceRollerModal;
+export default React.memo(DiceRollerModal);

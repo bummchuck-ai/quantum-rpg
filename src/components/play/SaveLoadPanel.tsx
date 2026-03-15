@@ -100,4 +100,4 @@ const SaveLoadPanel: React.FC<SaveLoadPanelProps> = ({
   );
 };
 
-export default SaveLoadPanel;
+export default React.memo(SaveLoadPanel);

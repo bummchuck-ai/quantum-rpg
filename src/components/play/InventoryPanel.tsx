@@ -107,4 +107,4 @@ const InventoryPanel: React.FC<InventoryPanelProps> = ({ ownedGear, credits, enc
   );
 };
 
-export default InventoryPanel;
+export default React.memo(InventoryPanel);

@@ -99,4 +99,4 @@ const MerchantInterface = () => {
   );
 };
 
-export default MerchantInterface;
+export default React.memo(MerchantInterface);

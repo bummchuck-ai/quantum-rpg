@@ -140,4 +140,4 @@ const QuestLog: React.FC<QuestLogProps> = ({ quests, npcs, onClose }) => {
   );
 };
 
-export default QuestLog;
+export default React.memo(QuestLog);

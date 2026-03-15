@@ -140,4 +140,4 @@ const ForcePowerPanel: React.FC<ForcePowerPanelProps> = ({
   );
 };
 
-export default ForcePowerPanel;
+export default React.memo(ForcePowerPanel);

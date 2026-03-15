@@ -109,4 +109,4 @@ const CombatTracker: React.FC<CombatTrackerProps> = ({ combat, onEndCombat, onNe
   );
 };
 
-export default CombatTracker;
+export default React.memo(CombatTracker);

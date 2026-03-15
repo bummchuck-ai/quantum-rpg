@@ -2,13 +2,21 @@ import Anthropic from '@anthropic-ai/sdk';
 import { buildSystemPrompt, getResponseFormat } from '../../../lib/gm/system-prompt';
 import { NextResponse } from 'next/server';
 
-// Simple in-memory rate limiter
+// In-memory rate limiter with automatic cleanup
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
-const RATE_LIMIT = 30; // max requests per window
+const RATE_LIMIT = 20; // max requests per window (tighter for cost control)
 const RATE_WINDOW = 60 * 1000; // 1 minute
+let lastCleanup = Date.now();
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
+  // Periodic cleanup: remove expired entries every 5 minutes to prevent memory leak
+  if (now - lastCleanup > 300_000) {
+    lastCleanup = now;
+    for (const [key, val] of rateLimitMap) {
+      if (now > val.resetAt) rateLimitMap.delete(key);
+    }
+  }
   const entry = rateLimitMap.get(ip);
   if (!entry || now > entry.resetAt) {
     rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_WINDOW });
@@ -77,6 +85,11 @@ export async function POST(req: Request) {
       throw new Error('Invalid GameState provided to GM.');
     }
 
+    // Sanitize user input: limit length, strip control characters
+    const sanitizedMessage = typeof userMessage === 'string'
+      ? userMessage.slice(0, 2000).replace(/[\x00-\x08\x0B\x0C\x0E-\x1F]/g, '')
+      : '';
+
     // Build system prompt (language-aware)
     const lang = language === 'en' ? 'en' : 'de';
     const systemInstruction = buildSystemPrompt(gameState, lang) + '\n\n' + getResponseFormat(lang);
@@ -90,7 +103,7 @@ export async function POST(req: Request) {
         }
       }
     }
-    messages.push({ role: 'user', content: userMessage });
+    messages.push({ role: 'user', content: sanitizedMessage });
 
     const response = await anthropic.messages.create({
       model: 'claude-sonnet-4-6',
