@@ -213,9 +213,9 @@ const SpeciesSelector: React.FC = () => {
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/70 to-transparent p-2.5 pt-6 z-10">
                   <div className="grid grid-cols-6 gap-1">
                     {Object.entries(s.characteristics).map(([stat, val]) => (
-                      <div key={stat} className="bg-black/50 backdrop-blur-sm border border-zinc-700/30 py-0.5 rounded flex flex-col items-center">
-                        <span className="text-sm font-black text-white leading-none">{val}</span>
-                        <span className="text-[5px] text-zinc-500 uppercase font-bold">{stat.substring(0, 3)}</span>
+                      <div key={stat} className="bg-black/50 backdrop-blur-sm border border-zinc-700/30 py-1 rounded flex flex-col items-center">
+                        <span className="text-lg font-black text-white leading-none">{val}</span>
+                        <span className="text-[7px] text-zinc-400 uppercase font-bold tracking-wide">{stat.substring(0, 3)}</span>
                       </div>
                     ))}
                   </div>
