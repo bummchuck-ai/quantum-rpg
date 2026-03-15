@@ -977,9 +977,9 @@ export function buildSystemPrompt(gameState: any, lang: Language = 'de'): string
     buildForceContext(gameState),
     buildDestinyContext(gameState),
     buildCombatContext(gameState),
-    buildEncounterGuidelines(gameState),
+    gameState.combat ? buildEncounterGuidelines(gameState) : '', // only in combat
     buildDicePoolHint(gameState),
-    buildCharacterExpertise(gameState),
+    // buildCharacterExpertise removed — redundant with buildCharacterContext + buildSkillContext
     buildQuestContext(gameState),
     buildNPCContext(gameState),
     buildNPCGuidance(gameState),
