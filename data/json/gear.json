@@ -2,6 +2,19 @@
   "weapons": {
     "Pistolen": [
       {
+        "name": "Geschosswerferpistole",
+        "skill": "LFW",
+        "damage": 4,
+        "critical": 5,
+        "range": "K",
+        "encumbrance": 1,
+        "hardPoints": 0,
+        "price": 100,
+        "rarity": 3,
+        "special": "",
+        "description": "Einfache Geschosswerferpistole."
+      },
+      {
         "name": "CDEF-Pistole",
         "skill": "LFW",
         "damage": 5,
@@ -67,6 +80,19 @@
         "description": "Schickt Droiden und Elektronik in den Kurzschluss."
       },
       {
+        "name": "Geschosswerferpistole SH-9",
+        "skill": "LFW",
+        "damage": 4,
+        "critical": 5,
+        "range": "K",
+        "encumbrance": 1,
+        "hardPoints": 0,
+        "price": 250,
+        "rarity": 4,
+        "special": "Begrenzte Munition 1, Durchbohrend 2, versteckbar",
+        "description": "Versteckbare Spezialpistole."
+      },
+      {
         "name": "Leichte Blasterpistole",
         "skill": "LFW",
         "damage": 5,
@@ -78,6 +104,32 @@
         "rarity": 4,
         "special": "Betäubungsoption",
         "description": "Kompakte Seitenwaffe für Diplomaten und Spione."
+      },
+      {
+        "name": "Handflächenpistole Schleicher-2VX",
+        "skill": "LFW",
+        "damage": 1,
+        "critical": 5,
+        "range": "K",
+        "encumbrance": 0,
+        "hardPoints": 0,
+        "price": 300,
+        "rarity": 5,
+        "special": "Begrenzte Munition 3, Giftpfeile möglich",
+        "description": "Winzige versteckte Nadelwaffe."
+      },
+      {
+        "name": "Pistole KD-30 Dissuader",
+        "skill": "LFW",
+        "damage": 4,
+        "critical": 5,
+        "range": "K",
+        "encumbrance": 2,
+        "hardPoints": 0,
+        "price": 350,
+        "rarity": 6,
+        "special": "Durchbohrend 2, Tödlich 1, Ziel erleidet 1 Wunde/Runde",
+        "description": "Brutale Projektilpistole mit Nachblutungseffekt."
       },
       {
         "name": "Blasterpistole",
@@ -119,6 +171,19 @@
         "description": "Imperiale Schnellfeuerwaffe — beliebt bei Offizieren."
       },
       {
+        "name": "NX-14 Nadelwerfer",
+        "skill": "LFW",
+        "damage": 5,
+        "critical": 0,
+        "range": "K",
+        "encumbrance": 1,
+        "hardPoints": 1,
+        "price": 650,
+        "rarity": 7,
+        "special": "Durchbohrend 3, ignoriert Deflektorschilde",
+        "description": "Nadelwerfer der persönliche Schilde ignoriert."
+      },
+      {
         "name": "Schw. Blasterpistole",
         "skill": "LFW",
         "damage": 7,
@@ -158,6 +223,19 @@
         "description": "Ionenstrahlen frittieren Droidenschaltkreise in Sekunden."
       },
       {
+        "name": "Flechette-Pistole FWG-5",
+        "skill": "LFW",
+        "damage": 6,
+        "critical": 3,
+        "range": "K",
+        "encumbrance": 1,
+        "hardPoints": 2,
+        "price": 825,
+        "rarity": 7,
+        "special": "Lenkflugkörper 3, Begrenzte Munition 3",
+        "description": "Flechette-Pistole mit gelenkten Geschossen."
+      },
+      {
         "name": "Statik-Pistole SSB-1",
         "skill": "LFW",
         "damage": 2,
@@ -182,6 +260,19 @@
         "rarity": 8,
         "special": "Betäubungsoption",
         "description": "Seltene Pistole vom Hutt-Raumhafen Boonta."
+      },
+      {
+        "name": "KWS Typ 1 Säbelpfeilwerfer",
+        "skill": "LFW",
+        "damage": 1,
+        "critical": 0,
+        "range": "W",
+        "encumbrance": 3,
+        "hardPoints": 2,
+        "price": 1600,
+        "rarity": 9,
+        "special": "Begrenzte Munition 1, Giftpfeile möglich",
+        "description": "Luxus-Pfeilwerfer mit Vergiftungsoption."
       }
     ],
     "Gewehre": [
@@ -199,6 +290,32 @@
         "description": "Kurzläufiger Karabiner für Häuserkampf."
       },
       {
+        "name": "Geschosswerfer-Gewehr",
+        "skill": "SFW",
+        "damage": 7,
+        "critical": 5,
+        "range": "M",
+        "encumbrance": 5,
+        "hardPoints": 1,
+        "price": 250,
+        "rarity": 3,
+        "special": "Sperrigkeit 2",
+        "description": "Einfaches Geschosswerfer-Gewehr."
+      },
+      {
+        "name": "Jagdgewehr Czerka Modell 57",
+        "skill": "SFW",
+        "damage": 7,
+        "critical": 5,
+        "range": "W",
+        "encumbrance": 5,
+        "hardPoints": 4,
+        "price": 500,
+        "rarity": 6,
+        "special": "Präzise 1, Sperrigkeit 2",
+        "description": "Zuverlässiges Jagdgewehr."
+      },
+      {
         "name": "Blasterkarabiner E5",
         "skill": "SFW",
         "damage": 9,
@@ -210,6 +327,32 @@
         "rarity": 3,
         "special": "Betäubungsoption",
         "description": "Standardwaffe der Separatisten-Kampfdroiden."
+      },
+      {
+        "name": "Schrotgewehr Adostic Arms Kaliber 8",
+        "skill": "SFW",
+        "damage": 7,
+        "critical": 6,
+        "range": "K",
+        "encumbrance": 3,
+        "hardPoints": 2,
+        "price": 550,
+        "rarity": 4,
+        "special": "Explosion 3, Niederwerfen",
+        "description": "Klassische Schrotflinte."
+      },
+      {
+        "name": "Berserker Gewehr",
+        "skill": "SFW",
+        "damage": 7,
+        "critical": 4,
+        "range": "M",
+        "encumbrance": 4,
+        "hardPoints": 0,
+        "price": 600,
+        "rarity": 5,
+        "special": "Verbrennen 1, Sperrigkeit 3, Desorientierend 1",
+        "description": "Aggressives Kampfgewehr mit Brandmunition."
       },
       {
         "name": "Vodran Jagdgewehr",
@@ -277,6 +420,32 @@
         "description": "Projektilgewehr mit Dauerfeuer — laut und brutal."
       },
       {
+        "name": "Duoflechette-Gewehr Salus DF-DI",
+        "skill": "SFW",
+        "damage": 9,
+        "critical": 3,
+        "range": "K",
+        "encumbrance": 3,
+        "hardPoints": 3,
+        "price": 1000,
+        "rarity": 5,
+        "special": "Explosion 4, Begrenzte Munition 5, Gekoppelt 1, Tödlich 2",
+        "description": "Doppelläufiges Flechette-Gewehr."
+      },
+      {
+        "name": "Luftgewehr Czerka Modell 77",
+        "skill": "SFW",
+        "damage": 6,
+        "critical": 0,
+        "range": "W",
+        "encumbrance": 3,
+        "hardPoints": 3,
+        "price": 1100,
+        "rarity": 6,
+        "special": "Durchbohrend 4, Betäubungsschaden",
+        "description": "Schalldämpfendes Betäubungsgewehr."
+      },
+      {
         "name": "Schallgewehr SWE/2",
         "skill": "SFW",
         "damage": 8,
@@ -316,6 +485,45 @@
         "description": "Schweres Sturmgewehr — Feuerkraft auf Kosten der Mobilität."
       },
       {
+        "name": "Schrotflinte Czerka K-23 Hammer",
+        "skill": "SFW",
+        "damage": 8,
+        "critical": 4,
+        "range": "K",
+        "encumbrance": 5,
+        "hardPoints": 4,
+        "price": 1500,
+        "rarity": 5,
+        "special": "Explosion 6, Niederwerfen",
+        "description": "Schwere Schrotflinte von Czerka."
+      },
+      {
+        "name": "Selonianischer Splitterwerfer",
+        "skill": "SFW",
+        "damage": 5,
+        "critical": 3,
+        "range": "M",
+        "encumbrance": 4,
+        "hardPoints": 2,
+        "price": 1500,
+        "rarity": 7,
+        "special": "Vollautomatik, Durchbohrend 1",
+        "description": "Selonianische Splitterwaffe mit Dauerfeuer."
+      },
+      {
+        "name": "Schweres imperiales Repetiergewehr",
+        "skill": "SFW",
+        "damage": 8,
+        "critical": 4,
+        "range": "M",
+        "encumbrance": 3,
+        "hardPoints": 2,
+        "price": 1500,
+        "rarity": 7,
+        "special": "Vollautomatik, Sperrigkeit 4, ladbare Spezialmunition",
+        "description": "Schweres imperiales Standardgewehr mit Spezialmunition."
+      },
+      {
         "name": "Bola Karabiner",
         "skill": "SFW",
         "damage": 8,
@@ -340,6 +548,58 @@
         "rarity": 7,
         "special": "Präzise 1, Sperrigkeit 2",
         "description": "Präzisionsgewehr für die Großwildjagd."
+      },
+      {
+        "name": "Aufruhr-Unterdrückungsgewehr R-88",
+        "skill": "SFW",
+        "damage": 8,
+        "critical": 0,
+        "range": "M",
+        "encumbrance": 4,
+        "hardPoints": 2,
+        "price": 2000,
+        "rarity": 5,
+        "special": "Explosion 5, Desorientierend 3, Betäubungsschaden",
+        "description": "Nicht-letale Aufstandsbekämpfungswaffe."
+      },
+      {
+        "name": "Scharfschützengewehr Czerka Modell 38",
+        "skill": "SFW",
+        "damage": 8,
+        "critical": 3,
+        "range": "E",
+        "encumbrance": 5,
+        "hardPoints": 4,
+        "price": 3000,
+        "rarity": 6,
+        "special": "Präzise 2, Durchbohrend 3",
+        "description": "Präzisions-Scharfschützengewehr."
+      },
+      {
+        "name": "Verpinen Splitterpistole",
+        "skill": "LFW",
+        "damage": 8,
+        "critical": 3,
+        "range": "M",
+        "encumbrance": 1,
+        "hardPoints": 2,
+        "price": 15000,
+        "rarity": 8,
+        "special": "Durchbohrend 2, Niederwerfen",
+        "description": "Extrem teure Verpinen Splitterwaffe."
+      },
+      {
+        "name": "Verpinen Splittergewehr",
+        "skill": "SFW",
+        "damage": 12,
+        "critical": 3,
+        "range": "E",
+        "encumbrance": 3,
+        "hardPoints": 3,
+        "price": 30000,
+        "rarity": 8,
+        "special": "Durchbohrend 4, Niederwerfen",
+        "description": "Das teuerste konventionelle Gewehr der Galaxis."
       }
     ],
     "Schwere Waffen": [
@@ -539,6 +799,32 @@
         "rarity": 4,
         "special": "Sperrigkeit 3, Begrenzte Munition 1, Durchbohrend 3",
         "description": "Uralte Waffe — leise und tödlich auf Distanz."
+      },
+      {
+        "name": "Corellianischer Kompositbogen",
+        "skill": "SFW",
+        "damage": 0,
+        "critical": 0,
+        "range": "M",
+        "encumbrance": 3,
+        "hardPoints": 1,
+        "price": 200,
+        "rarity": 5,
+        "special": "Sperrigkeit 3, Begrenzte Munition 1, nutzt Pfeil-Fähigkeiten",
+        "description": "Kompositbogen, Schaden/Crit hängt vom Pfeil ab."
+      },
+      {
+        "name": "Kompositbogen FS 19",
+        "skill": "SFW",
+        "damage": 0,
+        "critical": 0,
+        "range": "M",
+        "encumbrance": 4,
+        "hardPoints": 2,
+        "price": 500,
+        "rarity": 7,
+        "special": "Sperrigkeit 3, Begrenzte Munition 1, nutzt Pfeil-Fähigkeiten",
+        "description": "Militär-Kompositbogen, verstärkte Pfeil-Eigenschaften."
       },
       {
         "name": "Bogenspanner",
@@ -1288,6 +1574,32 @@
         "description": "Übungswaffe der Jedi-Tempel — Kampf ohne Risiko."
       },
       {
+        "name": "Ascianischer Wurfdolch",
+        "skill": "LFW",
+        "damage": 1,
+        "critical": 2,
+        "range": "K",
+        "encumbrance": 1,
+        "hardPoints": 0,
+        "price": 65,
+        "rarity": 7,
+        "special": "Begrenzte Munition 1, Durchbohrend 2",
+        "description": "Exotischer Wurfdolch."
+      },
+      {
+        "name": "Aurateranischer Boomerang",
+        "skill": "LFW",
+        "damage": 4,
+        "critical": 5,
+        "range": "M",
+        "encumbrance": 1,
+        "hardPoints": 0,
+        "price": 65,
+        "rarity": 6,
+        "special": "Begrenzte Munition 1, Gelenkt 1, kehrt bei Fehlschlag zurück",
+        "description": "Rückkehrender Wurfboomerang."
+      },
+      {
         "name": "Kl. Unruhen-Schild",
         "skill": "NKW",
         "damage": 0,
@@ -1301,6 +1613,19 @@
         "description": "Schutzschild für Ordnungskräfte bei Aufständen."
       },
       {
+        "name": "Gunganischer Atlatl",
+        "skill": "LFW",
+        "damage": 5,
+        "critical": 3,
+        "range": "M",
+        "encumbrance": 2,
+        "hardPoints": 0,
+        "price": 100,
+        "rarity": 7,
+        "special": "Begrenzte Munition 1, Verbrennend 1, Ionenschaden",
+        "description": "Gunganische Speerschleuder mit Plasma-Bällen."
+      },
+      {
         "name": "Thermoschneidegerät",
         "skill": "NKW",
         "damage": 4,
@@ -1312,6 +1637,19 @@
         "rarity": 3,
         "special": "Unpräzise 2, Verbrennen 1",
         "description": "Thermalklinge — schneidet Schotten wie Papier."
+      },
+      {
+        "name": "Styanax-Lanze Harpune",
+        "skill": "SFW",
+        "damage": 8,
+        "critical": 3,
+        "range": "K",
+        "encumbrance": 8,
+        "hardPoints": 2,
+        "price": 200,
+        "rarity": 8,
+        "special": "Sperrigkeit 4, Begrenzte Munition 1, Durchbohrend 3, Tödlich 1",
+        "description": "Massive Harpunenwaffe für die Großwildjagd."
       },
       {
         "name": "Voss Kriegsspeer",

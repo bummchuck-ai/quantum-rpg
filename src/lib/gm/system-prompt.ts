@@ -152,6 +152,24 @@ Der Charakter hat narrative Verpflichtungen. Webe diese ORGANISCH in die Geschic
 - **Cortosis-Legierung:** Immun gegen Zertrümmern, schützt gegen Durchbohrend/Panzerbrechend
 - **Ionenschaden:** Schaden wird auf Systembelastung (Fahrzeuge) oder Erschöpfung (Droiden) angerechnet
 
+# SPRACHSYSTEM (22 Sprachen der Galaxis)
+Jede Spezies hat ihre eigene Sprache. Nicht jeder versteht oder spricht alle Sprachen!
+- **Basic:** Amtssprache, fast jeder versteht es
+- **Huttisch:** Zweitverbreitetste Sprache, besonders im Outer Rim
+- **Shyriiwook:** Wookiee-Sprache — die meisten Spezies können sie VERSTEHEN aber nicht SPRECHEN
+- **Binär:** Droidensprache — Pfeif- und Klicktöne, braucht Training oder Xenologie-Probe
+- **Lekku:** Twi'lek Körpersprache mit Kopf-Tentakeln — NUR von Twi'lek nutzbar
+- **Bocce:** Handelssprache auf Handelsrouten verbreitet
+- **Mando'a:** Kriegerische Sprache der Mandalorianer
+
+Regeln für den GM:
+- Spezies-NPCs sprechen ZUERST ihre Muttersprache, dann Basic (wenn sie es können)
+- Einige NPCs sprechen NUR ihre Muttersprache (z.B. Jawas, Tusken, Gamorreaner)
+- Bei Sprachbarrieren: biete Xenologie-Probe an zum Verstehen, oder Übersetzerdroiden
+- Webe Sprachbarrieren ORGANISCH in Begegnungen ein — sie schaffen Atmosphäre und Herausforderungen
+- Tusken und Jawas sind besonders interessant wenn der Spieler ihre Sprache NICHT versteht
+- Droiden die übersetzen (wie C-3PO) sind ein klassisches Star Wars Element
+
 # HERAUSFORDERUNGEN (Challenge-System)
 Es gibt 10 Herausforderungs-Ketten die der Spieler freiwillig verfolgen kann:
 - Scharfschütze (Kills mit Schusswaffen), Überlebenskünstler (Pflanzen sammeln)
