@@ -251,6 +251,22 @@ export function useGameSession() {
       const sc = data.stateChanges;
       updateStatus(sc.wounds || 0, sc.strain || 0, sc.credits || 0);
 
+      // Sync wounds/strain to combat combatant (if in combat)
+      if (combat?.active && (sc.wounds || sc.strain)) {
+        setCombat(prev => {
+          if (!prev?.active) return prev;
+          const updated = { ...prev, combatants: [...prev.combatants] };
+          const pcIdx = updated.combatants.findIndex(c => c.type === 'pc');
+          if (pcIdx !== -1) {
+            const pc = { ...updated.combatants[pcIdx] };
+            pc.wounds = Math.max(0, pc.wounds + (sc.wounds || 0));
+            pc.strain = Math.max(0, (pc.strain || 0) + (sc.strain || 0));
+            updated.combatants[pcIdx] = pc;
+          }
+          return updated;
+        });
+      }
+
       // Handle quest updates from GM
       if (sc.newQuest) {
         playQuestReceived();
@@ -342,20 +358,32 @@ export function useGameSession() {
       // Handle critical injury from GM
       if (sc.criticalInjury?.name) {
         playCriticalHit();
+        const newInjury = {
+          id: `crit-${Date.now()}`,
+          name: sc.criticalInjury.name,
+          severity: sc.criticalInjury.severity || 50,
+          effect: sc.criticalInjury.effect || '',
+          permanent: sc.criticalInjury.permanent ?? false,
+        };
         setSession(prev => ({
           ...prev,
-          criticalInjuries: [
-            ...(prev.criticalInjuries || []),
-            {
-              id: `crit-${Date.now()}`,
-              name: sc.criticalInjury.name,
-              severity: sc.criticalInjury.severity || 50,
-              effect: sc.criticalInjury.effect || '',
-              permanent: sc.criticalInjury.permanent ?? false,
-            },
-          ],
+          criticalInjuries: [...(prev.criticalInjuries || []), newInjury],
           updatedAt: new Date().toISOString(),
         }));
+        // Also sync to combat combatant
+        if (combat?.active) {
+          setCombat(prev => {
+            if (!prev?.active) return prev;
+            const updated = { ...prev, combatants: [...prev.combatants] };
+            const pcIdx = updated.combatants.findIndex(c => c.type === 'pc');
+            if (pcIdx !== -1) {
+              const pc = { ...updated.combatants[pcIdx] };
+              pc.criticalInjuries = [...(pc.criticalInjuries || []), newInjury];
+              updated.combatants[pcIdx] = pc;
+            }
+            return updated;
+          });
+        }
       }
 
       // Handle injury healing from GM
@@ -397,6 +425,7 @@ export function useGameSession() {
           }
         }
         setCombat(newCombat);
+        setSession(prev => ({ ...prev, combatActive: true, updatedAt: new Date().toISOString() }));
       }
     }
 
