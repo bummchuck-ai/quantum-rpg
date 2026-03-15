@@ -186,6 +186,9 @@ const SpeciesSelector: React.FC = () => {
                   <img
                     src={`/species/${slugify(s.name)}.jpg`}
                     alt={s.name}
+                    loading="lazy"
+                    width={400}
+                    height={400}
                     className="absolute inset-0 w-full h-full object-cover object-center opacity-90 group-hover:opacity-100 transition-all duration-500"
                     onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                   />
