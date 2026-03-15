@@ -10,6 +10,13 @@
 :root {
   --background: #000000;
   --foreground: #ffffff;
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+}
+
+/* PWA standalone mode: safe area spacer for pages without custom headers */
+.safe-area-top {
+  padding-top: env(safe-area-inset-top, 0px);
 }
 
 body {

@@ -83,7 +83,7 @@ const CharacterSummary: React.FC = () => {
   }
 
   return (
-    <main className="min-h-dvh w-full bg-black text-zinc-300 font-mono flex flex-col p-6">
+    <main className="min-h-dvh w-full bg-black text-zinc-300 font-mono flex flex-col p-6 safe-area-top">
       <header className="flex justify-between items-center border-b border-zinc-800 pb-4 mb-6 sticky top-0 bg-black z-30">
         <div className="flex gap-3 items-center">
             <button onClick={() => router.push('/create/ship')} className="w-8 h-8 border border-zinc-700 flex items-center justify-center text-zinc-500 font-black text-xs hover:border-amber-500 hover:text-amber-500 transition-all rounded">←</button>

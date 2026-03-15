@@ -290,9 +290,9 @@ const ChatInterface: React.FC = () => {
       )}
 
       {/* Header HUD — Compact 3-row layout */}
-      <header className="bg-zinc-950/90 border-b border-zinc-800/60 backdrop-blur-xl z-20 shadow-2xl">
-        {/* Row 1: Avatar + Name + W/S bars + Save */}
-        <div className="px-3 pt-2.5 pb-1.5 flex justify-between items-center">
+      <header className="bg-zinc-950/90 border-b border-zinc-800/60 backdrop-blur-xl z-20 shadow-2xl" style={{ paddingTop: 'env(safe-area-inset-top, 0px)' }}>
+        {/* Row 1: Avatar + Name + W/S bars + Settings */}
+        <div className="px-3 pt-2 pb-1.5 flex justify-between items-center">
           <div className="flex items-center gap-2.5">
             <button onClick={() => setShowCharSheet(true)} className="w-10 h-10 border border-amber-500/40 rounded-lg bg-amber-500/5 flex items-center justify-center active:scale-90 transition-transform overflow-hidden">
               {species?.name ? (

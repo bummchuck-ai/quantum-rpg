@@ -46,7 +46,7 @@ export default function Home() {
   };
 
   return (
-    <main className="h-dvh w-screen flex flex-col justify-between p-8 font-mono overflow-hidden select-none bg-black">
+    <main className="h-dvh w-screen flex flex-col justify-between p-8 font-mono overflow-hidden select-none bg-black" style={{ paddingTop: 'max(2rem, env(safe-area-inset-top, 2rem))' }}>
 
       {/* Splash Screen — shows once on app load */}
       {showSplash && (
