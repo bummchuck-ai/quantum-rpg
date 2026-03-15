@@ -154,7 +154,7 @@ const TalentTreeGrid: React.FC<TalentTreeGridProps> = ({
 
                   <div
                     onClick={() => setSelectedTalentKey(isSelected ? null : talentKey)}
-                    className={`relative w-full p-1.5 border rounded-lg cursor-pointer transition-all duration-150 ${
+                    className={`relative w-full border rounded-lg cursor-pointer transition-all duration-150 ${
                       isSelected
                         ? 'border-amber-500 bg-zinc-800 shadow-[0_0_10px_rgba(245,158,11,0.15)]'
                         : isOwned
@@ -164,57 +164,65 @@ const TalentTreeGrid: React.FC<TalentTreeGridProps> = ({
                         : 'border-zinc-700/50 bg-zinc-900/30 hover:border-zinc-600'
                     }`}
                   >
-                    {/* Header: Name + Status */}
-                    <div className="flex justify-between items-start gap-1">
-                      <h3 className={`text-[8px] font-black uppercase leading-none ${
-                        isOwned ? 'text-emerald-400' : isLocked ? 'text-zinc-600' : 'text-zinc-300'
-                      }`}>
-                        {talent.name}
-                      </h3>
-                      {isOwned && (
-                        <div className="flex items-center gap-0.5 shrink-0">
-                          {talent.isRanked && ownedEntry && ownedEntry.currentRank > 0 && (
-                            <span className="text-[6px] text-emerald-400 font-black bg-emerald-500/10 px-1 rounded">R{ownedEntry.currentRank}</span>
-                          )}
-                          <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Description (only when selected) */}
-                    {isSelected && (
-                      <p className="text-[8px] text-zinc-500 leading-tight mt-1 line-clamp-3">
-                        {talent.description || 'Passiv'}
-                      </p>
-                    )}
-
-                    {/* Footer: Cost + Type */}
-                    <div className="flex justify-between items-center mt-1">
-                      <span className={`text-[7px] font-black ${isLocked ? 'text-zinc-700' : 'text-zinc-500'}`}>{cost}</span>
-                      {talent.isRanked && (
-                        <span className="text-[5px] bg-zinc-800 text-zinc-600 px-1 py-px rounded uppercase leading-none">R</span>
-                      )}
-                    </div>
-
-                    {/* Buy / Rank-up Overlay */}
-                    {isSelected && (!isOwned || canRebuy) && (
-                      <div className="absolute inset-0 bg-black/85 flex flex-col items-center justify-center rounded-lg animate-in fade-in duration-150 gap-1 p-1">
-                        {(isUnlocked || canRebuy) ? (
-                          <button
-                            onClick={(e) => { e.stopPropagation(); handleBuy(talent); }}
-                            disabled={!canAfford}
-                            className={`px-3 py-1.5 rounded-md font-black uppercase text-[8px] tracking-wider ${
-                              canAfford
-                                ? 'bg-amber-500 text-black active:scale-95'
-                                : 'bg-zinc-800 text-zinc-600'
-                            }`}
-                          >
-                            {canRebuy ? `Rank Up` : `Kaufen`}
-                          </button>
+                    {/* Collapsed: Name + Cost */}
+                    <div className="p-1.5">
+                      <div className="flex justify-between items-start gap-1">
+                        <h3 className={`text-[8px] font-black uppercase leading-none ${
+                          isOwned ? 'text-emerald-400' : isLocked ? 'text-zinc-600' : 'text-zinc-300'
+                        }`}>
+                          {talent.name}
+                        </h3>
+                        {isOwned ? (
+                          <div className="flex items-center gap-0.5 shrink-0">
+                            {talent.isRanked && ownedEntry && ownedEntry.currentRank > 0 && (
+                              <span className="text-[6px] text-emerald-400 font-black bg-emerald-500/10 px-1 rounded">R{ownedEntry.currentRank}</span>
+                            )}
+                            <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
+                          </div>
                         ) : (
-                          <span className="text-[7px] text-red-400/70 font-black uppercase">Gesperrt</span>
+                          <span className={`text-[7px] font-black shrink-0 ${isLocked ? 'text-zinc-700' : 'text-zinc-500'}`}>{cost}</span>
                         )}
-                        <span className="text-[6px] text-zinc-600">{cost} XP</span>
+                      </div>
+
+                      {/* Ranked badge (only when collapsed) */}
+                      {!isSelected && talent.isRanked && (
+                        <span className="text-[5px] bg-zinc-800 text-zinc-600 px-1 py-px rounded uppercase leading-none mt-1 inline-block">Ranked</span>
+                      )}
+                    </div>
+
+                    {/* Expanded: Description + Action */}
+                    {isSelected && (
+                      <div className="border-t border-zinc-700/50 p-2 space-y-2 animate-in fade-in duration-150">
+                        <p className="text-[9px] text-zinc-400 leading-snug">
+                          {talent.description || 'Passiv'}
+                        </p>
+
+                        <div className="flex items-center justify-between gap-2">
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-[7px] text-zinc-600 font-black">{cost} XP</span>
+                            {talent.isRanked && (
+                              <span className="text-[5px] bg-zinc-800 text-zinc-600 px-1 py-px rounded uppercase">Ranked</span>
+                            )}
+                          </div>
+
+                          {(!isOwned || canRebuy) && (
+                            (isUnlocked || canRebuy) ? (
+                              <button
+                                onClick={(e) => { e.stopPropagation(); handleBuy(talent); }}
+                                disabled={!canAfford}
+                                className={`px-3 py-1.5 rounded-md font-black uppercase text-[8px] tracking-wider ${
+                                  canAfford
+                                    ? 'bg-amber-500 text-black active:scale-95'
+                                    : 'bg-zinc-800 text-zinc-600'
+                                }`}
+                              >
+                                {canRebuy ? 'Rank Up' : 'Kaufen'}
+                              </button>
+                            ) : (
+                              <span className="text-[7px] text-red-400/60 font-black uppercase px-2">Gesperrt</span>
+                            )
+                          )}
+                        </div>
                       </div>
                     )}
                   </div>
