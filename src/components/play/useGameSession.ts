@@ -22,7 +22,7 @@ import { DIFFICULTY_MAP, AUTOSAVE_INTERVAL } from './types';
 
 export function useGameSession() {
   const {
-    players, activePlayerIndex, updateStatus, exportState, importState, setActivePlayer, spendXP, buyGear, grantXP
+    players, activePlayerIndex, updateStatus, updateActivePlayer, exportState, importState, setActivePlayer, spendXP, buyGear, grantXP
   } = useCharacterStore();
 
   const activePlayer = players[activePlayerIndex];
@@ -81,8 +81,10 @@ export function useGameSession() {
     return createNewSession(ctx);
   });
   const [combat, setCombat] = useState<CombatState>(() => createInitialCombatState());
-  const [ownedPowers, setOwnedPowers] = useState<string[]>([]);
-  const [ownedUpgrades, setOwnedUpgrades] = useState<string[]>([]);
+
+  // Force powers: read from player store (persisted), local state synced
+  const [ownedPowers, setOwnedPowers] = useState<string[]>(activePlayer?.forcePowers || []);
+  const [ownedUpgrades, setOwnedUpgrades] = useState<string[]>(activePlayer?.forceUpgrades || []);
 
   const gmMessageCount = useRef(0);
 
@@ -573,17 +575,21 @@ export function useGameSession() {
     return buildSkillPool(charValue, skillRank, difficultyLevel, 0, boost, setback);
   };
 
-  // Force power handlers
+  // Force power handlers — persist to both local state AND player store
   const handleBuyPower = (powerId: string) => {
     const cost = 5;
     if ((availableXP || 0) >= cost) {
-      setOwnedPowers(prev => [...prev, powerId]);
+      const updated = [...ownedPowers, powerId];
+      setOwnedPowers(updated);
+      updateActivePlayer({ forcePowers: updated });
       spendXP(cost);
     }
   };
   const handleBuyUpgrade = (upgradeId: string, cost: number) => {
     if ((availableXP || 0) >= cost) {
-      setOwnedUpgrades(prev => [...prev, upgradeId]);
+      const updated = [...ownedUpgrades, upgradeId];
+      setOwnedUpgrades(updated);
+      updateActivePlayer({ forceUpgrades: updated });
       spendXP(cost);
     }
   };

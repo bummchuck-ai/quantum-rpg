@@ -65,6 +65,8 @@ export interface Player {
   backgroundStory: string;
   vehicles: PlayerVehicle[];
   questLog: Quest[];
+  forcePowers: string[];
+  forceUpgrades: string[];
 }
 
 interface GameState {
@@ -135,6 +137,8 @@ const createNewPlayer = (id: string): Player => ({
   backgroundStory: '',
   vehicles: [],
   questLog: [],
+  forcePowers: [],
+  forceUpgrades: [],
 });
 
 export const useCharacterStore = create<GameState>()(
@@ -552,6 +556,8 @@ export const useCharacterStore = create<GameState>()(
             ownedGear: Array.isArray(p.ownedGear) ? p.ownedGear : [],
             questLog: Array.isArray(p.questLog) ? p.questLog : [],
             vehicles: Array.isArray(p.vehicles) ? p.vehicles : [],
+            forcePowers: Array.isArray(p.forcePowers) ? p.forcePowers : [],
+            forceUpgrades: Array.isArray(p.forceUpgrades) ? p.forceUpgrades : [],
           }));
           set({ players: state.players, activePlayerIndex: state.activePlayerIndex });
         } catch (e) {
