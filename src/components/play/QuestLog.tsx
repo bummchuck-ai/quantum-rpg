@@ -34,13 +34,12 @@ const QuestLog: React.FC<QuestLogProps> = ({ quests, npcs, onClose }) => {
   };
 
   return (
-    <div className="absolute inset-0 z-[100] bg-black animate-in fade-in duration-300 flex flex-col">
-      <header className="p-4 border-b border-zinc-800 flex justify-between items-center bg-zinc-950">
+    <div className="h-full bg-black flex flex-col">
+      <header className="p-4 border-b border-zinc-800 flex justify-between items-center bg-zinc-950 safe-area-top">
         <h2 className="text-xl font-black text-white italic tracking-tighter uppercase">Missions_Log</h2>
-        <button onClick={onClose} className="w-10 h-10 border border-zinc-800 flex items-center justify-center text-xl">✕</button>
       </header>
 
-      <div className="flex-1 overflow-y-auto p-4 space-y-6">
+      <div className="flex-1 overflow-y-auto p-4 pb-20 space-y-6">
         {/* Active Quests */}
         <section>
           <div className="text-[8px] text-amber-500 font-black uppercase tracking-[0.2em] mb-3">Aktive Missionen ({activeQuests.length})</div>
