@@ -81,7 +81,7 @@
       "Charme",
       "Führungsqualität",
       "Täuschung",
-      "Verhandlung",
+      "Verhandeln",
       "Allgemeinbildung",
       "Äußerer Rand"
     ],
@@ -122,7 +122,7 @@
         "skills": [
           "Charme",
           "Disziplin",
-          "Verhandlung",
+          "Verhandeln",
           "Kernwelten"
         ],
         "description": "Offizielle Stimme zwischen Fraktionen. Diplomatie auf höchster Ebene."
@@ -142,7 +142,7 @@
         "skills": [
           "Computertechnik",
           "Infiltration",
-          "Verhandlung",
+          "Verhandeln",
           "Wachsamkeit"
         ],
         "description": "Logistik-Genie — beschafft Nachschub, wo andere nur leere Lager sehen."
@@ -1309,7 +1309,7 @@
           "Disziplin",
           "Wahrnehmung",
           "Nahkampfwaffen",
-          "Schwere Fernkampfwaffen"
+          "schwere Fernkampfwaffen"
         ],
         "description": "Vollstrecker der dunklen Seite. Richtet mit der Macht — gnadenlos."
       }

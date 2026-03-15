@@ -48,14 +48,14 @@ export function useGameSession() {
     startListening, stopListening, clearTranscript
   } = useSpeech();
 
-  // Toast auto-dismiss
+  // Toast auto-dismiss (single timer, prevents queue explosion)
   useEffect(() => {
     if (toasts.length === 0) return;
     const timer = setTimeout(() => {
       setToasts(prev => prev.slice(1));
     }, 3000);
     return () => clearTimeout(timer);
-  }, [toasts]);
+  }, [toasts.length]);
 
   // STT: Sync final transcript to input
   useEffect(() => {
@@ -129,14 +129,14 @@ export function useGameSession() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Auto-save
+  // Auto-save (last 50 messages only to reduce localStorage writes)
   useEffect(() => {
     const interval = setInterval(() => {
       try {
         const autoSaveData = JSON.stringify({
           version: 2,
           storeState: exportState(),
-          chatMessages: messages,
+          chatMessages: messages.slice(-50),
           session,
           combat,
           ownedPowers,

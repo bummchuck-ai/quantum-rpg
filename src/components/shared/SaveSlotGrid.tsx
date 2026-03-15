@@ -203,6 +203,9 @@ const SaveSlotGrid: React.FC<SaveSlotGridProps> = ({
         setError('Die Datei enthält kein gültiges JSON.');
       }
     };
+    reader.onerror = () => {
+      setError('Datei konnte nicht gelesen werden.');
+    };
     reader.readAsText(file);
     e.target.value = '';
   };

@@ -103,16 +103,23 @@ export async function POST(req: Request) {
     // Strip markdown fences, handle various formats
     let clean = text.replace(/^```(?:json)?\n?/, '').replace(/\n?```$/, '').trim();
 
-    // Try to extract JSON if wrapped in other text
-    const jsonMatch = clean.match(/\{[\s\S]*\}/);
-    if (jsonMatch) {
-      clean = jsonMatch[0];
-    }
-
+    // Try direct parse first, then balanced-brace extraction (safer than greedy regex)
     try {
       return NextResponse.json(JSON.parse(clean));
     } catch {
-      // If JSON parsing fails, wrap the raw text as narrative
+      const start = clean.indexOf('{');
+      if (start !== -1) {
+        let depth = 0;
+        for (let i = start; i < clean.length; i++) {
+          if (clean[i] === '{') depth++;
+          else if (clean[i] === '}') depth--;
+          if (depth === 0) {
+            try { return NextResponse.json(JSON.parse(clean.slice(start, i + 1))); }
+            catch { break; }
+          }
+        }
+      }
+      // All parsing failed — wrap raw text as narrative
       return NextResponse.json({
         narrative: text || 'Der GM antwortet nicht wie erwartet. Bitte versuche es erneut.',
         options: [{ id: 'A', text: 'Erneut versuchen' }],

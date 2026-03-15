@@ -16,11 +16,19 @@ const QuestLog: React.FC<QuestLogProps> = ({ quests, npcs, onClose }) => {
   const failedQuests = quests.filter(q => q.status === 'failed');
 
   const DispositionBar = ({ value }: { value: number }) => {
-    const pct = ((value + 100) / 200) * 100;
+    const clamped = Math.max(-100, Math.min(100, value));
+    const barWidth = Math.abs(clamped) / 2; // 0-50% of total width
+    const isPositive = clamped >= 0;
     return (
-      <div className="h-1 w-full bg-zinc-800 rounded-full overflow-hidden">
-        <div className={`h-full transition-all ${value >= 0 ? 'bg-emerald-500' : 'bg-red-500'}`}
-          style={{ width: `${pct}%`, marginLeft: value < 0 ? 0 : undefined }} />
+      <div className="h-1 w-full bg-zinc-800 rounded-full overflow-hidden relative">
+        <div className="absolute top-0 left-1/2 w-px h-full bg-zinc-600" />
+        <div
+          className={`absolute top-0 h-full transition-all ${isPositive ? 'bg-emerald-500' : 'bg-red-500'}`}
+          style={{
+            width: `${barWidth}%`,
+            left: isPositive ? '50%' : `${50 - barWidth}%`,
+          }}
+        />
       </div>
     );
   };

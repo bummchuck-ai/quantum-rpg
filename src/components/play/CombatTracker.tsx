@@ -89,7 +89,7 @@ const CombatTracker: React.FC<CombatTrackerProps> = ({ combat, onEndCombat, onNe
           </button>
         </div>
       </div>
-      <div className="p-3 space-y-2 max-h-64 overflow-y-auto">
+      <div className="p-3 space-y-2 max-h-[50vh] overflow-y-auto">
         {combat.combatants.map(c => (
           <CombatantRow key={c.id} c={c} />
         ))}
