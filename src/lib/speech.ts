@@ -30,10 +30,14 @@ interface SpeechSettings {
   ttsRate: number;
   ttsPitch: number;
   ttsVoiceName: string | null;
+  musicVolume: number;    // 0-1
+  speakerVolume: number;  // 0-1
+  sfxVolume: number;      // 0-1
+  musicEnabled: boolean;
 }
 
 function loadSpeechSettings(): SpeechSettings {
-  if (typeof window === 'undefined') return { ttsEnabled: false, sttEnabled: false, ttsRate: 1.0, ttsPitch: 1.0, ttsVoiceName: null };
+  if (typeof window === 'undefined') return { ttsEnabled: false, sttEnabled: false, ttsRate: 1.0, ttsPitch: 1.0, ttsVoiceName: null, musicVolume: 0.3, speakerVolume: 0.8, sfxVolume: 0.6, musicEnabled: false };
   try {
     const raw = localStorage.getItem(SETTINGS_KEY);
     if (raw) {
@@ -44,10 +48,14 @@ function loadSpeechSettings(): SpeechSettings {
         ttsRate: s.ttsRate ?? 1.0,
         ttsPitch: s.ttsPitch ?? 1.0,
         ttsVoiceName: s.ttsVoiceName ?? null,
+        musicVolume: s.musicVolume ?? 0.3,
+        speakerVolume: s.speakerVolume ?? 0.8,
+        sfxVolume: s.sfxVolume ?? 0.6,
+        musicEnabled: s.musicEnabled ?? false,
       };
     }
   } catch { /* use defaults */ }
-  return { ttsEnabled: false, sttEnabled: false, ttsRate: 1.0, ttsPitch: 1.0, ttsVoiceName: null };
+  return { ttsEnabled: false, sttEnabled: false, ttsRate: 1.0, ttsPitch: 1.0, ttsVoiceName: null, musicVolume: 0.3, speakerVolume: 0.8, sfxVolume: 0.6, musicEnabled: false };
 }
 
 function saveSpeechSettings(settings: Partial<SpeechSettings>) {
@@ -76,49 +84,68 @@ export function setTTSVoiceName(name: string | null) {
   saveSpeechSettings({ ttsVoiceName: name });
 }
 
-// Google Cloud TTS voice options
+// ============================================================
+// SOUNDTRACK — Background Music Loop
+// ============================================================
+
+let soundtrack: HTMLAudioElement | null = null;
+
+export function startSoundtrack(): void {
+  if (typeof window === 'undefined') return;
+  if (soundtrack) return; // already playing
+  const settings = loadSpeechSettings();
+  soundtrack = new Audio('/audio/soundtrack.mp3');
+  soundtrack.loop = true;
+  soundtrack.volume = settings.musicVolume;
+  soundtrack.play().catch(() => { /* needs user gesture */ });
+  saveSpeechSettings({ musicEnabled: true });
+}
+
+export function stopSoundtrack(): void {
+  if (soundtrack) {
+    soundtrack.pause();
+    soundtrack.currentTime = 0;
+    soundtrack = null;
+  }
+  saveSpeechSettings({ musicEnabled: false });
+}
+
+export function setMusicVolume(vol: number): void {
+  const v = Math.max(0, Math.min(1, vol));
+  if (soundtrack) soundtrack.volume = v;
+  saveSpeechSettings({ musicVolume: v });
+}
+
+export function setSpeakerVolume(vol: number): void {
+  saveSpeechSettings({ speakerVolume: Math.max(0, Math.min(1, vol)) });
+}
+
+export function setSfxVolume(vol: number): void {
+  saveSpeechSettings({ sfxVolume: Math.max(0, Math.min(1, vol)) });
+}
+
+export function getMusicPlaying(): boolean {
+  return soundtrack !== null && !soundtrack.paused;
+}
+
+// Google Cloud TTS voice options (curated — 2 male, 2 female)
 const CLOUD_VOICES_DE = [
-  { name: 'de-DE-Neural2-H', label: 'Neural2 Mann (empfohlen)' },
-  { name: 'de-DE-Neural2-G', label: 'Neural2 Frau' },
-  { name: 'de-DE-Wavenet-H', label: 'WaveNet Mann' },
-  { name: 'de-DE-Wavenet-G', label: 'WaveNet Frau' },
-  { name: 'de-DE-Studio-B', label: 'Studio Mann (Premium)' },
-  { name: 'de-DE-Studio-C', label: 'Studio Frau (Premium)' },
-  { name: 'de-DE-Chirp-HD-D', label: 'Chirp HD Mann' },
-  { name: 'de-DE-Chirp-HD-F', label: 'Chirp HD Frau' },
+  { name: 'de-DE-Studio-B', label: 'Männlich (Studio)' },
+  { name: 'de-DE-Neural2-H', label: 'Männlich (Neural)' },
+  { name: 'de-DE-Studio-C', label: 'Weiblich (Studio)' },
+  { name: 'de-DE-Neural2-G', label: 'Weiblich (Neural)' },
 ];
 
 const CLOUD_VOICES_EN = [
-  { name: 'en-US-Neural2-D', label: 'Neural2 Male (recommended)' },
-  { name: 'en-US-Neural2-C', label: 'Neural2 Female' },
-  { name: 'en-US-Wavenet-D', label: 'WaveNet Male' },
-  { name: 'en-US-Wavenet-C', label: 'WaveNet Female' },
-  { name: 'en-US-Studio-M', label: 'Studio Male (Premium)' },
-  { name: 'en-US-Studio-O', label: 'Studio Female (Premium)' },
+  { name: 'en-US-Studio-M', label: 'Male (Studio)' },
+  { name: 'en-US-Neural2-D', label: 'Male (Neural)' },
+  { name: 'en-US-Studio-O', label: 'Female (Studio)' },
+  { name: 'en-US-Neural2-C', label: 'Female (Neural)' },
 ];
 
-/** Get all available voices for a language prefix (e.g., 'de' or 'en') */
+/** Get available voices — curated Cloud voices only */
 export function getVoicesForLang(lang: string): { name: string; label: string }[] {
-  // Cloud voices first (better quality)
-  const cloudVoices = lang === 'en' ? CLOUD_VOICES_EN : CLOUD_VOICES_DE;
-
-  // Browser voices as additional options
-  const browserVoices: { name: string; label: string }[] = [];
-  if (checkTTSSupport()) {
-    ensureVoicesLoaded();
-    const voices = speechSynthesis.getVoices();
-    const prefix = lang.split('-')[0];
-    voices
-      .filter(v => v.lang.startsWith(prefix))
-      .forEach(v => {
-        browserVoices.push({
-          name: `browser:${v.name}`,
-          label: `${v.name} (Browser)`,
-        });
-      });
-  }
-
-  return [...cloudVoices, ...browserVoices];
+  return lang === 'en' ? CLOUD_VOICES_EN : CLOUD_VOICES_DE;
 }
 
 // ============================================================
@@ -237,8 +264,9 @@ async function speakWithCloudTTS(
     const data = await response.json();
     if (!data.audioContent) return false;
 
-    // Play base64 audio
+    // Play base64 audio with speaker volume
     const audio = new Audio(`data:audio/mp3;base64,${data.audioContent}`);
+    audio.volume = settings.speakerVolume;
     audio.onplay = () => onStart?.();
     audio.onended = () => { currentAudio = null; onEnd?.(); };
     audio.onerror = () => { currentAudio = null; onEnd?.(); };

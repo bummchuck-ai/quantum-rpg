@@ -13,9 +13,44 @@ import { ALL_SKILLS } from '@/lib/skills';
 import { calculateDerivedStats } from '@/lib/engine/derived-stats';
 import { slugify } from '@/lib/save-utils';
 import { getLanguage, t } from '@/lib/i18n';
-import { getVoicesForLang, setTTSVoiceName, getSpeechSettings } from '@/lib/speech';
+import { getVoicesForLang, setTTSVoiceName, getSpeechSettings, startSoundtrack, stopSoundtrack, setMusicVolume, setSpeakerVolume, getMusicPlaying } from '@/lib/speech';
 import { useGameSession } from './useGameSession';
 import type { GMResponse } from './types';
+
+const VolumeSlider: React.FC<{ label: string; icon: string; value: number; onChange: (v: number) => void }> = ({ label, icon, value, onChange }) => (
+  <div className="flex items-center gap-2 px-4 py-2">
+    <span className="text-base w-6">{icon}</span>
+    <span className="text-[10px] text-zinc-500 font-bold w-16">{label}</span>
+    <input
+      type="range" min="0" max="100" value={Math.round(value * 100)}
+      onChange={(e) => onChange(parseInt(e.target.value) / 100)}
+      className="flex-1 h-1 accent-amber-500 bg-zinc-800 rounded-full appearance-none cursor-pointer"
+    />
+    <span className="text-[9px] text-zinc-600 w-8 text-right">{Math.round(value * 100)}%</span>
+  </div>
+);
+
+const MusicControls: React.FC = () => {
+  const [musicOn, setMusicOn] = useState(getMusicPlaying());
+  const [musicVol, setMusicVol] = useState(() => getSpeechSettings().musicVolume);
+  const [speakerVol, setSpeakerVol] = useState(() => getSpeechSettings().speakerVolume);
+
+  return (
+    <div className="space-y-1">
+      <button onClick={() => {
+        if (musicOn) { stopSoundtrack(); setMusicOn(false); }
+        else { startSoundtrack(); setMusicOn(true); }
+      }} className="w-full flex items-center justify-between px-4 py-3 text-[12px] text-zinc-300 hover:bg-zinc-800 rounded-xl transition-colors border border-zinc-800">
+        <span><span className="text-base mr-2">🎵</span> <span className="font-bold">Soundtrack</span></span>
+        <span className={`text-[10px] font-black px-2 py-0.5 rounded ${musicOn ? 'text-emerald-400 bg-emerald-500/10' : 'text-zinc-600 bg-zinc-800'}`}>{musicOn ? 'ON' : 'OFF'}</span>
+      </button>
+      {musicOn && (
+        <VolumeSlider label="Musik" icon="🎵" value={musicVol} onChange={(v) => { setMusicVol(v); setMusicVolume(v); }} />
+      )}
+      <VolumeSlider label="Sprecher" icon="🔊" value={speakerVol} onChange={(v) => { setSpeakerVol(v); setSpeakerVolume(v); }} />
+    </div>
+  );
+};
 
 const QuickSettings: React.FC<{
   onSaveLoad: () => void;
@@ -99,6 +134,11 @@ const QuickSettings: React.FC<{
                 <span><span className="text-base mr-2">🎙</span> <span className="font-bold">Spracheingabe</span></span>
                 <span className={`text-[10px] font-black px-2 py-0.5 rounded ${sttEnabled ? 'text-emerald-400 bg-emerald-500/10' : 'text-zinc-600 bg-zinc-800'}`}>{sttEnabled ? 'ON' : 'OFF'}</span>
               </button>
+
+              <div className="h-px bg-zinc-800 my-2" />
+
+              {/* Music Toggle + Volume */}
+              <MusicControls />
 
               <div className="h-px bg-zinc-800 my-2" />
 
