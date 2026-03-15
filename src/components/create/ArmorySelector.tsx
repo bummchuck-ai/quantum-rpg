@@ -21,6 +21,7 @@ const SUBCAT_ICONS: Record<string, string> = {
   'Exotisch': '/icons/gear/special-armor.svg',
   'Granaten': '/icons/gear/grenade.svg',
   'Munition': '/icons/gear/grenade.svg',
+  'Sprengstoffe': '/icons/gear/grenade.svg',
   // Armor
   'Kleidung': '/icons/gear/clothing.svg',
   'Westen': '/icons/gear/vest.svg',

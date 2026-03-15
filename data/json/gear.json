@@ -370,6 +370,19 @@
         "description": "Umgebauter Ionenantrieb als improvisierte Waffe."
       },
       {
+        "name": "Anti-Personen-Mine",
+        "skill": "ART",
+        "damage": 12,
+        "critical": 3,
+        "range": "N",
+        "encumbrance": 3,
+        "hardPoints": 0,
+        "price": 850,
+        "rarity": 6,
+        "special": "Begrenzte Munition 1, Tödlich 4, Explosion 4",
+        "description": "Druckzünder-Mine gegen Personen."
+      },
+      {
         "name": "Flammenwerfer",
         "skill": "SFW",
         "damage": 8,
@@ -396,6 +409,19 @@
         "description": "Sprüht ätzende Säure — Albtraum jeder Rüstung."
       },
       {
+        "name": "Anti-Fahrzeug-Mine",
+        "skill": "ART",
+        "damage": 25,
+        "critical": 2,
+        "range": "N",
+        "encumbrance": 4,
+        "hardPoints": 0,
+        "price": 1400,
+        "rarity": 6,
+        "special": "Explosion 2, Panzerbrechend 4, Begrenzte Munition 1",
+        "description": "Druckzünder-Mine gegen Fahrzeuge."
+      },
+      {
         "name": "Mikrogranatenwerfer",
         "skill": "ART",
         "damage": 10,
@@ -407,6 +433,32 @@
         "rarity": 5,
         "special": "Explosion 8, Sperrigkeit 3",
         "description": "Tragbarer Granatwerfer — verheerende Feuerkraft."
+      },
+      {
+        "name": "Czerka CZ-28 Flammenschlag",
+        "skill": "ART",
+        "damage": 9,
+        "critical": 2,
+        "range": "K",
+        "encumbrance": 8,
+        "hardPoints": 3,
+        "price": 2000,
+        "rarity": 8,
+        "special": "Verbrennung 4, Explosion 9, Sperrigkeit 3, Tödlich 2",
+        "description": "Schwerer Flammenwerfer der Czerka Corporation."
+      },
+      {
+        "name": "LJ-50 Sprenggewehr",
+        "skill": "SFW",
+        "damage": 10,
+        "critical": 2,
+        "range": "M",
+        "encumbrance": 6,
+        "hardPoints": 2,
+        "price": 2000,
+        "rarity": 7,
+        "special": "Explosion 4, Erschütternd 2, Sperrigkeit 3, Niederwerfern, Begrenzte Munition 4",
+        "description": "Schweres Sprenggewehr mit Explosivmunition."
       },
       {
         "name": "Raketenwerfer",
@@ -422,6 +474,19 @@
         "description": "Sprengt Panzer und Stellungen — schwer aber effektiv."
       },
       {
+        "name": "Flechettewerfer",
+        "skill": "ART",
+        "damage": 8,
+        "critical": 3,
+        "range": "M",
+        "encumbrance": 6,
+        "hardPoints": 4,
+        "price": 2500,
+        "rarity": 6,
+        "special": "Explosion 8, Sperrigkeit 3, verschiedene Munitionstypen",
+        "description": "Artillerie-Waffe die Flechette-Munition verschießt."
+      },
+      {
         "name": "Z-6 Rotationsblaster",
         "skill": "SFW",
         "damage": 12,
@@ -433,6 +498,19 @@
         "rarity": 7,
         "special": "Vollautomatik, Sperrigkeit 3",
         "description": "Klontruppen-Klassiker — rotierendes Sperrfeuer."
+      },
+      {
+        "name": "Unterlaufflammenwerfer",
+        "skill": "SFW",
+        "damage": 10,
+        "critical": 2,
+        "range": "K",
+        "encumbrance": 0,
+        "hardPoints": 0,
+        "price": 3000,
+        "rarity": 5,
+        "special": "Waffenmodifikation, Explosion 2, Verbrennung 5, Begrenzte Munition 3",
+        "description": "Waffenmodifikation: Flammenwerfer unter dem Lauf einer Fernkampfwaffe."
       }
     ],
     "Bögen & Schleudern": [
@@ -634,6 +712,19 @@
         "description": "Langes Klingenschwert — elegant und tödlich."
       },
       {
+        "name": "Molekularstilett MSW-9",
+        "skill": "NKW",
+        "damage": 0,
+        "critical": 2,
+        "range": "N",
+        "encumbrance": 1,
+        "hardPoints": 1,
+        "price": 500,
+        "rarity": 5,
+        "special": "Durchbohrend 5, Tödlich 1, beschädigt sich bei Despair",
+        "description": "Unsichtbar dünne Klinge die fast jede Rüstung durchdringt."
+      },
+      {
         "name": "Akrab Vibrodolch",
         "skill": "NKW",
         "damage": 1,
@@ -658,6 +749,19 @@
         "rarity": 4,
         "special": "",
         "description": "Dschungelklinge — kämpft sich durch alles."
+      },
+      {
+        "name": "Sorosuub Betäubungsmeister",
+        "skill": "NKW",
+        "damage": 6,
+        "critical": 3,
+        "range": "N",
+        "encumbrance": 1,
+        "hardPoints": 0,
+        "price": 575,
+        "rarity": 3,
+        "special": "Desorientierung 2, Betäubungsschaden",
+        "description": "Professionelle Betäubungswaffe für Sicherheitskräfte."
       },
       {
         "name": "Langaxt (2H)",
@@ -857,6 +961,19 @@
         "description": "Ikonische Waffe der Tusken-Räuber von Tatooine."
       },
       {
+        "name": "Elektromagnetischer Pulsardisruptor-Stift",
+        "skill": "NKW",
+        "damage": 5,
+        "critical": 4,
+        "range": "N",
+        "encumbrance": 1,
+        "hardPoints": 0,
+        "price": 180,
+        "rarity": 5,
+        "special": "Desorientierend 1, Ionenschaden, sabotiert Computer/Elektronik",
+        "description": "Stiftförmige EMP-Waffe zum Sabotieren von Elektronik."
+      },
+      {
         "name": "Betäubungsknüppel",
         "skill": "NKW",
         "damage": 2,
@@ -894,6 +1011,19 @@
         "rarity": 4,
         "special": "",
         "description": "Elektroschock bei jedem Treffer — schmerzhaft."
+      },
+      {
+        "name": "Bardottanische Energielanze",
+        "skill": "NKW",
+        "damage": 2,
+        "critical": 3,
+        "range": "N",
+        "encumbrance": 3,
+        "hardPoints": 2,
+        "price": 300,
+        "rarity": 5,
+        "special": "Defensiv 2, Betäubungsoption, nicht mit anderer Waffe nutzbar",
+        "description": "Elegante Energielanze vom Planeten Bardotta."
       },
       {
         "name": "Amtsstab",
@@ -961,6 +1091,19 @@
         "description": "Langer Stab für Sicherheitspersonal."
       },
       {
+        "name": "Gunganischer Energiestab",
+        "skill": "NKW",
+        "damage": 2,
+        "critical": 4,
+        "range": "N",
+        "encumbrance": 3,
+        "hardPoints": 2,
+        "price": 450,
+        "rarity": 5,
+        "special": "Betäubung 3, Betäubungsoption, Wurfwaffe",
+        "description": "Typische Waffe der Gungan Grand Army."
+      },
+      {
         "name": "Vibrospeer M 14 (2H)",
         "skill": "NKW",
         "damage": 2,
@@ -985,6 +1128,19 @@
         "rarity": 4,
         "special": "",
         "description": "Energiegeladene Lanze — durchdringt Panzerungen."
+      },
+      {
+        "name": "Thunderbolt Schockknüppel",
+        "skill": "NKW",
+        "damage": 5,
+        "critical": 3,
+        "range": "N",
+        "encumbrance": 2,
+        "hardPoints": 2,
+        "price": 875,
+        "rarity": 5,
+        "special": "Erschütterung 1, Betäubungsschaden, laut bei Anwendung",
+        "description": "Schwerer Elektro-Knüppel mit Donnereffekt."
       },
       {
         "name": "Vibrospeer (2H)",
@@ -1210,6 +1366,19 @@
         "description": "Kurzer Lichtschwertgriff — für die Nebenhand."
       },
       {
+        "name": "Corellianischer Entersäbel",
+        "skill": "NKW",
+        "damage": 0,
+        "critical": 2,
+        "range": "N",
+        "encumbrance": 2,
+        "hardPoints": 1,
+        "price": 300,
+        "rarity": 3,
+        "special": "Defensiv 1, Tödlich 1",
+        "description": "Traditioneller Piratensäbel von Corellia."
+      },
+      {
         "name": "Elektronetz",
         "skill": "NKW",
         "damage": 6,
@@ -1405,6 +1574,19 @@
         "description": "Elektrifizierte Stiefel — jeder Tritt ein Schock."
       },
       {
+        "name": "Rodianische Cryopeitsche",
+        "skill": "NKW",
+        "damage": 2,
+        "critical": 3,
+        "range": "K",
+        "encumbrance": 1,
+        "hardPoints": 1,
+        "price": 1550,
+        "rarity": 7,
+        "special": "Verstrickend 1, Tödlich 1, Sperrigkeit 3",
+        "description": "Exotische Peitsche der Rodianer mit Kältewirkung."
+      },
+      {
         "name": "Schweißgerät",
         "skill": "NKW",
         "damage": 3,
@@ -1498,6 +1680,32 @@
         "description": "Betäubt alle im Radius — Imperial-Standardausrüstung."
       },
       {
+        "name": "Infernogranate",
+        "skill": "LFW",
+        "damage": 8,
+        "critical": 3,
+        "range": "K",
+        "encumbrance": 1,
+        "hardPoints": 0,
+        "price": 225,
+        "rarity": 5,
+        "special": "Explosion 5, Verbrennung 2, Begrenzte Munition 1, Verbrauchsgegenstand (einmalig)",
+        "description": "Brandbombe mit Thermit-Füllung."
+      },
+      {
+        "name": "Schwere Splittergranate",
+        "skill": "LFW",
+        "damage": 9,
+        "critical": 4,
+        "range": "K",
+        "encumbrance": 1,
+        "hardPoints": 0,
+        "price": 225,
+        "rarity": 5,
+        "special": "Begrenzte Munition 1, Explosion 7, Sperrigkeit 2, Verbrauchsgegenstand (einmalig)",
+        "description": "Größere Splittergranate mit weiterem Radius."
+      },
+      {
         "name": "Klebegranate",
         "skill": "LFW",
         "damage": 0,
@@ -1524,6 +1732,32 @@
         "description": "Molotov der Galaxis — brennt alles nieder."
       },
       {
+        "name": "Panzerbrechende Granate",
+        "skill": "LFW",
+        "damage": 16,
+        "critical": 3,
+        "range": "K",
+        "encumbrance": 1,
+        "hardPoints": 0,
+        "price": 300,
+        "rarity": 6,
+        "special": "Begrenzte Munition 1, Explosion 3, Durchbohrend 1, Verbrauchsgegenstand (einmalig)",
+        "description": "Hohlladungsgranate gegen Panzerung."
+      },
+      {
+        "name": "Sprenggranate",
+        "skill": "LFW",
+        "damage": 10,
+        "critical": 5,
+        "range": "K",
+        "encumbrance": 1,
+        "hardPoints": 0,
+        "price": 300,
+        "rarity": 5,
+        "special": "Explosion 8, Desorientierend 5, Erschütterung 2, Begrenzte Munition 1, Verbrauchsgegenstand (einmalig)",
+        "description": "Hochexplosive Granate mit massivem Radius."
+      },
+      {
         "name": "Plasmagranate",
         "skill": "LFW",
         "damage": 12,
@@ -1535,6 +1769,45 @@
         "rarity": 6,
         "special": "Verbrauchsgegenstand (einmalig)",
         "description": "Superheißes Plasma — verdampft fast alles."
+      },
+      {
+        "name": "Spore/Betäubungsgranate",
+        "skill": "LFW",
+        "damage": 6,
+        "critical": 3,
+        "range": "K",
+        "encumbrance": 1,
+        "hardPoints": 0,
+        "price": 1200,
+        "rarity": 5,
+        "special": "Explosion 6, Erschütterung 1, Betäubungsschaden, Begrenzte Munition 1, Verbrauchsgegenstand (einmalig)",
+        "description": "Biogranate mit Betäubungssporen. Erste Treffer verursacht Erstickungsgefahr."
+      },
+      {
+        "name": "Thermaldetonator",
+        "skill": "LFW",
+        "damage": 20,
+        "critical": 2,
+        "range": "K",
+        "encumbrance": 1,
+        "hardPoints": 0,
+        "price": 6000,
+        "rarity": 8,
+        "special": "Explosion 15, Tödlich 4, Panzerbrechend 1, Begrenzte Munition 1, Verbrauchsgegenstand (einmalig)",
+        "description": "Ikonische Waffe der Star Wars Galaxis. Vernichtet alles im Radius."
+      },
+      {
+        "name": "Geformte Thermal-Granate",
+        "skill": "LFW",
+        "damage": 20,
+        "critical": 2,
+        "range": "K",
+        "encumbrance": 1,
+        "hardPoints": 0,
+        "price": 10500,
+        "rarity": 8,
+        "special": "Panzerbrechend 2, Begrenzte Munition 1, Tödlich 5, Verbrauchsgegenstand (einmalig)",
+        "description": "Spezialisierte Thermalgranate für gerichtete Detonation."
       }
     ],
     "Munition": [
@@ -1630,6 +1903,19 @@
         "description": "Brennender Pfeil — setzt das Ziel in Flammen."
       },
       {
+        "name": "Splitterrakete",
+        "skill": "ART",
+        "damage": 12,
+        "critical": 4,
+        "range": "E",
+        "encumbrance": 0,
+        "hardPoints": 0,
+        "price": 75,
+        "rarity": 7,
+        "special": "Lenkflugkörper 3, Explosion 12",
+        "description": "Günstige Splitterrakete."
+      },
+      {
         "name": "Antipersonen",
         "skill": "SFW",
         "damage": 8,
@@ -1641,6 +1927,19 @@
         "rarity": 5,
         "special": "",
         "description": "Antipersonenmunition — tödlich im Flächeneinsatz."
+      },
+      {
+        "name": "Brandrakete",
+        "skill": "ART",
+        "damage": 10,
+        "critical": 3,
+        "range": "E",
+        "encumbrance": 0,
+        "hardPoints": 0,
+        "price": 145,
+        "rarity": 7,
+        "special": "Lenkflugkörper 2, Verbrennung 3, Explosion 10",
+        "description": "Brandstiftungsrakete mit Thermit-Ladung."
       },
       {
         "name": "Panzerbrechend",
@@ -1669,6 +1968,45 @@
         "description": "Ionenmunition — schaltet Technik und Droiden aus."
       },
       {
+        "name": "Plasmarakete",
+        "skill": "ART",
+        "damage": 16,
+        "critical": 3,
+        "range": "M",
+        "encumbrance": 0,
+        "hardPoints": 0,
+        "price": 160,
+        "rarity": 8,
+        "special": "Explosion 14, Sperrigkeit 3, Durchbohrend 2, Unpräzise 1",
+        "description": "Hochenergierakete mit Plasmasprengkopf."
+      },
+      {
+        "name": "Sprengrakete",
+        "skill": "ART",
+        "damage": 14,
+        "critical": 4,
+        "range": "E",
+        "encumbrance": 0,
+        "hardPoints": 0,
+        "price": 200,
+        "rarity": 8,
+        "special": "Explosion 10, Erschütterung 3, Desorientierung 5",
+        "description": "Splitterrakete für Flächenwirkung."
+      },
+      {
+        "name": "Anti-Fahrzeug-Rakete",
+        "skill": "ART",
+        "damage": 20,
+        "critical": 2,
+        "range": "E",
+        "encumbrance": 0,
+        "hardPoints": 0,
+        "price": 250,
+        "rarity": 8,
+        "special": "Explosion 10, Lenkflugkörper 3, Panzerbrechend 1",
+        "description": "Gelenkte Rakete gegen Fahrzeuge."
+      },
+      {
         "name": "Betäubung",
         "skill": "SFW",
         "damage": 8,
@@ -1680,6 +2018,60 @@
         "rarity": 5,
         "special": "",
         "description": "Betäubungsmunition — Ziel lebt, aber schläft."
+      }
+    ],
+    "Sprengstoffe": [
+      {
+        "name": "Detonit",
+        "skill": "MEC",
+        "damage": 15,
+        "critical": 0,
+        "range": "N",
+        "encumbrance": 2,
+        "hardPoints": 0,
+        "price": 50,
+        "rarity": 2,
+        "special": "+10 pro Extra-Ladung, Zeitzünder möglich",
+        "description": "Standard-Sprengstoff. Kann per Kommunikator oder Zeitzünder gezündet werden."
+      },
+      {
+        "name": "Protonengranate",
+        "skill": "MEC",
+        "damage": 10,
+        "critical": 0,
+        "range": "K",
+        "encumbrance": 1,
+        "hardPoints": 0,
+        "price": 60,
+        "rarity": 4,
+        "special": "+20/+30/+40/+50 pro Extra, stapelbar bis 5",
+        "description": "Stapelbare Protonengranaten. Mehr Granaten = größerer Radius."
+      },
+      {
+        "name": "Plasma-Sprengstoff",
+        "skill": "MEC",
+        "damage": 9,
+        "critical": 0,
+        "range": "M",
+        "encumbrance": 2,
+        "hardPoints": 0,
+        "price": 200,
+        "rarity": 5,
+        "special": "+6 pro Extra-Ladung, Verbrennung 1",
+        "description": "Plasma-basierter Sprengstoff mit Brandwirkung."
+      },
+      {
+        "name": "Baradium",
+        "skill": "MEC",
+        "damage": 3,
+        "critical": 0,
+        "range": "W",
+        "encumbrance": 2,
+        "hardPoints": 0,
+        "price": 750,
+        "rarity": 5,
+        "special": "+1 pro Extra-Ladung, Raumschiffebene-Schaden, +50 auf kritische Treffer",
+        "description": "Hochexplosiver Sprengstoff. Richtet Schaden auf Raumschiffebene an."
       }
     ]
   },
