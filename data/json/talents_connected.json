@@ -15944,5 +15944,957 @@
         ]
       }
     ]
+  },
+  {
+    "career": "Universal",
+    "specialization": "Kultist der Dunklen Seite",
+    "talents": [
+      {
+        "name": "Furchterregend",
+        "cost": 5,
+        "description": "Gegner muss Angstprobe machen. Schwierigkeit nach Rängen.",
+        "isRanked": true,
+        "row": 1,
+        "col": 1,
+        "connections": [
+          "bottom"
+        ]
+      },
+      {
+        "name": "Geheimes Wissen",
+        "cost": 5,
+        "description": "Proben auf Altes Wissen: 1 Komplikation entfernt pro Rang, Schwierigkeit -1.",
+        "isRanked": true,
+        "row": 1,
+        "col": 2,
+        "connections": [
+          "bottom"
+        ]
+      },
+      {
+        "name": "Pirscher",
+        "cost": 5,
+        "description": "+1 Boost pro Rang auf Körperbeherrschung und Heimlichkeit.",
+        "isRanked": true,
+        "row": 1,
+        "col": 3,
+        "connections": [
+          "bottom"
+        ]
+      },
+      {
+        "name": "Multitalent",
+        "cost": 5,
+        "description": "Wähle 2 Fertigkeiten als Berufsfertigkeiten.",
+        "isRanked": false,
+        "row": 1,
+        "col": 4,
+        "connections": [
+          "bottom"
+        ]
+      },
+      {
+        "name": "Starrsinn",
+        "cost": 10,
+        "description": "Erschöpfungslimit steigt um 1 pro Rang.",
+        "isRanked": true,
+        "row": 2,
+        "col": 1,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Von der Dunkelheit berührt",
+        "cost": 10,
+        "description": "Wenn GM Schicksalspunkt nutzt: heile 1 Wunde und Erschöpfung pro Rang.",
+        "isRanked": true,
+        "row": 2,
+        "col": 2,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Abgehärtet",
+        "cost": 10,
+        "description": "Wundenlimit steigt um 2 pro Rang.",
+        "isRanked": true,
+        "row": 2,
+        "col": 3,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Meister der Schatten",
+        "cost": 10,
+        "description": "1x pro Runde 2 Erschöpfung um Schwierigkeit der nächsten Heimlichkeits-/Täuschungsprobe um 1 zu senken.",
+        "isRanked": false,
+        "row": 2,
+        "col": 4,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Geheimes Wissen",
+        "cost": 15,
+        "description": "Proben auf Altes Wissen: 1 Komplikation entfernt pro Rang, Schwierigkeit -1.",
+        "isRanked": true,
+        "row": 3,
+        "col": 1,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Rücksichtsloser Eifer",
+        "cost": 15,
+        "description": "1x pro Sitzung 2 Wunden und Erschöpfung erleiden um fehlgeschlagene Probe zu wiederholen.",
+        "isRanked": false,
+        "row": 3,
+        "col": 2,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Furchterregend",
+        "cost": 15,
+        "description": "Gegner muss Angstprobe machen.",
+        "isRanked": true,
+        "row": 3,
+        "col": 3,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Verbessertes Schicksal trotzen",
+        "cost": 15,
+        "description": "Verbündete bis zum Rang in Disziplin können Schicksal trotzen nutzen.",
+        "isRanked": false,
+        "row": 3,
+        "col": 4,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Dunkelstes Geheimnis",
+        "cost": 20,
+        "description": "1x pro Begegnung: Schwere Wissensprobe. Bei Erfolg Despair zu allen Gegnerwürfen.",
+        "isRanked": false,
+        "row": 4,
+        "col": 1,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Unerschütterlicher Wille",
+        "cost": 20,
+        "description": "1x pro Sitzung Willenskraft statt zugehöriger Eigenschaft nutzen.",
+        "isRanked": false,
+        "row": 4,
+        "col": 2,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Von der Dunkelheit berührt",
+        "cost": 20,
+        "description": "Wenn GM Schicksalspunkt nutzt: heile 1 Wunde und Erschöpfung pro Rang.",
+        "isRanked": true,
+        "row": 4,
+        "col": 3,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Furchterregend",
+        "cost": 20,
+        "description": "Gegner muss Angstprobe machen.",
+        "isRanked": true,
+        "row": 4,
+        "col": 4,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Herr über die Materie",
+        "cost": 25,
+        "description": "Schicksalspunkt als Nebenhandlung: Erschöpfung in Höhe des Willenskraft-Werts regenerieren.",
+        "isRanked": false,
+        "row": 5,
+        "col": 1,
+        "connections": [
+          "top"
+        ]
+      },
+      {
+        "name": "Hingabe",
+        "cost": 25,
+        "description": "Eine Eigenschaft steigt um 1 (max 6).",
+        "isRanked": false,
+        "row": 5,
+        "col": 2,
+        "connections": [
+          "top"
+        ]
+      },
+      {
+        "name": "Dem Schicksal trotzen",
+        "cost": 25,
+        "description": "1x pro Sitzung Schicksalspunkt gegen Despair einsetzen.",
+        "isRanked": false,
+        "row": 5,
+        "col": 3,
+        "connections": [
+          "top"
+        ]
+      },
+      {
+        "name": "Verbessertes Furchterregend",
+        "cost": 25,
+        "description": "Alle Gegner die Angstprobe nicht bestanden haben: Proben aufwerten.",
+        "isRanked": false,
+        "row": 5,
+        "col": 4,
+        "connections": [
+          "top"
+        ]
+      }
+    ]
+  },
+  {
+    "career": "Universal",
+    "specialization": "Erfahrener Abenteurer",
+    "talents": [
+      {
+        "name": "Pragmatisch",
+        "cost": 5,
+        "description": "Boost pro Rang auf Coolness und Straßenwissen.",
+        "isRanked": true,
+        "row": 1,
+        "col": 1,
+        "connections": [
+          "bottom"
+        ]
+      },
+      {
+        "name": "Starrsinn",
+        "cost": 5,
+        "description": "Erschöpfungslimit +1 pro Rang.",
+        "isRanked": true,
+        "row": 1,
+        "col": 2,
+        "connections": [
+          "bottom"
+        ]
+      },
+      {
+        "name": "Beflügelnde Worte",
+        "cost": 5,
+        "description": "Führungsqualitätsprobe: Verbündeter in kurzer RW regeneriert 1 Erschöpfung.",
+        "isRanked": false,
+        "row": 1,
+        "col": 3,
+        "connections": [
+          "bottom"
+        ]
+      },
+      {
+        "name": "Ausweichen",
+        "cost": 5,
+        "description": "Bei Kampfprobe gegen dich: Erschöpfung erleiden um Schwierigkeit aufzuwerten.",
+        "isRanked": true,
+        "row": 1,
+        "col": 4,
+        "connections": [
+          "bottom"
+        ]
+      },
+      {
+        "name": "Zuversicht",
+        "cost": 10,
+        "description": "Schwierigkeit von Disziplin-Proben gegen Angst um 1 senken pro Rang.",
+        "isRanked": true,
+        "row": 2,
+        "col": 1,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Starrsinn",
+        "cost": 10,
+        "description": "Erschöpfungslimit +1 pro Rang.",
+        "isRanked": true,
+        "row": 2,
+        "col": 2,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Beruhigende Präsenz",
+        "cost": 10,
+        "description": "Nach Kampf: Verbündete regenerieren Erschöpfung gleich Coolness-Rängen.",
+        "isRanked": false,
+        "row": 2,
+        "col": 3,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Achtung",
+        "cost": 10,
+        "description": "1x pro Begegnung: Triumph zu schwerer Probe hinzufügen.",
+        "isRanked": true,
+        "row": 2,
+        "col": 4,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Ausweichen",
+        "cost": 15,
+        "description": "Bei Kampfprobe gegen dich: Erschöpfung um Schwierigkeit aufzuwerten.",
+        "isRanked": true,
+        "row": 3,
+        "col": 1,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Weit gereist",
+        "cost": 15,
+        "description": "Kernwelten und Äußerer Rand werden Berufsfertigkeiten.",
+        "isRanked": false,
+        "row": 3,
+        "col": 2,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Ermutigende Worte",
+        "cost": 15,
+        "description": "Nach misslungener Probe eines Verbündeten: 1 Erschöpfung um ihn zu unterstützen.",
+        "isRanked": false,
+        "row": 3,
+        "col": 3,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Abgehärtet",
+        "cost": 15,
+        "description": "Wundenlimit +2 pro Rang.",
+        "isRanked": true,
+        "row": 3,
+        "col": 4,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Keine leeren Worte",
+        "cost": 20,
+        "description": "Schicksalspunkt bei Wissensprobe: Unterwelt oder Straßenwissen statt Fertigkeit.",
+        "isRanked": false,
+        "row": 4,
+        "col": 1,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Pragmatisch",
+        "cost": 20,
+        "description": "Boost pro Rang auf Coolness und Straßenwissen.",
+        "isRanked": true,
+        "row": 4,
+        "col": 2,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Nicht auf den Kopf gefallen",
+        "cost": 20,
+        "description": "Schwierigkeit von Charme/Täuschung/Einschüchterung gegen dich um 1 aufwerten.",
+        "isRanked": true,
+        "row": 4,
+        "col": 3,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Verbesserte beflügelnde Worte",
+        "cost": 20,
+        "description": "Beeinflusste Verbündete erhalten Boost für Führungsqualitäten-Ränge Runden.",
+        "isRanked": false,
+        "row": 4,
+        "col": 4,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Weiser Krieger",
+        "cost": 25,
+        "description": "1x pro Runde: Schicksalspunkt für Kampfprobe mit beliebiger Eigenschaft.",
+        "isRanked": false,
+        "row": 5,
+        "col": 1,
+        "connections": [
+          "top"
+        ]
+      },
+      {
+        "name": "Hingabe",
+        "cost": 25,
+        "description": "Eine Eigenschaft steigt um 1 (max 6).",
+        "isRanked": false,
+        "row": 5,
+        "col": 2,
+        "connections": [
+          "top"
+        ]
+      },
+      {
+        "name": "Alter Kumpel",
+        "cost": 25,
+        "description": "1x pro Sitzung: Schwere Straßenwissensprobe um frühere Beziehung zu NPC herzustellen.",
+        "isRanked": false,
+        "row": 5,
+        "col": 3,
+        "connections": [
+          "top"
+        ]
+      },
+      {
+        "name": "Achtung",
+        "cost": 25,
+        "description": "1x pro Begegnung: Triumph zu schwerer Probe hinzufügen.",
+        "isRanked": true,
+        "row": 5,
+        "col": 4,
+        "connections": [
+          "top"
+        ]
+      }
+    ]
+  },
+  {
+    "career": "Universal",
+    "specialization": "Deserteur der Letzten Ordnung",
+    "talents": [
+      {
+        "name": "Abgehärtet",
+        "cost": 5,
+        "description": "Wundenlimit +2 pro Rang.",
+        "isRanked": true,
+        "row": 1,
+        "col": 1,
+        "connections": [
+          "bottom"
+        ]
+      },
+      {
+        "name": "Betrügerisches Auftreten",
+        "cost": 5,
+        "description": "Komplikation pro Rang von Täuschungs-/Infiltrationsproben entfernen.",
+        "isRanked": true,
+        "row": 1,
+        "col": 2,
+        "connections": [
+          "bottom"
+        ]
+      },
+      {
+        "name": "Starrsinn",
+        "cost": 5,
+        "description": "Erschöpfungslimit +1 pro Rang.",
+        "isRanked": true,
+        "row": 1,
+        "col": 3,
+        "connections": [
+          "bottom"
+        ]
+      },
+      {
+        "name": "Todesstoß",
+        "cost": 5,
+        "description": "+10 pro Rang auf kritische Verletzungswürfe.",
+        "isRanked": true,
+        "row": 1,
+        "col": 4,
+        "connections": [
+          "bottom"
+        ]
+      },
+      {
+        "name": "Verbesserter Personenschutz",
+        "cost": 10,
+        "description": "1x pro Sitzung: Schaden für geschützte Person übernehmen.",
+        "isRanked": false,
+        "row": 2,
+        "col": 1,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Programmiert",
+        "cost": 10,
+        "description": "Erschöpfung bis doppeltem Disziplin-Rang: Boost pro 2 Erschöpfung.",
+        "isRanked": false,
+        "row": 2,
+        "col": 2,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Andauerndes Zielen",
+        "cost": 10,
+        "description": "Nach erfolgreichen Kampfproben: Boost auf folgende Proben gegen selbes Ziel.",
+        "isRanked": false,
+        "row": 2,
+        "col": 3,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Taktisches Kampftraining",
+        "cost": 10,
+        "description": "Handgemenge und schwere Fernkampfwaffen werden Berufsfertigkeiten.",
+        "isRanked": false,
+        "row": 2,
+        "col": 4,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Rette was du liebst",
+        "cost": 15,
+        "description": "1x pro Sitzung: Treffer auf Verbündeten verhindern, 5 Wunden + Crit +20 erleiden.",
+        "isRanked": false,
+        "row": 3,
+        "col": 1,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Abgehärtet",
+        "cost": 15,
+        "description": "Wundenlimit +2 pro Rang.",
+        "isRanked": true,
+        "row": 3,
+        "col": 2,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Betrügerisches Auftreten",
+        "cost": 15,
+        "description": "Komplikation pro Rang entfernen.",
+        "isRanked": true,
+        "row": 3,
+        "col": 3,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Bekämpfe was du hasst",
+        "cost": 15,
+        "description": "1x pro Begegnung: 3 Erschöpfung, Gegner in großer Entfernung kritisch -1.",
+        "isRanked": false,
+        "row": 3,
+        "col": 4,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Personenschutz",
+        "cost": 20,
+        "description": "1x pro Runde: Erschöpfung um Schwierigkeit von Kampfproben gegen Schützling aufzuwerten.",
+        "isRanked": true,
+        "row": 4,
+        "col": 1,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Personenschutz",
+        "cost": 20,
+        "description": "1x pro Runde: Erschöpfung um Schwierigkeit von Kampfproben gegen Schützling aufzuwerten.",
+        "isRanked": true,
+        "row": 4,
+        "col": 2,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Tödliche Präzision",
+        "cost": 20,
+        "description": "Wähle 1 Kampffertigkeit: +Schaden in Höhe der Ränge.",
+        "isRanked": false,
+        "row": 4,
+        "col": 3,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Todesstoß",
+        "cost": 20,
+        "description": "+10 pro Rang auf kritische Verletzungswürfe.",
+        "isRanked": true,
+        "row": 4,
+        "col": 4,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Überlebensinstinkte",
+        "cost": 25,
+        "description": "Bei Crit: Schicksalspunkt, Angreifer würfelt 2x, Spieler wählt Ergebnis.",
+        "isRanked": false,
+        "row": 5,
+        "col": 1,
+        "connections": [
+          "top"
+        ]
+      },
+      {
+        "name": "Hingabe",
+        "cost": 25,
+        "description": "Eine Eigenschaft steigt um 1 (max 6).",
+        "isRanked": false,
+        "row": 5,
+        "col": 2,
+        "connections": [
+          "top"
+        ]
+      },
+      {
+        "name": "Schnell verflogen",
+        "cost": 25,
+        "description": "1x pro Sitzung: Sehr schwere Disziplinprobe um halbe Erschöpfung zu regenerieren.",
+        "isRanked": false,
+        "row": 5,
+        "col": 3,
+        "connections": [
+          "top"
+        ]
+      },
+      {
+        "name": "Verbessertes Bekämpfe was du hasst",
+        "cost": 25,
+        "description": "Betroffene Charaktere: Kampfprobe erzeugt automatisch Triumph + Despair.",
+        "isRanked": false,
+        "row": 5,
+        "col": 4,
+        "connections": [
+          "top"
+        ]
+      }
+    ]
+  },
+  {
+    "career": "Universal",
+    "specialization": "Loyalist der Letzten Ordnung",
+    "talents": [
+      {
+        "name": "Belesen",
+        "cost": 5,
+        "description": "Wähle 3 Wissensfertigkeiten als permanente Berufsfertigkeiten.",
+        "isRanked": false,
+        "row": 1,
+        "col": 1,
+        "connections": [
+          "bottom"
+        ]
+      },
+      {
+        "name": "Plausibles Abstreiten",
+        "cost": 5,
+        "description": "Komplikation pro Rang von Einschüchterungs-/Täuschungsproben entfernen.",
+        "isRanked": true,
+        "row": 1,
+        "col": 2,
+        "connections": [
+          "bottom"
+        ]
+      },
+      {
+        "name": "Abgehärtet",
+        "cost": 5,
+        "description": "Wundenlimit +2 pro Rang.",
+        "isRanked": true,
+        "row": 1,
+        "col": 3,
+        "connections": [
+          "bottom"
+        ]
+      },
+      {
+        "name": "Starrsinn",
+        "cost": 5,
+        "description": "Erschöpfungslimit +1 pro Rang.",
+        "isRanked": true,
+        "row": 1,
+        "col": 4,
+        "connections": [
+          "bottom"
+        ]
+      },
+      {
+        "name": "Kenne den Feind",
+        "cost": 10,
+        "description": "Kriegsführung auf Initiative würfeln.",
+        "isRanked": false,
+        "row": 2,
+        "col": 1,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Programmiert",
+        "cost": 10,
+        "description": "Erschöpfung bis doppeltem Disziplin-Rang: Boost pro 2 Erschöpfung.",
+        "isRanked": false,
+        "row": 2,
+        "col": 2,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Vorherrschaft",
+        "cost": 10,
+        "description": "2 Erschöpfung: Führungsqualitätsprobe mit Willenskraft statt Charisma.",
+        "isRanked": false,
+        "row": 2,
+        "col": 3,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Vernichtende Tirade",
+        "cost": 10,
+        "description": "Einschüchterungsprobe: jeder Erfolg = 1 Erschöpfung beim Gegner.",
+        "isRanked": false,
+        "row": 2,
+        "col": 4,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Taktisches Kampftraining",
+        "cost": 15,
+        "description": "Handgemenge und schwere FK werden Berufsfertigkeiten.",
+        "isRanked": false,
+        "row": 3,
+        "col": 1,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Verbessertes Programmiert",
+        "cost": 15,
+        "description": "Schicksalspunkt: Fertigkeit 1x pro 2 Erschöpfung aufwerten.",
+        "isRanked": false,
+        "row": 3,
+        "col": 2,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Plausibles Abstreiten",
+        "cost": 15,
+        "description": "Komplikation pro Rang entfernen.",
+        "isRanked": true,
+        "row": 3,
+        "col": 3,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Starrsinn",
+        "cost": 15,
+        "description": "Erschöpfungslimit +1 pro Rang.",
+        "isRanked": true,
+        "row": 3,
+        "col": 4,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Tödliche Präzision",
+        "cost": 20,
+        "description": "Wähle 1 Kampffertigkeit: +Schaden in Höhe der Ränge.",
+        "isRanked": false,
+        "row": 4,
+        "col": 1,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Herr über die Materie",
+        "cost": 20,
+        "description": "Schicksalspunkt: Erschöpfung = Willenskraft regenerieren.",
+        "isRanked": false,
+        "row": 4,
+        "col": 2,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Gehirnwäsche",
+        "cost": 20,
+        "description": "Schwere Führungsqualitätsprobe: Verbündeter in kurzer RW erleidet 2 Erschöpfung, nächste Probe aufgewertet.",
+        "isRanked": false,
+        "row": 4,
+        "col": 3,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Verbesserte vernichtende Tirade",
+        "cost": 20,
+        "description": "Betroffene Feinde erhalten Komplikation für Ränge in Einschüchterung Runden.",
+        "isRanked": false,
+        "row": 4,
+        "col": 4,
+        "connections": [
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "Verbesserte Gehirnwäsche",
+        "cost": 25,
+        "description": "1 Erschöpfung: Gehirnwäsche als Manöver durchführen.",
+        "isRanked": false,
+        "row": 5,
+        "col": 1,
+        "connections": [
+          "top"
+        ]
+      },
+      {
+        "name": "Hingabe",
+        "cost": 25,
+        "description": "Eine Eigenschaft steigt um 1 (max 6).",
+        "isRanked": false,
+        "row": 5,
+        "col": 2,
+        "connections": [
+          "top"
+        ]
+      },
+      {
+        "name": "Meisterhafte vernichtende Worte",
+        "cost": 25,
+        "description": "1 Erschöpfung: vernichtende Tirade als Manöver.",
+        "isRanked": false,
+        "row": 5,
+        "col": 3,
+        "connections": [
+          "top"
+        ]
+      },
+      {
+        "name": "Sündenbock",
+        "cost": 25,
+        "description": "1x pro Sitzung: Schwere Täuschungsprobe um Schuld abzuwälzen.",
+        "isRanked": false,
+        "row": 5,
+        "col": 4,
+        "connections": [
+          "top"
+        ]
+      }
+    ]
   }
 ]
