@@ -270,12 +270,18 @@ async function speakWithCloudTTS(
     const data = await response.json();
     if (!data.audioContent) return false;
 
-    // Play base64 audio with speaker volume
-    const audio = new Audio(`data:audio/mp3;base64,${data.audioContent}`);
+    // Convert base64 to blob URL (more reliable on iOS than data: URI)
+    const binary = atob(data.audioContent);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    const blob = new Blob([bytes], { type: 'audio/mp3' });
+    const url = URL.createObjectURL(blob);
+
+    const audio = new Audio(url);
     audio.volume = settings.speakerVolume;
     audio.onplay = () => onStart?.();
-    audio.onended = () => { currentAudio = null; onEnd?.(); };
-    audio.onerror = () => { currentAudio = null; onEnd?.(); };
+    audio.onended = () => { currentAudio = null; URL.revokeObjectURL(url); onEnd?.(); };
+    audio.onerror = () => { currentAudio = null; URL.revokeObjectURL(url); onEnd?.(); };
     currentAudio = audio;
     await audio.play();
     return true;
