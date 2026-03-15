@@ -33,7 +33,11 @@ function loadSettings() {
 function saveSettings() {
   if (typeof window === 'undefined') return;
   try {
+    // MERGE with existing settings (speech.ts stores in the same key)
+    const raw = localStorage.getItem(SETTINGS_KEY);
+    const existing = raw ? JSON.parse(raw) : {};
     localStorage.setItem(SETTINGS_KEY, JSON.stringify({
+      ...existing,
       masterVolume,
       sfxMuted,
       ambientMuted,

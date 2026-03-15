@@ -5,18 +5,61 @@
     "nameEN": "Sharpshooter",
     "description": "Meistere den Umgang mit Schusswaffen durch gezielte Kills.",
     "icon": "🎯",
-    "rewards": { "level5": "Talentbaum Schwergewicht", "level10": "Talentbaum Scharfschütze" },
+    "rewards": {
+      "level5": "Talentbaum Schwergewicht",
+      "level10": "Talentbaum Scharfschütze"
+    },
     "levels": [
-      { "level": 1, "task": "Töte 5 Wompratten mit einer Schusswaffe", "xp": 5 },
-      { "level": 2, "task": "Töte 5 Murra mit einer Schusswaffe", "xp": 5 },
-      { "level": 3, "task": "Töte 3 Sandpanther mit einer Schusswaffe", "xp": 7 },
-      { "level": 4, "task": "Töte 8 Aureanische Geier mit einer Schusswaffe", "xp": 8 },
-      { "level": 5, "task": "Erlege 2 Schlammpanther und 2 Guf Drolg mit einer Schusswaffe", "xp": 6 },
-      { "level": 6, "task": "Schieße 2 Personen die Waffe aus der Hand", "xp": 5 },
-      { "level": 7, "task": "Töte in einer Runde 3 Tiere mit einer Schusswaffe", "xp": 15 },
-      { "level": 8, "task": "Betäube mit einer Schusswaffe 10 Gegner", "xp": 10 },
-      { "level": 9, "task": "Töte 3 Wrix mit einer Schusswaffe in einer Begegnung", "xp": 10 },
-      { "level": 10, "task": "Erziele 15 Kopfschüsse", "xp": 15 }
+      {
+        "level": 1,
+        "task": "Töte 5 Wompratten mit einer Schusswaffe",
+        "xp": 5
+      },
+      {
+        "level": 2,
+        "task": "Töte 5 Murra mit einer Schusswaffe",
+        "xp": 5
+      },
+      {
+        "level": 3,
+        "task": "Töte 3 Sandpanther mit einer Schusswaffe",
+        "xp": 7
+      },
+      {
+        "level": 4,
+        "task": "Töte 8 Aureanische Geier mit einer Schusswaffe",
+        "xp": 8
+      },
+      {
+        "level": 5,
+        "task": "Erlege 2 Schlammpanther und 2 Guf Drolg mit einer Schusswaffe",
+        "xp": 6
+      },
+      {
+        "level": 6,
+        "task": "Schieße 2 Personen die Waffe aus der Hand",
+        "xp": 5
+      },
+      {
+        "level": 7,
+        "task": "Töte in einer Runde 3 Tiere mit einer Schusswaffe",
+        "xp": 15
+      },
+      {
+        "level": 8,
+        "task": "Betäube mit einer Schusswaffe 10 Gegner",
+        "xp": 10
+      },
+      {
+        "level": 9,
+        "task": "Töte 3 Wrix mit einer Schusswaffe in einer Begegnung",
+        "xp": 10
+      },
+      {
+        "level": 10,
+        "task": "Erziele 15 Kopfschüsse",
+        "xp": 15
+      }
     ]
   },
   {
@@ -25,18 +68,61 @@
     "nameEN": "Survivalist",
     "description": "Sammle seltene Pflanzen und Ressourcen in der Wildnis.",
     "icon": "🌿",
-    "rewards": { "level5": "Talentbaum Überlebenskünstler", "level10": "Talentbaum Wanderer" },
+    "rewards": {
+      "level5": "Talentbaum Überlebenskünstler",
+      "level10": "Talentbaum Wanderer"
+    },
     "levels": [
-      { "level": 1, "task": "Sammle6 Funnel Blumen", "xp": 5 },
-      { "level": 2, "task": "Sammle6 Pallie", "xp": 5 },
-      { "level": 3, "task": "Sammle4 Polta Bohnen", "xp": 5 },
-      { "level": 4, "task": "Sammle8 Schwarze Melonen", "xp": 5 },
-      { "level": 5, "task": "Sammle7 Äste vom Baum", "xp": 5 },
-      { "level": 6, "task": "Sammle6 Schmetterlingskraut", "xp": 5 },
-      { "level": 7, "task": "Sammle10 Kolibrisalbei", "xp": 5 },
-      { "level": 8, "task": "Sammle12 Präriemohn", "xp": 10 },
-      { "level": 9, "task": "Sammle15 Poonten-Gras", "xp": 10 },
-      { "level": 10, "task": "Sammle20 Tubers", "xp": 10 }
+      {
+        "level": 1,
+        "task": "Sammle 6 Funnel Blumen",
+        "xp": 5
+      },
+      {
+        "level": 2,
+        "task": "Sammle 6 Pallie",
+        "xp": 5
+      },
+      {
+        "level": 3,
+        "task": "Sammle 4 Polta Bohnen",
+        "xp": 5
+      },
+      {
+        "level": 4,
+        "task": "Sammle 8 Schwarze Melonen",
+        "xp": 5
+      },
+      {
+        "level": 5,
+        "task": "Sammle 7 Äste vom Baum",
+        "xp": 5
+      },
+      {
+        "level": 6,
+        "task": "Sammle 6 Schmetterlingskraut",
+        "xp": 5
+      },
+      {
+        "level": 7,
+        "task": "Sammle 10 Kolibrisalbei",
+        "xp": 5
+      },
+      {
+        "level": 8,
+        "task": "Sammle 12 Präriemohn",
+        "xp": 10
+      },
+      {
+        "level": 9,
+        "task": "Sammle 15 Poonten-Gras",
+        "xp": 10
+      },
+      {
+        "level": 10,
+        "task": "Sammle 20 Tubers",
+        "xp": 10
+      }
     ]
   },
   {
@@ -45,28 +131,113 @@
     "nameEN": "Master Hunter",
     "description": "Jage und erlege die gefährlichsten Kreaturen der Galaxis.",
     "icon": "🏹",
-    "rewards": { "level5": "Talentbaum Grenzgänger", "level10": "Talentbaum Großwildjäger", "level15": "Talentbaum Herausforderer", "level20": "Talentbaum Vollstrecker" },
+    "rewards": {
+      "level5": "Talentbaum Grenzgänger",
+      "level10": "Talentbaum Großwildjäger",
+      "level15": "Talentbaum Herausforderer",
+      "level20": "Talentbaum Vollstrecker"
+    },
     "levels": [
-      { "level": 1, "task": "Töte 5 Sandpanther und häute sie", "xp": 10 },
-      { "level": 2, "task": "Töte 5 Nexu und häute sie", "xp": 5 },
-      { "level": 3, "task": "Töte 5 Graubären und häute sie", "xp": 10 },
-      { "level": 4, "task": "Töte 3 Große Ibbots und 3 Korrak, verkaufe Trophäen", "xp": 10 },
-      { "level": 5, "task": "Töte 1 Zakkeg und 1 Korrak", "xp": 10 },
-      { "level": 6, "task": "Jage 5 Murra, 5 Fefze-Käfer, 5 Eopie", "xp": 5 },
-      { "level": 7, "task": "Töte und häute jeweils 5 Rontos und Banthas", "xp": 5 },
-      { "level": 8, "task": "Erlege einen Fleischfresser mit einem Messer und häute ihn", "xp": 15 },
-      { "level": 9, "task": "Finde einen jungen Krayt Drachen, töte ihn und verkaufe die Trophäe", "xp": 15 },
-      { "level": 10, "task": "Töte einen ausgewachsenen Krayt Drachen", "xp": 20 },
-      { "level": 11, "task": "Töte 5 Varactyls", "xp": 10 },
-      { "level": 12, "task": "Töte 5 Wrix", "xp": 10 },
-      { "level": 13, "task": "Jage und töte 20 Gundarks", "xp": 15 },
-      { "level": 14, "task": "Töte 5 Rancors", "xp": 20 },
-      { "level": 15, "task": "Töte 5 Bullrancors", "xp": 25 },
-      { "level": 16, "task": "Töte 3 Acklays und 3 Narglatchs", "xp": 15 },
-      { "level": 17, "task": "Erlege ein Dewback, zerschneide es, bereite Ausrüstung zu und iss es", "xp": 5 },
-      { "level": 18, "task": "Töte 20 Fambaa", "xp": 50 },
-      { "level": 19, "task": "Töte 3 Salerodrex", "xp": 15 },
-      { "level": 20, "task": "Töte ein Sarlacc", "xp": 30 }
+      {
+        "level": 1,
+        "task": "Töte 5 Sandpanther und häute sie",
+        "xp": 10
+      },
+      {
+        "level": 2,
+        "task": "Töte 5 Nexu und häute sie",
+        "xp": 5
+      },
+      {
+        "level": 3,
+        "task": "Töte 5 Graubären und häute sie",
+        "xp": 10
+      },
+      {
+        "level": 4,
+        "task": "Töte 3 Große Ibbots und 3 Korrak, verkaufe Trophäen",
+        "xp": 10
+      },
+      {
+        "level": 5,
+        "task": "Töte 1 Zakkeg und 1 Korrak",
+        "xp": 10
+      },
+      {
+        "level": 6,
+        "task": "Jage 5 Murra, 5 Fefze-Käfer, 5 Eopie",
+        "xp": 5
+      },
+      {
+        "level": 7,
+        "task": "Töte und häute jeweils 5 Rontos und Banthas",
+        "xp": 5
+      },
+      {
+        "level": 8,
+        "task": "Erlege einen Fleischfresser mit einem Messer und häute ihn",
+        "xp": 15
+      },
+      {
+        "level": 9,
+        "task": "Finde einen jungen Krayt Drachen, töte ihn und verkaufe die Trophäe",
+        "xp": 15
+      },
+      {
+        "level": 10,
+        "task": "Töte einen ausgewachsenen Krayt Drachen",
+        "xp": 20
+      },
+      {
+        "level": 11,
+        "task": "Töte 5 Varactyls",
+        "xp": 10
+      },
+      {
+        "level": 12,
+        "task": "Töte 5 Wrix",
+        "xp": 10
+      },
+      {
+        "level": 13,
+        "task": "Jage und töte 20 Gundarks",
+        "xp": 15
+      },
+      {
+        "level": 14,
+        "task": "Töte 5 Rancors",
+        "xp": 20
+      },
+      {
+        "level": 15,
+        "task": "Töte 5 Bullrancors",
+        "xp": 25
+      },
+      {
+        "level": 16,
+        "task": "Töte 3 Acklays und 3 Narglatchs",
+        "xp": 15
+      },
+      {
+        "level": 17,
+        "task": "Erlege ein Dewback, zerschneide es, bereite Ausrüstung zu und iss es",
+        "xp": 5
+      },
+      {
+        "level": 18,
+        "task": "Töte 20 Fambaa",
+        "xp": 50
+      },
+      {
+        "level": 19,
+        "task": "Töte 3 Salerodrex",
+        "xp": 15
+      },
+      {
+        "level": 20,
+        "task": "Töte ein Sarlacc",
+        "xp": 30
+      }
     ]
   },
   {
@@ -75,18 +246,61 @@
     "nameEN": "Trader",
     "description": "Werde der erfolgreichste Händler der Galaxis.",
     "icon": "💰",
-    "rewards": { "level5": "Talentbaum Händler", "level10": "Talentbaum Geschäftsmann" },
+    "rewards": {
+      "level5": "Talentbaum Händler",
+      "level10": "Talentbaum Geschäftsmann"
+    },
     "levels": [
-      { "level": 1, "task": "Kaufe und verkaufe 10 Gegenstände", "xp": 5 },
-      { "level": 2, "task": "Erlange ein Händler-Datapad", "xp": 5 },
-      { "level": 3, "task": "Kaufe dir dein erstes persönliches Fahrzeug", "xp": 5 },
-      { "level": 4, "task": "Verkaufe 5 Gegenstände mit minimum Seltenheit 8", "xp": 5 },
-      { "level": 5, "task": "Verkaufe einen Gegenstand für 75% des vollen Preises", "xp": 5 },
-      { "level": 6, "task": "Eröffne ein Geschäft mit regelmäßigem Einkommen", "xp": 5 },
-      { "level": 7, "task": "Kaufe dir deinen ersten Droiden", "xp": 8 },
-      { "level": 8, "task": "Besorge einen Gegenstand (Seltenheit 6+) und Waffenmod für einen Freund", "xp": 10 },
-      { "level": 9, "task": "Verkaufe eine Krayt-Drachen Perle", "xp": 15 },
-      { "level": 10, "task": "Erlange einen Gegenstand der Seltenheit 10 und verkaufe ihn für 75%", "xp": 15 }
+      {
+        "level": 1,
+        "task": "Kaufe und verkaufe 10 Gegenstände",
+        "xp": 5
+      },
+      {
+        "level": 2,
+        "task": "Erlange ein Händler-Datapad",
+        "xp": 5
+      },
+      {
+        "level": 3,
+        "task": "Kaufe dir dein erstes persönliches Fahrzeug",
+        "xp": 5
+      },
+      {
+        "level": 4,
+        "task": "Verkaufe 5 Gegenstände mit minimum Seltenheit 8",
+        "xp": 5
+      },
+      {
+        "level": 5,
+        "task": "Verkaufe einen Gegenstand für 75% des vollen Preises",
+        "xp": 5
+      },
+      {
+        "level": 6,
+        "task": "Eröffne ein Geschäft mit regelmäßigem Einkommen",
+        "xp": 5
+      },
+      {
+        "level": 7,
+        "task": "Kaufe dir deinen ersten Droiden",
+        "xp": 8
+      },
+      {
+        "level": 8,
+        "task": "Besorge einen Gegenstand (Seltenheit 6+) und Waffenmod für einen Freund",
+        "xp": 10
+      },
+      {
+        "level": 9,
+        "task": "Verkaufe eine Krayt-Drachen Perle",
+        "xp": 15
+      },
+      {
+        "level": 10,
+        "task": "Erlange einen Gegenstand der Seltenheit 10 und verkaufe ihn für 75%",
+        "xp": 15
+      }
     ]
   },
   {
@@ -95,18 +309,61 @@
     "nameEN": "Bounty Hunter",
     "description": "Jage Kopfgelder und baue deinen Ruf auf.",
     "icon": "🎖",
-    "rewards": { "level5": "Talentbaum Kopfgeldjäger (Wahl)", "level10": "Zweiter Kopfgeldjäger-Talentbaum" },
+    "rewards": {
+      "level5": "Talentbaum Kopfgeldjäger (Wahl)",
+      "level10": "Zweiter Kopfgeldjäger-Talentbaum"
+    },
     "levels": [
-      { "level": 1, "task": "Tritt einer Kopfgeldjägergilde bei", "xp": 2 },
-      { "level": 2, "task": "Jage erfolgreich 5 Kopfgelder", "xp": 5 },
-      { "level": 3, "task": "Fange 5 Kopfgelder lebend", "xp": 5 },
-      { "level": 4, "task": "Verdiene deine ersten 50.000 Credits durch Kopfgelder", "xp": 10 },
-      { "level": 5, "task": "Gründe deine eigene Kopfgeldjäger Gilde", "xp": 10 },
-      { "level": 6, "task": "Erlange 50 Ruhm", "xp": 15 },
-      { "level": 7, "task": "Verdiene 100.000 Credits durch Kopfgelder", "xp": 20 },
-      { "level": 8, "task": "Jage 5 'Spezial' Kopfgelder", "xp": 20 },
-      { "level": 9, "task": "Bilde deinen ersten Kopfgeld-Azubi aus", "xp": 20 },
-      { "level": 10, "task": "Erlange Ruhm von einem Spielercharakter-Kopfgeldjäger", "xp": 50 }
+      {
+        "level": 1,
+        "task": "Tritt einer Kopfgeldjägergilde bei",
+        "xp": 2
+      },
+      {
+        "level": 2,
+        "task": "Jage erfolgreich 5 Kopfgelder",
+        "xp": 5
+      },
+      {
+        "level": 3,
+        "task": "Fange 5 Kopfgelder lebend",
+        "xp": 5
+      },
+      {
+        "level": 4,
+        "task": "Verdiene deine ersten 50.000 Credits durch Kopfgelder",
+        "xp": 10
+      },
+      {
+        "level": 5,
+        "task": "Gründe deine eigene Kopfgeldjäger Gilde",
+        "xp": 10
+      },
+      {
+        "level": 6,
+        "task": "Erlange 50 Ruhm",
+        "xp": 15
+      },
+      {
+        "level": 7,
+        "task": "Verdiene 100.000 Credits durch Kopfgelder",
+        "xp": 20
+      },
+      {
+        "level": 8,
+        "task": "Jage 5 'Spezial' Kopfgelder",
+        "xp": 20
+      },
+      {
+        "level": 9,
+        "task": "Bilde deinen ersten Kopfgeld-Azubi aus",
+        "xp": 20
+      },
+      {
+        "level": 10,
+        "task": "Erlange Ruhm von einem Spielercharakter-Kopfgeldjäger",
+        "xp": 50
+      }
     ]
   },
   {
@@ -115,18 +372,61 @@
     "nameEN": "Jedi",
     "description": "Folge dem Pfad der Macht und werde ein Jedi.",
     "icon": "⚔",
-    "rewards": { "level5": "Talentbaum Jedi-Ritter", "level10": "Talentbaum Jedi-Meister" },
+    "rewards": {
+      "level5": "Talentbaum Jedi-Ritter",
+      "level10": "Talentbaum Jedi-Meister"
+    },
     "levels": [
-      { "level": 1, "task": "Helfe einer Person in Not", "xp": 5 },
-      { "level": 2, "task": "Begleite eine Person auf einer diplomatischen Mission", "xp": 5 },
-      { "level": 3, "task": "Betrete einen Jeditempel, Sithtempel oder Tempel der Macht", "xp": 5 },
-      { "level": 4, "task": "Erlerne drei Machtfähigkeiten", "xp": 5 },
-      { "level": 5, "task": "Erreiche Machtwert 3", "xp": 5 },
-      { "level": 6, "task": "Besiege einen Nemesis im Kampf ohne ihn zu töten", "xp": 10 },
-      { "level": 7, "task": "Baue dein eigenes Lichtschwert (alle Teile sammeln + Kristall)", "xp": 15 },
-      { "level": 8, "task": "Liefere einen Feind des Triumvirats lebendig aus oder bekehre einen Offizier", "xp": 15 },
-      { "level": 9, "task": "Bilde einen Schüler/Padawan aus", "xp": 20 },
-      { "level": 10, "task": "Erreiche Moralität 71", "xp": 50 }
+      {
+        "level": 1,
+        "task": "Helfe einer Person in Not",
+        "xp": 5
+      },
+      {
+        "level": 2,
+        "task": "Begleite eine Person auf einer diplomatischen Mission",
+        "xp": 5
+      },
+      {
+        "level": 3,
+        "task": "Betrete einen Jeditempel, Sithtempel oder Tempel der Macht",
+        "xp": 5
+      },
+      {
+        "level": 4,
+        "task": "Erlerne drei Machtfähigkeiten",
+        "xp": 5
+      },
+      {
+        "level": 5,
+        "task": "Erreiche Machtwert 3",
+        "xp": 5
+      },
+      {
+        "level": 6,
+        "task": "Besiege einen Nemesis im Kampf ohne ihn zu töten",
+        "xp": 10
+      },
+      {
+        "level": 7,
+        "task": "Baue dein eigenes Lichtschwert (alle Teile sammeln + Kristall)",
+        "xp": 15
+      },
+      {
+        "level": 8,
+        "task": "Liefere einen Feind des Triumvirats lebendig aus oder bekehre einen Offizier",
+        "xp": 15
+      },
+      {
+        "level": 9,
+        "task": "Bilde einen Schüler/Padawan aus",
+        "xp": 20
+      },
+      {
+        "level": 10,
+        "task": "Erreiche Moralität 71",
+        "xp": 50
+      }
     ]
   },
   {
@@ -135,18 +435,61 @@
     "nameEN": "Gambler",
     "description": "Werde der König der Spieltische auf Tatooine.",
     "icon": "🎲",
-    "rewards": { "level5": "Talentbaum Spieler oder Schmeichler (Wahl)", "level10": "Zweiter Talentbaum" },
+    "rewards": {
+      "level5": "Talentbaum Spieler oder Schmeichler (Wahl)",
+      "level10": "Zweiter Talentbaum"
+    },
     "levels": [
-      { "level": 1, "task": "Gewinne 5 Runden Glücksspiel in der Mos Eisley Cantina", "xp": 5 },
-      { "level": 2, "task": "Verdopple deinen Gewinn beim Glücksspiel in Mos Espa", "xp": 5 },
-      { "level": 3, "task": "Gewinne 3 Runden Glücksspiel in Mos Shuuta", "xp": 5 },
-      { "level": 4, "task": "Gewinne 10 Runden ohne zu täuschen/schummeln", "xp": 10 },
-      { "level": 5, "task": "Organisiere ein Glücksspielturnier in Mos Pelgo", "xp": 10 },
-      { "level": 6, "task": "Gewinne ein Glücksspiel in jeder Stadt auf Tatooine", "xp": 20 },
-      { "level": 7, "task": "Fordere einen Hutten Daimyo zu einer Runde heraus und überlebe", "xp": 15 },
-      { "level": 8, "task": "Gewinne gegen jeden anwesenden Spielercharakter", "xp": 20 },
-      { "level": 9, "task": "Erwerbe einen Podrenner oder eine Immobilie beim Glücksspiel", "xp": 20 },
-      { "level": 10, "task": "Erfinde ein neues Glücksspiel mit Würfelregeln", "xp": 5 }
+      {
+        "level": 1,
+        "task": "Gewinne 5 Runden Glücksspiel in der Mos Eisley Cantina",
+        "xp": 5
+      },
+      {
+        "level": 2,
+        "task": "Verdopple deinen Gewinn beim Glücksspiel in Mos Espa",
+        "xp": 5
+      },
+      {
+        "level": 3,
+        "task": "Gewinne 3 Runden Glücksspiel in Mos Shuuta",
+        "xp": 5
+      },
+      {
+        "level": 4,
+        "task": "Gewinne 10 Runden ohne zu täuschen/schummeln",
+        "xp": 10
+      },
+      {
+        "level": 5,
+        "task": "Organisiere ein Glücksspielturnier in Mos Pelgo",
+        "xp": 10
+      },
+      {
+        "level": 6,
+        "task": "Gewinne ein Glücksspiel in jeder Stadt auf Tatooine",
+        "xp": 20
+      },
+      {
+        "level": 7,
+        "task": "Fordere einen Hutten Daimyo zu einer Runde heraus und überlebe",
+        "xp": 15
+      },
+      {
+        "level": 8,
+        "task": "Gewinne gegen jeden anwesenden Spielercharakter",
+        "xp": 20
+      },
+      {
+        "level": 9,
+        "task": "Erwerbe einen Podrenner oder eine Immobilie beim Glücksspiel",
+        "xp": 20
+      },
+      {
+        "level": 10,
+        "task": "Erfinde ein neues Glücksspiel mit Würfelregeln",
+        "xp": 5
+      }
     ]
   },
   {
@@ -155,18 +498,62 @@
     "nameEN": "Treasure Hunter",
     "description": "Finde immer wertvollere Schätze.",
     "icon": "💎",
-    "rewards": { "level2": "Talentbaum Kundschafter", "level5": "Talentbaum Ermittler", "level10": "Talentbaum Zielfahnder" },
+    "rewards": {
+      "level2": "Talentbaum Kundschafter",
+      "level5": "Talentbaum Ermittler",
+      "level10": "Talentbaum Zielfahnder"
+    },
     "levels": [
-      { "level": 1, "task": "Finde einen Schatz im Wert von 1.000 Credits", "xp": 5 },
-      { "level": 2, "task": "Finde einen Schatz im Wert von 2.000 Credits", "xp": 5 },
-      { "level": 3, "task": "Finde einen Schatz im Wert von 3.000 Credits", "xp": 5 },
-      { "level": 4, "task": "Finde einen Schatz im Wert von 4.000 Credits", "xp": 5 },
-      { "level": 5, "task": "Finde einen Schatz im Wert von 5.000 Credits", "xp": 5 },
-      { "level": 6, "task": "Finde einen Schatz im Wert von 6.000 Credits", "xp": 5 },
-      { "level": 7, "task": "Finde einen Schatz im Wert von 7.000 Credits", "xp": 5 },
-      { "level": 8, "task": "Finde einen Schatz im Wert von 8.000 Credits", "xp": 5 },
-      { "level": 9, "task": "Finde einen Schatz im Wert von 9.000 Credits", "xp": 5 },
-      { "level": 10, "task": "Finde einen Schatz im Wert von 10.000 Credits", "xp": 5 }
+      {
+        "level": 1,
+        "task": "Finde einen Schatz im Wert von 1.000 Credits",
+        "xp": 5
+      },
+      {
+        "level": 2,
+        "task": "Finde einen Schatz im Wert von 2.000 Credits",
+        "xp": 5
+      },
+      {
+        "level": 3,
+        "task": "Finde einen Schatz im Wert von 3.000 Credits",
+        "xp": 5
+      },
+      {
+        "level": 4,
+        "task": "Finde einen Schatz im Wert von 4.000 Credits",
+        "xp": 5
+      },
+      {
+        "level": 5,
+        "task": "Finde einen Schatz im Wert von 5.000 Credits",
+        "xp": 5
+      },
+      {
+        "level": 6,
+        "task": "Finde einen Schatz im Wert von 6.000 Credits",
+        "xp": 5
+      },
+      {
+        "level": 7,
+        "task": "Finde einen Schatz im Wert von 7.000 Credits",
+        "xp": 5
+      },
+      {
+        "level": 8,
+        "task": "Finde einen Schatz im Wert von 8.000 Credits",
+        "xp": 5
+      },
+      {
+        "level": 9,
+        "task": "Finde einen Schatz im Wert von 9.000 Credits",
+        "xp": 5
+      },
+      {
+        "level": 10,
+        "task": "Finde einen Schatz im Wert von 10.000 Credits",
+        "xp": 5
+      }
     ]
   },
   {
@@ -175,18 +562,61 @@
     "nameEN": "Riding",
     "description": "Meistere das Reiten von Kreaturen auf Tatooine.",
     "icon": "🐎",
-    "rewards": { "level5": "Talentbaum Bestienreiter", "level10": "Talentbaum Bordschütze" },
+    "rewards": {
+      "level5": "Talentbaum Bestienreiter",
+      "level10": "Talentbaum Bordschütze"
+    },
     "levels": [
-      { "level": 1, "task": "Besorge dir dein erstes Reittier", "xp": 5 },
-      { "level": 2, "task": "Töte von deinem Reittier aus 5 Tiere", "xp": 5 },
-      { "level": 3, "task": "Reite durch Mos Eisley und Mos Espa in einer Sitzung", "xp": 5 },
-      { "level": 4, "task": "Reite durch Mos Pelgo und Mos Haufa in einer Sitzung", "xp": 5 },
-      { "level": 5, "task": "Töte mit deinem Reittier einen Feind", "xp": 10 },
-      { "level": 6, "task": "Reite ein Dewback auf der Lars Farm ein", "xp": 5 },
-      { "level": 7, "task": "Töte von deinem Reittier aus 10 Raubtiere", "xp": 15 },
-      { "level": 8, "task": "Verbringe eine ganze Spielsitzung auf deinem Reittier", "xp": 25 },
-      { "level": 9, "task": "Reite durch Anchorhead, Mos Eisley, Mos Espa, Mos Pelgo, Mos Haufa, Mos Shuuta", "xp": 15 },
-      { "level": 10, "task": "Fange einen Feind mit einem Lasso und ziehe ihn von einer Stadt zur anderen", "xp": 20 }
+      {
+        "level": 1,
+        "task": "Besorge dir dein erstes Reittier",
+        "xp": 5
+      },
+      {
+        "level": 2,
+        "task": "Töte von deinem Reittier aus 5 Tiere",
+        "xp": 5
+      },
+      {
+        "level": 3,
+        "task": "Reite durch Mos Eisley und Mos Espa in einer Sitzung",
+        "xp": 5
+      },
+      {
+        "level": 4,
+        "task": "Reite durch Mos Pelgo und Mos Haufa in einer Sitzung",
+        "xp": 5
+      },
+      {
+        "level": 5,
+        "task": "Töte mit deinem Reittier einen Feind",
+        "xp": 10
+      },
+      {
+        "level": 6,
+        "task": "Reite ein Dewback auf der Lars Farm ein",
+        "xp": 5
+      },
+      {
+        "level": 7,
+        "task": "Töte von deinem Reittier aus 10 Raubtiere",
+        "xp": 15
+      },
+      {
+        "level": 8,
+        "task": "Verbringe eine ganze Spielsitzung auf deinem Reittier",
+        "xp": 25
+      },
+      {
+        "level": 9,
+        "task": "Reite durch Anchorhead, Mos Eisley, Mos Espa, Mos Pelgo, Mos Haufa, Mos Shuuta",
+        "xp": 15
+      },
+      {
+        "level": 10,
+        "task": "Fange einen Feind mit einem Lasso und ziehe ihn von einer Stadt zur anderen",
+        "xp": 20
+      }
     ]
   },
   {
@@ -195,18 +625,61 @@
     "nameEN": "Weapon Specialist",
     "description": "Meistere verschiedene Waffentypen.",
     "icon": "⚔",
-    "rewards": { "level5": "Talentbaum Kommando", "level10": "Talentbaum Kriegsingenieur" },
+    "rewards": {
+      "level5": "Talentbaum Kommando",
+      "level10": "Talentbaum Kriegsingenieur"
+    },
     "levels": [
-      { "level": 1, "task": "Töte 3 Gegner mit einem Messer", "xp": 5 },
-      { "level": 2, "task": "Töte 3 Tiere mit Wurfwaffen", "xp": 10 },
-      { "level": 3, "task": "Töte 5 Feinde (keine Tiere) mit Wurfwaffen", "xp": 10 },
-      { "level": 4, "task": "Töte 10 Gegner mit einem Karabiner", "xp": 10 },
-      { "level": 5, "task": "Baue ein Gewehr", "xp": 8 },
-      { "level": 6, "task": "Töte 5 Gegner mit Granaten", "xp": 5 },
-      { "level": 7, "task": "Töte 10 Gegner mit Vibrowaffen", "xp": 10 },
-      { "level": 8, "task": "Töte einen Nemesis mit Pfeil und Bogen", "xp": 20 },
-      { "level": 9, "task": "Töte 5 Gegner mit Waffen, die du in der Wüste findest", "xp": 10 },
-      { "level": 10, "task": "Töte einen Greater Krayt Drachen mit Sprengwaffen", "xp": 50 }
+      {
+        "level": 1,
+        "task": "Töte 3 Gegner mit einem Messer",
+        "xp": 5
+      },
+      {
+        "level": 2,
+        "task": "Töte 3 Tiere mit Wurfwaffen",
+        "xp": 10
+      },
+      {
+        "level": 3,
+        "task": "Töte 5 Feinde (keine Tiere) mit Wurfwaffen",
+        "xp": 10
+      },
+      {
+        "level": 4,
+        "task": "Töte 10 Gegner mit einem Karabiner",
+        "xp": 10
+      },
+      {
+        "level": 5,
+        "task": "Baue ein Gewehr",
+        "xp": 8
+      },
+      {
+        "level": 6,
+        "task": "Töte 5 Gegner mit Granaten",
+        "xp": 5
+      },
+      {
+        "level": 7,
+        "task": "Töte 10 Gegner mit Vibrowaffen",
+        "xp": 10
+      },
+      {
+        "level": 8,
+        "task": "Töte einen Nemesis mit Pfeil und Bogen",
+        "xp": 20
+      },
+      {
+        "level": 9,
+        "task": "Töte 5 Gegner mit Waffen, die du in der Wüste findest",
+        "xp": 10
+      },
+      {
+        "level": 10,
+        "task": "Töte einen Greater Krayt Drachen mit Sprengwaffen",
+        "xp": 50
+      }
     ]
   }
 ]
