@@ -88,37 +88,44 @@ export function setTTSVoiceName(name: string | null) {
 // SOUNDTRACK — Background Music Loop
 // ============================================================
 
-let soundtrack: HTMLAudioElement | null = null;
+// Global singleton soundtrack — shared across all components
+function getGlobalSoundtrack(): HTMLAudioElement | null {
+  if (typeof window === 'undefined') return null;
+  return (window as any).__qrpgSoundtrack || null;
+}
+
+function setGlobalSoundtrack(audio: HTMLAudioElement | null): void {
+  if (typeof window === 'undefined') return;
+  (window as any).__qrpgSoundtrack = audio;
+}
 
 export function startSoundtrack(): void {
   if (typeof window === 'undefined') return;
-  // Check if splash screen already started it
-  const existing = (window as any).__qrpgSoundtrack as HTMLAudioElement | undefined;
-  if (existing && !existing.paused) {
-    soundtrack = existing;
-    return;
-  }
-  if (soundtrack && !soundtrack.paused) return;
+  const existing = getGlobalSoundtrack();
+  if (existing && !existing.paused) return; // already playing
   const settings = loadSpeechSettings();
-  soundtrack = existing || new Audio('/audio/soundtrack.mp3');
-  soundtrack.loop = true;
-  soundtrack.volume = settings.musicVolume;
-  soundtrack.play().catch(() => { /* needs user gesture */ });
+  const audio = existing || new Audio('/audio/soundtrack.mp3');
+  audio.loop = true;
+  audio.volume = settings.musicVolume;
+  audio.play().catch(() => {});
+  setGlobalSoundtrack(audio);
   saveSpeechSettings({ musicEnabled: true });
 }
 
 export function stopSoundtrack(): void {
-  if (soundtrack) {
-    soundtrack.pause();
-    soundtrack.currentTime = 0;
-    soundtrack = null;
+  const audio = getGlobalSoundtrack();
+  if (audio) {
+    audio.pause();
+    audio.currentTime = 0;
   }
+  setGlobalSoundtrack(null);
   saveSpeechSettings({ musicEnabled: false });
 }
 
 export function setMusicVolume(vol: number): void {
   const v = Math.max(0, Math.min(1, vol));
-  if (soundtrack) soundtrack.volume = v;
+  const audio = getGlobalSoundtrack();
+  if (audio) audio.volume = v;
   saveSpeechSettings({ musicVolume: v });
 }
 
@@ -131,7 +138,8 @@ export function setSfxVolume(vol: number): void {
 }
 
 export function getMusicPlaying(): boolean {
-  return soundtrack !== null && !soundtrack.paused;
+  const audio = getGlobalSoundtrack();
+  return audio !== null && !audio.paused;
 }
 
 // Google Cloud TTS voice options (curated — 2 male, 2 female)
