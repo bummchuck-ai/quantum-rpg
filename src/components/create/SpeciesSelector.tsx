@@ -163,21 +163,22 @@ const SpeciesSelector: React.FC = () => {
         onViewModeChange={handleViewModeChange}
       >
         {filteredSpecies.map((s) => {
-          const isSelected = selectedSpecies === s.name;
+          // In swipe mode: active card is always expanded. In grid: expand on tap.
+          const isExpanded = viewMode === 'swipe' || selectedSpecies === s.name;
           return (
             <div
               key={s.name}
               onClick={() => {
                 if (viewMode === 'grid') {
                   playClick();
-                  setSelectedSpecies(isSelected ? null : s.name);
+                  setSelectedSpecies(selectedSpecies === s.name ? null : s.name);
                   setSelectedSubspecies(null);
                 }
               }}
               className={`group border transition-all duration-300 rounded-2xl overflow-hidden ${viewMode === 'grid' ? 'cursor-pointer' : ''} h-fit ${
-                isSelected
-                  ? 'border-amber-500/30 bg-zinc-950 shadow-[0_0_20px_rgba(245,158,11,0.06),0_8px_32px_rgba(0,0,0,0.7)]'
-                  : 'border-zinc-700/40 bg-zinc-950 shadow-[0_8px_32px_rgba(0,0,0,0.6)] hover:border-zinc-600/50'
+                isExpanded
+                  ? 'border-amber-500/30 bg-zinc-950'
+                  : 'border-zinc-700/40 bg-zinc-950 hover:border-zinc-600/50'
               }`}
             >
               {/* DOSSIER CARD — Square portrait with overlaid info */}
@@ -222,7 +223,7 @@ const SpeciesSelector: React.FC = () => {
                 </div>
               </div>
 
-                  {isSelected && (
+                  {isExpanded && (
                       <div className="animate-in fade-in duration-300 px-3 pb-3 space-y-2">
                           {/* Description */}
                           {s.description && (

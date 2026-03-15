@@ -210,7 +210,7 @@ const SwipeCards: React.FC<SwipeCardsProps> = ({
       opacity: peekOpacity,
       transition,
       pointerEvents: 'none' as const,
-      maxHeight: '320px',
+      maxHeight: '55vh',
       overflow: 'hidden',
       maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
       WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
