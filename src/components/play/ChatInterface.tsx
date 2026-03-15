@@ -474,6 +474,7 @@ const ChatInterface: React.FC = () => {
               value={isListening ? transcript : inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyDown={(e) => { if (e.key === 'Enter') handleSendMessage(inputValue); }}
+              onFocus={(e) => { setTimeout(() => e.target.scrollIntoView({ behavior: 'smooth', block: 'center' }), 300); }}
               readOnly={isListening}
             />
           </div>

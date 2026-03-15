@@ -189,7 +189,21 @@ export const useCharacterStore = create<GameState>()(
         vehicles: [],
       }),
 
-      setCareer: (career) => get().updateActivePlayer({ career }),
+      setCareer: (career) => set((state) => {
+        const player = state.players[state.activePlayerIndex];
+        // Reset skills back to species free ranks + refund spent XP on skills
+        const freeRanks = player.species?.freeSkillRanks || {};
+        const newPlayers = [...state.players];
+        newPlayers[state.activePlayerIndex] = {
+          ...player,
+          career,
+          skillRanks: { ...freeRanks },
+          availableXP: player.availableXP + player.spentXP,
+          spentXP: 0,
+          ownedTalents: [],
+        };
+        return { players: newPlayers };
+      }),
 
       setSpecialization: (spec) => get().updateActivePlayer({ specializations: [spec] }),
 
@@ -314,7 +328,7 @@ export const useCharacterStore = create<GameState>()(
           if (existingTalentIndex !== -1) {
             return state; // Talent bereits im Besitz und nicht ranked
           }
-          newOwnedTalents.push({ ...talentToBuy, currentRank: 1 }); // currentRank für non-ranked Talente auf 1 setzen
+          newOwnedTalents.push({ ...talentToBuy, currentRank: 0 }); // 0 = not ranked (just owned)
         }
 
         const newPlayers = [...state.players];
@@ -354,7 +368,7 @@ export const useCharacterStore = create<GameState>()(
         const newPlayers = [...state.players];
         newPlayers[state.activePlayerIndex] = {
           ...player,
-          credits: player.credits + (item.sellPrice || Math.floor(item.price * 0.5)),
+          credits: player.credits + Math.max(0, item.sellPrice || Math.floor(item.price * 0.5)),
           ownedGear: newGear
         };
         return { players: newPlayers };
@@ -513,15 +527,33 @@ export const useCharacterStore = create<GameState>()(
       importState: (json) => {
         try {
           const state = JSON.parse(json);
-          // Basic validation
+          // Validate structure
           if (!state.players || !Array.isArray(state.players) || state.players.length === 0) {
             console.error("Invalid save: missing players array");
             return;
           }
-          if (state.activePlayerIndex >= state.players.length) {
+          // Validate activePlayerIndex
+          if (!Number.isInteger(state.activePlayerIndex) || state.activePlayerIndex < 0 || state.activePlayerIndex >= state.players.length) {
             state.activePlayerIndex = 0;
           }
-          set({ ...state });
+          // Sanitize each player
+          state.players = state.players.map((p: any) => ({
+            ...p,
+            availableXP: Math.max(0, Number(p.availableXP) || 0),
+            spentXP: Math.max(0, Number(p.spentXP) || 0),
+            credits: Math.max(0, Number(p.credits) || 0),
+            wounds: Math.max(0, Number(p.wounds) || 0),
+            strain: Math.max(0, Number(p.strain) || 0),
+            characteristics: p.characteristics ? Object.fromEntries(
+              Object.entries(p.characteristics).map(([k, v]) => [k, Math.min(6, Math.max(1, Number(v) || 1))])
+            ) : { brawn: 2, agility: 2, intellect: 2, cunning: 2, willpower: 2, presence: 2 },
+            skillRanks: p.skillRanks || {},
+            ownedTalents: Array.isArray(p.ownedTalents) ? p.ownedTalents : [],
+            ownedGear: Array.isArray(p.ownedGear) ? p.ownedGear : [],
+            questLog: Array.isArray(p.questLog) ? p.questLog : [],
+            vehicles: Array.isArray(p.vehicles) ? p.vehicles : [],
+          }));
+          set({ players: state.players, activePlayerIndex: state.activePlayerIndex });
         } catch (e) {
           console.error("Savegame corrupted", e);
         }

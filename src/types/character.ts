@@ -213,7 +213,8 @@ export interface Species {
     woundThresholdBase: number;     // Added to Brawn for wound threshold
   strainThresholdBase: number;    // Added to Willpower for strain threshold
   startingXP: number;
-    specialAbilities: string[];
+    abilities: string[];
+    specialAbilities?: string[]; // deprecated alias — use abilities
     freeSkillRanks: Record<string, number>;  // skill: ranks
   imageUrl?: string;
 }
