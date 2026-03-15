@@ -90,15 +90,38 @@ export function getVoiceForLang(lang: string): SpeechSynthesisVoice | null {
   if (!checkTTSSupport()) return null;
   ensureVoicesLoaded();
   const voices = speechSynthesis.getVoices();
-  // Exact match first (e.g., 'de-DE')
+  if (voices.length === 0) return null; // Voices not loaded yet (iOS first call)
+
+  const prefix = lang.split('-')[0];
+  // Prefer premium/enhanced voices (iOS "Siri", Chrome "Google")
+  const premium = voices.find(v => v.lang.startsWith(prefix) && (v.name.includes('enhanced') || v.name.includes('Premium') || v.localService === false));
+  if (premium) return premium;
+  // Exact match (e.g., 'de-DE')
   const exact = voices.find(v => v.lang === lang);
   if (exact) return exact;
   // Prefix match (e.g., 'de')
-  const prefix = lang.split('-')[0];
   const partial = voices.find(v => v.lang.startsWith(prefix));
   if (partial) return partial;
   // Any voice as last resort
   return voices[0] || null;
+}
+
+// iOS Safari workaround: speechSynthesis stops after ~15s.
+// Split long text into chunks and speak sequentially.
+function splitIntoChunks(text: string, maxLen: number = 200): string[] {
+  const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+  const chunks: string[] = [];
+  let current = '';
+  for (const sentence of sentences) {
+    if ((current + sentence).length > maxLen && current) {
+      chunks.push(current.trim());
+      current = sentence;
+    } else {
+      current += sentence;
+    }
+  }
+  if (current.trim()) chunks.push(current.trim());
+  return chunks;
 }
 
 export function speakNarrative(
@@ -113,26 +136,43 @@ export function speakNarrative(
   stopSpeaking();
 
   const settings = loadSpeechSettings();
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = lang;
-  utterance.rate = settings.ttsRate;
-  utterance.pitch = settings.ttsPitch;
-
   const voice = getVoiceForLang(lang);
-  if (voice) utterance.voice = voice;
 
-  utterance.onstart = () => onStart?.();
-  utterance.onend = () => {
-    currentUtterance = null;
-    onEnd?.();
-  };
-  utterance.onerror = () => {
-    currentUtterance = null;
-    onEnd?.();
+  // Split into chunks for iOS compatibility (prevents 15s cutoff)
+  const chunks = splitIntoChunks(text);
+  let chunkIndex = 0;
+  let started = false;
+
+  const speakNext = () => {
+    if (chunkIndex >= chunks.length) {
+      currentUtterance = null;
+      onEnd?.();
+      return;
+    }
+
+    const utterance = new SpeechSynthesisUtterance(chunks[chunkIndex]);
+    utterance.lang = lang;
+    utterance.rate = settings.ttsRate;
+    utterance.pitch = settings.ttsPitch;
+    if (voice) utterance.voice = voice;
+
+    utterance.onstart = () => {
+      if (!started) { started = true; onStart?.(); }
+    };
+    utterance.onend = () => {
+      chunkIndex++;
+      speakNext();
+    };
+    utterance.onerror = () => {
+      currentUtterance = null;
+      onEnd?.();
+    };
+
+    currentUtterance = utterance;
+    speechSynthesis.speak(utterance);
   };
 
-  currentUtterance = utterance;
-  speechSynthesis.speak(utterance);
+  speakNext();
 }
 
 export function stopSpeaking(): void {

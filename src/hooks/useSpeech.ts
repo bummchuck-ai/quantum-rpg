@@ -92,6 +92,12 @@ export function useSpeech(): UseSpeechReturn {
     setIsSpeaking(false);
     setTranscript('');
 
+    // Abort any existing recognition before creating new one
+    if (recognitionRef.current) {
+      try { recognitionRef.current.abort(); } catch { /* ignore */ }
+      recognitionRef.current = null;
+    }
+
     const recognition = createRecognition(lang, {
       onResult: (text, isFinal) => {
         setTranscript(text);
@@ -100,7 +106,10 @@ export function useSpeech(): UseSpeechReturn {
         }
       },
       onError: (error) => {
-        console.warn('STT error:', error);
+        // 'no-speech' and 'aborted' are normal on iOS — don't warn
+        if (error !== 'no-speech' && error !== 'aborted') {
+          console.warn('STT error:', error);
+        }
         setIsListening(false);
       },
       onEnd: () => {
