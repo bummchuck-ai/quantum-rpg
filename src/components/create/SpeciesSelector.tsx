@@ -220,26 +220,25 @@ const SpeciesSelector: React.FC = () => {
                   </div>
 
                   {isSelected && (
-                      <div className="animate-in slide-in-from-top-4 duration-500 space-y-3 pt-3 border-t border-zinc-800/50 mt-1">
-                          <div className="grid grid-cols-2 gap-2 text-[9px] text-zinc-400 font-bold uppercase tracking-widest text-center">
-                              <div className="bg-black/40 p-2 border border-zinc-800/50 rounded-lg">Wounds {s.woundThresholdBase}+BR</div>
-                              <div className="bg-black/40 p-2 border border-zinc-800/50 rounded-lg">Strain {s.strainThresholdBase}+WL</div>
+                      <div className="animate-in fade-in duration-300 space-y-2.5 pt-2.5 border-t border-zinc-800/50 mt-1">
+                          {/* Thresholds inline */}
+                          <div className="flex gap-2 text-[8px] text-zinc-500 font-bold uppercase tracking-wider">
+                              <div className="flex-1 bg-black/40 py-1.5 px-2 border border-zinc-800/50 rounded-lg text-center">W {s.woundThresholdBase}+BR</div>
+                              <div className="flex-1 bg-black/40 py-1.5 px-2 border border-zinc-800/50 rounded-lg text-center">S {s.strainThresholdBase}+WL</div>
+                              <div className="flex-1 bg-black/40 py-1.5 px-2 border border-amber-500/20 rounded-lg text-center text-amber-500">{s.startingXP} XP</div>
                           </div>
 
-                          {/* Base Abilities */}
+                          {/* Abilities — clean card list */}
                           {s.abilities.length > 0 && (
-                            <div className="bg-black/30 border border-zinc-800/40 rounded-xl p-3 space-y-2">
-                              <div className="text-[9px] text-amber-500/80 font-black uppercase tracking-[0.2em] flex items-center gap-1.5">
-                                  <div className="w-1 h-1 bg-amber-500 rounded-full"></div>
-                                  {t('traitsAnalysis')}
+                            <div className="space-y-1.5">
+                              <div className="text-[8px] text-amber-500/70 font-black uppercase tracking-[0.15em]">
+                                {t('traitsAnalysis')}
                               </div>
-                              <div className="space-y-1.5">
-                                  {s.abilities.map((a, i) => (
-                                      <p key={i} className="text-[11px] text-zinc-300 leading-relaxed font-sans">
-                                        <span className="text-amber-500/50 mr-1.5">›</span>{a}
-                                      </p>
-                                  ))}
-                              </div>
+                              {s.abilities.map((a, i) => (
+                                <div key={i} className="bg-zinc-900/60 border border-zinc-800/30 rounded-lg px-3 py-2">
+                                  <p className="text-[11px] text-zinc-300 leading-snug font-sans">{a}</p>
+                                </div>
+                              ))}
                             </div>
                           )}
 

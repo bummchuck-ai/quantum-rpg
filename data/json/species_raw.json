@@ -37,8 +37,7 @@
     "strainThresholdBase": 10,
     "abilities": [
       "Anx beginnen mit 1 Rang in den Talenten Todesstoß und Entwaffnendes Lächeln.",
-      "Verdeckt ein Anx seinen Schädelkamm nicht, wird die Schwierigkeit seiner Täuschungsproben",
-      "einmal aufgewertet."
+      "Verdeckt ein Anx seinen Schädelkamm nicht, wird die Schwierigkeit seiner Täuschungsproben einmal aufgewertet."
     ],
     "description": "Riesige, sanfte Wesen mit markanten Schädelkämmen. Ihre Emotionen sind für alle sichtbar — Täuschung fällt ihnen schwer."
   },
@@ -115,13 +114,9 @@
     "strainThresholdBase": 10,
     "abilities": [
       "1 Rang in Wachsamkeit (nicht höher als 2 während der Erschaffung).",
-      "Wenn ein Arcona Abzüge aufgrund von trockener oder heißer Umgebung erhält,",
-      "so kann er einen von diesen Proben ignorieren.",
+      "Wenn ein Arcona Abzüge aufgrund von trockener oder heißer Umgebung erhält, so kann er einen von diesen Proben ignorieren.",
       "Charmant: Arcona erhalten bei allen Proben auf Charme und Verhandeln einen  hinzu.",
-      "Salzabhängigkeit: erhält ein Arcona zwei bis drei Gramm reinen Salzes, so ist er bis zum Ende der",
-      "nächsten  Begegnung  desorientiert.  Zudem muss  ihm eine  Disziplinsprobe gelingen  oder  er  erhält",
-      "die Verpflichtung „Sucht 2“, falls er diese noch nicht bereits besitzt (und bis er  diese verloren hat,",
-      "goldreflektierende Augen)."
+      "Salzabhängigkeit: erhält ein Arcona zwei bis drei Gramm reinen Salzes, so ist er bis zum Ende der nächsten  Begegnung  desorientiert.  Zudem muss  ihm eine  Disziplinsprobe gelingen  oder  er  erhält die Verpflichtung „Sucht 2“, falls er diese noch nicht bereits besitzt (und bis er  diese verloren hat, goldreflektierende Augen)."
     ],
     "description": "Reptilienähnliche Wesen mit flachen, ambossförmigen Köpfen. Empfindlich gegenüber Salz, das bei ihnen wie eine Droge wirkt."
   },
@@ -226,8 +221,7 @@
     "abilities": [
       "1 Rang in Wahrnehmung (höchstens Rang 2 während der Erschaffung).",
       "Gutes Gehör: Ein Bith erhält auf Gehör basierende Wahrnehmungsproben einen . Laute",
-      "Geräusche verursachen bei ihm doppelte Erschöpfung. Ein Gehörschutz negiert sowohl Bonus wie",
-      "auch Nachteil des Gehörs."
+      "Geräusche verursachen bei ihm doppelte Erschöpfung. Ein Gehörschutz negiert sowohl Bonus wie auch Nachteil des Gehörs."
     ],
     "freeSkillRanks": {
       "perception": 1
@@ -268,10 +262,7 @@
     "strainThresholdBase": 11,
     "abilities": [
       "1 Rang in Charme oder Disziplin (höchstens Rang 2 während der Erschaffung).",
-      "Memnii: Einmal pro Spielsitzung kann ein Caamasi eine neue Memnis erschaffen, welche über sich",
-      "über eine gesamte Szene oder Begegnung hinfort streckt. Diese Memnis kann er sich jederzeit",
-      "perfekt ins Gedächtnis rufen und mit einem anderen Caamasi oder machtsensitivem Lebewesen",
-      "teilen. Dies könnte ihm bei passenden Proben auch einen  gewähren."
+      "Memnii: Einmal pro Spielsitzung kann ein Caamasi eine neue Memnis erschaffen, welche über sich über eine gesamte Szene oder Begegnung hinfort streckt. Diese Memnis kann er sich jederzeit perfekt ins Gedächtnis rufen und mit einem anderen Caamasi oder machtsensitivem Lebewesen teilen. Dies könnte ihm bei passenden Proben auch einen  gewähren."
     ],
     "description": "Friedfertige, gold-gestreifte Humanoide mit der einzigartigen Fähigkeit, Erinnerungen telepathisch zu teilen."
   },
@@ -334,8 +325,7 @@
     "abilities": [
       "1 Rang in Widerstandskraft (nicht höher als 2 während der Erschaffung).",
       "Chagrianer beginnen mit 1 Rang im Talent Expertenwissen.",
-      "Amphibisch: Chagrianer können unter Wasser ohne Einschränkungen atmen",
-      "und erleiden niemals Abzüge aufgrund der Bewegung im Wasser."
+      "Amphibisch: Chagrianer können unter Wasser ohne Einschränkungen atmen und erleiden niemals Abzüge aufgrund der Bewegung im Wasser."
     ],
     "freeSkillRanks": {
       "resilience": 1
@@ -399,13 +389,9 @@
     "strainThresholdBase": 9,
     "abilities": [
       "1 Rang in Widerstandskraft (nicht höher als 2 während der Erschaffung).",
-      "Wechselbalg: Ein Clawdit kann 3 Erschöpfung einsetzen und eine  Widerstandskraftprobe",
-      "ablegen. Bei Erfolg kann er das Aussehen einer Person mit Silhouette 1 annehmen, welche er in",
-      "der Vergangenheit beobachtet hat. Andere können eine Probe auf Wahrnehmung gegen die",
+      "Wechselbalg: Ein Clawdit kann 3 Erschöpfung einsetzen und eine  Widerstandskraftprobe ablegen. Bei Erfolg kann er das Aussehen einer Person mit Silhouette 1 annehmen, welche er in der Vergangenheit beobachtet hat. Andere können eine Probe auf Wahrnehmung gegen die",
       "Täuschung des Clawditen ablegen, damit sie Unstimmigkeiten am Aussehen, Verhalten oder",
-      "Mimik und Gestik des Nachahmenden erkennen. Für unstimmige Kleidung oder ähnliches könnten",
-      "vergeben werden, hat der Clawdit den Nachgeahmten über längere Zeit studieren können,",
-      "könnte die Probe einen oder mehrere  erhalten."
+      "Mimik und Gestik des Nachahmenden erkennen. Für unstimmige Kleidung oder ähnliches könnten vergeben werden, hat der Clawdit den Nachgeahmten über längere Zeit studieren können, könnte die Probe einen oder mehrere  erhalten."
     ],
     "freeSkillRanks": {
       "resilience": 1
@@ -488,9 +474,7 @@
     "abilities": [
       "1 Rang in Widerstandskraft (nicht höher als 2 während der Erschaffung).",
       "Groß: Dowutin beginnen mit Silhouette 1 oder 2, ausgewählt während der Charaktererschaffung.",
-      "Unbeweglich: Dowutin, die den Zustand Bewegungsunfähig erreichen, umgestoßen werden oder",
-      "auf anderem Wege gegen ihren Willen bewegt werden, können 3 Erschöpfung erleiden, um dies zu",
-      "verhindern. Dowutin mit Silhouette 2 müssen nur 1 Erschöpfung erleiden."
+      "Unbeweglich: Dowutin, die den Zustand Bewegungsunfähig erreichen, umgestoßen werden oder auf anderem Wege gegen ihren Willen bewegt werden, können 3 Erschöpfung erleiden, um dies zu verhindern. Dowutin mit Silhouette 2 müssen nur 1 Erschöpfung erleiden."
     ],
     "freeSkillRanks": {
       "resilience": 1
@@ -512,8 +496,7 @@
     "strainThresholdBase": 10,
     "abilities": [
       "1 Rang in Überleben (nicht höher als 2 während der Erschaffung).",
-      "Primitiv: Dresselianer werten die Schwierigkeit jeder Probe auf, die mit",
-      "fortgeschrittener Technologie zusammen hängt, die sich nicht auf ihrem",
+      "Primitiv: Dresselianer werten die Schwierigkeit jeder Probe auf, die mit fortgeschrittener Technologie zusammen hängt, die sich nicht auf ihrem",
       "Heimatplaneten findet. Mit der Zeit kann sich ein Dresselianer nach",
       "Entscheidung des Spielleiters an einzelne Technologien gewöhnen. Durch",
       "Zahlung von 10 EP kann ein Dresselianer diesen Nachteil ablegen."
@@ -538,9 +521,7 @@
     "strainThresholdBase": 10,
     "abilities": [
       "1 Rang in Charme oder Führungsqualitäten (höchstens Rang 2 während der Erschaffung).",
-      "Großer Lärm: Bei einer Probe auf Führungsqualitäten oder Charme kann ein Drabataner",
-      "einsetzen, um ein zusätzliches Ziel in Reichweite zu beeinflussen oder aber um Ziele zu",
-      "beeinflussen, die 1 Kategorie weiter entfernt sind als eigentlich gestattet."
+      "Großer Lärm: Bei einer Probe auf Führungsqualitäten oder Charme kann ein Drabataner einsetzen, um ein zusätzliches Ziel in Reichweite zu beeinflussen oder aber um Ziele zu beeinflussen, die 1 Kategorie weiter entfernt sind als eigentlich gestattet."
     ],
     "description": "Robuste Humanoide mit natürlicher Panzerung. Ruhig und besonnen, aber tödlich im Kampf."
   },
@@ -583,14 +564,9 @@
       "Droiden erhalten 1 Rang im Talent Belastbarkeit (pro Rang +1 auf Absorption).",
       "Droiden müssen nicht schlafen, essen oder atmen, werden nicht von Giften und Gasen beeinflusst.",
       "Droiden haben eine Grenze von 6 bei kybernetischen Implantaten (unabhängig von ihrer Stärke).",
-      "Droiden  können  niemals machtsensitiv  sein  und  nicht  durch  gedankenkontrollierende  Machtkräfte",
-      "beeinflusst werden.",
-      "Droiden  können  sich  durch Ausruhen  regenerieren  (ihr  System  versucht  Selbstreparaturen),",
-      "ansonsten können sie mit dem Einsatz  von Mechanik repariert  werden (mit gleichen  Ergebnissen",
-      "wie  Medizin  bei  organischen  Wesen),  ein  Notfallreparatur-Kit  wirkt  bei  Droiden  wie  ein  Stimpack",
-      "bei organischen Wesen.",
-      "Droiden  erhalten  in  zwei  zusätzlichen  Fertigkeiten  ihres  Berufs  und  einer  zusätzlichen  Fertigkeit",
-      "ihrer Spezialisierung 1 Rang."
+      "Droiden  können  niemals machtsensitiv  sein  und  nicht  durch  gedankenkontrollierende  Machtkräfte beeinflusst werden.",
+      "Droiden  können  sich  durch Ausruhen  regenerieren  (ihr  System  versucht  Selbstreparaturen), ansonsten können sie mit dem Einsatz  von Mechanik repariert  werden (mit gleichen  Ergebnissen wie  Medizin  bei  organischen  Wesen),  ein  Notfallreparatur-Kit  wirkt  bei  Droiden  wie  ein  Stimpack bei organischen Wesen.",
+      "Droiden  erhalten  in  zwei  zusätzlichen  Fertigkeiten  ihres  Berufs  und  einer  zusätzlichen  Fertigkeit ihrer Spezialisierung 1 Rang."
     ],
     "description": "Künstliche Intelligenzen in mechanischen Körpern. Vom Protokolldroiden bis zum Kampfdroiden — unendlich vielseitig."
   },
@@ -648,10 +624,7 @@
     "strainThresholdBase": 9,
     "abilities": [
       "1 Rang in Widerstandskraft (nicht höher als 2 während der Erschaffung).",
-      "Grabklauen: Vor einem Bewegungsmanöver kann ein Elom auch ein Manöver",
-      "zum Graben einsetzen, um sich auch durch lockeren Erdboden oder ähnlichem",
-      "während der Bewegung graben zu können. Nach Entscheidung des Spielleiters",
-      "könnten auch andere diese engen und niedrigen Tunnel nutzen."
+      "Grabklauen: Vor einem Bewegungsmanöver kann ein Elom auch ein Manöver zum Graben einsetzen, um sich auch durch lockeren Erdboden oder ähnlichem während der Bewegung graben zu können. Nach Entscheidung des Spielleiters könnten auch andere diese engen und niedrigen Tunnel nutzen."
     ],
     "freeSkillRanks": {
       "resilience": 1
@@ -672,8 +645,7 @@
     "woundThresholdBase": 9,
     "strainThresholdBase": 10,
     "abilities": [
-      "1 Rang in Charme oder Allgemeinbildung (nicht höher als 2 während",
-      "der Erschaffung)."
+      "1 Rang in Charme oder Allgemeinbildung (nicht höher als 2 während der Erschaffung)."
     ],
     "description": "Gehörnte Humanoide mit obsessiver Liebe zur Ordnung und Logik. Hervorragende Bürokraten und Strategen."
   },
@@ -693,8 +665,7 @@
     "abilities": [
       "Klein: Ewoks haben eine Silhouette von 0.",
       "Gute Sinne: Ewoks erhalten einen  auf Wahrnehmungs- und Wachsamkeitsproben hinzu.",
-      "Primitiv: Ewoks werten die Schwierigkeit jeder Probe auf, die mit",
-      "fortgeschrittener Technologie zusammen hängt, die sich nicht auf ihrem",
+      "Primitiv: Ewoks werten die Schwierigkeit jeder Probe auf, die mit fortgeschrittener Technologie zusammen hängt, die sich nicht auf ihrem",
       "Heimatplaneten findet. Mit der Zeit kann sich ein Ewok nach",
       "Entscheidung des Spielleiters an einzelne Technologien gewöhnen. Durch",
       "Zahlung von 10 EP kann ein Ewok diesen Nachteil entfernen."
@@ -716,10 +687,8 @@
     "strainThresholdBase": 12,
     "abilities": [
       "1 Rang in Charme (nicht höher als 2 während der Erschaffung).",
-      "Pheromone: Vor einer Probe auf Charme, Täuschung oder Verhandeln gegen ein",
-      "vernunftbegabtes Wesen in bis zu kurzer Reichweite kann ein Faleen einmal als Nebenhandlung 2",
-      "Erschöpfung erleiden, um diese einmal aufzuwerten. Wirkt nicht gegen Ziele mit Atemmasken oder",
-      "ohne Geruchsorgane."
+      "Pheromone: Vor einer Probe auf Charme, Täuschung oder Verhandeln gegen ein vernunftbegabtes Wesen in bis zu kurzer Reichweite kann ein Faleen einmal als Nebenhandlung 2",
+      "Erschöpfung erleiden, um diese einmal aufzuwerten. Wirkt nicht gegen Ziele mit Atemmasken oder ohne Geruchsorgane."
     ],
     "freeSkillRanks": {
       "charm": 1
@@ -742,11 +711,8 @@
     "abilities": [
       "1 Rang in Disziplin (nicht höher als 2 während der Erschaffung).",
       "Der Spieler entscheidet, ob er einen Gand mit oder ohne Lunge spielen möchte.",
-      "Gand ohne Lunge sind immun gegen Ersticken (aber nicht gegen die Auswir-",
-      "kungen von Vakuum). Sie nehmen die für sich wichtigen Stoffe über Nahrung auf.",
-      "Gand mit Lungen vertragen nur die mit Ammoniak angereicherte Luft ihrer Heimatwelt. Sie starten",
-      "mit einem Ammoniak-Atemgerät, Umgebung mit Sauerstoff wirkt für sie ohne Atemgerät wie",
-      "gefährliche Umwelt mit einer Stufe von 8."
+      "Gand ohne Lunge sind immun gegen Ersticken (aber nicht gegen die Auswir- kungen von Vakuum). Sie nehmen die für sich wichtigen Stoffe über Nahrung auf.",
+      "Gand mit Lungen vertragen nur die mit Ammoniak angereicherte Luft ihrer Heimatwelt. Sie starten mit einem Ammoniak-Atemgerät, Umgebung mit Sauerstoff wirkt für sie ohne Atemgerät wie gefährliche Umwelt mit einer Stufe von 8."
     ],
     "freeSkillRanks": {
       "discipline": 1
@@ -767,13 +733,9 @@
     "woundThresholdBase": 10,
     "strainThresholdBase": 10,
     "abilities": [
-      "1 Rang in Einschüchtern oder Wachsamkeit (nicht höher als 2",
-      "während der Erschaffung).",
-      "Kybernetisch: Der Körper eines Gank kann mit einer Anzahl",
-      "an kybernetischen Implantaten gleich seiner Stärke +3 bestückt werden.",
-      "Anfangskybernetik: Ein Gank kann bis zu zwei kybernetische Implantate",
-      "im Wert von insgesamt 5000 Credits zu Spielbeginn besitzen. Diese",
-      "Summe kann durch zusätzliche Verpflichtung erhöht werden."
+      "1 Rang in Einschüchtern oder Wachsamkeit (nicht höher als 2 während der Erschaffung).",
+      "Kybernetisch: Der Körper eines Gank kann mit einer Anzahl an kybernetischen Implantaten gleich seiner Stärke +3 bestückt werden.",
+      "Anfangskybernetik: Ein Gank kann bis zu zwei kybernetische Implantate im Wert von insgesamt 5000 Credits zu Spielbeginn besitzen. Diese Summe kann durch zusätzliche Verpflichtung erhöht werden."
     ],
     "description": "Kybernetisch verstärkte Humanoide, die fast immer in Rüstung auftreten. Gefürchtete Kopfgeldjäger und Söldner."
   },
@@ -792,8 +754,7 @@
     "strainThresholdBase": 9,
     "abilities": [
       "1 Rang in einer Fertigkeit nach Wahl (höchstens 2 zur Erschaffung).",
-      "Wenn ein Geonosianer andere unterstützt, so erhält der Geholfene noch zusätzlich einen  hinzu",
-      "und der Geonosianer regeneriert 1 Erschöpfung.",
+      "Wenn ein Geonosianer andere unterstützt, so erhält der Geholfene noch zusätzlich einen  hinzu und der Geonosianer regeneriert 1 Erschöpfung.",
       "Geonosianer können fliegen."
     ],
     "description": "Insektoide Wesen mit Flügeln und Kastengesellschaft. Erbauer der Kampfdroiden und der ersten Todesstern-Pläne."
@@ -813,8 +774,7 @@
     "strainThresholdBase": 10,
     "abilities": [
       "1 Rang in Handgemenge (höchstens Rang 2 während der Erschaffung).",
-      "Kälteanpassung: Wenn ein Gigoraner Abzüge aufgrund von kalter Umgebung",
-      "oder Schnee erhält, so kann er einen von diesen Proben ignorieren.",
+      "Kälteanpassung: Wenn ein Gigoraner Abzüge aufgrund von kalter Umgebung oder Schnee erhält, so kann er einen von diesen Proben ignorieren.",
       "Schwache technologische Entwicklung: Gigoraner werten bei fortschrittlicher",
       "Technologie die Schwierigkeit von Mechanikproben einmal auf."
     ],
@@ -902,8 +862,7 @@
     "strainThresholdBase": 10,
     "abilities": [
       "1 Rang in Athletik (höchstens Rang 2 während der Erschaffung).",
-      "Amphibisch: Gungans können unter Wasser ohne Einschränkungen atmen",
-      "und erleiden niemals Abzüge aufgrund der Bewegung im Wasser."
+      "Amphibisch: Gungans können unter Wasser ohne Einschränkungen atmen und erleiden niemals Abzüge aufgrund der Bewegung im Wasser."
     ],
     "freeSkillRanks": {
       "athletics": 1
@@ -925,10 +884,8 @@
     "strainThresholdBase": 11,
     "abilities": [
       "1 Rang in Wahrnehmung (nicht höher als 2 während der Erschaffung).",
-      "Zusätzliche Gliedmaße: Harch erhalten ein zusätzliches, kostenloses Manöver in jedem ihrer Züge,",
-      "können aber weiterhin nicht mehr als 2 Manöver pro Zug durchführen.",
-      "Giftige Fänge: Wenn ein Harch eine Handgemengeprobe macht, um Schaden anzurichten, so",
-      "erhält dieser Angriff die Eigenschaft Betäubung 3."
+      "Zusätzliche Gliedmaße: Harch erhalten ein zusätzliches, kostenloses Manöver in jedem ihrer Züge, können aber weiterhin nicht mehr als 2 Manöver pro Zug durchführen.",
+      "Giftige Fänge: Wenn ein Harch eine Handgemengeprobe macht, um Schaden anzurichten, so erhält dieser Angriff die Eigenschaft Betäubung 3."
     ],
     "freeSkillRanks": {
       "perception": 1
@@ -991,9 +948,7 @@
     "strainThresholdBase": 12,
     "abilities": [
       "1 Rang in Wachsamkeit (nicht höher als 2 während der Erschaffung).",
-      "Vorahnung: Ein Iktotchi kann einen bei einer Initiativeprobe einsetzen, damit er",
-      "oder einer seiner Verbündeten ein freies Manöver vor der ersten Kampfrunde durch-",
-      "führen kann. Zudem kann ihnen der Spielleiter kurze, flüchtige Blicke in die Zukunft gewähren."
+      "Vorahnung: Ein Iktotchi kann einen bei einer Initiativeprobe einsetzen, damit er oder einer seiner Verbündeten ein freies Manöver vor der ersten Kampfrunde durch- führen kann. Zudem kann ihnen der Spielleiter kurze, flüchtige Blicke in die Zukunft gewähren."
     ],
     "description": "Humanoide mit nach unten gebogenen Hörnern. Besitzen eine natürliche Vorausschau — sie spüren die Zukunft."
   },
@@ -1012,10 +967,8 @@
     "strainThresholdBase": 10,
     "abilities": [
       "1 Rang in Disziplin (nicht höher als 2 während der Erschaffung).",
-      "Amphibisch: Ishi Tib können unter Wasser ohne Einschränkungen atmen",
-      "und erleiden niemals Abzüge aufgrund der Bewegung im Wasser.",
-      "Wasserabhängigkeit: Hat ein Ishi Tib nicht innerhalb von 24 Stunden in Salzwasser gebadet, so",
-      "senkt sich sein Wundenlimit um 2 Punkte. Dieser Zustand verschwindet erst wieder nach einem",
+      "Amphibisch: Ishi Tib können unter Wasser ohne Einschränkungen atmen und erleiden niemals Abzüge aufgrund der Bewegung im Wasser.",
+      "Wasserabhängigkeit: Hat ein Ishi Tib nicht innerhalb von 24 Stunden in Salzwasser gebadet, so senkt sich sein Wundenlimit um 2 Punkte. Dieser Zustand verschwindet erst wieder nach einem",
       "Salzwasserbad."
     ],
     "freeSkillRanks": {
@@ -1039,8 +992,7 @@
     "abilities": [
       "1 Rang in Überleben (nicht höher als 2 während der Erschaffung).",
       "Ithorianischer Schallschrei: Ithorianer erhalten folgende natürliche Waffe hinzu: Schallschrei",
-      "(Widerstandskraft): Schaden 6; Kritisch 4; Explosion 3, Erschütterung 1, Langsames Feuern,",
-      "Betäubungsschaden; jeder Einsatz dieser Waffe beschert dem Helden 3 Erschöpfung."
+      "(Widerstandskraft): Schaden 6; Kritisch 4; Explosion 3, Erschütterung 1, Langsames Feuern, Betäubungsschaden; jeder Einsatz dieser Waffe beschert dem Helden 3 Erschöpfung."
     ],
     "freeSkillRanks": {
       "survival": 1
@@ -1124,10 +1076,8 @@
     "strainThresholdBase": 10,
     "abilities": [
       "1 Rang in Athletik (nicht höher als 2 während der Erschaffung).",
-      "Amphibisch: Karkarodon können unter Wasser ohne Einschränkungen atmen",
-      "und erleiden niemals Abzüge aufgrund der Bewegung im Wasser.",
-      "Kiefer: Führt ein Karkarodon eine Handgemengeprobe aus, um Schaden anzurichten, so richtet",
-      "dieser Angriff +1 Schaden an und hat eine kritische Trefferschwelle von 3."
+      "Amphibisch: Karkarodon können unter Wasser ohne Einschränkungen atmen und erleiden niemals Abzüge aufgrund der Bewegung im Wasser.",
+      "Kiefer: Führt ein Karkarodon eine Handgemengeprobe aus, um Schaden anzurichten, so richtet dieser Angriff +1 Schaden an und hat eine kritische Trefferschwelle von 3."
     ],
     "freeSkillRanks": {
       "athletics": 1
@@ -1151,10 +1101,8 @@
       "1 Rang in Wissen: Allgemeinbildung (höchstens Rang 2 zur Erschaffung).",
       "Nachtsicht: Kel Dor können bis zu aufgrund von Dunkelheit negieren.",
       "Atmosphärische Voraussetzung: Kel Dor müssen eine spezielle Maske außerhalb ihrer",
-      "Heimatamosphäre tragen, um sehen und atmen zu können. Sie beginnen das Spiel mit einer",
-      "solchen Antitox-Maske. Sauerstoff wird für sie als gefährliche Atmosphäre der Stufe 8 behandelt.",
-      "Dafür können sie bis zu 5 Minuten im Vakuum überleben, bevor sie die negativen Auswirkungen",
-      "erleiden."
+      "Heimatamosphäre tragen, um sehen und atmen zu können. Sie beginnen das Spiel mit einer solchen Antitox-Maske. Sauerstoff wird für sie als gefährliche Atmosphäre der Stufe 8 behandelt.",
+      "Dafür können sie bis zu 5 Minuten im Vakuum überleben, bevor sie die negativen Auswirkungen erleiden."
     ],
     "description": "Humanoide mit Atemmasken, da sie kein Sauerstoff vertragen. Oft machtempfindlich und bekannt für ihren Gerechtigkeitssinn."
   },
@@ -1173,8 +1121,7 @@
     "strainThresholdBase": 10,
     "abilities": [
       "1 Rang in 1 Nicht-Berufs-Fertigkeiten (höchstens Rang 2 zur Erschaffung).",
-      "1 Rang in Handgemenge, leichte Fernkampfwaffen oder schwere Fernkampfwaffen",
-      "(höchstens Rang 2 zur Erschaffung)"
+      "1 Rang in Handgemenge, leichte Fernkampfwaffen oder schwere Fernkampfwaffen (höchstens Rang 2 zur Erschaffung)"
     ],
     "description": "Robuste Humanoide, die seit Jahrtausenden den Hutten dienen. Zäh, loyal und kampferprobt."
   },
@@ -1212,8 +1159,7 @@
     "strainThresholdBase": 10,
     "abilities": [
       "1 Rang in Heimlichkeit oder Überleben (höchstens Rang 2 während der Erschaffung).",
-      "Verbesserte Sicht: Ein Kubaz kann bis zu  von Proben bei Fernkampf oder Wahrnehmung",
-      "abziehen, die aufgrund von Tarnung oder passenden Umweltfaktoren auftreten (nicht aber wegen",
+      "Verbesserte Sicht: Ein Kubaz kann bis zu  von Proben bei Fernkampf oder Wahrnehmung abziehen, die aufgrund von Tarnung oder passenden Umweltfaktoren auftreten (nicht aber wegen",
       "Verteidigung)."
     ],
     "description": "Insektenfressende Humanoide mit langem Rüssel. Geschickte Spione und Informationshändler."
@@ -1233,8 +1179,7 @@
     "strainThresholdBase": 12,
     "abilities": [
       "1 Rang in Straßenwissen (höchstens Rang 2 während der Erschaffung).",
-      "Unbezwingbar: Ein Lannik kann bis zu  von Proben entfernen, die durch kritische Wunden,",
-      "dem Zustand Desorientiert oder Angst hinzugefügt wurden."
+      "Unbezwingbar: Ein Lannik kann bis zu  von Proben entfernen, die durch kritische Wunden, dem Zustand Desorientiert oder Angst hinzugefügt wurden."
     ],
     "description": "Kleine, großohrige Humanoide. Was ihnen an Größe fehlt, machen sie durch Mut und Kampfgeschick wett."
   },
@@ -1272,9 +1217,7 @@
     "strainThresholdBase": 11,
     "abilities": [
       "1 Rang in Wahrnehmung (höchstens Rang 2 während der Erschaffung).",
-      "Sehen ohne Sicht: Melittos brauchen zum Wahrnehmen ihrer Umwelt kein Licht und sie erhalten",
-      "auch keine Abzüge auf Wahrnehmungs- oder Kampfproben aufgrund von Dunkelheit oder anderer,",
-      "passender Umweltfaktoren.",
+      "Sehen ohne Sicht: Melittos brauchen zum Wahrnehmen ihrer Umwelt kein Licht und sie erhalten auch keine Abzüge auf Wahrnehmungs- oder Kampfproben aufgrund von Dunkelheit oder anderer, passender Umweltfaktoren.",
       "Abhängig von Toxinen: Melittos vertragen nur die mit Giften angereicherte Luft ihrer Heimatwelt.",
       "Sie starten mit einem Atemgerät, angereichert mit den entsprechenden Toxinen; Umgebung mit",
       "Sauerstoff wirkt für sie ohne Atemgerät wie gefährliche Umwelt mit einer Stufe von 6."
@@ -1400,8 +1343,7 @@
     "strainThresholdBase": 10,
     "abilities": [
       "1 Rang in Allgemeinbildung (höchstens Rang 2 während der Erschaffung).",
-      "Amphibisch: Mon Calamari können unter Wasser ohne Einschränkungen atmen",
-      "und erleiden niemals Abzüge aufgrund der Bewegung im Wasser."
+      "Amphibisch: Mon Calamari können unter Wasser ohne Einschränkungen atmen und erleiden niemals Abzüge aufgrund der Bewegung im Wasser."
     ],
     "freeSkillRanks": {
       "education": 1
@@ -1422,8 +1364,7 @@
     "woundThresholdBase": 10,
     "strainThresholdBase": 10,
     "abilities": [
-      "Wenn ein Mustafarianer Abzüge aufgrund von trockener oder heißer Umgebung",
-      "erhält, so kann er bis zu bei diesen Proben ignorieren.",
+      "Wenn ein Mustafarianer Abzüge aufgrund von trockener oder heißer Umgebung erhält, so kann er bis zu bei diesen Proben ignorieren.",
       "Nordmustafarianer beginnen mit 1 Rang im Talent Auge für Details (kann Erschöpfung bis zum",
       "Rang einsetzen, um bei Computertechnik- und Mechanikproben  in  umzuwandeln).",
       "Südmustafarianer beginnen mit 1 Rang im Talent Belastbarkeit (+1 auf Absorption je Rang)."
@@ -1444,10 +1385,8 @@
     "woundThresholdBase": 9,
     "strainThresholdBase": 9,
     "abilities": [
-      "1 Rang in Allgemeinbildung und Kernwelten (höchstens Rang 2 während",
-      "der Erschaffung).",
-      "Ein Muun erhält 1000 Credits, die er erst nach der Charaktererschaffung",
-      "nutzen kann."
+      "1 Rang in Allgemeinbildung und Kernwelten (höchstens Rang 2 während der Erschaffung).",
+      "Ein Muun erhält 1000 Credits, die er erst nach der Charaktererschaffung nutzen kann."
     ],
     "description": "Große, dünne Humanoide mit überlegener mathematischer Intelligenz. Kontrollieren das Intergalaktische Bankenwesen."
   },
@@ -1466,8 +1405,7 @@
     "strainThresholdBase": 9,
     "abilities": [
       "1 Rang in Athletik (höchstens Rang 2 während der Erschaffung).",
-      "Amphibisch: Nautolaner können unter Wasser ohne Einschränkungen atmen",
-      "und erleiden niemals Abzüge aufgrund der Bewegung im Wasser."
+      "Amphibisch: Nautolaner können unter Wasser ohne Einschränkungen atmen und erleiden niemals Abzüge aufgrund der Bewegung im Wasser."
     ],
     "freeSkillRanks": {
       "athletics": 1
@@ -1589,8 +1527,7 @@
     "strainThresholdBase": 11,
     "abilities": [
       "1 Rang in Coolness oder Verhandeln (höchstens Rang 2 während der Erschaffung).",
-      "Kälteanpassung: Wenn ein Pantoraner Abzüge aufgrund von kalter Umgebung erhält,",
-      "so kann er einen von diesen Proben ignorieren."
+      "Kälteanpassung: Wenn ein Pantoraner Abzüge aufgrund von kalter Umgebung erhält, so kann er einen von diesen Proben ignorieren."
     ],
     "description": "Blauhäutige Humanoide von Pantora. Kultiviert, diplomatisch und bekannt für ihre goldenen Gesichtstattoos."
   },
@@ -1630,8 +1567,7 @@
     "strainThresholdBase": 10,
     "abilities": [
       "1 Rang in Disziplin oder Coolness (höchstens Rang 2 während der Erschaffung).",
-      "Symbiotische Widerstandskraft: Erholt sich ein Phydolon natürlich von Wunden, so regeneriert er",
-      "jede Nacht 1 zusätzliche Wunde. Er kann Erholungswürfe von kritischen Wunden bereits nach 1",
+      "Symbiotische Widerstandskraft: Erholt sich ein Phydolon natürlich von Wunden, so regeneriert er jede Nacht 1 zusätzliche Wunde. Er kann Erholungswürfe von kritischen Wunden bereits nach 1",
       "Nacht versuchen (anstelle von 1 Woche).",
       "Symbiotische Isolation: Hält sich kein anderer Phyodolon in seiner Nähe auf, so regeneriert er am",
       "Ende einer Begegnung immer 1 Erschöpfung weniger (mindestens aber 1 Erschöpfung)."
@@ -1654,10 +1590,8 @@
     "abilities": [
       "1 Rang in Medizin (höchstens Rang 2 während der Erschaffung).",
       "Keine Stimmbänder: Die Mehrheit der Polis Massaner verfügt nicht über Stimmbänder.",
-      "Telepathie: Auf kurze Entfernung kann ein Polis Massaner mit anderen Wesen durch eine Form",
-      "der Telepathie kommunizieren – dabei können alle Lebewesen innerhalb dieser Reichweite die",
-      "„Worte“ des Massaners hören. Nur mit Wesen, die er berührt, kann er im Stillen und privat sich",
-      "verständigen."
+      "Telepathie: Auf kurze Entfernung kann ein Polis Massaner mit anderen Wesen durch eine Form der Telepathie kommunizieren – dabei können alle Lebewesen innerhalb dieser Reichweite die",
+      "„Worte“ des Massaners hören. Nur mit Wesen, die er berührt, kann er im Stillen und privat sich verständigen."
     ],
     "freeSkillRanks": {
       "medicine": 1
@@ -1679,10 +1613,8 @@
     "strainThresholdBase": 8,
     "abilities": [
       "1 Rang in Verhandeln (nicht höher als 2 während der Erschaffung).",
-      "Amphibisch: Quarren können unter Wasser ohne Einschränkungen atmen",
-      "und erleiden niemals Abzüge aufgrund der Bewegung im Wasser.",
-      "Tintenstoß: Einmal pro Begegnung kann ein Quarren 2 Erschöpfung erleiden, um einem Gegner",
-      "innerhalb kurzer Reichweite einen  (unter Wasser: ) auf eine Kampfprobe zu geben."
+      "Amphibisch: Quarren können unter Wasser ohne Einschränkungen atmen und erleiden niemals Abzüge aufgrund der Bewegung im Wasser.",
+      "Tintenstoß: Einmal pro Begegnung kann ein Quarren 2 Erschöpfung erleiden, um einem Gegner innerhalb kurzer Reichweite einen  (unter Wasser: ) auf eine Kampfprobe zu geben."
     ],
     "description": "Tintenfischgesichtige Wesen von Mon Cala. Pragmatisch und misstrauisch — das Gegenstück zu den optimistischen Mon Calamari."
   },
@@ -1743,8 +1675,7 @@
     "strainThresholdBase": 10,
     "abilities": [
       "1 Rang in Körperbeherrschung (höchstens Rang 2 während der Erschaffung).",
-      "Gleiter: Ein Sathari kann sicher aus jeder Höhe fallen und kleine Gruben",
-      "oder Entfernungen überbrücken, während er gleitet. Während er bei",
+      "Gleiter: Ein Sathari kann sicher aus jeder Höhe fallen und kleine Gruben oder Entfernungen überbrücken, während er gleitet. Während er bei",
       "Bewusstsein ist, erleidet er keinen Fallschaden."
     ],
     "freeSkillRanks": {
@@ -1768,8 +1699,7 @@
     "abilities": [
       "1 Rang in Körperbeherrschung (nicht höher als 2 während der Erschaffung).",
       "Infravision: Selonianer können alle aufgrund von Dunkelheit negieren.",
-      "Schwanzschlag (Handgemenge, basierend auf Gewandtheit: Schaden Kraft +1, Kritisch 5,",
-      "Reichweite Nahkampf, Desorientierung 2, Niederwerfen – benötigt  zum aktivieren)."
+      "Schwanzschlag (Handgemenge, basierend auf Gewandtheit: Schaden Kraft +1, Kritisch 5, Reichweite Nahkampf, Desorientierung 2, Niederwerfen – benötigt  zum aktivieren)."
     ],
     "freeSkillRanks": {
       "coordination": 1
@@ -1811,10 +1741,7 @@
     "strainThresholdBase": 8,
     "abilities": [
       "1 Rang in Allgemeinbildung (höchstens Rang 2 während der Erschaffung).",
-      "Methanatmer: Ein Skakoaner erhält zu Spielbeginn einen Druckanzug (Absorption 2, Last 3, 3 AP,",
-      "kann nur auf Skako erworben werden und kostet soviel wie eine Laminatrüstung, kann nicht von",
-      "anderen Spezies getragen werden) und ein Methan-Atemgerät. Standardluft und Druck gelten für",
-      "einen Skakoaner als giftige Atmosphäre der Stufe 6."
+      "Methanatmer: Ein Skakoaner erhält zu Spielbeginn einen Druckanzug (Absorption 2, Last 3, 3 AP, kann nur auf Skako erworben werden und kostet soviel wie eine Laminatrüstung, kann nicht von anderen Spezies getragen werden) und ein Methan-Atemgerät. Standardluft und Druck gelten für einen Skakoaner als giftige Atmosphäre der Stufe 6."
     ],
     "freeSkillRanks": {
       "education": 1
@@ -1858,8 +1785,7 @@
     "strainThresholdBase": 8,
     "abilities": [
       "1 Rang in Disziplin (höchstens Rang 2 während der Erschaffung).",
-      "Ruhe und Mediation: Ein Thisspiasianer muss nur 2 Stunden ruhen, um alle Erschöpfung zu",
-      "regenerieren (er kann aber nicht mehrmals täglich ruhen). Einmal je Spielsitzung kann er für 10",
+      "Ruhe und Mediation: Ein Thisspiasianer muss nur 2 Stunden ruhen, um alle Erschöpfung zu regenerieren (er kann aber nicht mehrmals täglich ruhen). Einmal je Spielsitzung kann er für 10",
       "Minuten meditieren, um das Doppelte seines Rangs in Disziplin an Erschöpfung zu regenerieren."
     ],
     "freeSkillRanks": {
@@ -1884,8 +1810,7 @@
       "1 Rang in Xenologie (höchstens Rang 2 während der Erschaffung).",
       "Kulturelle Anpassungsfähigkeit: Führt ein Tholotianer eine soziale Probe mit einem Nicht-",
       "Tholotianer durch, so erhält er hierbei einen automatischen .",
-      "Natürliche Wurzeln: Bei einer Probe, um Erschöpfung zu regenerieren, die in wilder oder",
-      "natürlicher Umgebung gemacht wird, heilt der Tholotianer 1 zusätzliche Erschöpfung."
+      "Natürliche Wurzeln: Bei einer Probe, um Erschöpfung zu regenerieren, die in wilder oder natürlicher Umgebung gemacht wird, heilt der Tholotianer 1 zusätzliche Erschöpfung."
     ],
     "freeSkillRanks": {
       "xenology": 1
@@ -1907,14 +1832,11 @@
     "strainThresholdBase": 9,
     "abilities": [
       "Kybernetik: Durch Implantate und spezielle Linsen erhält ein Tognath je 1 Rang in",
-      "Körperbeherrschung und Wahrnehmung (höchstens Rang 2 während der Erschaffung).Dies gilt als",
-      "1 kybernetisches Implantat.",
+      "Körperbeherrschung und Wahrnehmung (höchstens Rang 2 während der Erschaffung).Dies gilt als 1 kybernetisches Implantat.",
       "Primitive Nerven: Andere erhalten bei Einschüchterungsproben gegenüber einem Tognath.",
       "Atmosphärische Voraussetzung: Kel Dor müssen eine spezielle Maske außerhalb ihrer",
-      "Heimatamosphäre tragen, um sehen und atmen zu können. Sie beginnen das Spiel mit einer",
-      "solchen Antitox-Maske. Sauerstoff wird für sie als gefährliche Atmosphäre der Stufe 5 behandelt.",
-      "Dafür können sie bis zu 5 Minuten im Vakuum überleben, bevor sie die negativen Auswirkungen",
-      "erleiden."
+      "Heimatamosphäre tragen, um sehen und atmen zu können. Sie beginnen das Spiel mit einer solchen Antitox-Maske. Sauerstoff wird für sie als gefährliche Atmosphäre der Stufe 5 behandelt.",
+      "Dafür können sie bis zu 5 Minuten im Vakuum überleben, bevor sie die negativen Auswirkungen erleiden."
     ],
     "description": "Insektoide Wesen mit Exoskelett und Atemgerät. Robuste Kämpfer und Überlebenskünstler."
   },
@@ -1933,8 +1855,7 @@
     "strainThresholdBase": 10,
     "abilities": [
       "1 Rang in Wahrnehmung (höchstens Rang 2 während der Erschaffung).",
-      "Rudelinstinkte: Wenn ein Togruta das Manöver Andere unterstützen durchführt, erhält",
-      "jener einen  zusätzlich."
+      "Rudelinstinkte: Wenn ein Togruta das Manöver Andere unterstützen durchführt, erhält jener einen  zusätzlich."
     ],
     "freeSkillRanks": {
       "perception": 1
@@ -1955,8 +1876,7 @@
     "woundThresholdBase": 9,
     "strainThresholdBase": 12,
     "abilities": [
-      "Flugfähig: Können zusätzliche Manöver-Kosten aufgrund von Hindernissen in",
-      "der Umwelt ignorieren.",
+      "Flugfähig: Können zusätzliche Manöver-Kosten aufgrund von Hindernissen in der Umwelt ignorieren.",
       "Klein: Toydarianer haben eine Silhouette von 0."
     ],
     "description": "Geflügelte, rundliche Wesen. Immun gegen Jedi-Gedankentricks und erstaunlich gerissene Händler. Watto lässt grüßen."
@@ -1976,10 +1896,8 @@
     "strainThresholdBase": 11,
     "abilities": [
       "1 Rang in Überleben (höchstens Rang 2 während der Erschaffung).",
-      "Bantha-Reiter: Sandleute erhalten einen automatischen  auf Überlebens- und Athletikproben, um",
-      "ein Bantha zu führen.",
-      "Sandleute reduzieren die Schwierigkeit bei allen Proben auf Überleben oder Widerstandskraft",
-      "einmal, um extreme Hitze oder Auskommen ohne Wasser aushalten zu können."
+      "Bantha-Reiter: Sandleute erhalten einen automatischen  auf Überlebens- und Athletikproben, um ein Bantha zu führen.",
+      "Sandleute reduzieren die Schwierigkeit bei allen Proben auf Überleben oder Widerstandskraft einmal, um extreme Hitze oder Auskommen ohne Wasser aushalten zu können."
     ],
     "freeSkillRanks": {
       "survival": 1
@@ -2001,8 +1919,7 @@
     "strainThresholdBase": 11,
     "abilities": [
       "1 Rang in Charme oder Täuschung (höchstens Rang 2 während der Erschaffung).",
-      "Wenn ein Twi ́lek Abzüge aufgrund von trockener oder heißer Umgebung erhält,",
-      "so kann er von diesen Proben ignorieren."
+      "Wenn ein Twi ́lek Abzüge aufgrund von trockener oder heißer Umgebung erhält, so kann er von diesen Proben ignorieren."
     ],
     "description": "Humanoide mit bunten Hautfarben und Lekku-Kopftentakeln. Eine der bekanntesten Spezies der Galaxis."
   },
@@ -2021,10 +1938,8 @@
     "strainThresholdBase": 9,
     "abilities": [
       "1 Rang in Wahrnehmung (höchstens Rang 2 während der Erschaffung).",
-      "Will der Trandoshaner mit Handgemenge einem Gegner schaden, so richten diese Angriffe mit",
-      "seinen Klauen Stärke +1 Schaden an mit einem kritischen Wert von 3.",
-      "Regeneriert ein Trandoshaner aufgrund von Ruhe o. Aufenthalt in Bacta-Tank mind. 1 Wunde, so",
-      "regeneriert er 1 zusätzliche. Dies geschieht nicht bei sonstiger mediz. Hilfe (Stimpacks oder Erste-",
+      "Will der Trandoshaner mit Handgemenge einem Gegner schaden, so richten diese Angriffe mit seinen Klauen Stärke +1 Schaden an mit einem kritischen Wert von 3.",
+      "Regeneriert ein Trandoshaner aufgrund von Ruhe o. Aufenthalt in Bacta-Tank mind. 1 Wunde, so regeneriert er 1 zusätzliche. Dies geschieht nicht bei sonstiger mediz. Hilfe (Stimpacks oder Erste-",
       "Hilfe). Trandoshaner können verlorene Gliedmaßen regenerieren (Dauer mindestens 1 Monat)."
     ],
     "freeSkillRanks": {
@@ -2048,11 +1963,8 @@
     "abilities": [
       "1 Rang in Mechanik (höchstens Rang 2 während der Erschaffung).",
       "Mikrovision: Ein Verpine kann sogar mikroskopisch kleine Details wahrnehmen.",
-      "Untersucht er ein Objekt genau, erhält er einen  auf seine Wahrneh-",
-      "mungsprobe.",
-      "Radiowellenkommunikation: Ein Verpine kann Radiowellen wahrnehmen und aussenden, wodurch",
-      "er sich im Stillen mit anderen Verpinen und speziell eingestellten Kommunikatoren im Radius von",
-      "100km unterhalten kann."
+      "Untersucht er ein Objekt genau, erhält er einen  auf seine Wahrneh- mungsprobe.",
+      "Radiowellenkommunikation: Ein Verpine kann Radiowellen wahrnehmen und aussenden, wodurch er sich im Stillen mit anderen Verpinen und speziell eingestellten Kommunikatoren im Radius von 100km unterhalten kann."
     ],
     "freeSkillRanks": {
       "mechanics": 1
@@ -2074,8 +1986,7 @@
     "strainThresholdBase": 11,
     "abilities": [
       "1 Rang in Verhandeln (nicht höher als 2 während der Erschaffung).",
-      "Amphibisch: Quarren können unter Wasser ohne Einschränkungen atmen",
-      "und erleiden niemals Abzüge aufgrund der Bewegung im Wasser.",
+      "Amphibisch: Quarren können unter Wasser ohne Einschränkungen atmen und erleiden niemals Abzüge aufgrund der Bewegung im Wasser.",
       "Kaltblüter: Ein Vurk erhält einen zusätzlichen  auf alle Proben in kaltem Klima."
     ],
     "description": "Amphibische Humanoide mit hohen Schädelkämmen. Friedlich, spirituell und naturnah."
@@ -2095,8 +2006,7 @@
     "strainThresholdBase": 8,
     "abilities": [
       "1 Rang in Handgemenge (höchstens Rang 2 während der Erschaffung).",
-      "Wookie-Zorn: Hat ein Wookie Schaden erlitten, so verursachen seine Angriffe in Handgemenge",
-      "und Nahkampfwaffen +1 Schaden. Hat er eine kritische Wunde, so verursachen sie +2 Schaden."
+      "Wookie-Zorn: Hat ein Wookie Schaden erlitten, so verursachen seine Angriffe in Handgemenge und Nahkampfwaffen +1 Schaden. Hat er eine kritische Wunde, so verursachen sie +2 Schaden."
     ],
     "description": "Riesige, pelzige Krieger von Kashyyyk. Unglaublich stark, loyal bis zum Tod und besser als Chewbacca kannst du nicht werden."
   },
@@ -2115,8 +2025,7 @@
     "strainThresholdBase": 10,
     "abilities": [
       "1 Rang in Überleben (höchstens Rang 2 während der Erschaffung).",
-      "Überlebenskünstler: Wiphid erhalten einen automatischen  auf Überlebenspro-",
-      "ben und können mehrere Wochen ohne Nahrung auskommen.",
+      "Überlebenskünstler: Wiphid erhalten einen automatischen  auf Überlebenspro- ben und können mehrere Wochen ohne Nahrung auskommen.",
       "Stoßzähne: Die Stoßzähne eines Wiphid haben als Handgemengewaffe folgende Werte:",
       "Schaden +2; Kritisch 4, Tödlich 1."
     ],
