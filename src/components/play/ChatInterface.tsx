@@ -518,9 +518,9 @@ const ChatInterface: React.FC<{ showQuestsTab?: boolean; onCloseQuests?: () => v
                   {msg.content.narrative && <p className="text-[15px] leading-snug text-zinc-300 font-sans">{msg.content.narrative}</p>}
                   {Array.isArray(msg.content.npcDialogue) && msg.content.npcDialogue.length > 0 && (
                     <div className="space-y-2.5 border-l-2 border-amber-500/30 pl-4 bg-amber-500/[0.02] py-2 rounded-r-lg">
-                      {msg.content.npcDialogue.map((d: { speaker: string; text: string }, idx: number) => (
+                      {msg.content.npcDialogue.map((d: { name?: string; speaker?: string; text: string }, idx: number) => (
                         <div key={idx}>
-                          <span className="text-[10px] font-black text-amber-500 uppercase tracking-[0.15em]">{d.speaker}</span>
+                          <span className="text-[10px] font-black text-amber-500 uppercase tracking-[0.15em]">{d.name || d.speaker}</span>
                           <p className="text-[14px] text-zinc-400 mt-0.5 font-sans leading-snug">&ldquo;{d.text}&rdquo;</p>
                         </div>
                       ))}

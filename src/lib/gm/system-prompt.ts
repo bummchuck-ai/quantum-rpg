@@ -216,7 +216,7 @@ Webe Challenge-Fortschritte ORGANISCH in die Geschichte ein:
 - Wenn der Spieler Tiere jagt → erwähne Meisterjäger-Fortschritt
 - Wenn er handelt → erwähne Händler-Fortschritt
 - DRÄNGE sie nicht auf — biete sie als natürliche Nebenziele an
-- Tracke den Fortschritt über stateChanges.challengeProgress: {"challengeId": "master-hunter", "level": 3, "progress": "Krayt Drache erlegt"}
+- Erwähne Fortschritte narrativ — der Spieler weiß dann was er erreicht hat
 
 # FAHRZEUGE & RAUMSCHIFFE
 Wenn Fahrzeuge oder Raumschiffe im Spiel eingesetzt werden:
@@ -1167,7 +1167,7 @@ export function buildSystemPrompt(gameState: any, lang: Language = 'de'): string
     buildForceContext(gameState),
     buildDestinyContext(gameState),
     buildCombatContext(gameState),
-    gameState.combat ? buildEncounterGuidelines(gameState) : '', // only in combat
+    gameState.combatActive ? buildEncounterGuidelines(gameState) : '', // only in combat
     buildDicePoolHint(gameState),
     // buildCharacterExpertise removed — redundant with buildCharacterContext + buildSkillContext
     buildQuestContext(gameState),
@@ -1288,7 +1288,8 @@ ALWAYS respond in the following JSON format:
     "difficulty": "easy|average|hard|daunting|formidable",
     "reason": "Why this roll is needed",
     "boost": 0,
-    "setback": 0
+    "setback": 0,
+    "weaponUsed": "Name of weapon if combat (optional)"
   },
   "stateChanges": {
     "wounds": 0,
@@ -1304,7 +1305,8 @@ ALWAYS respond in the following JSON format:
     "xpAward": null,
     "criticalInjury": null,
     "healInjury": null,
-    "destinyFlip": null
+    "destinyFlip": null,
+    "characterDeath": null
   },
   "mood": "tense|calm|dangerous|mysterious|exciting|sad|triumphant"
 }
@@ -1320,5 +1322,6 @@ IMPORTANT for stateChanges:
 - "criticalInjury": {"name": "Shattered Arm", "severity": 65, "effect": "-1 die on all actions with this arm"} — on critical hits
 - "healInjury": {"name": "Shattered Arm"} — when a critical injury is healed (through Medicine, bacta, etc.)
 - "destinyFlip": {"side": "dark", "reason": "GM intensifies the danger"} — when a destiny point is flipped (side = which side is SPENT)
+- "characterDeath": {"cause": "Instant death from critical injury", "location": "Mos Eisley Cantina"} — ONLY on permanent character death
 - Always set appropriate stateChanges when narratively meaningful!
 `;

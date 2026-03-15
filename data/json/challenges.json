@@ -27,16 +27,16 @@
     "icon": "🌿",
     "rewards": { "level5": "Talentbaum Überlebenskünstler", "level10": "Talentbaum Wanderer" },
     "levels": [
-      { "level": 1, "task": "Samle 6 Funnel Blumen", "xp": 5 },
-      { "level": 2, "task": "Samle 6 Pallie", "xp": 5 },
-      { "level": 3, "task": "Samle 4 Polta Bohnen", "xp": 5 },
-      { "level": 4, "task": "Samle 8 Schwarze Melonen", "xp": 5 },
-      { "level": 5, "task": "Samle 7 Äste vom Baum", "xp": 5 },
-      { "level": 6, "task": "Samle 6 Schmetterlingskraut", "xp": 5 },
-      { "level": 7, "task": "Samle 10 Kolibrisalbei", "xp": 5 },
-      { "level": 8, "task": "Samle 12 Präriemohn", "xp": 10 },
-      { "level": 9, "task": "Samle 15 Poonten-Gras", "xp": 10 },
-      { "level": 10, "task": "Samle 20 Tubers", "xp": 10 }
+      { "level": 1, "task": "Sammle6 Funnel Blumen", "xp": 5 },
+      { "level": 2, "task": "Sammle6 Pallie", "xp": 5 },
+      { "level": 3, "task": "Sammle4 Polta Bohnen", "xp": 5 },
+      { "level": 4, "task": "Sammle8 Schwarze Melonen", "xp": 5 },
+      { "level": 5, "task": "Sammle7 Äste vom Baum", "xp": 5 },
+      { "level": 6, "task": "Sammle6 Schmetterlingskraut", "xp": 5 },
+      { "level": 7, "task": "Sammle10 Kolibrisalbei", "xp": 5 },
+      { "level": 8, "task": "Sammle12 Präriemohn", "xp": 10 },
+      { "level": 9, "task": "Sammle15 Poonten-Gras", "xp": 10 },
+      { "level": 10, "task": "Sammle20 Tubers", "xp": 10 }
     ]
   },
   {
@@ -63,7 +63,7 @@
       { "level": 14, "task": "Töte 5 Rancors", "xp": 20 },
       { "level": 15, "task": "Töte 5 Bullrancors", "xp": 25 },
       { "level": 16, "task": "Töte 3 Acklays und 3 Narglatchs", "xp": 15 },
-      { "level": 17, "task": "Erlege ein Pferd, zerschneide es, bereite Ausrüstung zu und iss es", "xp": 5 },
+      { "level": 17, "task": "Erlege ein Dewback, zerschneide es, bereite Ausrüstung zu und iss es", "xp": 5 },
       { "level": 18, "task": "Töte 20 Fambaa", "xp": 50 },
       { "level": 19, "task": "Töte 3 Salerodrex", "xp": 15 },
       { "level": 20, "task": "Töte ein Sarlacc", "xp": 30 }

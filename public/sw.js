@@ -1,4 +1,4 @@
-const CACHE_NAME = 'quantum-rpg-v1';
+const CACHE_NAME = 'quantum-rpg-v2';
 
 const PRECACHE_URLS = [
   '/',
