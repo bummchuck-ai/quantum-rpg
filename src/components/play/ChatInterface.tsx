@@ -17,19 +17,19 @@ import type { GMResponse } from './types';
 
 const QuickSettings: React.FC<{
   onSaveLoad: () => void;
+  onGoHome: () => void;
   ttsEnabled: boolean;
   sttEnabled: boolean;
   onToggleTTS: () => void;
   onToggleSTT: () => void;
   onTestTTS: () => void;
-}> = ({ onSaveLoad, ttsEnabled, sttEnabled, onToggleTTS, onToggleSTT, onTestTTS }) => {
+}> = ({ onSaveLoad, onGoHome, ttsEnabled, sttEnabled, onToggleTTS, onToggleSTT, onTestTTS }) => {
   const [open, setOpen] = useState(false);
   const [showVoices, setShowVoices] = useState(false);
   const [selectedVoice, setSelectedVoice] = useState<string | null>(null);
   const lang = getLanguage();
   const voices = open && ttsEnabled ? getVoicesForLang(lang === 'en' ? 'en' : 'de') : [];
 
-  // Load saved voice on open
   React.useEffect(() => {
     if (open) {
       const s = getSpeechSettings();
@@ -44,53 +44,67 @@ const QuickSettings: React.FC<{
       </button>
       {open && (
         <>
-          <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
-          <div className="absolute right-0 top-11 z-50 w-56 bg-zinc-900 border border-zinc-700 rounded-xl p-2 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200 space-y-1">
-            <button onClick={() => { onSaveLoad(); setOpen(false); }} className="w-full flex items-center gap-2 px-3 py-2 text-[11px] text-zinc-300 hover:bg-zinc-800 rounded-lg transition-colors">
-              <span>💾</span> Save / Load
-            </button>
-            <div className="flex items-center gap-1">
-              <button onClick={onToggleTTS} className="flex-1 flex items-center justify-between px-3 py-2 text-[11px] text-zinc-300 hover:bg-zinc-800 rounded-lg transition-colors">
-                <span>🔊 GM Voice</span>
-                <span className={`text-[9px] font-black ${ttsEnabled ? 'text-emerald-400' : 'text-zinc-600'}`}>{ttsEnabled ? 'ON' : 'OFF'}</span>
-              </button>
-              {ttsEnabled && (
-                <button onClick={onTestTTS} className="px-2 py-2 text-[9px] text-amber-500 hover:bg-zinc-800 rounded-lg transition-colors font-black" title="Test">
-                  ▶
-                </button>
-              )}
+          <div className="fixed inset-0 z-[95] bg-black/70 backdrop-blur-sm" onClick={() => setOpen(false)} />
+          <div className="fixed inset-x-4 top-[15%] z-[100] max-w-sm mx-auto bg-zinc-900 border border-zinc-700 rounded-2xl p-5 shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-sm font-black text-white uppercase italic tracking-wider">Settings</h2>
+              <button onClick={() => setOpen(false)} className="w-8 h-8 border border-zinc-700 rounded-lg flex items-center justify-center text-zinc-500 hover:text-white text-sm">✕</button>
             </div>
-            {ttsEnabled && (
-              <>
-                <button onClick={() => setShowVoices(!showVoices)} className="w-full flex items-center justify-between px-3 py-2 text-[11px] text-zinc-300 hover:bg-zinc-800 rounded-lg transition-colors">
-                  <span>🗣 Stimme</span>
-                  <span className="text-[9px] text-zinc-500 truncate max-w-[100px]">{selectedVoice?.split(' ')[0] || 'Auto'}</span>
+
+            <div className="space-y-2">
+              {/* Save / Load */}
+              <button onClick={() => { onSaveLoad(); setOpen(false); }} className="w-full flex items-center gap-3 px-4 py-3 text-[12px] text-zinc-300 hover:bg-zinc-800 rounded-xl transition-colors border border-zinc-800">
+                <span className="text-base">💾</span> <span className="font-bold">Save / Load</span>
+              </button>
+
+              {/* TTS Toggle */}
+              <div className="flex items-center gap-1">
+                <button onClick={onToggleTTS} className="flex-1 flex items-center justify-between px-4 py-3 text-[12px] text-zinc-300 hover:bg-zinc-800 rounded-xl transition-colors border border-zinc-800">
+                  <span><span className="text-base mr-2">🔊</span> <span className="font-bold">GM Stimme</span></span>
+                  <span className={`text-[10px] font-black px-2 py-0.5 rounded ${ttsEnabled ? 'text-emerald-400 bg-emerald-500/10' : 'text-zinc-600 bg-zinc-800'}`}>{ttsEnabled ? 'ON' : 'OFF'}</span>
                 </button>
-                {showVoices && voices.length > 0 && (
-                  <div className="max-h-40 overflow-y-auto border border-zinc-800 rounded-lg">
-                    <button
-                      onClick={() => { setTTSVoiceName(null); setSelectedVoice(null); onTestTTS(); }}
-                      className={`w-full text-left px-3 py-1.5 text-[10px] hover:bg-zinc-800 transition-colors ${!selectedVoice ? 'text-amber-400 font-bold' : 'text-zinc-400'}`}
-                    >
-                      Auto (Standard)
-                    </button>
-                    {voices.map(v => (
-                      <button
-                        key={v.name}
-                        onClick={() => { setTTSVoiceName(v.name); setSelectedVoice(v.name); onTestTTS(); }}
-                        className={`w-full text-left px-3 py-1.5 text-[10px] hover:bg-zinc-800 transition-colors ${selectedVoice === v.name ? 'text-amber-400 font-bold' : 'text-zinc-400'}`}
-                      >
-                        {v.label}
-                      </button>
-                    ))}
-                  </div>
+                {ttsEnabled && (
+                  <button onClick={onTestTTS} className="w-11 h-11 border border-zinc-800 rounded-xl flex items-center justify-center text-amber-500 hover:bg-zinc-800 transition-colors font-black text-sm">▶</button>
                 )}
-              </>
-            )}
-            <button onClick={onToggleSTT} className="w-full flex items-center justify-between px-3 py-2 text-[11px] text-zinc-300 hover:bg-zinc-800 rounded-lg transition-colors">
-              <span>🎙 Spracheingabe</span>
-              <span className={`text-[9px] font-black ${sttEnabled ? 'text-emerald-400' : 'text-zinc-600'}`}>{sttEnabled ? 'ON' : 'OFF'}</span>
-            </button>
+              </div>
+
+              {/* Voice Selection */}
+              {ttsEnabled && (
+                <>
+                  <button onClick={() => setShowVoices(!showVoices)} className="w-full flex items-center justify-between px-4 py-3 text-[12px] text-zinc-300 hover:bg-zinc-800 rounded-xl transition-colors border border-zinc-800">
+                    <span><span className="text-base mr-2">🗣</span> <span className="font-bold">Stimme wählen</span></span>
+                    <span className="text-[10px] text-zinc-500 truncate max-w-[120px]">{selectedVoice?.split(' ')[0] || 'Auto'}</span>
+                  </button>
+                  {showVoices && voices.length > 0 && (
+                    <div className="max-h-48 overflow-y-auto border border-zinc-800 rounded-xl bg-zinc-950">
+                      <button onClick={() => { setTTSVoiceName(null); setSelectedVoice(null); onTestTTS(); }}
+                        className={`w-full text-left px-4 py-2.5 text-[11px] hover:bg-zinc-800 transition-colors border-b border-zinc-800/50 ${!selectedVoice ? 'text-amber-400 font-bold' : 'text-zinc-400'}`}>
+                        Auto (Standard)
+                      </button>
+                      {voices.map(v => (
+                        <button key={v.name} onClick={() => { setTTSVoiceName(v.name); setSelectedVoice(v.name); onTestTTS(); }}
+                          className={`w-full text-left px-4 py-2.5 text-[11px] hover:bg-zinc-800 transition-colors border-b border-zinc-800/50 last:border-0 ${selectedVoice === v.name ? 'text-amber-400 font-bold' : 'text-zinc-400'}`}>
+                          {v.label}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </>
+              )}
+
+              {/* STT Toggle */}
+              <button onClick={onToggleSTT} className="w-full flex items-center justify-between px-4 py-3 text-[12px] text-zinc-300 hover:bg-zinc-800 rounded-xl transition-colors border border-zinc-800">
+                <span><span className="text-base mr-2">🎙</span> <span className="font-bold">Spracheingabe</span></span>
+                <span className={`text-[10px] font-black px-2 py-0.5 rounded ${sttEnabled ? 'text-emerald-400 bg-emerald-500/10' : 'text-zinc-600 bg-zinc-800'}`}>{sttEnabled ? 'ON' : 'OFF'}</span>
+              </button>
+
+              <div className="h-px bg-zinc-800 my-2" />
+
+              {/* Back to Home */}
+              <button onClick={() => { setOpen(false); onGoHome(); }} className="w-full flex items-center gap-3 px-4 py-3 text-[12px] text-red-400 hover:bg-red-500/10 rounded-xl transition-colors border border-red-500/20">
+                <span className="text-base">🏠</span> <span className="font-bold">Zurück zum Startbildschirm</span>
+              </button>
+            </div>
           </div>
         </>
       )}
@@ -98,7 +112,7 @@ const QuickSettings: React.FC<{
   );
 };
 
-const ChatInterface: React.FC = () => {
+const ChatInterface: React.FC<{ showQuestsTab?: boolean; onCloseQuests?: () => void }> = ({ showQuestsTab, onCloseQuests }) => {
   const router = useRouter();
   const chatEndRef = useRef<HTMLDivElement>(null);
 
@@ -166,6 +180,15 @@ const ChatInterface: React.FC = () => {
   return (
     <main className="h-screen w-screen bg-black text-zinc-300 font-mono flex flex-col overflow-hidden relative">
       {/* Overlays */}
+      {showQuestsTab && (
+        <div className="absolute inset-0 z-[90] bg-black">
+          <QuestLog
+            quests={session.quests}
+            npcs={session.npcs}
+            onClose={() => onCloseQuests?.()}
+          />
+        </div>
+      )}
       {showSaveLoad && (
         <SaveLoadPanel
           exportState={exportState} importState={importState}
@@ -395,6 +418,7 @@ const ChatInterface: React.FC = () => {
             </div>
             <QuickSettings
               onSaveLoad={() => setShowSaveLoad(true)}
+              onGoHome={() => router.push('/')}
               ttsEnabled={ttsEnabled}
               sttEnabled={sttEnabled}
               onToggleTTS={() => setTTSEnabled(!ttsEnabled)}
