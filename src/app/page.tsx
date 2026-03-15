@@ -5,6 +5,7 @@ import SplashScreen from '@/components/start/SplashScreen';
 import TutorialCards from '@/components/start/TutorialCards';
 import ArchivePanel from '@/components/start/ArchivePanel';
 import SystemPanel from '@/components/start/SystemPanel';
+import HolocronOrb from '@/components/ui/HolocronOrb';
 import { useRouter } from 'next/navigation';
 import { useCharacterStore } from '@/store/characterStore';
 import { playConfirm, playNavigate } from '@/lib/sounds';
@@ -47,6 +48,11 @@ export default function Home() {
 
   return (
     <main className="h-dvh w-screen flex flex-col justify-between p-8 font-mono overflow-hidden select-none bg-black" style={{ paddingTop: 'max(2rem, env(safe-area-inset-top, 2rem))' }}>
+
+      {/* Background Holocron Orb — ambient decoration */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+        <HolocronOrb size={350} opacity={0.15} />
+      </div>
 
       {/* Splash Screen — shows once on app load */}
       {showSplash && (

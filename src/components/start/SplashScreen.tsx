@@ -1,43 +1,77 @@
 'use client';
 
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import HolocronOrb from '@/components/ui/HolocronOrb';
 import { t } from '@/lib/i18n';
 
 interface SplashScreenProps {
   onComplete: () => void;
 }
 
+const LOADING_TEXTS = [
+  'Scanning galactic archives...',
+  'Initializing holocron database...',
+  'Calibrating force sensitivity...',
+  'Decrypting Jedi records...',
+  'Mapping hyperspace routes...',
+  'Synchronizing with the Force...',
+];
+
 // Deterministic starfield
 const STARS = Array.from({ length: 40 }, (_, i) => ({
   x: ((i * 7919) % 100),
   y: ((i * 6271) % 100),
   size: (i % 3) + 1,
-  opacity: 0.1 + (i % 6) * 0.06,
+  opacity: 0.08 + (i % 6) * 0.04,
   twinkleDelay: (i * 0.3) % 3,
 }));
 
 const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
   const [phase, setPhase] = useState(0);
+  const [textIndex, setTextIndex] = useState(0);
+  const [fadeOut, setFadeOut] = useState(false);
   const onCompleteRef = useRef(onComplete);
   onCompleteRef.current = onComplete;
   const skippedRef = useRef(false);
 
+  // Phase progression
   useEffect(() => {
     const timers = [
-      setTimeout(() => setPhase(1), 200),
-      setTimeout(() => setPhase(2), 1500),
-      setTimeout(() => setPhase(3), 2500),
-      setTimeout(() => setPhase(4), 3500),
-      setTimeout(() => { if (!skippedRef.current) onCompleteRef.current(); }, 4200),
+      setTimeout(() => setPhase(1), 300),       // Orb appears
+      setTimeout(() => setPhase(2), 1200),       // Title appears
+      setTimeout(() => setPhase(3), 1800),       // Loading text starts
+      setTimeout(() => {                          // Fade out + complete
+        if (!skippedRef.current) {
+          setFadeOut(true);
+          setTimeout(() => onCompleteRef.current(), 800);
+        }
+      }, 6000),
     ];
     return () => timers.forEach(clearTimeout);
   }, []);
 
+  // Cycle loading texts
+  useEffect(() => {
+    if (phase < 3) return;
+    const interval = setInterval(() => {
+      setTextIndex(prev => (prev + 1) % LOADING_TEXTS.length);
+    }, 1800);
+    return () => clearInterval(interval);
+  }, [phase]);
+
+  const handleSkip = () => {
+    if (!skippedRef.current) {
+      skippedRef.current = true;
+      setFadeOut(true);
+      setTimeout(() => onCompleteRef.current(), 400);
+    }
+  };
+
   return (
     <div
-      onClick={() => { if (!skippedRef.current) { skippedRef.current = true; onCompleteRef.current(); } }}
+      onClick={handleSkip}
       className={`fixed inset-0 bg-black z-[300] flex flex-col items-center justify-center cursor-pointer select-none transition-opacity duration-700 ${
-        phase >= 4 ? 'opacity-0 pointer-events-none' : 'opacity-100'
+        fadeOut ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >
       {/* Starfield */}
@@ -57,45 +91,44 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
         />
       ))}
 
+      {/* Holocron Orb */}
+      <div className={`transition-all duration-1000 ease-out ${
+        phase >= 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
+      }`}>
+        <HolocronOrb size={220} />
+      </div>
+
       {/* Title: QUANTUM */}
-      <h1
-        className={`text-7xl sm:text-8xl font-black italic tracking-tighter text-white transition-all duration-1000 ease-out ${
-          phase >= 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
-        }`}
-      >
+      <h1 className={`mt-8 text-6xl sm:text-7xl font-black italic tracking-tighter text-white transition-all duration-700 ease-out ${
+        phase >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+      }`}>
         {t('splashTitle')}
       </h1>
 
-      {/* Subtitle: CHRONICLES */}
-      <div
-        className={`mt-4 flex items-center gap-3 transition-all duration-700 ease-out ${
-          phase >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-        }`}
-      >
+      {/* Subtitle line */}
+      <div className={`mt-3 flex items-center gap-3 transition-all duration-500 ease-out ${
+        phase >= 2 ? 'opacity-100' : 'opacity-0'
+      }`}>
         <div className="h-[1px] w-10 bg-amber-500/50" />
-        <span className="text-amber-500 text-[11px] tracking-[0.5em] font-black uppercase">
+        <span className="text-amber-500 text-[10px] tracking-[0.5em] font-black uppercase">
           {t('splashSubtitle')}
         </span>
         <div className="h-[1px] w-10 bg-amber-500/50" />
       </div>
 
-      {/* Spaceship flyby */}
-      <div
-        className={`absolute top-[40%] transition-none ${
-          phase >= 3 ? 'animate-shipFly' : 'opacity-0'
-        }`}
-      >
-        {/* Ship body */}
-        <div className="relative">
-          <div className="w-8 h-2 bg-zinc-400 rounded-r-full rounded-l-sm shadow-[0_0_15px_rgba(245,158,11,0.6)]" />
-          {/* Engine glow trail */}
-          <div className="absolute top-0 right-full w-20 h-2 bg-gradient-to-l from-amber-500/80 via-amber-500/20 to-transparent rounded-l-full" />
-          <div className="absolute -top-1 right-full w-32 h-4 bg-gradient-to-l from-amber-400/30 via-amber-400/5 to-transparent rounded-l-full blur-sm" />
-        </div>
+      {/* Cycling loading text */}
+      <div className={`mt-10 h-6 transition-opacity duration-500 ${
+        phase >= 3 ? 'opacity-100' : 'opacity-0'
+      }`}>
+        <p key={textIndex} className="text-[11px] text-zinc-500 tracking-widest uppercase font-mono animate-in fade-in duration-500">
+          {LOADING_TEXTS[textIndex]}
+        </p>
       </div>
 
       {/* Skip hint */}
-      <div className={`absolute bottom-8 text-zinc-700 text-[9px] uppercase tracking-widest transition-opacity duration-500 ${phase >= 1 ? 'opacity-100' : 'opacity-0'}`}>
+      <div className={`absolute bottom-8 text-zinc-700 text-[9px] uppercase tracking-widest transition-opacity duration-500 ${
+        phase >= 1 ? 'opacity-100' : 'opacity-0'
+      }`}>
         [ {t('crawlSkip')} ]
       </div>
 
@@ -103,15 +136,6 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
         @keyframes twinkle {
           0%, 100% { opacity: inherit; }
           50% { opacity: 0.02; }
-        }
-        @keyframes shipFly {
-          0% { transform: translateX(-100vw); opacity: 0; }
-          10% { opacity: 1; }
-          90% { opacity: 1; }
-          100% { transform: translateX(100vw); opacity: 0; }
-        }
-        .animate-shipFly {
-          animation: shipFly 1.2s ease-in-out forwards;
         }
       `}</style>
     </div>

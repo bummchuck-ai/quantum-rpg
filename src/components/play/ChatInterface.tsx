@@ -8,6 +8,7 @@ import ForcePowerPanel from './ForcePowerPanel';
 import QuestLog from './QuestLog';
 import SaveLoadPanel from './SaveLoadPanel';
 import GameOverScreen from './GameOverScreen';
+import HolocronOrb from '@/components/ui/HolocronOrb';
 import { ALL_SKILLS } from '@/lib/skills';
 import { calculateDerivedStats } from '@/lib/engine/derived-stats';
 import { slugify } from '@/lib/save-utils';
@@ -180,6 +181,11 @@ const ChatInterface: React.FC<{ showQuestsTab?: boolean; onCloseQuests?: () => v
 
   return (
     <main className="h-screen w-screen bg-black text-zinc-300 font-mono flex flex-col overflow-hidden relative">
+      {/* Background Holocron Orb */}
+      <div className="absolute bottom-32 right-[-60px] pointer-events-none z-0">
+        <HolocronOrb size={280} opacity={0.08} />
+      </div>
+
       {/* Game Over Screen */}
       {activePlayer?.isDeceased && (
         <GameOverScreen
