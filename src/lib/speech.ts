@@ -88,44 +88,78 @@ export function setTTSVoiceName(name: string | null) {
 // SOUNDTRACK — Background Music Loop
 // ============================================================
 
-// Global singleton soundtrack — shared across all components
-function getGlobalSoundtrack(): HTMLAudioElement | null {
-  if (typeof window === 'undefined') return null;
-  return (window as any).__qrpgSoundtrack || null;
-}
+// Global soundtrack via AudioContext (iOS ignores HTMLAudioElement.volume)
+let soundtrackSource: AudioBufferSourceNode | null = null;
+let soundtrackGain: GainNode | null = null;
+let soundtrackCtx: AudioContext | null = null;
+let soundtrackBuffer: AudioBuffer | null = null;
 
-function setGlobalSoundtrack(audio: HTMLAudioElement | null): void {
+export async function startSoundtrack(): Promise<void> {
   if (typeof window === 'undefined') return;
-  (window as any).__qrpgSoundtrack = audio;
-}
+  if (soundtrackSource) return; // already playing
 
-export function startSoundtrack(): void {
-  if (typeof window === 'undefined') return;
-  const existing = getGlobalSoundtrack();
-  if (existing && !existing.paused) return; // already playing
   const settings = loadSpeechSettings();
-  const audio = existing || new Audio('/audio/soundtrack.mp3');
-  audio.loop = true;
-  audio.volume = settings.musicVolume;
-  audio.play().catch(() => {});
-  setGlobalSoundtrack(audio);
-  saveSpeechSettings({ musicEnabled: true });
+
+  try {
+    const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
+    soundtrackCtx = soundtrackCtx || new AudioCtx();
+
+    if (soundtrackCtx.state === 'suspended') await soundtrackCtx.resume();
+
+    // Fetch and decode audio if not cached
+    if (!soundtrackBuffer) {
+      const resp = await fetch('/audio/soundtrack.mp3');
+      const arrayBuf = await resp.arrayBuffer();
+      soundtrackBuffer = await soundtrackCtx.decodeAudioData(arrayBuf);
+    }
+
+    // Create source + gain
+    const source = soundtrackCtx.createBufferSource();
+    source.buffer = soundtrackBuffer;
+    source.loop = true;
+
+    const gain = soundtrackCtx.createGain();
+    gain.gain.value = settings.musicVolume;
+
+    source.connect(gain);
+    gain.connect(soundtrackCtx.destination);
+    source.start(0);
+
+    soundtrackSource = source;
+    soundtrackGain = gain;
+
+    source.onended = () => { soundtrackSource = null; };
+    saveSpeechSettings({ musicEnabled: true });
+  } catch {
+    // Fallback: HTMLAudioElement (non-iOS)
+    const audio = new Audio('/audio/soundtrack.mp3');
+    audio.loop = true;
+    audio.volume = settings.musicVolume;
+    audio.play().catch(() => {});
+    (window as any).__qrpgSoundtrackFallback = audio;
+    saveSpeechSettings({ musicEnabled: true });
+  }
 }
 
 export function stopSoundtrack(): void {
-  const audio = getGlobalSoundtrack();
-  if (audio) {
-    audio.pause();
-    audio.currentTime = 0;
+  if (soundtrackSource) {
+    try { soundtrackSource.stop(); } catch {}
+    soundtrackSource = null;
+    soundtrackGain = null;
   }
-  setGlobalSoundtrack(null);
+  // Also stop fallback
+  const fallback = typeof window !== 'undefined' ? (window as any).__qrpgSoundtrackFallback : null;
+  if (fallback) { fallback.pause(); (window as any).__qrpgSoundtrackFallback = null; }
   saveSpeechSettings({ musicEnabled: false });
 }
 
 export function setMusicVolume(vol: number): void {
   const v = Math.max(0, Math.min(1, vol));
-  const audio = getGlobalSoundtrack();
-  if (audio) audio.volume = v;
+  // AudioContext gain (works on iOS!)
+  if (soundtrackGain) soundtrackGain.gain.value = v;
+  // Fallback HTMLAudioElement
+  const fallback = typeof window !== 'undefined' ? (window as any).__qrpgSoundtrackFallback : null;
+  if (fallback) fallback.volume = v;
   saveSpeechSettings({ musicVolume: v });
 }
 
@@ -138,8 +172,9 @@ export function setSfxVolume(vol: number): void {
 }
 
 export function getMusicPlaying(): boolean {
-  const audio = getGlobalSoundtrack();
-  return audio !== null && !audio.paused;
+  if (soundtrackSource) return true;
+  const fallback = typeof window !== 'undefined' ? (window as any).__qrpgSoundtrackFallback : null;
+  return fallback !== null && !fallback.paused;
 }
 
 // Google Cloud TTS voice options (curated — 2 male, 2 female)
@@ -297,6 +332,8 @@ async function speakWithCloudTTS(
     try {
       const { getAudioContext } = await import('@/lib/sounds');
       const ctx = getAudioContext();
+      // Ensure context is running (may have suspended between user interactions)
+      if (ctx.state === 'suspended') await ctx.resume();
       const audioBuffer = await ctx.decodeAudioData(bytes.buffer.slice(0));
 
       if (myId !== ttsAbortId) return false;
