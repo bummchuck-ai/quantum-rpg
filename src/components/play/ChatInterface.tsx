@@ -18,18 +18,22 @@ import { setMasterVolume, getSettings as getSfxSettings } from '@/lib/sounds';
 import { useGameSession } from './useGameSession';
 import type { GMResponse } from './types';
 
-const VolumeSlider: React.FC<{ label: string; icon: string; value: number; onChange: (v: number) => void }> = ({ label, icon, value, onChange }) => (
+const VolumeSlider: React.FC<{ label: string; icon: string; value: number; onChange: (v: number) => void }> = ({ label, icon, value, onChange }) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => onChange(parseInt(e.target.value) / 100);
+  return (
   <div className="flex items-center gap-2 px-4 py-2">
     <span className="text-base w-6">{icon}</span>
     <span className="text-[10px] text-zinc-500 font-bold w-16">{label}</span>
     <input
       type="range" min="0" max="100" value={Math.round(value * 100)}
-      onChange={(e) => onChange(parseInt(e.target.value) / 100)}
+      onChange={handleChange}
+      onInput={handleChange as any}
       className="flex-1 h-1 accent-amber-500 bg-zinc-800 rounded-full appearance-none cursor-pointer"
     />
     <span className="text-[9px] text-zinc-600 w-8 text-right">{Math.round(value * 100)}%</span>
   </div>
-);
+  );
+};
 
 const MusicControls: React.FC = () => {
   const [musicOn, setMusicOn] = useState(getMusicPlaying());

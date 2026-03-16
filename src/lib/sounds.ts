@@ -56,6 +56,11 @@ function getCtx(): AudioContext {
   return audioCtx;
 }
 
+/** Export the shared AudioContext for Cloud TTS (already unlocked by SFX) */
+export function getAudioContext(): AudioContext {
+  return getCtx();
+}
+
 // --- Utility ---
 function createGain(ctx: AudioContext, volume: number): GainNode {
   const gain = ctx.createGain();

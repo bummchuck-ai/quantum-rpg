@@ -293,13 +293,13 @@ async function speakWithCloudTTS(
     const bytes = new Uint8Array(binary.length);
     for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
 
-    // Try AudioContext first (already unlocked by SFX), fallback to Audio element
+    // Use shared AudioContext from sounds.ts (already unlocked by SFX on iOS)
     try {
-      const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
-      const ctx = new AudioCtx();
+      const { getAudioContext } = await import('@/lib/sounds');
+      const ctx = getAudioContext();
       const audioBuffer = await ctx.decodeAudioData(bytes.buffer.slice(0));
 
-      if (myId !== ttsAbortId) { ctx.close(); return false; }
+      if (myId !== ttsAbortId) return false;
 
       const source = ctx.createBufferSource();
       source.buffer = audioBuffer;
@@ -309,11 +309,11 @@ async function speakWithCloudTTS(
       gainNode.connect(ctx.destination);
 
       onStart?.();
-      source.onended = () => { ctx.close(); currentAudio = null; onEnd?.(); };
+      source.onended = () => { currentAudio = null; onEnd?.(); };
       source.start(0);
 
-      // Store reference for stopping
-      currentAudio = { pause: () => { source.stop(); ctx.close(); }, currentTime: 0 } as any;
+      // Store reference for stopping (don't close shared ctx!)
+      currentAudio = { pause: () => { try { source.stop(); } catch {} }, currentTime: 0 } as any;
       return true;
     } catch {
       // AudioContext failed — try Audio element as fallback

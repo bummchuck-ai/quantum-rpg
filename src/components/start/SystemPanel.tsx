@@ -6,16 +6,20 @@ import { checkTTSSupport, checkSTTSupport, getSpeechSettings, setTTSEnabled, set
 import { ALL_SKILLS } from '@/lib/skills';
 import { getLanguage, setLanguage, t, type Language } from '@/lib/i18n';
 
-const AudioSlider: React.FC<{ label: string; icon: string; value: number; onChange: (v: number) => void }> = ({ label, icon, value, onChange }) => (
+const AudioSlider: React.FC<{ label: string; icon: string; value: number; onChange: (v: number) => void }> = ({ label, icon, value, onChange }) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => onChange(parseInt(e.target.value) / 100);
+  return (
   <div className="flex items-center gap-2">
     <span className="text-sm w-5">{icon}</span>
     <span className="text-[9px] text-zinc-500 font-bold w-14">{label}</span>
     <input type="range" min="0" max="100" value={Math.round(value * 100)}
-      onChange={(e) => onChange(parseInt(e.target.value) / 100)}
+      onChange={handleChange}
+      onInput={handleChange as any}
       className="flex-1 h-1 accent-amber-500 bg-zinc-800 rounded-full appearance-none cursor-pointer" />
     <span className="text-[9px] text-zinc-600 w-8 text-right">{Math.round(value * 100)}%</span>
   </div>
-);
+  );
+};
 
 const AudioControls: React.FC = () => {
   const [musicOn, setMusicOnState] = useState(false);
