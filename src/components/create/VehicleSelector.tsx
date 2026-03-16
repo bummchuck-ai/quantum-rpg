@@ -110,10 +110,38 @@ const VehicleSelector: React.FC = () => {
       <ProgressTracker currentStep={8} />
       <CharacterPreview />
 
-      <div className="border border-zinc-800 bg-zinc-900/10 p-4 rounded-xl mb-4">
-        <p className="text-[10px] leading-relaxed text-zinc-500 uppercase tracking-wider">
-          Wähle das Startschiff oder die Basis deiner Gruppe. Dieses Asset teilt sich die gesamte Party. Es bestimmt eure Mobilität und Möglichkeiten im Spiel.
-        </p>
+      {/* No Ship Option */}
+      <div className="mb-4 space-y-2">
+        <button
+          onClick={() => {
+            if (activePlayer.vehicles.length > 0) {
+              activePlayer.vehicles.forEach(v => removeVehicle(v.id));
+            }
+            setSelectedId(null);
+            playConfirm();
+          }}
+          className={`w-full p-4 border rounded-xl text-left transition-all ${
+            selectedId === null && activePlayer.vehicles.length === 0
+              ? 'border-amber-500/50 bg-amber-500/5'
+              : 'border-zinc-800 bg-zinc-900/20 hover:border-zinc-700'
+          }`}
+        >
+          <div className="flex justify-between items-center">
+            <div>
+              <div className="text-sm font-black text-white italic uppercase">Kein Schiff — Cantina Start</div>
+              <div className="text-[9px] text-zinc-500 mt-1">Du startest ohne Schiff in einer Cantina. Mobilität musst du dir im Spiel verdienen — per Geld, Diebstahl oder Überzeugung.</div>
+            </div>
+            {selectedId === null && activePlayer.vehicles.length === 0 && (
+              <div className="w-3 h-3 bg-amber-500 rounded-full shrink-0 ml-3" />
+            )}
+          </div>
+        </button>
+
+        <div className="border border-zinc-800 bg-zinc-900/10 p-3 rounded-xl">
+          <p className="text-[9px] leading-relaxed text-zinc-600 uppercase tracking-wider">
+            Oder wähle ein Gruppen-Asset: Schiff, Basis oder Fahrzeug. Es gehört der Gruppe und bestimmt eure Mobilität.
+          </p>
+        </div>
       </div>
 
       {/* Detail Modal */}
@@ -338,12 +366,7 @@ const VehicleSelector: React.FC = () => {
       <div className="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/90 to-transparent z-40">
         <button
           onClick={handleConfirm}
-          disabled={!selectedId}
-          className={`w-full font-black py-5 rounded-xl uppercase italic tracking-widest text-xs transition-all active:scale-95 border-b-4 ${
-            selectedId
-              ? 'bg-white text-black shadow-[0_20px_40px_rgba(0,0,0,0.8)] border-zinc-400'
-              : 'bg-zinc-900 text-zinc-600 cursor-not-allowed border-zinc-800'
-          }`}
+          className="w-full font-black py-5 rounded-xl uppercase italic tracking-widest text-xs transition-all active:scale-95 border-b-4 bg-white text-black shadow-[0_20px_40px_rgba(0,0,0,0.8)] border-zinc-400"
         >
           {selectedId ? 'Confirm_Vessel_→' : 'Wähle_ein_Schiff...'}
         </button>

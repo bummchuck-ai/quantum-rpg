@@ -37,6 +37,7 @@ const QuestLog: React.FC<QuestLogProps> = ({ quests, npcs, onClose }) => {
     <div className="h-full bg-black flex flex-col">
       <header className="p-4 border-b border-zinc-800 flex justify-between items-center bg-zinc-950 safe-area-top">
         <h2 className="text-xl font-black text-white italic tracking-tighter uppercase">Missions_Log</h2>
+        <button onClick={onClose} className="w-10 h-10 border border-zinc-800 rounded-lg flex items-center justify-center text-zinc-500 hover:text-white text-sm transition-colors">✕</button>
       </header>
 
       <div className="flex-1 overflow-y-auto p-4 pb-20 space-y-6">
