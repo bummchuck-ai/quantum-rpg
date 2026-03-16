@@ -368,7 +368,7 @@ const VehicleSelector: React.FC = () => {
           onClick={handleConfirm}
           className="w-full font-black py-5 rounded-xl uppercase italic tracking-widest text-xs transition-all active:scale-95 border-b-4 bg-white text-black shadow-[0_20px_40px_rgba(0,0,0,0.8)] border-zinc-400"
         >
-          {selectedId ? 'Confirm_Vessel_→' : 'Wähle_ein_Schiff...'}
+          {selectedId ? 'Confirm_Vessel_→' : 'Weiter_ohne_Schiff_→'}
         </button>
       </div>
     </main>

@@ -350,7 +350,7 @@ async function speakWithCloudTTS(
       source.start(0);
 
       // Store reference for stopping (don't close shared ctx!)
-      currentAudio = { pause: () => { try { source.stop(); } catch {} }, currentTime: 0 } as any;
+      currentAudio = { pause: () => { try { source.stop(); } catch {} }, paused: false, currentTime: 0 } as any;
       return true;
     } catch {
       // AudioContext failed — try Audio element as fallback
