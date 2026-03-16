@@ -28,11 +28,13 @@ const AudioControls: React.FC = () => {
   const [sfxVol, setSfxVol] = useState(0.8);
 
   useEffect(() => {
-    setMusicOnState(getMusicPlaying());
-    const s = getSpeechSettings();
-    setMusicVol(s.musicVolume);
-    setSpeakerVol(s.speakerVolume);
-    setSfxVol(getSettings().masterVolume);
+    try {
+      setMusicOnState(getMusicPlaying());
+      const s = getSpeechSettings();
+      setMusicVol(s.musicVolume ?? 0.3);
+      setSpeakerVol(s.speakerVolume ?? 0.8);
+      setSfxVol(getSettings().masterVolume ?? 0.8);
+    } catch { /* safe fallback */ }
   }, []);
 
   return (
@@ -41,7 +43,7 @@ const AudioControls: React.FC = () => {
         <div className="text-[10px] font-black text-zinc-400 uppercase tracking-wider">🎵 Soundtrack</div>
         <button onClick={() => {
           if (musicOn) { stopSoundtrack(); setMusicOnState(false); }
-          else { startSoundtrack(); setMusicOnState(true); }
+          else { startSoundtrack().catch(() => {}); setMusicOnState(true); }
         }} className={`w-12 h-6 rounded-full transition-colors relative ${musicOn ? 'bg-amber-500' : 'bg-zinc-800'}`}>
           <div className={`absolute top-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform ${musicOn ? 'left-[1.625rem]' : 'left-0.5'}`} />
         </button>
