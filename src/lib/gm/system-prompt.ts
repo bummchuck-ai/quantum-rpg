@@ -559,11 +559,7 @@ function buildSkillContext(character: any): string {
       const career = careerSkills.has(skill.key) ? ' [Karriere]' : '';
       lines.push(`  - ${skill.nameDE}: Rang ${rank}${career}`);
     }
-    // Summarize untrained skills compactly
-    if (untrained.length > 0) {
-      const untrainedNames = untrained.map(s => s.nameDE).join(', ');
-      lines.push(`  - Untrainiert (Rang 0): ${untrainedNames}`);
-    }
+    // Untrained skills omitted to save tokens — GM knows all 34 skills exist
     sections.push(`### ${catName}\n${lines.join('\n')}`);
   }
   return sections.join('\n');
@@ -600,7 +596,7 @@ function buildGearContext(character: any): string {
         w.encumbrance ? `Belastung: ${w.encumbrance}` : null,
       ].filter(Boolean).join(' | ');
       const props = (w.properties || []).map((p: any) => p.value ? `${p.name}: ${p.value}` : p.name).join(', ');
-      sections.push(`- **${w.name}** [${stats}]${props ? ` (${props})` : ''}${w.description ? ` — ${w.description}` : ''}`);
+      sections.push(`- **${w.name}** [${stats}]${props ? ` (${props})` : ''}`);
     }
   }
 
@@ -610,10 +606,9 @@ function buildGearContext(character: any): string {
       const stats = [
         a.soak !== undefined ? `Soak: +${a.soak}` : null,
         a.defense !== undefined ? `Verteidigung: ${a.defense}` : null,
-        a.encumbrance ? `Belastung: ${a.encumbrance}` : null,
       ].filter(Boolean).join(' | ');
       const props = (a.properties || []).map((p: any) => p.value ? `${p.name}: ${p.value}` : p.name).join(', ');
-      sections.push(`- **${a.name}** [${stats}]${props ? ` (${props})` : ''}${a.description ? ` — ${a.description}` : ''}`);
+      sections.push(`- **${a.name}** [${stats}]${props ? ` (${props})` : ''}`);
     }
   }
 

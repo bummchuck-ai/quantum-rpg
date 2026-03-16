@@ -201,16 +201,20 @@ export const useCharacterStore = create<GameState>()(
 
       setCareer: (career) => set((state) => {
         const player = state.players[state.activePlayerIndex];
-        // Reset skills back to species free ranks + refund spent XP on skills
+        // Full reset: skills, characteristics, talents back to species defaults
         const freeRanks = player.species?.freeSkillRanks || {};
+        const baseChars = player.species?.characteristics || { brawn: 2, agility: 2, intellect: 2, cunning: 2, willpower: 2, presence: 2 };
         const newPlayers = [...state.players];
         newPlayers[state.activePlayerIndex] = {
           ...player,
           career,
+          characteristics: { ...baseChars },
           skillRanks: { ...freeRanks },
-          availableXP: player.availableXP + player.spentXP,
+          availableXP: player.species?.startingXP || 0,
           spentXP: 0,
           ownedTalents: [],
+          ownedGear: [],
+          credits: 500,
         };
         return { players: newPlayers };
       }),
