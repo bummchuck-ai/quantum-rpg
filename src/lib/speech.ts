@@ -247,12 +247,12 @@ function splitIntoChunks(text: string, maxLen: number = 200): string[] {
 }
 
 // Google Cloud TTS — server-side, high quality
-let cloudTTSFailed = false; // only set after confirmed server failure, reset on retry
+// Uses AudioContext (Web Audio API) instead of HTMLAudioElement
+// because AudioContext is already unlocked by SFX sounds on iOS
+let cloudTTSFailed = false;
+let ttsAbortId = 0; // incremented to cancel stale requests
 
-// Call this from a user gesture to pre-unlock audio playback on iOS
 export function warmUpCloudTTS(): void {
-  if (typeof window === 'undefined') return;
-  // Reset failure flag on user gesture — allow retry
   cloudTTSFailed = false;
 }
 
@@ -262,6 +262,8 @@ async function speakWithCloudTTS(
   onStart?: () => void,
   onEnd?: () => void
 ): Promise<boolean> {
+  const myId = ++ttsAbortId; // capture ID to detect if superseded
+
   try {
     const settings = loadSpeechSettings();
 
@@ -275,38 +277,59 @@ async function speakWithCloudTTS(
       }),
     });
 
+    // Check if this request was superseded by a newer one
+    if (myId !== ttsAbortId) return false;
+
     if (!response.ok) {
       cloudTTSFailed = true;
       return false;
     }
 
     const data = await response.json();
-    if (!data.audioContent) return false;
+    if (!data.audioContent || myId !== ttsAbortId) return false;
 
-    // Convert base64 to blob URL
+    // Decode base64 to ArrayBuffer
     const binary = atob(data.audioContent);
     const bytes = new Uint8Array(binary.length);
     for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
-    const blob = new Blob([bytes], { type: 'audio/mp3' });
-    const url = URL.createObjectURL(blob);
 
-    return new Promise<boolean>((resolve) => {
+    // Try AudioContext first (already unlocked by SFX), fallback to Audio element
+    try {
+      const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
+      const ctx = new AudioCtx();
+      const audioBuffer = await ctx.decodeAudioData(bytes.buffer.slice(0));
+
+      if (myId !== ttsAbortId) { ctx.close(); return false; }
+
+      const source = ctx.createBufferSource();
+      source.buffer = audioBuffer;
+      const gainNode = ctx.createGain();
+      gainNode.gain.value = settings.speakerVolume;
+      source.connect(gainNode);
+      gainNode.connect(ctx.destination);
+
+      onStart?.();
+      source.onended = () => { ctx.close(); currentAudio = null; onEnd?.(); };
+      source.start(0);
+
+      // Store reference for stopping
+      currentAudio = { pause: () => { source.stop(); ctx.close(); }, currentTime: 0 } as any;
+      return true;
+    } catch {
+      // AudioContext failed — try Audio element as fallback
+      const blob = new Blob([bytes], { type: 'audio/mp3' });
+      const url = URL.createObjectURL(blob);
       const audio = new Audio(url);
       audio.volume = settings.speakerVolume;
-      audio.onplay = () => onStart?.();
-      audio.onended = () => { currentAudio = null; URL.revokeObjectURL(url); onEnd?.(); };
-      audio.onerror = () => {
-        currentAudio = null;
-        URL.revokeObjectURL(url);
-        onEnd?.();
-        resolve(false);
-      };
-      currentAudio = audio;
-      audio.play().then(() => resolve(true)).catch(() => {
-        URL.revokeObjectURL(url);
-        resolve(false);
+
+      return new Promise<boolean>((resolve) => {
+        audio.onplay = () => onStart?.();
+        audio.onended = () => { currentAudio = null; URL.revokeObjectURL(url); onEnd?.(); };
+        audio.onerror = () => { currentAudio = null; URL.revokeObjectURL(url); onEnd?.(); resolve(false); };
+        currentAudio = audio;
+        audio.play().then(() => resolve(true)).catch(() => { URL.revokeObjectURL(url); resolve(false); });
       });
-    });
+    }
   } catch {
     return false;
   }

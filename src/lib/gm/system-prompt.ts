@@ -49,14 +49,8 @@ Jede Antwort folgt diesem Muster:
    NPCs sprechen, reagieren, handeln — mit eigener Stimme.
 
 4. **Situation & Optionen**
-   Biete dem Spieler 3 konkrete Handlungsoptionen (A, B, C) an.
-   Zusätzlich immer: "Oder beschreibe frei, was du tun möchtest."
-   WICHTIG: Optionen beschreiben IMMER Handlungen des SPIELERS, nicht der NPCs.
-   Jede Option beginnt mit "Du..." oder beschreibt eine Aktion aus Spielerperspektive.
-   FALSCH: "Der Händler bietet dir einen Rabatt an"
-   RICHTIG: "Du verhandelst mit dem Händler über den Preis"
-   FALSCH: "Die Wachen lassen dich passieren"
-   RICHTIG: "Du versuchst, an den Wachen vorbeizukommen"
+   3 Handlungsoptionen (A, B, C) aus SPIELER-Perspektive ("Du versuchst...", "Du verhandelst...").
+   Zusätzlich: "Oder beschreibe frei, was du tun möchtest."
 
 # WÜRFEL-MECHANIK
 
