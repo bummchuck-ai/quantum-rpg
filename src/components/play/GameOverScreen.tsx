@@ -109,7 +109,7 @@ const GameOverScreen: React.FC<GameOverScreenProps> = ({
           {loading ? (
             <div className="flex items-center justify-center gap-2 py-4">
               <div className="w-4 h-4 border-2 border-zinc-600 border-t-zinc-400 rounded-full animate-spin" />
-              <span className="text-[9px] text-zinc-600 uppercase tracking-widest">Nachruf wird verfasst...</span>
+              <span className="text-[9px] text-zinc-600 uppercase tracking-widest">{lang === 'en' ? 'Writing epitaph...' : 'Nachruf wird verfasst...'}</span>
             </div>
           ) : (
             <p className="text-sm text-zinc-400 font-sans italic leading-relaxed">

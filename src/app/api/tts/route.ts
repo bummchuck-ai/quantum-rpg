@@ -18,9 +18,12 @@ export async function POST(req: Request) {
     const voiceName = voice || (lang === 'en' ? 'en-US-Neural2-D' : 'de-DE-Neural2-H');
     const languageCode = voiceName.substring(0, 5); // e.g., "de-DE" from "de-DE-Neural2-H"
 
-    const response = await fetch(`${TTS_URL}?key=${TTS_API_KEY}`, {
+    const response = await fetch(TTS_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Goog-Api-Key': TTS_API_KEY,
+      },
       body: JSON.stringify({
         input: { text },
         voice: {

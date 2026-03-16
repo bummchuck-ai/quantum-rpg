@@ -10,6 +10,7 @@ import IdentityModal from './IdentityModal';
 import SwipeCards from '@/components/ui/SwipeCards';
 import { playConfirm, playClick } from '@/lib/sounds';
 import { t } from '@/lib/i18n';
+import { slugify } from '@/lib/save-utils';
 
 interface Subspecies {
   name: string;
@@ -35,15 +36,6 @@ interface Species {
   abilities: string[];
   subspecies?: Subspecies[];
   freeSkillRanks?: Record<string, number>;
-}
-
-function slugify(name: string): string {
-  return name
-    .toLowerCase()
-    .replace(/[áàäâ]/g, 'a').replace(/[éèëê]/g, 'e').replace(/[íìïî]/g, 'i')
-    .replace(/[óòöô]/g, 'o').replace(/[úùüû]/g, 'u').replace(/[ß]/g, 'ss')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');
 }
 
 type ViewMode = 'swipe' | 'grid';

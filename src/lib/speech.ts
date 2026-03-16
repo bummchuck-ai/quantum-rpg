@@ -423,6 +423,9 @@ export function stopSpeaking(): void {
 }
 
 export function isSpeaking(): boolean {
+  // Check Cloud TTS audio
+  if (currentAudio !== null && !currentAudio.paused) return true;
+  // Check Web Speech API
   if (!checkTTSSupport()) return false;
   return speechSynthesis.speaking;
 }
