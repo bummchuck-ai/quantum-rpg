@@ -106,21 +106,35 @@ export function useGameSession() {
   const forceRating = career ? calculateForceRating(career, talentNames) : 0;
   const isForceSensitive = career ? isForceCareer(career) : false;
 
-  // Pending restore from start screen Archive
+  // Pending restore from start screen (Continue button or Archive load)
   useEffect(() => {
     const pendingRaw = localStorage.getItem(PENDING_RESTORE_KEY);
     if (pendingRaw) {
       try {
         const pendingData = JSON.parse(pendingRaw);
         localStorage.removeItem(PENDING_RESTORE_KEY);
+
+        let restored = false;
+
+        // Restore chat messages (the heart of "continuing")
         if (pendingData.chatMessages?.length > 0) {
           setMessages(pendingData.chatMessages);
+          restored = true;
         }
-        if (pendingData.session) setSession(pendingData.session);
-        if (pendingData.combat) setCombat(pendingData.combat);
-        if (pendingData.ownedPowers) setOwnedPowers(pendingData.ownedPowers);
-        if (pendingData.ownedUpgrades) setOwnedUpgrades(pendingData.ownedUpgrades);
-        return; // Skip startGame() — we restored from save
+        // Restore full session state (quests, NPCs, scene, destiny)
+        if (pendingData.session) {
+          setSession(pendingData.session);
+          restored = true;
+        }
+        // Restore combat state
+        if (pendingData.combat?.active) setCombat(pendingData.combat);
+        // Restore force powers
+        if (Array.isArray(pendingData.ownedPowers)) setOwnedPowers(pendingData.ownedPowers);
+        if (Array.isArray(pendingData.ownedUpgrades)) setOwnedUpgrades(pendingData.ownedUpgrades);
+
+        if (restored) {
+          return; // Skip startGame() — we restored from save
+        }
       } catch (e) {
         console.error('Pending restore failed, starting fresh:', e);
         localStorage.removeItem(PENDING_RESTORE_KEY);

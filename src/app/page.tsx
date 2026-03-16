@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 import { useCharacterStore } from '@/store/characterStore';
 import { playConfirm, playNavigate } from '@/lib/sounds';
 import { t } from '@/lib/i18n';
+import { PENDING_RESTORE_KEY, AUTOSAVE_KEY } from '@/lib/save-utils';
 
 export default function Home() {
   const [showSplash, setShowSplash] = useState(true);
@@ -40,6 +41,15 @@ export default function Home() {
     playNavigate();
     const firstPlayer = players[0];
     if (firstPlayer?.name && firstPlayer?.species && firstPlayer?.career) {
+      // Restore autosave into pending restore so useGameSession picks it up
+      try {
+        const autosaveRaw = localStorage.getItem(AUTOSAVE_KEY);
+        if (autosaveRaw) {
+          const autosave = JSON.parse(autosaveRaw);
+          // Only restore if it belongs to the current character
+          localStorage.setItem(PENDING_RESTORE_KEY, JSON.stringify(autosave));
+        }
+      } catch { /* no autosave, start fresh at /play */ }
       router.push('/play');
     } else {
       router.push('/create');
