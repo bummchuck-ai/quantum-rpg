@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, height=1920">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #000; }
+  .slide {
+    width: 1080px;
+    height: 1920px;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Rajdhani', sans-serif;
+    page-break-after: always;
+  }
+  .scanlines {
+    position: absolute; inset: 0; z-index: 50; pointer-events: none;
+    background: repeating-linear-gradient(to bottom, transparent, transparent 3px, rgba(0,0,0,0.03) 3px, rgba(0,0,0,0.03) 6px);
+  }
+  .vignette {
+    position: absolute; inset: 0; z-index: 49; pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.5) 100%);
+  }
+  .content {
+    position: absolute; inset: 0; display: flex; flex-direction: column; z-index: 10;
+  }
+  .progress {
+    display: flex; gap: 6px; padding: 40px 60px 0;
+  }
+  .progress-dot {
+    height: 4px; flex: 1; border-radius: 2px; background: rgba(255,255,255,0.15);
+  }
+  .progress-dot.active {
+    background: #f59e0b; box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+  }
+  .accent {
+    padding: 50px 80px 0; font-size: 14px; color: rgba(245, 158, 11, 0.5);
+    font-weight: 900; letter-spacing: 8px; text-transform: uppercase;
+    font-family: 'Share Tech Mono', monospace;
+  }
+  .tag {
+    padding: 30px 80px 0; font-size: 120px; font-weight: 900; color: #06b6d4;
+    text-shadow: 0 0 60px rgba(6, 182, 212, 0.4); letter-spacing: 8px; line-height: 1;
+  }
+  .title {
+    padding: 10px 80px 0; font-size: 36px; font-weight: 900; color: #f59e0b;
+    letter-spacing: 6px; text-transform: uppercase;
+  }
+  .divider {
+    margin: 30px 80px; height: 2px;
+    background: linear-gradient(to right, #f59e0b, transparent); opacity: 0.4;
+  }
+  .visual-area {
+    display: flex; justify-content: center; align-items: center;
+    padding: 0 80px; min-height: 500px;
+  }
+  .visual-img {
+    width: 800px; height: 500px; border-radius: 16px; overflow: hidden;
+    border: 2px solid rgba(245, 158, 11, 0.3);
+    box-shadow: 0 0 60px rgba(245, 158, 11, 0.15); position: relative;
+  }
+  .visual-img img {
+    width: 100%; height: 100%; object-fit: cover; filter: saturate(0.7) contrast(1.1);
+  }
+  .visual-img .overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 40%, transparent 60%, rgba(0,0,0,0.4) 100%);
+  }
+  .icon-visual {
+    width: 280px; height: 280px; border-radius: 60px; overflow: hidden;
+    border: 3px solid rgba(245, 158, 11, 0.4);
+    box-shadow: 0 0 80px rgba(245, 158, 11, 0.2);
+  }
+  .icon-visual img { width: 100%; height: 100%; object-fit: cover; }
+  .body-text {
+    padding: 40px 80px 0; font-size: 32px; color: rgba(161, 161, 170, 0.9);
+    font-style: italic; line-height: 1.6; font-weight: 500;
+  }
+  .spacer { flex: 1; }
+  .bottom-line {
+    height: 3px;
+    background: linear-gradient(to right, transparent, rgba(245, 158, 11, 0.3), transparent);
+  }
+  .bottom-bar {
+    padding: 24px 80px; display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: rgba(113, 113, 122, 0.6); font-weight: 900;
+    text-transform: uppercase; letter-spacing: 6px;
+    font-family: 'Share Tech Mono', monospace;
+  }
+  .corner { position: absolute; width: 20px; height: 20px; }
+  .corner-tl { top: 30px; left: 50px; border-top: 2px solid rgba(245,158,11,0.3); border-left: 2px solid rgba(245,158,11,0.3); }
+  .corner-tr { top: 30px; right: 50px; border-top: 2px solid rgba(245,158,11,0.3); border-right: 2px solid rgba(245,158,11,0.3); }
+  .corner-bl { bottom: 70px; left: 50px; border-bottom: 2px solid rgba(245,158,11,0.3); border-left: 2px solid rgba(245,158,11,0.3); }
+  .corner-br { bottom: 70px; right: 50px; border-bottom: 2px solid rgba(245,158,11,0.3); border-right: 2px solid rgba(245,158,11,0.3); }
+
+  /* Starfield for WANN slide */
+  canvas#starfield { border-radius: 16px; }
+
+  /* Orb canvas for WIE slide */
+  canvas#orb-canvas { border-radius: 50%; }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: WAS -->
+<div class="slide" id="slide-1">
+  <div class="scanlines"></div><div class="vignette"></div>
+  <div class="content">
+    <div class="progress">
+      <div class="progress-dot active"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+    </div>
+    <div class="accent">SYSTEM_BRIEFING // 01</div>
+    <div class="tag">WAS</div>
+    <div class="title">THE QUANTUM UNIVERSE</div>
+    <div class="divider"></div>
+    <div class="visual-area">
+      <div class="visual-img">
+        <img src="quantum-rpg-cover.jpg" alt="">
+        <div class="overlay"></div>
+      </div>
+    </div>
+    <div class="body-text">Ein Star Wars Pen & Paper RPG mit KI Game Master. Erstelle deinen Charakter, würfle dein Schicksal, erlebe epische Abenteuer — alles auf deinem Smartphone.</div>
+    <div class="spacer"></div>
+    <div class="bottom-line"></div>
+    <div class="bottom-bar"><span>QUANTUM_RPG</span><span>quantum-rpg.vercel.app</span></div>
+    <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div><div class="corner corner-br"></div>
+  </div>
+</div>
+
+<!-- SLIDE 2: WER -->
+<div class="slide" id="slide-2">
+  <div class="scanlines"></div><div class="vignette"></div>
+  <div class="content">
+    <div class="progress">
+      <div class="progress-dot active"></div>
+      <div class="progress-dot active"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+    </div>
+    <div class="accent">CREDITS_FILE // 02</div>
+    <div class="tag">WER</div>
+    <div class="title">DEVELOPED BY</div>
+    <div class="divider"></div>
+    <div class="visual-area">
+      <div class="icon-visual">
+        <img src="icons/icon-512.png" alt="">
+      </div>
+    </div>
+    <div class="body-text">Ein Fan-Projekt von Felix / bummchuck-ai. Powered by Claude API (Anthropic). Regelwerk basierend auf FFG Star Wars RPG.</div>
+    <div class="spacer"></div>
+    <div class="bottom-line"></div>
+    <div class="bottom-bar"><span>QUANTUM_RPG</span><span>quantum-rpg.vercel.app</span></div>
+    <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div><div class="corner corner-br"></div>
+  </div>
+</div>
+
+<!-- SLIDE 3: WANN -->
+<div class="slide" id="slide-3">
+  <div class="scanlines"></div><div class="vignette"></div>
+  <div class="content">
+    <div class="progress">
+      <div class="progress-dot active"></div>
+      <div class="progress-dot active"></div>
+      <div class="progress-dot active"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+    </div>
+    <div class="accent">CHRONO_SYNC // 03</div>
+    <div class="tag">WANN</div>
+    <div class="title">TIMELINE: 181 ABY</div>
+    <div class="divider"></div>
+    <div class="visual-area">
+      <canvas id="starfield" width="1600" height="1000" style="width:800px;height:500px;"></canvas>
+    </div>
+    <div class="body-text">Django Fett regiert als Mandalore. Darth Plagueis II. erobert Sektor um Sektor. Die Kaiserin ist tot, Bastion gefallen. Jetzt schreibst du deine Geschichte.</div>
+    <div class="spacer"></div>
+    <div class="bottom-line"></div>
+    <div class="bottom-bar"><span>QUANTUM_RPG</span><span>quantum-rpg.vercel.app</span></div>
+    <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div><div class="corner corner-br"></div>
+  </div>
+</div>
+
+<!-- SLIDE 4: WO -->
+<div class="slide" id="slide-4">
+  <div class="scanlines"></div><div class="vignette"></div>
+  <div class="content">
+    <div class="progress">
+      <div class="progress-dot active"></div>
+      <div class="progress-dot active"></div>
+      <div class="progress-dot active"></div>
+      <div class="progress-dot active"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+    </div>
+    <div class="accent">DEPLOY_STATUS // 04</div>
+    <div class="tag">WO</div>
+    <div class="title">ACCESS POINT</div>
+    <div class="divider"></div>
+    <div class="visual-area">
+      <div class="visual-img">
+        <img src="species-cover.jpg" alt="">
+        <div class="overlay"></div>
+      </div>
+    </div>
+    <div class="body-text">Mobile-first Progressive Web App. Kein Download nötig — öffne die URL und spiele sofort. Auf jedem Smartphone und Desktop.</div>
+    <div class="spacer"></div>
+    <div class="bottom-line"></div>
+    <div class="bottom-bar"><span>QUANTUM_RPG</span><span>quantum-rpg.vercel.app</span></div>
+    <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div><div class="corner corner-br"></div>
+  </div>
+</div>
+
+<!-- SLIDE 5: WARUM -->
+<div class="slide" id="slide-5">
+  <div class="scanlines"></div><div class="vignette"></div>
+  <div class="content">
+    <div class="progress">
+      <div class="progress-dot active"></div>
+      <div class="progress-dot active"></div>
+      <div class="progress-dot active"></div>
+      <div class="progress-dot active"></div>
+      <div class="progress-dot active"></div>
+      <div class="progress-dot"></div>
+    </div>
+    <div class="accent">UNIQUE_FACTOR // 05</div>
+    <div class="tag">WARUM</div>
+    <div class="title">MISSION STATEMENT</div>
+    <div class="divider"></div>
+    <div class="visual-area">
+      <div class="visual-img">
+        <img src="species-overview.jpg" alt="">
+        <div class="overlay"></div>
+      </div>
+    </div>
+    <div class="body-text">92 Spezies. 20 Karrieren. Hunderte Talente. Jede Geschichte ist einzigartig — die KI reagiert auf jede deiner Entscheidungen. Kein Durchgang ist wie der andere.</div>
+    <div class="spacer"></div>
+    <div class="bottom-line"></div>
+    <div class="bottom-bar"><span>QUANTUM_RPG</span><span>quantum-rpg.vercel.app</span></div>
+    <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div><div class="corner corner-br"></div>
+  </div>
+</div>
+
+<!-- SLIDE 6: WIE -->
+<div class="slide" id="slide-6">
+  <div class="scanlines"></div><div class="vignette"></div>
+  <div class="content">
+    <div class="progress">
+      <div class="progress-dot active"></div>
+      <div class="progress-dot active"></div>
+      <div class="progress-dot active"></div>
+      <div class="progress-dot active"></div>
+      <div class="progress-dot active"></div>
+      <div class="progress-dot active"></div>
+    </div>
+    <div class="accent">SYSTEM_ARCHITECTURE // 06</div>
+    <div class="tag">WIE</div>
+    <div class="title">TECH STACK</div>
+    <div class="divider"></div>
+    <div class="visual-area">
+      <canvas id="orb-canvas" width="800" height="800" style="width:400px;height:400px;"></canvas>
+    </div>
+    <div class="body-text">Claude API als KI Game Master. FFG Genesys Würfelsystem. Voice-to-Text & Text-to-Speech. Next.js Progressive Web App. Deine Daten bleiben lokal bei dir.</div>
+    <div class="spacer"></div>
+    <div class="bottom-line"></div>
+    <div class="bottom-bar"><span>QUANTUM_RPG</span><span>quantum-rpg.vercel.app</span></div>
+    <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div><div class="corner corner-br"></div>
+  </div>
+</div>
+
+<script>
+// --- Starfield for WANN slide ---
+(function() {
+  const canvas = document.getElementById('starfield');
+  const ctx = canvas.getContext('2d');
+  const stars = [];
+  for (let i = 0; i < 150; i++) {
+    stars.push({
+      x: Math.random() * 800,
+      y: Math.random() * 500,
+      size: Math.random() * 2.5 + 0.5,
+      color: Math.random() > 0.7 ? '#06b6d4' : '#f59e0b',
+      alpha: 0.3 + Math.random() * 0.7,
+    });
+  }
+  ctx.scale(2, 2);
+  for (const s of stars) {
+    ctx.globalAlpha = s.alpha;
+    ctx.fillStyle = s.color;
+    ctx.shadowColor = s.color;
+    ctx.shadowBlur = 4;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.shadowBlur = 0;
+  ctx.globalAlpha = 1;
+})();
+
+// --- Holocron Orb for WIE slide ---
+(function() {
+  const canvas = document.getElementById('orb-canvas');
+  const ctx = canvas.getContext('2d');
+  const DOT_COUNT = 120;
+  const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+  const dots = [];
+  for (let i = 0; i < DOT_COUNT; i++) {
+    dots.push({
+      theta: Math.acos(1 - 2 * (i + 0.5) / DOT_COUNT),
+      phi: goldenAngle * i,
+      size: 1.5 + Math.random() * 1.5,
+    });
+  }
+
+  const size = 400;
+  const cx = size / 2, cy = size / 2, radius = size * 0.35;
+  const rotY = 1.2;
+  const pulsePhase = 0.5;
+
+  ctx.scale(2, 2);
+
+  const projected = dots.map(dot => {
+    const x3d = Math.sin(dot.theta) * Math.cos(dot.phi + rotY);
+    const y3d = Math.cos(dot.theta);
+    const z3d = Math.sin(dot.theta) * Math.sin(dot.phi + rotY);
+    const tilt = 0.3;
+    const y3dt = y3d * Math.cos(tilt) - z3d * Math.sin(tilt);
+    const z3dt = y3d * Math.sin(tilt) + z3d * Math.cos(tilt);
+    const persp = 1 + z3dt * 0.3;
+    const pulseWave = Math.sin(dot.theta * 3 - pulsePhase * Math.PI * 2);
+    return { px: cx + x3d * radius * persp, py: cy + y3dt * radius * persp, z: z3dt, size: dot.size * persp, isPulsed: pulseWave > 0.6 };
+  });
+  projected.sort((a, b) => a.z - b.z);
+
+  for (const p of projected) {
+    const da = 0.15 + (p.z + 1) * 0.425;
+    if (p.isPulsed) {
+      ctx.fillStyle = `rgba(6, 182, 212, ${da * 0.9})`;
+      ctx.shadowColor = 'rgba(6, 182, 212, 0.7)';
+      ctx.shadowBlur = 12;
+    } else {
+      ctx.fillStyle = `rgba(245, 158, 11, ${da * 0.7})`;
+      ctx.shadowColor = 'rgba(245, 158, 11, 0.4)';
+      ctx.shadowBlur = 6;
+    }
+    ctx.beginPath();
+    ctx.arc(p.px, p.py, p.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.shadowBlur = 0;
+  const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius * 0.8);
+  grad.addColorStop(0, 'rgba(245, 158, 11, 0.08)');
+  grad.addColorStop(0.5, 'rgba(6, 182, 212, 0.04)');
+  grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+  ctx.fillStyle = grad;
+  ctx.beginPath();
+  ctx.arc(cx, cy, radius * 0.8, 0, Math.PI * 2);
+  ctx.fill();
+})();
+
+// Signal ready
+window.__SLIDES_READY = true;
+</script>
+</body>
+</html>
