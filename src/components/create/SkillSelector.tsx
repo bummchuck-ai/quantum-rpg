@@ -20,8 +20,11 @@ ALL_SKILLS.forEach(s => {
 });
 
 // Aliases for alternative German skill names used in careers.json
+// Legacy aliases (primary names now correct in ALL_SKILLS)
 SKILL_NAME_TO_KEY["Infiltration"] = "skulduggery";
 SKILL_NAME_TO_KEY["infiltration"] = "skulduggery";
+SKILL_NAME_TO_KEY["Fingerfertigkeit"] = "skulduggery";
+SKILL_NAME_TO_KEY["fingerfertigkeit"] = "skulduggery";
 SKILL_NAME_TO_KEY["leichte Fernkampfwaffen"] = "rangedLight";
 SKILL_NAME_TO_KEY["Leichte Fernkampfwaffen"] = "rangedLight";
 SKILL_NAME_TO_KEY["schwere Fernkampfwaffen"] = "rangedHeavy";
@@ -30,10 +33,14 @@ SKILL_NAME_TO_KEY["Verhandeln"] = "negotiation";
 SKILL_NAME_TO_KEY["verhandeln"] = "negotiation";
 SKILL_NAME_TO_KEY["Wachsamkeit"] = "vigilance";
 SKILL_NAME_TO_KEY["wachsamkeit"] = "vigilance";
+SKILL_NAME_TO_KEY["Aufmerksamkeit"] = "vigilance";
+SKILL_NAME_TO_KEY["aufmerksamkeit"] = "vigilance";
 SKILL_NAME_TO_KEY["Computertechnik"] = "computers";
 SKILL_NAME_TO_KEY["computertechnik"] = "computers";
 SKILL_NAME_TO_KEY["Straßenwissen"] = "streetwise";
 SKILL_NAME_TO_KEY["straßenwissen"] = "streetwise";
+SKILL_NAME_TO_KEY["Szenekenntnis"] = "streetwise";
+SKILL_NAME_TO_KEY["szenekenntnis"] = "streetwise";
 SKILL_NAME_TO_KEY["Lichtschwerter"] = "lightsaber";
 SKILL_NAME_TO_KEY["lichtschwerter"] = "lightsaber";
 SKILL_NAME_TO_KEY["Handgemenge"] = "brawl";
@@ -75,12 +82,18 @@ const SkillSelector: React.FC = () => {
     router.push('/create/talents');
   };
 
+  // FFG XP cost helper: Career = rank × 5, Non-Career = rank × 5 + 5
+  const skillRankCost = (rank: number, isCareer: boolean) => isCareer ? rank * 5 : rank * 5 + 5;
+
   const totalSkillXPSpent = Object.entries(skillRanks || {}).reduce((total, [skill, rank]) => {
     const rankNum = rank as number;
     const freeRanks = activePlayer.species?.freeSkillRanks?.[skill] || 0;
-    const paidRanks = Math.max(0, rankNum - freeRanks);
-    const costPerRank = isCareerSkill(skill) ? 5 : 10;
-    return total + (paidRanks * costPerRank);
+    const isCareer = isCareerSkill(skill);
+    let cost = 0;
+    for (let r = freeRanks + 1; r <= rankNum; r++) {
+      cost += skillRankCost(r, isCareer);
+    }
+    return total + cost;
   }, 0);
 
   return (
@@ -104,7 +117,7 @@ const SkillSelector: React.FC = () => {
 
       <div className="border border-zinc-800 bg-zinc-900/10 p-4 rounded-xl mb-4">
         <p className="text-[10px] leading-relaxed text-zinc-500 uppercase tracking-wider">
-          Investiere XP in Fertigkeiten. Karriere-Skills (grün markiert) kosten 5 XP pro Rang. Andere Skills kosten 10 XP. Maximum bei Erschaffung: Rang 2.
+          Investiere XP in Fertigkeiten. Karriere-Skills (grün): Rang × 5 XP. Andere: Rang × 5 + 5 XP. Maximum bei Erschaffung: Rang 2.
         </p>
       </div>
 
@@ -128,7 +141,8 @@ const SkillSelector: React.FC = () => {
           const rank = (skillRanks || {})[skill.key] || 0;
           const freeRanks = activePlayer.species?.freeSkillRanks?.[skill.key] || 0;
           const isCareer = isCareerSkill(skill.key);
-          const cost = isCareer ? 5 : 10;
+          const nextRank = rank + 1;
+          const cost = skillRankCost(nextRank, isCareer);
           const canBuy = rank < 2 && availableXP >= cost;
           const canRefund = rank > 0 && rank > freeRanks;
           const charValue = (characteristics as any)[skill.characteristic] || 2;
@@ -163,7 +177,7 @@ const SkillSelector: React.FC = () => {
                     </span>
                     <span className="text-[7px] text-zinc-800">|</span>
                     <span className="text-[7px] text-zinc-600 uppercase tracking-widest">
-                      {cost} XP/Rang
+                      {rank < 2 ? `${cost} XP` : 'MAX'}
                     </span>
                   </div>
                 </div>

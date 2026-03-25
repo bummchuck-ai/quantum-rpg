@@ -251,9 +251,9 @@ export const useCharacterStore = create<GameState>()(
         // Determine value change based on bonus and type
         let newValue = baseValue;
         if (player.backgroundType === 'Morality') {
-          // Morality: taking bonus DROPS morality from 50 to 29 (closer to Dark Side)
-          if (bonus === 'xp10' || bonus === 'cr2500') newValue = 29;
-          else if (bonus === 'xp5' || bonus === 'cr1000') newValue = 39;
+          // Morality: taking bonus DROPS morality (closer to Dark Side) — FFG rules: -20 or -10
+          if (bonus === 'xp10' || bonus === 'cr2500') newValue = 30;
+          else if (bonus === 'xp5' || bonus === 'cr1000') newValue = 40;
         } else {
           // Obligation/Duty: taking bonus INCREASES the value
           if (bonus === 'xp5' || bonus === 'cr1000') newValue = baseValue + 5;
@@ -292,13 +292,15 @@ export const useCharacterStore = create<GameState>()(
         const player = state.players[state.activePlayerIndex];
         const currentRank = player.skillRanks[skillKey] || 0;
         if (currentRank >= 2) return state; // Max rank 2 during creation
-        const cost = isCareer ? 5 : 10;
+        // FFG rules: Career = (newRank) × 5, Non-Career = (newRank) × 5 + 5
+        const newRank = currentRank + 1;
+        const cost = isCareer ? newRank * 5 : newRank * 5 + 5;
         if (player.availableXP < cost) return state;
 
         const newPlayers = [...state.players];
         newPlayers[state.activePlayerIndex] = {
           ...player,
-          skillRanks: { ...player.skillRanks, [skillKey]: currentRank + 1 },
+          skillRanks: { ...player.skillRanks, [skillKey]: newRank },
           availableXP: player.availableXP - cost,
           spentXP: player.spentXP + cost,
         };
@@ -310,7 +312,8 @@ export const useCharacterStore = create<GameState>()(
         const currentRank = player.skillRanks[skillKey] || 0;
         const freeRanks = player.species?.freeSkillRanks?.[skillKey] || 0;
         if (currentRank <= 0 || currentRank <= freeRanks) return state;
-        const cost = isCareer ? 5 : 10;
+        // Refund cost of the rank being removed: Career = currentRank × 5, Non-Career = currentRank × 5 + 5
+        const cost = isCareer ? currentRank * 5 : currentRank * 5 + 5;
 
         const newPlayers = [...state.players];
         newPlayers[state.activePlayerIndex] = {

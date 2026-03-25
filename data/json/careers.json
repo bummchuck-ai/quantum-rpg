@@ -1461,7 +1461,16 @@
           "Lichtschwerter"
         ],
         "description": "Beschützt wichtige Personen und Orte. Wachsam und unnachgiebig."
-      },
+      }
+    ],
+    "description": "Machtbegabte Ermittler und Vollstrecker. Sie nutzen die Macht subtil — ein Lichtschwert ist nur Plan B."
+  },
+  {
+    "name": "Allgemeine Spezialisierungen",
+    "description": "Universelle Spezialisierungen, die keiner bestimmten Karriere zugeordnet sind. Sie stehen allen Charakteren offen — ideal als zweite Spezialisierung oder für unkonventionelle Konzepte.",
+    "careerSkills": [],
+    "forceRating": 0,
+    "specializations": [
       {
         "name": "Anhänger der Macht",
         "skills": [
@@ -1526,7 +1535,7 @@
         "name": "Machtsensitiver im Exil",
         "skills": [
           "Heimlichkeit",
-          "Szenekenntnis",
+          "Straßenwissen",
           "Überleben",
           "Wachsamkeit"
         ],
@@ -1622,7 +1631,6 @@
         ],
         "description": "Hat Order 66 überlebt. Traumatisiert, aber die Macht lebt weiter."
       }
-    ],
-    "description": "Machtbegabte Ermittler und Vollstrecker. Sie nutzen die Macht subtil — ein Lichtschwert ist nur Plan B."
+    ]
   }
 ]

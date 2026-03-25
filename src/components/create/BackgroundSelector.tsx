@@ -147,8 +147,8 @@ const BackgroundSelector: React.FC = () => {
                 <div className="grid grid-cols-1 gap-3">
                   {[
                     { id: 'none', label: 'STANDARD_LOAD', sub: suggestedType === 'Morality' ? 'Moralität bleibt bei 50' : 'Kein Bonus', color: 'zinc' },
-                    { id: 'xp10', label: 'UPGRADE: +10 XP', sub: suggestedType === 'Morality' ? 'Moralität sinkt auf 29 (Dunkle Seite!)' : 'Schicksal erhöht sich (+10)', color: 'amber' },
-                    { id: 'cr2500', label: 'CREDIT_BOOST: +2.5k', sub: suggestedType === 'Morality' ? 'Moralität sinkt auf 29 (Dunkle Seite!)' : 'Schicksal erhöht sich (+10)', color: 'emerald' }
+                    { id: 'xp10', label: 'UPGRADE: +10 XP', sub: suggestedType === 'Morality' ? 'Moralität sinkt auf 30 (Dunkle Seite!)' : 'Schicksal erhöht sich (+10)', color: 'amber' },
+                    { id: 'cr2500', label: 'CREDIT_BOOST: +2.5k', sub: suggestedType === 'Morality' ? 'Moralität sinkt auf 30 (Dunkle Seite!)' : 'Schicksal erhöht sich (+10)', color: 'emerald' }
                   ].map(opt => (
                     <button
                       key={opt.id}
