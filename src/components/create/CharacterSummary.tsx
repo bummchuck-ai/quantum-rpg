@@ -1,18 +1,19 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useCharacterStore } from '../../store/characterStore';
+import { useCharacterStore, Player } from '../../store/characterStore';
 import { useRouter } from 'next/navigation';
 import { ALL_SKILLS, SKILL_NAMES_DE } from '@/lib/skills';
 import HolocronGuide from './HolocronGuide';
 import ProgressTracker from './ProgressTracker';
 import { playDeploy } from '@/lib/sounds';
 import { calculateDerivedStats } from '@/lib/engine/derived-stats';
+import { getSaves, SaveSlot } from '@/lib/save-utils';
 
 const CharacterSummary: React.FC = () => {
   const router = useRouter();
   const {
-    players, activePlayerIndex, setName, addPlayer, setActivePlayer, removePlayer
+    players, activePlayerIndex, setName, addPlayer, addPlayerFromData, setActivePlayer, removePlayer
   } = useCharacterStore();
 
   const activePlayer = players[activePlayerIndex];
@@ -26,6 +27,8 @@ const CharacterSummary: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'skills' | 'talents' | 'gear' | 'ship' | 'story'>('skills');
   const [backstory, setBackstory] = useState<string>('');
   const [generating, setGenerating] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [savedCharacters, setSavedCharacters] = useState<{ name: string; species: string; career: string; slotName: string; player: Player }[]>([]);
 
   const mainSpec = specializations[0];
 
@@ -65,11 +68,65 @@ const CharacterSummary: React.FC = () => {
 
   const groupShip = vehicles?.[0];
 
+  const loadSavedCharacters = () => {
+    const saves = getSaves();
+    const chars: typeof savedCharacters = [];
+    const seenNames = new Set<string>();
+
+    saves.forEach((slot: SaveSlot) => {
+      try {
+        const parsed = JSON.parse(slot.data);
+        const storeState = parsed.storeState;
+        if (storeState?.players && Array.isArray(storeState.players)) {
+          storeState.players.forEach((p: Player) => {
+            if (p.name && p.species && p.career && !seenNames.has(p.name)) {
+              // Skip characters already in the current party
+              const alreadyInParty = players.some(existing => existing.name === p.name && existing.species?.name === p.species?.name);
+              if (!alreadyInParty) {
+                seenNames.add(p.name);
+                chars.push({
+                  name: p.name,
+                  species: p.species?.name || '???',
+                  career: p.career?.name || '???',
+                  slotName: slot.name,
+                  player: p,
+                });
+              }
+            }
+          });
+        }
+      } catch { /* skip corrupted saves */ }
+    });
+
+    setSavedCharacters(chars);
+  };
+
   const handleAddMember = () => {
     if (players.length >= 4) return;
+    loadSavedCharacters();
+    setShowAddModal(true);
+  };
+
+  const handleAddNew = () => {
+    setShowAddModal(false);
     addPlayer();
     setActivePlayer(players.length);
     router.push('/create');
+  };
+
+  const handleAddSaved = (playerData: Player) => {
+    setShowAddModal(false);
+    // Deep copy to avoid reference issues
+    const copy: Player = JSON.parse(JSON.stringify(playerData));
+    // Reset runtime state for the copy
+    copy.wounds = 0;
+    copy.strain = 0;
+    copy.questLog = [];
+    copy.isDeceased = false;
+    copy.deathCause = null;
+    copy.deathLocation = null;
+    addPlayerFromData(copy);
+    setActivePlayer(players.length);
   };
 
   if (!species || !career) {
@@ -263,6 +320,92 @@ const CharacterSummary: React.FC = () => {
       <div className="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/80 to-transparent z-40">
           <button onClick={() => { playDeploy(); setTimeout(() => router.push('/crawl'), 1000); }} className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-5 rounded-xl uppercase italic tracking-widest text-sm shadow-[0_20px_40px_rgba(16,185,129,0.3)] transition-all active:scale-95 border-b-4 border-emerald-800">Deploy_to_Sector_→</button>
       </div>
+
+      {/* Add Party Member Modal */}
+      {showAddModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-6" onClick={() => setShowAddModal(false)}>
+          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+          <div className="relative bg-zinc-950 border border-zinc-800 rounded-2xl w-full max-w-md max-h-[80vh] flex flex-col shadow-2xl shadow-amber-500/5" onClick={(e) => e.stopPropagation()}>
+            {/* Modal Header */}
+            <div className="p-5 border-b border-zinc-800">
+              <div className="text-[8px] text-zinc-600 font-black uppercase tracking-widest mb-1">Party_Recruitment</div>
+              <h3 className="text-lg font-black text-white italic tracking-tighter uppercase">Mitglied hinzufügen</h3>
+            </div>
+
+            {/* Modal Body */}
+            <div className="flex-1 overflow-y-auto p-5 space-y-4">
+              {/* Option 1: New Character */}
+              <button
+                onClick={handleAddNew}
+                className="w-full p-4 border border-amber-500/30 bg-amber-500/[0.03] rounded-xl text-left hover:bg-amber-500/10 hover:border-amber-500/60 transition-all group"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 border border-amber-500/50 rounded-lg flex items-center justify-center text-amber-500 font-black text-lg group-hover:bg-amber-500/10 transition-all">+</div>
+                  <div>
+                    <div className="text-[11px] font-black text-amber-500 uppercase tracking-tight">Neuen Charakter erstellen</div>
+                    <div className="text-[9px] text-zinc-600 font-bold uppercase mt-0.5">Spezies, Karriere & Ausrüstung wählen</div>
+                  </div>
+                </div>
+              </button>
+
+              {/* Divider */}
+              <div className="flex items-center gap-3">
+                <div className="flex-1 h-px bg-zinc-800" />
+                <span className="text-[8px] text-zinc-700 font-black uppercase tracking-widest">Oder</span>
+                <div className="flex-1 h-px bg-zinc-800" />
+              </div>
+
+              {/* Option 2: Load from saves */}
+              <div>
+                <div className="text-[8px] text-zinc-600 font-black uppercase tracking-widest mb-3">Gespeicherte Charaktere</div>
+                {savedCharacters.length === 0 ? (
+                  <div className="text-center py-8">
+                    <div className="text-[10px] text-zinc-800 font-black uppercase tracking-widest">Keine gespeicherten Charaktere gefunden</div>
+                    <div className="text-[8px] text-zinc-700 mt-1">Spiele eine Session und speichere, um Charaktere hier zu sehen.</div>
+                  </div>
+                ) : (
+                  <div className="space-y-2">
+                    {savedCharacters.map((char, idx) => (
+                      <button
+                        key={`${char.name}-${idx}`}
+                        onClick={() => handleAddSaved(char.player)}
+                        className="w-full p-4 border border-zinc-800 bg-zinc-900/30 rounded-xl text-left hover:border-amber-500/40 hover:bg-zinc-900/60 transition-all group"
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 border border-zinc-700 rounded-lg flex items-center justify-center text-zinc-500 font-black text-[10px] uppercase group-hover:border-amber-500/50 group-hover:text-amber-500 transition-all">
+                            {char.name.charAt(0)}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="text-[11px] font-black text-white uppercase italic tracking-tighter truncate">{char.name}</div>
+                            <div className="flex items-center gap-2 text-[9px] font-bold uppercase mt-0.5">
+                              <span className="text-amber-500">{char.species}</span>
+                              <span className="text-zinc-800">//</span>
+                              <span className="text-zinc-500">{char.career}</span>
+                            </div>
+                          </div>
+                          <div className="text-[7px] text-zinc-700 font-bold uppercase tracking-widest text-right">
+                            {char.slotName}
+                          </div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-4 border-t border-zinc-800">
+              <button
+                onClick={() => setShowAddModal(false)}
+                className="w-full py-3 border border-zinc-800 rounded-xl text-[9px] font-black text-zinc-600 uppercase tracking-widest hover:border-zinc-600 hover:text-zinc-400 transition-all"
+              >
+                Abbrechen
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 };

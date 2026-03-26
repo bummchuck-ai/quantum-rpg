@@ -78,6 +78,7 @@ interface GameState {
 
   // Actions
   addPlayer: () => void;
+  addPlayerFromData: (playerData: Player) => void;
   removePlayer: (index: number) => void;
   setActivePlayer: (index: number) => void;
   updateActivePlayer: (updates: Partial<Player>) => void;
@@ -155,6 +156,10 @@ export const useCharacterStore = create<GameState>()(
 
       addPlayer: () => set((state) => ({
         players: [...state.players, createNewPlayer(`player-${state.players.length + 1}`)]
+      })),
+
+      addPlayerFromData: (playerData: Player) => set((state) => ({
+        players: [...state.players, { ...playerData, id: `player-${state.players.length + 1}` }]
       })),
 
       removePlayer: (index) => set((state) => {

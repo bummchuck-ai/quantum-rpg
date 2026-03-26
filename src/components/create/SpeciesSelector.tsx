@@ -49,6 +49,9 @@ const SpeciesSelector: React.FC = () => {
   const [selectedSubspecies, setSelectedSubspecies] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
 
+  // Track failed portrait images so we can show fallback UI via React state (not DOM mutations)
+  const [failedPortraits, setFailedPortraits] = useState<Set<string>>(new Set());
+
   // Identity Modal state
   const [showIdentityModal, setShowIdentityModal] = useState(false);
   const [pendingSpecies, setPendingSpecies] = useState<Species | null>(null);
@@ -176,16 +179,25 @@ const SpeciesSelector: React.FC = () => {
               {/* DOSSIER CARD — Square portrait with overlaid info */}
               <div className="relative aspect-square bg-zinc-950 overflow-hidden">
                 {/* Portrait */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={`/species/${slugify(s.name)}.jpg`}
-                  alt={s.name}
-                  loading="lazy"
-                  width={600}
-                  height={600}
-                  className="absolute inset-0 w-full h-full object-cover object-top"
-                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                />
+                {!failedPortraits.has(s.name) ? (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    src={`/species/${slugify(s.name)}.jpg`}
+                    alt={s.name}
+                    width={600}
+                    height={600}
+                    className="absolute inset-0 w-full h-full object-cover object-top"
+                    onError={(e) => {
+                      const img = e.target as HTMLImageElement;
+                      console.error(`[SpeciesSelector] Portrait failed to load: ${img.src}`);
+                      setFailedPortraits(prev => new Set(prev).add(s.name));
+                    }}
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center bg-zinc-900">
+                    <span className="text-amber-500/30 font-black italic text-6xl">{s.name.charAt(0)}</span>
+                  </div>
+                )}
 
                 {/* Top: Name */}
                 <div className="absolute top-0 left-0 right-0 p-2.5 bg-gradient-to-b from-black/80 to-transparent z-10">
@@ -267,9 +279,11 @@ const SpeciesSelector: React.FC = () => {
                                             onError={(e) => {
                                               const img = e.target as HTMLImageElement;
                                               if (!img.dataset.fallback) {
+                                                console.error(`[SpeciesSelector] Subspecies portrait failed: ${img.src}, trying species fallback`);
                                                 img.dataset.fallback = '1';
                                                 img.src = `/species/${slugify(s.name)}.jpg`;
                                               } else {
+                                                console.error(`[SpeciesSelector] Species fallback also failed: ${img.src}`);
                                                 img.style.display = 'none';
                                               }
                                             }}

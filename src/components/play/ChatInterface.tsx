@@ -208,6 +208,8 @@ const ChatInterface: React.FC<{ showQuestsTab?: boolean; onCloseQuests?: () => v
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
+  const [avatarFailed, setAvatarFailed] = useState(false);
+
   if (!activePlayer?.species || !activePlayer?.career) {
     return <div className="min-h-screen bg-black" />;
   }
@@ -315,9 +317,11 @@ const ChatInterface: React.FC<{ showQuestsTab?: boolean; onCloseQuests?: () => v
                   onError={(e) => {
                     const img = e.target as HTMLImageElement;
                     if (!img.dataset.fallback) {
+                      console.error(`[ChatInterface] Char sheet portrait failed: ${img.src}, trying species fallback`);
                       img.dataset.fallback = '1';
                       img.src = `/species/${slugify(species.name)}.jpg`;
                     } else {
+                      console.error(`[ChatInterface] Species fallback also failed: ${img.src}`);
                       img.style.display = 'none';
                     }
                   }}
@@ -437,7 +441,7 @@ const ChatInterface: React.FC<{ showQuestsTab?: boolean; onCloseQuests?: () => v
         <div className="px-3 pt-2 pb-1.5 flex justify-between items-center">
           <div className="flex items-center gap-2.5">
             <button onClick={() => setShowCharSheet(true)} className="w-10 h-10 border border-amber-500/40 rounded-lg bg-amber-500/5 flex items-center justify-center active:scale-90 transition-transform overflow-hidden">
-              {species?.name ? (
+              {species?.name && !avatarFailed ? (
                 <img
                   src={selectedSubspecies
                     ? `/species/${slugify(species.name)}-${slugify(selectedSubspecies)}.jpg`
@@ -448,14 +452,12 @@ const ChatInterface: React.FC<{ showQuestsTab?: boolean; onCloseQuests?: () => v
                   onError={(e) => {
                     const img = e.target as HTMLImageElement;
                     if (!img.dataset.fallback) {
+                      console.error(`[ChatInterface] Avatar portrait failed: ${img.src}, trying species fallback`);
                       img.dataset.fallback = '1';
                       img.src = `/species/${slugify(species.name)}.jpg`;
                     } else {
-                      img.style.display = 'none';
-                      const span = document.createElement('span');
-                      span.className = 'text-amber-500 font-black italic text-base';
-                      span.textContent = name?.charAt(0) || 'Q';
-                      img.parentElement?.appendChild(span);
+                      console.error(`[ChatInterface] Avatar fallback also failed: ${img.src}`);
+                      setAvatarFailed(true);
                     }
                   }}
                 />

@@ -26,6 +26,7 @@ const GameOverScreen: React.FC<GameOverScreenProps> = ({
   const [epitaph, setEpitaph] = useState<string>('');
   const [loading, setLoading] = useState(true);
   const [fadeIn, setFadeIn] = useState(false);
+  const [portraitFailed, setPortraitFailed] = useState(false);
   const lang = getLanguage();
 
   useEffect(() => {
@@ -72,12 +73,22 @@ const GameOverScreen: React.FC<GameOverScreenProps> = ({
 
         {/* Portrait with death overlay */}
         <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-red-500/50 shadow-[0_0_40px_rgba(239,68,68,0.3)]">
-          <img
-            src={portraitSrc}
-            alt={playerName}
-            className="w-full h-full object-cover object-top grayscale opacity-60"
-            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-          />
+          {!portraitFailed && (
+            <img
+              src={portraitSrc}
+              alt={playerName}
+              className="w-full h-full object-cover object-top grayscale opacity-60"
+              onError={(e) => {
+                console.error(`[GameOverScreen] Portrait failed to load: ${(e.target as HTMLImageElement).src}`);
+                setPortraitFailed(true);
+              }}
+            />
+          )}
+          {portraitFailed && (
+            <div className="w-full h-full flex items-center justify-center bg-zinc-900">
+              <span className="text-red-500 font-black italic text-3xl">{playerName.charAt(0)}</span>
+            </div>
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
         </div>
 
