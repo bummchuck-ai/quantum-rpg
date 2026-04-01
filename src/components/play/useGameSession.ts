@@ -19,13 +19,46 @@ import { getLanguage, t } from '@/lib/i18n';
 import { resolveSkill } from '@/lib/skills';
 import type { Message, RollRequest, Toast, GMResponse } from './types';
 import { DIFFICULTY_MAP, AUTOSAVE_INTERVAL } from './types';
+import { useAuthStore } from '@/store/authStore';
 
 export function useGameSession() {
   const {
     players, activePlayerIndex, updateStatus, updateActivePlayer, exportState, importState, setActivePlayer, spendXP, buyGear, grantXP
   } = useCharacterStore();
+  const { session: authSession, setShowAuthModal, setShowUpgradePrompt, fetchUsage } = useAuthStore();
 
   const activePlayer = players[activePlayerIndex];
+
+  // Authenticated fetch helper
+  const fetchGM = useCallback(async (body: object, signal?: AbortSignal) => {
+    const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+    if (authSession?.access_token) {
+      headers['Authorization'] = `Bearer ${authSession.access_token}`;
+    }
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(body),
+      signal,
+    });
+    if (response.status === 401) {
+      const data = await response.json();
+      if (data.error === 'AUTH_REQUIRED') {
+        setShowAuthModal(true);
+        throw new Error('AUTH_REQUIRED');
+      }
+    }
+    if (response.status === 429) {
+      const data = await response.json();
+      if (data.error === 'LIMIT_REACHED') {
+        setShowUpgradePrompt(true);
+        throw new Error('LIMIT_REACHED');
+      }
+    }
+    if (!response.ok) throw new Error(`GM request failed: ${response.status}`);
+    fetchUsage(); // Refresh usage display
+    return response.json();
+  }, [authSession, setShowAuthModal, setShowUpgradePrompt, fetchUsage]);
 
   // Core chat state
   const [messages, setMessages] = useState<Message[]>([]);
@@ -245,16 +278,10 @@ export function useGameSession() {
     if (narratives.length < 5) return;
 
     try {
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          gameState: buildGameState(),
-          userMessage: `[SYSTEM] Erstelle eine kompakte Zusammenfassung der bisherigen Geschichte (max 500 Wörter). Fokus auf: Schlüsselereignisse, NPC-Beziehungen, besuchte Orte, aktive Bedrohungen, Errungenschaften des Spielers. Bisherige Erzählungen:\n\n${narratives.join('\n\n')}`,
-        }),
+      const data = await fetchGM({
+        gameState: buildGameState(),
+        userMessage: `[SYSTEM] Erstelle eine kompakte Zusammenfassung der bisherigen Geschichte (max 500 Wörter). Fokus auf: Schlüsselereignisse, NPC-Beziehungen, besuchte Orte, aktive Bedrohungen, Errungenschaften des Spielers. Bisherige Erzählungen:\n\n${narratives.join('\n\n')}`,
       });
-      if (!response.ok) return;
-      const data = await response.json();
       if (data.narrative) {
         setSession(prev => ({ ...prev, storySummary: data.narrative }));
       }
@@ -518,19 +545,12 @@ export function useGameSession() {
         content: m.role === 'gm' ? JSON.stringify(m.content) : (typeof m.content === 'string' ? m.content : m.content.narrative || '')
       }));
 
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          gameState: buildGameState(),
-          userMessage: text,
-          history: history.slice(-20),
-          language: getLanguage(),
-        }),
-        signal: controller.signal,
-      });
-      if (!response.ok) throw new Error(`GM request failed: ${response.status} ${response.statusText}`);
-      const data = await response.json();
+      const data = await fetchGM({
+        gameState: buildGameState(),
+        userMessage: text,
+        history: history.slice(-20),
+        language: getLanguage(),
+      }, controller.signal);
       handleGMResponse(data);
     } catch (error) {
       console.error('Chat failed:', error);
@@ -550,17 +570,10 @@ export function useGameSession() {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 60000);
     try {
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          gameState: buildGameState(),
-          userMessage: buildStartMessage(),
-        }),
-        signal: controller.signal,
-      });
-      if (!response.ok) throw new Error(`GM request failed: ${response.status} ${response.statusText}`);
-      const data = await response.json();
+      const data = await fetchGM({
+        gameState: buildGameState(),
+        userMessage: buildStartMessage(),
+      }, controller.signal);
       handleGMResponse(data);
     } catch (error) {
       console.error('Intro failed:', error);

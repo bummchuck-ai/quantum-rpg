@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
+import AuthProvider from '@/components/providers/AuthProvider';
 
 export const metadata: Metadata = {
   title: 'QUANTUM // GALACTIC_INTERFACE',
@@ -84,7 +85,7 @@ export default function RootLayout({
       </head>
       <body className="bg-black text-white antialiased font-sans min-h-screen">
         <div className="scanline"></div>
-        {children}
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );

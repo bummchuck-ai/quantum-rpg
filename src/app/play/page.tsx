@@ -7,6 +7,7 @@ import ErrorBoundary from '@/components/play/ErrorBoundary';
 import { useCharacterStore } from '@/store/characterStore';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import UsageBadge from '@/components/ui/UsageBadge';
 
 type Tab = 'chat' | 'quests' | 'shop' | 'talents';
 
@@ -37,6 +38,10 @@ export default function PlayPage() {
   return (
     <ErrorBoundary>
     <main className="relative h-screen w-screen bg-black font-mono overflow-hidden">
+      {/* Usage Badge — top right */}
+      <div className="fixed top-2 right-2 z-40">
+        <UsageBadge />
+      </div>
       {/* Tab Content Area — full screen, stacked */}
       <div className="h-full w-full">
         {/* Chat + Quests (both rendered inside ChatInterface for session access) */}

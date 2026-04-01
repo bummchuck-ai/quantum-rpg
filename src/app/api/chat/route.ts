@@ -2,6 +2,8 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import Anthropic from '@anthropic-ai/sdk';
 import { buildSystemPrompt, getResponseFormat } from '../../../lib/gm/system-prompt';
 import { NextResponse } from 'next/server';
+import { createServerClient } from '../../../lib/supabase-server';
+import { TIER_LIMITS } from '../../../lib/stripe';
 
 // In-memory rate limiter with automatic cleanup
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
@@ -139,6 +141,50 @@ export async function POST(req: Request) {
 
   try {
     const body = await req.json();
+
+    // --- Auth + Quota Check ---
+    const authHeader = req.headers.get('authorization');
+    let userId: string | null = null;
+
+    if (authHeader?.startsWith('Bearer ')) {
+      const supabase = createServerClient();
+      const { data: { user } } = await supabase.auth.getUser(authHeader.replace('Bearer ', ''));
+      if (user) {
+        userId = user.id;
+
+        // Check quota (skip for raw/internal requests)
+        if (!body.messages) {
+          const { data: profile } = await supabase
+            .from('profiles')
+            .select('subscription_tier, daily_requests_used, daily_reset_at, credits')
+            .eq('user_id', userId)
+            .single();
+
+          if (profile) {
+            const dailyLimit = TIER_LIMITS[profile.subscription_tier] || 5;
+            const { data: allowed } = await supabase.rpc('use_request', {
+              p_user_id: userId,
+              p_daily_limit: dailyLimit,
+            });
+
+            if (!allowed) {
+              return NextResponse.json(
+                { error: 'LIMIT_REACHED', dailyLimit, credits: profile.credits },
+                { status: 429 }
+              );
+            }
+          }
+        }
+      }
+    }
+
+    // If no auth and not a raw request, require login
+    if (!userId && !body.messages) {
+      return NextResponse.json(
+        { error: 'AUTH_REQUIRED' },
+        { status: 401 }
+      );
+    }
 
     // 1. Raw message request (e.g. from Story Generator, IntroCrawl)
     if (body.messages) {
