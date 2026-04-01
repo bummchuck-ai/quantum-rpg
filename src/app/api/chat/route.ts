@@ -1,3 +1,4 @@
+import { GoogleGenerativeAI } from '@google/generative-ai';
 import Anthropic from '@anthropic-ai/sdk';
 import { buildSystemPrompt, getResponseFormat } from '../../../lib/gm/system-prompt';
 import { NextResponse } from 'next/server';
@@ -10,7 +11,6 @@ let lastCleanup = Date.now();
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
-  // Periodic cleanup: remove expired entries every 5 minutes to prevent memory leak
   if (now - lastCleanup > 300_000) {
     lastCleanup = now;
     for (const [key, val] of rateLimitMap) {
@@ -26,13 +26,103 @@ function isRateLimited(ip: string): boolean {
   return entry.count > RATE_LIMIT;
 }
 
-const apiKey = process.env.ANTHROPIC_API_KEY;
-const anthropic = new Anthropic({ apiKey: apiKey || '' });
+// --- Provider Setup ---
+const geminiKey = process.env.GEMINI_API_KEY;
+const anthropicKey = process.env.ANTHROPIC_API_KEY;
 
-export const maxDuration = 60; // Vercel Hobby allows up to 60s
+const genAI = geminiKey ? new GoogleGenerativeAI(geminiKey) : null;
+const anthropic = anthropicKey ? new Anthropic({ apiKey: anthropicKey }) : null;
+
+// Primary: Gemini, Fallback: Claude
+async function callGemini(systemPrompt: string, messages: { role: string; content: string }[]): Promise<string> {
+  if (!genAI) throw new Error('Gemini API key not configured');
+
+  const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+
+  // Build chat history for Gemini format
+  const history: { role: 'user' | 'model'; parts: { text: string }[] }[] = [];
+  for (const msg of messages.slice(0, -1)) {
+    history.push({
+      role: msg.role === 'assistant' ? 'model' : 'user',
+      parts: [{ text: msg.content }],
+    });
+  }
+
+  const chat = model.startChat({
+    history,
+    systemInstruction: { role: 'user', parts: [{ text: systemPrompt }] },
+  });
+
+  const lastMessage = messages[messages.length - 1];
+  const result = await chat.sendMessage(lastMessage.content);
+  return result.response.text();
+}
+
+async function callClaude(systemPrompt: string, messages: { role: 'user' | 'assistant'; content: string }[]): Promise<string> {
+  if (!anthropic) throw new Error('Anthropic API key not configured');
+
+  const response = await anthropic.messages.create({
+    model: 'claude-sonnet-4-6',
+    max_tokens: 1500,
+    system: systemPrompt,
+    messages,
+  });
+
+  return response.content[0].type === 'text' ? response.content[0].text : '';
+}
+
+async function callLLM(systemPrompt: string, messages: { role: 'user' | 'assistant'; content: string }[]): Promise<string> {
+  // Try Gemini first (primary)
+  if (genAI) {
+    try {
+      return await callGemini(systemPrompt, messages);
+    } catch (e) {
+      console.warn('Gemini failed, trying Claude fallback:', e);
+    }
+  }
+
+  // Fallback to Claude
+  if (anthropic) {
+    try {
+      return await callClaude(systemPrompt, messages);
+    } catch (e) {
+      console.warn('Claude also failed:', e);
+    }
+  }
+
+  throw new Error('No LLM provider available');
+}
+
+function parseGMResponse(text: string) {
+  let clean = text.replace(/^```(?:json)?\n?/, '').replace(/\n?```$/, '').trim();
+
+  try {
+    return JSON.parse(clean);
+  } catch {
+    const start = clean.indexOf('{');
+    if (start !== -1) {
+      let depth = 0;
+      for (let i = start; i < clean.length; i++) {
+        if (clean[i] === '{') depth++;
+        else if (clean[i] === '}') depth--;
+        if (depth === 0) {
+          try { return JSON.parse(clean.slice(start, i + 1)); }
+          catch { break; }
+        }
+      }
+    }
+    return {
+      narrative: text || 'Der GM antwortet nicht wie erwartet. Bitte versuche es erneut.',
+      options: [{ id: 'A', text: 'Erneut versuchen' }],
+      stateChanges: {},
+      mood: 'mysterious',
+    };
+  }
+}
+
+export const maxDuration = 60;
 
 export async function POST(req: Request) {
-  // Origin check — only allow requests from same origin
   const origin = req.headers.get('origin') || '';
   const host = req.headers.get('host') || '';
   if (origin && !origin.includes(host) && !origin.includes('localhost') && !origin.includes('vercel.app')) {
@@ -55,27 +145,17 @@ export async function POST(req: Request) {
       const systemMsg = body.messages.find((m: { role: string; content: string }) => m.role === 'system');
       const userMsg = body.messages.find((m: { role: string; content: string }) => m.role === 'user');
 
-      const response = await anthropic.messages.create({
-        model: 'claude-sonnet-4-6',
-        max_tokens: 2048,
-        system: systemMsg?.content || '',
-        messages: [{ role: 'user', content: userMsg?.content || '' }],
-      });
+      const text = await callLLM(
+        systemMsg?.content || '',
+        [{ role: 'user' as const, content: userMsg?.content || '' }]
+      );
 
-      const text = response.content[0].type === 'text' ? response.content[0].text : '';
-
-      // If caller requested raw text (e.g. IntroCrawl), return it directly
       if (body.rawText) {
         return NextResponse.json({ rawText: text.trim() });
       }
 
-      // Strip markdown code fences if present
-      const clean = text.replace(/^```json\n?/, '').replace(/\n?```$/, '').trim();
-      try {
-        return NextResponse.json(JSON.parse(clean));
-      } catch {
-        return NextResponse.json({ narrative: 'Der GM antwortet nicht wie erwartet. Bitte versuche es erneut.', options: [{ id: 'A', text: 'Erneut versuchen' }] });
-      }
+      const parsed = parseGMResponse(text);
+      return NextResponse.json(parsed);
     }
 
     const { gameState, userMessage, history, language } = body;
@@ -85,16 +165,13 @@ export async function POST(req: Request) {
       throw new Error('Invalid GameState provided to GM.');
     }
 
-    // Sanitize user input: limit length, strip control characters
     const sanitizedMessage = typeof userMessage === 'string'
       ? userMessage.slice(0, 2000).replace(/[\x00-\x08\x0B\x0C\x0E-\x1F]/g, '')
       : '';
 
-    // Build system prompt (language-aware)
     const lang = language === 'en' ? 'en' : 'de';
     const systemInstruction = buildSystemPrompt(gameState, lang) + '\n\n' + getResponseFormat(lang);
 
-    // Build conversation history for multi-turn
     const messages: { role: 'user' | 'assistant'; content: string }[] = [];
     if (history && Array.isArray(history)) {
       for (const msg of history) {
@@ -105,41 +182,9 @@ export async function POST(req: Request) {
     }
     messages.push({ role: 'user', content: sanitizedMessage });
 
-    const response = await anthropic.messages.create({
-      model: 'claude-sonnet-4-6',
-      max_tokens: 1500, // optimized: GM responses rarely exceed 1000 tokens
-      system: systemInstruction,
-      messages: messages.slice(-14), // 7 turns of context (player+gm each)
-    });
-
-    const text = response.content[0].type === 'text' ? response.content[0].text : '';
-    // Strip markdown fences, handle various formats
-    let clean = text.replace(/^```(?:json)?\n?/, '').replace(/\n?```$/, '').trim();
-
-    // Try direct parse first, then balanced-brace extraction (safer than greedy regex)
-    try {
-      return NextResponse.json(JSON.parse(clean));
-    } catch {
-      const start = clean.indexOf('{');
-      if (start !== -1) {
-        let depth = 0;
-        for (let i = start; i < clean.length; i++) {
-          if (clean[i] === '{') depth++;
-          else if (clean[i] === '}') depth--;
-          if (depth === 0) {
-            try { return NextResponse.json(JSON.parse(clean.slice(start, i + 1))); }
-            catch { break; }
-          }
-        }
-      }
-      // All parsing failed — wrap raw text as narrative
-      return NextResponse.json({
-        narrative: text || 'Der GM antwortet nicht wie erwartet. Bitte versuche es erneut.',
-        options: [{ id: 'A', text: 'Erneut versuchen' }],
-        stateChanges: {},
-        mood: 'mysterious',
-      });
-    }
+    const text = await callLLM(systemInstruction, messages.slice(-14));
+    const parsed = parseGMResponse(text);
+    return NextResponse.json(parsed);
 
   } catch (error) {
     console.error('GM Error:', error);
